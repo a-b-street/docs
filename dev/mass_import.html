@@ -148,7 +148,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#mass-importing-many-maps" id="mass-importing-many-maps">Mass importing many maps</a></h1>
-<p>For <a href="https://github.com/dabreegster/abstreet/issues/326">https://github.com/dabreegster/abstreet/issues/326</a>, I'm starting to figure
+<p>For <a href="https://github.com/a-b-street/abstreet/issues/326">https://github.com/a-b-street/abstreet/issues/326</a>, I'm starting to figure
 out how to import hundreds of maps into A/B Street. There are many issues with
 scaling up the number of supported maps. This document just focuses on
 importing.</p>
@@ -160,7 +160,7 @@ cities world-wide. The <code>data/bbike.sh</code> script downloads these. Then
 Importing such large areas is slow, and the result is too large to work well in
 A/B Street or the OSM viewer. Ideally, we want just the area concentrated around
 the &quot;core&quot; of each city.</p>
-<p><a href="https://github.com/dabreegster/abstreet/blob/master/convert_osm/src/bin/extract_cities.rs">https://github.com/dabreegster/abstreet/blob/master/convert_osm/src/bin/extract_cities.rs</a>
+<p><a href="https://github.com/a-b-street/abstreet/blob/master/convert_osm/src/bin/extract_cities.rs">https://github.com/a-b-street/abstreet/blob/master/convert_osm/src/bin/extract_cities.rs</a>
 transforms a huge .osm file into smaller pieces, each focusing on one city core.
 This tool looks for administrative boundary relations tagged as cities, produces
 a clipping polygon covering the city, and uses <code>osmconvert</code> to produce a smaller

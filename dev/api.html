@@ -153,10 +153,10 @@ use machine learning to do it. You can run A/B Street without graphics and
 automatically control it through an API.</p>
 <h2><a class="header" href="#examples" id="examples">Examples</a></h2>
 <p>This
-<a href="https://github.com/dabreegster/abstreet/blob/master/headless/examples/python_client.py">Python example</a>
+<a href="https://github.com/a-b-street/abstreet/blob/master/headless/examples/python_client.py">Python example</a>
 has everything you need to get started.</p>
 <p>See
-<a href="https://github.com/dabreegster/abstreet/tree/master/headless/examples">all example code</a>
+<a href="https://github.com/a-b-street/abstreet/tree/master/headless/examples">all example code</a>
 -- there are different experiments in Go and Python that automate running a
 simulation, measuring some metric, and making a change to improve the metric.</p>
 <h2><a class="header" href="#control-flow" id="control-flow">Control flow</a></h2>
@@ -260,7 +260,7 @@ feature per road and intersection in the map. The coordinate space is WGS84.</li
 <pre><code>cargo run --bin dump_map data/system/seattle/maps/montlake.bin &gt; montlake.json
 </code></pre>
 <p>See some example code that
-<a href="https://github.com/dabreegster/abstreet/blob/master/headless/examples/generate_traffic.py">reads this JSON and finds buildings</a>.</p>
+<a href="https://github.com/a-b-street/abstreet/blob/master/headless/examples/generate_traffic.py">reads this JSON and finds buildings</a>.</p>
 <p>You could also edit the map JSON, convert it back to binary, and use it in the
 simulation. This isn't recommended generally, but one possible use case could be
 tuning the amount of offstreet parking per building. The map JSON has a list

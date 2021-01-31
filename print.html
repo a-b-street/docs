@@ -154,33 +154,33 @@
 audience.</p>
 <h1><a class="header" href="#ab-street-instructions" id="ab-street-instructions">A/B Street Instructions</a></h1>
 <p>This is an alpha-quality demo. Please email <a href="mailto:howto/dabreegster@gmail.com">dabreegster@gmail.com</a> or
-<a href="https://github.com/dabreegster/abstreet/issues/">file a Github issue</a> if you
+<a href="https://github.com/a-b-street/abstreet/issues/">file a Github issue</a> if you
 hit problems.</p>
 <h2><a class="header" href="#installing-the-game" id="installing-the-game">Installing the game</a></h2>
 <p>Grab a pre-built binary release -- updated every Sunday, announced at
 <a href="http://old.reddit.com/r/abstreet">r/abstreet</a>:</p>
 <ul>
-<li><a href="https://github.com/dabreegster/abstreet/releases/download/v0.2.29/abstreet_windows_v0_2_29.zip">Windows</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.29/abstreet_windows_v0_2_29.zip">Windows</a>
 <ul>
 <li>Unzip the folder, then run <code>play_abstreet.bat</code>. You'll probably getting a
 warning about running software from an unknown publisher.</li>
 </ul>
 </li>
-<li><a href="https://github.com/dabreegster/abstreet/releases/download/v0.2.29/abstreet_mac_v0_2_29.zip">Mac</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.29/abstreet_mac_v0_2_29.zip">Mac</a>
 <ul>
 <li>Unzip the directory, then run <code>play_abstreet.sh</code>.</li>
 <li>If you get an error about the developer unverified,
 <a href="https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac">follow this</a>.
 Help needed to start
-<a href="https://github.com/dabreegster/abstreet/issues/107">signing the release</a>!</li>
+<a href="https://github.com/a-b-street/abstreet/issues/107">signing the release</a>!</li>
 <li>If that just opens a text file instead of running the game, then instead
 open terminal, <code>cd</code> to the directory you just unzipped. Then do:
 <code>cd game; RUST_BACKTRACE=1 ./game 1&gt; ../output.txt 2&gt;&amp;1</code></li>
-<li><a href="https://github.com/dabreegster/abstreet/issues/77">Help needed</a> to package
+<li><a href="https://github.com/a-b-street/abstreet/issues/77">Help needed</a> to package
 this as a Mac .app, to make this process simpler</li>
 </ul>
 </li>
-<li><a href="https://github.com/dabreegster/abstreet/releases/download/v0.2.29/abstreet_linux_v0_2_29.zip">Linux</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.29/abstreet_linux_v0_2_29.zip">Linux</a>
 <ul>
 <li>Unzip the directory, then run <code>play_abstreet.sh</code>.</li>
 </ul>
@@ -200,7 +200,7 @@ this as a Mac .app, to make this process simpler</li>
 </ul>
 <h2><a class="header" href="#common-issues" id="common-issues">Common issues</a></h2>
 <p>If the size of text and panels
-<a href="https://github.com/dabreegster/abstreet/issues/381">seems very strange</a>, you
+<a href="https://github.com/a-b-street/abstreet/issues/381">seems very strange</a>, you
 can try editing <code>play_abstreet.sh</code> or <code>play_abstreet.bat</code> and passing
 <code>--scale_factor=1</code> on the command line. This value is detected from your monitor
 settings, so if you have a Retina or other HiDPI display, things may be too big
@@ -228,12 +228,12 @@ License)</li>
 <li>Some Graphics textures (<a href="https://www.kenney.nl/">https://www.kenney.nl/</a>, CC0 1.0 Universal)</li>
 <li>Snowflake SVG (<a href="https://www.svgrepo.com/page/licensing">https://www.svgrepo.com/page/licensing</a>, CC0)</li>
 <li>Music from
-<a href="https://github.com/dabreegster/abstreet/tree/master/data/system/assets/music/sources.md">various sources</a>
+<a href="https://github.com/a-b-street/abstreet/tree/master/data/system/assets/music/sources.md">various sources</a>
 with Creative Commons licenses</li>
 </ul>
 <h1><a class="header" href="#importing-a-new-city-into-ab-street" id="importing-a-new-city-into-ab-street">Importing a new city into A/B Street</a></h1>
 <p>This process isn't easy yet. Please email <a href="mailto:howto/dabreegster@gmail.com">dabreegster@gmail.com</a> or
-<a href="https://github.com/dabreegster/abstreet/issues/">file a Github issue</a> if you
+<a href="https://github.com/a-b-street/abstreet/issues/">file a Github issue</a> if you
 hit problems. I'd really appreciate help and PRs to improve this.</p>
 <h2><a class="header" href="#quick-start" id="quick-start">Quick start</a></h2>
 <p>Use this if you want to import a city on your computer without making it
@@ -303,7 +303,7 @@ you drew multiple polygons.</p>
 <li>
 <p>Copy <code>importer/config/tel_aviv/cfg.json</code> to
 <code>importer/config/your_city/cfg.json</code> and edit this file. See
-<a href="https://github.com/dabreegster/abstreet/blob/master/importer/src/generic.rs">here</a>
+<a href="https://github.com/a-b-street/abstreet/blob/master/importer/src/generic.rs">here</a>
 for details on the different fields. The defaults are a reasonable start;
 the only thing you need to change is <code>osm_url</code>.</p>
 </li>
@@ -744,7 +744,7 @@ or the equivalent for your distro</li>
 <ol>
 <li>
 <p>Download the repository:
-<code>git clone https://github.com/dabreegster/abstreet.git</code></p>
+<code>git clone https://github.com/a-b-street/abstreet.git</code></p>
 </li>
 <li>
 <p>Grab the minimal amount of data to get started: <code>cargo run --bin updater</code></p>
@@ -833,7 +833,7 @@ regenerate.</li>
 </ul>
 <p>You can also make the importer <a href="dev/../howto/new_city.html">import a new city</a>.</p>
 <h2><a class="header" href="#understanding-stuff" id="understanding-stuff">Understanding stuff</a></h2>
-<p>The docs listed at <a href="https://github.com/dabreegster/abstreet#documentation">https://github.com/dabreegster/abstreet#documentation</a>
+<p>The docs listed at <a href="https://github.com/a-b-street/abstreet#documentation">https://github.com/a-b-street/abstreet#documentation</a>
 explain things like map importing and how the traffic simulation works.</p>
 <h3><a class="header" href="#code-organization" id="code-organization">Code organization</a></h3>
 <p>If you're going to dig into the code, it helps to know what all the crates are.
@@ -1023,10 +1023,10 @@ use machine learning to do it. You can run A/B Street without graphics and
 automatically control it through an API.</p>
 <h2><a class="header" href="#examples" id="examples">Examples</a></h2>
 <p>This
-<a href="https://github.com/dabreegster/abstreet/blob/master/headless/examples/python_client.py">Python example</a>
+<a href="https://github.com/a-b-street/abstreet/blob/master/headless/examples/python_client.py">Python example</a>
 has everything you need to get started.</p>
 <p>See
-<a href="https://github.com/dabreegster/abstreet/tree/master/headless/examples">all example code</a>
+<a href="https://github.com/a-b-street/abstreet/tree/master/headless/examples">all example code</a>
 -- there are different experiments in Go and Python that automate running a
 simulation, measuring some metric, and making a change to improve the metric.</p>
 <h2><a class="header" href="#control-flow" id="control-flow">Control flow</a></h2>
@@ -1130,7 +1130,7 @@ feature per road and intersection in the map. The coordinate space is WGS84.</li
 <pre><code>cargo run --bin dump_map data/system/seattle/maps/montlake.bin &gt; montlake.json
 </code></pre>
 <p>See some example code that
-<a href="https://github.com/dabreegster/abstreet/blob/master/headless/examples/generate_traffic.py">reads this JSON and finds buildings</a>.</p>
+<a href="https://github.com/a-b-street/abstreet/blob/master/headless/examples/generate_traffic.py">reads this JSON and finds buildings</a>.</p>
 <p>You could also edit the map JSON, convert it back to binary, and use it in the
 simulation. This isn't recommended generally, but one possible use case could be
 tuning the amount of offstreet parking per building. The map JSON has a list
@@ -1172,7 +1172,7 @@ in A/B Street - UI interactions, details of the simulation, map importing --
 would take lots of infrastructure to specify a setup and expected outcomes. If
 you have ideas for new tests, contributions always welcome! In the meantime, one
 useful test covers how
-<a href="https://github.com/dabreegster/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs">OSM tags translate into individual lanes</a>.</p>
+<a href="https://github.com/a-b-street/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs">OSM tags translate into individual lanes</a>.</p>
 <h2><a class="header" href="#screenshot-diffs" id="screenshot-diffs">Screenshot diffs</a></h2>
 <p>Downloading fresh OSM data or modifying any part of the map importing pipeline
 could easily break things. Expressing invariants about the map output is hard,
@@ -1220,7 +1220,7 @@ the synthetic maps, so the test code could assert person 2 made it to the
 &quot;house&quot; building, but even with all of this, it was pretty hard.</p>
 <p>This approach is maybe worth reviving, though.</p>
 <h1><a class="header" href="#mass-importing-many-maps" id="mass-importing-many-maps">Mass importing many maps</a></h1>
-<p>For <a href="https://github.com/dabreegster/abstreet/issues/326">https://github.com/dabreegster/abstreet/issues/326</a>, I'm starting to figure
+<p>For <a href="https://github.com/a-b-street/abstreet/issues/326">https://github.com/a-b-street/abstreet/issues/326</a>, I'm starting to figure
 out how to import hundreds of maps into A/B Street. There are many issues with
 scaling up the number of supported maps. This document just focuses on
 importing.</p>
@@ -1232,7 +1232,7 @@ cities world-wide. The <code>data/bbike.sh</code> script downloads these. Then
 Importing such large areas is slow, and the result is too large to work well in
 A/B Street or the OSM viewer. Ideally, we want just the area concentrated around
 the &quot;core&quot; of each city.</p>
-<p><a href="https://github.com/dabreegster/abstreet/blob/master/convert_osm/src/bin/extract_cities.rs">https://github.com/dabreegster/abstreet/blob/master/convert_osm/src/bin/extract_cities.rs</a>
+<p><a href="https://github.com/a-b-street/abstreet/blob/master/convert_osm/src/bin/extract_cities.rs">https://github.com/a-b-street/abstreet/blob/master/convert_osm/src/bin/extract_cities.rs</a>
 transforms a huge .osm file into smaller pieces, each focusing on one city core.
 This tool looks for administrative boundary relations tagged as cities, produces
 a clipping polygon covering the city, and uses <code>osmconvert</code> to produce a smaller
@@ -1282,7 +1282,7 @@ be moved.</p>
 http://abstreet.s3-website.us-east-2.amazonaws.com. This S3 bucket is organized
 into versions: <code>dev</code>, <code>0.2.17</code>, <code>0.2.18</code>, etc. <code>dev</code> represents the latest
 version of all data files. The numbered versions correspond to
-<a href="https://github.com/dabreegster/abstreet/releases">releases</a> and only contain
+<a href="https://github.com/a-b-street/abstreet/releases">releases</a> and only contain
 <code>data/system/</code>, not <code>data/input/</code>. Depending how large these directories grow
 over time, I'll commit to keeping around at least 3 of the previous numbered
 versions, but I might delete older ones after that.</p>
@@ -1912,7 +1912,7 @@ already exists -- so why not expose it to users as well?</p>
 <p>Examples in OSM where I wish &quot;standard libraries&quot; existed to interpret the data:</p>
 <ul>
 <li>The simple task of detecting intersections between ways</li>
-<li><a href="https://github.com/dabreegster/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs">Figuring out what lanes a road has from tags</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs">Figuring out what lanes a road has from tags</a></li>
 <li>Gluing multipolygons together</li>
 <li>Inferring turns at an intersection, subject to the several types of turn
 restrictions</li>
@@ -1941,7 +1941,7 @@ horizon:</p>
 <ul>
 <li>Additive: separate cycleways and tramways. Likely no schema change.</li>
 <li>Modify: traffic signals will get
-<a href="https://github.com/dabreegster/abstreet/issues/295">more complex</a></li>
+<a href="https://github.com/a-b-street/abstreet/issues/295">more complex</a></li>
 <li>Modify: we'll likely try again to merge tiny intersections together, which
 would get rid of the current guarantees that a road/intersection is associated
 to one particular OSM object</li>
@@ -2164,7 +2164,7 @@ patterns near the change aren't realistic to begin with? This chapter describes
 where the travel demand data comes from.</p>
 <h2><a class="header" href="#scenarios" id="scenarios">Scenarios</a></h2>
 <p>A <em>scenario</em> encodes the people and trips taken over a day. See the
-<a href="https://github.com/dabreegster/abstreet/blob/master/sim/src/make/scenario.rs">code</a>.</p>
+<a href="https://github.com/a-b-street/abstreet/blob/master/sim/src/make/scenario.rs">code</a>.</p>
 <p>TODO:</p>
 <ul>
 <li>talk about vehicle assignment / parked car seeding</li>
@@ -2177,16 +2177,16 @@ They use census stats, land parcel records, observed vehicle counts, travel
 diaries, and lots of other things I don't understand to produce a detailed model
 of the region. We're currently using their 2014 model; the 2018 one should be
 available sometime in 2020. See the
-<a href="https://github.com/dabreegster/abstreet/tree/master/importer/src/soundcast">code</a>
+<a href="https://github.com/a-b-street/abstreet/tree/master/importer/src/soundcast">code</a>
 for importing their data.</p>
 <p>TODO:</p>
 <ul>
 <li>talk about how trips beginning/ending off-map are handled</li>
 </ul>
 <h3><a class="header" href="#berlin" id="berlin">Berlin</a></h3>
-<p>This work is <a href="https://github.com/dabreegster/abstreet/issues/119">ongoing</a>. See
+<p>This work is <a href="https://github.com/a-b-street/abstreet/issues/119">ongoing</a>. See
 the
-<a href="https://github.com/dabreegster/abstreet/blob/master/importer/src/berlin.rs">code</a>.
+<a href="https://github.com/a-b-street/abstreet/blob/master/importer/src/berlin.rs">code</a>.
 So far, we've found a population count per planning area and are randomly
 distributing the number of residents to all residential buildings in each area.</p>
 <h3><a class="header" href="#proletariat-robot" id="proletariat-robot">Proletariat robot</a></h3>
@@ -2196,9 +2196,9 @@ residential buildings, make them go to some workplace in the morning, then
 return in the evening. OpenStreetMap building tags can be used to roughly
 classify building types and distinguish small houses from large apartments. See
 the <code>proletariat_robot</code>
-<a href="https://github.com/dabreegster/abstreet/blob/master/sim/src/make/activity_model.rs">code</a>
+<a href="https://github.com/a-b-street/abstreet/blob/master/sim/src/make/activity_model.rs">code</a>
 for an implementation of this.</p>
-<p>This is <a href="https://github.com/dabreegster/abstreet/issues/154">ongoing</a> work
+<p>This is <a href="https://github.com/a-b-street/abstreet/issues/154">ongoing</a> work
 spearheaded by Mateusz. Some of the ideas for next steps are to generate
 different types of people (students, workers), give them a set of activities
 with durations (go to school for 7 hours, 1 hour lunch break), and then further
@@ -2724,7 +2724,7 @@ precision.</li>
 <ul>
 <li>The name was almost &quot;Unstreet&quot; or &quot;Superban&quot; (superb urban)</li>
 <li>I hope you enjoy and/or are baffled by the
-<a href="https://github.com/dabreegster/abstreet/releases">release names</a></li>
+<a href="https://github.com/a-b-street/abstreet/releases">release names</a></li>
 </ul>
 <h1><a class="header" href="#backstory" id="backstory">Backstory</a></h1>
 <p>I originally wanted to tell a much longer story here of how I came to work on
@@ -3883,7 +3883,7 @@ blocked on us.</p>
 <h2><a class="header" href="#berlin-1" id="berlin-1">Berlin</a></h2>
 <p>Stalled as of Sept 2020</p>
 <p>A group wants to use A/B Street for various public engagement projects in
-<a href="https://github.com/dabreegster/abstreet/issues/119">Berlin</a>. Mostly blocked on
+<a href="https://github.com/a-b-street/abstreet/issues/119">Berlin</a>. Mostly blocked on
 getting a reasonable travel demand model.</p>
 <h2><a class="header" href="#manchester" id="manchester">Manchester</a></h2>
 <p>Stalled as of Sept 2020</p>
@@ -3893,7 +3893,7 @@ yet.</p>
 <h2><a class="header" href="#pandemic-model" id="pandemic-model">Pandemic model</a></h2>
 <p>Stalled as of Sept 2020</p>
 <p>A group from the Uni of Geneva started a
-<a href="https://github.com/dabreegster/abstreet/tree/master/sim/src/pandemic">COVID-19 model</a>
+<a href="https://github.com/a-b-street/abstreet/tree/master/sim/src/pandemic">COVID-19 model</a>
 that figures out how long people spend in shared indoor spaces.</p>
 <h1><a class="header" href="#side-projects" id="side-projects">Side projects</a></h1>
 <p>The scope of A/B Street has gradually expanded, resulting in related tools and
@@ -3910,14 +3910,14 @@ more points delivering to high-density housing, and you need to refuel from
 shops, so you'll have to understand where people live in relation to where they
 work and shop.</p>
 <p>Contact <a href="mailto:side_projects/dabreegster@gmail.com">dabreegster@gmail.com</a> with any feedback or
-<a href="https://github.com/dabreegster/abstreet/issues/new">file an issue on Github</a>.</p>
+<a href="https://github.com/a-b-street/abstreet/issues/new">file an issue on Github</a>.</p>
 <h2><a class="header" href="#play-it" id="play-it">Play it</a></h2>
 <ul>
 <li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/dev/santa">Play online</a>
 (slower and no music -- download below if possible)</li>
-<li><a href="https://github.com/dabreegster/abstreet/releases/download/v0.2.29/abstreet_windows_v0_2_29.zip">Windows</a></li>
-<li><a href="https://github.com/dabreegster/abstreet/releases/download/v0.2.29/abstreet_mac_v0_2_29.zip">Mac</a></li>
-<li><a href="https://github.com/dabreegster/abstreet/releases/download/v0.2.29/abstreet_linux_v0_2_29.zip">Linux</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.29/abstreet_windows_v0_2_29.zip">Windows</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.29/abstreet_mac_v0_2_29.zip">Mac</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.29/abstreet_linux_v0_2_29.zip">Linux</a></li>
 </ul>
 <p>Unzip, then run <code>santa.exe</code> or <code>santa</code>. No mobile/tablet support, sorry -- you need a keyboard.</p>
 <h2><a class="header" href="#faq" id="faq">FAQ</a></h2>
@@ -3947,7 +3947,7 @@ and sleighs on the market to tune the vehicles in the game.</p>
 <p>You can adjust the difficulty of the levels or give yourself all the upzoning
 power you want by editing <code>data/player/santa.json</code>. You first have to set
 <code>&quot;enable_modding&quot;: true</code>. The format should mostly be self-explanatory; also see
-<a href="https://github.com/dabreegster/abstreet/blob/be589f7ef4f649bb5a35bfe8de0bc81a9deeb029/santa/src/session.rs#L13">here</a>
+<a href="https://github.com/a-b-street/abstreet/blob/be589f7ef4f649bb5a35bfe8de0bc81a9deeb029/santa/src/session.rs#L13">here</a>
 as a reference. If you break something, just delete the file to start over. If
 you come up with a better gameplay progression, please share -- tuning a game is
 hard!</p>
@@ -3957,7 +3957,7 @@ of technical experience,
 <a href="https://dabreegster.github.io/abstreet/howto/new_city.html">follow this guide</a>
 and then the above instructions for modding the game. Otherwise, draw the map
 boundaries in <a href="http://geojson.io">http://geojson.io</a> and
-<a href="https://github.com/dabreegster/abstreet/issues/new">send it to us</a> along with a
+<a href="https://github.com/a-b-street/abstreet/issues/new">send it to us</a> along with a
 time limit, goal, and starting point on the map. If you have a public data
 source for the number of housing units per building, please include it!</p>
 <h1><a class="header" href="#mapping-on-street-parking-in-openstreetmap" id="mapping-on-street-parking-in-openstreetmap">Mapping on-street parking in OpenStreetMap</a></h1>
@@ -4044,7 +4044,7 @@ you'd like to see included.</p>
 <ul>
 <li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/dev/osm_viewer">Web version</a></li>
 <li>To run locally, get the
-<a href="https://github.com/dabreegster/abstreet/releases">latest release</a> for
+<a href="https://github.com/a-b-street/abstreet/releases">latest release</a> for
 Windows, Mac, or Linux. After unzipping, run <code>osm_viewer.exe</code> or <code>osm_viewer</code>.</li>
 </ul>
 <p>A separate tool that visualizes OpenStreetMap data, with details on lanes, turn
@@ -4057,7 +4057,7 @@ possible directions for this viewer.</p>
 <ul>
 <li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/dev/fifteen_min">Web version</a></li>
 <li>To run locally, get the
-<a href="https://github.com/dabreegster/abstreet/releases">latest release</a> for
+<a href="https://github.com/a-b-street/abstreet/releases">latest release</a> for
 Windows, Mac, or Linux. After unzipping, run <code>fifteen_min.exe</code> or
 <code>fifteen_min</code>.</li>
 </ul>
@@ -4073,7 +4073,7 @@ within a walkshed.</p>
 <h2><a class="header" href="#feedback" id="feedback">Feedback</a></h2>
 <p>The tool is quite simple right now. If you have an idea how this could be used
 for advocacy, please
-<a href="https://github.com/dabreegster/abstreet/issues/393">get in touch</a>.</p>
+<a href="https://github.com/a-b-street/abstreet/issues/393">get in touch</a>.</p>
 
                     </main>
 
