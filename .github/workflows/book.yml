@@ -25,6 +25,12 @@ jobs:
       - name: Install plantuml
         run: sudo apt-get install plantuml
 
+      - name: Cache build
+        uses: actions/cache@v2
+        with:
+                path: .cargo
+                key: cargo-build
+
       - name: Install mdbook-plantuml
         run: cargo install mdbook-plantuml
 
