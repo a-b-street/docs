@@ -3,7 +3,7 @@ name: Book
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   book:
     name: Build and Deploy
