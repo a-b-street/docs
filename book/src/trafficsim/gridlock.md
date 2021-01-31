@@ -2,7 +2,7 @@
 
 Here "gridlock" refers to the general problem of trips getting permanently
 stuck, preventing the full simulation from completing. Most of the work is
-tracked [here](https://github.com/dabreegster/abstreet/issues/114).
+tracked [here](https://github.com/a-b-street/abstreet/issues/114).
 
 The general lesson is: you can't code your way around all edge cases. The data
 in OSM often needs manual fixes. It's often useful to spend coding effort on

@@ -1,7 +1,7 @@
 # CHANGELOG
 
 Every time I upload a new [binary
-release](https://github.com/dabreegster/abstreet/releases), I'll list major
+release](https://github.com/a-b-street/abstreet/releases), I'll list major
 changes here.
 
 0.1.0

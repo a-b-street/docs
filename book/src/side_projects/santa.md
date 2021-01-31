@@ -68,7 +68,7 @@ hard!
 
 Missing your slice of Seattle, or want to run somewhere else? If you have a bit
 of technical experience,
-[follow this guide](https://dabreegster.github.io/abstreet/howto/new_city.html)
+[follow this guide](https://a-b-street.github.io/docs/howto/new_city.html)
 and then the above instructions for modding the game. Otherwise, draw the map
 boundaries in <http://geojson.io> and
 [send it to us](https://github.com/a-b-street/abstreet/issues/new) along with a

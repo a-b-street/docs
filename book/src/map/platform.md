@@ -108,7 +108,7 @@ out cleanly from A/B Street today:
 - a tool to generate a traffic demand model from OSM data, optional census data,
   etc
   - This has been initially
-    [prototyped](https://dabreegster.github.io/abstreet/trafficsim/travel_demand.html#proletariat-robot)
+    [prototyped](https://a-b-street.github.io/docs/trafficsim/travel_demand.html#proletariat-robot)
 - the discrete-event traffic simulation that A/B Street uses today
 - core geometry/utility libraries
 

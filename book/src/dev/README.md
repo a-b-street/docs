@@ -23,7 +23,7 @@ One-time setup:
 
 ## Development tips
 
-- [Generated API documentation](https://dabreegster.github.io/abstreet/rustdoc/map_model/index.html)
+- [Generated API documentation](https://a-b-street.github.io/abstreet/rustdoc/map_model/index.html)
 - Compile faster by just doing `cargo run`. The executable will have debug stack
   traces and run more slowly. You can do `cargo run --release` to build in
   optimized release mode; compilation will be slower, but the executable much

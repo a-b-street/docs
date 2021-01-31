@@ -32,7 +32,7 @@ curl http://localhost:1234/sim/load -d '{ "scenario": "data/system/seattle/scena
 ```
 
 You can also pass flags like `--infinite_parking` to the server to control
-[SimOptions](https://dabreegster.github.io/abstreet/rustdoc/sim/struct.SimOptions.html).
+[SimOptions](https://a-b-street.github.io/abstreet/rustdoc/sim/struct.SimOptions.html).
 These settings will apply for the entire lifetime of the server; you can't
 change them later.
 
@@ -57,13 +57,13 @@ are missing, etc. A summary of the commands available so far:
   - **GET /sim/goto-time?t=06:30:00**: Simulate until 6:30 AM. If the time you
     specify is before the current time, you have to call **/sim/reset** first.
   - **POST /sim/new-person**: The POST body must be an
-    [ExternalPerson](https://dabreegster.github.io/abstreet/rustdoc/sim/struct.ExternalPerson.html)
+    [ExternalPerson](https://a-b-street.github.io/abstreet/rustdoc/sim/struct.ExternalPerson.html)
     in JSON format.
 - **/traffic-signals**
   - **GET /traffic-signals/get?id=42**: Returns the traffic signal of
     intersection #42 in JSON.
   - **POST /traffic-signals/set**: The POST body must be a
-    [ControlTrafficSignal](https://dabreegster.github.io/abstreet/rustdoc/map_model/struct.ControlTrafficSignal.html)
+    [ControlTrafficSignal](https://a-b-street.github.io/abstreet/rustdoc/map_model/struct.ControlTrafficSignal.html)
     in JSON format.
   - **GET /traffic-signals/get-delays?id=42&t1=03:00:00&t2=03:30:00**: Returns
     the delay experienced by every agent passing through intersection #42 from
@@ -129,7 +129,7 @@ cargo run --bin json_to_binary_map -- --input=montlake.json out=data/system/seat
 ```
 
 The format of the map isn't well-documented yet. See the
-[generated API docs](https://dabreegster.github.io/abstreet/rustdoc/map_model/index.html)
+[generated API docs](https://a-b-street.github.io/abstreet/rustdoc/map_model/index.html)
 and [the map model docs](../map/index.md) in the meantime.
 
 ## Working with individual trips
@@ -165,5 +165,5 @@ cargo run --bin game data/system/seattle/scenarios/montlake/modified_scenario.js
 ```
 
 The Scenario format is also undocumented, but see the
-[generated API docs](https://dabreegster.github.io/abstreet/rustdoc/sim/struct.Scenario.html)
+[generated API docs](https://a-b-street.github.io/abstreet/rustdoc/sim/struct.Scenario.html)
 anyway.
