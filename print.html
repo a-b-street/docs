@@ -757,7 +757,7 @@ set environment variables like this:
 </ol>
 <h2><a class="header" href="#development-tips" id="development-tips">Development tips</a></h2>
 <ul>
-<li><a href="https://dabreegster.github.io/abstreet/rustdoc/map_model/index.html">Generated API documentation</a></li>
+<li><a href="https://a-b-street.github.io/abstreet/rustdoc/map_model/index.html">Generated API documentation</a></li>
 <li>Compile faster by just doing <code>cargo run</code>. The executable will have debug stack
 traces and run more slowly. You can do <code>cargo run --release</code> to build in
 optimized release mode; compilation will be slower, but the executable much
@@ -1041,7 +1041,7 @@ the <code>weekday</code> scenario. The only way you can change this is by callin
 <pre><code>curl http://localhost:1234/sim/load -d '{ &quot;scenario&quot;: &quot;data/system/seattle/scenarios/downtown/monday.bin&quot;, &quot;modifiers&quot;: [], &quot;edits&quot;: null }' -X POST`
 </code></pre>
 <p>You can also pass flags like <code>--infinite_parking</code> to the server to control
-<a href="https://dabreegster.github.io/abstreet/rustdoc/sim/struct.SimOptions.html">SimOptions</a>.
+<a href="https://a-b-street.github.io/abstreet/rustdoc/sim/struct.SimOptions.html">SimOptions</a>.
 These settings will apply for the entire lifetime of the server; you can't
 change them later.</p>
 <h2><a class="header" href="#api-details" id="api-details">API details</a></h2>
@@ -1066,7 +1066,7 @@ sets the map edits.</li>
 <li><strong>GET /sim/goto-time?t=06:30:00</strong>: Simulate until 6:30 AM. If the time you
 specify is before the current time, you have to call <strong>/sim/reset</strong> first.</li>
 <li><strong>POST /sim/new-person</strong>: The POST body must be an
-<a href="https://dabreegster.github.io/abstreet/rustdoc/sim/struct.ExternalPerson.html">ExternalPerson</a>
+<a href="https://a-b-street.github.io/abstreet/rustdoc/sim/struct.ExternalPerson.html">ExternalPerson</a>
 in JSON format.</li>
 </ul>
 </li>
@@ -1075,7 +1075,7 @@ in JSON format.</li>
 <li><strong>GET /traffic-signals/get?id=42</strong>: Returns the traffic signal of
 intersection #42 in JSON.</li>
 <li><strong>POST /traffic-signals/set</strong>: The POST body must be a
-<a href="https://dabreegster.github.io/abstreet/rustdoc/map_model/struct.ControlTrafficSignal.html">ControlTrafficSignal</a>
+<a href="https://a-b-street.github.io/abstreet/rustdoc/map_model/struct.ControlTrafficSignal.html">ControlTrafficSignal</a>
 in JSON format.</li>
 <li><strong>GET /traffic-signals/get-delays?id=42&amp;t1=03:00:00&amp;t2=03:30:00</strong>: Returns
 the delay experienced by every agent passing through intersection #42 from
@@ -1141,7 +1141,7 @@ the JSON, you have to convert it back to the binary format:</p>
 <pre><code>cargo run --bin json_to_binary_map -- --input=montlake.json out=data/system/seattle/maps/montlake_modified.bin`
 </code></pre>
 <p>The format of the map isn't well-documented yet. See the
-<a href="https://dabreegster.github.io/abstreet/rustdoc/map_model/index.html">generated API docs</a>
+<a href="https://a-b-street.github.io/abstreet/rustdoc/map_model/index.html">generated API docs</a>
 and <a href="dev/../map/index.html">the map model docs</a> in the meantime.</p>
 <h2><a class="header" href="#working-with-individual-trips" id="working-with-individual-trips">Working with individual trips</a></h2>
 <p>You can use the <strong>/sim/new-person</strong> API in the middle of a simulation, if
@@ -1163,7 +1163,7 @@ use it in-game:</p>
 <pre><code>cargo run --bin game data/system/seattle/scenarios/montlake/modified_scenario.json
 </code></pre>
 <p>The Scenario format is also undocumented, but see the
-<a href="https://dabreegster.github.io/abstreet/rustdoc/sim/struct.Scenario.html">generated API docs</a>
+<a href="https://a-b-street.github.io/abstreet/rustdoc/sim/struct.Scenario.html">generated API docs</a>
 anyway.</p>
 <h1><a class="header" href="#testing-strategy" id="testing-strategy">Testing strategy</a></h1>
 <h2><a class="header" href="#unit-tests" id="unit-tests">Unit tests</a></h2>
@@ -1986,7 +1986,7 @@ out cleanly from A/B Street today:</p>
 etc
 <ul>
 <li>This has been initially
-<a href="https://dabreegster.github.io/abstreet/trafficsim/travel_demand.html#proletariat-robot">prototyped</a></li>
+<a href="https://a-b-street.github.io/docs/trafficsim/travel_demand.html#proletariat-robot">prototyped</a></li>
 </ul>
 </li>
 <li>the discrete-event traffic simulation that A/B Street uses today</li>
@@ -2280,7 +2280,7 @@ modify the mode for some people (change 50% of all driving trips between 7 and
 <h1><a class="header" href="#gridlock" id="gridlock">Gridlock</a></h1>
 <p>Here &quot;gridlock&quot; refers to the general problem of trips getting permanently
 stuck, preventing the full simulation from completing. Most of the work is
-tracked <a href="https://github.com/dabreegster/abstreet/issues/114">here</a>.</p>
+tracked <a href="https://github.com/a-b-street/abstreet/issues/114">here</a>.</p>
 <p>The general lesson is: you can't code your way around all edge cases. The data
 in OSM often needs manual fixes. It's often useful to spend coding effort on
 tools to detect and fix OSM problems.</p>
@@ -2975,7 +2975,7 @@ font support on web, saving player state on web, census-based scenario
 generation started, 15 minute Santa</li>
 </ul>
 <h1><a class="header" href="#changelog" id="changelog">CHANGELOG</a></h1>
-<p>Every time I upload a new <a href="https://github.com/dabreegster/abstreet/releases">binary
+<p>Every time I upload a new <a href="https://github.com/a-b-street/abstreet/releases">binary
 release</a>, I'll list major
 changes here.</p>
 <p>0.1.0</p>
@@ -3954,7 +3954,7 @@ hard!</p>
 <h3><a class="header" href="#adding-new-maps" id="adding-new-maps">Adding new maps</a></h3>
 <p>Missing your slice of Seattle, or want to run somewhere else? If you have a bit
 of technical experience,
-<a href="https://dabreegster.github.io/abstreet/howto/new_city.html">follow this guide</a>
+<a href="https://a-b-street.github.io/docs/howto/new_city.html">follow this guide</a>
 and then the above instructions for modding the game. Otherwise, draw the map
 boundaries in <a href="http://geojson.io">http://geojson.io</a> and
 <a href="https://github.com/a-b-street/abstreet/issues/new">send it to us</a> along with a

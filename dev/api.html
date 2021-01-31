@@ -171,7 +171,7 @@ the <code>weekday</code> scenario. The only way you can change this is by callin
 <pre><code>curl http://localhost:1234/sim/load -d '{ &quot;scenario&quot;: &quot;data/system/seattle/scenarios/downtown/monday.bin&quot;, &quot;modifiers&quot;: [], &quot;edits&quot;: null }' -X POST`
 </code></pre>
 <p>You can also pass flags like <code>--infinite_parking</code> to the server to control
-<a href="https://dabreegster.github.io/abstreet/rustdoc/sim/struct.SimOptions.html">SimOptions</a>.
+<a href="https://a-b-street.github.io/abstreet/rustdoc/sim/struct.SimOptions.html">SimOptions</a>.
 These settings will apply for the entire lifetime of the server; you can't
 change them later.</p>
 <h2><a class="header" href="#api-details" id="api-details">API details</a></h2>
@@ -196,7 +196,7 @@ sets the map edits.</li>
 <li><strong>GET /sim/goto-time?t=06:30:00</strong>: Simulate until 6:30 AM. If the time you
 specify is before the current time, you have to call <strong>/sim/reset</strong> first.</li>
 <li><strong>POST /sim/new-person</strong>: The POST body must be an
-<a href="https://dabreegster.github.io/abstreet/rustdoc/sim/struct.ExternalPerson.html">ExternalPerson</a>
+<a href="https://a-b-street.github.io/abstreet/rustdoc/sim/struct.ExternalPerson.html">ExternalPerson</a>
 in JSON format.</li>
 </ul>
 </li>
@@ -205,7 +205,7 @@ in JSON format.</li>
 <li><strong>GET /traffic-signals/get?id=42</strong>: Returns the traffic signal of
 intersection #42 in JSON.</li>
 <li><strong>POST /traffic-signals/set</strong>: The POST body must be a
-<a href="https://dabreegster.github.io/abstreet/rustdoc/map_model/struct.ControlTrafficSignal.html">ControlTrafficSignal</a>
+<a href="https://a-b-street.github.io/abstreet/rustdoc/map_model/struct.ControlTrafficSignal.html">ControlTrafficSignal</a>
 in JSON format.</li>
 <li><strong>GET /traffic-signals/get-delays?id=42&amp;t1=03:00:00&amp;t2=03:30:00</strong>: Returns
 the delay experienced by every agent passing through intersection #42 from
@@ -271,7 +271,7 @@ the JSON, you have to convert it back to the binary format:</p>
 <pre><code>cargo run --bin json_to_binary_map -- --input=montlake.json out=data/system/seattle/maps/montlake_modified.bin`
 </code></pre>
 <p>The format of the map isn't well-documented yet. See the
-<a href="https://dabreegster.github.io/abstreet/rustdoc/map_model/index.html">generated API docs</a>
+<a href="https://a-b-street.github.io/abstreet/rustdoc/map_model/index.html">generated API docs</a>
 and <a href="../map/index.html">the map model docs</a> in the meantime.</p>
 <h2><a class="header" href="#working-with-individual-trips" id="working-with-individual-trips">Working with individual trips</a></h2>
 <p>You can use the <strong>/sim/new-person</strong> API in the middle of a simulation, if
@@ -293,7 +293,7 @@ use it in-game:</p>
 <pre><code>cargo run --bin game data/system/seattle/scenarios/montlake/modified_scenario.json
 </code></pre>
 <p>The Scenario format is also undocumented, but see the
-<a href="https://dabreegster.github.io/abstreet/rustdoc/sim/struct.Scenario.html">generated API docs</a>
+<a href="https://a-b-street.github.io/abstreet/rustdoc/sim/struct.Scenario.html">generated API docs</a>
 anyway.</p>
 
                     </main>
