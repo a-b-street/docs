@@ -33,7 +33,7 @@ jobs:
 
       - name: Install mdbook-plantuml
         run: |
-            mkdir tmp_cargo
+            mkdir -p tmp_cargo
             CARGO_TARGET_DIR=tmp_cargo cargo install mdbook-plantuml
 
       - name: Generate book from markdown
