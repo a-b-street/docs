@@ -7,11 +7,11 @@ automatically control it through an API.
 ## Examples
 
 This
-[Python example](https://github.com/dabreegster/abstreet/blob/master/headless/examples/python_client.py)
+[Python example](https://github.com/a-b-street/abstreet/blob/master/headless/examples/python_client.py)
 has everything you need to get started.
 
 See
-[all example code](https://github.com/dabreegster/abstreet/tree/master/headless/examples)
+[all example code](https://github.com/a-b-street/abstreet/tree/master/headless/examples)
 -- there are different experiments in Go and Python that automate running a
 simulation, measuring some metric, and making a change to improve the metric.
 
@@ -114,7 +114,7 @@ cargo run --bin dump_map data/system/seattle/maps/montlake.bin > montlake.json
 ```
 
 See some example code that
-[reads this JSON and finds buildings](https://github.com/dabreegster/abstreet/blob/master/headless/examples/generate_traffic.py).
+[reads this JSON and finds buildings](https://github.com/a-b-street/abstreet/blob/master/headless/examples/generate_traffic.py).
 
 You could also edit the map JSON, convert it back to binary, and use it in the
 simulation. This isn't recommended generally, but one possible use case could be

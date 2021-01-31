@@ -1,7 +1,7 @@
 # Importing a new city into A/B Street
 
 This process isn't easy yet. Please email <dabreegster@gmail.com> or
-[file a Github issue](https://github.com/dabreegster/abstreet/issues/) if you
+[file a Github issue](https://github.com/a-b-street/abstreet/issues/) if you
 hit problems. I'd really appreciate help and PRs to improve this.
 
 ## Quick start
@@ -71,7 +71,7 @@ use it as well.
 
 5.  Copy `importer/config/tel_aviv/cfg.json` to
     `importer/config/your_city/cfg.json` and edit this file. See
-    [here](https://github.com/dabreegster/abstreet/blob/master/importer/src/generic.rs)
+    [here](https://github.com/a-b-street/abstreet/blob/master/importer/src/generic.rs)
     for details on the different fields. The defaults are a reasonable start;
     the only thing you need to change is `osm_url`.
 

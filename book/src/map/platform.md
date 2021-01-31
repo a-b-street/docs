@@ -31,7 +31,7 @@ already exists -- so why not expose it to users as well?
 Examples in OSM where I wish "standard libraries" existed to interpret the data:
 
 - The simple task of detecting intersections between ways
-- [Figuring out what lanes a road has from tags](https://github.com/dabreegster/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs)
+- [Figuring out what lanes a road has from tags](https://github.com/a-b-street/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs)
 - Gluing multipolygons together
 - Inferring turns at an intersection, subject to the several types of turn
   restrictions
@@ -63,7 +63,7 @@ horizon:
 
 - Additive: separate cycleways and tramways. Likely no schema change.
 - Modify: traffic signals will get
-  [more complex](https://github.com/dabreegster/abstreet/issues/295)
+  [more complex](https://github.com/a-b-street/abstreet/issues/295)
 - Modify: we'll likely try again to merge tiny intersections together, which
   would get rid of the current guarantees that a road/intersection is associated
   to one particular OSM object

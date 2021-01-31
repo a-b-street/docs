@@ -42,7 +42,7 @@ blocked on us.
 Stalled as of Sept 2020
 
 A group wants to use A/B Street for various public engagement projects in
-[Berlin](https://github.com/dabreegster/abstreet/issues/119). Mostly blocked on
+[Berlin](https://github.com/a-b-street/abstreet/issues/119). Mostly blocked on
 getting a reasonable travel demand model.
 
 ## Manchester
@@ -58,5 +58,5 @@ yet.
 Stalled as of Sept 2020
 
 A group from the Uni of Geneva started a
-[COVID-19 model](https://github.com/dabreegster/abstreet/tree/master/sim/src/pandemic)
+[COVID-19 model](https://github.com/a-b-street/abstreet/tree/master/sim/src/pandemic)
 that figures out how long people spend in shared indoor spaces.

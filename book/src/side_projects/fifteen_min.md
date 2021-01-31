@@ -4,7 +4,7 @@
 
 - [Web version](http://abstreet.s3-website.us-east-2.amazonaws.com/dev/fifteen_min)
 - To run locally, get the
-  [latest release](https://github.com/dabreegster/abstreet/releases) for
+  [latest release](https://github.com/a-b-street/abstreet/releases) for
   Windows, Mac, or Linux. After unzipping, run `fifteen_min.exe` or
   `fifteen_min`.
 
@@ -22,4 +22,4 @@ within a walkshed.
 
 The tool is quite simple right now. If you have an idea how this could be used
 for advocacy, please
-[get in touch](https://github.com/dabreegster/abstreet/issues/393).
+[get in touch](https://github.com/a-b-street/abstreet/issues/393).

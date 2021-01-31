@@ -7,7 +7,7 @@ in A/B Street - UI interactions, details of the simulation, map importing --
 would take lots of infrastructure to specify a setup and expected outcomes. If
 you have ideas for new tests, contributions always welcome! In the meantime, one
 useful test covers how
-[OSM tags translate into individual lanes](https://github.com/dabreegster/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs).
+[OSM tags translate into individual lanes](https://github.com/a-b-street/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs).
 
 ## Screenshot diffs
 

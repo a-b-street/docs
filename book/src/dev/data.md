@@ -32,7 +32,7 @@ be moved.
 http://abstreet.s3-website.us-east-2.amazonaws.com. This S3 bucket is organized
 into versions: `dev`, `0.2.17`, `0.2.18`, etc. `dev` represents the latest
 version of all data files. The numbered versions correspond to
-[releases](https://github.com/dabreegster/abstreet/releases) and only contain
+[releases](https://github.com/a-b-street/abstreet/releases) and only contain
 `data/system/`, not `data/input/`. Depending how large these directories grow
 over time, I'll commit to keeping around at least 3 of the previous numbered
 versions, but I might delete older ones after that.

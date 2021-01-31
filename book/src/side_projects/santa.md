@@ -12,15 +12,15 @@ shops, so you'll have to understand where people live in relation to where they
 work and shop.
 
 Contact <dabreegster@gmail.com> with any feedback or
-[file an issue on Github](https://github.com/dabreegster/abstreet/issues/new).
+[file an issue on Github](https://github.com/a-b-street/abstreet/issues/new).
 
 ## Play it
 
 - [Play online](http://abstreet.s3-website.us-east-2.amazonaws.com/dev/santa)
   (slower and no music -- download below if possible)
-- [Windows](https://github.com/dabreegster/abstreet/releases/download/v0.2.29/abstreet_windows_v0_2_29.zip)
-- [Mac](https://github.com/dabreegster/abstreet/releases/download/v0.2.29/abstreet_mac_v0_2_29.zip)
-- [Linux](https://github.com/dabreegster/abstreet/releases/download/v0.2.29/abstreet_linux_v0_2_29.zip)
+- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.2.29/abstreet_windows_v0_2_29.zip)
+- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.2.29/abstreet_mac_v0_2_29.zip)
+- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.2.29/abstreet_linux_v0_2_29.zip)
 
 Unzip, then run `santa.exe` or `santa`. No mobile/tablet support, sorry -- you need a keyboard.
 
@@ -59,7 +59,7 @@ Native versions only -- sorry, not easy to do on the web.
 You can adjust the difficulty of the levels or give yourself all the upzoning
 power you want by editing `data/player/santa.json`. You first have to set
 `"enable_modding": true`. The format should mostly be self-explanatory; also see
-[here](https://github.com/dabreegster/abstreet/blob/be589f7ef4f649bb5a35bfe8de0bc81a9deeb029/santa/src/session.rs#L13)
+[here](https://github.com/a-b-street/abstreet/blob/be589f7ef4f649bb5a35bfe8de0bc81a9deeb029/santa/src/session.rs#L13)
 as a reference. If you break something, just delete the file to start over. If
 you come up with a better gameplay progression, please share -- tuning a game is
 hard!
@@ -71,6 +71,6 @@ of technical experience,
 [follow this guide](https://dabreegster.github.io/abstreet/howto/new_city.html)
 and then the above instructions for modding the game. Otherwise, draw the map
 boundaries in <http://geojson.io> and
-[send it to us](https://github.com/dabreegster/abstreet/issues/new) along with a
+[send it to us](https://github.com/a-b-street/abstreet/issues/new) along with a
 time limit, goal, and starting point on the map. If you have a public data
 source for the number of housing units per building, please include it!

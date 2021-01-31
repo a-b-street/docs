@@ -12,7 +12,7 @@ where the travel demand data comes from.
 ## Scenarios
 
 A _scenario_ encodes the people and trips taken over a day. See the
-[code](https://github.com/dabreegster/abstreet/blob/master/sim/src/make/scenario.rs).
+[code](https://github.com/a-b-street/abstreet/blob/master/sim/src/make/scenario.rs).
 
 TODO:
 
@@ -28,7 +28,7 @@ They use census stats, land parcel records, observed vehicle counts, travel
 diaries, and lots of other things I don't understand to produce a detailed model
 of the region. We're currently using their 2014 model; the 2018 one should be
 available sometime in 2020. See the
-[code](https://github.com/dabreegster/abstreet/tree/master/importer/src/soundcast)
+[code](https://github.com/a-b-street/abstreet/tree/master/importer/src/soundcast)
 for importing their data.
 
 TODO:
@@ -37,9 +37,9 @@ TODO:
 
 ### Berlin
 
-This work is [ongoing](https://github.com/dabreegster/abstreet/issues/119). See
+This work is [ongoing](https://github.com/a-b-street/abstreet/issues/119). See
 the
-[code](https://github.com/dabreegster/abstreet/blob/master/importer/src/berlin.rs).
+[code](https://github.com/a-b-street/abstreet/blob/master/importer/src/berlin.rs).
 So far, we've found a population count per planning area and are randomly
 distributing the number of residents to all residential buildings in each area.
 
@@ -51,10 +51,10 @@ residential buildings, make them go to some workplace in the morning, then
 return in the evening. OpenStreetMap building tags can be used to roughly
 classify building types and distinguish small houses from large apartments. See
 the `proletariat_robot`
-[code](https://github.com/dabreegster/abstreet/blob/master/sim/src/make/activity_model.rs)
+[code](https://github.com/a-b-street/abstreet/blob/master/sim/src/make/activity_model.rs)
 for an implementation of this.
 
-This is [ongoing](https://github.com/dabreegster/abstreet/issues/154) work
+This is [ongoing](https://github.com/a-b-street/abstreet/issues/154) work
 spearheaded by Mateusz. Some of the ideas for next steps are to generate
 different types of people (students, workers), give them a set of activities
 with durations (go to school for 7 hours, 1 hour lunch break), and then further

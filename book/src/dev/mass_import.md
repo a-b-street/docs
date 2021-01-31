@@ -1,6 +1,6 @@
 # Mass importing many maps
 
-For <https://github.com/dabreegster/abstreet/issues/326>, I'm starting to figure
+For <https://github.com/a-b-street/abstreet/issues/326>, I'm starting to figure
 out how to import hundreds of maps into A/B Street. There are many issues with
 scaling up the number of supported maps. This document just focuses on
 importing.
@@ -16,7 +16,7 @@ Importing such large areas is slow, and the result is too large to work well in
 A/B Street or the OSM viewer. Ideally, we want just the area concentrated around
 the "core" of each city.
 
-<https://github.com/dabreegster/abstreet/blob/master/convert_osm/src/bin/extract_cities.rs>
+<https://github.com/a-b-street/abstreet/blob/master/convert_osm/src/bin/extract_cities.rs>
 transforms a huge .osm file into smaller pieces, each focusing on one city core.
 This tool looks for administrative boundary relations tagged as cities, produces
 a clipping polygon covering the city, and uses `osmconvert` to produce a smaller

@@ -21,4 +21,4 @@ What poor judgments have cost me the most time?
 
 - The name was almost "Unstreet" or "Superban" (superb urban)
 - I hope you enjoy and/or are baffled by the
-  [release names](https://github.com/dabreegster/abstreet/releases)
+  [release names](https://github.com/a-b-street/abstreet/releases)

@@ -13,7 +13,7 @@ You will first need:
 One-time setup:
 
 1.  Download the repository:
-    `git clone https://github.com/dabreegster/abstreet.git`
+    `git clone https://github.com/a-b-street/abstreet.git`
 
 2.  Grab the minimal amount of data to get started: `cargo run --bin updater`
 
@@ -102,7 +102,7 @@ You can also make the importer [import a new city](../howto/new_city.md).
 
 ## Understanding stuff
 
-The docs listed at <https://github.com/dabreegster/abstreet#documentation>
+The docs listed at <https://github.com/a-b-street/abstreet#documentation>
 explain things like map importing and how the traffic simulation works.
 
 ### Code organization

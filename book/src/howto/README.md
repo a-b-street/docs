@@ -1,7 +1,7 @@
 # A/B Street Instructions
 
 This is an alpha-quality demo. Please email <dabreegster@gmail.com> or
-[file a Github issue](https://github.com/dabreegster/abstreet/issues/) if you
+[file a Github issue](https://github.com/a-b-street/abstreet/issues/) if you
 hit problems.
 
 ## Installing the game
@@ -9,21 +9,21 @@ hit problems.
 Grab a pre-built binary release -- updated every Sunday, announced at
 [r/abstreet](http://old.reddit.com/r/abstreet):
 
-- [Windows](https://github.com/dabreegster/abstreet/releases/download/v0.2.29/abstreet_windows_v0_2_29.zip)
+- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.2.29/abstreet_windows_v0_2_29.zip)
   - Unzip the folder, then run `play_abstreet.bat`. You'll probably getting a
     warning about running software from an unknown publisher.
-- [Mac](https://github.com/dabreegster/abstreet/releases/download/v0.2.29/abstreet_mac_v0_2_29.zip)
+- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.2.29/abstreet_mac_v0_2_29.zip)
   - Unzip the directory, then run `play_abstreet.sh`.
   - If you get an error about the developer unverified,
     [follow this](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac).
     Help needed to start
-    [signing the release](https://github.com/dabreegster/abstreet/issues/107)!
+    [signing the release](https://github.com/a-b-street/abstreet/issues/107)!
   - If that just opens a text file instead of running the game, then instead
     open terminal, `cd` to the directory you just unzipped. Then do:
     `cd game; RUST_BACKTRACE=1 ./game 1> ../output.txt 2>&1`
-  - [Help needed](https://github.com/dabreegster/abstreet/issues/77) to package
+  - [Help needed](https://github.com/a-b-street/abstreet/issues/77) to package
     this as a Mac .app, to make this process simpler
-- [Linux](https://github.com/dabreegster/abstreet/releases/download/v0.2.29/abstreet_linux_v0_2_29.zip)
+- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.2.29/abstreet_linux_v0_2_29.zip)
   - Unzip the directory, then run `play_abstreet.sh`.
 - [FreeBSD](https://www.freshports.org/games/abstreet/), thanks to
   [Yuri](https://github.com/yurivict)
@@ -43,7 +43,7 @@ Or you can [compile from source](../dev/index.md).
 ## Common issues
 
 If the size of text and panels
-[seems very strange](https://github.com/dabreegster/abstreet/issues/381), you
+[seems very strange](https://github.com/a-b-street/abstreet/issues/381), you
 can try editing `play_abstreet.sh` or `play_abstreet.bat` and passing
 `--scale_factor=1` on the command line. This value is detected from your monitor
 settings, so if you have a Retina or other HiDPI display, things may be too big
@@ -73,5 +73,5 @@ Other binary data bundled in:
 - Some Graphics textures (<https://www.kenney.nl/>, CC0 1.0 Universal)
 - Snowflake SVG (<https://www.svgrepo.com/page/licensing>, CC0)
 - Music from
-  [various sources](https://github.com/dabreegster/abstreet/tree/master/data/system/assets/music/sources.md)
+  [various sources](https://github.com/a-b-street/abstreet/tree/master/data/system/assets/music/sources.md)
   with Creative Commons licenses

@@ -2,7 +2,7 @@
 
 - [Web version](http://abstreet.s3-website.us-east-2.amazonaws.com/dev/osm_viewer)
 - To run locally, get the
-  [latest release](https://github.com/dabreegster/abstreet/releases) for
+  [latest release](https://github.com/a-b-street/abstreet/releases) for
   Windows, Mac, or Linux. After unzipping, run `osm_viewer.exe` or `osm_viewer`.
 
 A separate tool that visualizes OpenStreetMap data, with details on lanes, turn
