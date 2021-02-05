@@ -212,12 +212,14 @@ street parking in an area, the effects shouldn't percolate everywhere and change
 how cars are seeded far away -- unless the change adds/removes so much capacity
 that the effect really would spill out that far.</p>
 <h3><a class="header" href="#how-people-pick-a-spot" id="how-people-pick-a-spot">How people pick a spot</a></h3>
-<p>When a car gets to the last lane before its target building, it looks for the
-nearest free spot, with perfect omniscience and greediness. They route to that
-spot. When they get to the beginning of that lane, they check if the spot is
-still open. If not, they repeat the process.</p>
-<p>This is super unrealistic and produces &quot;parking snakes&quot;, where lots of cars all
-contend for the exact same spot and follow each other around.</p>
+<p>When a car gets to the last lane before its target building, it starts looks for
+a free spot. If there's one on the current lane, it goes for it. If not, it uses
+a breadth-first search, using distance, to explore from its current lane until
+it finds a free spot. To avoid many cars in one area all contending for the same
+spot, the distance used in the search has some randomized scaling applied.
+Omnisciently knowing where free spots are located far away isn't realistic, but
+attempting some kind of human-realistic random walk seems even harder to get
+right.</p>
 <h3><a class="header" href="#infinite-parking" id="infinite-parking">Infinite parking</a></h3>
 <p>If you pass <code>--infinite_parking</code> on the command line, every building gets
 unlimited public spots. This effectively removes the effects of parking from the
