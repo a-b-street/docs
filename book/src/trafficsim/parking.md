@@ -84,13 +84,14 @@ that the effect really would spill out that far.
 
 ### How people pick a spot
 
-When a car gets to the last lane before its target building, it looks for the
-nearest free spot, with perfect omniscience and greediness. They route to that
-spot. When they get to the beginning of that lane, they check if the spot is
-still open. If not, they repeat the process.
-
-This is super unrealistic and produces "parking snakes", where lots of cars all
-contend for the exact same spot and follow each other around.
+When a car gets to the last lane before its target building, it starts looks for
+a free spot. If there's one on the current lane, it goes for it. If not, it uses
+a breadth-first search, using distance, to explore from its current lane until
+it finds a free spot. To avoid many cars in one area all contending for the same
+spot, the distance used in the search has some randomized scaling applied.
+Omnisciently knowing where free spots are located far away isn't realistic, but
+attempting some kind of human-realistic random walk seems even harder to get
+right.
 
 ### Infinite parking
 
