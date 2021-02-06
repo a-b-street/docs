@@ -58,7 +58,8 @@ cargo run --bin import_traffic -- --map=data/system/seattle/maps/montlake.bin --
 
 This tool matches input positions to the nearest building, within 100 meters. If
 the point lies outside the map boundary, it's snapped to the nearest map border.
-The tool will fail if any point doesn't match to a building.
+The tool will fail if any point doesn't match to a building. If you pass
+`--skip_problems`, those people will be logged and skipped instead.
 
 There are also a few tools that produce this JSON file:
 
