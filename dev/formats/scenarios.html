@@ -195,7 +195,8 @@ course, you can add as many people as you like.</p>
 </code></pre>
 <p>This tool matches input positions to the nearest building, within 100 meters. If
 the point lies outside the map boundary, it's snapped to the nearest map border.
-The tool will fail if any point doesn't match to a building.</p>
+The tool will fail if any point doesn't match to a building. If you pass
+<code>--skip_problems</code>, those people will be logged and skipped instead.</p>
 <p>There are also a few tools that produce this JSON file:</p>
 <ul>
 <li><a href="https://github.com/a-b-street/abstreet/blob/master/headless/examples/generate_traffic.py">https://github.com/a-b-street/abstreet/blob/master/headless/examples/generate_traffic.py</a></li>
