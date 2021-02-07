@@ -733,3 +733,13 @@ changes here.
 - new map, Rainier Valley, is the 3rd ever to finish without gridlock! One of the fixes was collapsing traffic circles into a normal intersecton
 - bugfixes for map importing: cycleways with left-handed driving, matching traffic signals, odd number of lanes, u-turns
 - further fixes after the great button refactor
+
+0.2.30
+
+- split documentation into a separate git repo
+- UI: filter throughput layer by mode, render stop signs better
+- started a debug tool to live-tune routing parameters and see the effects on a single route or all trips
+- Michael improved the web loading screen and added webgl1 support for ios browsers
+- cars looking for parking now randomize a bit, eliminating the unrealistic "parking snakes/parades" effect
+- Bruce fixed a critical bug with uber-turns, helping ease gridlock in some maps
+- new tool to procedurally generate houses along empty residential roads, useful when OSM is missing most data
