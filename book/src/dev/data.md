@@ -81,7 +81,8 @@ in the bundled-in copy of `data/MANIFEST.json`.
 
 ## Web, from S3
 
-Everything's the same, except building with `--features wasm_s3` causes the game
-to make HTTP requests to the S3 bucket, instead of localhost. The web version
-always pins to `/dev`, never a release version of the data, since the web client
-is always updated along with the data, for now.
+Everything's the same, except that since the URL isn't localhost, the game makes
+HTTP requests to the S3 bucket (or wherever the game is hosted). Additionally,
+the files are expected to be gzipped. The web version always pins to `/dev`,
+never a release version of the data, since the web client is always updated
+along with the data, for now.
