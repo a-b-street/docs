@@ -210,10 +210,11 @@ included. There's an IO layer for listing and reading files that, on web, merges
 results from the bundled-in files and the remote files that're declared to exist
 in the bundled-in copy of <code>data/MANIFEST.json</code>.</p>
 <h2><a class="header" href="#web-from-s3" id="web-from-s3">Web, from S3</a></h2>
-<p>Everything's the same, except building with <code>--features wasm_s3</code> causes the game
-to make HTTP requests to the S3 bucket, instead of localhost. The web version
-always pins to <code>/dev</code>, never a release version of the data, since the web client
-is always updated along with the data, for now.</p>
+<p>Everything's the same, except that since the URL isn't localhost, the game makes
+HTTP requests to the S3 bucket (or wherever the game is hosted). Additionally,
+the files are expected to be gzipped. The web version always pins to <code>/dev</code>,
+never a release version of the data, since the web client is always updated
+along with the data, for now.</p>
 
                     </main>
 
