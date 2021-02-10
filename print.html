@@ -233,8 +233,8 @@ with Creative Commons licenses</li>
 </ul>
 <h1><a class="header" href="#importing-a-new-city-into-ab-street" id="importing-a-new-city-into-ab-street">Importing a new city into A/B Street</a></h1>
 <p>This process isn't easy yet. Please email <a href="mailto:howto/dabreegster@gmail.com">dabreegster@gmail.com</a> or
-<a href="https://github.com/a-b-street/abstreet/issues/">file a Github issue</a> if you
-hit problems. I'd really appreciate help and PRs to improve this.</p>
+<a href="https://github.com/a-b-street/abstreet/issues/">file a Github issue</a> if you hit
+problems. I'd really appreciate help and PRs to improve this.</p>
 <h2><a class="header" href="#quick-start" id="quick-start">Quick start</a></h2>
 <p>Use this if you want to import a city on your computer without making it
 available to other users yet.</p>
@@ -252,8 +252,8 @@ the console logs appear in a new window, try running the command from
 whatever arguments you're passing in.</p>
 </li>
 </ul>
-<p>The oneshot importer will generate a new file in <code>data/system/oneshot/maps</code>
-that you can then load in the game. If you have an Osmosis polygon filter (see
+<p>The oneshot importer will generate a new file in <code>data/system/oneshot/maps</code> that
+you can then load in the game. If you have an Osmosis polygon filter (see
 below), you can also pass <code>--oneshot_clip=clip.poly</code> to improve the result. You
 should first make sure your .osm has been clipped:
 <code>osmconvert large_map.osm -B=clipping.poly --complete-ways -o=smaller_map.osm</code>.</p>
@@ -274,6 +274,8 @@ required by osmconvert.</p>
 .osm file. Unless it updates the <code>&lt;bounds/&gt;</code> element, A/B Street will clip out
 anything extra. The best approach is to explicitly specify the boundary with
 <code>--oneshot_clip</code>.</p>
+<p>If you have an Osmosis boundary file, you can figure out the smallest Geofabrik
+region that contains it: <code>cargo run --bin pick_geofabrik your_boundary.poly</code></p>
 <h2><a class="header" href="#including-the-city-to-ab-street-more-permanently" id="including-the-city-to-ab-street-more-permanently">Including the city to A/B street more permanently</a></h2>
 <p>Follow this guide to add a new city to A/B street by default so other users can
 use it as well.</p>
@@ -311,7 +313,8 @@ the only thing you need to change is <code>osm_url</code>.</p>
 <p>Run it: <code>./import.sh --city=your_city --raw --map</code></p>
 </li>
 <li>
-<p>Update <code>.gitignore</code> and <code>importer/src/main.rs</code>, following <code>tel_aviv</code> as an example.</p>
+<p>Update <code>.gitignore</code> and <code>importer/src/main.rs</code>, following <code>tel_aviv</code> as an
+example.</p>
 </li>
 <li>
 <p>Fill out <code>nice_map_name</code> in <code>map_gui/src/tools/mod.rs</code>.</p>
@@ -2285,6 +2288,10 @@ popdat can find it.</p>
 <a href="https://github.com/asu-trans-ai-lab/grid2demand">https://github.com/asu-trans-ai-lab/grid2demand</a>, which does the traditional
 four-step trip generation just using OSM as input. The output of this tool can
 be imported into A/B Street.</p>
+<h3><a class="header" href="#abstr" id="abstr">abstr</a></h3>
+<p><a href="https://www.robinlovelace.net/">Robin Lovelace</a> is working on an
+<a href="ttps://a-b-street.github.io/abstr/">R package</a> to transform aggregate desire
+lines between different zones into A/B Street scenarios.</p>
 <h3><a class="header" href="#custom-import" id="custom-import">Custom import</a></h3>
 <p>See <a href="trafficsim/../dev/formats/scenarios.html">here</a>.</p>
 <h2><a class="header" href="#modifying-demand" id="modifying-demand">Modifying demand</a></h2>
