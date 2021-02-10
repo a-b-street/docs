@@ -75,6 +75,12 @@ Collaborators at ASU are creating
 four-step trip generation just using OSM as input. The output of this tool can
 be imported into A/B Street.
 
+### abstr
+
+[Robin Lovelace](https://www.robinlovelace.net/) is working on an
+[R package](ttps://a-b-street.github.io/abstr/) to transform aggregate desire
+lines between different zones into A/B Street scenarios.
+
 ### Custom import
 
 See [here](../dev/formats/scenarios.md).

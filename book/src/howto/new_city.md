@@ -1,8 +1,8 @@
 # Importing a new city into A/B Street
 
 This process isn't easy yet. Please email <dabreegster@gmail.com> or
-[file a Github issue](https://github.com/a-b-street/abstreet/issues/) if you
-hit problems. I'd really appreciate help and PRs to improve this.
+[file a Github issue](https://github.com/a-b-street/abstreet/issues/) if you hit
+problems. I'd really appreciate help and PRs to improve this.
 
 ## Quick start
 
@@ -19,8 +19,8 @@ available to other users yet.
   `import.sh` directly, changing the `$@` at the end to `--oneshot=map.osm` or
   whatever arguments you're passing in.
 
-The oneshot importer will generate a new file in `data/system/oneshot/maps`
-that you can then load in the game. If you have an Osmosis polygon filter (see
+The oneshot importer will generate a new file in `data/system/oneshot/maps` that
+you can then load in the game. If you have an Osmosis polygon filter (see
 below), you can also pass `--oneshot_clip=clip.poly` to improve the result. You
 should first make sure your .osm has been clipped:
 `osmconvert large_map.osm -B=clipping.poly --complete-ways -o=smaller_map.osm`.
@@ -45,6 +45,9 @@ Note that you may hit problems if you use JOSM to download additional data to a
 .osm file. Unless it updates the `<bounds/>` element, A/B Street will clip out
 anything extra. The best approach is to explicitly specify the boundary with
 `--oneshot_clip`.
+
+If you have an Osmosis boundary file, you can figure out the smallest Geofabrik
+region that contains it: `cargo run --bin pick_geofabrik your_boundary.poly`
 
 ## Including the city to A/B street more permanently
 
@@ -77,7 +80,8 @@ use it as well.
 
 6.  Run it: `./import.sh --city=your_city --raw --map`
 
-7.  Update `.gitignore` and `importer/src/main.rs`, following `tel_aviv` as an example.
+7.  Update `.gitignore` and `importer/src/main.rs`, following `tel_aviv` as an
+    example.
 
 8.  Fill out `nice_map_name` in `map_gui/src/tools/mod.rs`.
 
