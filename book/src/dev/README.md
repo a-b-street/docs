@@ -59,6 +59,9 @@ You can also opt into downloading updates for more cities by editing
 `data/player/data.json`. In the main UI, there's a button to download more
 cities that will help you manage this config file.
 
+If you want to opt into absolutely everything:
+`cargo run --bin updater -- --opt-into-all > data/player/data.json`
+
 ## Building map data
 
 You can skip this section if you're just touching code in `game`, `widgetry`,
