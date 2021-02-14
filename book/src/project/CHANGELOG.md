@@ -743,3 +743,14 @@ changes here.
 - cars looking for parking now randomize a bit, eliminating the unrealistic "parking snakes/parades" effect
 - Bruce fixed a critical bug with uber-turns, helping ease gridlock in some maps
 - new tool to procedurally generate houses along empty residential roads, useful when OSM is missing most data
+
+0.2.31
+
+- loads of work integrating abstreet with the actdev project, and importing tons of maps
+- new tool to find the geofabrik OSM source best fitting a boundary
+- fix crosswalks and traffic signal policies in left-handed driving countries
+- fix initial zoom when starting with flags to copy the viewport from OSM
+- Bruce added lagging green signal heuristics
+- make it easier to click tiny bikes and pedestrians
+- change the URL in the web version as you change maps/scenarios
+- split the list of cities by country, and improved the UI for picking a place
