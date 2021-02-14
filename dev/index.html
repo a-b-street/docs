@@ -193,13 +193,13 @@ access them. The list:
 </li>
 <li>You can start the game in different modes using flags:
 <ul>
-<li><code>cargo run --bin game -- --dev data/system/seattle/maps/downtown.bin</code> starts
-on a particular map</li>
-<li><code>cargo run --bin game -- data/system/seattle/scenarios/downtown/weekday.bin</code>
+<li><code>cargo run --bin game -- --dev data/system/us/seattle/maps/downtown.bin</code>
+starts on a particular map</li>
+<li><code>cargo run --bin game -- data/system/us/seattle/scenarios/downtown/weekday.bin</code>
 starts with a scenario (which is tied to a certain map)</li>
 <li><code>cargo run --bin game -- --challenge=trafficsig/tut2</code> starts on a particular
 challenge. See the list of aliases by passing in a bad value here.</li>
-<li><code>cargo run --bin game -- data/player/saves/montlake/no_edits_unnamed/00h00m20.3s.bin</code>
+<li><code>cargo run --bin game -- data/player/saves/us/seattle/montlake/no_edits_unnamed/00h00m20.3s.bin</code>
 restores an exact simulation state. Savestates are found in debug mode
 (<strong>Control+D</strong>) -- they're probably confusing for the normal player
 experience, so they're hidden for now.</li>
@@ -251,7 +251,7 @@ regenerate.</li>
 <li>By default, all maps are regenerated. You can also specify a single map:
 <code>./import.sh --map downtown</code>.</li>
 <li>By default, Seattle is assumed as the city. You have to specify otherwise:
-<code>./import.sh --city=los_angeles --map downtown_la</code>.</li>
+<code>./import.sh --city=us/detroit --map downtown</code>.</li>
 </ul>
 <p>You can also make the importer <a href="../howto/new_city.html">import a new city</a>.</p>
 <h2><a class="header" href="#understanding-stuff" id="understanding-stuff">Understanding stuff</a></h2>
