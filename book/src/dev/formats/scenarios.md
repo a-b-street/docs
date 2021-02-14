@@ -53,7 +53,7 @@ course, you can add as many people as you like.
 To import this JSON file into A/B Street:
 
 ```
-cargo run --bin import_traffic -- --map=data/system/seattle/maps/montlake.bin --input=/path/to/input.json
+cargo run --bin import_traffic -- --map=data/system/us/seattle/maps/montlake.bin --input=/path/to/input.json
 ```
 
 This tool matches input positions to the nearest building, within 100 meters. If

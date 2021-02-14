@@ -35,13 +35,13 @@ One-time setup:
   - To warp to an object by numeric ID: press **Control+j**
   - To enter debug mode with all sorts of goodies: press **Control+D**
 - You can start the game in different modes using flags:
-  - `cargo run --bin game -- --dev data/system/seattle/maps/downtown.bin` starts
-    on a particular map
-  - `cargo run --bin game -- data/system/seattle/scenarios/downtown/weekday.bin`
+  - `cargo run --bin game -- --dev data/system/us/seattle/maps/downtown.bin`
+    starts on a particular map
+  - `cargo run --bin game -- data/system/us/seattle/scenarios/downtown/weekday.bin`
     starts with a scenario (which is tied to a certain map)
   - `cargo run --bin game -- --challenge=trafficsig/tut2` starts on a particular
     challenge. See the list of aliases by passing in a bad value here.
-  - `cargo run --bin game -- data/player/saves/montlake/no_edits_unnamed/00h00m20.3s.bin`
+  - `cargo run --bin game -- data/player/saves/us/seattle/montlake/no_edits_unnamed/00h00m20.3s.bin`
     restores an exact simulation state. Savestates are found in debug mode
     (**Control+D**) -- they're probably confusing for the normal player
     experience, so they're hidden for now.
@@ -99,7 +99,7 @@ You can rerun specific stages of the importer:
 - By default, all maps are regenerated. You can also specify a single map:
   `./import.sh --map downtown`.
 - By default, Seattle is assumed as the city. You have to specify otherwise:
-  `./import.sh --city=los_angeles --map downtown_la`.
+  `./import.sh --city=us/detroit --map downtown`.
 
 You can also make the importer [import a new city](../howto/new_city.md).
 

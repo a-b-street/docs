@@ -19,8 +19,8 @@ available to other users yet.
   `import.sh` directly, changing the `$@` at the end to `--oneshot=map.osm` or
   whatever arguments you're passing in.
 
-The oneshot importer will generate a new file in `data/system/oneshot/maps` that
-you can then load in the game. If you have an Osmosis polygon filter (see
+The oneshot importer will generate a new file in `data/system/zz/oneshot/maps`
+that you can then load in the game. If you have an Osmosis polygon filter (see
 below), you can also pass `--oneshot_clip=clip.poly` to improve the result. You
 should first make sure your .osm has been clipped:
 `osmconvert large_map.osm -B=clipping.poly --complete-ways -o=smaller_map.osm`.
@@ -58,7 +58,9 @@ use it as well.
     [the instructions](../dev/index.md#building-map-data). You'll need Rust,
     osmconvert, gdal, etc.
 
-2.  Create a new directory: `mkdir importer/config/your_city`
+2.  Create a new directory: `mkdir importer/config/xy/your_city`, where `xy` is
+    a lowercase two letter country code from
+    <https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2>
 
 3.  Use [geojson.io](http://geojson.io/) or
     [geoman.io](https://geoman.io/geojson-editor) to draw a boundary around the
@@ -69,16 +71,16 @@ use it as well.
     [Osmosis format](https://wiki.openstreetmap.org/wiki/Osmosis/Polygon_Filter_File_Format)
     required by osmconvert. This tool writes one file per feature in the input,
     so you'd then
-    `mv boundary0.poly importer/config/your_city/region_name.poly`, repeating if
-    you drew multiple polygons.
+    `mv boundary0.poly importer/config/xy/your_city/region_name.poly`, repeating
+    if you drew multiple polygons.
 
-5.  Copy `importer/config/tel_aviv/cfg.json` to
-    `importer/config/your_city/cfg.json` and edit this file. See
+5.  Copy `importer/config/il/tel_aviv/cfg.json` to
+    `importer/config/xy/your_city/cfg.json` and edit this file. See
     [here](https://github.com/a-b-street/abstreet/blob/master/importer/src/generic.rs)
     for details on the different fields. The defaults are a reasonable start;
     the only thing you need to change is `osm_url`.
 
-6.  Run it: `./import.sh --city=your_city --raw --map`
+6.  Run it: `./import.sh --city=xy/your_city --raw --map`
 
 7.  Update `.gitignore`, following `tel_aviv` as an example. Keep sorted!
 
