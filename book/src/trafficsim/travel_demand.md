@@ -78,7 +78,7 @@ be imported into A/B Street.
 ### abstr
 
 [Robin Lovelace](https://www.robinlovelace.net/) is working on an
-[R package](ttps://a-b-street.github.io/abstr/) to transform aggregate desire
+[R package](https://a-b-street.github.io/abstr/) to transform aggregate desire
 lines between different zones into A/B Street scenarios.
 
 ### Custom import
