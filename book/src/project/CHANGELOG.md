@@ -754,3 +754,10 @@ changes here.
 - make it easier to click tiny bikes and pedestrians
 - change the URL in the web version as you change maps/scenarios
 - split the list of cities by country, and improved the UI for picking a place
+
+0.2.32
+
+- easier to share web URLs with the current viewport
+- more actdev integration work
+- misc bugfixes, especially with uber-turns and the city picker UI
+- revived the map_editor tool for drawing small test maps and iterating faster on merging intersection geometry
