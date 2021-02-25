@@ -160,9 +160,11 @@ It's easiest to follow the example below.</p>
 <p>This defines a scenario containing a single person, who takes one trip. They
 begin at midnight at the building nearest to the <code>origin</code>, then at 3AM (<code>10800</code>
 is seconds after midnight), they drive to the building nearest to the
-<code>destination</code>. The <code>mode</code> field could also be <code>Walk</code>, <code>Bike</code>, or <code>Transit</code>. You
-could add more trips to this person, with increasing departure time. And of
-course, you can add as many people as you like.</p>
+<code>destination</code>. The <code>mode</code> field could also be <code>Walk</code>, <code>Bike</code>, or <code>Transit</code>. The
+<code>purpose</code> field is mostly unused; you could pick
+<a href="https://a-b-street.github.io/abstreet/rustdoc/sim/enum.TripPurpose.html">other values</a>
+that show up in the UI. You could add more trips to this person, with increasing
+departure time. And of course, you can add as many people as you like.</p>
 <pre><code>{
   &quot;scenario_name&quot;: &quot;monday&quot;,
   &quot;people&quot;: [
@@ -182,7 +184,8 @@ course, you can add as many people as you like.</p>
               &quot;latitude&quot;: 47.6394773
 	    }
           },
-          &quot;mode&quot;: &quot;Drive&quot;
+          &quot;mode&quot;: &quot;Drive&quot;,
+          &quot;purpose&quot;: &quot;Shopping&quot;
         }
       ]
     }
