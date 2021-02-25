@@ -16,9 +16,11 @@ It's easiest to follow the example below.
 This defines a scenario containing a single person, who takes one trip. They
 begin at midnight at the building nearest to the `origin`, then at 3AM (`10800`
 is seconds after midnight), they drive to the building nearest to the
-`destination`. The `mode` field could also be `Walk`, `Bike`, or `Transit`. You
-could add more trips to this person, with increasing departure time. And of
-course, you can add as many people as you like.
+`destination`. The `mode` field could also be `Walk`, `Bike`, or `Transit`. The
+`purpose` field is mostly unused; you could pick
+[other values](https://a-b-street.github.io/abstreet/rustdoc/sim/enum.TripPurpose.html)
+that show up in the UI. You could add more trips to this person, with increasing
+departure time. And of course, you can add as many people as you like.
 
 ```
 {
@@ -40,7 +42,8 @@ course, you can add as many people as you like.
               "latitude": 47.6394773
 	    }
           },
-          "mode": "Drive"
+          "mode": "Drive",
+          "purpose": "Shopping"
         }
       ]
     }
