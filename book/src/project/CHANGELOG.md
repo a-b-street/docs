@@ -761,3 +761,14 @@ changes here.
 - more actdev integration work
 - misc bugfixes, especially with uber-turns and the city picker UI
 - revived the map_editor tool for drawing small test maps and iterating faster on merging intersection geometry
+
+0.2.33
+
+- import service roads and separate cyclepaths in all maps!
+- brand new day theme, designed by Yuwen and implemented by Michael!
+- improved rendering where sidewalks and shoulders of roads meet
+- fix overlapping panels on HiDPI screens with low resolution
+- prototype of loading abst in the background on a webpage
+- adjusted routing, penalizing unprotected left turns onto bigger roads, which often contribute to gridlock
+- fixed some turn restrictions at merged intersections
+- widgetry: change fonts mid-line, dynamically load extra fonts (for a Taipei map)
