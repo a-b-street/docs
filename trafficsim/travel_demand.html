@@ -211,6 +211,16 @@ be imported into A/B Street.</p>
 <p><a href="https://www.robinlovelace.net/">Robin Lovelace</a> is working on an
 <a href="https://a-b-street.github.io/abstr/">R package</a> to transform aggregate desire
 lines between different zones into A/B Street scenarios.</p>
+<h3><a class="header" href="#desire-lines-for-the-uk" id="desire-lines-for-the-uk">Desire lines (for the UK)</a></h3>
+<p>The UK has origin/destination (aka desire line) data, recording how many people
+travel between a home and work zone for work, broken down by mode. We have a
+tool to disaggregate this and create individual people, picking homes and
+workplaces reasonably using OSM-based heuristics. See
+<a href="https://github.com/a-b-street/abstreet/blob/master/popdat/src/od.rs">the pipeline</a>
+for details about how it works. The code that parses the raw UK data is
+<a href="https://github.com/a-b-street/abstreet/blob/master/importer/src/uk.rs">here</a>.
+If you have similar data for your area, contact me and we can add support for
+it!</p>
 <h3><a class="header" href="#custom-import" id="custom-import">Custom import</a></h3>
 <p>See <a href="../dev/formats/scenarios.html">here</a>.</p>
 <h2><a class="header" href="#modifying-demand" id="modifying-demand">Modifying demand</a></h2>
