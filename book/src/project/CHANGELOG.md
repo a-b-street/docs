@@ -772,3 +772,12 @@ changes here.
 - adjusted routing, penalizing unprotected left turns onto bigger roads, which often contribute to gridlock
 - fixed some turn restrictions at merged intersections
 - widgetry: change fonts mid-line, dynamically load extra fonts (for a Taipei map)
+
+0.2.34
+
+- new travel demand generator using UK origin/destination data
+- the 15m and OSM viewer web apps also have nicer URLs now
+- 2 more seattle maps complete without gridlock!
+- less seattle maps bundled with the release by default, to keep file size sane
+- many UI changes for the actdev integration, pending rollout to abst generally
+- initial experiments with implementing lane over-taking and road-based pathfinding
