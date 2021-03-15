@@ -781,3 +781,12 @@ changes here.
 - less seattle maps bundled with the release by default, to keep file size sane
 - many UI changes for the actdev integration, pending rollout to abst generally
 - initial experiments with implementing lane over-taking and road-based pathfinding
+
+0.2.35
+
+- vast improvements to roundabouts, gridlock, and ordering at stop signs
+- consolidated UI panels in simulation modes; should work much better for smaller screens
+- measure intersection delay more intuitively
+- use straight lines for right/left turns at small intersections
+- various bugfixes and small UI improvements
+- started a tool to import from OSM without the command line; should be ready next week
