@@ -75,7 +75,7 @@ To run all pieces of the importer, you'll need some extra dependencies:
   this. If you keep hitting linking errors, then just remove
   `--features scenarios` from `import.sh`. You won't be able to build the
   Seattle scenarios.
-- Standard Unix utilities: `curl`, `unzip`, `gunzip`
+- Standard Unix utilities: `unzip` and `gunzip`
 
 The first stage of the importer, `--raw`, will download input files from OSM,
 King County GIS, and so on. If the mirrors are slow or the files vanish, you
