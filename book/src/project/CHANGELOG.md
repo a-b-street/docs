@@ -790,3 +790,11 @@ changes here.
 - use straight lines for right/left turns at small intersections
 - various bugfixes and small UI improvements
 - started a tool to import from OSM without the command line; should be ready next week
+
+0.2.36
+
+- released a new tool to import anywhere from OSM from within the game!
+- UI: finished trips meter, consolidated agent counters on minimap, move layers to the left for small screens, new tab style, use new day colorscheme in other apps
+- fixed a bug with comparing the route somebody took before/after changes
+- start integrating Eldan's elevation data and reviving parts of the UI that use the data
+- better routing into/out of access-restricted neighborhoods
