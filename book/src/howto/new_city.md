@@ -1,58 +1,40 @@
 # Importing a new city into A/B Street
 
-This process isn't easy yet. Please email <dabreegster@gmail.com> or
-[file a Github issue](https://github.com/a-b-street/abstreet/issues/) if you hit
-problems. I'd really appreciate help and PRs to improve this.
+If you get stuck, please email <dabreegster@gmail.com> or
+[file a Github issue](https://github.com/a-b-street/abstreet/issues/). I promise
+quick turnaround time. All you need to do is send the boundary of the area you
+want, drawn with [geojson.io](http://geojson.io).
 
-## Quick start
+## The easy method
 
-Use this if you want to import a city on your computer without making it
-available to other users yet.
+This only works in the
+[downloaded version](https://a-b-street.github.io/docs/howto/index.html), not on
+web.
 
-- If you're using the **binary release** and have a `.osm` file, just do:
-  `./importer --oneshot=map.osm`.
+1.  Click the map name in sandbox mode to change your location.
+2.  Scroll down and click "import a new city"
+3.  Follow the instructions. That's it!
 
-- If you're building **from source**, do: `./import.sh --oneshot=map.osm`. If
-  you can't run `import.sh`, make sure you have all
-  [dependencies](../dev/index.md#building-map-data). If you're using Windows and
-  the console logs appear in a new window, try running the command from
-  `import.sh` directly, changing the `$@` at the end to `--oneshot=map.osm` or
-  whatever arguments you're passing in.
+This may take a few minutes, depending on download speed.
 
-The oneshot importer will generate a new file in `data/system/zz/oneshot/maps`
-that you can then load in the game. If you have an Osmosis polygon filter (see
-below), you can also pass `--oneshot_clip=clip.poly` to improve the result. You
-should first make sure your .osm has been clipped:
-`osmconvert large_map.osm -B=clipping.poly --complete-ways -o=smaller_map.osm`.
+## Advanced: Using the command-line
 
-By default, driving on the right is assumed. Use `--oneshot_drive_on_left` to
-invert.
+The process above using the UI just calls a tool to do all of the work. If you
+want, you can just call that tool from the command line. First save a GeoJSON
+file with your boundary. Then...
 
-### How to get .osm files
+Using a .zip release: `./tools/one_step_import boundary.geojson`
 
-If the area is small enough, try the "export" tool on
-<https://www.openstreetmap.org>. You can download larger areas from
-<https://download.bbbike.org/> or <http://download.geofabrik.de/index.html>,
-then clip them to a smaller area. Use [geojson.io](http://geojson.io/) or
-[geoman.io](https://geoman.io/geojson-editor) to draw a boundary around the
-region you want to simulate and save the GeoJSON locally. Use
-`cargo run --bin geojson_to_osmosis < boundary.geojson` to convert that GeoJSON
-to the
-[Osmosis format](https://wiki.openstreetmap.org/wiki/Osmosis/Polygon_Filter_File_Format)
-required by osmconvert.
+Building from source:
+`cargo build --release --bin importer --bin one_step_import --bin geojson_to_osmosis --bin pick_geofabrik --bin clip_osm && ./target/release/one_step_import boundary.geojson`
 
-Note that you may hit problems if you use JOSM to download additional data to a
-.osm file. Unless it updates the `<bounds/>` element, A/B Street will clip out
-anything extra. The best approach is to explicitly specify the boundary with
-`--oneshot_clip`.
+The new map is located in the country with code "zz" (this isn't a real
+country), in the "oneshot" city. This is stored in
+`data/system/zz/oneshot/maps`.
 
-If you have an Osmosis boundary file, you can figure out the smallest Geofabrik
-region that contains it: `cargo run --bin pick_geofabrik your_boundary.poly`
+## Advanced: Adding the city to A/B street permanently
 
-## Including the city to A/B street more permanently
-
-Follow this guide to add a new city to A/B street by default so other users can
-use it as well.
+The easiest method is to just ask Dustin to do this. The full process:
 
 1.  Make sure you can run `import.sh` -- see
     [the instructions](../dev/index.md#building-map-data). You'll need Rust,
@@ -78,9 +60,11 @@ use it as well.
     `importer/config/xy/your_city/cfg.json` and edit this file. See
     [here](https://github.com/a-b-street/abstreet/blob/master/importer/src/generic.rs)
     for details on the different fields. The defaults are a reasonable start;
-    the only thing you need to change is `osm_url`.
+    the only thing you need to change is `osm_url`. You can use
+    [pick_geofabrik](https://github.com/a-b-street/abstreet/blob/master/importer/src/bin/pick_geofabrik.rs)
+    to figure out this URL.
 
-6.  Run it: `./import.sh --city=xy/your_city --raw --map`
+6.  Run the import: `./import.sh --city=xy/your_city --raw --map`
 
 7.  Update `.gitignore`, following `tel_aviv` as an example. Keep sorted!
 
