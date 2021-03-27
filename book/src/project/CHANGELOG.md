@@ -798,3 +798,10 @@ changes here.
 - fixed a bug with comparing the route somebody took before/after changes
 - start integrating Eldan's elevation data and reviving parts of the UI that use the data
 - better routing into/out of access-restricted neighborhoods
+
+0.2.37
+
+- import elevation data for Seattle!
+- add layers showing steep streets, elevation contours, and show elevation profile for bike/pedestrian routes
+- faster, simpler pathfinding for access-restricted zones
+- faster map importer and some UI fixes
