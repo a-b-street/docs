@@ -1,122 +1,90 @@
 # Roadmap
 
-A/B Street has been under active development since June 2018. That's a long time
--- what work is happening now and how can you contribute?
+[The 2021 roadmap](https://docs.google.com/document/d/1oV4mdtb0ve-wf0HqbEvR9IwXLIkTeDu8a3UnJxnr2F0/edit?usp=sharing)
+is in a Google doc -- feel free to comment.
 
-[See this doc](https://docs.google.com/document/d/1oV4mdtb0ve-wf0HqbEvR9IwXLIkTeDu8a3UnJxnr2F0/edit?usp=sharing)
-for the 2021 roadmap. The rest of this page was written in June 2020. After this
-year's plans firm up a bit, I'll update this page.
+The rest of this doc covers plans for April-June 2021.
 
-## Next steps, summer 2020
+## Advocacy
 
-Afer the alpha launch in June, I plan to focus on:
+A/B Street has been under active development since June 2018, but we haven't yet
+used the software to advocate for anything specific in the real world. Ideally
+we'd attract other people to do this and just focus on making the software
+strengthen arguments as much as possible, but it's hard to pitch the idea of an
+"explorable explanations" blog post without an example. So, we'll produce some
+ourselves.
 
-- shared biking/walking trails like the Burke Gilman
-- light rail
-- more score functions besides trip time, like safety/comfort
-- changing trip mode choice (if you make a bus route more desirable, switch some
-  trips)
-- web support (so people can try out proposals without installing anything)
+- Seattle:
+  [Open Broadmoor for biking and walking](https://github.com/a-b-street/abstreet/issues/574) -
+  there are no A/B Street modelling gaps to doing this, and it's a really
+  simple, cheap idea.
+- Seattle:
+  [Model the Northgate pedestrian bridge](https://github.com/a-b-street/abstreet/discussions/490) -
+  this'll open this fall, but we can estimate how much it'll help before then.
+- Seattle: Model a few ongoing paving projects from
+  [here](https://www.seattle.gov/transportation/projects-and-programs/current-projects)
+  or
+  [here](https://www.seattle.gov/transportation/projects-and-programs/programs/maintenance-and-paving/current-paving-projects),
+  to see if the map editor is easy to use and drive UX improvements.
+- London:
+  [Cycling along the A5](https://github.com/a-b-street/abstreet/issues/577)
 
-## Ongoing work
+## Map / simulation
 
-If I had resources to hire a team, this is roughly how I'd organize different
-roles. If you're interested in helping, these aren't strictly defined positions,
-just ideas of related tasks.
+The main project will be
+[widening existing roads](https://github.com/a-b-street/abstreet/issues/67).
+Today, you can't transform one driving lane into a pair of bidirectional
+cyclepaths, even though that'd usually physically work width-wise. You also
+can't correct the OSM / inferred data about street parking. It's a complicated
+technical change, but essential. Hopefully building entirely new roads is
+possible to implement after this -- for things like the Northgate bridge or
+mocking up light rail expansion ideas -- but consider it a stretch goal.
 
-### UI and data visualization
+I think one of the intermediate steps to implement the above will be letting
+cars
+[enter and exit driveways](https://github.com/a-b-street/abstreet/issues/555)
+from either side of the road. This should also help with gridlock, since many
+vehicles today loop around strangely to approach a building from the right side
+of the road.
 
-We've got a UX designer, but implementing all of the new designs takes time.
-Also:
+### Score functions
 
-- improve color schemes for colorblind players, implement night mode, rain
-  effects, etc
-- refactor and clean up the GUI library for other Rust users
-- lots of data viz design / implementation needed
+A/B Street's main metric for success is impact to trip time, but this is the
+kind of vehicle-centric, outdated way of thinking that we're trying to defeat.
+It's just the simplest to implement. We'll start tracking safety/pleasantness
+of trips too, exposing that in the UI as prominently as time, with the same
+ability to compare changes. Specifically, we can measure cases when cars
+over-take bikes (or at least want to), biking in the door-zone next to parking,
+and cars turning from a road with a high speed limit over a crosswalk with
+pedestrians. We have historic collision data for Seattle and the UK, and we can
+see if the dangerous areas A/B Street finds match that data.
 
-### Game design
+Relatedly, it's finally time to implement some form of
+[mode shift](https://github.com/a-b-street/abstreet/issues/448). When you edit
+the map and make it more pleasant to bike, some people should switch over to
+doing it. There are many ways to do this, but we'll at least start with
+something.
 
-- the tutorial mode needs attention
-- many ideas for challenge/story modes, but playtesting, tuning, and game design
-  needed
+### Stretch: lane-overtaking
 
-### Map data / GIS
+There are a few varieties of this, passing using another lane in the same
+direction or against oncoming traffic, and something specific for
+[shared walking/biking paths](https://github.com/a-b-street/abstreet/issues/139).
+I think this is less important and riskier than the other work, but I want to
+start it.
 
-Support more cities:
+## UI
 
-- write docs/tools to help people add new cities without programming experience
-- add support for non-OpenStreetMap input: GeoJSON for parking in Perth, other
-  trip demand sources, etc
-- fix bugs for driving on the left side of the road
+Implement Yuwen's new info panels, including the consolidated lane/intersection
+editing.
 
-Improve the quality of map geometry derived from OpenStreetMap:
+## Leftovers - help wanted!
 
-- try new algorithms to generate intersection polygons
-- make tools for easily improving relevant data in OSM
-- use ML and lidar/satellite data to get extremely accurate curb / planter /
-  sidewalk geometry
+There aren't enough hours in the day, so probably not much work on:
 
-Build tools and organize community mapping:
+- [Public transit](https://github.com/a-b-street/abstreet/issues/372)
+- [15-minute neighborhoods](https://github.com/a-b-street/abstreet/issues/393)
+- Some kind of website to share your map proposals
 
-- organize an effort to map how traffic signals are timed (partly started)
-- divide and track work for distributed mapathons
-
-Bring in new data to understand more about cities:
-
-- PM2.5 pollution
-- Tax / land value (is there inequitable access to transit?)
-
-### Simulation / modeling
-
-Totally new areas:
-
-- light rail
-- shared bike/pedestrian paths
-- ridesharing
-- micromobility (scooters, floating bikeshare)
-- more score functions (elevation gain, biking safety)
-- generating trip demand / activity models from scratch or modifying existing
-  ones
-
-Improve existing models:
-
-- overtaking / lane-changing
-- pedestrian crowds
-- instant vehicle acceleration
-- pedestrians walking on road shoulders (some streets have no sidewalks)
-- buses: transfers, proper schedules, multiple buses per route
-
-### Web
-
-A/B Street runs on the web via WASM and WebGL; just waiting on vector text
-support. Besides that:
-
-- Share community proposals online, discuss them, vote, etc
-
-## Contributing for non-programmers
-
-There's plenty to do besides programming!
-
-- Mapping, most of which directly contributes to OpenStreetMap:
-  - sidewalks and crosswalks
-  - [on-street parking](../side_projects/parking_mapper.md)
-  - [traffic signal timing](https://docs.google.com/document/d/1Od_7WvBVYsvpY4etRI0sKmYmZnwXMAXcJxVmm8Iwdcg/edit?usp=sharing)
-- Playtesting by attempting to implement real proposals would also be helpful,
-  to expose where it's awkward for A/B Street to edit the map and to write up
-  problems encountered.
-- Advocacy: I'm not great at finding the right people to to get ideas
-  implemented for real. Maybe you are?
-
-## Long-term vision
-
-Longer term, I'd like to take lots of the work in generating and interacting
-with high-detail OpenStreetMap-based maps and generalize it, possibly as a new
-OSM viewer/editor.
-
-More generally, I'd like to see how simulation can help individuals understand
-and explore other policy decisions related to cities. Domains I'm vaguely
-interested in, but not at all knowledgable about, include land-use / zoning,
-housing, and supply chains. In late March 2020, a new collaborator started a
-pandemic model using the existing simulation of people occupying shared spaces.
-What are other domains could benefit from the rich agent-based model we're
-building?
+Although the funding story is unclear, I'd like to hire somebody in the next
+few months to work on these.
