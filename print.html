@@ -2662,117 +2662,80 @@ driving, vs looking for parking and covering any remaining distance by foot.</p>
 <h1><a class="header" href="#project-logistics" id="project-logistics">Project logistics</a></h1>
 <p>This has some background/logistics about the project.</p>
 <h1><a class="header" href="#roadmap" id="roadmap">Roadmap</a></h1>
-<p>A/B Street has been under active development since June 2018. That's a long time
--- what work is happening now and how can you contribute?</p>
-<p><a href="https://docs.google.com/document/d/1oV4mdtb0ve-wf0HqbEvR9IwXLIkTeDu8a3UnJxnr2F0/edit?usp=sharing">See this doc</a>
-for the 2021 roadmap. The rest of this page was written in June 2020. After this
-year's plans firm up a bit, I'll update this page.</p>
-<h2><a class="header" href="#next-steps-summer-2020" id="next-steps-summer-2020">Next steps, summer 2020</a></h2>
-<p>Afer the alpha launch in June, I plan to focus on:</p>
+<p><a href="https://docs.google.com/document/d/1oV4mdtb0ve-wf0HqbEvR9IwXLIkTeDu8a3UnJxnr2F0/edit?usp=sharing">The 2021 roadmap</a>
+is in a Google doc -- feel free to comment.</p>
+<p>The rest of this doc covers plans for April-June 2021.</p>
+<h2><a class="header" href="#advocacy" id="advocacy">Advocacy</a></h2>
+<p>A/B Street has been under active development since June 2018, but we haven't yet
+used the software to advocate for anything specific in the real world. Ideally
+we'd attract other people to do this and just focus on making the software
+strengthen arguments as much as possible, but it's hard to pitch the idea of an
+&quot;explorable explanations&quot; blog post without an example. So, we'll produce some
+ourselves.</p>
 <ul>
-<li>shared biking/walking trails like the Burke Gilman</li>
-<li>light rail</li>
-<li>more score functions besides trip time, like safety/comfort</li>
-<li>changing trip mode choice (if you make a bus route more desirable, switch some
-trips)</li>
-<li>web support (so people can try out proposals without installing anything)</li>
+<li>Seattle:
+<a href="https://github.com/a-b-street/abstreet/issues/574">Open Broadmoor for biking and walking</a> -
+there are no A/B Street modelling gaps to doing this, and it's a really
+simple, cheap idea.</li>
+<li>Seattle:
+<a href="https://github.com/a-b-street/abstreet/discussions/490">Model the Northgate pedestrian bridge</a> -
+this'll open this fall, but we can estimate how much it'll help before then.</li>
+<li>Seattle: Model a few ongoing paving projects from
+<a href="https://www.seattle.gov/transportation/projects-and-programs/current-projects">here</a>
+or
+<a href="https://www.seattle.gov/transportation/projects-and-programs/programs/maintenance-and-paving/current-paving-projects">here</a>,
+to see if the map editor is easy to use and drive UX improvements.</li>
+<li>London:
+<a href="https://github.com/a-b-street/abstreet/issues/577">Cycling along the A5</a></li>
 </ul>
-<h2><a class="header" href="#ongoing-work" id="ongoing-work">Ongoing work</a></h2>
-<p>If I had resources to hire a team, this is roughly how I'd organize different
-roles. If you're interested in helping, these aren't strictly defined positions,
-just ideas of related tasks.</p>
-<h3><a class="header" href="#ui-and-data-visualization" id="ui-and-data-visualization">UI and data visualization</a></h3>
-<p>We've got a UX designer, but implementing all of the new designs takes time.
-Also:</p>
+<h2><a class="header" href="#map--simulation" id="map--simulation">Map / simulation</a></h2>
+<p>The main project will be
+<a href="https://github.com/a-b-street/abstreet/issues/67">widening existing roads</a>.
+Today, you can't transform one driving lane into a pair of bidirectional
+cyclepaths, even though that'd usually physically work width-wise. You also
+can't correct the OSM / inferred data about street parking. It's a complicated
+technical change, but essential. Hopefully building entirely new roads is
+possible to implement after this -- for things like the Northgate bridge or
+mocking up light rail expansion ideas -- but consider it a stretch goal.</p>
+<p>I think one of the intermediate steps to implement the above will be letting
+cars
+<a href="https://github.com/a-b-street/abstreet/issues/555">enter and exit driveways</a>
+from either side of the road. This should also help with gridlock, since many
+vehicles today loop around strangely to approach a building from the right side
+of the road.</p>
+<h3><a class="header" href="#score-functions" id="score-functions">Score functions</a></h3>
+<p>A/B Street's main metric for success is impact to trip time, but this is the
+kind of vehicle-centric, outdated way of thinking that we're trying to defeat.
+It's just the simplest to implement. We'll start tracking safety/pleasantness
+of trips too, exposing that in the UI as prominently as time, with the same
+ability to compare changes. Specifically, we can measure cases when cars
+over-take bikes (or at least want to), biking in the door-zone next to parking,
+and cars turning from a road with a high speed limit over a crosswalk with
+pedestrians. We have historic collision data for Seattle and the UK, and we can
+see if the dangerous areas A/B Street finds match that data.</p>
+<p>Relatedly, it's finally time to implement some form of
+<a href="https://github.com/a-b-street/abstreet/issues/448">mode shift</a>. When you edit
+the map and make it more pleasant to bike, some people should switch over to
+doing it. There are many ways to do this, but we'll at least start with
+something.</p>
+<h3><a class="header" href="#stretch-lane-overtaking" id="stretch-lane-overtaking">Stretch: lane-overtaking</a></h3>
+<p>There are a few varieties of this, passing using another lane in the same
+direction or against oncoming traffic, and something specific for
+<a href="https://github.com/a-b-street/abstreet/issues/139">shared walking/biking paths</a>.
+I think this is less important and riskier than the other work, but I want to
+start it.</p>
+<h2><a class="header" href="#ui" id="ui">UI</a></h2>
+<p>Implement Yuwen's new info panels, including the consolidated lane/intersection
+editing.</p>
+<h2><a class="header" href="#leftovers---help-wanted" id="leftovers---help-wanted">Leftovers - help wanted!</a></h2>
+<p>There aren't enough hours in the day, so probably not much work on:</p>
 <ul>
-<li>improve color schemes for colorblind players, implement night mode, rain
-effects, etc</li>
-<li>refactor and clean up the GUI library for other Rust users</li>
-<li>lots of data viz design / implementation needed</li>
+<li><a href="https://github.com/a-b-street/abstreet/issues/372">Public transit</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/issues/393">15-minute neighborhoods</a></li>
+<li>Some kind of website to share your map proposals</li>
 </ul>
-<h3><a class="header" href="#game-design" id="game-design">Game design</a></h3>
-<ul>
-<li>the tutorial mode needs attention</li>
-<li>many ideas for challenge/story modes, but playtesting, tuning, and game design
-needed</li>
-</ul>
-<h3><a class="header" href="#map-data--gis" id="map-data--gis">Map data / GIS</a></h3>
-<p>Support more cities:</p>
-<ul>
-<li>write docs/tools to help people add new cities without programming experience</li>
-<li>add support for non-OpenStreetMap input: GeoJSON for parking in Perth, other
-trip demand sources, etc</li>
-<li>fix bugs for driving on the left side of the road</li>
-</ul>
-<p>Improve the quality of map geometry derived from OpenStreetMap:</p>
-<ul>
-<li>try new algorithms to generate intersection polygons</li>
-<li>make tools for easily improving relevant data in OSM</li>
-<li>use ML and lidar/satellite data to get extremely accurate curb / planter /
-sidewalk geometry</li>
-</ul>
-<p>Build tools and organize community mapping:</p>
-<ul>
-<li>organize an effort to map how traffic signals are timed (partly started)</li>
-<li>divide and track work for distributed mapathons</li>
-</ul>
-<p>Bring in new data to understand more about cities:</p>
-<ul>
-<li>PM2.5 pollution</li>
-<li>Tax / land value (is there inequitable access to transit?)</li>
-</ul>
-<h3><a class="header" href="#simulation--modeling" id="simulation--modeling">Simulation / modeling</a></h3>
-<p>Totally new areas:</p>
-<ul>
-<li>light rail</li>
-<li>shared bike/pedestrian paths</li>
-<li>ridesharing</li>
-<li>micromobility (scooters, floating bikeshare)</li>
-<li>more score functions (elevation gain, biking safety)</li>
-<li>generating trip demand / activity models from scratch or modifying existing
-ones</li>
-</ul>
-<p>Improve existing models:</p>
-<ul>
-<li>overtaking / lane-changing</li>
-<li>pedestrian crowds</li>
-<li>instant vehicle acceleration</li>
-<li>pedestrians walking on road shoulders (some streets have no sidewalks)</li>
-<li>buses: transfers, proper schedules, multiple buses per route</li>
-</ul>
-<h3><a class="header" href="#web" id="web">Web</a></h3>
-<p>A/B Street runs on the web via WASM and WebGL; just waiting on vector text
-support. Besides that:</p>
-<ul>
-<li>Share community proposals online, discuss them, vote, etc</li>
-</ul>
-<h2><a class="header" href="#contributing-for-non-programmers" id="contributing-for-non-programmers">Contributing for non-programmers</a></h2>
-<p>There's plenty to do besides programming!</p>
-<ul>
-<li>Mapping, most of which directly contributes to OpenStreetMap:
-<ul>
-<li>sidewalks and crosswalks</li>
-<li><a href="project/../side_projects/parking_mapper.html">on-street parking</a></li>
-<li><a href="https://docs.google.com/document/d/1Od_7WvBVYsvpY4etRI0sKmYmZnwXMAXcJxVmm8Iwdcg/edit?usp=sharing">traffic signal timing</a></li>
-</ul>
-</li>
-<li>Playtesting by attempting to implement real proposals would also be helpful,
-to expose where it's awkward for A/B Street to edit the map and to write up
-problems encountered.</li>
-<li>Advocacy: I'm not great at finding the right people to to get ideas
-implemented for real. Maybe you are?</li>
-</ul>
-<h2><a class="header" href="#long-term-vision" id="long-term-vision">Long-term vision</a></h2>
-<p>Longer term, I'd like to take lots of the work in generating and interacting
-with high-detail OpenStreetMap-based maps and generalize it, possibly as a new
-OSM viewer/editor.</p>
-<p>More generally, I'd like to see how simulation can help individuals understand
-and explore other policy decisions related to cities. Domains I'm vaguely
-interested in, but not at all knowledgable about, include land-use / zoning,
-housing, and supply chains. In late March 2020, a new collaborator started a
-pandemic model using the existing simulation of people occupying shared spaces.
-What are other domains could benefit from the rich agent-based model we're
-building?</p>
+<p>Although the funding story is unclear, I'd like to hire somebody in the next
+few months to work on these.</p>
 <h1><a class="header" href="#project-motivations" id="project-motivations">Project motivations</a></h1>
 <p>I thought it'd be helpful to explain what motivates my work in A/B Street. These
 are just my personal values; I don't intend to make a careful argument about
