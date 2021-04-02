@@ -16,7 +16,7 @@ Contact <dabreegster@gmail.com> with any feedback or
 
 ## Play it
 
-- [Play online](http://abstreet.s3-website.us-east-2.amazonaws.com/dev/santa)
+- [Play online](http://abstreet.s3-website.us-east-2.amazonaws.com/dev/santa.html)
   (slower and no music -- download below if possible)
 - [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.2.37/abstreet_windows_v0_2_37.zip)
 - [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.2.37/abstreet_mac_v0_2_37.zip)
