@@ -16,6 +16,7 @@
   - [Testing](dev/testing.md)
   - [Importing many maps](dev/mass_import.md)
   - [Data organization](dev/data.md)
+  - [Release process](dev/release.md)
   - [Data formats](dev/formats/README.md)
     - [Scenarios](dev/formats/scenarios.md)
 - [Map model](map/README.md)

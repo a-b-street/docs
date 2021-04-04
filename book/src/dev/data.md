@@ -37,13 +37,6 @@ version of all data files. The numbered versions correspond to
 over time, I'll commit to keeping around at least 3 of the previous numbered
 versions, but I might delete older ones after that.
 
-In lieu of a proper document for the release process, the commands used to make
-a versioned copy of the data are something like:
-
-```
-aws s3 cp --recursive s3://abstreet/dev/data/system s3://abstreet/0.2.17/data/system
-```
-
 ## Native, running from source
 
 For people building the game [from source](index.md), the process to keep data
