@@ -29,8 +29,9 @@ This happens every Sunday.
 11. Follow the steps that the `update_docs.sh` script tells you. Don't forget to
     push the commit on the main abstreet repo as well.
 
-TODO: Now we can version the web executables as well, and tie them to the proper
-system data. Update this guide.
+One of the `update_docs.sh` steps is an S3 copy. This "freezes" the current
+"dev" data and web deployment as a named version. The URL would be something
+like http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.38/abstreet.html.
 
 ## How it works
 
