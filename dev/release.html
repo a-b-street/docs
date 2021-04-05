@@ -177,8 +177,9 @@ what's in the Github release.</li>
 <li>Follow the steps that the <code>update_docs.sh</code> script tells you. Don't forget to
 push the commit on the main abstreet repo as well.</li>
 </ol>
-<p>TODO: Now we can version the web executables as well, and tie them to the proper
-system data. Update this guide.</p>
+<p>One of the <code>update_docs.sh</code> steps is an S3 copy. This &quot;freezes&quot; the current
+&quot;dev&quot; data and web deployment as a named version. The URL would be something
+like http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.38/abstreet.html.</p>
 <h2><a class="header" href="#how-it-works" id="how-it-works">How it works</a></h2>
 <p>The process is kind of convoluted; help is always welcome to smooth it out.</p>
 <p>Github Actions is used to build for all 3 platforms.
