@@ -805,3 +805,10 @@ changes here.
 - add layers showing steep streets, elevation contours, and show elevation profile for bike/pedestrian routes
 - faster, simpler pathfinding for access-restricted zones
 - faster map importer and some UI fixes
+
+0.2.38
+
+- change walking and biking speed based on elevation
+- import elevation data for all maps -- though there may still be quality issues
+- filter trip table by start/end location on the map
+- Michael made the web deployment much more flexible, in preparation for a blog post
