@@ -152,7 +152,7 @@
 <ol>
 <li>Push a commit containing <code>[rebuild] [release]</code> in the commit message.</li>
 <li>Wait for the build to complete at
-https://github.com/a-b-street/abstreet/actions</li>
+<a href="https://github.com/a-b-street/abstreet/actions">https://github.com/a-b-street/abstreet/actions</a></li>
 <li>Manually download the 3 .zip files</li>
 <li>With your current directory set to where the .zips are downloaded, run
 <code>~/abstreet/release/finalize.sh v0_2_38</code>, changing the version number. (That
@@ -160,18 +160,19 @@ path assumes the abstreet git repo is in your home directory.)</li>
 <li>If you want, sanity check that the final generated binaries work. Sometimes
 I test things like the map importer or that maps not included by default can
 be downloaded.</li>
-<li>Create a new release at https://github.com/a-b-street/abstreet/releases/new.
-Make sure the version matches, with a different format -- <code>v0.2.38</code>. The
-description should match what later goes in the changelog, and the name
-really ought to be gastronomically offensive.</li>
+<li>Create a new release at
+<a href="https://github.com/a-b-street/abstreet/releases/new">https://github.com/a-b-street/abstreet/releases/new</a>. Make sure the version
+matches, with a different format -- <code>v0.2.38</code>. The description should match
+what later goes in the changelog, and the name really ought to be
+gastronomically offensive.</li>
 <li>Upload the 3 transformed .zips created by <code>finalize.sh</code> -- they're named
 something like <code>abstreet_mac_v0_2_38.zip</code>.</li>
 <li>Publish release!</li>
 <li>From the root directory of the abstreet repo, run
 <code>./release/update_docs.sh 37 38</code>. When the major version number changes,
 update that script first. This updates the latest release from <code>0.2.37</code> to
-<code>0.2.38</code>. It assumes the https://github.com/a-b-street/docs repo is in your
-home directory named <code>~/docs</code>.</li>
+<code>0.2.38</code>. It assumes the <a href="https://github.com/a-b-street/docs">https://github.com/a-b-street/docs</a> repo is in
+your home directory named <code>~/docs</code>.</li>
 <li>Go fill out <code>~/docs/book/src/project/CHANGELOG.md</code>; the notes should match
 what's in the Github release.</li>
 <li>Follow the steps that the <code>update_docs.sh</code> script tells you. Don't forget to
@@ -179,7 +180,7 @@ push the commit on the main abstreet repo as well.</li>
 </ol>
 <p>One of the <code>update_docs.sh</code> steps is an S3 copy. This &quot;freezes&quot; the current
 &quot;dev&quot; data and web deployment as a named version. The URL would be something
-like http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.38/abstreet.html.</p>
+like <a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.38/abstreet.html">http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.38/abstreet.html</a>.</p>
 <h2><a class="header" href="#how-it-works" id="how-it-works">How it works</a></h2>
 <p>The process is kind of convoluted; help is always welcome to smooth it out.</p>
 <p>Github Actions is used to build for all 3 platforms.

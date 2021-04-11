@@ -160,13 +160,13 @@ hit problems.</p>
 <p>Grab a pre-built binary release -- updated every Sunday, announced at
 <a href="http://old.reddit.com/r/abstreet">r/abstreet</a>:</p>
 <ul>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.38/abstreet_windows_v0_2_38.zip">Windows</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.39/abstreet_windows_v0_2_39.zip">Windows</a>
 <ul>
 <li>Unzip the folder, then run <code>play_abstreet.bat</code>. You'll probably getting a
 warning about running software from an unknown publisher.</li>
 </ul>
 </li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.38/abstreet_mac_v0_2_38.zip">Mac</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.39/abstreet_mac_v0_2_39.zip">Mac</a>
 <ul>
 <li>Unzip the directory, then run <code>play_abstreet.sh</code>.</li>
 <li>If you get an error about the developer unverified,
@@ -180,7 +180,7 @@ open terminal, <code>cd</code> to the directory you just unzipped. Then do:
 this as a Mac .app, to make this process simpler</li>
 </ul>
 </li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.38/abstreet_linux_v0_2_38.zip">Linux</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.39/abstreet_linux_v0_2_39.zip">Linux</a>
 <ul>
 <li>Unzip the directory, then run <code>play_abstreet.sh</code>.</li>
 </ul>
@@ -188,7 +188,7 @@ this as a Mac .app, to make this process simpler</li>
 <li><a href="https://www.freshports.org/games/abstreet/">FreeBSD</a>, thanks to
 <a href="https://github.com/yurivict">Yuri</a></li>
 </ul>
-<p>Or you can try playing <a href="http://abstreet.s3-website.us-east-2.amazonaws.com/dev/abstreet.html">directly in your web
+<p>Or you can try playing <a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.39/abstreet.html">directly in your web
 browser</a>
 -- still experimental for now.</p>
 <p>Or you can <a href="howto/../dev/index.html">compile from source</a>.</p>
@@ -1313,7 +1313,7 @@ along with the data, for now.</p>
 <ol>
 <li>Push a commit containing <code>[rebuild] [release]</code> in the commit message.</li>
 <li>Wait for the build to complete at
-https://github.com/a-b-street/abstreet/actions</li>
+<a href="https://github.com/a-b-street/abstreet/actions">https://github.com/a-b-street/abstreet/actions</a></li>
 <li>Manually download the 3 .zip files</li>
 <li>With your current directory set to where the .zips are downloaded, run
 <code>~/abstreet/release/finalize.sh v0_2_38</code>, changing the version number. (That
@@ -1321,18 +1321,19 @@ path assumes the abstreet git repo is in your home directory.)</li>
 <li>If you want, sanity check that the final generated binaries work. Sometimes
 I test things like the map importer or that maps not included by default can
 be downloaded.</li>
-<li>Create a new release at https://github.com/a-b-street/abstreet/releases/new.
-Make sure the version matches, with a different format -- <code>v0.2.38</code>. The
-description should match what later goes in the changelog, and the name
-really ought to be gastronomically offensive.</li>
+<li>Create a new release at
+<a href="https://github.com/a-b-street/abstreet/releases/new">https://github.com/a-b-street/abstreet/releases/new</a>. Make sure the version
+matches, with a different format -- <code>v0.2.38</code>. The description should match
+what later goes in the changelog, and the name really ought to be
+gastronomically offensive.</li>
 <li>Upload the 3 transformed .zips created by <code>finalize.sh</code> -- they're named
 something like <code>abstreet_mac_v0_2_38.zip</code>.</li>
 <li>Publish release!</li>
 <li>From the root directory of the abstreet repo, run
 <code>./release/update_docs.sh 37 38</code>. When the major version number changes,
 update that script first. This updates the latest release from <code>0.2.37</code> to
-<code>0.2.38</code>. It assumes the https://github.com/a-b-street/docs repo is in your
-home directory named <code>~/docs</code>.</li>
+<code>0.2.38</code>. It assumes the <a href="https://github.com/a-b-street/docs">https://github.com/a-b-street/docs</a> repo is in
+your home directory named <code>~/docs</code>.</li>
 <li>Go fill out <code>~/docs/book/src/project/CHANGELOG.md</code>; the notes should match
 what's in the Github release.</li>
 <li>Follow the steps that the <code>update_docs.sh</code> script tells you. Don't forget to
@@ -1340,7 +1341,7 @@ push the commit on the main abstreet repo as well.</li>
 </ol>
 <p>One of the <code>update_docs.sh</code> steps is an S3 copy. This &quot;freezes&quot; the current
 &quot;dev&quot; data and web deployment as a named version. The URL would be something
-like http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.38/abstreet.html.</p>
+like <a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.38/abstreet.html">http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.38/abstreet.html</a>.</p>
 <h2><a class="header" href="#how-it-works" id="how-it-works">How it works</a></h2>
 <p>The process is kind of convoluted; help is always welcome to smooth it out.</p>
 <p>Github Actions is used to build for all 3 platforms.
@@ -3936,6 +3937,11 @@ changes here.</p>
 <li>filter trip table by start/end location on the map</li>
 <li>Michael made the web deployment much more flexible, in preparation for a blog post</li>
 </ul>
+<p>0.2.39</p>
+<ul>
+<li>massive internal change to make pathfinding use roads, not lanes. paves the way for many exciting things, like...</li>
+<li>changing the number and width of lanes per road! WIP, debug mode-only UI for now</li>
+</ul>
 <h1><a class="header" href="#references" id="references">References</a></h1>
 <h2><a class="header" href="#example-use-cases" id="example-use-cases">Example use cases</a></h2>
 <ul>
@@ -4130,11 +4136,11 @@ work and shop.</p>
 <a href="https://github.com/a-b-street/abstreet/issues/new">file an issue on Github</a>.</p>
 <h2><a class="header" href="#play-it" id="play-it">Play it</a></h2>
 <ul>
-<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/dev/santa.html">Play online</a>
+<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.39/santa.html">Play online</a>
 (slower and no music -- download below if possible)</li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.38/abstreet_windows_v0_2_38.zip">Windows</a></li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.38/abstreet_mac_v0_2_38.zip">Mac</a></li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.38/abstreet_linux_v0_2_38.zip">Linux</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.39/abstreet_windows_v0_2_39.zip">Windows</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.39/abstreet_mac_v0_2_39.zip">Mac</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.39/abstreet_linux_v0_2_39.zip">Linux</a></li>
 </ul>
 <p>Unzip, then run <code>santa.exe</code> or <code>santa</code>. No mobile/tablet support, sorry -- you need a keyboard.</p>
 <h2><a class="header" href="#faq" id="faq">FAQ</a></h2>
@@ -4259,7 +4265,7 @@ you'd like to see included.</p>
 <p>Or if you have a <code>.osm</code> file, try the <a href="side_projects/new_city.html">quick start guide</a>.</p>
 <h1><a class="header" href="#openstreetmap-viewer" id="openstreetmap-viewer">OpenStreetMap viewer</a></h1>
 <ul>
-<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/dev/osm_viewer.html">Web
+<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.39/osm_viewer.html">Web
 version</a></li>
 <li>To run locally, get the
 <a href="https://github.com/a-b-street/abstreet/releases">latest release</a> for
@@ -4273,7 +4279,7 @@ possible directions for this viewer.</p>
 <h1><a class="header" href="#15-minute-neighborhood-explorer" id="15-minute-neighborhood-explorer">15-minute neighborhood explorer</a></h1>
 <p><img src="side_projects/walkshed.gif" alt="walkshed" /></p>
 <ul>
-<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/dev/fifteen_min.html">Web
+<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.39/fifteen_min.html">Web
 version</a></li>
 <li>To run locally, get the
 <a href="https://github.com/a-b-street/abstreet/releases">latest release</a> for
