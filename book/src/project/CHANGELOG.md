@@ -812,3 +812,8 @@ changes here.
 - import elevation data for all maps -- though there may still be quality issues
 - filter trip table by start/end location on the map
 - Michael made the web deployment much more flexible, in preparation for a blog post
+
+0.2.39
+
+- massive internal change to make pathfinding use roads, not lanes. paves the way for many exciting things, like...
+- changing the number and width of lanes per road! WIP, debug mode-only UI for now

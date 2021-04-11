@@ -4,7 +4,7 @@ This happens every Sunday.
 
 1.  Push a commit containing `[rebuild] [release]` in the commit message.
 2.  Wait for the build to complete at
-    https://github.com/a-b-street/abstreet/actions
+    <https://github.com/a-b-street/abstreet/actions>
 3.  Manually download the 3 .zip files
 4.  With your current directory set to where the .zips are downloaded, run
     `~/abstreet/release/finalize.sh v0_2_38`, changing the version number. (That
@@ -12,18 +12,19 @@ This happens every Sunday.
 5.  If you want, sanity check that the final generated binaries work. Sometimes
     I test things like the map importer or that maps not included by default can
     be downloaded.
-6.  Create a new release at https://github.com/a-b-street/abstreet/releases/new.
-    Make sure the version matches, with a different format -- `v0.2.38`. The
-    description should match what later goes in the changelog, and the name
-    really ought to be gastronomically offensive.
+6.  Create a new release at
+    <https://github.com/a-b-street/abstreet/releases/new>. Make sure the version
+    matches, with a different format -- `v0.2.38`. The description should match
+    what later goes in the changelog, and the name really ought to be
+    gastronomically offensive.
 7.  Upload the 3 transformed .zips created by `finalize.sh` -- they're named
     something like `abstreet_mac_v0_2_38.zip`.
 8.  Publish release!
 9.  From the root directory of the abstreet repo, run
     `./release/update_docs.sh 37 38`. When the major version number changes,
     update that script first. This updates the latest release from `0.2.37` to
-    `0.2.38`. It assumes the https://github.com/a-b-street/docs repo is in your
-    home directory named `~/docs`.
+    `0.2.38`. It assumes the <https://github.com/a-b-street/docs> repo is in
+    your home directory named `~/docs`.
 10. Go fill out `~/docs/book/src/project/CHANGELOG.md`; the notes should match
     what's in the Github release.
 11. Follow the steps that the `update_docs.sh` script tells you. Don't forget to
@@ -31,7 +32,7 @@ This happens every Sunday.
 
 One of the `update_docs.sh` steps is an S3 copy. This "freezes" the current
 "dev" data and web deployment as a named version. The URL would be something
-like http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.38/abstreet.html.
+like <http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.38/abstreet.html>.
 
 ## How it works
 
