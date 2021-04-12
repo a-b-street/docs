@@ -73,5 +73,3 @@ There are also a few tools that produce this JSON file:
 
 - A way to specify some kind of numeric ID for each person, so you can later
   correlate results from the simulation with your input
-- A way to specify the purpose of a trip (unused for now, in the distant future
-  may affect willingness to pay tolls)
