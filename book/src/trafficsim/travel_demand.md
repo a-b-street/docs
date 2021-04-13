@@ -73,7 +73,8 @@ popdat can find it.
 Collaborators at ASU are creating
 <https://github.com/asu-trans-ai-lab/grid2demand>, which does the traditional
 four-step trip generation just using OSM as input. The output of this tool can
-be imported into A/B Street.
+be directly imported into A/B Street. From the scenario picker, choose "Import
+Grid2Demand data" and select the `input_agents.csv` file.
 
 ### abstr
 

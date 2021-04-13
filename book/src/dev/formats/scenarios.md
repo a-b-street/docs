@@ -67,7 +67,6 @@ The tool will fail if any point doesn't match to a building. If you pass
 There are also a few tools that produce this JSON file:
 
 - <https://github.com/a-b-street/abstreet/blob/master/headless/examples/generate_traffic.py>
-- <https://github.com/dabreegster/grid2demand/blob/scenario_script/src/demand_to_abst_scenario.py>
 
 ## Future requests
 
