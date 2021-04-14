@@ -1,0 +1,314 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>ASU Lab guide - A/B Street</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../howto/index.html"><strong aria-hidden="true">2.</strong> Instructions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../howto/new_city.html"><strong aria-hidden="true">2.1.</strong> Importing a new city</a></li><li class="chapter-item expanded "><a href="../howto/asu.html" class="active"><strong aria-hidden="true">2.2.</strong> ASU Lab guide</a></li></ol></li><li class="chapter-item expanded "><a href="../how_it_works.html"><strong aria-hidden="true">3.</strong> How it works</a></li><li class="chapter-item expanded "><a href="../case_studies/index.html"><strong aria-hidden="true">4.</strong> Case studies</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../case_studies/lake_wash.html"><strong aria-hidden="true">4.1.</strong> Lake Washington Blvd Stay Healthy Street</a></li><li class="chapter-item expanded "><a href="../case_studies/west_seattle.html"><strong aria-hidden="true">4.2.</strong> West Seattle mitigations</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../dev/index.html"><strong aria-hidden="true">5.</strong> Developer guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dev/misc_tricks.html"><strong aria-hidden="true">5.1.</strong> Misc developer tricks</a></li><li class="chapter-item expanded "><a href="../dev/api.html"><strong aria-hidden="true">5.2.</strong> API</a></li><li class="chapter-item expanded "><a href="../dev/testing.html"><strong aria-hidden="true">5.3.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../dev/mass_import.html"><strong aria-hidden="true">5.4.</strong> Importing many maps</a></li><li class="chapter-item expanded "><a href="../dev/data.html"><strong aria-hidden="true">5.5.</strong> Data organization</a></li><li class="chapter-item expanded "><a href="../dev/release.html"><strong aria-hidden="true">5.6.</strong> Release process</a></li><li class="chapter-item expanded "><a href="../dev/formats/index.html"><strong aria-hidden="true">5.7.</strong> Data formats</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dev/formats/scenarios.html"><strong aria-hidden="true">5.7.1.</strong> Scenarios</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../map/index.html"><strong aria-hidden="true">6.</strong> Map model</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../map/details.html"><strong aria-hidden="true">6.1.</strong> Details</a></li><li class="chapter-item expanded "><a href="../map/importing/index.html"><strong aria-hidden="true">6.2.</strong> Importing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../map/importing/convert_osm.html"><strong aria-hidden="true">6.2.1.</strong> convert_osm</a></li><li class="chapter-item expanded "><a href="../map/importing/geometry.html"><strong aria-hidden="true">6.2.2.</strong> Road/intersection geometry</a></li><li class="chapter-item expanded "><a href="../map/importing/rest.html"><strong aria-hidden="true">6.2.3.</strong> The rest</a></li><li class="chapter-item expanded "><a href="../map/importing/misc.html"><strong aria-hidden="true">6.2.4.</strong> Misc</a></li></ol></li><li class="chapter-item expanded "><a href="../map/edits.html"><strong aria-hidden="true">6.3.</strong> Live edits</a></li><li class="chapter-item expanded "><a href="../map/platform.html"><strong aria-hidden="true">6.4.</strong> Exporting</a></li></ol></li><li class="chapter-item expanded "><a href="../trafficsim/index.html"><strong aria-hidden="true">7.</strong> Traffic simulation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../trafficsim/discrete_event.html"><strong aria-hidden="true">7.1.</strong> Discrete event simulation</a></li><li class="chapter-item expanded "><a href="../trafficsim/travel_demand.html"><strong aria-hidden="true">7.2.</strong> Travel demand</a></li><li class="chapter-item expanded "><a href="../trafficsim/gridlock.html"><strong aria-hidden="true">7.3.</strong> Gridlock</a></li><li class="chapter-item expanded "><a href="../trafficsim/trips.html"><strong aria-hidden="true">7.4.</strong> Multi-modal trips</a></li><li class="chapter-item expanded "><a href="../trafficsim/live_edits.html"><strong aria-hidden="true">7.5.</strong> Live edits</a></li><li class="chapter-item expanded "><a href="../trafficsim/parking.html"><strong aria-hidden="true">7.6.</strong> Parking</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../project/index.html"><strong aria-hidden="true">8.</strong> Project</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../project/roadmap.html"><strong aria-hidden="true">8.1.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="../project/motivations.html"><strong aria-hidden="true">8.2.</strong> Motivations</a></li><li class="chapter-item expanded "><a href="../project/history/index.html"><strong aria-hidden="true">8.3.</strong> History</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../project/history/backstory.html"><strong aria-hidden="true">8.3.1.</strong> Backstory</a></li><li class="chapter-item expanded "><a href="../project/history/year1.html"><strong aria-hidden="true">8.3.2.</strong> Year 1</a></li><li class="chapter-item expanded "><a href="../project/history/year2.html"><strong aria-hidden="true">8.3.3.</strong> Year 2</a></li><li class="chapter-item expanded "><a href="../project/history/year3.html"><strong aria-hidden="true">8.3.4.</strong> Year 3</a></li></ol></li><li class="chapter-item expanded "><a href="../project/CHANGELOG.html"><strong aria-hidden="true">8.4.</strong> Full CHANGELOG</a></li><li class="chapter-item expanded "><a href="../project/references.html"><strong aria-hidden="true">8.5.</strong> References</a></li><li class="chapter-item expanded "><a href="../project/collaborations.html"><strong aria-hidden="true">8.6.</strong> Collaborations</a></li></ol></li><li class="chapter-item expanded "><a href="../side_projects/index.html"><strong aria-hidden="true">9.</strong> Side projects</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../side_projects/santa.html"><strong aria-hidden="true">9.1.</strong> 15-minute Santa</a></li><li class="chapter-item expanded "><a href="../side_projects/parking_mapper.html"><strong aria-hidden="true">9.2.</strong> Mapping on-street parking</a></li><li class="chapter-item expanded "><a href="../side_projects/osm_viewer.html"><strong aria-hidden="true">9.3.</strong> OpenStreetMap viewer</a></li><li class="chapter-item expanded "><a href="../side_projects/fifteen_min.html"><strong aria-hidden="true">9.4.</strong> 15-minute neighborhoods explorer</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">A/B Street</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#instructions-for-asu-collaborators" id="instructions-for-asu-collaborators">Instructions for ASU collaborators</a></h1>
+<p>These instructions are tailored to the
+<a href="https://github.com/asu-trans-ai-lab/">ASU Transportation AI Lab</a>.</p>
+<p>The most important tip: ask questions!
+<a href="https://github.com/dabreegster/abstreet/issues/">File an issue</a>, email
+<a href="mailto:dabreegster@gmail.com">dabreegster@gmail.com</a>, or ask for a Slack invite.</p>
+<h2><a class="header" href="#installing" id="installing">Installing</a></h2>
+<p>A new version is released every Sunday, but you probably don't need to update
+every week.</p>
+<ol>
+<li>Go to <a href="https://github.com/a-b-street/abstreet/releases">https://github.com/a-b-street/abstreet/releases</a> and download the
+latest <code>.zip</code> file for Windows, Mac, or Linux.</li>
+</ol>
+<p><img src="download.png" alt="download" /></p>
+<ol start="2">
+<li>Unzip the folder and run <code>play_abstreet.sh</code> or <code>play_abstreet.bat</code></li>
+</ol>
+<p><img src="run.png" alt="run" /></p>
+<ol start="3">
+<li>On the main title screen, click <code>Sandbox</code>. This starts in Seattle but
+default, so change the map at the top.</li>
+</ol>
+<p><img src="change_map.png" alt="change_map" /></p>
+<ol start="4">
+<li>Scroll down and choose <code>Download more cities</code></li>
+</ol>
+<p><img src="loader.png" alt="loader" /></p>
+<ol start="5">
+<li>Enable <code>us/phoenix</code> to download Tempe, then <code>Sync files</code></li>
+</ol>
+<p><img src="updater.png" alt="updater" /></p>
+<ol start="6">
+<li>
+<p>Wait. It'll look like the window is frozen. You can open <code>output.txt</code> to
+convince yourself it's trying to download something. I'm working on adding
+proper progress bars to this part!</p>
+</li>
+<li>
+<p>You'll see the map chooser screen again. Choose USA, then Phoenix.</p>
+</li>
+</ol>
+<p><img src="usa.png" alt="usa" /></p>
+<p>You've now opened up the Tempe map!</p>
+<h3><a class="header" href="#a-shortcut" id="a-shortcut">A shortcut</a></h3>
+<p>If you want to skip the title screen and directly open the map of Tempe next
+time, you can modify the script that starts A/B Street. Edit <code>run_abstreet.sh</code>
+or <code>run_abstreet.bat</code> and add <code>--dev data/system/us/phoenix/maps/tempe.bin</code>
+after it says <code>game</code> or <code>game.exe</code>. The Mac version should wind up with
+<code>RUST_BACKTRACE=1 ./game --dev data/system/us/phoenix/maps/tempe.bin 1&gt; ../output.txt 2&gt;&amp;1</code>
+on the last line. For Window it's
+<code>game.exe --dev data/system/us/phoenix/maps/tempe.bin 1&gt; ..\\output.txt 2&gt;&amp;1</code></p>
+<p>There are a bunch of other
+<a href="../dev/index.html#development-tips">startup parameters</a> you can pass here.</p>
+<h2><a class="header" href="#importing-a-grid2demand-scenario" id="importing-a-grid2demand-scenario">Importing a Grid2Demand scenario</a></h2>
+<p>When you run <a href="https://github.com/asu-trans-ai-lab/grid2demand">https://github.com/asu-trans-ai-lab/grid2demand</a>, you get an
+<code>input_agents.csv</code> file. You can import this into A/B Street as a scenario.</p>
+<ol>
+<li>Change the traffic from <code>none</code></li>
+</ol>
+<p><img src="pick_scenario.png" alt="pick_scenario" /></p>
+<ol start="2">
+<li>Click <code>import Grid2Demand data</code></li>
+</ol>
+<p><img src="grid2demand.png" alt="grid2demand" /></p>
+<ol start="3">
+<li>
+<p>Choose your <code>input_agents.csv</code> file</p>
+</li>
+<li>
+<p>A new scenario will be imported. Later you can launch this from the same
+menu; the scenario will be called <code>grid2demand</code></p>
+</li>
+</ol>
+<p><img src="scenario_again.png" alt="scenario_again" /></p>
+<p>Grid2Demand needs a .osm file as input. The extract of Tempe that A/B Street
+uses is at
+https://abstreet.s3.us-east-2.amazonaws.com/dev/data/input/us/phoenix/osm/tempe.osm.gz.
+(Note the file is compressed.)</p>
+<h2><a class="header" href="#modifying-a-scenario" id="modifying-a-scenario">Modifying a scenario</a></h2>
+<p>You can transform a scenario before simulating it. This example will cancel all
+walking and biking trips from the scenario, only leaving driving and public
+transit.</p>
+<ol>
+<li>After loading a scenario, click <code>0 modifications to traffic patterns</code></li>
+</ol>
+<p><img src="mod_traffic.png" alt="mod_traffic" /></p>
+<ol start="2">
+<li>
+<p>Click <code>Change trip mode</code></p>
+</li>
+<li>
+<p>Select the types of trips that you want to transform, and change them to
+cancel. Click <code>Apply</code>.</p>
+</li>
+</ol>
+<p><img src="cancel.png" alt="cancel" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../howto/new_city.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../how_it_works.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../howto/new_city.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../how_it_works.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
