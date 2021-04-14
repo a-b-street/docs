@@ -7,8 +7,9 @@ You will first need:
 - Stable Rust, at least 1.51. <https://www.rust-lang.org/tools/install>.
   - On Windows, you may need
     [Visual Studio 2019](https://visualstudio.microsoft.com/en/downloads/).
-- On Linux, `sudo apt-get install xorg-dev libxcb-shape0-dev libxcb-xfixes0-dev`
-  or the equivalent for your distro
+- On Linux, `sudo apt-get install libasound2-dev libxcb-shape0-dev
+  libxcb-xfixes0-dev libpango1.0-dev libgtk-3-dev` or the equivalent for your
+  distro
 
 One-time setup:
 
