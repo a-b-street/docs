@@ -21,7 +21,7 @@ every week.
 
 ![run](run.png)
 
-3.  On the main title screen, click `Sandbox`. This starts in Seattle but
+3.  On the main title screen, click `Sandbox`. This starts in Seattle by
     default, so change the map at the top.
 
 ![change_map](change_map.png)
@@ -79,8 +79,8 @@ When you run <https://github.com/asu-trans-ai-lab/grid2demand>, you get an
 
 Grid2Demand needs a .osm file as input. The extract of Tempe that A/B Street
 uses is at
-https://abstreet.s3.us-east-2.amazonaws.com/dev/data/input/us/phoenix/osm/tempe.osm.gz.
-(Note the file is compressed.)
+<https://abstreet.s3.us-east-2.amazonaws.com/dev/data/input/us/phoenix/osm/tempe.osm.gz>.
+Note the file is compressed.
 
 ## Modifying a scenario
 
