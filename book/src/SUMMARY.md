@@ -3,6 +3,7 @@
 - [Overview](README.md)
 - [Instructions](howto/README.md)
   - [Importing a new city](howto/new_city.md)
+  - [ASU Lab guide](howto/asu.md)
 - [How it works](how_it_works.md)
 - [Case studies](case_studies/README.md)
   - [Lake Washington Blvd Stay Healthy Street](case_studies/lake_wash.md)
