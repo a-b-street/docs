@@ -817,3 +817,11 @@ changes here.
 
 - massive internal change to make pathfinding use roads, not lanes. paves the way for many exciting things, like...
 - changing the number and width of lanes per road! WIP, debug mode-only UI for now
+
+0.2.40
+
+- fix bugs running the importer
+- import grid2demand scenarios from the UI
+- implement more of road widening internals
+- new --minimal_controls option by Michael for screencasts
+- ran the first UX study in a long time, lots of feedback on the tutorial and traffic signal editor
