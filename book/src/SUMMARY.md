@@ -20,6 +20,7 @@
   - [Release process](dev/release.md)
   - [Data formats](dev/formats/README.md)
     - [Scenarios](dev/formats/scenarios.md)
+    - [Traffic signals](dev/formats/traffic_signals.md)
 - [Map model](map/README.md)
   - [Details](map/details.md)
   - [Importing](map/importing/README.md)
