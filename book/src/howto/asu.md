@@ -17,7 +17,8 @@ every week.
 
 ![download](download.png)
 
-2.  Unzip the folder and run `play_abstreet.sh` or `play_abstreet.bat`
+2.  Unzip the folder and run `play_abstreet.sh` or `play_abstreet.bat`. If you
+    get security warnings, see [here](README.md#installing-the-game).
 
 ![run](run.png)
 
@@ -26,36 +27,36 @@ every week.
 
 ![change_map](change_map.png)
 
-4.  Scroll down and choose `Download more cities`
-
-![loader](loader.png)
-
-5.  Enable `us/phoenix` to download Tempe, then `Sync files`
-
-![updater](updater.png)
-
-6.  Wait. It'll look like the window is frozen. You can open `output.txt` to
-    convince yourself it's trying to download something. I'm working on adding
-    proper progress bars to this part!
-
-7.  You'll see the map chooser screen again. Choose USA, then Phoenix.
+4.  Choose USA, then Phoenix.
 
 ![usa](usa.png)
 
+5.  You'll be prompted to download some files. It should be quick. After it's
+    done, click Phoenix again.
+
 You've now opened up the Tempe map!
 
-### A shortcut
+### A shortcut and improving the simulation in Tempe
 
-If you want to skip the title screen and directly open the map of Tempe next
-time, you can modify the script that starts A/B Street. Edit `run_abstreet.sh`
-or `run_abstreet.bat` and add `--dev data/system/us/phoenix/maps/tempe.bin`
-after it says `game` or `game.exe`. The Mac version should wind up with
-`RUST_BACKTRACE=1 ./game --dev data/system/us/phoenix/maps/tempe.bin 1> ../output.txt 2>&1`
-on the last line. For Window it's
-`game.exe --dev data/system/us/phoenix/maps/tempe.bin 1> ..\\output.txt 2>&1`
+On Windows, edit `run_abstreet.bat` and change the last line to:
+
+`game.exe --dev data/system/us/phoenix/maps/tempe.bin --infinite_parking 1> ..\\output.txt 2>&1`
+
+On Mac, edit `run_abstreet.sh` and change the last line to:
+
+`RUST_BACKTRACE=1 ./game --dev data/system/us/phoenix/maps/tempe.bin --infinite_parking 1> ../output.txt 2>&1`
+
+`--dev data/system/us/phoenix/maps/tempe.bin` will skip the title screen and
+start on the Tempe map by default; this will save you lots of time.
+
+`--infinite_parking` disables the parking simulation. By default, there's an
+unrealistic amount of people walking around Tempe just to reach the spot where
+their car is parked. We don't have good data yet about on- and off-street
+parking, so it's best to just make driving trips begin and end at buildings or
+off the map, without a step to search for parking.
 
 There are a bunch of other
-[startup parameters](../dev/index.md#development-tips) you can pass here.
+[startup parameters](../dev/index.md#development-tips) you can pass here too.
 
 ## Importing a Grid2Demand scenario
 

@@ -16,7 +16,7 @@ One-time setup:
 1.  Download the repository:
     `git clone https://github.com/a-b-street/abstreet.git`
 
-2.  Grab the minimal amount of data to get started: `cargo run --bin updater`
+2.  Grab the minimal amount of data to get started: `cargo run --bin updater -- --minimal`
 
 3.  Run the game: `RUST_BACKTRACE=1 cargo run --bin game --release`. On Windows,
     set environment variables like this:
@@ -57,11 +57,12 @@ version control will get out of date. At any time, you can run
 files that have changed.
 
 You can also opt into downloading updates for more cities by editing
-`data/player/data.json`. In the main UI, there's a button to download more
-cities that will help you manage this config file.
+`data/player/data.json`. If you want to opt into absolutely everything: `cargo
+run --bin updater -- --opt-into-all > data/player/data.json`
 
-If you want to opt into absolutely everything:
-`cargo run --bin updater -- --opt-into-all > data/player/data.json`
+You can download new cities using the UI directly, but currently running the
+updater tool will not recognize these and delete them. Easy fix if somebody
+hits this...
 
 ## Building map data
 
