@@ -825,3 +825,11 @@ changes here.
 - implement more of road widening internals
 - new --minimal_controls option by Michael for screencasts
 - ran the first UX study in a long time, lots of feedback on the tutorial and traffic signal editor
+
+0.2.41
+
+- first prototype of the new road editor!
+- much easier way to download new cities -- just try to open a map you don't yet have. much smaller .zip release now
+- track two "risk exposure" events -- when cars want to overtake cyclists, and passing through a large intersection -- and start to show data on trip panels, a new "problem map" layer, and a WIP summary dashboard
+- better geometry for some merged intersections, and applying the algorithm all around Tempe
+- another UX study and some tutorial UX fixes
