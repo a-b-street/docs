@@ -51,6 +51,8 @@ One-time setup:
 
 ## Downloading more cities
 
+Most easily, you can download new cities using the UI directly.
+
 As data formats change over time, things in the `data/` directory not under
 version control will get out of date. At any time, you can run
 `cargo run --bin updater` from the main repository directory to update only the
@@ -59,10 +61,6 @@ files that have changed.
 You can also opt into downloading updates for more cities by editing
 `data/player/data.json`. If you want to opt into absolutely everything: `cargo
 run --bin updater -- --opt-into-all > data/player/data.json`
-
-You can download new cities using the UI directly, but currently running the
-updater tool will not recognize these and delete them. Easy fix if somebody
-hits this...
 
 ## Building map data
 
