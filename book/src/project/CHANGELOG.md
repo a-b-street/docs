@@ -833,3 +833,8 @@ changes here.
 - track two "risk exposure" events -- when cars want to overtake cyclists, and passing through a large intersection -- and start to show data on trip panels, a new "problem map" layer, and a WIP summary dashboard
 - better geometry for some merged intersections, and applying the algorithm all around Tempe
 - another UX study and some tutorial UX fixes
+
+0.2.42
+
+- improvements to experimental road editor
+- 2 more UX studies and a slew of small fixes
