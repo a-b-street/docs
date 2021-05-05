@@ -4547,12 +4547,10 @@ possible directions for this viewer.</p>
 <h1><a class="header" href="#15-minute-neighborhood-explorer" id="15-minute-neighborhood-explorer">15-minute neighborhood explorer</a></h1>
 <p><img src="side_projects/walkshed.gif" alt="walkshed" /></p>
 <ul>
-<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.42/fifteen_min.html">Web
-version</a></li>
+<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.42/fifteen_min.html">Web version</a></li>
 <li>To run locally, get the
-<a href="https://github.com/a-b-street/abstreet/releases">latest release</a> for
-Windows, Mac, or Linux. After unzipping, run <code>fifteen_min.exe</code> or
-<code>fifteen_min</code>.</li>
+<a href="https://github.com/a-b-street/abstreet/releases">latest release</a> for Windows,
+Mac, or Linux. After unzipping, run <code>fifteen_min.exe</code> or <code>fifteen_min</code>.</li>
 </ul>
 <p>In a
 <a href="https://crosscut.com/focus/2020/11/seattle-could-become-next-15-minute-city">15-minute city</a>,
@@ -4567,6 +4565,64 @@ within a walkshed.</p>
 <p>The tool is quite simple right now. If you have an idea how this could be used
 for advocacy, please
 <a href="https://github.com/a-b-street/abstreet/issues/393">get in touch</a>.</p>
+<h2><a class="header" href="#implementation" id="implementation">Implementation</a></h2>
+<p>This section describes some of the technical implementation details.</p>
+<h3><a class="header" href="#calculating-time-to-buildings" id="calculating-time-to-buildings">Calculating time to buildings</a></h3>
+<p>When you click on a starting building, what happens? Follow along with the code:
+<a href="https://github.com/a-b-street/abstreet/blob/master/fifteen_min/src/isochrone.rs">https://github.com/a-b-street/abstreet/blob/master/fifteen_min/src/isochrone.rs</a></p>
+<p>First, we calculate the time to reach all buildings on the map from the start,
+based on the current options for walking or biking. For walking, this calls
+<a href="https://github.com/a-b-street/abstreet/blob/master/map_model/src/connectivity/walking.rs">all_walking_costs_from</a>.
+This method simply performs
+<a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstra's maneuever</a>,
+floodfilling a graph from the start node and tracking the cost to reach other
+nodes. It terminates early when the cost exceeds 15 minutes.</p>
+<p>One relevant detail is that the graph is based off of <code>WalkingNodes</code>, which
+represent both endpoints of a sidewalk. A building exists some distance along a
+sidewalk. To calculate the final cost to a building, we also add up the cost
+between the nearest end of the sidewalk and the building's exact position along
+the sidewalk. This calculation doesn't use the length of the building's
+driveway/front path, but it could.</p>
+<p>The other question is how we calculate the cost to cross a sidewalk. The units
+are durations, and most of the time, we simply calculate <code>distance / speed</code>. The
+base speed for walking can be configured in the 15m tool UI, with a few pre-set
+values for jogging, using a wheelchair, or a general average for adults. We also
+<a href="https://github.com/a-b-street/abstreet/blob/8826af31cba342662694014e549322a727605339/map_model/src/traversable.rs#L315">adjust speed based on the road's incline</a>,
+using a variation of
+<a href="https://en.wikipedia.org/wiki/Tobler%27s_hiking_function">Tobler's hiking function</a>.
+The elevation data baked into the map model likely has bugs, which then affect
+walking speed.</p>
+<p>In the future, we'll keep expanding this definition of &quot;cost&quot; to capture other
+factors that make it safe and pleasant to walk, so that the 15m tool ultimately
+reflects how awful it'd be to access essential services by walking along a busy
+arterial road.</p>
+<h3><a class="header" href="#drawing-the-isochrone" id="drawing-the-isochrone">Drawing the isochrone</a></h3>
+<p>Now that we have the cost to reach a bunch of buildings, we want to draw the
+three-colored isochrone, showing the area reachable within 5, 10, and 15
+minutes. We use the <a href="https://crates.io/crates/contour">contour</a> crate to do
+this, which uses the
+<a href="https://en.wikipedia.org/wiki/Marching_squares">marching squares algorithm</a> to
+find the &quot;contour&quot; where the cost changes from less than 5 to over 5 minutes.</p>
+<p>In my mind, an isochrone contour algorithm could just take the list of (point,
+cost) pairs as input, but marching squares requires a grid, so
+<a href="https://github.com/a-b-street/abstreet/blob/8826af31cba342662694014e549322a727605339/fifteen_min/src/isochrone.rs#L126">the code</a>
+first creates that grid, using a fixed 100 meter cell size. If two buildings
+happen to map to the same square, the cost of one of them is used arbitrarily.
+It shouldn't matter much; it takes around 30 seconds to walk 100 meters, so the
+contour might be a little off by about that much.</p>
+<p><img src="side_projects/gaps.png" alt="gaps" /></p>
+<p>You can see some gaps in the middle of the park. Because there are no buildings
+in the middle, the grid cell has 0 cost in there. There's probably some better
+approaches to calculating isochrones.</p>
+<h3><a class="header" href="#finding-the-perfect-home" id="finding-the-perfect-home">Finding the perfect home</a></h3>
+<p>The tool also has a feature that lets you mark what categories of amenities you
+care about, then it finds houses within a 15 min walk of all of those. Its
+implementation is
+<a href="https://github.com/a-b-street/abstreet/blob/8826af31cba342662694014e549322a727605339/fifteen_min/src/find_home.rs#L84">laughably brute-force</a>.
+For each of the categories, it finds all stores matching that category, then
+does the Dijkstra's floodfill from each of those buildings. An obvious speedup
+here would be to perform Dijkstra's just once for each category and insert all
+of the stores into the priority queue as starting nodes.</p>
 
                     </main>
 
