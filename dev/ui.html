@@ -1,0 +1,422 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>UI - A/B Street</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Overview</a></li><li class="chapter-item expanded "><a href="../howto/index.html"><strong aria-hidden="true">2.</strong> Instructions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../howto/new_city.html"><strong aria-hidden="true">2.1.</strong> Importing a new city</a></li><li class="chapter-item expanded "><a href="../howto/asu.html"><strong aria-hidden="true">2.2.</strong> ASU Lab guide</a></li></ol></li><li class="chapter-item expanded "><a href="../how_it_works.html"><strong aria-hidden="true">3.</strong> How it works</a></li><li class="chapter-item expanded "><a href="../case_studies/index.html"><strong aria-hidden="true">4.</strong> Case studies</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../case_studies/lake_wash.html"><strong aria-hidden="true">4.1.</strong> Lake Washington Blvd Stay Healthy Street</a></li><li class="chapter-item expanded "><a href="../case_studies/west_seattle.html"><strong aria-hidden="true">4.2.</strong> West Seattle mitigations</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../dev/index.html"><strong aria-hidden="true">5.</strong> Developer guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dev/misc_tricks.html"><strong aria-hidden="true">5.1.</strong> Misc developer tricks</a></li><li class="chapter-item expanded "><a href="../dev/api.html"><strong aria-hidden="true">5.2.</strong> API</a></li><li class="chapter-item expanded "><a href="../dev/testing.html"><strong aria-hidden="true">5.3.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../dev/mass_import.html"><strong aria-hidden="true">5.4.</strong> Importing many maps</a></li><li class="chapter-item expanded "><a href="../dev/data.html"><strong aria-hidden="true">5.5.</strong> Data organization</a></li><li class="chapter-item expanded "><a href="../dev/release.html"><strong aria-hidden="true">5.6.</strong> Release process</a></li><li class="chapter-item expanded "><a href="../dev/formats/index.html"><strong aria-hidden="true">5.7.</strong> Data formats</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../dev/formats/scenarios.html"><strong aria-hidden="true">5.7.1.</strong> Scenarios</a></li><li class="chapter-item expanded "><a href="../dev/formats/traffic_signals.html"><strong aria-hidden="true">5.7.2.</strong> Traffic signals</a></li></ol></li><li class="chapter-item expanded "><a href="../dev/ui.html" class="active"><strong aria-hidden="true">5.8.</strong> UI</a></li></ol></li><li class="chapter-item expanded "><a href="../map/index.html"><strong aria-hidden="true">6.</strong> Map model</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../map/details.html"><strong aria-hidden="true">6.1.</strong> Details</a></li><li class="chapter-item expanded "><a href="../map/importing/index.html"><strong aria-hidden="true">6.2.</strong> Importing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../map/importing/convert_osm.html"><strong aria-hidden="true">6.2.1.</strong> convert_osm</a></li><li class="chapter-item expanded "><a href="../map/importing/geometry.html"><strong aria-hidden="true">6.2.2.</strong> Road/intersection geometry</a></li><li class="chapter-item expanded "><a href="../map/importing/rest.html"><strong aria-hidden="true">6.2.3.</strong> The rest</a></li><li class="chapter-item expanded "><a href="../map/importing/misc.html"><strong aria-hidden="true">6.2.4.</strong> Misc</a></li></ol></li><li class="chapter-item expanded "><a href="../map/edits.html"><strong aria-hidden="true">6.3.</strong> Live edits</a></li><li class="chapter-item expanded "><a href="../map/platform.html"><strong aria-hidden="true">6.4.</strong> Exporting</a></li></ol></li><li class="chapter-item expanded "><a href="../trafficsim/index.html"><strong aria-hidden="true">7.</strong> Traffic simulation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../trafficsim/discrete_event.html"><strong aria-hidden="true">7.1.</strong> Discrete event simulation</a></li><li class="chapter-item expanded "><a href="../trafficsim/travel_demand.html"><strong aria-hidden="true">7.2.</strong> Travel demand</a></li><li class="chapter-item expanded "><a href="../trafficsim/gridlock.html"><strong aria-hidden="true">7.3.</strong> Gridlock</a></li><li class="chapter-item expanded "><a href="../trafficsim/trips.html"><strong aria-hidden="true">7.4.</strong> Multi-modal trips</a></li><li class="chapter-item expanded "><a href="../trafficsim/live_edits.html"><strong aria-hidden="true">7.5.</strong> Live edits</a></li><li class="chapter-item expanded "><a href="../trafficsim/parking.html"><strong aria-hidden="true">7.6.</strong> Parking</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../project/index.html"><strong aria-hidden="true">8.</strong> Project</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../project/roadmap.html"><strong aria-hidden="true">8.1.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="../project/motivations.html"><strong aria-hidden="true">8.2.</strong> Motivations</a></li><li class="chapter-item expanded "><a href="../project/history/index.html"><strong aria-hidden="true">8.3.</strong> History</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../project/history/backstory.html"><strong aria-hidden="true">8.3.1.</strong> Backstory</a></li><li class="chapter-item expanded "><a href="../project/history/year1.html"><strong aria-hidden="true">8.3.2.</strong> Year 1</a></li><li class="chapter-item expanded "><a href="../project/history/year2.html"><strong aria-hidden="true">8.3.3.</strong> Year 2</a></li><li class="chapter-item expanded "><a href="../project/history/year3.html"><strong aria-hidden="true">8.3.4.</strong> Year 3</a></li></ol></li><li class="chapter-item expanded "><a href="../project/CHANGELOG.html"><strong aria-hidden="true">8.4.</strong> Full CHANGELOG</a></li><li class="chapter-item expanded "><a href="../project/references.html"><strong aria-hidden="true">8.5.</strong> References</a></li><li class="chapter-item expanded "><a href="../project/collaborations.html"><strong aria-hidden="true">8.6.</strong> Collaborations</a></li></ol></li><li class="chapter-item expanded "><a href="../side_projects/index.html"><strong aria-hidden="true">9.</strong> Side projects</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../side_projects/santa.html"><strong aria-hidden="true">9.1.</strong> 15-minute Santa</a></li><li class="chapter-item expanded "><a href="../side_projects/parking_mapper.html"><strong aria-hidden="true">9.2.</strong> Mapping on-street parking</a></li><li class="chapter-item expanded "><a href="../side_projects/osm_viewer.html"><strong aria-hidden="true">9.3.</strong> OpenStreetMap viewer</a></li><li class="chapter-item expanded "><a href="../side_projects/fifteen_min.html"><strong aria-hidden="true">9.4.</strong> 15-minute neighborhoods explorer</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">A/B Street</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#how-the-the-ab-street-ui--drawing-work" id="how-the-the-ab-street-ui--drawing-work">How the the A/B Street UI &amp; drawing work</a></h1>
+<p>When I started A/B Street in June 2018, the
+<a href="https://www.areweguiyet.com">Rust UI ecosystem</a> had nothing that clearly fit my
+needs, so I wound up rolling something custom. This doc explains conceptually
+how it works and how to use it. Eventually some of this should become proper
+docs for <code>widgetry</code>.</p>
+<p>Best advice on how to use stuff in practice is to work from examples. <code>grep</code> is
+your friend.</p>
+<h2><a class="header" href="#widgetry-overview" id="widgetry-overview">widgetry overview</a></h2>
+<p>First, the crate-level view. <code>widgetry</code> is the generic drawing and UI library,
+independent of A/B Street. <code>map_gui</code> builds on top of it, providing ways to
+render the map model used by all of the projects. Finally, <code>game</code>,
+<code>fifteen_min</code>, <code>santa</code>, and others are the runnable applications making use of
+this.</p>
+<p>This section will explain how <code>widgetry</code> works from bottom-up. Conceptually
+we'll walk through how it was built from scratch, skipping all of the false
+turns made along the way.</p>
+<h3><a class="header" href="#low-level" id="low-level">Low-level</a></h3>
+<p>Let's start just by drawing stuff and handling keyboard/mouse events. The basic
+loop of any <a href="https://crates.io/crates/winit">winit</a> program is to handle input
+events and, when winit says to, redraw everything. The earliest A/B Street
+prototype expressed the primitive map model imported from OpenStreetMap as a
+bunch of polygons, and hooked up basic mouse controls to pan and zoom over the
+canvas.</p>
+<p>And that hasn't really changed -- we still only draw 2D colored polygons.
+Widgetry's use of
+<a href="https://github.com/a-b-street/abstreet/tree/master/widgetry/shaders">OpenGL shaders</a>
+is dirt simple. With the exception of some barely used texture code, all of the
+icons and images in A/B Street are SVGs, which can be
+<a href="https://github.com/a-b-street/abstreet/blob/master/widgetry/src/svg.rs">transformed into colored polygons</a>
+through the magic of the <a href="https://crates.io/crates/usvg">usvg</a> and
+<a href="https://crates.io/crates/lyon">lyon</a> crates. This includes all
+<a href="https://github.com/a-b-street/abstreet/blob/master/widgetry/src/text.rs">text</a>
+-- even the text is just colored vector polygons! (Text rendering usually works
+by uploading a table of raster glyphs to the GPU and drawing textured quads.)</p>
+<p>The brief story of how we got here: by
+<a href="../project/history/year2.html">November 2019</a>, there was some basic support for
+uploading raster texture and drawing them. At the second Democracy Lab
+hackathon, a developer on Mac hit a 16 texture object limit that was different
+than Linux. This is also when Yuwen joined and started designing using Figma,
+which... conveniently had SVG export. I was also frustrated by rendering text
+separately from everything else; finding the bounding boxes was buggy and there
+were z-order issues. All of this prompted me to poke around and discuss an
+example using lyon to tesellate the output from usvg. I thought, there's no way
+vectorizing EVERYTHING could be performant. But happily I was wrong.</p>
+<p>Finally getting to the practical consequence here. It's expensive to upload
+stuff to the GPU, but it's cheap to draw something already uploaded. So you use
+a <code>GeomBatch</code> to build up that list of colored polygons, then upload it by doing
+<code>ctx.upload(batch)</code>. Later on, you can <code>g.redraw(&amp;drawable)</code> as many times as
+you want and it's fast.</p>
+<p>How should you batch stuff? Issuing redraw calls is fast, but not when there's
+lots of them. So for example, one <code>Drawable</code> per every building on the map would
+be a nightmare. Since buildings don't change, there's a single batch and
+<code>Drawable</code> for all of them. There's a balance here; sometimes you have to
+experiment to find it. But generally, if recalculating a batch only needs to
+happen every so often, just lump everything together in one for simplicity.</p>
+<h3><a class="header" href="#stack-of-states" id="stack-of-states">Stack of states</a></h3>
+<p>So at this point, there's logically one method to handle input events, and one
+method to draw. No built-in organization; all application state is just lumped
+somewhere. The basic insight is that an app has a stack of smaller states
+layered on top of each other. For example, you start with a title screen, then
+enter the main simulation interface, then open up a menu to show extra layers.
+You still want to draw the simulation underneath the menu, but not allow it to
+handle events. When you exit the simulation, you want to go back to the title
+screen and preserve any local state there.</p>
+<p>So a widgetry app mainly consists of a stack of
+<a href="https://github.com/a-b-street/abstreet/blob/master/widgetry/src/app_state.rs">States</a>.
+Each state implements a method to handle events and draw. Some states want to
+draw what's underneath them, while some want to clear the screen and fully
+handle everything -- so <code>draw_baselayer</code> specifies this.</p>
+<p>When a state handles an event, it returns a <code>Transition</code>. This manipulates the
+stack. <code>Transition::Keep</code> doesn't do anything; the current state remains.
+<code>Transition::Pop</code> deletes the current state from the stack, and the previous one
+takes over. <code>Transition::Push</code> introduces a new state, preserving the current
+underneath. And so on.</p>
+<p>There's actually two types of &quot;state&quot; (as in, data managed by the app): local
+and global. Local &quot;state&quot; is owned by the struct implementing the <code>State</code> trait.
+This is usually stuff like any UI panels (which we'll get to soon) and stuff
+like which road we're editing, or what building we're examining. But usually an
+app has a bunch of &quot;state&quot; that lasts for the entire lifetime of the program --
+the map, the simulation, global settings. This stuff can change through the
+program, like loading a new map, but every single <code>State</code> probably wants to use
+it. This global stuff is stored in the <code>App</code> struct, which gets plumbed around.
+So, each <code>State</code> has
+<code>fn event(&amp;mut self, ctx: &amp;mut EventCtx, app: &amp;mut App) -&gt; Transition</code> -- <code>self</code>
+is the local <code>State</code> on the stack, <code>ctx</code> is a handle into the generic <code>widgetry</code>
+system, and <code>app</code> is that global &quot;state&quot;. And there's also
+<code>fn draw(&amp;self, g: &amp;mut GfxCtx, app: &amp;App)</code>, with <code>GfxCtx</code> being the hook to
+draw stuff. Note <code>draw</code> uses immutable borrows; generally you shouldn't modify
+anything while drawing. (When you need to, like for caching, usually
+<a href="https://doc.rust-lang.org/std/cell/index.html">RefCell</a> is the answer.)</p>
+<p>This system of states and transitions mostly works, but there's one super
+awkward problem. Sometimes, state1 needs to push on state2 in order to prompt
+the user for input (free-form text, a menu, or even something more complicated)
+and use the result of state2 in order to do something else. In normal
+programming, this would just be calling a function and using the return value.
+How do we make that work with the event/draw interface? The answer is for state2
+to return <code>Transition::Pop</code> and <code>Transition::ModifyState</code>, downcast the previous
+<code>State</code> into a particular struct, and shove the return value somewhere. This is
+incredibly gross, but I'm not sure what else to do.</p>
+<h3><a class="header" href="#panels" id="panels">Panels</a></h3>
+<p>What's been described so far is kind of only useful for drawing and interacting
+with stuff in &quot;map-space&quot;, aka, the scrollable canvas. What about normal GUI
+elements that live in &quot;screen-space&quot; on top of everything else -- buttons,
+dropdowns, checkboxes, frobnozzlers? There needs to be a way to create these,
+arrange them in some kind of layout, and use them for interaction. There's a
+bunch of ways that GUI frameworks manage the problem of synchronizing
+application &quot;state&quot; with the UI widgets, and it's more complex than usual in
+Rust, but you hit crazy lifetime and borrowing issues if you try to do anything
+with callbacks.</p>
+<p>So sticking to the widgetry philosophy of seeing how far the low-level
+abstractions stretch, widgets are just temporary &quot;state&quot; managed by a <code>State</code>.
+They're always managed as part of a <code>Panel</code>, even if you have just a single
+button. Constructing <code>Panel</code>s is hopefully straightforward from examples; you
+assemble a tree of rows and columns, with some occasional styling and layouting
+hints thrown in. Underneath, widgetry uses
+<a href="https://crates.io/crates/stretch">stretch</a> for CSS Flexbox-style layouting.
+There are some quirks, most of which we've worked out and hopefully papered over
+(like <code>padding</code> and <code>margin</code> don't work on most widgets directly; you have to
+wrap them in a <code>Widget::row</code> or <code>Widget::col</code>).</p>
+<p>So how do you know if a button has been clicked, a toggle toggled, a slider
+slidden, a frobnozzler frobnuzzled? In some languages, you might expect
+callbacks, but here in widgetry, you have to explicitly ask. Most <code>State</code>s will
+<code>match self.panel.event(ctx)</code> somewhere near the top. This takes the current
+event (a low-level keypress or mouse movement) and lets all of the widgets
+inside the <code>Panel</code> possibly use it. If the event caused the widgets to do
+something interesting, the entire <code>Panel</code> will return
+<code>Some(Outcome::Clicked(&quot;button name&quot;))</code> or
+<code>Some(Outcome::Changed(&quot;spinner name&quot;))</code>. The <code>State</code> code can then interpret
+that UI-level event appropriately.</p>
+<p>Currently, the widgets in a <code>Panel</code> are identified by lovely type-unsafe
+hardcoded strings. This isn't the best, but in practice, it's rare to get out of
+sync between the two places in one file that talk about the same widget.</p>
+<p>Some widgets have more information than just &quot;the button was clicked&quot;. Whenever
+you need to, you can just query their state --
+<code>self.panel.slider(&quot;time&quot;).get_percent()</code>, <code>self.panel.dropdown_value(&quot;mode&quot;)</code>,
+<code>self.panel.spinner(&quot;duration&quot;)</code>. These last two are generic, and the compiler
+usually infers the type of the value contained. (Internally, we just downcast to
+that type, so you'd get a runtime panic if you mess up.)</p>
+<h4><a class="header" href="#updating-panels" id="updating-panels">Updating panels</a></h4>
+<p>Sometimes you need to change a <code>Panel</code>, often in response to something done on
+that panel -- like say you toggle between showing raw data points versus
+aggregating in a heatmap, and want to expose extra heatmap settings. There are
+two choices for how to do this: build a new panel entirely, or replace one
+widget.</p>
+<p>Often it's simplest to just split the method that builds a <code>Panel</code> into its own
+method, and call it again with some different parameters. Very very occasionally
+when you take this approach, you'll need to do
+<code>new_panel.restore(ctx, &amp;self.panel); self.panel = new_panel;</code> to retain
+internal widgetry state, such as &quot;this scrollbar is in the process of being
+dragged by the mouse.&quot;</p>
+<p>Or you can just replace one widget (which may be an entire row or column of
+stuff; it's just based on the string ID you specify).
+<code>self.panel.replace(ctx, &quot;edit&quot;, new_button)</code> does the trick.</p>
+<h4><a class="header" href="#simplestate" id="simplestate">SimpleState</a></h4>
+<p>The free-formed nature of <code>State::event</code> is sometimes overwhelming; how do you
+order all of the things that need to happen? You could also implement
+<a href="https://github.com/a-b-street/abstreet/blob/master/widgetry/src/app_state.rs">SimpleState</a>
+when you only have a single <code>Panel</code>. This gives a slightly more opinionated
+interface, telling you when a button was clicked, slider was changed, when the
+mouse was moved, etc. If you're confused, see how it implements <code>fn event</code> --
+it's just organizing some typical different things that happen to handle an
+event.</p>
+<h2><a class="header" href="#higher-layers" id="higher-layers">Higher layers</a></h2>
+<p>Someday we want to release <code>widgetry</code> for general use to the Rust community. But
+there's also lot of code shared between <code>game</code>, <code>fifteen_min</code>, and other apps
+that handles UI concerns specific to <code>map_model</code>, which isn't something most
+people will care about. This stuff goes in <code>map_gui</code>.</p>
+<p>Lots of the <code>map_gui</code> code implements widgetry <code>States</code>, but those are
+parameterized by a particular <code>App</code> struct. Since each of the top-level crates
+uses a different struct, there's an
+<a href="https://github.com/a-b-street/abstreet/blob/master/map_gui/src/lib.rs">AppLike trait</a>
+to handle this level of indirection. If it walks like a duck...</p>
+<h3><a class="header" href="#rendering-maps" id="rendering-maps">Rendering maps</a></h3>
+<p>There are generally two strategies for drawing the map. In the unzoomed view, we
+tend to have a single <code>Drawable</code> for all buildings, another for all roads, etc.
+In the zoomed view, only a few map elements (bus stops, lanes, buildings) are
+visible at a time, so we can afford to show more detail, and store a <code>Drawable</code>
+per object. In fact, there's no need to even calculate all of this zoomed-in
+detail upfront; many maps are huge, and a player won't zoom into every section
+in a particular session. So internally, most of the
+<a href="https://github.com/a-b-street/abstreet/blob/master/map_gui/src/render/">Renderables</a>
+use <code>RefCell</code> and lazily calculate what to draw.</p>
+<p><code>DrawMap</code> internally manages a
+<a href="https://en.wikipedia.org/wiki/Quadtree">quadtree</a> to figure out what to draw
+and to help figure out what object is under the mouse cursor.</p>
+<h3><a class="header" href="#async-madness" id="async-madness">async madness</a></h3>
+<p>If you want to see some scary Rust, check out
+<a href="https://github.com/a-b-street/abstreet/blob/master/map_gui/src/load.rs">load.rs</a>.
+There's a fatal flaw with the core <code>winit</code> event loop -- it was written before
+Rust async landed. It's generally bad to spend more than a few milliseconds in
+either <code>event</code> or <code>draw</code>; the app will appear sluggish, and at some point, the
+window manager warns that the app is frozen. This happens when we
+synchronously/blockingly load a big file from disk, or worse, from the network.</p>
+<p>We're starting to figure out some of the workarounds. When there's &quot;proper&quot;
+async Rust code, like for downloading a file on native, the trick is to spawn a
+separate thread to execute the async block. The main thread (where <code>event</code> and
+<code>draw</code> and most things run) stashes a <code>Future</code> inside of the <code>State</code>. In
+<code>event</code>, it non-blockingly polls the future to see if its done. If not,
+immediately return control to the window manager and just ask it to wake things
+up again in a few milliseconds. Proper loading screens can be drawn this way.</p>
+<p>All of this gets more complicated on the web, because you can't really spawn a
+thread without somme web worker magic. It's still possible to make async HTTP
+fetches work, but it's not all wired together yet.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../dev/formats/traffic_signals.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../map/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../dev/formats/traffic_signals.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../map/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
