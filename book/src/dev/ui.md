@@ -49,7 +49,7 @@ hackathon, a developer on Mac hit a 16 texture object limit that was different
 than Linux. This is also when Yuwen joined and started designing using Figma,
 which... conveniently had SVG export. I was also frustrated by rendering text
 separately from everything else; finding the bounding boxes was buggy and there
-were z-order issues. All of this prompted me to poke around and discuss an
+were z-order issues. All of this prompted me to poke around and discover an
 example using lyon to tesellate the output from usvg. I thought, there's no way
 vectorizing EVERYTHING could be performant. But happily I was wrong.
 
@@ -57,7 +57,8 @@ Finally getting to the practical consequence here. It's expensive to upload
 stuff to the GPU, but it's cheap to draw something already uploaded. So you use
 a `GeomBatch` to build up that list of colored polygons, then upload it by doing
 `ctx.upload(batch)`. Later on, you can `g.redraw(&drawable)` as many times as
-you want and it's fast.
+you want and it's fast. You don't keep the `GeomBatch` around; it's just the
+builder for a `Drawable`.
 
 How should you batch stuff? Issuing redraw calls is fast, but not when there's
 lots of them. So for example, one `Drawable` per every building on the map would
@@ -125,8 +126,8 @@ dropdowns, checkboxes, frobnozzlers? There needs to be a way to create these,
 arrange them in some kind of layout, and use them for interaction. There's a
 bunch of ways that GUI frameworks manage the problem of synchronizing
 application "state" with the UI widgets, and it's more complex than usual in
-Rust, but you hit crazy lifetime and borrowing issues if you try to do anything
-with callbacks.
+Rust, because you hit crazy lifetime and borrowing issues if you try to do
+anything with callbacks.
 
 So sticking to the widgetry philosophy of seeing how far the low-level
 abstractions stretch, widgets are just temporary "state" managed by a `State`.
