@@ -1719,14 +1719,15 @@ hackathon, a developer on Mac hit a 16 texture object limit that was different
 than Linux. This is also when Yuwen joined and started designing using Figma,
 which... conveniently had SVG export. I was also frustrated by rendering text
 separately from everything else; finding the bounding boxes was buggy and there
-were z-order issues. All of this prompted me to poke around and discuss an
+were z-order issues. All of this prompted me to poke around and discover an
 example using lyon to tesellate the output from usvg. I thought, there's no way
 vectorizing EVERYTHING could be performant. But happily I was wrong.</p>
 <p>Finally getting to the practical consequence here. It's expensive to upload
 stuff to the GPU, but it's cheap to draw something already uploaded. So you use
 a <code>GeomBatch</code> to build up that list of colored polygons, then upload it by doing
 <code>ctx.upload(batch)</code>. Later on, you can <code>g.redraw(&amp;drawable)</code> as many times as
-you want and it's fast.</p>
+you want and it's fast. You don't keep the <code>GeomBatch</code> around; it's just the
+builder for a <code>Drawable</code>.</p>
 <p>How should you batch stuff? Issuing redraw calls is fast, but not when there's
 lots of them. So for example, one <code>Drawable</code> per every building on the map would
 be a nightmare. Since buildings don't change, there's a single batch and
@@ -1785,8 +1786,8 @@ dropdowns, checkboxes, frobnozzlers? There needs to be a way to create these,
 arrange them in some kind of layout, and use them for interaction. There's a
 bunch of ways that GUI frameworks manage the problem of synchronizing
 application &quot;state&quot; with the UI widgets, and it's more complex than usual in
-Rust, but you hit crazy lifetime and borrowing issues if you try to do anything
-with callbacks.</p>
+Rust, because you hit crazy lifetime and borrowing issues if you try to do
+anything with callbacks.</p>
 <p>So sticking to the widgetry philosophy of seeing how far the low-level
 abstractions stretch, widgets are just temporary &quot;state&quot; managed by a <code>State</code>.
 They're always managed as part of a <code>Panel</code>, even if you have just a single
