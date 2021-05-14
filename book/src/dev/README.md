@@ -7,16 +7,17 @@ You will first need:
 - Stable Rust, at least 1.51. <https://www.rust-lang.org/tools/install>.
   - On Windows, you may need
     [Visual Studio 2019](https://visualstudio.microsoft.com/en/downloads/).
-- On Linux, `sudo apt-get install libasound2-dev libxcb-shape0-dev
-  libxcb-xfixes0-dev libpango1.0-dev libgtk-3-dev` or the equivalent for your
-  distro
+- On Linux,
+  `sudo apt-get install libasound2-dev libxcb-shape0-dev libxcb-xfixes0-dev libpango1.0-dev libgtk-3-dev`
+  or the equivalent for your distro
 
 One-time setup:
 
 1.  Download the repository:
     `git clone https://github.com/a-b-street/abstreet.git`
 
-2.  Grab the minimal amount of data to get started: `cargo run --bin updater -- --minimal`
+2.  Grab the minimal amount of data to get started:
+    `cargo run --bin updater -- --minimal`
 
 3.  Run the game: `RUST_BACKTRACE=1 cargo run --bin game --release`. On Windows,
     set environment variables like this:
@@ -59,8 +60,8 @@ version control will get out of date. At any time, you can run
 files that have changed.
 
 You can also opt into downloading updates for more cities by editing
-`data/player/data.json`. If you want to opt into absolutely everything: `cargo
-run --bin updater -- --opt-into-all > data/player/data.json`
+`data/player/data.json`. If you want to opt into absolutely everything:
+`cargo run --bin updater -- --opt-into-all > data/player/data.json`
 
 ## Building map data
 
@@ -160,8 +161,8 @@ Other:
 ## Code conventions
 
 All code is automatically formatted using
-<https://github.com/rust-lang/rustfmt>; please run `cargo +nightly fmt` before
-sending a PR. (You have to install the nightly toolchain just for fmt)
+<https://github.com/rust-lang/rustfmt>; please run `cargo fmt` before sending a
+PR.
 
 cargo fmt can't yet organize imports, but we follow a convention to minimize
 conflict with what some IDEs do. Follow existing code to group imports: std,
