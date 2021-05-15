@@ -169,6 +169,10 @@ conflict with what some IDEs do. Follow existing code to group imports: std,
 external crates, other crates in the project, the current crate, then finally
 any module declarations.
 
+We also use <https://github.com/rust-lang/rust-clippy> to adhere to more Rust
+best practices. No need to run it for every commit, and sometimes we'll disable
+a warning. If in doubt, just ask on a PR.
+
 See the [testing strategy](testing.md) page.
 
 ## Error handling
