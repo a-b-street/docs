@@ -972,6 +972,9 @@ PR.</p>
 conflict with what some IDEs do. Follow existing code to group imports: std,
 external crates, other crates in the project, the current crate, then finally
 any module declarations.</p>
+<p>We also use <a href="https://github.com/rust-lang/rust-clippy">https://github.com/rust-lang/rust-clippy</a> to adhere to more Rust
+best practices. No need to run it for every commit, and sometimes we'll disable
+a warning. If in doubt, just ask on a PR.</p>
 <p>See the <a href="dev/testing.html">testing strategy</a> page.</p>
 <h2><a class="header" href="#error-handling" id="error-handling">Error handling</a></h2>
 <p>The error handling is unfortunately inconsistent. The goal is to gracefully
