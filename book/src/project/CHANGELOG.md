@@ -838,3 +838,13 @@ changes here.
 
 - improvements to experimental road editor
 - 2 more UX studies and a slew of small fixes
+
+0.2.43
+
+- starting to import GMNS traffic signal timing. this will eventully let us import from Synchro!
+- more work on the new road editor, but still not ready. lane widths are now more varied and realistic.
+- Trevor overhauled the OSM amenity categories and added a multi-source isochrone to the 15m tool to find places without access to some amenity
+- partial work running the map importer in a Docker container, to eventually speed up the import process in the cloud
+- signal editor UI adjustments
+- time warp UI fixes and a new risk exposure contingency matrix by Michael
+- internal code cleanup using clippy, by Vinzent

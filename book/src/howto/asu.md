@@ -99,3 +99,45 @@ transit.
     cancel. Click `Apply`.
 
 ![cancel](cancel.png)
+
+## Importing Vol2Timing data
+
+<https://github.com/asu-trans-ai-lab/Vol2Timing/> produces `timing.csv` files
+that you can import into A/B Street.
+
+1.  Open the traffic signal editor for an intersection in A/B Street.
+
+2.  Click `Edit entire signal`
+
+3.  Choose `import from a new GMNS timing.csv`, then pick your file.
+
+The import process isn't finished yet; some movements aren't matched properly,
+some movements are incorrectly marked as protected, and no crosswalks are
+imported yet. When you import, some error messages may be displayed, and others
+might wind up printed to STDOUT (captured in `output.txt` on Windows).
+
+If you want to import timing for more intersections in the same map, after
+`Edit entire signal`, you should also have n option like
+`import from GMNS C:\path\to\timing.csv`.
+
+### Debugging timing.csv
+
+Along with QGIS, you can also visualize `timing.csv` in A/B Street directly.
+
+1.  From the title screen, choose `Internal dev tools`.
+
+2.  Change the map if necessary.
+
+3.  Click `view KML`.
+
+4.  Click `load KML file`, then choose your `timing.csv`.
+
+5.  Each movement is drawn in red. You can hover over a line-string to see its
+    attributes, and click to open all details.
+
+![gmns_debug](gmns_debug.png)
+
+6.  Using the key=value filter on the left, you can type in `no=3` to match
+    `stage_no=3` and easily check what movements belong to each stage.
+
+![gmns_stages](gmns_stages.png)
