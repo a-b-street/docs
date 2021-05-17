@@ -160,7 +160,7 @@ problems.</p>
 <p>Grab a pre-built binary release -- updated every Sunday, announced at
 <a href="http://old.reddit.com/r/abstreet">r/abstreet</a>:</p>
 <ul>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.42/abstreet_windows_v0_2_42.zip">Windows</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.43/abstreet_windows_v0_2_43.zip">Windows</a>
 <ul>
 <li>Unzip the folder, then run <code>play_abstreet.bat</code>. If you get a warning about
 compressed files, choose to extract -- you can't run from the .zip directly.</li>
@@ -169,7 +169,7 @@ then &quot;run anyway.&quot; We don't sign the release yet, so A/B Street shows 
 an unknown publisher.</li>
 </ul>
 </li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.42/abstreet_mac_v0_2_42.zip">Mac</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.43/abstreet_mac_v0_2_43.zip">Mac</a>
 <ul>
 <li>Unzip the directory, then run <code>play_abstreet.sh</code>.</li>
 <li>If you get an error about the developer unverified,
@@ -183,7 +183,7 @@ open terminal, <code>cd</code> to the directory you just unzipped. Then do:
 this as a Mac .app, to make this process simpler</li>
 </ul>
 </li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.42/abstreet_linux_v0_2_42.zip">Linux</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.43/abstreet_linux_v0_2_43.zip">Linux</a>
 <ul>
 <li>Unzip the directory, then run <code>play_abstreet.sh</code>.</li>
 </ul>
@@ -192,7 +192,7 @@ this as a Mac .app, to make this process simpler</li>
 <a href="https://github.com/yurivict">Yuri</a></li>
 </ul>
 <p>Or you can play
-<a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.42/abstreet.html">directly in your web browser</a>
+<a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.43/abstreet.html">directly in your web browser</a>
 -- some things don't work as well, but no install required.</p>
 <p>Or you can <a href="howto/../dev/index.html">compile from source</a>.</p>
 <h2><a class="header" href="#playing-the-game" id="playing-the-game">Playing the game</a></h2>
@@ -419,6 +419,53 @@ cancel. Click <code>Apply</code>.</p>
 </li>
 </ol>
 <p><img src="howto/cancel.png" alt="cancel" /></p>
+<h2><a class="header" href="#importing-vol2timing-data" id="importing-vol2timing-data">Importing Vol2Timing data</a></h2>
+<p><a href="https://github.com/asu-trans-ai-lab/Vol2Timing/">https://github.com/asu-trans-ai-lab/Vol2Timing/</a> produces <code>timing.csv</code> files
+that you can import into A/B Street.</p>
+<ol>
+<li>
+<p>Open the traffic signal editor for an intersection in A/B Street.</p>
+</li>
+<li>
+<p>Click <code>Edit entire signal</code></p>
+</li>
+<li>
+<p>Choose <code>import from a new GMNS timing.csv</code>, then pick your file.</p>
+</li>
+</ol>
+<p>The import process isn't finished yet; some movements aren't matched properly,
+some movements are incorrectly marked as protected, and no crosswalks are
+imported yet. When you import, some error messages may be displayed, and others
+might wind up printed to STDOUT (captured in <code>output.txt</code> on Windows).</p>
+<p>If you want to import timing for more intersections in the same map, after
+<code>Edit entire signal</code>, you should also have n option like
+<code>import from GMNS C:\path\to\timing.csv</code>.</p>
+<h3><a class="header" href="#debugging-timingcsv" id="debugging-timingcsv">Debugging timing.csv</a></h3>
+<p>Along with QGIS, you can also visualize <code>timing.csv</code> in A/B Street directly.</p>
+<ol>
+<li>
+<p>From the title screen, choose <code>Internal dev tools</code>.</p>
+</li>
+<li>
+<p>Change the map if necessary.</p>
+</li>
+<li>
+<p>Click <code>view KML</code>.</p>
+</li>
+<li>
+<p>Click <code>load KML file</code>, then choose your <code>timing.csv</code>.</p>
+</li>
+<li>
+<p>Each movement is drawn in red. You can hover over a line-string to see its
+attributes, and click to open all details.</p>
+</li>
+</ol>
+<p><img src="howto/gmns_debug.png" alt="gmns_debug" /></p>
+<ol start="6">
+<li>Using the key=value filter on the left, you can type in <code>no=3</code> to match
+<code>stage_no=3</code> and easily check what movements belong to each stage.</li>
+</ol>
+<p><img src="howto/gmns_stages.png" alt="gmns_stages" /></p>
 <h1><a class="header" href="#how-ab-street-works" id="how-ab-street-works">How A/B Street works</a></h1>
 <p>The overview:</p>
 <ol>
@@ -4421,6 +4468,16 @@ changes here.</p>
 <li>improvements to experimental road editor</li>
 <li>2 more UX studies and a slew of small fixes</li>
 </ul>
+<p>0.2.43</p>
+<ul>
+<li>starting to import GMNS traffic signal timing. this will eventully let us import from Synchro!</li>
+<li>more work on the new road editor, but still not ready. lane widths are now more varied and realistic.</li>
+<li>Trevor overhauled the OSM amenity categories and added a multi-source isochrone to the 15m tool to find places without access to some amenity</li>
+<li>partial work running the map importer in a Docker container, to eventually speed up the import process in the cloud</li>
+<li>signal editor UI adjustments</li>
+<li>time warp UI fixes and a new risk exposure contingency matrix by Michael</li>
+<li>internal code cleanup using clippy, by Vinzent</li>
+</ul>
 <h1><a class="header" href="#references" id="references">References</a></h1>
 <h2><a class="header" href="#example-use-cases" id="example-use-cases">Example use cases</a></h2>
 <ul>
@@ -4615,11 +4672,11 @@ work and shop.</p>
 <a href="https://github.com/a-b-street/abstreet/issues/new">file an issue on Github</a>.</p>
 <h2><a class="header" href="#play-it" id="play-it">Play it</a></h2>
 <ul>
-<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.42/santa.html">Play online</a>
+<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.43/santa.html">Play online</a>
 (slower and no music -- download below if possible)</li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.42/abstreet_windows_v0_2_42.zip">Windows</a></li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.42/abstreet_mac_v0_2_42.zip">Mac</a></li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.42/abstreet_linux_v0_2_42.zip">Linux</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.43/abstreet_windows_v0_2_43.zip">Windows</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.43/abstreet_mac_v0_2_43.zip">Mac</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.43/abstreet_linux_v0_2_43.zip">Linux</a></li>
 </ul>
 <p>Unzip, then run <code>santa.exe</code> or <code>santa</code>. No mobile/tablet support, sorry -- you need a keyboard.</p>
 <h2><a class="header" href="#faq" id="faq">FAQ</a></h2>
@@ -4744,7 +4801,7 @@ you'd like to see included.</p>
 <p>Or if you have a <code>.osm</code> file, try the <a href="side_projects/new_city.html">quick start guide</a>.</p>
 <h1><a class="header" href="#openstreetmap-viewer" id="openstreetmap-viewer">OpenStreetMap viewer</a></h1>
 <ul>
-<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.42/osm_viewer.html">Web
+<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.43/osm_viewer.html">Web
 version</a></li>
 <li>To run locally, get the
 <a href="https://github.com/a-b-street/abstreet/releases">latest release</a> for
@@ -4758,7 +4815,7 @@ possible directions for this viewer.</p>
 <h1><a class="header" href="#15-minute-neighborhood-explorer" id="15-minute-neighborhood-explorer">15-minute neighborhood explorer</a></h1>
 <p><img src="side_projects/walkshed.gif" alt="walkshed" /></p>
 <ul>
-<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.42/fifteen_min.html">Web version</a></li>
+<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.43/fifteen_min.html">Web version</a></li>
 <li>To run locally, get the
 <a href="https://github.com/a-b-street/abstreet/releases">latest release</a> for Windows,
 Mac, or Linux. After unzipping, run <code>fifteen_min.exe</code> or <code>fifteen_min</code>.</li>
