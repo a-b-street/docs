@@ -81,6 +81,48 @@ it loads quickly, while capturing all of the area needed to simulate something
 interesting. This is easiest when you have some local knowledge of the area, and
 at least a vague goal in mind for what you want to study.
 
+## Advanced: Importing a .osm file directly
+
+This section assumes you're comfortable working on a command line. If you have a
+.osm XML file, you can import it directly by running
+`./import.sh --oneshot=/path/to/extract.osm`. If you're running from a .zip
+release and not building from source, replace the first part with
+`./tools/importer`.
+
+Assuming this succeeds, it'll create a file called
+`data/system/zz/oneshot/maps/extract.bin`. Currently the UI won't list this
+file, so you have to launch the game pointed at this file directly; see
+[here](asu.md#a-shortcut-and-improving-the-simulation-in-tempe) for how to do
+that.
+
+If you save a .osm file from JOSM, you might get an error importing related to
+`convert_osm/src/clip.rs`. If so, delete the `<bounds>` element from the top of
+the .osm file and try again.
+
+If you follow this process, the resulting map won't have any border
+intersections, which will break parts of the simulation:
+
+![no_clip](no_clip.png)
+
+You can fix this by creating the Osmosis .poly file and passing
+`--oneshot_clip=/path/to/clip.poly` to the import command.
+
+One use case for following this section is to temporarily work around
+[broken intersection geometry](https://github.com/a-b-street/abstreet/issues/654).
+The process is:
+
+1.  Edit the problematic area in JOSM, recreating a complicated intersection in
+    a simpler way.
+2.  Save the .osm file locally
+3.  Run the importer
+4.  Try in A/B Street
+
+You probably don't want to upload the changeset to OSM, unless it's actually
+mis-tagged. Usually the problem is how A/B Street tries to interpret what's in
+OSM. Ideally we could also follow this process using the ID editor, but it can't
+currently
+[manage changeset files fully](https://github.com/openstreetmap/iD/issues/7109).
+
 ## Next steps
 
 OpenStreetMap isn't the only data source we need. If you look at the import
