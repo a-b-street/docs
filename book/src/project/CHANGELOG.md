@@ -848,3 +848,12 @@ changes here.
 - signal editor UI adjustments
 - time warp UI fixes and a new risk exposure contingency matrix by Michael
 - internal code cleanup using clippy, by Vinzent
+
+0.2.44
+
+- experimental road editor finally released! more improvements still planned
+- save/restore settings (like camera angle and units) between sessions
+- Michael improved performance of scrolling panels
+- Michael adding more dataviz to travel time and risk exposure dashboards
+- regenerating all maps now happens on the cloud -- faster and less harmful to my poor laptop
+- exploring some debug tools and strategies for consolidating intersections
