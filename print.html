@@ -1328,9 +1328,7 @@ to JSON:</p>
 use it in-game:</p>
 <pre><code>cargo run --bin game data/system/us/seattle/scenarios/montlake/modified_scenario.json
 </code></pre>
-<p>The Scenario format is also undocumented, but see the
-<a href="https://a-b-street.github.io/abstreet/rustdoc/sim/struct.Scenario.html">generated API docs</a>
-anyway.</p>
+<p>The Scenario format is <a href="dev/formats/scenarios.html">documented here</a>.</p>
 <h1><a class="header" href="#testing-strategy" id="testing-strategy">Testing strategy</a></h1>
 <h2><a class="header" href="#unit-tests" id="unit-tests">Unit tests</a></h2>
 <p>As you've probably noticed, there aren't many. Lots of the interesting behavior
@@ -1566,15 +1564,15 @@ departure time. And of course, you can add as many people as you like.</p>
   &quot;scenario_name&quot;: &quot;monday&quot;,
   &quot;people&quot;: [
     {
-      &quot;origin&quot;: {
-        &quot;Position&quot;: {
-          &quot;longitude&quot;: -122.303723,
-          &quot;latitude&quot;: 47.6372834
-        }
-      },
       &quot;trips&quot;: [
         {
           &quot;departure&quot;: 10800.0,
+          &quot;origin&quot;: {
+            &quot;Position&quot;: {
+              &quot;longitude&quot;: -122.303723,
+              &quot;latitude&quot;: 47.6372834
+            }
+          },
           &quot;destination&quot;: {
             &quot;Position&quot;: {
               &quot;longitude&quot;: -122.3075948,
