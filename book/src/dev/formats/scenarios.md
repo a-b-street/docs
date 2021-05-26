@@ -27,15 +27,15 @@ departure time. And of course, you can add as many people as you like.
   "scenario_name": "monday",
   "people": [
     {
-      "origin": {
-        "Position": {
-          "longitude": -122.303723,
-          "latitude": 47.6372834
-        }
-      },
       "trips": [
         {
           "departure": 10800.0,
+          "origin": {
+            "Position": {
+              "longitude": -122.303723,
+              "latitude": 47.6372834
+            }
+          },
           "destination": {
             "Position": {
               "longitude": -122.3075948,

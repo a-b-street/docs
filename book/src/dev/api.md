@@ -164,6 +164,4 @@ use it in-game:
 cargo run --bin game data/system/us/seattle/scenarios/montlake/modified_scenario.json
 ```
 
-The Scenario format is also undocumented, but see the
-[generated API docs](https://a-b-street.github.io/abstreet/rustdoc/sim/struct.Scenario.html)
-anyway.
+The Scenario format is [documented here](formats/scenarios.md).
