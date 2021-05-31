@@ -857,3 +857,12 @@ changes here.
 - Michael adding more dataviz to travel time and risk exposure dashboards
 - regenerating all maps now happens on the cloud -- faster and less harmful to my poor laptop
 - exploring some debug tools and strategies for consolidating intersections
+
+0.2.45
+
+- map importing fixes: multiple left/right turn lanes, combo bus/turn lanes, tidy up degenerate intersections along cyclepaths, allow explicitly tagged U-turns, better stop sign placement heuristics
+- in Seattle, snap trips entering/leaving map through borders more carefully
+- prebake data to cover trips starting near midnight. down from about 3000 cancelled trips in montlake to 300
+- road editor UI: explain disabled actions
+- Michael added new "arterial crossing" risk for pedestrians
+- improved GMNS signal timing importer
