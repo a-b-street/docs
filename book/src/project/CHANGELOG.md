@@ -866,3 +866,12 @@ changes here.
 - road editor UI: explain disabled actions
 - Michael added new "arterial crossing" risk for pedestrians
 - improved GMNS signal timing importer
+
+0.2.46
+
+- lots of internal writing, presentations... not quite ready for an audience yet
+- fixed weird turn lane arrows
+- GMNS signal import now works for many intersections, thanks to crosswalk inference
+- road editor UI fixes
+- speed up starting a simulation with infinite parking
+- possible breakthrough with intersection consolidation
