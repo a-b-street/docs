@@ -13,9 +13,12 @@
 
 ---
 
-- [Instructions](howto/README.md)
-  - [Importing a new city](howto/new_city.md)
-  - [ASU Lab guide](howto/asu.md)
+- [User guide](user/README.md)
+  - [Importing a new city](user/new_city.md)
+  - [ASU Lab guide](user/asu.md)
+
+---
+
 - [Case studies](case_studies/README.md)
   - [Lake Washington Blvd Stay Healthy Street](case_studies/lake_wash.md)
   - [West Seattle mitigations](case_studies/west_seattle.md)

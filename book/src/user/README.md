@@ -1,4 +1,4 @@
-# A/B Street Instructions
+# User guide
 
 This is an alpha-quality demo. Please email <dabreegster@gmail.com> or
 [file a Github issue](https://github.com/a-b-street/abstreet/issues/) if you hit
