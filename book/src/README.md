@@ -1,4 +1,9 @@
-# A/B Street
+# Homepage
 
-All documentation lives here. Some chapters are only intended for a technical
-audience.
+This documentation is in the process of turning into a proper website.
+
+This homepage should definitely have:
+
+- our 3 principles
+- lots of videos
+- contact info

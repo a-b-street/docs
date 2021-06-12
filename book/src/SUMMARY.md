@@ -1,10 +1,21 @@
 # Summary
 
-- [Overview](README.md)
+- [Homepage](README.md)
+
+---
+
+- [Software](software/README.md)
+  - [A/B Street](software/abstreet.md)
+  - [15-minute neighborhoods explorer](software/fifteen_min.md)
+  - [15-minute Santa](software/santa.md)
+  - [OpenStreetMap viewer](software/osm_viewer.md)
+  - [Mapping on-street parking](software/parking_mapper.md)
+
+---
+
 - [Instructions](howto/README.md)
   - [Importing a new city](howto/new_city.md)
   - [ASU Lab guide](howto/asu.md)
-- [How it works](how_it_works.md)
 - [Case studies](case_studies/README.md)
   - [Lake Washington Blvd Stay Healthy Street](case_studies/lake_wash.md)
   - [West Seattle mitigations](case_studies/west_seattle.md)
@@ -53,8 +64,3 @@
   - [Full CHANGELOG](project/CHANGELOG.md)
   - [References](project/references.md)
   - [Collaborations](project/collaborations.md)
-- [Side projects](side_projects/README.md)
-  - [15-minute Santa](side_projects/santa.md)
-  - [Mapping on-street parking](side_projects/parking_mapper.md)
-  - [OpenStreetMap viewer](side_projects/osm_viewer.md)
-  - [15-minute neighborhoods explorer](side_projects/fifteen_min.md)
