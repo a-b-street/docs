@@ -68,3 +68,4 @@
   - [Full CHANGELOG](project/CHANGELOG.md)
   - [References](project/references.md)
   - [Collaborations](project/collaborations.md)
+  - [Presentations](project/presentations.md)
