@@ -1,0 +1,376 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Traffic signals - A/B Street</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../../index.html"><strong aria-hidden="true">1.</strong> Homepage</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../../../software/index.html"><strong aria-hidden="true">2.</strong> Software</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../software/abstreet.html"><strong aria-hidden="true">2.1.</strong> A/B Street</a></li><li class="chapter-item expanded "><a href="../../../software/fifteen_min.html"><strong aria-hidden="true">2.2.</strong> 15-minute neighborhoods explorer</a></li><li class="chapter-item expanded "><a href="../../../software/santa.html"><strong aria-hidden="true">2.3.</strong> 15-minute Santa</a></li><li class="chapter-item expanded "><a href="../../../software/osm_viewer.html"><strong aria-hidden="true">2.4.</strong> OpenStreetMap viewer</a></li><li class="chapter-item expanded "><a href="../../../software/parking_mapper.html"><strong aria-hidden="true">2.5.</strong> Mapping on-street parking</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../../../user/index.html"><strong aria-hidden="true">3.</strong> User guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../user/new_city.html"><strong aria-hidden="true">3.1.</strong> Importing a new city</a></li><li class="chapter-item expanded "><a href="../../../user/asu.html"><strong aria-hidden="true">3.2.</strong> ASU Lab guide</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../../../proposals/index.html"><strong aria-hidden="true">4.</strong> Proposals</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../proposals/lake_wash.html"><strong aria-hidden="true">4.1.</strong> Lake Washington Blvd Stay Healthy Street</a></li><li class="chapter-item expanded "><a href="../../../proposals/west_seattle.html"><strong aria-hidden="true">4.2.</strong> West Seattle mitigations</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../../../tech/index.html"><strong aria-hidden="true">5.</strong> Technical details</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../tech/dev/index.html"><strong aria-hidden="true">5.1.</strong> Developer guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../tech/dev/misc_tricks.html"><strong aria-hidden="true">5.1.1.</strong> Misc developer tricks</a></li><li class="chapter-item expanded "><a href="../../../tech/dev/api.html"><strong aria-hidden="true">5.1.2.</strong> API</a></li><li class="chapter-item expanded "><a href="../../../tech/dev/testing.html"><strong aria-hidden="true">5.1.3.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../../../tech/dev/mass_import.html"><strong aria-hidden="true">5.1.4.</strong> Importing many maps</a></li><li class="chapter-item expanded "><a href="../../../tech/dev/data.html"><strong aria-hidden="true">5.1.5.</strong> Data organization</a></li><li class="chapter-item expanded "><a href="../../../tech/dev/release.html"><strong aria-hidden="true">5.1.6.</strong> Release process</a></li><li class="chapter-item expanded "><a href="../../../tech/dev/formats/index.html"><strong aria-hidden="true">5.1.7.</strong> Data formats</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../tech/dev/formats/scenarios.html"><strong aria-hidden="true">5.1.7.1.</strong> Scenarios</a></li><li class="chapter-item expanded "><a href="../../../tech/dev/formats/traffic_signals.html" class="active"><strong aria-hidden="true">5.1.7.2.</strong> Traffic signals</a></li></ol></li><li class="chapter-item expanded "><a href="../../../tech/dev/ui.html"><strong aria-hidden="true">5.1.8.</strong> UI</a></li></ol></li><li class="chapter-item expanded "><a href="../../../tech/map/index.html"><strong aria-hidden="true">5.2.</strong> Map model</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../tech/map/details.html"><strong aria-hidden="true">5.2.1.</strong> Details</a></li><li class="chapter-item expanded "><a href="../../../tech/map/importing/index.html"><strong aria-hidden="true">5.2.2.</strong> Importing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../tech/map/importing/convert_osm.html"><strong aria-hidden="true">5.2.2.1.</strong> convert_osm</a></li><li class="chapter-item expanded "><a href="../../../tech/map/importing/geometry.html"><strong aria-hidden="true">5.2.2.2.</strong> Road/intersection geometry</a></li><li class="chapter-item expanded "><a href="../../../tech/map/importing/rest.html"><strong aria-hidden="true">5.2.2.3.</strong> The rest</a></li><li class="chapter-item expanded "><a href="../../../tech/map/importing/misc.html"><strong aria-hidden="true">5.2.2.4.</strong> Misc</a></li></ol></li><li class="chapter-item expanded "><a href="../../../tech/map/edits.html"><strong aria-hidden="true">5.2.3.</strong> Live edits</a></li><li class="chapter-item expanded "><a href="../../../tech/map/platform.html"><strong aria-hidden="true">5.2.4.</strong> Exporting</a></li></ol></li><li class="chapter-item expanded "><a href="../../../tech/trafficsim/index.html"><strong aria-hidden="true">5.3.</strong> Traffic simulation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../tech/trafficsim/discrete_event.html"><strong aria-hidden="true">5.3.1.</strong> Discrete event simulation</a></li><li class="chapter-item expanded "><a href="../../../tech/trafficsim/travel_demand.html"><strong aria-hidden="true">5.3.2.</strong> Travel demand</a></li><li class="chapter-item expanded "><a href="../../../tech/trafficsim/gridlock.html"><strong aria-hidden="true">5.3.3.</strong> Gridlock</a></li><li class="chapter-item expanded "><a href="../../../tech/trafficsim/trips.html"><strong aria-hidden="true">5.3.4.</strong> Multi-modal trips</a></li><li class="chapter-item expanded "><a href="../../../tech/trafficsim/live_edits.html"><strong aria-hidden="true">5.3.5.</strong> Live edits</a></li><li class="chapter-item expanded "><a href="../../../tech/trafficsim/parking.html"><strong aria-hidden="true">5.3.6.</strong> Parking</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../project/index.html"><strong aria-hidden="true">6.</strong> Project</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../project/team.html"><strong aria-hidden="true">6.1.</strong> Team</a></li><li class="chapter-item expanded "><a href="../../../project/roadmap.html"><strong aria-hidden="true">6.2.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="../../../project/motivations.html"><strong aria-hidden="true">6.3.</strong> Motivations</a></li><li class="chapter-item expanded "><a href="../../../project/history/index.html"><strong aria-hidden="true">6.4.</strong> History</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../project/history/backstory.html"><strong aria-hidden="true">6.4.1.</strong> Backstory</a></li><li class="chapter-item expanded "><a href="../../../project/history/year1.html"><strong aria-hidden="true">6.4.2.</strong> Year 1</a></li><li class="chapter-item expanded "><a href="../../../project/history/year2.html"><strong aria-hidden="true">6.4.3.</strong> Year 2</a></li><li class="chapter-item expanded "><a href="../../../project/history/year3.html"><strong aria-hidden="true">6.4.4.</strong> Year 3</a></li></ol></li><li class="chapter-item expanded "><a href="../../../project/CHANGELOG.html"><strong aria-hidden="true">6.5.</strong> Full CHANGELOG</a></li><li class="chapter-item expanded "><a href="../../../project/references.html"><strong aria-hidden="true">6.6.</strong> References</a></li><li class="chapter-item expanded "><a href="../../../project/collaborations.html"><strong aria-hidden="true">6.7.</strong> Collaborations</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">A/B Street</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#traffic-signal-data-format" id="traffic-signal-data-format">Traffic signal data format</a></h1>
+<p>A/B Street uses a JSON format to describe how a single intersection with traffic
+signals is configured. This format changes more frequently, but the software
+will automatically upgrade a signal described in an old format. This way,
+players can save their edits to a map and, months later, still use the same
+edits with a new version of A/B Street. (The only exception is when
+OpenStreetMap IDs change; if a way near the intersection is split and assigned a
+new ID, we make no attempt to handle this.)</p>
+<p>The format is complicated, so let's break down some of the concepts used in it.</p>
+<h2><a class="header" href="#turns" id="turns">Turns</a></h2>
+<p>We first need a way to describe a movement between two road segments. Let's use
+<a href="https://www.openstreetmap.org/node/53219808">https://www.openstreetmap.org/node/53219808</a>, the intersection of 24th Ave E
+and E McGraw St in Seattle as an example.</p>
+<h3><a class="header" href="#directed-road-segments" id="directed-road-segments">Directed road segments</a></h3>
+<p>So first let's identify a single road segment. For this example, let's describe
+the eastbound direction of the west side of McGraw St, which is
+<a href="https://www.openstreetmap.org/way/804788512">https://www.openstreetmap.org/way/804788512</a> in OSM. As you can see, this way
+hits 3 intersections. We just want to describe the segment between 24th and 25th
+Ave. Looking at the list of nodes for that way in the order defined in OSM, we
+see it goes from <a href="https://www.openstreetmap.org/node/53219808">https://www.openstreetmap.org/node/53219808</a> to
+<a href="https://www.openstreetmap.org/node/1709143541">https://www.openstreetmap.org/node/1709143541</a>. Note that the intermediate
+nodes used as control points for the shape of the road or as crosswalk nodes are
+ignored. So, we can describe this segment by using the way's ID and the first
+and last node ID.</p>
+<p><img src="mcgraw.png" alt="mcgraw" /></p>
+<pre><code>{
+  &quot;osm_way_id&quot;: 804788512,
+  &quot;osm_node1&quot;: 53219808,
+  &quot;osm_node2&quot;: 1709143541,
+  &quot;is_forwards&quot;: false
+}
+</code></pre>
+<p>Finally, we have to say which direction of this road segment we're talking
+about. The order of the nodes in OSM is arbitrary; in this case, the road points
+from the traffic signal we're talking about to another intersection. But we want
+to refer to the inbound / eastbound direction of this road. So we say
+<code>&quot;is_forwards&quot;: false</code> to indicate the opposite of the direction specified by
+OSM. This is the same concept as &quot;forward &amp; backward&quot; as defined in the
+<a href="https://wiki.openstreetmap.org/wiki/Forward_%26_backward,_left_%26_right">OSM wiki</a>.</p>
+<h3><a class="header" href="#turns-for-vehicles" id="turns-for-vehicles">Turns for vehicles</a></h3>
+<p>So now let's describe the left turn from E McGraw to 24th going southbound. It
+looks like this:</p>
+<pre><code>{
+  &quot;from&quot;: {
+    &quot;osm_way_id&quot;: 804788512,
+    &quot;osm_node1&quot;: 53219808,
+    &quot;osm_node2&quot;: 1709143541,
+    &quot;is_forwards&quot;: false
+  },
+  &quot;to&quot;: {
+    &quot;osm_way_id&quot;: 6470476,
+    &quot;osm_node1&quot;: 53128048,
+    &quot;osm_node2&quot;: 53219808,
+    &quot;is_forwards&quot;: false
+  },
+  &quot;intersection_osm_node_id&quot;: 53219808,
+  &quot;is_crosswalk&quot;: false
+}
+</code></pre>
+<p>You specify the <code>from</code> and <code>to</code> fields using the directed road segment ID.
+Additionally, you specify which intersection the traffic signal is at --
+<code>53219808</code> in this case -- and set <code>is_crosswalk</code> to <code>false</code> to indicate a turn
+for vehicles or cyclists on the road.</p>
+<h3><a class="header" href="#crosswalks" id="crosswalks">Crosswalks</a></h3>
+<p>Why is the format above so repetitive? The reason is to be able to also specify
+movements along crosswalks in the intersection. The <code>from</code> and <code>to</code> directed
+road segments refer to one half of a road, so they can be used to identify one
+sidewalk or another. From this diagram, you can see how there are 8 different
+start or end points for crosswalks at this intersection:</p>
+<p><img src="crosswalks.png" alt="crosswalks" /></p>
+<p>TODO: Walk through an example of a single crosswalk. I hope the explanation of
+the format above suffices, for now.</p>
+<h2><a class="header" href="#stages" id="stages">Stages</a></h2>
+<p>Now that we understand how to describe turns, we can describe the sequence of
+stages that a traffic signal cycles through. Each stage specifies the turns that
+are <strong>protected</strong> and <strong>permitted</strong>. Protected turns have priority (a green
+light), and no two protected turns in the same stage can cross each other.
+Permitted turns are allowed only if there's no oncoming traffic -- so this could
+mean a right turn on red or an unprotected left turn with a flashing arrow. Note
+that crosswalks always must be defined as protected, which means any vehicle
+turns that intersect with the crosswalk have to be specified as permitted. This
+captures the semantics in the US that turning vehicles must always yield to
+pedestrians when the crosswalk signal is on.</p>
+<p>A single traffic signal cycles through the same list of stages over and over.
+Each stage also specifies its duration with the <code>stage_type</code>. The simple example
+is <code>&quot;Fixed&quot;: 45</code>, meaning this stage always lasts exactly 45 seconds. A stage
+can also have variable timing, also known as actuation. The format is
+<code>&quot;Variable&quot;: [15, 2, 10]</code>. This stage would last a minimum of 15 seconds, but it
+may last an additional 10 seconds, up to a maximum of 25 seconds. If there are
+no vehicles or pedestrians trying to make protected turns after 15 seconds, the
+stage ends. If there are, then the stage is extended by 2 seconds, and the same
+check repeats, until the maximum of 25 is reached.</p>
+<h2><a class="header" href="#the-full-example" id="the-full-example">The full example</a></h2>
+<p>Understanding everything above means you should be able to interpret what
+<a href="https://github.com/a-b-street/abstreet/blob/599c7b6d6bc078312e5ea9f57d3391be9568ef83/traffic_signal_data/data/53219808.json">https://github.com/a-b-street/abstreet/blob/599c7b6d6bc078312e5ea9f57d3391be9568ef83/traffic_signal_data/data/53219808.json</a>
+means. The rendering in A/B Street looks like this:</p>
+<p><img src="stages.png" alt="stages" /></p>
+<p>There are two stages. The first lasts 45 seconds and allows north/south
+movement. Left turns onto McGraw are permitted after yielding. Since the
+north/south crosswalks are also enabled, all right turns also have to yield. The
+second stage lasts only 15 seconds and lets east/west traffic move. Left turns
+are also unprotected here.</p>
+<h2><a class="header" href="#limitations" id="limitations">Limitations</a></h2>
+<p>In reality, many traffic signals use different configuration during rush hour,
+late at night, on weekends, etc. There's some
+<a href="https://github.com/a-b-street/abstreet/issues/447">planned work</a> to model one
+intersection having different plans.</p>
+<p>Many intersections in Seattle now use
+<a href="https://nacto.org/publication/urban-street-design-guide/intersection-design-elements/traffic-signals/leading-pedestrian-interval/">leading pedestrian intervals</a>,
+which enable a crosswalk signal to give pedestrians a head-start into the
+intersection before vehicles start to turn. You can model this in A/B Street by
+adding an extra stage that only enables the crosswalks and lasts a few seconds,
+followed by a stage allowing both the crosswalks and vehicle turns. We could
+explicitly add a parameter for LPI duration, but it would complicate the format,
+so this &quot;flattened stage&quot; format will work for now.</p>
+<p>You'll notice the format for specifying turns works at the granularity of the
+entire road, not individual lanes. Most of the time, this is fine -- vehicles
+will only use the turn lanes available. But in some cases, we may want to
+distinguish two groups of vehicles moving the same direction by the lane type.
+In particular, sometimes there's a bidirectional protected cycle-track on one
+side of the road with its own dedicated signal:</p>
+<p><img src="cycletrack.png" alt="cycletrack" /></p>
+<p>A/B Street can't model this as having a separate signal yet.</p>
+<h2><a class="header" href="#complications-with-importing-other-data" id="complications-with-importing-other-data">Complications with importing other data</a></h2>
+<p>External software like
+<a href="https://github.com/asu-trans-ai-lab/data2timing">vol2timing</a> can provide much
+better signal configuration than A/B Street's default heuristics. We will
+encounter at least two major challenges to import it.</p>
+<h2><a class="header" href="#crosswalks-1" id="crosswalks-1">Crosswalks</a></h2>
+<p>A/B Street currently does not use sidewalks, foot-paths, and crosswalks that are
+explicitly drawn as separate OSM ways. Instead, it makes many guesses for which
+roads have a sidewalk and creates many, many crosswalks. See
+<a href="https://github.com/a-b-street/abstreet/issues/485">https://github.com/a-b-street/abstreet/issues/485</a> for some examples of
+crosswalks that should not be created, but currently are.</p>
+<p>When A/B Street imports traffic signal configuration, it validates that all
+possible turns at the intersection are captured by at least one stage. The
+problem here will be that other software may not list as many crosswalks as A/B
+Street expects.</p>
+<h2><a class="header" href="#intersection-mergingconsolidation" id="intersection-mergingconsolidation">Intersection merging/consolidation</a></h2>
+<p>OSM models bidirectional roads with some physical median as two one-ways. When
+these divided one-ways cross a regular road, the intersection is split into two
+intersections with a very short &quot;road&quot; in between. When two pairs of divided
+one-ways cross, the intersection has four nodes and short &quot;roads&quot; in between.
+This wreaks havoc in A/B Street, making the intersection geometry look strange,
+making it hard to edit the two or four uncoordinated traffic signals around the
+intersection, and causing vehicles to get stuck in the short &quot;roads&quot;.</p>
+<p>One solution that's promising is for A/B Street to consolidate those nodes and
+short &quot;roads&quot; into one big intersection, capturing how a human would intuitively
+view the area. One case where this works well is
+<a href="https://www.openstreetmap.org/#map=19/47.68264/-122.34426">https://www.openstreetmap.org/#map=19/47.68264/-122.34426</a>. See the before and
+after:</p>
+<p><img src="consolidate.png" alt="consolidate" /></p>
+<p>Unfortunately this process doesn't work for many more cases, so it's not enabled
+by default yet. Preserving turn restrictions defined by OSM and getting good
+results for the geometry of the consolidated intersection is hard.</p>
+<p>In the meantime, all of this complicates the traffic signal format, because it's
+unclear how to specify road segments when A/B Street will arbitrarily delete
+some of the node IDs when it imports.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../../tech/dev/formats/scenarios.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../../tech/dev/ui.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../../../tech/dev/formats/scenarios.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../../../tech/dev/ui.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
