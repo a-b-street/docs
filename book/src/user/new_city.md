@@ -37,7 +37,7 @@ country), in the "oneshot" city. This is stored in
 The easiest method is to just ask Dustin to do this. The full process:
 
 1.  Make sure you can run `import.sh` -- see
-    [the instructions](../dev/index.md#building-map-data). You'll need Rust,
+    [the instructions](../tech/dev/index.md#building-map-data). You'll need Rust,
     osmconvert, gdal, etc.
 
 2.  Create a new directory: `mkdir importer/config/xy/your_city`, where `xy` is
@@ -137,4 +137,4 @@ resources for fixing OSM:
 
 - <https://learnosm.org>
 - <https://wiki.openstreetmap.org/wiki/StreetComplete>
-- [Mapping parking](../side_projects/parking_mapper.md)
+- [Mapping parking](../software/parking_mapper.md)

@@ -32,7 +32,7 @@ public or private.
 
 On-street parking comes from OSM, using the
 [parking:lane](https://wiki.openstreetmap.org/wiki/Key:parking:lane) tags. This
-field is rarely mapped; see [here](../side_projects/parking_mapper.md) to help
+field is rarely mapped; see [here](../../software/parking_mapper.md) to help
 with that. Different cities can optionally configure some percentage of
 residential roads to automatically infer a parking lane or two.
 

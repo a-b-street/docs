@@ -102,7 +102,7 @@ You can rerun specific stages of the importer:
 - By default, Seattle is assumed as the city. You have to specify otherwise:
   `./import.sh --city=us/detroit --map downtown`.
 
-You can also make the importer [import a new city](../howto/new_city.md).
+You can also make the importer [import a new city](../../user/new_city.md).
 
 ## Understanding stuff
 

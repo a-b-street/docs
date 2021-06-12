@@ -1,6 +1,6 @@
 # Software
 
-Our main software is [A/B Street](abstreet/README.md), but along the way, we've split out a few related side projects. A/B Street has a huge scope, so over time, we'd like to carve out more smaller pieces from it.
+Our main software is [A/B Street](abstreet.md), but along the way, we've split out a few related side projects. A/B Street has a huge scope, so over time, we'd like to carve out more smaller pieces from it.
 
 The main projects:
 

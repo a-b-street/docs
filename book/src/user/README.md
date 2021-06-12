@@ -35,7 +35,7 @@ Or you can play
 [directly in your web browser](http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.46/abstreet.html)
 -- some things don't work as well, but no install required.
 
-Or you can [compile from source](../dev/index.md).
+Or you can [compile from source](../tech/dev/index.md).
 
 ## Playing the game
 

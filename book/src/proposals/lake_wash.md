@@ -23,9 +23,6 @@ software to explore the impacts of changes like this on different modes of
 transportation. So, let's try implementing part of the proposed network and see
 what happens!
 
-> **_NOTE:_** You might want to read [how A/B Street works](../how_it_works.md)
-> first.
-
 ## Lake Washington Blvd
 
 Let's start with one part of the proposal, closing Lake Washington Blvd to cars
@@ -41,7 +38,7 @@ closed anyway.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PU0iT-_3-es" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 Let's get started! If you want to follow along,
-[install A/B Street](../howto/index.md), open sandbox mode, and switch the map
+[install A/B Street](../user/index.md), open sandbox mode, and switch the map
 to Lake Washington corridor. Zoom in on the southern tip of the Arboretum and
 hop into edit mode. We can see Lake Washington Blvd just has one travel lane in
 each direction here. Click each lane, convert it to a bike lane, and repeat

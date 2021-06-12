@@ -6,7 +6,7 @@ This guide assumes you've edited OSM before. Contact <dabreegster@gmail.com> if
 you have any trouble. Also give me a heads up when you make some edits, so I can
 regenerate the maps!
 
-1.  [Install A/B Street](index.md)
+1.  [Install A/B Street](../user/index.md)
 2.  Choose **Contribute parking data** on the main screen
 3.  Change the map if you'd like to focus somewhere in particular
 4.  Click a road with unknown parking
@@ -26,10 +26,10 @@ use
 
 I'm trying to build a realistic traffic simulation of Seattle using OSM data,
 then use it to strengthen proposals for
-[pedestrianized streets](../case_studies/lake_wash.md),
+[pedestrianized streets](../proposals/lake_wash.md),
 [improving the bike network](https://www.glwstreets.org/45th-st-bridge-overview),
 and
-[mitigating the West Seattle bridge closure](../case_studies/west_seattle.md).
+[mitigating the West Seattle bridge closure](../proposals/west_seattle.md).
 A/B Street is only as good as its data, and parking is one of the biggest gaps.
 Missing data means unrealistic traffic as vehicles contend for few parking
 spots, and roads that look much wider than they are in reality.
@@ -103,4 +103,4 @@ easier; let me know if you have ideas how to do this.)
 To keep the release size small, I'm not including all maps yet. Let me know what
 you'd like to see included.
 
-Or if you have a `.osm` file, try the [quick start guide](new_city.md).
+Or if you have a `.osm` file, try the [quick start guide](../user/new_city.md).
