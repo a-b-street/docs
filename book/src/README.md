@@ -7,3 +7,4 @@ This homepage should definitely have:
 - our 3 principles
 - lots of videos
 - contact info
+- contributing

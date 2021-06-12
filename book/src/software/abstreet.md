@@ -1,4 +1,32 @@
-# How A/B Street works
+# A/B Street
+
+- Download: <https://a-b-street.github.io/docs/howto/index.html>
+- Play on the web: <http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.46/abstreet.html>
+- Github: <https://github.com/a-b-street/abstreet/tree/master/game/src>
+
+## Overview
+
+Somewhere in between a game and a simulation tool.
+
+- tutorial mode
+- challenges
+- sandbox
+
+## Simulate
+
+What's modeled?
+
+Where does data come from?
+
+## Edit
+
+quick videos of each thing
+
+## Measure
+
+stories you can tell
+
+## Old notes
 
 The overview:
 
@@ -8,26 +36,7 @@ The overview:
 3.  You make small changes to roads and intersections
 4.  You explore how these changes affect the trips
 
-Details below. Many limitations are mentioned; improvements are ongoing. I'll
-add pictures to explain better when I get time.
-
-<!--ts-->
-
-- [How A/B Street works](#how-ab-street-works)
-  - [Driving](#driving)
-  - [Parking](#parking)
-  - [Biking](#biking)
-  - [Walking](#walking)
-  - [Transit](#transit)
-  - [Intersections](#intersections)
-  - [People and trips](#people-and-trips)
-  - [Map edits](#map-edits)
-
-<!-- Added by: dabreegster, at: Mon Jun  8 12:17:13 PDT 2020 -->
-
-<!--te-->
-
-## Driving
+### Driving
 
 - Movement: no acceleration, go the full speed limit of the road unless there's
   a slower vehicle in front
@@ -40,7 +49,7 @@ add pictures to explain better when I get time.
 - Routing is based on fastest time assuming no traffic
   - No rerouting if the driver encounters a traffic jam
 
-## Parking
+### Parking
 
 - Types
   - On-street: parallel parking lanes from
@@ -66,7 +75,7 @@ add pictures to explain better when I get time.
 - Some parking along the boundary of the map is "blackholed", meaning it's
   impossible to actually reach it. Nobody will use these spots.
 
-## Biking
+### Biking
 
 - Choice of lane
   - Multi-use trails like the Burke Gilman and separated cycle-tracks like the
@@ -82,7 +91,7 @@ add pictures to explain better when I get time.
   racks with limited capacity isn't modeled; in practice, it's always easy in
   Seattle to find a place to lock up.
 
-## Walking
+### Walking
 
 - Not using sidewalk and crosswalk data from OSM yet
 - No jay-walking, even on empty residential streets
@@ -91,12 +100,12 @@ add pictures to explain better when I get time.
 - Pedestrians can "ghost" through each other; crowds of people can grow to any
   size
 
-## Transit
+### Transit
 
 - The modeling of buses is extremely simple and buggy; I'll work on this soon
 - No light rail yet
 
-## Intersections
+### Intersections
 
 - Conflicting movements are coarse: a second vehicle won't start a conflicting
   turn, even if the first vehicle is physically out of the way but still
@@ -118,7 +127,7 @@ add pictures to explain better when I get time.
   - Per lane (left turn only from leftmost lane), entire roads, multiple
     intersections
 
-## People and trips
+### People and trips
 
 - A "synthetic population" of ~700,000 people come from
   [PSRC's Soundcast model](https://www.psrc.org/activity-based-travel-model-soundcast)
@@ -132,7 +141,7 @@ add pictures to explain better when I get time.
   - Your changes to the map won't yet convince somebody to take a bus or walk
     instead of drive
 
-## Map edits
+### Map edits
 
 - Types of edits
   - Change types of lanes. Sometimes this is unrealistic based on actual road

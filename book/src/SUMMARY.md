@@ -54,6 +54,7 @@
 ---
 
 - [Project](project/README.md)
+  - [Team](project/team.md)
   - [Roadmap](project/roadmap.md)
   - [Motivations](project/motivations.md)
   - [History](project/history/README.md)
