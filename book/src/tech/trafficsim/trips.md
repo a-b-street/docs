@@ -8,80 +8,15 @@ simplest way to express all the state transitons.
 
 ## Walking-only trips
 
-```plantuml
-@startuml
-
-[*] --> FromBuilding
-[*] --> FromBorder
-FromBuilding --> Walk
-FromBorder --> Walk
-Walk --> ToBuilding
-Walk --> ToBorder
-ToBuilding --> [*]
-ToBorder --> [*]
-
-@enduml
-```
+![walking_only_trips](walking_only_trips.svg)
 
 ## Trips starting from a border
 
-```plantuml
-@startuml
-
-[*] --> FromBorder
-Walk --> ToBuilding
-ToBuilding --> [*]
-ToBorder --> [*]
-
-FromBorder --> Drive
-Drive --> ToBorder
-Drive --> ParkSomewhere
-ParkSomewhere --> Walk
-
-FromBorder --> Bike
-Bike --> ToBorder
-Bike --> ParkSomewhere
-
-FromBorder --> RideBus
-RideBus --> ToBorder
-RideBus --> AlightAtStop
-AlightAtStop --> Walk
-
-@enduml
-```
+![trips_from_border](trips_from_border.svg)
 
 ## Trips starting from a building
 
-```plantuml
-@startuml
-
-[*] --> FromBuilding
-FromBuilding --> Walk1
-
-Walk1 --> ToParkedCar
-ToParkedCar --> Drive
-Drive --> ToBorder
-Drive --> ParkSomewhere
-ParkSomewhere --> Walk2
-Walk2 --> ToBuilding
-
-Walk1 --> ToBike
-ToBike --> Bike
-Bike --> ToBorder
-Bike --> ParkSomewhere
-
-Walk1 --> ToBusStop1
-ToBusStop1 --> WaitForBus
-WaitForBus --> RideBus
-RideBus --> ToBorder
-RideBus --> ToBusStop2
-ToBusStop2 --> Walk2
-
-ToBuilding --> [*]
-ToBorder --> [*]
-
-@enduml
-```
+![trips_from_building](trips_from_building.svg)
 
 ## Spawning code overview
 

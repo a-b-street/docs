@@ -5,8 +5,6 @@ multilingual = false
 src = "src"
 title = "A/B Street"
 
-[preprocessor.plantuml]
-
 [output.html]
 
 # TODO: Enable linkcheck. But first, deal with email addresses

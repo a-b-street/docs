@@ -17,25 +17,6 @@ jobs:
         with:
           mdbook-version: "0.3.7"
 
-      - name: Install Rust
-        uses: hecrj/setup-rust-action@v1
-
-      - name: Update apt
-        run: sudo apt-get update
-      - name: Install plantuml
-        run: sudo apt-get install plantuml
-
-      - name: Cache build
-        uses: actions/cache@v2
-        with:
-                path: tmp_cargo
-                key: cargo-build
-
-      - name: Install mdbook-plantuml
-        run: |
-            mkdir -p tmp_cargo
-            CARGO_TARGET_DIR=tmp_cargo cargo install mdbook-plantuml
-
       - name: Generate book from markdown
         run: |
             cd book
