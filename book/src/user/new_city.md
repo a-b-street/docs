@@ -37,8 +37,8 @@ country), in the "oneshot" city. This is stored in
 The easiest method is to just ask Dustin to do this. The full process:
 
 1.  Make sure you can run `import.sh` -- see
-    [the instructions](../tech/dev/index.md#building-map-data). You'll need Rust,
-    osmconvert, gdal, etc.
+    [the instructions](../tech/dev/index.md#building-map-data). You'll need
+    Rust, osmconvert, gdal, etc.
 
 2.  Create a new directory: `mkdir importer/config/xy/your_city`, where `xy` is
     a lowercase two letter country code from

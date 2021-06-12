@@ -51,13 +51,13 @@ of the road.
 
 A/B Street's main metric for success is impact to trip time, but this is the
 kind of vehicle-centric, outdated way of thinking that we're trying to defeat.
-It's just the simplest to implement. We'll start tracking safety/pleasantness
-of trips too, exposing that in the UI as prominently as time, with the same
-ability to compare changes. Specifically, we can measure cases when cars
-over-take bikes (or at least want to), biking in the door-zone next to parking,
-and cars turning from a road with a high speed limit over a crosswalk with
-pedestrians. We have historic collision data for Seattle and the UK, and we can
-see if the dangerous areas A/B Street finds match that data.
+It's just the simplest to implement. We'll start tracking safety/pleasantness of
+trips too, exposing that in the UI as prominently as time, with the same ability
+to compare changes. Specifically, we can measure cases when cars over-take bikes
+(or at least want to), biking in the door-zone next to parking, and cars turning
+from a road with a high speed limit over a crosswalk with pedestrians. We have
+historic collision data for Seattle and the UK, and we can see if the dangerous
+areas A/B Street finds match that data.
 
 Relatedly, it's finally time to implement some form of
 [mode shift](https://github.com/a-b-street/abstreet/issues/448). When you edit
@@ -86,5 +86,5 @@ There aren't enough hours in the day, so probably not much work on:
 - [15-minute neighborhoods](https://github.com/a-b-street/abstreet/issues/393)
 - Some kind of website to share your map proposals
 
-Although the funding story is unclear, I'd like to hire somebody in the next
-few months to work on these.
+Although the funding story is unclear, I'd like to hire somebody in the next few
+months to work on these.

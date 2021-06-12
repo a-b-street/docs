@@ -28,8 +28,7 @@ I'm trying to build a realistic traffic simulation of Seattle using OSM data,
 then use it to strengthen proposals for
 [pedestrianized streets](../proposals/lake_wash.md),
 [improving the bike network](https://www.glwstreets.org/45th-st-bridge-overview),
-and
-[mitigating the West Seattle bridge closure](../proposals/west_seattle.md).
+and [mitigating the West Seattle bridge closure](../proposals/west_seattle.md).
 A/B Street is only as good as its data, and parking is one of the biggest gaps.
 Missing data means unrealistic traffic as vehicles contend for few parking
 spots, and roads that look much wider than they are in reality.

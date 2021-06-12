@@ -22,7 +22,8 @@ Contact <dabreegster@gmail.com> with any feedback or
 - [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.2.46/abstreet_mac_v0_2_46.zip)
 - [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.2.46/abstreet_linux_v0_2_46.zip)
 
-Unzip, then run `santa.exe` or `santa`. No mobile/tablet support, sorry -- you need a keyboard.
+Unzip, then run `santa.exe` or `santa`. No mobile/tablet support, sorry -- you
+need a keyboard.
 
 ## FAQ
 
@@ -68,8 +69,8 @@ hard!
 
 Missing your slice of Seattle, or want to run somewhere else? If you have a bit
 of technical experience,
-[follow this guide](https://a-b-street.github.io/docs/howto/new_city.html)
-and then the above instructions for modding the game. Otherwise, draw the map
+[follow this guide](https://a-b-street.github.io/docs/howto/new_city.html) and
+then the above instructions for modding the game. Otherwise, draw the map
 boundaries in <http://geojson.io> and
 [send it to us](https://github.com/a-b-street/abstreet/issues/new) along with a
 time limit, goal, and starting point on the map. If you have a public data

@@ -38,11 +38,11 @@ closed anyway.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PU0iT-_3-es" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 Let's get started! If you want to follow along,
-[install A/B Street](../user/index.md), open sandbox mode, and switch the map
-to Lake Washington corridor. Zoom in on the southern tip of the Arboretum and
-hop into edit mode. We can see Lake Washington Blvd just has one travel lane in
-each direction here. Click each lane, convert it to a bike lane, and repeat
-north until Foster Island Road.
+[install A/B Street](../user/index.md), open sandbox mode, and switch the map to
+Lake Washington corridor. Zoom in on the southern tip of the Arboretum and hop
+into edit mode. We can see Lake Washington Blvd just has one travel lane in each
+direction here. Click each lane, convert it to a bike lane, and repeat north
+until Foster Island Road.
 
 When we leave edit mode, the traffic simulation resets to midnight. Nothing
 really interesting happens until 5 or 6am, so we'll speed up time. Watching the

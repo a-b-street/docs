@@ -56,7 +56,8 @@ parking, so it's best to just make driving trips begin and end at buildings or
 off the map, without a step to search for parking.
 
 There are a bunch of other
-[startup parameters](../tech/dev/index.md#development-tips) you can pass here too.
+[startup parameters](../tech/dev/index.md#development-tips) you can pass here
+too.
 
 ## Importing a Grid2Demand scenario
 

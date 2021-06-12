@@ -43,8 +43,8 @@ through the magic of the [usvg](https://crates.io/crates/usvg) and
 by uploading a table of raster glyphs to the GPU and drawing textured quads.)
 
 The brief story of how we got here: by
-[November 2019](../../project/history/year2.md), there was some basic support for
-uploading raster texture and drawing them. At the second Democracy Lab
+[November 2019](../../project/history/year2.md), there was some basic support
+for uploading raster texture and drawing them. At the second Democracy Lab
 hackathon, a developer on Mac hit a 16 texture object limit that was different
 than Linux. This is also when Yuwen joined and started designing using Figma,
 which... conveniently had SVG export. I was also frustrated by rendering text
