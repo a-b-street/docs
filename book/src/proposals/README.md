@@ -1,4 +1,4 @@
-# Case studies
+# Proposals
 
 Note: Most of these still aren't started, because the baseline simulation in the
 relevant area isn't working. Unknown traffic signal timing, bad guesses at the

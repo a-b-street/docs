@@ -19,9 +19,9 @@
 
 ---
 
-- [Case studies](case_studies/README.md)
-  - [Lake Washington Blvd Stay Healthy Street](case_studies/lake_wash.md)
-  - [West Seattle mitigations](case_studies/west_seattle.md)
+- [Proposals](proposals/README.md)
+  - [Lake Washington Blvd Stay Healthy Street](proposals/lake_wash.md)
+  - [West Seattle mitigations](proposals/west_seattle.md)
 
 ---
 
