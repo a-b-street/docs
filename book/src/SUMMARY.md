@@ -58,6 +58,7 @@
 
 - [Project](project/README.md)
   - [Team](project/team.md)
+  - [Funding](project/funding.md)
   - [Roadmap](project/roadmap.md)
   - [Motivations](project/motivations.md)
   - [History](project/history/README.md)
@@ -67,5 +68,4 @@
     - [Year 3](project/history/year3.md)
   - [Full CHANGELOG](project/CHANGELOG.md)
   - [References](project/references.md)
-  - [Collaborations](project/collaborations.md)
   - [Presentations](project/presentations.md)
