@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Contributing - A/B Street</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../index.html"><strong aria-hidden="true">1.</strong> Homepage</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../software/index.html"><strong aria-hidden="true">2.</strong> Software</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../software/abstreet.html"><strong aria-hidden="true">2.1.</strong> A/B Street</a></li><li class="chapter-item expanded "><a href="../software/fifteen_min.html"><strong aria-hidden="true">2.2.</strong> 15-minute neighborhoods explorer</a></li><li class="chapter-item expanded "><a href="../software/santa.html"><strong aria-hidden="true">2.3.</strong> 15-minute Santa</a></li><li class="chapter-item expanded "><a href="../software/osm_viewer.html"><strong aria-hidden="true">2.4.</strong> OpenStreetMap viewer</a></li><li class="chapter-item expanded "><a href="../software/parking_mapper.html"><strong aria-hidden="true">2.5.</strong> Mapping on-street parking</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../user/index.html"><strong aria-hidden="true">3.</strong> User guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../user/new_city.html"><strong aria-hidden="true">3.1.</strong> Importing a new city</a></li><li class="chapter-item expanded "><a href="../user/asu.html"><strong aria-hidden="true">3.2.</strong> ASU Lab guide</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../proposals/index.html"><strong aria-hidden="true">4.</strong> Proposals</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../proposals/lake_wash.html"><strong aria-hidden="true">4.1.</strong> Lake Washington Blvd Stay Healthy Street</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../tech/index.html"><strong aria-hidden="true">5.</strong> Technical details</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tech/dev/index.html"><strong aria-hidden="true">5.1.</strong> Developer guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tech/dev/misc_tricks.html"><strong aria-hidden="true">5.1.1.</strong> Misc developer tricks</a></li><li class="chapter-item expanded "><a href="../tech/dev/api.html"><strong aria-hidden="true">5.1.2.</strong> API</a></li><li class="chapter-item expanded "><a href="../tech/dev/testing.html"><strong aria-hidden="true">5.1.3.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../tech/dev/mass_import.html"><strong aria-hidden="true">5.1.4.</strong> Importing many maps</a></li><li class="chapter-item expanded "><a href="../tech/dev/data.html"><strong aria-hidden="true">5.1.5.</strong> Data organization</a></li><li class="chapter-item expanded "><a href="../tech/dev/release.html"><strong aria-hidden="true">5.1.6.</strong> Release process</a></li><li class="chapter-item expanded "><a href="../tech/dev/formats/index.html"><strong aria-hidden="true">5.1.7.</strong> Data formats</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tech/dev/formats/scenarios.html"><strong aria-hidden="true">5.1.7.1.</strong> Scenarios</a></li><li class="chapter-item expanded "><a href="../tech/dev/formats/traffic_signals.html"><strong aria-hidden="true">5.1.7.2.</strong> Traffic signals</a></li></ol></li><li class="chapter-item expanded "><a href="../tech/dev/ui.html"><strong aria-hidden="true">5.1.8.</strong> UI</a></li></ol></li><li class="chapter-item expanded "><a href="../tech/map/index.html"><strong aria-hidden="true">5.2.</strong> Map model</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tech/map/details.html"><strong aria-hidden="true">5.2.1.</strong> Details</a></li><li class="chapter-item expanded "><a href="../tech/map/importing/index.html"><strong aria-hidden="true">5.2.2.</strong> Importing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tech/map/importing/convert_osm.html"><strong aria-hidden="true">5.2.2.1.</strong> convert_osm</a></li><li class="chapter-item expanded "><a href="../tech/map/importing/geometry.html"><strong aria-hidden="true">5.2.2.2.</strong> Road/intersection geometry</a></li><li class="chapter-item expanded "><a href="../tech/map/importing/rest.html"><strong aria-hidden="true">5.2.2.3.</strong> The rest</a></li><li class="chapter-item expanded "><a href="../tech/map/importing/misc.html"><strong aria-hidden="true">5.2.2.4.</strong> Misc</a></li></ol></li><li class="chapter-item expanded "><a href="../tech/map/edits.html"><strong aria-hidden="true">5.2.3.</strong> Live edits</a></li><li class="chapter-item expanded "><a href="../tech/map/platform.html"><strong aria-hidden="true">5.2.4.</strong> Exporting</a></li></ol></li><li class="chapter-item expanded "><a href="../tech/trafficsim/index.html"><strong aria-hidden="true">5.3.</strong> Traffic simulation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tech/trafficsim/discrete_event.html"><strong aria-hidden="true">5.3.1.</strong> Discrete event simulation</a></li><li class="chapter-item expanded "><a href="../tech/trafficsim/travel_demand.html"><strong aria-hidden="true">5.3.2.</strong> Travel demand</a></li><li class="chapter-item expanded "><a href="../tech/trafficsim/gridlock.html"><strong aria-hidden="true">5.3.3.</strong> Gridlock</a></li><li class="chapter-item expanded "><a href="../tech/trafficsim/trips.html"><strong aria-hidden="true">5.3.4.</strong> Multi-modal trips</a></li><li class="chapter-item expanded "><a href="../tech/trafficsim/live_edits.html"><strong aria-hidden="true">5.3.5.</strong> Live edits</a></li><li class="chapter-item expanded "><a href="../tech/trafficsim/parking.html"><strong aria-hidden="true">5.3.6.</strong> Parking</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../project/index.html"><strong aria-hidden="true">6.</strong> Project</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../project/team.html"><strong aria-hidden="true">6.1.</strong> Team</a></li><li class="chapter-item expanded "><a href="../project/contributing.html" class="active"><strong aria-hidden="true">6.2.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="../project/funding.html"><strong aria-hidden="true">6.3.</strong> Funding</a></li><li class="chapter-item expanded "><a href="../project/hiring.html"><strong aria-hidden="true">6.4.</strong> Hiring</a></li><li class="chapter-item expanded "><a href="../project/roadmap.html"><strong aria-hidden="true">6.5.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="../project/motivations.html"><strong aria-hidden="true">6.6.</strong> Motivations</a></li><li class="chapter-item expanded "><a href="../project/history/index.html"><strong aria-hidden="true">6.7.</strong> History</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../project/history/backstory.html"><strong aria-hidden="true">6.7.1.</strong> Backstory</a></li><li class="chapter-item expanded "><a href="../project/history/year1.html"><strong aria-hidden="true">6.7.2.</strong> Year 1</a></li><li class="chapter-item expanded "><a href="../project/history/year2.html"><strong aria-hidden="true">6.7.3.</strong> Year 2</a></li><li class="chapter-item expanded "><a href="../project/history/year3.html"><strong aria-hidden="true">6.7.4.</strong> Year 3</a></li></ol></li><li class="chapter-item expanded "><a href="../project/CHANGELOG.html"><strong aria-hidden="true">6.8.</strong> Full CHANGELOG</a></li><li class="chapter-item expanded "><a href="../project/references.html"><strong aria-hidden="true">6.9.</strong> References</a></li><li class="chapter-item expanded "><a href="../project/presentations.html"><strong aria-hidden="true">6.10.</strong> Presentations</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">A/B Street</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#contributing" id="contributing">Contributing</a></h1>
+<p>Lots of people are interested in this project, with very diverse backgrounds.
+This page isn't meant to be prescriptive or limit options; it's just a starter.</p>
+<h2><a class="header" href="#programming" id="programming">Programming</a></h2>
+<p>The biggest hurdle here is that A/B Street is written in Rust, a language that
+may have a high entry barrier. If you're more comfortable in Python, R, or
+something else, there are still ways to contribute -- particularly producing
+input data for A/B Street to simulate.</p>
+<h3><a class="header" href="#machinereinforcement-learning" id="machinereinforcement-learning">Machine/reinforcement learning</a></h3>
+<p>If you're a researcher looking for a complex multi-agent simulation with lots of
+things to optimize, you've found the right place. We have a simple
+<a href="../tech/dev/api.html">JSON API</a> already you can plug into, but we'd love to
+improve this based on your use case. Particularly cool ideas could be
+auto-tuning traffic signal timing or calibrating travel demand scenarios to
+real-world throughput/delay measurements.</p>
+<h3><a class="header" href="#transportation-modelling" id="transportation-modelling">Transportation modelling</a></h3>
+<p>Do you sling around population and aggregated origin/destination data with R or
+Python? Great, help us generate realistic
+<a href="tech/dev/formats/scenarios.html">travel demand models</a>! Work in whatever language
+you like best; we'll settle on a common format.</p>
+<h3><a class="header" href="#working-on-ab-street-itself" id="working-on-ab-street-itself">Working on A/B Street itself</a></h3>
+<p>You'll need to learn at least some Rust to start here. We can help you a bit
+with that, especially by recommending starter projects or giving feedback in
+PRs, but this requires a fair bit of independence.</p>
+<p>There's so many different types of things to work on -- see our
+<a href="hiring.html">hiring page</a> and
+<a href="https://github.com/a-b-street/abstreet/issues">Github issues</a>.</p>
+<h3><a class="header" href="#data-visualization--analysis" id="data-visualization--analysis">Data visualization / analysis</a></h3>
+<p>A/B Street generates loads of individual data through the simulation, but
+deciding what's important, how to aggregate things, what filters/controls to
+give to the user, and how to communicate trade-offs is really hard!</p>
+<p>We can export data however's useful -- there's a few CSV files that the UI can
+export today. You can work on analyzing and visualizing the data using whatever
+tools you like. To actually implement a new dashboard in A/B Street, we'll
+implement it in Rust, but we can implement/copy what you produce elsewhere.</p>
+<p>Some examples where we need help:</p>
+<ul>
+<li>How to aggregate and compare the number of &quot;risky events&quot; somebody encounters
+on their trip, possibly using some kind of contingency matrix. See
+<a href="https://github.com/a-b-street/abstreet/pull/622">this PR</a> for some discussion
+and open questions</li>
+<li>How to show roads with more/less traffic. See this
+<a href="https://github.com/a-b-street/abstreet/issues/85">discussion</a></li>
+</ul>
+<h2><a class="header" href="#design" id="design">Design</a></h2>
+<p>We wouldn't have made it to this point without loads of help from our UX
+designer. We could always use more help here. We use Figma for designs
+currently.</p>
+<h3><a class="header" href="#graphics" id="graphics">Graphics</a></h3>
+<p>From what I've seen, no other street map attempt to include lane markings and as
+much detail as A/B Street. This means there's not much cartography to take
+inspiration from. Some places we need help:</p>
+<ul>
+<li>Showing arterial vs small residential roads while zoomed in</li>
+<li>Conveying more information about buildings and land use -- is it a small
+house, some apartments, a shop, a mall, a multi-use development?</li>
+<li><a href="https://github.com/a-b-street/abstreet/issues/74">Tuning the color-scheme</a>,
+especially in a color-blind friendly way</li>
+<li>Visualizing
+<a href="https://github.com/a-b-street/abstreet/issues/660">low traffic neighborhoods</a></li>
+<li>Many people can't recognize the pedestrians and cyclists; how do we represent
+them better in our 2D top-down view? What should e-scooters look like?</li>
+</ul>
+<h3><a class="header" href="#storyboarding" id="storyboarding">Storyboarding</a></h3>
+<p>We didn't start A/B Street with a clear set of product requirements or a
+storyboard for how it should work -- and we've been paying the price of this all
+along. But newer tools like the <a href="../software/fifteen_min.html">15-minute explorer</a>
+or the idea for a
+<a href="https://github.com/a-b-street/abstreet/issues/660">low-traffic neighborhood planner</a>
+are focused and young enough where we could properly plan out the features and
+UI.</p>
+<h3><a class="header" href="#game-design" id="game-design">Game design</a></h3>
+<p>A/B Street <em>tries</em> to be a game, but it falls pretty short. Want to help us
+improve the <a href="https://github.com/a-b-street/abstreet/issues/611">tutorial</a>? Have
+some ideas how to split up levels in the challenge mode? Know how to write a
+story? Help us!</p>
+<p>Or maybe you can imagine a new spin-off game reusing some of the work that
+exists today. That's how <a href="../software/santa.html">15-minute Santa</a> happened!</p>
+<h2><a class="header" href="#using-ab-street" id="using-ab-street">Using A/B Street</a></h2>
+<h3><a class="header" href="#you-have-an-idea-for-fixing-something-in-your-city" id="you-have-an-idea-for-fixing-something-in-your-city">You have an idea for fixing something in your city</a></h3>
+<p>That's why we made this! Just go try and make the change, initially without help
+from us. Write down your experience and all of the problems you hit. Then tell
+us the problems and any ideas for fixing them.</p>
+<p>Then write up a <a href="../proposals/README.html">proposal</a> and start advocating for it!</p>
+<h3><a class="header" href="#youre-an-advocacy-group" id="youre-an-advocacy-group">You're an advocacy group</a></h3>
+<p>If you want to use A/B Street to argue for some change in your city, get in
+touch! It's easiest if you:</p>
+<ul>
+<li>Tell us very clearly what you need</li>
+<li>Draw a <a href="../user/new_city.html">study area</a></li>
+<li>Have a pretty specific idea of what roads/intersections you want to actually
+change</li>
+<li>Have an idea of how you want to communicate your idea; browse
+<a href="../proposals/README.html">our proposals</a> for inspiration</li>
+</ul>
+<h3><a class="header" href="#researching-car-free-cities" id="researching-car-free-cities">Researching car-free cities</a></h3>
+<p>Maybe you're studying urban planning and think our software can help. We have
+some of the tools to get you started -- importing a new map, changing road
+configuration and access, measuring comparative results. But you'll probably
+have to work with us directly to fix up the map data and get a proper demand
+model. You can help us by giving usability feedback about what's hard to do and
+ideas for things to add. We're not experts in planning -- if you can tell us how
+software can help you do your job better, let's talk!</p>
+<h3><a class="header" href="#usability-studies" id="usability-studies">Usability studies</a></h3>
+<p>Every so often, we conduct formal usability studies. You'll spend an hour on a
+videocall doing something in A/B Street and vocalizing your thought process and
+what problems you hit. We'll use your feedback to find and fix problems.</p>
+<p>We only run these every now and then; just contact us to get on the list for the
+next round.</p>
+<h3><a class="header" href="#reporting-bugs" id="reporting-bugs">Reporting bugs</a></h3>
+<p>You're bound to hit problems using our software -- just
+<a href="https://github.com/a-b-street/abstreet/issues/new">file an issue</a> when you do.</p>
+<h2><a class="header" href="#improving-data-quality" id="improving-data-quality">Improving data quality</a></h2>
+<p>A/B Street relies on having an accurate and up-to-date model of your city. What
+do you do when it's wrong?</p>
+<h3><a class="header" href="#fix-incorrect-lane-data" id="fix-incorrect-lane-data">Fix incorrect lane data</a></h3>
+<p>The most common problem is that a road has the wrong number of lanes, or
+turn/bike/parking lanes are missing. If you know how to edit OpenStreetMap
+already, go fix it. If not, you can use the lane editor in A/B Street to fix the
+problem and make the road match reality. Send us your edits, and we can help
+make the fix in OSM.</p>
+<h3><a class="header" href="#openstreetmap-mapper" id="openstreetmap-mapper">OpenStreetMap mapper</a></h3>
+<p>Are you already involved in OSM and want to validate your work? Use
+<a href="../software/osm_viewer.html">our tool</a> to help you visualize lane tagging easily.
+Keep in mind there are some problems with this viewer that might not reflect
+problems with the data in OSM -- particularly separate foot/cyclepaths and weird
+intersection geometry.</p>
+<p>Or maybe you think your city is incredibly well-mapped already -- I bet it's
+missing one thing. Please map <a href="../software/parking_mapper.html">street parking</a> --
+we need this to guess road widths.</p>
+<h2><a class="header" href="#project-logistics" id="project-logistics">Project logistics</a></h2>
+<h3><a class="header" href="#networking--marketing" id="networking--marketing">Networking / marketing</a></h3>
+<p>Know an advocacy group or city authority who would want to use our work? Make
+the connection!</p>
+<h3><a class="header" href="#project-management" id="project-management">Project management</a></h3>
+<p>Organizing all of the information, ideas, and people involved with this project
+is hard. Just writing this page and website took way too many tears and
+caffeine! We could also use help prioritizing work and coming up with
+requirements for new ideas.</p>
+<h3><a class="header" href="#write-documentation" id="write-documentation">Write documentation</a></h3>
+<p>This website is <a href="https://github.com/a-b-street/docs">easy to edit</a>. We could
+especially use help writing a user guide -- describe how different tools in A/B
+Street work, or work through examples of how to do stuff.</p>
+<h3><a class="header" href="#funding" id="funding">Funding</a></h3>
+<p>Our <a href="funding.html">funding</a> is pretty nonexistent, but if we had some, we could
+<a href="hiring.html">hire more people</a> and build useful things faster. Do you know how to
+write NSF grants? Have you thought of a business model compatible with our
+values but that would let us financially sustain ourselves? Do you think we
+should be an LLC, a B corp, a non-profit, something else? Help needed!</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../project/team.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../project/funding.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../project/team.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a rel="next" href="../project/funding.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
