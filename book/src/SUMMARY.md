@@ -21,7 +21,6 @@
 
 - [Proposals](proposals/README.md)
   - [Lake Washington Blvd Stay Healthy Street](proposals/lake_wash.md)
-  - [West Seattle mitigations](proposals/west_seattle.md)
 
 ---
 

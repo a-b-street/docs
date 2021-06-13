@@ -1,54 +1,69 @@
 # Proposals
 
-Note: Most of these still aren't started, because the baseline simulation in the
-relevant area isn't working. Unknown traffic signal timing, bad guesses at the
-amount of off-street parking, lanes tagged incorrectly in OpenStreetMap, and
-simulation bugs cause unrealistic gridlock. It's hard to evaluate a change
-without a realistic baseline.
+The whole point of A/B Street is for people to suggest real fixes to their city,
+so here's the list. In most cases, we're not yet able to use A/B Street itself
+to illustrate the problem or solution -- but that shouldn't stop this list from
+starting.
 
-In progress:
+If you want to add anything here, contact us!
 
-- [Stay Healthy Streets: Lake Washington Blvd](lake_wash.md)
-- [West Seattle mitigations](west_seattle.md)
-- Simplify where the Burke Gilman crosses Corliss and Pacific
-  - No write-up yet, but the proposal is included in A/B Street
+## Seattle
 
-TODO:
+Disclaimer: currently this is just one person's (Dustin) list, so it reflects my
+experiences and biases. South Seattle is conspicuously missing -- I need to go
+explore more.
 
-- Close Broadway and Pine to through-traffic
-  - proposed
-    [here](https://old.reddit.com/r/SeattleWA/comments/gr4dsi/its_time_for_mayor_durkan_to_bring_stay_healthy/)
-  - partly [happening already](https://www.openstreetmap.org/way/814244753)
-  - another
-    [proposal](https://twitter.com/pushtheneedle/status/1270757771802103809/photo/1)
-- Traffic signal timing at Montlake/520 and Montlake/Pacific
-  - Walking around here is frustrating, and pre-COVID, vehicle traffic got
-    fairly stuck
-- Pedestrianizing the Ave (u-district)
-  - I can't find the proposal anymore; maybe
-    [this](http://www.udistrictmobility.com/)?
-- Eastlake bike lanes / RapidRide J
-  - See
-    [here](https://www.seattle.gov/transportation/projects-and-programs/programs/bike-program/protected-bike-lanes/eastlake-avenue-protected-bike-lanes)
-    and
-    [here](http://www.seattle.gov/transportation/projects-and-programs/programs/transit-program/transit-plus-multimodal-corridor-program/rapidride-roosevelt)
-  - Need to audit lanes in OSM along Eastlake
-  - Especially with the Fairview Ave bridge out, detouring to the Cheshiahud
-    loop isn't as useful
-- Madison / RapidRide G
-  - See
-    [here](http://www.seattle.gov/transportation/projects-and-programs/programs/transit-program/transit-plus-multimodal-corridor-program/madison-street-bus-rapid-transit)
-- Bus lanes on Denny
-  - Proposed
-    [here](https://twitter.com/transitrunner/status/1175068582142599168)
-- Bike Master Plan
-  - Prototype the
-    [planned network](https://www.seattle.gov/transportation/document-library/citywide-plans/modal-plans/bicycle-master-plan)
-- Downtown one-way snake
-  - An old crazy idea I've always wanted to try
-- Unsorted ideas
-  - [Parking](https://www.reddit.com/r/SeattleWA/comments/cr1r1l/why_the_fuck_does_the_right_lane_convert_to/)
-  - [Bus lanes](https://seattletransitblog.com/2018/10/05/seven-places-to-add-bus-lanes-now/)
-  - [John and Broadway](https://old.reddit.com/r/SeattleWA/comments/83h4ri/the_intersection_at_john_and_broadway_desperately/)
-  - [Bad intersections](https://old.reddit.com/r/Seattle/comments/4z3ewl/what_are_seattles_worst_intersections/)
-  - [Bus routes](https://old.reddit.com/r/SeattleWA/comments/5rvss5/what_changes_would_you_make_to_seattles_bus/)
+Safety problems biking:
+
+- Airport Way southbound from ID to Georgetown. The right lane has a huge
+  shoulder; at least paint a bike lane
+- Broadway bike lanes missing between Highland and John
+- Partitioning off a lane of Aurora at Green Lake west, proposed by Seattle
+  Greenways
+- Bike lanes vanishing halfway up Harvard to Roanoke
+- The massive intersection where the Burke Gilman meets Corliss
+- No passing room on Fuhrman/Boyer
+
+Antagonistic traffic signal timing:
+
+(Why are these important: they're hopefully a cheap change, and problems here
+add up, making driving the most convenient option.)
+
+- Northbound on 11th after the University Bridge
+- Turning left from 11th Ave NE to Ravenna
+- The double crosswalk at Montlake / Husky Stadium
+- Cherry and 12th; long cycle time for people crossing near Seattle University
+- Yesler and Broadway slow beg buttons
+- Unmarked beg buttons around Beacon Hill, and no bike actuators
+- Beg buttons along Interurban near Bitter Lake
+
+Larger changes:
+
+- Cafe/bus street along University Ave
+- Eastlake cycle lanes
+
+## London
+
+There's some idea related to a
+[cycle-path on the A5](https://github.com/a-b-street/abstreet/issues/577)
+
+## Template
+
+Over time, each idea will link to a full write-up. That page can have any
+format, but I imagine this basic structure is useful:
+
+- Describe the problem
+  - A clear map showing the scope of the issue
+  - Include pictures and videos from a physical survey, or maybe annotated
+    satellite imagery
+  - Use A/B Street to demonstrate the problem for individual people or in
+    aggregate
+- Describe the proposed solution
+  - Ideally A/B Street is useful for visualizing the change, and measuring
+    quantitative results.
+  - Explain any limits with the modelling
+- Give context on the problem
+  - Is this being discussed anywhere -- often on Twitter?
+  - Are there other proposals or write-ups?
+- Give arguments against the proposed solution
+  - Unintended consequences, prohibitive costs, alternate routes available
