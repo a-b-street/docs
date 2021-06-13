@@ -57,7 +57,9 @@
 
 - [Project](project/README.md)
   - [Team](project/team.md)
+  - [Contributing](project/contributing.md)
   - [Funding](project/funding.md)
+  - [Hiring](project/hiring.md)
   - [Roadmap](project/roadmap.md)
   - [Motivations](project/motivations.md)
   - [History](project/history/README.md)
