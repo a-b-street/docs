@@ -2,7 +2,7 @@
 
 - Download: <https://a-b-street.github.io/docs/howto/index.html>
 - Play on the web:
-  <http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.46/abstreet.html>
+  <http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.47/abstreet.html>
 - Github: <https://github.com/a-b-street/abstreet/tree/master/game/src>
 
 ## Overview

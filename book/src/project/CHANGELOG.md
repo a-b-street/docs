@@ -875,3 +875,12 @@ changes here.
 - road editor UI fixes
 - speed up starting a simulation with infinite parking
 - possible breakthrough with intersection consolidation
+
+0.2.47
+
+- simulation speedup by storing turns better
+- new website/docs maybe halfway done
+- sped up rust build process
+- improved some geometry around Tempe
+- fix broken screenshot diff test
+- trevor added the "cloud of uncertainty" in the 15m tool to show borders
