@@ -200,190 +200,52 @@ for transforming OpenStreetMap key/values to a clear schema of lanes</li>
 <li>Github: <a href="https://github.com/a-b-street/abstreet/tree/master/game/src">https://github.com/a-b-street/abstreet/tree/master/game/src</a></li>
 </ul>
 <h2><a class="header" href="#overview" id="overview">Overview</a></h2>
-<p>Somewhere in between a game and a simulation tool.</p>
-<ul>
-<li>tutorial mode</li>
-<li>challenges</li>
-<li>sandbox</li>
-</ul>
+<p>A/B Street is &quot;a traffic simulation game exploring how small changes to roads affect cyclists, transit users, pedestrians, and drivers.&quot; In other words, you can transform that street parking into a bus lane or fix that pesky left turn at a traffic signal, measure the effects, then <a href="software/../proposals/README.html">propose actually making the change</a>.</p>
+<p>A/B Street uses game-like elements to gradually introduce all of the features of the simulation, with a tutorial and a few challenge modes. (Or at least, that's the goal.) But just becaused it's called a &quot;game&quot; doesn't mean it's not trying to model the real world as accurately as possible from open data.</p>
+<p>Keep in mind it's impossible to simulate all complexity in the real world of people moving around a city. Every traffic model makes lots of assumptions and trade-offs, including A/B Street.</p>
+<h2><a class="header" href="#explore" id="explore">Explore</a></h2>
+<p>A/B Street gives you a 2D representation of roads, with as much detail about bus/bike/turn/parking lanes, transit stops, traffic signals, and parking lots as possible, all from OpenStreetMap.</p>
+<p>(map model pictures)</p>
+<p>Depending on elevation data availability, some areas let you visualize steep streets -- because your bike network should be planned accordingly.</p>
+<p>(two elevation pictures)</p>
+<p>Using external travel demand models, you can explore patterns of where people live, work, and shop.</p>
+<p>(commuter layer picture)</p>
 <h2><a class="header" href="#simulate" id="simulate">Simulate</a></h2>
-<p>What's modeled?</p>
-<p>Where does data come from?</p>
+<p>Using some external data about what trips people take on a typical day, you can simulate drivers, bicyclists, and pedestrians moving around. (Public transit and scooter/bikeshare micromobility planned.)</p>
+<p>(video of one intersection)</p>
+<p>You can follow individual people and watch them wrestle with problems.</p>
+<p>(follow video)</p>
+<p>Or get a bird's-eye view of how everything is moving.</p>
+<p>(unzoomed video)</p>
+<p>Every driving trip begins and ends with parking, which might be easy in suburban areas, but hard in cities.</p>
+<p>(video)</p>
+<p>Some details:</p>
+<ul>
+<li>People will take the best route available, <strong>not</strong> accounting for current congestion. Drivers prefer the fastest route (shorter distances, higher speed limits). Pedestrians and cyclists also factor in elevation changes.</li>
+<li>Vehicles instantly accelerate and stop. This is a useful simplification to speed up the simulation, but of course, you shouldn't use A/B Street to simulate jam waves on freeways.</li>
+<li>Vehicles stay in the same lane once they pick it, and sometimes they choose their lane really poorly. We're working on improving this.</li>
+<li>We don't simulate accidents -- but we do measure &quot;risk exposure&quot; where a collision may be likely.</li>
+</ul>
 <h2><a class="header" href="#edit" id="edit">Edit</a></h2>
-<p>quick videos of each thing</p>
+<p>A/B Street lets you change how road space is divided up. You can create regular vehicle lanes, bus-only lanes, bike lanes, street parking, and new sidewalks. You can either transform existing lanes, or slightly widen/shrink the road. You can reverse the direction of lanes, or close them down to simulate construction.</p>
+<p>(video)</p>
+<p>You can also change speed limits and restrict access to an area. Only trips that start or end in a private area can use the roads within, modelling gated communities. Or you can allow through-traffic for people walking and biking, to create low-traffic neighborhoods.</p>
+<p>(video)</p>
+<p>You can also change how traffic signals work. You can modify the timing if you notice left turns need more time, or set up actuated timing, so that the green light lasts longer when many vehicles are waiting. You can also change which movements are allowed each stage, so you could try out a dedicated left turn stage or a pedestrian all-walk/scramble cycle.</p>
+<p>(video)</p>
 <h2><a class="header" href="#measure" id="measure">Measure</a></h2>
+<p>A/B Street lets you tell data-driven stories about both infrastructure and people</p>
 <p>stories you can tell</p>
-<h2><a class="header" href="#old-notes" id="old-notes">Old notes</a></h2>
-<p>The overview:</p>
-<ol>
-<li>A detailed map of Seattle is built from
-<a href="https://www.openstreetmap.org/about">OpenStreetMap (OSM)</a></li>
-<li>A realistic set of daily trips by car, bike, foot, and bus are simulated</li>
-<li>You make small changes to roads and intersections</li>
-<li>You explore how these changes affect the trips</li>
-</ol>
-<h3><a class="header" href="#driving" id="driving">Driving</a></h3>
+<p>individ/aggregate
+absolute/relative</p>
 <ul>
-<li>Movement: no acceleration, go the full speed limit of the road unless there's
-a slower vehicle in front</li>
-<li>Lanes
-<ul>
-<li>No over-taking or lane-changing in the middle of a road, only at
-intersections</li>
-<li>Strange choice of lanes -- the least full at the time of arrival</li>
-<li>Narrow two-way neighborhood roads where, in practice, only one car at a time
-can go are currently full two-way roads</li>
+<li>go through all of the layers</li>
+<li>and dashboards</li>
 </ul>
-</li>
-<li>Routing is based on fastest time assuming no traffic
-<ul>
-<li>No rerouting if the driver encounters a traffic jam</li>
-</ul>
-</li>
-</ul>
-<h3><a class="header" href="#parking" id="parking">Parking</a></h3>
-<ul>
-<li>Types
-<ul>
-<li>On-street: parallel parking lanes from
-<a href="http://data-seattlecitygis.opendata.arcgis.com/datasets/blockface">GeoData blockface dataset</a>
-and <a href="software/parking_mapper.html">manually mapped</a></li>
-<li>Off-street: most buildings have at least a few parking spots in a driveway
-or carport
-<ul>
-<li>Currently experimenting in the downtown map: set the number of available
-spots based on number of cars seeded at midnight</li>
-</ul>
-</li>
-<li>Parking lots: the number of spots is inferred</li>
-</ul>
-</li>
-<li>Restrictions
-<ul>
-<li>All spots are public except for the few spots associated with each building</li>
-<li>No time restrictions or modeling of payment</li>
-</ul>
-</li>
-<li>How cars park
-<ul>
-<li>Drivers won't look for parking until they first reach their destination
-building. Then they'll drive to the nearest open parking spot (magically
-knowing what spots are open, even if they're a few blocks away). If somebody
-else has taken the spot when they arrive, they'll try again.</li>
-<li>Once a driver finds an open spot, they'll take 10-15 seconds to park. They
-block the road behind them in the meantime. There are no conflicts between
-pedestrians and cars when using a driveway. Cars won't make left turns into
-or out of driveways.</li>
-</ul>
-</li>
-<li>Some parking along the boundary of the map is &quot;blackholed&quot;, meaning it's
-impossible to actually reach it. Nobody will use these spots.</li>
-</ul>
-<h3><a class="header" href="#biking" id="biking">Biking</a></h3>
-<ul>
-<li>Choice of lane
-<ul>
-<li>Multi-use trails like the Burke Gilman and separated cycle-tracks like the
-one along Broadway are currently missing</li>
-<li>Cyclists won't use an empty parking lane</li>
-<li>On roads without a bike lane, cyclists currently won't stick to the
-rightmost lane</li>
-<li>No over-taking yet, so cars can get stuck behind a bike even if there's a
-passing lane</li>
-</ul>
-</li>
-<li>Elevation change isn't factored into route choice or speed yet; pretend
-everybody has an e-bike</li>
-<li>Beginning or ending a cycling trip takes 30-45 seconds. Locking up at bike
-racks with limited capacity isn't modeled; in practice, it's always easy in
-Seattle to find a place to lock up.</li>
-</ul>
-<h3><a class="header" href="#walking" id="walking">Walking</a></h3>
-<ul>
-<li>Not using sidewalk and crosswalk data from OSM yet</li>
-<li>No jay-walking, even on empty residential streets</li>
-<li>Pedestrians can't use roads without sidewalks at all
-<ul>
-<li>When a road only has a sidewalk on one side, driveways will cross the road</li>
-</ul>
-</li>
-<li>Pedestrians can &quot;ghost&quot; through each other; crowds of people can grow to any
-size</li>
-</ul>
-<h3><a class="header" href="#transit" id="transit">Transit</a></h3>
-<ul>
-<li>The modeling of buses is extremely simple and buggy; I'll work on this soon</li>
-<li>No light rail yet</li>
-</ul>
-<h3><a class="header" href="#intersections" id="intersections">Intersections</a></h3>
-<ul>
-<li>Conflicting movements are coarse: a second vehicle won't start a conflicting
-turn, even if the first vehicle is physically out of the way but still
-partially in the intersection</li>
-<li>Most of the time, vehicles won't &quot;block the box&quot; -- if there's no room in the
-target lane, a vehicle won't start turning and risk getting stuck in the
-intersection</li>
-<li>Traffic signals
-<ul>
-<li>Only fixed timers; no actuated signals or
-<a href="https://www.seattle.gov/transportation/projects-and-programs/programs/technology-program/mercer-scoot">centralized control</a>
-yet</li>
-<li>The timing and stages are automatically guessed, except some intersections
-are
-<a href="https://docs.google.com/document/d/1Od_7WvBVYsvpY4etRI0sKmYmZnwXMAXcJxVmm8Iwdcg/edit?usp=sharing">manually mapped</a></li>
-<li>No pedestrian beg buttons; walk signals always come on</li>
-<li>The signal doesn't change for rush hour or weekday/weekend traffic; there's
-one pattern all day</li>
-</ul>
-</li>
-<li>Turn restrictions from OSM are applied
-<ul>
-<li>Per lane (left turn only from leftmost lane), entire roads, multiple
-intersections</li>
-</ul>
-</li>
-</ul>
-<h3><a class="header" href="#people-and-trips" id="people-and-trips">People and trips</a></h3>
-<ul>
-<li>A &quot;synthetic population&quot; of ~700,000 people come from
-<a href="https://www.psrc.org/activity-based-travel-model-soundcast">PSRC's Soundcast model</a>
-<ul>
-<li>Soundcast uses census, land-use, vehicle counts, and commuter surveys. The
-current data is from 2014.</li>
-<li>All driving trips are currently single-occupancy; no car-pooling or
-ridesharing</li>
-<li>Parked cars are initially placed at midnight based on the number of trips
-between buildings</li>
-</ul>
-</li>
-<li>Each person's schedule never changes
-<ul>
-<li>Your changes to the map won't yet convince somebody to take a bus or walk
-instead of drive</li>
-</ul>
-</li>
-</ul>
-<h3><a class="header" href="#map-edits" id="map-edits">Map edits</a></h3>
-<ul>
-<li>Types of edits
-<ul>
-<li>Change types of lanes. Sometimes this is unrealistic based on actual road
-width, but data for this is unavailable.</li>
-<li>Reversing direction of lanes</li>
-<li>Changing stop signs</li>
-<li>Changing traffic signal timing</li>
-<li>Closing roads and intersections for construction, forcing rerouting</li>
-</ul>
-</li>
-<li>Disconnecting the map
-<ul>
-<li>Generally you can't close sidewalks or make changes to make buildings
-unreachable</li>
-<li>You shouldn't be able to make bus stops unreachable, but currently this is
-buggy</li>
-</ul>
-</li>
-</ul>
+<h2><a class="header" href="#not-to-crush-your-dreams-but" id="not-to-crush-your-dreams-but">Not to crush your dreams, but...</a></h2>
+<p>gridlock
+cant do A/B tests if you cant finish trips</p>
+<p>mode shift!</p>
 <h1><a class="header" href="#15-minute-neighborhood-explorer" id="15-minute-neighborhood-explorer">15-minute neighborhood explorer</a></h1>
 <p><img src="software/walkshed.gif" alt="walkshed" /></p>
 <ul>
@@ -2962,7 +2824,7 @@ don't need to queue on sidewalks; they can &quot;ghost&quot; through each other.
 Seattle, there aren't huge crowds of people walking and slowing down, except for
 niche cases like Pike Place Market. So in A/B Street, the only scarce resource
 modeled is the time spent waiting to cross intersections.</p>
-<h2><a class="header" href="#intersections-1" id="intersections-1">Intersections</a></h2>
+<h2><a class="header" href="#intersections" id="intersections">Intersections</a></h2>
 <p>I need to flesh this section out. See <code>mechanics/intersections.rs</code> for how stop
 signs and traffic signals work. Two things I need to fix before making this
 section interesting:</p>
@@ -3355,7 +3217,7 @@ owner is home, it'd be neat to have them walk outside, move the car, and go back
 in. But this greatly complicates the simulation -- the edited lane is in a
 transition state for a while, it modifies schedules, the person might not be
 around, etc.</p>
-<h1><a class="header" href="#parking-1" id="parking-1">Parking</a></h1>
+<h1><a class="header" href="#parking" id="parking">Parking</a></h1>
 <p>In some areas, lots of traffic is caused by people circling around the block in
 search of parking. And often, a great deal of space in a city is spent on street
 parking, surface lots, and garages. So, A/B Street attempts to model parking as
