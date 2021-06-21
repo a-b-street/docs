@@ -884,3 +884,10 @@ changes here.
 - improved some geometry around Tempe
 - fix broken screenshot diff test
 - trevor added the "cloud of uncertainty" in the 15m tool to show borders
+
+0.2.48
+
+- vehicles will now dynamically change lanes to pass slower traffic! in limited cases only.
+- vehicles can now exit a building's driveway and immediately cut across a few lanes
+- new UI tool to easily find when trips start
+- fix some crashes related to widening roads
