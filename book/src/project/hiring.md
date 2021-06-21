@@ -38,12 +38,20 @@ Although your main focus will be public transit, A/B Street is a project with a
 wide scope, and there are other areas we need help, many of which good public
 transit support depends on:
 
-- [simplifying complex intersections from OpenStreetMap](https://github.com/a-b-street/abstreet/issues/654)
-- [snapping separate paths to the main road](https://github.com/a-b-street/abstreet/issues/330)
-- [improving heuristics for placing crosswalks](https://github.com/a-b-street/abstreet/issues/485)
-- helping implement UX designs prototyped in Figma
-- figuring out when a new bus route would
-  [convince somebody to stop driving](https://github.com/a-b-street/abstreet/issues/448)
+- Improving the underlying map model:
+	- [simplifying complex intersections from OpenStreetMap](https://github.com/a-b-street/abstreet/issues/654)
+	- [snapping separate paths to the main road](https://github.com/a-b-street/abstreet/issues/330)
+	- [improving heuristics for placing crosswalks](https://github.com/a-b-street/abstreet/issues/485)
+- Fixing gridock and improving the simulation
+	- lane-changing and over-taking
+	- biking in parking lanes when possible
+	- better rules for when pedestrians are likely to start crossing
+	- mode shift / figuring out when a new bus route would
+	  [convince somebody to stop driving](https://github.com/a-b-street/abstreet/issues/448)
+	- editing the map without needing to restart a simulation
+- UI / design
+	- helping implement UX designs prototyped in Figma
+	- fixing usability problems you notice yourself
 
 ## Your qualifications
 

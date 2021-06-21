@@ -41,6 +41,7 @@ Larger changes:
 
 - Cafe/bus street along University Ave
 - Eastlake cycle lanes
+- [Madison Safety Corridor](https://twitter.com/QAGreenways/status/872554226752278528/photo/1)
 
 ## London
 
