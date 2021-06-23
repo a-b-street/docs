@@ -20,6 +20,7 @@
 ---
 
 - [Proposals](proposals/README.md)
+  - [West Green Lake protected path](proposals/green_lake/README.md)
   - [Lake Washington Blvd Stay Healthy Street](proposals/lake_wash.md)
 
 ---
