@@ -256,15 +256,16 @@ So why don't people take this seemingly superior route through Broadmoor?
 Apologies if you already have the context, but a greatly abridged history
 lesson is in order for those who don't.
 
-Up until about 200 years ago, what we refer to as Broadmoor, like much of
-Cascadia, was a forest. And, like much of Cascadia, it was cut clear, and the
-timber sold off by a mill company. The owners of this particular parcel were
-the Puget Mill Company. After logging the parcel, they split it,
-not quite in half. The smaller western half was given to the city, and gardened
-into what is now enjoyed by the public as the Washington Park Arboretum. The
-General Manager from the very same Puget Mill Company was then allowed to
-develop the larger eastern half of the parcel into that venerable American
-trifecta: a golf course / country club / private gated residential community.
+Up until about 200 years ago, what we refer to as Broadmoor, like much land
+near the Puget Sound, was a forest inhabited by the Duwamish people. And, like
+much land near the Puget Sound, it was cut clear, and the timber sold off by a
+mill company. The owners of this particular parcel were the Puget Mill Company.
+After logging the parcel, they split it, not quite in half. The smaller western
+half was given to the city, and gardened into what is now enjoyed by the public
+as the Washington Park Arboretum. The General Manager from the very same Puget
+Mill Company was then allowed to develop the larger eastern half of the parcel
+into that venerable American trifecta: a golf course / country club / private
+gated residential community.[^madison_park_remembered]
 
 So, Broadmoor was initially built as a gated enclave impassible to all but a
 select few of the leisure class. A century later, how much has changed?
@@ -564,6 +565,9 @@ There's tons of other improvements in the works. Follow
 know what you'd like to see.
 
 ## Footnotes
+
+[^madison_park_remembered]:
+Jane Powell Thomas, Madison Park Remembered (J.P. Thomas, 2004)
 
 [^sdot safety study]:
 Seattle Department of Transportation's safety study: [City of Seattle Bicycle and Pedestrian Safety Analysis Phase&nbsp;2](https://www.seattle.gov/documents/Departments/SDOT/VisionZero/SDOT_Bike%20and%20Ped%20Safety%20Analysis_Ph2_2420(0).pdf)
