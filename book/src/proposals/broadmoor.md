@@ -8,6 +8,8 @@
 
 # Allow bike and foot traffic through Broadmoor
 
+_posted July 1, 2021 by [Michael Kirk](https://twitter.com/ikawe)_ &mdash; [meet the A/B Street team](https://a-b-street.github.io/docs/project/team.html)
+
 <style>
 // mobile-breakpoint = 569px + --side-bar-width (300px);
 
