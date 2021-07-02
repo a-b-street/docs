@@ -1,5 +1,5 @@
 <div class="post-header">
-    <div class="post-header-background" style="background-image:url(/assets/broadmoor/gate-banner.jpg)">
+    <div class="post-header-background" style="background-image:url(/docs/assets/broadmoor/gate-banner.jpg)">
         <div class="post-header-overlay">
             <h1 class="post-header-text">Liberate Broadmoor</h1>
         </div>
@@ -220,7 +220,7 @@ simulation game, we're going to explore how it could become a valuable link for
 people walking and biking in Seattle.
 
 <div class="media-box">
-<img alt="a map of part of Seattle, highlighting the Broadmoor neighborhood, about 2.5 miles northeast of downtown." src="/assets/broadmoor/seattle-overview.png">
+<img alt="a map of part of Seattle, highlighting the Broadmoor neighborhood, about 2.5 miles northeast of downtown." src="/docs/assets/broadmoor/seattle-overview.png">
 
 Broadmoor lies a few miles northeast of Downtown Seattle, sandwiched between
 the [delightful Washington Park
@@ -233,7 +233,7 @@ grocery stores, a hardware store, dining, and recreational destinations.
 
 <div class="media-box">
 
-<img src="/assets/broadmoor/madison-park-beach.jpg" alt="a beach full of swimmers, paddle boards, and sun bathers" />
+<img src="/docs/assets/broadmoor/madison-park-beach.jpg" alt="a beach full of swimmers, paddle boards, and sun bathers" />
 
 Madison Park Beach on Lake Washington is another notable neighborhood destination.
 
@@ -249,7 +249,7 @@ and can be an equally harrowing walk for those on foot.
 
 <div class="media-box">
 <img
-  src="/assets/broadmoor/proposal-overview.png"
+  src="/docs/assets/broadmoor/proposal-overview.png"
   alt="a proposed route, cutting through the arboretum and Broadmoor neighborhood, as opposed to a longer route possible today" />
 
 If people were instead allowed to walk or ride through Broadmoor, they could
@@ -276,14 +276,14 @@ select few of the leisure class. A century later, how much has changed?
 
 <div class="wrap-two">
 <div class="media-box">
-<img src="/assets/broadmoor/dead-end.jpg" alt="a sidewalk ends and a road turns where a large hedge looms" />
+<img src="/docs/assets/broadmoor/dead-end.jpg" alt="a sidewalk ends and a road turns where a large hedge looms" />
 
 Try to walk through or around Broadmoor today, and you'll find yourself repeatedly
 redirected or inexplicably dead-ended.
 </div>
 
 <div class="media-box">
-<img src="/assets/broadmoor/front-gate.jpg" alt="a car waiting for entry at a security gate" />
+<img src="/docs/assets/broadmoor/front-gate.jpg" alt="a car waiting for entry at a security gate" />
 
 There are gates on the north and south ends of Broadmoor. Both are guarded by
 uniformed security.  
@@ -306,7 +306,7 @@ impacts.
 If you've never seen A/B Street before, here's what it looks like:
 
 <div class="media-box">
-<img src="/assets/broadmoor/abstreet-overview.gif" alt="Screencast of the A/B
+<img src="/docs/assets/broadmoor/abstreet-overview.gif" alt="Screencast of the A/B
 Street travel simulator, showing an overhead street map view, roughly centered
 around the Washington Park Arboretum, with hundreds of dots sliding along the
 streets. An adjustable playback speed is shown, panning and zooming in reveals
@@ -340,8 +340,8 @@ show up letter boxed.
 -->
 <div class="video-container" style="padding-top: 56.25%" >
   <video controls alt="A person from the simulation exits their house in Madison park for a long walk towards the Montlake Bridge. Two routes are shown, the original route down Madison shows busy streets and several alerts as the pedestrian walks down a long stretch of Madison. The new proposed route, through Broadmoor is much calmer. The two routes converge just south of the Montlake Bridge, where the trip ends.">
-    <source src="/assets/broadmoor/individual-trip-comparison.mp4" type="video/mp4">
-    <source src="/assets/broadmoor/individual-trip-comparison.webm" type="video/webm">
+    <source src="/docs/assets/broadmoor/individual-trip-comparison.mp4" type="video/mp4">
+    <source src="/docs/assets/broadmoor/individual-trip-comparison.webm" type="video/webm">
     Sorry, your browser does not support this website's videos.
   </video>
 </div>
@@ -368,7 +368,7 @@ proposal.
 <div class="wrap-two">
 <div class="media-box">
   <h4 class="chart-header">Cars: Individual Trips</h4>
-  <img class="chart" src="/assets/broadmoor/broadmoor-driving-duration-scatter.png" />
+  <img class="chart" src="/docs/assets/broadmoor/broadmoor-driving-duration-scatter.png" />
 
   For people driving, some trips were a little faster, while others a little
   slower.
@@ -379,7 +379,7 @@ proposal.
 
 <div class="media-box">
   <h4 class="chart-header">Walking and Biking: Individual Trips</h4>
-  <img class="chart" src="/assets/broadmoor/broadmoor-ped-bike-duration-scatter.png" />
+  <img class="chart" src="/docs/assets/broadmoor/broadmoor-ped-bike-duration-scatter.png" />
 
   It gets more interesting for people walking and cycling. Especially for
   longer trips, people get where they're going more quickly after being allowed
@@ -405,7 +405,7 @@ time saved with the total amount of time lost.
 
 <div class="media-box">
   <h4 class="chart-header">Cars: Overall</h4>
-  <img class="chart" src="/assets/broadmoor/broadmoor-driving-duration-histogram.png" />
+  <img class="chart" src="/docs/assets/broadmoor/broadmoor-driving-duration-histogram.png" />
 
   Once again, car traffic is mostly a wash. About as much time was lost
   as was saved by others, implying a neutral change for people driving.
@@ -413,7 +413,7 @@ time saved with the total amount of time lost.
 
 <div class="media-box">
   <h4 class="chart-header">Walking and Biking: Overall</h3>
-  <img class="chart" src="/assets/broadmoor/broadmoor-ped-bike-duration-histogram.png" />
+  <img class="chart" src="/docs/assets/broadmoor/broadmoor-ped-bike-duration-histogram.png" />
 
   A clearer trend emerges for people walking and biking &mdash; many long trips were
   substantially faster given access to Broadmoor.
@@ -458,7 +458,7 @@ compare how a proposal affects these metrics.
 
 <div class="media-box">
 <h4 class="chart-header">Identifying Hotspots</h4>
-<img class="chart" src="/assets/broadmoor/montlake-520-hotspot.png" />
+<img class="chart" src="/docs/assets/broadmoor/montlake-520-hotspot.png" />
 
 South of the Montlake bridge, crossing Highway 520, has complex arterial
 intersections *and* relatively high bike and foot traffic, meaning many people
@@ -467,7 +467,7 @@ are exposed to these risks.
 
 <div class="media-box">
 <h4 class="chart-header">Walking: Arterial Intersections</h4>
-<img class="chart" src="/assets/broadmoor/broadmoor-ped-arterial-crossings.png" />
+<img class="chart" src="/docs/assets/broadmoor/broadmoor-ped-arterial-crossings.png" />
 
 In the simulation, opening Broadmoor to pedestrians allowed about 200 people,
 over the course of the day, to pass through fewer arterial intersections.
@@ -478,7 +478,7 @@ Longer walks were especially affected.
 <div class="wrap-two">
 <div class="media-box">
 <h4 class="chart-header">Biking: Car Wants to Overtake</h4>
-<img class="chart" src="/assets/broadmoor/alerts-on-madison.gif" />
+<img class="chart" src="/docs/assets/broadmoor/alerts-on-madison.gif" />
 
 In shared lanes, a common risk is that faster moving cars pull up too close
 behind a cyclist.  This is uncomfortable for both the person on the bike and
@@ -489,7 +489,7 @@ cyclists the option to avoid sharing a lane with cars on busy Madison.
 <div class="media-box">
 <h4 class="chart-header">Biking: Complex Intersections</h4>
 
-<img class="chart" src="/assets/broadmoor/broadmoor-bike-complex-crossings.png" />
+<img class="chart" src="/docs/assets/broadmoor/broadmoor-bike-complex-crossings.png" />
 
 Simple intersections are where just two roads cross. Passing through a complex
 intersection, where more than two roads cross, has an increased risk of death
