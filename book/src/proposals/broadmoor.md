@@ -512,8 +512,10 @@ safer, and more pleasant trips without unduly impacting other traffic.
 <!-- TODO: it'd be nice to link to something like `https://abstreet.org/web` or even http://abstreet.s3-website.us-east-2.amazonaws.com/latest/abstreet.html rather than a specific version -->
 
 If you'd like to see for yourself what the Broadmoor proposal looks like, give
-it a try, [you can run A/B Street in your browser](http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.48/abstreet.html) or [download the
-desktop client](https://github.com/a-b-street/abstreet).
+it a try, [you can run A/B Street in your
+browser](http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.48/abstreet.html?--dev&system/us/seattle/scenarios/arboretum/weekday.bin)
+or [download the desktop
+client](https://a-b-street.github.io/docs/user/index.html)
 
 ## Caveats
 
