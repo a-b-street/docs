@@ -300,7 +300,8 @@ them down Madison Ave?
 
 To get an intuition for the benefits that opening up Broadmoor might have, we
 turn to [A/B Street](https://abstreet.org). If you have an idea for a change in
-your city, A/B Street can visualize that change and measure its impacts.
+your city streets, A/B Street can visualize that change and measure its
+impacts.
 
 If you've never seen A/B Street before, here's what it looks like:
 
@@ -391,7 +392,8 @@ nicely show the interdependent nature of travel. Even though overall travel
 time and the routes available to drivers didn't change at all, individual
 drivers did experience downstream effects of pedestrians and bicyclists making
 different choices. This interdependence is fertile soil for unintended
-consequences, which is why having tools to measure overall impact is essential.
+consequences, which is why having tools to measure _overall_ impact is
+essential.
 
 <h3 class="chart-header">Time Saved / Lost</h3>
 
@@ -459,7 +461,8 @@ compare how a proposal affects these metrics.
 <img class="chart" src="/assets/broadmoor/montlake-520-hotspot.png" />
 
 South of the Montlake bridge, crossing Highway 520, has complex arterial
-intersections *and* relatively high bike and foot traffic.
+intersections *and* relatively high bike and foot traffic, meaning many people
+are exposed to these risks.
 </div>
 
 <div class="media-box">
