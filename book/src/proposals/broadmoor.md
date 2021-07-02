@@ -212,8 +212,8 @@ blockquote {
 </style>
 
 You could be forgiven for not knowing much about the Broadmoor neighborhood in
-Seattle &mdash; that's kind of by design. Let's look how it could be a valuable
-link for people walking and biking in Seattle.
+Seattle &mdash; that's kind of by design. Let's look at how it could be a
+valuable link for people walking and biking in Seattle.
 
 <div class="media-box">
 <img alt="a map of part of Seattle, highlighting the Broadmoor neighborhood, about 2.5 miles northeast of downtown." src="/assets/broadmoor/seattle-overview.png">
@@ -386,7 +386,7 @@ nicely show the interdependent nature of travel. Even though overall travel
 time and the routes available to drivers didn't change at all, individual
 drivers did experience downstream effects of pedestrians and bicyclists making
 different choices. This interdependence is fertile soil for unintended
-consequences, and having tools to measure overall impact is essential.
+consequences, which is why having tools to measure overall impact is essential.
 
 <h3 class="chart-header">Time Saved / Lost</h3>
 
