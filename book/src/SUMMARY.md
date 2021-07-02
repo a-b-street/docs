@@ -21,6 +21,7 @@
 
 - [Proposals](proposals/README.md)
   - [Lake Washington Blvd Stay Healthy Street](proposals/lake_wash.md)
+  - [Allow bike and foot traffic through Broadmoor](proposals/broadmoor.md)
 
 ---
 
