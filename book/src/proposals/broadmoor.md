@@ -214,8 +214,10 @@ blockquote {
 </style>
 
 You could be forgiven for not knowing much about the Broadmoor neighborhood in
-Seattle &mdash; that's kind of by design. Let's look at how it could be a
-valuable link for people walking and biking in Seattle.
+Seattle &mdash; that's kind of by design. Using the [A / B
+Street](https://a-b-street.github.io/docs/software/abstreet.html) travel
+simulation game, we're going to explore how it could become a valuable link for
+people walking and biking in Seattle.
 
 <div class="media-box">
 <img alt="a map of part of Seattle, highlighting the Broadmoor neighborhood, about 2.5 miles northeast of downtown." src="/assets/broadmoor/seattle-overview.png">
@@ -518,7 +520,13 @@ If you'd like to see for yourself what the Broadmoor proposal looks like, give
 it a try, [you can run A/B Street in your
 browser](http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.48/abstreet.html?--dev&system/us/seattle/scenarios/arboretum/weekday.bin)
 or [download the desktop
-client](https://a-b-street.github.io/docs/user/index.html)
+client](https://a-b-street.github.io/docs/user/index.html).
+
+Or, if you have a different idea for improving how we get around, in Seattle or
+elsewhere, give it a go! Please contact us on
+[twitter](https://twitter.com/CarlinoDustin) or
+[github](https://github.com/a-b-street/abstreet/issues/new) if you have any
+questions or issues.
 
 ## Caveats
 
