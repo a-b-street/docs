@@ -1,3 +1,11 @@
+<div class="post-header">
+    <div class="post-header-background" style="background-image:url(/assets/broadmoor/gate-banner.jpg)">
+        <div class="post-header-overlay">
+            <h1 class="post-header-text">Liberate Broadmoor</h1>
+        </div>
+    </div>
+</div>
+
 # Allow bike and foot traffic through Broadmoor
 
 <style>
@@ -16,7 +24,10 @@
 }
 
 .post-header {
-    position:relative
+    position:relative;
+    /* hack: mdbook doesnt support the full bleed layout we actually want, so just do something that looks decent. */
+    margin-left: -15px;
+    margin-right: -15px;
 }
 
 .post-header-background {
@@ -56,7 +67,9 @@
     .post-header-text {
         margin-left: auto;
         margin-right: auto;
-        max-width:800px
+        max-width:800px;
+        /* hack: mdbook doesnt support the full bleed layout we actually want, so just do something that looks decent. */
+        margin-left: 15px;
     }
 }
 
@@ -166,7 +179,7 @@
 
 @media (max-width: 569px) {
     .sidebar-hidden .media-box {
-        // full-bleed layout doesn't work in mdbook
+        /* hack: mdbook doesnt support the full bleed layout we actually want, so just do something that looks decent. */
         // left: 50%;
         // margin-left: -50vw;
         // margin-right: -50vw;
@@ -179,7 +192,7 @@
 
 @media (max-width: 869px) {
     .sidebar-visible .media-box {
-        // full-bleed layout doesn't work in mdbook
+        /* hack: mdbook doesnt support the full bleed layout we actually want, so just do something that looks decent. */
         // left: 50%;
         // margin-left: -50vw;
         // margin-right: -50vw;
@@ -496,8 +509,11 @@ Here we've shown there is at least some evidence that letting people walk and
 bike through the Broadmoor neighborhood in Seattle could result in faster,
 safer, and more pleasant trips without unduly impacting other traffic.
 
+<!-- TODO: it'd be nice to link to something like `https://abstreet.org/web` or even http://abstreet.s3-website.us-east-2.amazonaws.com/latest/abstreet.html rather than a specific version -->
+
 If you'd like to see for yourself what the Broadmoor proposal looks like, give
-it a try, [you can run A/B Street in your browser](TODO).
+it a try, [you can run A/B Street in your browser](http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.48/abstreet.html) or [download the
+desktop client](https://github.com/a-b-street/abstreet).
 
 ## Caveats
 
