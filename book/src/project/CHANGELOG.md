@@ -891,3 +891,14 @@ changes here.
 - vehicles can now exit a building's driveway and immediately cut across a few lanes
 - new UI tool to easily find when trips start
 - fix some crashes related to widening roads
+
+0.2.49
+
+- vehicles can exit driveways in either direction!
+- bugfixes with lane-changing, time-warping, settings, nondeterministic z-ordering, changing speed limits
+- speed up edit mode on large maps
+- loading maps on native now sees locally imported maps
+- smaller files across the board by serializing f64s as integers
+- map data quality: greenlake cycletrack, better stop sign placement, crosswalks at consolidated intersections
+- risk exposure matrix labels
+- keep cars out of bus lanes with better costing
