@@ -148,80 +148,45 @@
                 <div id="content" class="content">
                     <main>
                         <h1><a class="header" href="#roadmap" id="roadmap">Roadmap</a></h1>
-<p><a href="https://docs.google.com/document/d/1oV4mdtb0ve-wf0HqbEvR9IwXLIkTeDu8a3UnJxnr2F0/edit?usp=sharing">The 2021 roadmap</a>
-is in a Google doc -- feel free to comment.</p>
-<p>The rest of this doc covers plans for April-June 2021.</p>
-<h2><a class="header" href="#advocacy" id="advocacy">Advocacy</a></h2>
-<p>A/B Street has been under active development since June 2018, but we haven't yet
-used the software to advocate for anything specific in the real world. Ideally
-we'd attract other people to do this and just focus on making the software
-strengthen arguments as much as possible, but it's hard to pitch the idea of an
-&quot;explorable explanations&quot; blog post without an example. So, we'll produce some
-ourselves.</p>
+<p>See
+<a href="https://docs.google.com/document/d/1tsr65WIIX3Y6A804eUK-BIVbOfwdYCOVddZe7esNSw0/edit?usp=sharing">this doc</a>
+for a Q2 retrospective and more notes. This is a summary for our plans for
+July-September 2021.</p>
+<h2><a class="header" href="#mode-shift" id="mode-shift">Mode shift</a></h2>
+<p>Top priority is calculating when changes to roads might cause people to change
+behavior long-term. A/B Street only shows short-term impacts right now, but we
+have enough things in place to calculate when somebody might decide to ditch
+their car. Ideas are <a href="https://github.com/a-b-street/abstreet/issues/448">here</a>.</p>
+<p>Related to this, we'll try to allow
+<a href="https://github.com/a-b-street/abstreet/issues/312">editing the map without reseting the simulation</a>
+again. This has eaten lots of time already without any usable results, but there
+are some fresh ideas for a simpler implementation.</p>
+<p>And <a href="https://github.com/tnederlof">Trevor</a> is actively looking at reviving
+public transit support from GTFS, which will fit into mode shifting perfectly --
+in many places, deciding to use transit is much more likely than convincing
+somebody to bike.</p>
+<h2><a class="header" href="#finish-half-started-projects" id="finish-half-started-projects">Finish half-started projects</a></h2>
+<p>In Q2, there was some progress on hard technical problems:</p>
 <ul>
-<li>Seattle:
-<a href="https://github.com/a-b-street/abstreet/issues/574">Open Broadmoor for biking and walking</a> -
-there are no A/B Street modelling gaps to doing this, and it's a really
-simple, cheap idea.</li>
-<li>Seattle:
-<a href="https://github.com/a-b-street/abstreet/discussions/490">Model the Northgate pedestrian bridge</a> -
-this'll open this fall, but we can estimate how much it'll help before then.</li>
-<li>Seattle: Model a few ongoing paving projects from
-<a href="https://www.seattle.gov/transportation/projects-and-programs/current-projects">here</a>
-or
-<a href="https://www.seattle.gov/transportation/projects-and-programs/programs/maintenance-and-paving/current-paving-projects">here</a>,
-to see if the map editor is easy to use and drive UX improvements.</li>
-<li>London:
-<a href="https://github.com/a-b-street/abstreet/issues/577">Cycling along the A5</a></li>
+<li>consolidating complex intersectons</li>
+<li>dynamic lane-changing</li>
+<li>entering and exiting driveways from either side of the road</li>
 </ul>
-<h2><a class="header" href="#map--simulation" id="map--simulation">Map / simulation</a></h2>
-<p>The main project will be
-<a href="https://github.com/a-b-street/abstreet/issues/67">widening existing roads</a>.
-Today, you can't transform one driving lane into a pair of bidirectional
-cyclepaths, even though that'd usually physically work width-wise. You also
-can't correct the OSM / inferred data about street parking. It's a complicated
-technical change, but essential. Hopefully building entirely new roads is
-possible to implement after this -- for things like the Northgate bridge or
-mocking up light rail expansion ideas -- but consider it a stretch goal.</p>
-<p>I think one of the intermediate steps to implement the above will be letting
-cars
-<a href="https://github.com/a-b-street/abstreet/issues/555">enter and exit driveways</a>
-from either side of the road. This should also help with gridlock, since many
-vehicles today loop around strangely to approach a building from the right side
-of the road.</p>
-<h3><a class="header" href="#score-functions" id="score-functions">Score functions</a></h3>
-<p>A/B Street's main metric for success is impact to trip time, but this is the
-kind of vehicle-centric, outdated way of thinking that we're trying to defeat.
-It's just the simplest to implement. We'll start tracking safety/pleasantness of
-trips too, exposing that in the UI as prominently as time, with the same ability
-to compare changes. Specifically, we can measure cases when cars over-take bikes
-(or at least want to), biking in the door-zone next to parking, and cars turning
-from a road with a high speed limit over a crosswalk with pedestrians. We have
-historic collision data for Seattle and the UK, and we can see if the dangerous
-areas A/B Street finds match that data.</p>
-<p>Relatedly, it's finally time to implement some form of
-<a href="https://github.com/a-b-street/abstreet/issues/448">mode shift</a>. When you edit
-the map and make it more pleasant to bike, some people should switch over to
-doing it. There are many ways to do this, but we'll at least start with
-something.</p>
-<h3><a class="header" href="#stretch-lane-overtaking" id="stretch-lane-overtaking">Stretch: lane-overtaking</a></h3>
-<p>There are a few varieties of this, passing using another lane in the same
-direction or against oncoming traffic, and something specific for
-<a href="https://github.com/a-b-street/abstreet/issues/139">shared walking/biking paths</a>.
-I think this is less important and riskier than the other work, but I want to
-start it.</p>
-<h2><a class="header" href="#ui" id="ui">UI</a></h2>
-<p>Implement Yuwen's new info panels, including the consolidated lane/intersection
-editing.</p>
-<h2><a class="header" href="#leftovers---help-wanted" id="leftovers---help-wanted">Leftovers - help wanted!</a></h2>
-<p>There aren't enough hours in the day, so probably not much work on:</p>
+<p>We'll continue pushing forward here. And some other areas likely to be revived:</p>
 <ul>
-<li><a href="https://github.com/a-b-street/abstreet/issues/372">Public transit</a></li>
-<li><a href="https://github.com/a-b-street/abstreet/issues/393">15-minute neighborhoods</a></li>
-<li>Some kind of website to share your map proposals</li>
+<li>snapping separate cyclepaths to roads</li>
+<li>more realistically placing crosswalks</li>
 </ul>
-<p>Although the funding story is unclear, I'd like to hire somebody in the next few
-months to work on these.</p>
+<p>Some of this work will be prioritized based on a contract to help a city
+demonstrate their design ideas for making their downtown be more multimodal
+friendly.</p>
+<h2><a class="header" href="#project-logistics" id="project-logistics">Project logistics</a></h2>
+<ul>
+<li>Push through a revamp of &lt;docs.abstreet.org&gt;</li>
+<li>Publish at least two blog posts exploring particular ideas in Seattle</li>
+<li>COVID-permitting, start a Seattle-area meetup for exploring transportation
+changes</li>
+</ul>
 
                     </main>
 
