@@ -521,7 +521,7 @@ safer, and more pleasant trips without unduly impacting other traffic.
 
 If you'd like to see for yourself what the Broadmoor proposal looks like, give
 it a try, [you can run A/B Street in your
-browser](http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.48/abstreet.html?--dev&system/us/seattle/scenarios/arboretum/weekday.bin)
+browser](http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.49/abstreet.html?--dev&system/us/seattle/scenarios/arboretum/weekday.bin&--edits=broadmoor%20access)
 or [download the desktop
 client](https://a-b-street.github.io/docs/user/index.html).
 
