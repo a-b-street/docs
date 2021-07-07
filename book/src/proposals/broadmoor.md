@@ -260,6 +260,28 @@ expect shorter trips on quieter streets.
 
 </div>
 
+<div class="media-box">
+<img
+  src="/docs/assets/broadmoor/contour-map.png"
+  alt="a contour map of Seattle near the Arboretum, showing the elevation gain between the two routes" />
+
+The route through Broadmoor is also less steep.[^elevation data]
+
+<img
+  src="/docs/assets/broadmoor/street-grade.png"
+  alt="a map showing street inclines along Madison Ave" />
+
+Between Lake Washington Blvd and Madison Park, parts of E Madison St have up to
+8% incline![^elevation data]
+
+<img
+  src="/docs/assets/broadmoor/elevation-profiles.png"
+  alt="an elevation profile along each route" />
+
+Comparing the elevation profiles shows that Broadmoor encounters less steep
+hills.[^elevation data]
+</div>
+
 So why don't people take this seemingly superior route through Broadmoor?
 Apologies if you already have the context, but a greatly abridged history lesson
 is in order for those who don't.
@@ -594,4 +616,7 @@ what you'd like to see.
 
 [^sdot safety study]: Seattle Department of Transportation's safety study:
 [City of Seattle Bicycle and Pedestrian Safety Analysis Phase&nbsp;2](<https://www.seattle.gov/documents/Departments/SDOT/VisionZero/SDOT_Bike%20and%20Ped%20Safety%20Analysis_Ph2_2420(0).pdf>)
+
+[^elevation data]:
+Elevation data from [King County LIDAR](http://pugetsoundlidar.ess.washington.edu/lidardata/restricted/projects/2016king_county.html). Thanks to [Eldan Goldenburg](https://github.com/eldang/elevation_lookups) for processing this data.
 <!-- prettier-ignore-end-->
