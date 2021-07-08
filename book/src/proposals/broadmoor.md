@@ -260,26 +260,28 @@ expect shorter trips on quieter streets.
 
 </div>
 
+In addition, the elevation gain encountered along each route is quite different.
+
+<div class="wrap-two">
+
 <div class="media-box">
 <img
-  src="/docs/assets/broadmoor/contour-map.png"
-  alt="a contour map of Seattle near the Arboretum, showing the elevation gain between the two routes" />
+  src="../assets/broadmoor/elevation-profile-madison.png"
+  alt="an elevation profile along Madison & Lake Washington Blvd" />
 
-The route through Broadmoor is also less steep.[^elevation data]
+Part of the route along Madison climbs up 8% grade -- quite steep!
 
+</div>
+
+<div class="media-box">
 <img
-  src="/docs/assets/broadmoor/street-grade.png"
-  alt="a map showing street inclines along Madison Ave" />
+  src="../assets/broadmoor/elevation-profile-broadmoor.png"
+  alt="an elevation profile through Broadmoor" />
 
-Between Lake Washington Blvd and Madison Park, parts of E Madison St have up to
-8% incline![^elevation data]
+The route through Broadmoor side-tracks that hill entirely.[^elevation data]
 
-<img
-  src="/docs/assets/broadmoor/elevation-profiles.png"
-  alt="an elevation profile along each route" />
+</div>
 
-Comparing the elevation profiles shows that Broadmoor encounters less steep
-hills.[^elevation data]
 </div>
 
 So why don't people take this seemingly superior route through Broadmoor?
