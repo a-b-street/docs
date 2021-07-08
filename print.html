@@ -200,51 +200,82 @@ for transforming OpenStreetMap key/values to a clear schema of lanes</li>
 <li>Github: <a href="https://github.com/a-b-street/abstreet/tree/master/game/src">https://github.com/a-b-street/abstreet/tree/master/game/src</a></li>
 </ul>
 <h2><a class="header" href="#overview" id="overview">Overview</a></h2>
-<p>A/B Street is &quot;a traffic simulation game exploring how small changes to roads affect cyclists, transit users, pedestrians, and drivers.&quot; In other words, you can transform that street parking into a bus lane or fix that pesky left turn at a traffic signal, measure the effects, then <a href="software/../proposals/README.html">propose actually making the change</a>.</p>
-<p>A/B Street uses game-like elements to gradually introduce all of the features of the simulation, with a tutorial and a few challenge modes. (Or at least, that's the goal.) But just becaused it's called a &quot;game&quot; doesn't mean it's not trying to model the real world as accurately as possible from open data.</p>
-<p>Keep in mind it's impossible to simulate all complexity in the real world of people moving around a city. Every traffic model makes lots of assumptions and trade-offs, including A/B Street.</p>
+<p>A/B Street is &quot;a traffic simulation game exploring how small changes to roads
+affect cyclists, transit users, pedestrians, and drivers.&quot; In other words, you
+can transform that street parking into a bus lane or fix that pesky left turn at
+a traffic signal, measure the effects, then
+<a href="software/../proposals/README.html">propose actually making the change</a>.</p>
+<p>A/B Street uses game-like elements to gradually introduce all of the features of
+the simulation, with a tutorial and a few challenge modes. (Or at least, that's
+the goal.) But just becaused it's called a &quot;game&quot; doesn't mean it's not trying
+to model the real world as accurately as possible from open data.</p>
+<p>Keep in mind it's impossible to simulate all complexity in the real world of
+people moving around a city. Every traffic model makes lots of assumptions and
+trade-offs, including A/B Street.</p>
 <h2><a class="header" href="#explore" id="explore">Explore</a></h2>
-<p>A/B Street gives you a 2D representation of roads, with as much detail about bus/bike/turn/parking lanes, transit stops, traffic signals, and parking lots as possible, all from OpenStreetMap.</p>
+<p>A/B Street gives you a 2D representation of roads, with as much detail about
+bus/bike/turn/parking lanes, transit stops, traffic signals, and parking lots as
+possible, all from OpenStreetMap.</p>
 <p>(map model pictures)</p>
-<p>Depending on elevation data availability, some areas let you visualize steep streets -- because your bike network should be planned accordingly.</p>
+<p>Depending on elevation data availability, some areas let you visualize steep
+streets -- because your bike network should be planned accordingly.</p>
 <p>(two elevation pictures)</p>
-<p>Using external travel demand models, you can explore patterns of where people live, work, and shop.</p>
+<p>Using external travel demand models, you can explore patterns of where people
+live, work, and shop.</p>
 <p>(commuter layer picture)</p>
 <h2><a class="header" href="#simulate" id="simulate">Simulate</a></h2>
-<p>Using some external data about what trips people take on a typical day, you can simulate drivers, bicyclists, and pedestrians moving around. (Public transit and scooter/bikeshare micromobility planned.)</p>
+<p>Using some external data about what trips people take on a typical day, you can
+simulate drivers, bicyclists, and pedestrians moving around. (Public transit and
+scooter/bikeshare micromobility planned.)</p>
 <p>(video of one intersection)</p>
 <p>You can follow individual people and watch them wrestle with problems.</p>
 <p>(follow video)</p>
 <p>Or get a bird's-eye view of how everything is moving.</p>
 <p>(unzoomed video)</p>
-<p>Every driving trip begins and ends with parking, which might be easy in suburban areas, but hard in cities.</p>
+<p>Every driving trip begins and ends with parking, which might be easy in suburban
+areas, but hard in cities.</p>
 <p>(video)</p>
 <p>Some details:</p>
 <ul>
-<li>People will take the best route available, <strong>not</strong> accounting for current congestion. Drivers prefer the fastest route (shorter distances, higher speed limits). Pedestrians and cyclists also factor in elevation changes.</li>
-<li>Vehicles instantly accelerate and stop. This is a useful simplification to speed up the simulation, but of course, you shouldn't use A/B Street to simulate jam waves on freeways.</li>
-<li>Vehicles stay in the same lane once they pick it, and sometimes they choose their lane really poorly. We're working on improving this.</li>
-<li>We don't simulate accidents -- but we do measure &quot;risk exposure&quot; where a collision may be likely.</li>
+<li>People will take the best route available, <strong>not</strong> accounting for current
+congestion. Drivers prefer the fastest route (shorter distances, higher speed
+limits). Pedestrians and cyclists also factor in elevation changes.</li>
+<li>Vehicles instantly accelerate and stop. This is a useful simplification to
+speed up the simulation, but of course, you shouldn't use A/B Street to
+simulate jam waves on freeways.</li>
+<li>Vehicles stay in the same lane once they pick it, and sometimes they choose
+their lane really poorly. We're working on improving this.</li>
+<li>We don't simulate accidents -- but we do measure &quot;risk exposure&quot; where a
+collision may be likely.</li>
 </ul>
 <h2><a class="header" href="#edit" id="edit">Edit</a></h2>
-<p>A/B Street lets you change how road space is divided up. You can create regular vehicle lanes, bus-only lanes, bike lanes, street parking, and new sidewalks. You can either transform existing lanes, or slightly widen/shrink the road. You can reverse the direction of lanes, or close them down to simulate construction.</p>
+<p>A/B Street lets you change how road space is divided up. You can create regular
+vehicle lanes, bus-only lanes, bike lanes, street parking, and new sidewalks.
+You can either transform existing lanes, or slightly widen/shrink the road. You
+can reverse the direction of lanes, or close them down to simulate construction.</p>
 <p>(video)</p>
-<p>You can also change speed limits and restrict access to an area. Only trips that start or end in a private area can use the roads within, modelling gated communities. Or you can allow through-traffic for people walking and biking, to create low-traffic neighborhoods.</p>
+<p>You can also change speed limits and restrict access to an area. Only trips that
+start or end in a private area can use the roads within, modelling gated
+communities. Or you can allow through-traffic for people walking and biking, to
+create low-traffic neighborhoods.</p>
 <p>(video)</p>
-<p>You can also change how traffic signals work. You can modify the timing if you notice left turns need more time, or set up actuated timing, so that the green light lasts longer when many vehicles are waiting. You can also change which movements are allowed each stage, so you could try out a dedicated left turn stage or a pedestrian all-walk/scramble cycle.</p>
+<p>You can also change how traffic signals work. You can modify the timing if you
+notice left turns need more time, or set up actuated timing, so that the green
+light lasts longer when many vehicles are waiting. You can also change which
+movements are allowed each stage, so you could try out a dedicated left turn
+stage or a pedestrian all-walk/scramble cycle.</p>
 <p>(video)</p>
 <h2><a class="header" href="#measure" id="measure">Measure</a></h2>
-<p>A/B Street lets you tell data-driven stories about both infrastructure and people</p>
+<p>A/B Street lets you tell data-driven stories about both infrastructure and
+people</p>
 <p>stories you can tell</p>
-<p>individ/aggregate
-absolute/relative</p>
+<p>individ/aggregate absolute/relative</p>
 <ul>
 <li>go through all of the layers</li>
 <li>and dashboards</li>
 </ul>
 <h2><a class="header" href="#not-to-crush-your-dreams-but" id="not-to-crush-your-dreams-but">Not to crush your dreams, but...</a></h2>
-<p>gridlock
-cant do A/B tests if you cant finish trips</p>
+<p>gridlock cant do A/B tests if you cant finish trips</p>
 <p>mode shift!</p>
 <h1><a class="header" href="#15-minute-neighborhood-explorer" id="15-minute-neighborhood-explorer">15-minute neighborhood explorer</a></h1>
 <p><img src="software/walkshed.gif" alt="walkshed" /></p>
@@ -964,14 +995,15 @@ how to measure the impact on travel times. Stay tuned to see more of the
 <a href="https://drive.google.com/open?id=1HQMnagRf8EbS1nouqCMLl4LZr0QE8VrC&amp;usp=sharing">proposed network</a>
 simulated, and get in touch if you'd like to help out!</p>
 <div class="post-header">
-    <div class="post-header-background" style="background-image:url(/docs/assets/broadmoor/gate-banner.jpg)">
+    <div class="post-header-background" style="background-image:url(../assets/broadmoor/gate-banner.jpg)">
         <div class="post-header-overlay">
             <h1 class="post-header-text">Liberate Broadmoor</h1>
         </div>
     </div>
 </div>
 <h1><a class="header" href="#allow-bike-and-foot-traffic-through-broadmoor" id="allow-bike-and-foot-traffic-through-broadmoor">Allow bike and foot traffic through Broadmoor</a></h1>
-<p><em>posted July 1, 2021 by <a href="https://twitter.com/ikawe">Michael Kirk</a></em> — <a href="https://a-b-street.github.io/docs/project/team.html">meet the A/B Street team</a></p>
+<p><em>posted July 1, 2021 by <a href="https://twitter.com/ikawe">Michael Kirk</a></em> —
+<a href="proposals/../project/team.html">meet the A/B Street team</a></p>
 <style>
 // mobile-breakpoint = 569px + --side-bar-width (300px);
 
@@ -1175,60 +1207,60 @@ blockquote {
 
 </style>
 <p>You could be forgiven for not knowing much about the Broadmoor neighborhood in
-Seattle — that's kind of by design. Using the <a href="https://a-b-street.github.io/docs/software/abstreet.html">A / B
-Street</a> travel
-simulation game, we're going to explore how it could become a valuable link for
-people walking and biking in Seattle.</p>
+Seattle — that's kind of by design. Using the
+<a href="proposals/../software/abstreet.html">A / B Street</a> travel simulation game, we're going to
+explore how it could become a valuable link for people walking and biking in
+Seattle.</p>
 <div class="media-box">
-<img alt="a map of part of Seattle, highlighting the Broadmoor neighborhood, about 2.5 miles northeast of downtown." src="proposals//docs/assets/broadmoor/seattle-overview.png">
-<p>Broadmoor lies a few miles northeast of Downtown Seattle, sandwiched between
-the <a href="https://botanicgardens.uw.edu/washington-park-arboretum/">delightful Washington Park
-Arboretum</a> and
-the Madison Park neighborhood.</p>
+<img alt="a map of part of Seattle, highlighting the Broadmoor neighborhood, about 2.5 miles northeast of downtown." src="proposals/../assets/broadmoor/seattle-overview.png">
+<p>Broadmoor lies a few miles northeast of Downtown Seattle, sandwiched between the
+<a href="https://botanicgardens.uw.edu/washington-park-arboretum/">delightful Washington Park Arboretum</a>
+and the Madison Park neighborhood.</p>
 </div>
 <p>Adjacent to Broadmoor, the Madison Park and Washington Park neighborhoods offer
 grocery stores, a hardware store, dining, and recreational destinations.</p>
 <div class="media-box">
-<img src="proposals//docs/assets/broadmoor/madison-park-beach.jpg" alt="a beach full of swimmers, paddle boards, and sun bathers" />
-<p>Madison Park Beach on Lake Washington is another notable neighborhood destination.</p>
+<img src="proposals/../assets/broadmoor/madison-park-beach.jpg" alt="a beach full of swimmers, paddle boards, and sun bathers" />
+<p>Madison Park Beach on Lake Washington is another notable neighborhood
+destination.</p>
 <p><em class="photo-attribution">photo courtesy of the City of Seattle</em></p>
 </div>
 <p>If you were headed to one of these destinations today, and coming from, say
 Montlake or from the University District via the University bridge, it would
 almost certainly require you to take a long stretch walking or biking down East
-Madison Ave. This particular stretch of road is known to be <a href="https://www.seattle.gov/transportation/projects-and-programs/safety-first/vision-zero/resources/bicycle-level-of-traffic-stress">high stress for
-people on bikes</a>,
+Madison Ave. This particular stretch of road is known to be
+<a href="https://www.seattle.gov/transportation/projects-and-programs/safety-first/vision-zero/resources/bicycle-level-of-traffic-stress">high stress for people on bikes</a>,
 and can be an equally harrowing walk for those on foot.</p>
 <div class="media-box">
 <img
-  src="/docs/assets/broadmoor/proposal-overview.png"
+  src="../assets/broadmoor/proposal-overview.png"
   alt="a proposed route, cutting through the arboretum and Broadmoor neighborhood, as opposed to a longer route possible today" />
 <p>If people were instead allowed to walk or ride through Broadmoor, they could
 expect shorter trips on quieter streets.</p>
 </div>
 <p>So why don't people take this seemingly superior route through Broadmoor?
-Apologies if you already have the context, but a greatly abridged history
-lesson is in order for those who don't.</p>
-<p>Up until about 200 years ago, what we refer to as Broadmoor, like much land
-near the Puget Sound, was a forest inhabited by the Duwamish people. And, like
-much land near the Puget Sound, it was cut clear, and the timber sold off by a
-mill company. The owners of this particular parcel were the Puget Mill Company.
-After logging the parcel, they split it, not quite in half. The smaller western
-half was given to the city, and gardened into what is now enjoyed by the public
-as the Washington Park Arboretum. The General Manager from the very same Puget
-Mill Company was then allowed to develop the larger eastern half of the parcel
-into that venerable American trifecta: a golf course / country club / private
-gated residential community.<sup class="footnote-reference"><a href="#madison_park_remembered">1</a></sup></p>
+Apologies if you already have the context, but a greatly abridged history lesson
+is in order for those who don't.</p>
+<p>Up until about 200 years ago, what we refer to as Broadmoor, like much land near
+the Puget Sound, was a forest inhabited by the Duwamish people. And, like much
+land near the Puget Sound, it was cut clear, and the timber sold off by a mill
+company. The owners of this particular parcel were the Puget Mill Company. After
+logging the parcel, they split it, not quite in half. The smaller western half
+was given to the city, and gardened into what is now enjoyed by the public as
+the Washington Park Arboretum. The General Manager from the very same Puget Mill
+Company was then allowed to develop the larger eastern half of the parcel into
+that venerable American trifecta: a golf course / country club / private gated
+residential community.<sup class="footnote-reference"><a href="#madison_park_remembered">1</a></sup></p>
 <p>So, Broadmoor was initially built as a gated enclave impassible to all but a
 select few of the leisure class. A century later, how much has changed?</p>
 <div class="wrap-two">
 <div class="media-box">
-<img src="proposals//docs/assets/broadmoor/dead-end.jpg" alt="a sidewalk ends and a road turns where a large hedge looms" />
-<p>Try to walk through or around Broadmoor today, and you'll find yourself repeatedly
-redirected or inexplicably dead-ended.</p>
+<img src="proposals/../assets/broadmoor/dead-end.jpg" alt="a sidewalk ends and a road turns where a large hedge looms" />
+<p>Try to walk through or around Broadmoor today, and you'll find yourself
+repeatedly redirected or inexplicably dead-ended.</p>
 </div>
 <div class="media-box">
-<img src="proposals//docs/assets/broadmoor/front-gate.jpg" alt="a car waiting for entry at a security gate" />
+<img src="proposals/../assets/broadmoor/front-gate.jpg" alt="a car waiting for entry at a security gate" />
 <p>There are gates on the north and south ends of Broadmoor. Both are guarded by
 uniformed security.</p>
 </div>
@@ -1240,26 +1272,25 @@ them down Madison Ave?</p>
 <h3><a class="header" href="#cui-bono" id="cui-bono">Cui bono</a></h3>
 <p>To get an intuition for the benefits that opening up Broadmoor might have, we
 turn to <a href="https://abstreet.org">A/B Street</a>. If you have an idea for a change in
-your city streets, A/B Street can visualize that change and measure its
-impacts.</p>
+your city streets, A/B Street can visualize that change and measure its impacts.</p>
 <p>If you've never seen A/B Street before, here's what it looks like:</p>
 <div class="media-box">
-<img src="proposals//docs/assets/broadmoor/abstreet-overview.gif" alt="Screencast of the A/B
+<img src="proposals/../assets/broadmoor/abstreet-overview.gif" alt="Screencast of the A/B
 Street travel simulator, showing an overhead street map view, roughly centered
 around the Washington Park Arboretum, with hundreds of dots sliding along the
 streets. An adjustable playback speed is shown, panning and zooming in reveals
 the moving dots are cartoon people and vehicles getting around the streets of
 Seattle. Madison Ave looks busy.">
 <p>A/B Street uses public data sources, like
-<a href="https://openstreetmap.org">OpenStreetMap</a> and Seattle's <a href="https://www.psrc.org/activity-based-travel-model-soundcast">Soundcast Travel
-Demand Model</a> to
-simulate travel in the city. You can gain insight into your proposal by
-comparing metrics like travel duration and risk exposure as they are affected
-by your proposal.</p>
+<a href="https://openstreetmap.org">OpenStreetMap</a> and Seattle's
+<a href="https://www.psrc.org/activity-based-travel-model-soundcast">Soundcast Travel Demand Model</a>
+to simulate travel in the city. You can gain insight into your proposal by
+comparing metrics like travel duration and risk exposure as they are affected by
+your proposal.</p>
 </div>
 <p>In A/B Street, allowing people to walk and cycle through Broadmoor, is a matter
-of clicks. A/B Street simulates how this change affects people's travel. You
-can watch as each individual person goes about their day. If given new
+of clicks. A/B Street simulates how this change affects people's travel. You can
+watch as each individual person goes about their day. If given new
 circumstances, people will be able to make new, hopefully better, choices for
 themselves.</p>
 <p>To gain a little intuition for the benefits of our proposal, let's follow one
@@ -1273,8 +1304,8 @@ show up letter boxed.
 -->
 <div class="video-container" style="padding-top: 56.25%" >
   <video controls alt="A person from the simulation exits their house in Madison park for a long walk towards the Montlake Bridge. Two routes are shown, the original route down Madison shows busy streets and several alerts as the pedestrian walks down a long stretch of Madison. The new proposed route, through Broadmoor is much calmer. The two routes converge just south of the Montlake Bridge, where the trip ends.">
-    <source src="/docs/assets/broadmoor/individual-trip-comparison.mp4" type="video/mp4">
-    <source src="/docs/assets/broadmoor/individual-trip-comparison.webm" type="video/webm">
+    <source src="../assets/broadmoor/individual-trip-comparison.mp4" type="video/mp4">
+    <source src="../assets/broadmoor/individual-trip-comparison.webm" type="video/webm">
     Sorry, your browser does not support this website's videos.
   </video>
 </div>
@@ -1287,75 +1318,72 @@ anecdote for why this could be a worthwhile proposal. However, travel behavior
 is highly interdependent. Every choice one person makes has potential ripple
 effects for others.</p>
 <p>We need more than a handful of individual examples. This is why A/B Street
-includes tools for quantifying overall travel experiences — allowing us
-to see beyond anecdotes to visualize trends across the map. Let's take a look
-at how overall trip times and some safety metrics are affected by this
-proposal.</p>
+includes tools for quantifying overall travel experiences — allowing us to
+see beyond anecdotes to visualize trends across the map. Let's take a look at
+how overall trip times and some safety metrics are affected by this proposal.</p>
 <h3><a class="header" href="#trip-durations" id="trip-durations">Trip Durations</a></h3>
 <div class="wrap-two">
 <div class="media-box">
   <h4 class="chart-header">Cars: Individual Trips</h4>
-  <img class="chart" src="proposals//docs/assets/broadmoor/broadmoor-driving-duration-scatter.png" />
+  <img class="chart" src="proposals/../assets/broadmoor/broadmoor-driving-duration-scatter.png" />
 <p>For people driving, some trips were a little faster, while others a little
 slower.</p>
-<p>Overall it's a wash for drivers, which is expected, but a useful
-validation.</p>
+<p>Overall it's a wash for drivers, which is expected, but a useful validation.</p>
 </div>
 <div class="media-box">
   <h4 class="chart-header">Walking and Biking: Individual Trips</h4>
-  <img class="chart" src="proposals//docs/assets/broadmoor/broadmoor-ped-bike-duration-scatter.png" />
-<p>It gets more interesting for people walking and cycling. Especially for
-longer trips, people get where they're going more quickly after being allowed
-access through Broadmoor.</p>
+  <img class="chart" src="proposals/../assets/broadmoor/broadmoor-ped-bike-duration-scatter.png" />
+<p>It gets more interesting for people walking and cycling. Especially for longer
+trips, people get where they're going more quickly after being allowed access
+through Broadmoor.</p>
 </div>
 </div>
 <p>Apart from the benefits conveyed to pedestrians and cyclists, these charts also
-nicely show the interdependent nature of travel. Even though overall travel
-time and the routes available to drivers didn't change at all, individual
-drivers did experience downstream effects of pedestrians and bicyclists making
-different choices. This interdependence is fertile soil for unintended
-consequences, which is why having tools to measure <em>overall</em> impact is
-essential.</p>
+nicely show the interdependent nature of travel. Even though overall travel time
+and the routes available to drivers didn't change at all, individual drivers did
+experience downstream effects of pedestrians and bicyclists making different
+choices. This interdependence is fertile soil for unintended consequences, which
+is why having tools to measure <em>overall</em> impact is essential.</p>
 <h3 class="chart-header">Time Saved / Lost</h3>
-<p>The dot charts are helpful for seeing the shape of some trends, but it's hard
-to quantify the improvements. These next charts compare the total amount of
-time saved with the total amount of time lost.</p>
+<p>The dot charts are helpful for seeing the shape of some trends, but it's hard to
+quantify the improvements. These next charts compare the total amount of time
+saved with the total amount of time lost.</p>
 <div class="wrap-two">
 <div class="media-box">
   <h4 class="chart-header">Cars: Overall</h4>
-  <img class="chart" src="proposals//docs/assets/broadmoor/broadmoor-driving-duration-histogram.png" />
-<p>Once again, car traffic is mostly a wash. About as much time was lost
-as was saved by others, implying a neutral change for people driving.</p>
+  <img class="chart" src="proposals/../assets/broadmoor/broadmoor-driving-duration-histogram.png" />
+<p>Once again, car traffic is mostly a wash. About as much time was lost as was
+saved by others, implying a neutral change for people driving.</p>
 </div>
 <div class="media-box">
   <h4 class="chart-header">Walking and Biking: Overall</h3>
-  <img class="chart" src="proposals//docs/assets/broadmoor/broadmoor-ped-bike-duration-histogram.png" />
-<p>A clearer trend emerges for people walking and biking — many long trips were
-substantially faster given access to Broadmoor.</p>
+  <img class="chart" src="proposals/../assets/broadmoor/broadmoor-ped-bike-duration-histogram.png" />
+<p>A clearer trend emerges for people walking and biking — many long trips
+were substantially faster given access to Broadmoor.</p>
 </div>
 </div>
-<p>Trip duration was worth considering as a gut check to make sure a proposal
-seems reasonable, and this proposal indeed has some favorable evidence for
-faster trips, but trip duration shouldn't be the only, or even most important,
-effect to consider. In particular, there are important safety metrics we can
-measure with A/B Street which we'll dive into next.</p>
+<p>Trip duration was worth considering as a gut check to make sure a proposal seems
+reasonable, and this proposal indeed has some favorable evidence for faster
+trips, but trip duration shouldn't be the only, or even most important, effect
+to consider. In particular, there are important safety metrics we can measure
+with A/B Street which we'll dive into next.</p>
 <h2><a class="header" href="#safety" id="safety">Safety</a></h2>
 <p>All people should be able to get where they're going safely. As our most
 vulnerable road users, people walking, bicycling, and those using mobility aids
 deserve extra consideration.</p>
-<p>There is an increasing effort to not only look at previous crash sites, but
-also to consider the <em>types</em> of places where crashes are likely to occur. By
+<p>There is an increasing effort to not only look at previous crash sites, but also
+to consider the <em>types</em> of places where crashes are likely to occur. By
 prioritizing places based on their similarity to crash sites, we can prevent or
-mitigate future crash sites before they happen.  In this vein, last year
-Seattle DOT released a <a href="https://www.seattle.gov/documents/Departments/SDOT/VisionZero/SDOT_Bike%20and%20Ped%20Safety%20Analysis_Ph2_2420(0).pdf">safety
-study</a>
+mitigate future crash sites before they happen. In this vein, last year Seattle
+DOT released a
+<a href="https://www.seattle.gov/documents/Departments/SDOT/VisionZero/SDOT_Bike%20and%20Ped%20Safety%20Analysis_Ph2_2420(0).pdf">safety study</a>
 analyzing which physical roadway features that are associated with an increased
 risk of traffic-related death or serious injury.</p>
 <p>For example:</p>
 <blockquote>
-<p>Right hook crash risk tends to be higher on arterial streets. [...] This
-could be due to the overall complexity of the intersection and/or the width
-of the intersection.<sup class="footnote-reference"><a href="#sdot safety study">2</a></sup></p>
+<p>Right hook crash risk tends to be higher on arterial streets. [...] This could
+be due to the overall complexity of the intersection and/or the width of the
+intersection.<sup class="footnote-reference"><a href="#sdot safety study">2</a></sup></p>
 </blockquote>
 <p>By classifying these risky features, A/B Street can keep tabs as people in the
 simulation are exposed to these risks. You can follow an individual's trip and
@@ -1365,57 +1393,56 @@ compare how a proposal affects these metrics.</p>
 <div class="wrap-two">
 <div class="media-box">
 <h4 class="chart-header">Identifying Hotspots</h4>
-<img class="chart" src="proposals//docs/assets/broadmoor/montlake-520-hotspot.png" />
+<img class="chart" src="proposals/../assets/broadmoor/montlake-520-hotspot.png" />
 <p>South of the Montlake bridge, crossing Highway 520, has complex arterial
 intersections <em>and</em> relatively high bike and foot traffic, meaning many people
 are exposed to these risks.</p>
 </div>
 <div class="media-box">
 <h4 class="chart-header">Walking: Arterial Intersections</h4>
-<img class="chart" src="proposals//docs/assets/broadmoor/broadmoor-ped-arterial-crossings.png" />
+<img class="chart" src="proposals/../assets/broadmoor/broadmoor-ped-arterial-crossings.png" />
 <p>In the simulation, opening Broadmoor to pedestrians allowed about 200 people,
-over the course of the day, to pass through fewer arterial intersections.
-Longer walks were especially affected.</p>
+over the course of the day, to pass through fewer arterial intersections. Longer
+walks were especially affected.</p>
 </div>
 </div>
 <div class="wrap-two">
 <div class="media-box">
 <h4 class="chart-header">Biking: Car Wants to Overtake</h4>
-<img class="chart" src="proposals//docs/assets/broadmoor/alerts-on-madison.gif" />
+<img class="chart" src="proposals/../assets/broadmoor/alerts-on-madison.gif" />
 <p>In shared lanes, a common risk is that faster moving cars pull up too close
-behind a cyclist.  This is uncomfortable for both the person on the bike and
-the person driving. Having the option to ride through Broadmoor gives some
-cyclists the option to avoid sharing a lane with cars on busy Madison.</p>
+behind a cyclist. This is uncomfortable for both the person on the bike and the
+person driving. Having the option to ride through Broadmoor gives some cyclists
+the option to avoid sharing a lane with cars on busy Madison.</p>
 </div>
 <div class="media-box">
 <h4 class="chart-header">Biking: Complex Intersections</h4>
-<img class="chart" src="proposals//docs/assets/broadmoor/broadmoor-bike-complex-crossings.png" />
+<img class="chart" src="proposals/../assets/broadmoor/broadmoor-bike-complex-crossings.png" />
 <p>Simple intersections are where just two roads cross. Passing through a complex
-intersection, where more than two roads cross, has an increased risk of death
-or severe injury for people on bikes<sup class="footnote-reference"><a href="#sdot safety study">2</a></sup>. Being able to cycle
+intersection, where more than two roads cross, has an increased risk of death or
+severe injury for people on bikes<sup class="footnote-reference"><a href="#sdot safety study">2</a></sup>. Being able to cycle
 through Broadmoor was a strict improvement for this metric.</p>
 </div>
 </div>
 <p>This was a quick overview of some of the tools A/B Street has for measuring
 baseline safety metrics and seeing how your proposal affects them. We're
-continuing to add metrics and visualizations, but we'd love to know if there
-are any you'd specifically like to see.</p>
+continuing to add metrics and visualizations, but we'd love to know if there are
+any you'd specifically like to see.</p>
 <h3><a class="header" href="#whats-next" id="whats-next">What's Next?</a></h3>
 <p>Using a tool like <a href="https://www.abstreet.org">A/B Street</a> is absolutely not a
 definitive evaluation. It's intended to get you started tinkering.</p>
 <p>By identifying and measuring things we care about, and simulating how they
-change, we can quickly gain some visual intuition and quantified evidence
-to validate (or refute) assumptions in our proposal, and hopefully it's a
-little fun too.</p>
+change, we can quickly gain some visual intuition and quantified evidence to
+validate (or refute) assumptions in our proposal, and hopefully it's a little
+fun too.</p>
 <p>Here we've shown there is at least some evidence that letting people walk and
 bike through the Broadmoor neighborhood in Seattle could result in faster,
 safer, and more pleasant trips without unduly impacting other traffic.</p>
 <!-- TODO: it'd be nice to link to something like `https://abstreet.org/web` or even http://abstreet.s3-website.us-east-2.amazonaws.com/latest/abstreet.html rather than a specific version -->
 <p>If you'd like to see for yourself what the Broadmoor proposal looks like, give
-it a try, <a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.49/abstreet.html?--dev&amp;system/us/seattle/scenarios/arboretum/weekday.bin&amp;--edits=broadmoor%20access">you can run A/B Street in your
-browser</a>
-or <a href="https://a-b-street.github.io/docs/user/index.html">download the desktop
-client</a>.</p>
+it a try,
+<a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.49/abstreet.html?--dev&amp;system/us/seattle/scenarios/arboretum/weekday.bin&amp;--edits=broadmoor%20access">you can run A/B Street in your browser</a>
+or <a href="proposals/../user/index.html">download the desktop client</a>.</p>
 <p>Or, if you have a different idea for improving how we get around, in Seattle or
 elsewhere, give it a go! Please contact us on
 <a href="https://twitter.com/CarlinoDustin">twitter</a> or
@@ -1425,44 +1452,46 @@ questions or issues.</p>
 <p>It bears repeating: A map is not the territory. The signifier is not the
 signified. A simulation is not, and can never be, the actual world.</p>
 <p>But like a good map or a good metaphor, a good simulation can be a useful tool
-for learning and advocacy. Beyond the shortcomings inherent to any such
-semiotic excursion, there are a couple of limitations we wanted to call out in
-this case study in particular.</p>
+for learning and advocacy. Beyond the shortcomings inherent to any such semiotic
+excursion, there are a couple of limitations we wanted to call out in this case
+study in particular.</p>
 <h3><a class="header" href="#data-sources" id="data-sources">Data Sources</a></h3>
 <p>The underlying road network is inferred from
 <a href="https://www.openstreetmap.org/#map=14/47.6337/-122.2941">OpenStreetMap</a>.
 OpenStreetMap (OSM) is a global community of mapping enthusiasts whose software
-and data is freely available.  Using OSM, A/B Street is already usable in
-cities all over the globe. However, as a freely available community maintained
-project, OSM comes with no data quality guarantees, and local mapping
-conventions can vary. Not everyone using OSM is interested in the incredible
-level of detail required to run a travel simulation. This situation is ever
-improving though, and we'd love to have you give A/B Street a try, wherever you
-are.</p>
-<p>A/B Street leverages Seattle's <a href="https://www.psrc.org/activity-based-travel-model-soundcast">Soundcast travel demand
-model</a> to generate
-the list of trips for each person in A/B Street. Specifically, for each person,
-Soundcast is responsible for saying where they need to be and at what time.
-Soundcast is also responsible for what mode the person takes - whether they
-walk, drive, cycle, etc.</p>
+and data is freely available. Using OSM, A/B Street is already usable in cities
+all over the globe. However, as a freely available community maintained project,
+OSM comes with no data quality guarantees, and local mapping conventions can
+vary. Not everyone using OSM is interested in the incredible level of detail
+required to run a travel simulation. This situation is ever improving though,
+and we'd love to have you give A/B Street a try, wherever you are.</p>
+<p>A/B Street leverages Seattle's
+<a href="https://www.psrc.org/activity-based-travel-model-soundcast">Soundcast travel demand model</a>
+to generate the list of trips for each person in A/B Street. Specifically, for
+each person, Soundcast is responsible for saying where they need to be and at
+what time. Soundcast is also responsible for what mode the person takes -
+whether they walk, drive, cycle, etc.</p>
 <h3><a class="header" href="#modeshift" id="modeshift">Modeshift</a></h3>
 <p>Intuitively if you make driving more attractive, more people will drive.
 Similarly if you make a mode like cycling, walking, or transit more attractive,
 more people will choose that mode.</p>
 <p>A/B Street doesn't currently account for this shifting of modes. It naively
-assumes that people will go about their day, always choosing to drive or walk
-or cycle regardless of what changes you make to the city. Mode shift is a real
-and important behavior that we are excited to implement and measure in A/B
-Street in the future.</p>
+assumes that people will go about their day, always choosing to drive or walk or
+cycle regardless of what changes you make to the city. Mode shift is a real and
+important behavior that we are excited to implement and measure in A/B Street in
+the future.</p>
 <p>There's tons of other improvements in the works. Follow
-<a href="https://twitter.com/CarlinoDustin">@CarlinoDustin</a> for updates, and let us
-know what you'd like to see.</p>
+<a href="https://twitter.com/CarlinoDustin">@CarlinoDustin</a> for updates, and let us know
+what you'd like to see.</p>
 <h2><a class="header" href="#footnotes" id="footnotes">Footnotes</a></h2>
+<!-- prettier-ignore-start -->
 <div class="footnote-definition" id="madison_park_remembered"><sup class="footnote-definition-label">1</sup>
 <p>Jane Powell Thomas, Madison Park Remembered (J.P. Thomas, 2004)</p>
 </div>
 <div class="footnote-definition" id="sdot safety study"><sup class="footnote-definition-label">2</sup>
-<p>Seattle Department of Transportation's safety study: <a href="https://www.seattle.gov/documents/Departments/SDOT/VisionZero/SDOT_Bike%20and%20Ped%20Safety%20Analysis_Ph2_2420(0).pdf">City of Seattle Bicycle and Pedestrian Safety Analysis Phase 2</a></p>
+<p>Seattle Department of Transportation's safety study:
+<a href="https://www.seattle.gov/documents/Departments/SDOT/VisionZero/SDOT_Bike%20and%20Ped%20Safety%20Analysis_Ph2_2420(0).pdf">City of Seattle Bicycle and Pedestrian Safety Analysis Phase 2</a></p>
+<!-- prettier-ignore-end-->
 </div>
 <h1><a class="header" href="#technical-details" id="technical-details">Technical details</a></h1>
 <p>This section of the site is intended for anybody who wants to understand or work
