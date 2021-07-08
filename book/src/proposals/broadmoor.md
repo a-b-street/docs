@@ -98,7 +98,8 @@ _posted July 1, 2021 by [Michael Kirk](https://twitter.com/ikawe)_ &mdash;
 }
 
 .media-box img {
-    width:100%
+    width:100%;
+    object-fit: cover;
 }
 
 .media-box .video-container {
@@ -153,7 +154,6 @@ _posted July 1, 2021 by [Michael Kirk](https://twitter.com/ikawe)_ &mdash;
     }
 
     .sidebar-hidden .wrap-two img {
-        object-fit: cover;
         max-height:300px
     }
 }
@@ -174,7 +174,6 @@ _posted July 1, 2021 by [Michael Kirk](https://twitter.com/ikawe)_ &mdash;
     }
 
     .sidebar-visible .wrap-two img {
-        object-fit: cover;
         max-height:300px
     }
 }
