@@ -1,7 +1,15 @@
 #!/bin/bash
 
 set -e
-~/npm/node_modules/prettier/bin-prettier.js --write --prose-wrap=always $1
 
-# Format everything:
-# for x in `find book/src/ | grep '\.md'`; do ./format_md.sh $x; done; git checkout book/src/project/CHANGELOG.md
+if [ -z "$@" ]
+then
+
+echo "formatting everything"
+find book/src -name \*.md \! -name CHANGELOG.md | xargs npm run fmt
+
+else
+
+echo "formatting $@"
+npm run fmt "$@"
+fi

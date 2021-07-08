@@ -1,2 +1,3 @@
 *.swp
 book/book
+node_modules
