@@ -268,7 +268,7 @@ In addition, the elevation gain encountered along each route is quite different.
   alt="two elevation profiles, showing a gentler climb through Broadmoor" />
 
 The green route along Madison Ave climbs up 8% grade &mdash; quite steep! The
-blue route through Broadmoor is much more gently sloped.
+blue route through Broadmoor is much more gently sloped.[^elevation data]
 
 </div>
 
