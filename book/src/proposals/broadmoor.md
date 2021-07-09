@@ -614,11 +614,11 @@ what you'd like to see.
 ## Footnotes
 
 <!-- prettier-ignore-start -->
+[^elevation data]:
+Elevation data from [King County LIDAR](http://pugetsoundlidar.ess.washington.edu/lidardata/restricted/projects/2016king_county.html). Thanks to [Eldan Goldenburg](https://github.com/eldang/elevation_lookups) for processing this data.
+
 [^madison_park_remembered]: Jane Powell Thomas, Madison Park Remembered (J.P. Thomas, 2004)
 
 [^sdot safety study]: Seattle Department of Transportation's safety study:
 [City of Seattle Bicycle and Pedestrian Safety Analysis Phase&nbsp;2](<https://www.seattle.gov/documents/Departments/SDOT/VisionZero/SDOT_Bike%20and%20Ped%20Safety%20Analysis_Ph2_2420(0).pdf>)
-
-[^elevation data]:
-Elevation data from [King County LIDAR](http://pugetsoundlidar.ess.washington.edu/lidardata/restricted/projects/2016king_county.html). Thanks to [Eldan Goldenburg](https://github.com/eldang/elevation_lookups) for processing this data.
 <!-- prettier-ignore-end-->
