@@ -250,6 +250,7 @@ Madison Ave. This particular stretch of road is known to be
 [high stress for people on bikes](https://www.seattle.gov/transportation/projects-and-programs/safety-first/vision-zero/resources/bicycle-level-of-traffic-stress),
 and can be an equally harrowing walk for those on foot.
 
+<div class="wrap-two">
 <div class="media-box">
 <img
   src="../assets/broadmoor/proposal-overview.png"
@@ -260,16 +261,19 @@ expect shorter trips on quieter streets.
 
 </div>
 
-In addition, the elevation gain encountered along each route is quite different.
 
 <div class="media-box">
 <img
+  class="chart"
   src="../assets/broadmoor/elevation-profiles.png"
   alt="two elevation profiles, showing a gentler climb through Broadmoor" />
+
+The elevation gain encountered along each route is quite different.
 
 The green route along Madison Ave climbs up 8% grade &mdash; quite steep! The
 blue route through Broadmoor is much more gently sloped.[^elevation data]
 
+</div>
 </div>
 
 So why don't people take this seemingly superior route through Broadmoor?
