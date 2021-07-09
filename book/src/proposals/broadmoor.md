@@ -262,25 +262,13 @@ expect shorter trips on quieter streets.
 
 In addition, the elevation gain encountered along each route is quite different.
 
-<div class="wrap-two">
-
 <div class="media-box">
 <img
-  src="../assets/broadmoor/elevation-profile-madison.png"
-  alt="an elevation profile along Madison & Lake Washington Blvd" />
+  src="../assets/broadmoor/elevation-profiles.png"
+  alt="two elevation profiles, showing a gentler climb through Broadmoor" />
 
-Part of the route along Madison climbs up 8% grade -- quite steep!
-
-</div>
-
-<div class="media-box">
-<img
-  src="../assets/broadmoor/elevation-profile-broadmoor.png"
-  alt="an elevation profile through Broadmoor" />
-
-The route through Broadmoor side-tracks that hill entirely.[^elevation data]
-
-</div>
+The green route along Madison Ave climbs up 8% grade &mdash; quite steep! The
+blue route through Broadmoor is much more gently sloped.
 
 </div>
 
