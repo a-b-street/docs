@@ -373,7 +373,7 @@ as opposed to crossing along the many busy intersections on Madison Ave.
 
 </div>
 
-### Beyond Anecdotes
+### Beyond anecdotes
 
 The morning commute shown above is good for story telling. It's an intuitive
 anecdote for why this could be a worthwhile proposal. However, travel behavior
@@ -531,7 +531,7 @@ baseline safety metrics and seeing how your proposal affects them. We're
 continuing to add metrics and visualizations, but we'd love to know if there are
 any you'd specifically like to see.
 
-### What's Next?
+### What's next?
 
 Using a tool like [A/B Street](https://www.abstreet.org) is absolutely not a
 definitive evaluation. It's intended to get you started tinkering.
@@ -568,7 +568,7 @@ for learning and advocacy. Beyond the shortcomings inherent to any such semiotic
 excursion, there are a couple of limitations we wanted to call out in this case
 study in particular.
 
-### Data Sources
+### Data sources
 
 The underlying road network is inferred from
 [OpenStreetMap](https://www.openstreetmap.org/#map=14/47.6337/-122.2941).
