@@ -260,6 +260,18 @@ expect shorter trips on quieter streets.
 
 </div>
 
+In addition, the elevation gain encountered along each route is quite different.
+
+<div class="media-box">
+<img
+  src="../assets/broadmoor/elevation-profiles.png"
+  alt="two elevation profiles, showing a gentler climb through Broadmoor" />
+
+The green route along Madison Ave climbs up 8% grade &mdash; quite steep! The
+blue route through Broadmoor is much more gently sloped.[^elevation data]
+
+</div>
+
 So why don't people take this seemingly superior route through Broadmoor?
 Apologies if you already have the context, but a greatly abridged history lesson
 is in order for those who don't.
@@ -590,6 +602,9 @@ what you'd like to see.
 ## Footnotes
 
 <!-- prettier-ignore-start -->
+[^elevation data]:
+Elevation data from [King County LIDAR](http://pugetsoundlidar.ess.washington.edu/lidardata/restricted/projects/2016king_county.html). Thanks to [Eldan Goldenburg](https://github.com/eldang/elevation_lookups) for processing this data.
+
 [^madison_park_remembered]: Jane Powell Thomas, Madison Park Remembered (J.P. Thomas, 2004)
 
 [^sdot safety study]: Seattle Department of Transportation's safety study:
