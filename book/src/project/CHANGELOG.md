@@ -902,3 +902,15 @@ changes here.
 - map data quality: greenlake cycletrack, better stop sign placement, crosswalks at consolidated intersections
 - risk exposure matrix labels
 - keep cars out of bus lanes with better costing
+
+0.2.50
+
+- UI: improve elevation profiles, add road editor revert button, thought bubbles for people climbing steep inclines
+- fixed signal timing for 3-ways
+- fixed a race condition with two vehicles going for the same offstreet parking
+- fixing pedestrian speeds on inclines
+- improved relative positons of adjacent lanes on curvy roads
+- internal speedups for map importing and a tool to compare two maps, for intersection consolidation
+- let lane-changing happen in more cases (when vehicle1 wants to pass vehicle2, but can't until a few lanes later)
+- add a mode to import a region-wide map without local roads
+- internal pathfinding refactor to switch between contraction hierarchies & Dijkstra more flexibly, reduce duplicate higher-level input graph logic
