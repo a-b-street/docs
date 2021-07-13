@@ -482,9 +482,20 @@ compare how a proposal affects these metrics.
 <h4 class="chart-header">Identifying Hotspots</h4>
 <img class="chart" src="../assets/broadmoor/montlake-520-hotspot.png" />
 
-South of the Montlake bridge, crossing Highway 520, has complex arterial
-intersections _and_ relatively high bike and foot traffic, meaning many people
-are exposed to these risks.
+A simple way to think about risk exposure would be "risk per person" times
+"number of people". Using A/B Street's "problems" view, we see that south of the
+Montlake bridge, crossing Highway 520 has some aggregate risk hotspots.
+
+Large, busy intersections, especially those with many legs like these, present
+an increased risk to pedestrians and cyclists.
+
+This area leading up to the Montlake bridge is one of only a couple plausible
+routes between the University District and central Seattle, so it has relatively
+high bike and foot traffic.
+
+So, the inherent riskiness of these _kinds_ of intersections, paired with the
+high _number_ of people walking and cycling exposed to these risks, make this a
+hotspot worth extra scrutiny.
 
 </div>
 
