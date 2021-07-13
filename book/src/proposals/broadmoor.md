@@ -260,7 +260,6 @@ expect shorter trips on quieter streets.
 
 </div>
 
-
 <div class="media-box">
 <img
   class="chart"
@@ -493,9 +492,14 @@ are exposed to these risks.
 <h4 class="chart-header">Walking: Arterial Intersections</h4>
 <img class="chart" src="../assets/broadmoor/broadmoor-ped-arterial-crossings.png" />
 
-In the simulation, opening Broadmoor to pedestrians allowed about 200 people,
-over the course of the day, to pass through fewer arterial intersections. Longer
-walks were especially affected.
+Walking across arterial (major) intersections is associated with an increased
+risk of death or severe injury. This chart groups walking trips by duration and
+by how many fewer (or more) arterial intersections they had to walk across.
+
+For example, _41_ people walking _30-60_ minutes had _17-24_ fewer arterial
+(major) intersections to cross. Overall more than 200 people walking had fewer
+arterial intersections to cross when they were allowed to pass through
+Broadmoor.
 
 </div>
 </div>
