@@ -378,10 +378,13 @@ anecdote for why this could be a worthwhile proposal. However, travel behavior
 is highly interdependent. Every choice one person makes has potential ripple
 effects for others.
 
-We need more than a handful of individual examples. This is why A/B Street
-includes tools for quantifying overall travel experiences &mdash; allowing us to
-see beyond anecdotes to visualize trends across the map. Let's take a look at
-how overall trip times and some safety metrics are affected by this proposal.
+We need more than a handful of individual examples. A/B Street uses Seattle's
+[Soundcast travel demand model](https://www.psrc.org/activity-based-travel-model-soundcast)
+to generate a realistic set of workday trips for the given area &mdash; for this
+area, that's about 75,000 trips. A/B Street includes tools to analyze each of
+these trips and aggregate overall travel experiences &mdash; allowing us to see
+beyond anecdotes to visualize trends across the map. Let's take a look at how
+overall trip times and some safety metrics are affected by this proposal.
 
 ### Trip Durations
 
@@ -483,19 +486,19 @@ compare how a proposal affects these metrics.
 <img class="chart" src="../assets/broadmoor/montlake-520-hotspot.png" />
 
 A simple way to think about risk exposure would be "risk per person" times
-"number of people". Using A/B Street's "problems" view, we see that south of the
-Montlake bridge, crossing Highway 520 has some aggregate risk hotspots.
+"number of people".
 
-Large, busy intersections, especially those with many legs like these, present
-an increased risk to pedestrians and cyclists.
+Intersections of wide streets with fast moving vehicles, especially those
+intersections with many legs like these, south of the Montlake bridge present an
+increased risk to pedestrians and cyclists.
 
-This area leading up to the Montlake bridge is one of only a couple plausible
-routes between the University District and central Seattle, so it has relatively
-high bike and foot traffic.
+This area leads up to the Montlake bridge, and is one of only a couple plausible
+connections between the University District and central Seattle, so it has
+relatively high bike and foot traffic.
 
-So, the inherent riskiness of these _kinds_ of intersections, paired with the
-high _number_ of people walking and cycling exposed to these risks, make this a
-hotspot worth extra scrutiny.
+The inherent riskiness of these _kinds_ of intersections, paired with the high
+_number_ of people using them, results in a risk exposure hotspot worth extra
+scrutiny.
 
 </div>
 
@@ -520,10 +523,14 @@ Broadmoor.
 <h4 class="chart-header">Biking: Car Wants to Overtake</h4>
 <img class="chart" src="../assets/broadmoor/alerts-on-madison.gif" />
 
-In shared lanes, a common risk is that faster moving cars pull up too close
-behind a cyclist. This is uncomfortable for both the person on the bike and the
-person driving. Having the option to ride through Broadmoor gives some cyclists
-the option to avoid sharing a lane with cars on busy Madison.
+A 2018 study found that most cyclists who died in single-vehicle crashes were
+struck by the front of the vehicle[^fars_2018].
+
+In shared lanes, a common risk that could lead to this type of collision is when
+a faster moving cars pull up too close behind a cyclist. This is uncomfortable
+for both the person on the bike and the person driving. Having the option to
+ride through Broadmoor gives some cyclists the option to avoid sharing a lane
+with cars on busy Madison.
 
 </div>
 
@@ -626,5 +633,8 @@ Elevation data from [King County LIDAR](http://pugetsoundlidar.ess.washington.ed
 [^madison_park_remembered]: Jane Powell Thomas, Madison Park Remembered (J.P. Thomas, 2004)
 
 [^sdot safety study]: Seattle Department of Transportation's safety study:
-[City of Seattle Bicycle and Pedestrian Safety Analysis Phase&nbsp;2](<https://www.seattle.gov/documents/Departments/SDOT/VisionZero/SDOT_Bike%20and%20Ped%20Safety%20Analysis_Ph2_2420(0).pdf>)
+[City of Seattle Bicycle and Pedestrian Safety Analysis Phase&nbsp;2](https://www.seattle.gov/documents/Departments/SDOT/VisionZero/SDOT_Bike%20and%20Ped%20Safety%20Analysis_Ph2_2420(0).pdf)
+
+[^fars_2018]: NHTSA | National Highway Traffic Safety Administration - [2018 Traffic Safety Facts](https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/812884)
+
 <!-- prettier-ignore-end-->
