@@ -914,3 +914,11 @@ changes here.
 - let lane-changing happen in more cases (when vehicle1 wants to pass vehicle2, but can't until a few lanes later)
 - add a mode to import a region-wide map without local roads
 - internal pathfinding refactor to switch between contraction hierarchies & Dijkstra more flexibly, reduce duplicate higher-level input graph logic
+
+0.2.51
+
+- special mid-week release to support a blog post
+- using infinite parking for the arboretum scenario
+- add y axis to trip time dashboard
+- faster OSM import using overpass
+- internal tools for working on intersection consolidation and cyclepath snapping
