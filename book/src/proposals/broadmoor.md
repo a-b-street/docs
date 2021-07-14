@@ -214,10 +214,9 @@ blockquote {
 </style>
 
 You could be forgiven for not knowing much about the Broadmoor neighborhood in
-Seattle &mdash; that's kind of by design. Using the
-[A / B Street](../software/abstreet.html) travel simulation game, we're going to
-explore how it could become a valuable link for people walking and biking in
-Seattle.
+Seattle &mdash; that's kind of by design. We're going to explore how it could
+become a valuable link for people walking and biking in Seattle, using the
+travel simulation game [A/B Street](../software/abstreet.html).
 
 <div class="media-box">
 <img alt="a map of part of Seattle, highlighting the Broadmoor neighborhood, about 2.5 miles northeast of downtown." src="../assets/broadmoor/seattle-overview.png">
@@ -266,10 +265,9 @@ expect shorter trips on quieter streets.
   src="../assets/broadmoor/elevation-profiles.png"
   alt="two elevation profiles, showing a gentler climb through Broadmoor" />
 
-The elevation gain encountered along each route is quite different.
-
-The green route along Madison Ave climbs up 8% grade &mdash; quite steep! The
-blue route through Broadmoor is much more gently sloped.[^elevation data]
+Looking at elevation, the green route along Madison Ave climbs an 8% grade
+&mdash; quite steep! The blue route through Broadmoor offers a shorter, less
+steep, route.[^elevation data]
 
 </div>
 </div>
@@ -312,9 +310,9 @@ uniformed security.
 </div>
 
 Broadmoor is an obstacle to people walking and biking to desirable destinations
-on either side of it. What if things were different? What if we allowed people
-on bikes, on foot, and in wheelchairs _through_ Broadmoor rather than diverting
-them down Madison Ave?
+on either side of it. But what if things were different? What if we allowed
+people on bikes, on foot, and in wheelchairs _through_ Broadmoor rather than
+diverting them down Madison Ave?
 
 ### Cui bono
 
@@ -342,8 +340,8 @@ your proposal.
 </div>
 
 In A/B Street, allowing people to walk and cycle through Broadmoor, is a matter
-of clicks. A/B Street simulates how this change affects people's travel. You can
-watch as each individual person goes about their day. If given new
+of clicks. Then, A/B Street simulates how this change affects people's travel.
+You can watch as each individual person goes about their day. If given new
 circumstances, people will be able to make new, hopefully better, choices for
 themselves.
 
@@ -393,10 +391,12 @@ overall trip times and some safety metrics are affected by this proposal.
   <h4 class="chart-header">Cars: Individual Trips</h4>
   <img class="chart" src="../assets/broadmoor/broadmoor-driving-duration-scatter.png" />
 
-For people driving, some trips were a little faster, while others a little
-slower.
+Comparing each drivers trip time before vs. after this change, some trips were a
+little faster, while others a little slower.
 
-Overall it's a wash for drivers, which is expected, but a useful validation.
+There appears to be a small positive bias, perhaps due to less contention on
+Madison, but overall it's mostly a wash for drivers, which is a boring, but
+useful validation.
 
 </div>
 
@@ -406,23 +406,24 @@ Overall it's a wash for drivers, which is expected, but a useful validation.
 
 It gets more interesting for people walking and cycling. Especially for longer
 trips, people get where they're going more quickly after being allowed access
-through Broadmoor.
+through Broadmoor, with few trips experiencing a slowdown.
 
 </div>
 </div>
 
 Apart from the benefits conveyed to pedestrians and cyclists, these charts also
-nicely show the interdependent nature of travel. Even though overall travel time
-and the routes available to drivers didn't change at all, individual drivers did
-experience downstream effects of pedestrians and bicyclists making different
-choices. This interdependence is fertile soil for unintended consequences, which
-is why having tools to measure _overall_ impact is essential.
+nicely show the interdependent nature of travel. For example, even though
+overall travel time and the routes available to drivers didn't change much,
+individual drivers did experience downstream effects of pedestrians and
+bicyclists making different choices. This interdependence is fertile soil for
+unintended consequences, which is why having tools to measure _overall_ impact
+is essential.
 
 <h3 class="chart-header">Time Saved / Lost</h3>
 
-The dot charts are helpful for seeing the shape of some trends, but it's hard to
-quantify the improvements. These next charts compare the total amount of time
-saved with the total amount of time lost.
+The dot charts above are helpful for seeing the shape of some trends, but it's
+hard to quantify the improvements. These next charts compare the total amount of
+time saved across all trips with the total amount of time lost.
 
 <div class="wrap-two">
 
@@ -430,8 +431,9 @@ saved with the total amount of time lost.
   <h4 class="chart-header">Cars: Overall</h4>
   <img class="chart" src="../assets/broadmoor/broadmoor-driving-duration-histogram.png" />
 
-Once again, car traffic is mostly a wash. About as much time was lost as was
-saved by others, implying a neutral change for people driving.
+Here we can confirm the small bias for faster car trips, but not much more time
+is gained than was lost by others, implying a mostly neutral change across all
+people driving.
 
 </div>
 
@@ -446,7 +448,7 @@ were substantially faster given access to Broadmoor.
 
 </div>
 
-Trip duration was worth considering as a gut check to make sure a proposal seems
+Trip duration is worth considering as a gut check to make sure a proposal seems
 reasonable, and this proposal indeed has some favorable evidence for faster
 trips, but trip duration shouldn't be the only, or even most important, effect
 to consider. In particular, there are important safety metrics we can measure
@@ -461,8 +463,8 @@ deserve extra consideration.
 There is an increasing effort to not only look at previous crash sites, but also
 to consider the _types_ of places where crashes are likely to occur. By
 prioritizing places based on their similarity to crash sites, we can prevent or
-mitigate future crash sites before they happen. In this vein, last year Seattle
-DOT released a
+mitigate future crash sites before someone is hurt. In this vein, last year
+Seattle DOT released a
 [safety study](<https://www.seattle.gov/documents/Departments/SDOT/VisionZero/SDOT_Bike%20and%20Ped%20Safety%20Analysis_Ph2_2420(0).pdf>)
 analyzing which physical roadway features that are associated with an increased
 risk of traffic-related death or serious injury.
@@ -475,7 +477,7 @@ For example:
 
 By classifying these risky features, A/B Street can keep tabs as people in the
 simulation are exposed to these risks. You can follow an individual's trip and
-see what risks they are exposed to. For a macro view, you can aggregate and
+see what risks they are exposed to, or, for a macro view, you can aggregate and
 identify map-wide hot spots for specific problems. Using A/B Street, you can
 compare how a proposal affects these metrics.
 
@@ -483,20 +485,21 @@ compare how a proposal affects these metrics.
 
 <div class="media-box">
 <h4 class="chart-header">Identifying Hotspots</h4>
-<img class="chart" src="../assets/broadmoor/montlake-520-hotspot.png" />
+<img class="chart" 
+  src="../assets/broadmoor/montlake-520-hotspot.png" 
+  alt="a heatmap covering about a square mile of streets south of the Montlake
+  Bridge, with hotspots on the intersections leading up to the bridge"/>
 
-A simple way to think about risk exposure would be "risk per person" times
-"number of people".
+A/B Street's "problem" view helps you identify risk exposure hotspots.
 
-Intersections of wide streets with fast moving vehicles, especially those
-intersections with many legs like these, south of the Montlake bridge present an
-increased risk to pedestrians and cyclists.
+These streets south of the Montlake Bridge exhibit several risk factors,
+including wide streets with fast moving vehicles and many-legged intersections.
 
-This area leads up to the Montlake bridge, and is one of only a couple plausible
-connections between the University District and central Seattle, so it has
-relatively high bike and foot traffic.
+Because the Montlake Bridge is one of only a couple plausible connections
+between the University District and central Seattle, it has relatively high bike
+and foot traffic.
 
-The inherent riskiness of these _kinds_ of intersections, paired with the high
+The inherent riskiness of these _kinds_ of streets, paired with the high
 _number_ of people using them, results in a risk exposure hotspot worth extra
 scrutiny.
 
@@ -504,16 +507,23 @@ scrutiny.
 
 <div class="media-box">
 <h4 class="chart-header">Walking: Arterial Intersections</h4>
-<img class="chart" src="../assets/broadmoor/broadmoor-ped-arterial-crossings.png" />
+<img class="chart" 
+  src="../assets/broadmoor/broadmoor-ped-arterial-crossings.png" 
+  alt="2-D grid chart, bucketing trips by trip duration on the x-axis and
+  number of arterial intersections crossed on the y-axis, showing a clear
+  postive bias for hundreds of walking tris, especially for longer trips. Just
+  a few trips were negatively affected."/>
 
-Walking across arterial (major) intersections is associated with an increased
-risk of death or severe injury. This chart groups walking trips by duration and
-by how many fewer (or more) arterial intersections they had to walk across.
+Walking across arterial (wide, busy) intersections presents an increased risk of
+death or severe injury. This chart groups walking trips by duration and by how
+many fewer (or more) arterial intersections were crossed.
 
-For example, _41_ people walking _30-60_ minutes had _17-24_ fewer arterial
-(major) intersections to cross. Overall more than 200 people walking had fewer
-arterial intersections to cross when they were allowed to pass through
-Broadmoor.
+More than 800 walking trips had fewer arterial intersections to cross when they
+were allowed to pass through Broadmoor.
+
+The chart shows that medium-to-long trips were most affected. For example, _518_
+people walking _30-60_ minutes had _1-6_ fewer arterial (major) intersections to
+cross.
 
 </div>
 </div>
@@ -521,7 +531,11 @@ Broadmoor.
 <div class="wrap-two">
 <div class="media-box">
 <h4 class="chart-header">Biking: Car Wants to Overtake</h4>
-<img class="chart" src="../assets/broadmoor/alerts-on-madison.gif" />
+<img class="chart" 
+  src="../assets/broadmoor/alerts-on-madison.gif" 
+  alt="animated GIF showing an aerial map view of a simulated cyclist biking
+  down the street. When a faster moving car pulls up behind them, a thought
+  bubble with an alert symbol appears above the cyclist." />
 
 A 2018 study found that most cyclists who died in single-vehicle crashes were
 struck by the front of the vehicle[^fars_2018].
@@ -592,14 +606,14 @@ study in particular.
 ### Data sources
 
 The underlying road network is inferred from
-[OpenStreetMap](https://www.openstreetmap.org/#map=14/47.6337/-122.2941).
-OpenStreetMap (OSM) is a global community of mapping enthusiasts whose software
-and data is freely available. Using OSM, A/B Street is already usable in cities
-all over the globe. However, as a freely available community maintained project,
-OSM comes with no data quality guarantees, and local mapping conventions can
-vary. Not everyone using OSM is interested in the incredible level of detail
-required to run a travel simulation. This situation is ever improving though,
-and we'd love to have you give A/B Street a try, wherever you are.
+[OpenStreetMap](https://www.openstreetmap.org/#map=14/47.6337/-122.2941) (OSM),
+a global community of mapping enthusiasts whose software and data is freely
+available. Using OSM, A/B Street is already usable in cities all over the globe.
+However, as a freely available community maintained project, OSM comes with no
+data quality guarantees, and local mapping conventions can vary. Not everyone
+using OSM is interested in the incredible level of detail required to run a
+travel simulation. This situation is ever improving though, and we'd love to
+have you give A/B Street a try, wherever you are.
 
 A/B Street leverages Seattle's
 [Soundcast travel demand model](https://www.psrc.org/activity-based-travel-model-soundcast)
