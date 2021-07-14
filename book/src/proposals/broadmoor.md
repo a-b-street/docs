@@ -391,7 +391,7 @@ overall trip times and some safety metrics are affected by this proposal.
   <h4 class="chart-header">Cars: Individual Trips</h4>
   <img class="chart" src="../assets/broadmoor/broadmoor-driving-duration-scatter.png" />
 
-Comparing each drivers trip time before vs. after this change, some trips were a
+Comparing each driver's trip time before vs. after this change, some trips were a
 little faster, while others a little slower.
 
 There appears to be a small positive bias, perhaps due to less contention on
@@ -541,7 +541,7 @@ A 2018 study found that most cyclists who died in single-vehicle crashes were
 struck by the front of the vehicle[^fars_2018].
 
 In shared lanes, a common risk that could lead to this type of collision is when
-a faster moving cars pull up too close behind a cyclist. This is uncomfortable
+a faster moving car pulls up too close behind a cyclist. This is uncomfortable
 for both the person on the bike and the person driving. Having the option to
 ride through Broadmoor gives some cyclists the option to avoid sharing a lane
 with cars on busy Madison.
