@@ -642,7 +642,7 @@ what you'd like to see.
 
 <!-- prettier-ignore-start -->
 [^elevation data]:
-Elevation data from [King County LIDAR](http://pugetsoundlidar.ess.washington.edu/lidardata/restricted/projects/2016king_county.html). Thanks to [Eldan Goldenburg](https://github.com/eldang/elevation_lookups) for processing this data.
+Elevation data from [King County LIDAR](http://pugetsoundlidar.ess.washington.edu/lidardata/restricted/projects/2016king_county.html). Thanks to [Eldan Goldenberg](https://github.com/eldang/elevation_lookups) for processing this data.
 
 [^madison_park_remembered]: Jane Powell Thomas, Madison Park Remembered (J.P. Thomas, 2004)
 
