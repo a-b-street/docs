@@ -922,3 +922,12 @@ changes here.
 - add y axis to trip time dashboard
 - faster OSM import using overpass
 - internal tools for working on intersection consolidation and cyclepath snapping
+
+0.2.52
+
+- started a mode shift dashboard
+- individual trips can be explored from the risk exposure dashboards now
+- fixed actdev scenarios
+- web file loaders now show progress
+- performance improvements for editing roads
+- various bug fixes
