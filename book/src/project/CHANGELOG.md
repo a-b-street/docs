@@ -931,3 +931,11 @@ changes here.
 - web file loaders now show progress
 - performance improvements for editing roads
 - various bug fixes
+
+0.2.53
+
+- new intersection consolidation algorithm, applied around Seattle and Tempe with really great results!
+- Seattle fixes: deduplicating cycletracks, connecting Arboretum bike paths
+- add new lane types to express buffers for protected bike lanes
+- better neighborhood shapes by Michael, in the commuter patterns layer
+- fixed Overpass imports, which were missing border intersections
