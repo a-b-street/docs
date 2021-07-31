@@ -37,6 +37,9 @@ Graphics / design:
 - In-game character faces adapted from
   [Anokhee Jandhyala](https://github.com/anokhee/visual-synthesizer)
 - Game design advice from Christopher Klein
+- Color and street rendering help from
+  [Tobias Zwick](https://github.com/westnordost) of
+  [StreetComplete](https://github.com/streetcomplete/StreetComplete)
 
 Software dependencies:
 
