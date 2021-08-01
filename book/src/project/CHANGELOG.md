@@ -939,3 +939,11 @@ changes here.
 - add new lane types to express buffers for protected bike lanes
 - better neighborhood shapes by Michael, in the commuter patterns layer
 - fixed Overpass imports, which were missing border intersections
+
+0.2.54
+
+- brand new day mode color scheme!
+- road editor automatically adjusts lane width, and other small UI fixes
+- show bike network gaps in the mode shift dashboard
+- progress on snapping cyclepaths, representing buffers, fixing up nearby geometry
+- fixed crosswalks for consolidated intersections on left-handed maps
