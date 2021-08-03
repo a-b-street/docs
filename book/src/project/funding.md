@@ -1,7 +1,7 @@
 # Funding
 
 A/B Street is in need of funding.
-If you would like to support the development of A/B Street, e.g. to get a particular feature implemented or to get support using it to simulate changes in a particular city, [get in touch](mailto:_dabreegster@gmail.com).
+If you would like to support the development of A/B Street, e.g. to get a particular feature implemented or to get support using it to simulate changes in a particular city, [get in touch](mailto:dabreegster@gmail.com).
 
 Funding received:
 
