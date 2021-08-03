@@ -391,8 +391,8 @@ overall trip times and some safety metrics are affected by this proposal.
   <h4 class="chart-header">Cars: Individual Trips</h4>
   <img class="chart" src="../assets/broadmoor/broadmoor-driving-duration-scatter.png" />
 
-Comparing each driver's trip time before vs. after this change, some trips were a
-little faster, while others a little slower.
+Comparing each driver's trip time before vs. after this change, some trips were
+a little faster, while others a little slower.
 
 There appears to be a small positive bias, perhaps due to less contention on
 Madison, but overall it's mostly a wash for drivers, which is a boring, but
