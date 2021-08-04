@@ -4,39 +4,33 @@
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>Parking - A/B Street</title>
-        
-
+        <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff" />
 
+        <link rel="icon" href="../../favicon.svg">
         <link rel="shortcut icon" href="../../favicon.png">
         <link rel="stylesheet" href="../../css/variables.css">
         <link rel="stylesheet" href="../../css/general.css">
         <link rel="stylesheet" href="../../css/chrome.css">
         <link rel="stylesheet" href="../../css/print.css" media="print">
-
         <!-- Fonts -->
         <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
-
+        <link rel="stylesheet" href="../../fonts/fonts.css">
         <!-- Highlight.js Stylesheets -->
         <link rel="stylesheet" href="../../highlight.css">
         <link rel="stylesheet" href="../../tomorrow-night.css">
         <link rel="stylesheet" href="../../ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
-        
-
-        
     </head>
     <body>
         <!-- Provide site root to javascript -->
         <script type="text/javascript">
             var path_to_root = "../../";
-            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
 
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
@@ -89,7 +83,6 @@
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                
                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky bordered">
                     <div class="left-buttons">
@@ -106,11 +99,9 @@
                             <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
                             <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
                         </ul>
-                        
                         <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
                             <i class="fa fa-search"></i>
                         </button>
-                        
                     </div>
 
                     <h1 class="menu-title">A/B Street</h1>
@@ -119,18 +110,18 @@
                         <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        
                         <a href="https://github.com/a-b-street/docs/tree/main/book" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        
+                        <a href="https://github.com/a-b-street/docs/edit/main/book/src/tech/trafficsim/parking.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
                     </div>
                 </div>
 
-                
                 <div id="search-wrapper" class="hidden">
                     <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
                     </form>
                     <div id="searchresults-outer" class="searchresults-outer hidden">
                         <div id="searchresults-header" class="searchresults-header"></div>
@@ -138,8 +129,6 @@
                         </ul>
                     </div>
                 </div>
-                
-
                 <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
                 <script type="text/javascript">
                     document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
@@ -151,12 +140,12 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#parking" id="parking">Parking</a></h1>
+                        <h1 id="parking"><a class="header" href="#parking">Parking</a></h1>
 <p>In some areas, lots of traffic is caused by people circling around the block in
 search of parking. And often, a great deal of space in a city is spent on street
 parking, surface lots, and garages. So, A/B Street attempts to model parking as
 a step at the beginning and end of every driving trip.</p>
-<h2><a class="header" href="#types-of-parking" id="types-of-parking">Types of parking</a></h2>
+<h2 id="types-of-parking"><a class="header" href="#types-of-parking">Types of parking</a></h2>
 <p>Every parking spot can be categorized as public or private. Anybody can use
 public spots, but only trips beginning or ending at a particular building can
 use private spots inside of it. There's no modeling yet of time limits or fees.</p>
@@ -173,7 +162,7 @@ up with an estimate of the capacity.</p>
 garage, a small private lot behind some apartments, or a few spots in a carport
 and driveway -- there's no distinction in A/B Street. Off-street parking can be
 public or private.</p>
-<h2><a class="header" href="#data-sources" id="data-sources">Data sources</a></h2>
+<h2 id="data-sources"><a class="header" href="#data-sources">Data sources</a></h2>
 <p>On-street parking comes from OSM, using the
 <a href="https://wiki.openstreetmap.org/wiki/Key:parking:lane">parking:lane</a> tags. This
 field is rarely mapped; see <a href="../../software/parking_mapper.html">here</a> to help
@@ -191,10 +180,10 @@ Seattle maps currently -- the number of off-street spots is set to equal the
 number of driving trips that originate from that building over the course of the
 entire day. This is also unrealistic, but was some attempt at improving those
 two maps.</p>
-<h2><a class="header" href="#simulation" id="simulation">Simulation</a></h2>
+<h2 id="simulation"><a class="header" href="#simulation">Simulation</a></h2>
 <p>This seems like a good place to preface that A/B Street doesn't have any kind of
 car-sharing, ride-share, or even multiple people in one car yet.</p>
-<h3><a class="header" href="#seeding-cars" id="seeding-cars">Seeding cars</a></h3>
+<h3 id="seeding-cars"><a class="header" href="#seeding-cars">Seeding cars</a></h3>
 <p>See
 <a href="https://github.com/a-b-street/abstreet/blob/master/sim/src/make/scenario.rs">seed_parked_cars</a>
 for reference.</p>
@@ -215,7 +204,7 @@ The consequence is this: when a player makes a few changes to the amount of
 street parking in an area, the effects shouldn't percolate everywhere and change
 how cars are seeded far away -- unless the change adds/removes so much capacity
 that the effect really would spill out that far.</p>
-<h3><a class="header" href="#how-people-pick-a-spot" id="how-people-pick-a-spot">How people pick a spot</a></h3>
+<h3 id="how-people-pick-a-spot"><a class="header" href="#how-people-pick-a-spot">How people pick a spot</a></h3>
 <p>When a car gets to the last lane before its target building, it starts looks for
 a free spot. If there's one on the current lane, it goes for it. If not, it uses
 a breadth-first search, using distance, to explore from its current lane until
@@ -224,7 +213,7 @@ spot, the distance used in the search has some randomized scaling applied.
 Omnisciently knowing where free spots are located far away isn't realistic, but
 attempting some kind of human-realistic random walk seems even harder to get
 right.</p>
-<h3><a class="header" href="#infinite-parking" id="infinite-parking">Infinite parking</a></h3>
+<h3 id="infinite-parking"><a class="header" href="#infinite-parking">Infinite parking</a></h3>
 <p>If you pass <code>--infinite_parking</code> on the command line, every building gets
 unlimited public spots. This effectively removes the effects of parking from the
 model, since driving trips can always begin or end at their precise building
@@ -232,13 +221,13 @@ model, since driving trips can always begin or end at their precise building
 parking data and you need to get comparative results about speeding up some
 trips. Often the A/B testing is extremely sensitive, because a parking space
 close to someone's destination is filled up quickly, slowing down the trip.</p>
-<h3><a class="header" href="#blackholes" id="blackholes">Blackholes</a></h3>
+<h3 id="blackholes"><a class="header" href="#blackholes">Blackholes</a></h3>
 <p>Vehicles don't know how to turn left (or right for UK folks) from a driveway
 yet. This means that some buildings and street parking lanes near map boundaries
 might not be reachable from most of the map. Consequently, even though there
 might be parking there, the simulation ignores it, because it's &quot;blackholed&quot;.</p>
 <p><img src="blackhole.png" alt="blackhole" /></p>
-<h2><a class="header" href="#data-viz" id="data-viz">Data viz</a></h2>
+<h2 id="data-viz"><a class="header" href="#data-viz">Data viz</a></h2>
 <p>There are 3 tools in the game that'll help you understand the effects of how
 parking is modeled.</p>
 <p><img src="parking_occupancy.png" alt="parking_occupancy" /></p>
@@ -258,67 +247,38 @@ driving, vs looking for parking and covering any remaining distance by foot.</p>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                        
                             <a rel="prev" href="../../tech/trafficsim/live_edits.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                        
-
-                        
                             <a rel="next" href="../../project/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
-                        
-
                         <div style="clear: both"></div>
                     </nav>
                 </div>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                
                     <a rel="prev" href="../../tech/trafficsim/live_edits.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                
-
-                
                     <a rel="next" href="../../project/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
-                
             </nav>
 
         </div>
 
-        
-
-        
-
-        
-        
-        
         <script type="text/javascript">
-            window.playpen_copyable = true;
+            window.playground_copyable = true;
         </script>
-        
-
-        
-
-        
         <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
-        
-
         <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
         <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
-        
-
-        
-
     </body>
 </html>
