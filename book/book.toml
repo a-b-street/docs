@@ -8,6 +8,7 @@ title = "A/B Street"
 [output.html]
 git-repository-url = "https://github.com/a-b-street/docs/tree/main/book"
 edit-url-template = "https://github.com/a-b-street/docs/edit/main/book/{path}"
+site-url = "/docs/"
 
 # TODO: Enable linkcheck. But first, deal with email addresses
 # (https://github.com/Michael-F-Bryan/mdbook-linkcheck/issues/40) and the
