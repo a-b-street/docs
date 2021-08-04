@@ -10,7 +10,7 @@ and which can be edited on GitHub are very welcome!
 To build the book, download or clone the repo, e.g. using the [`gh` CLI](https://github.com/cli/cli) as follows:
 
 ```bash
-gh repo clone a-b-street/docs
+git clone https://github.com/a-b-street/docs
 ```
 
 Then you can change directory and start editing the files, e.g. with the following commands:

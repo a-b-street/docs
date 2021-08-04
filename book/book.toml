@@ -6,8 +6,6 @@ src = "src"
 title = "A/B Street"
 
 [output.html]
-mathjax-support = true # equations if necessary
-# site-url = "/mdBook/" # not sure what this should be (Robin)
 git-repository-url = "https://github.com/a-b-street/docs/tree/main/book"
 edit-url-template = "https://github.com/a-b-street/docs/edit/main/book/{path}"
 
