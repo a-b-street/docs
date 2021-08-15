@@ -39,3 +39,18 @@
 - December: lane-changing fixes, blocked-by explorer in debug mode, non-Latin
   font support on web, saving player state on web, census-based scenario
   generation started, 15 minute Santa
+- January: experimented with SUMO import, UI button overhaul, day/night mode,
+  first separate cycleways
+- February: better web loading and URL sharing, randomized parking,
+  procedurally generated houses, actdev integration, geofabrik picker, new day
+  theme, static routing penalties
+- March: UK flow-based scenario generation, roundabout gridlock fixes, UI panel
+  redesign, one-step OSM importer with UI, elevation data & layers
+- April: pathfinding by roads, editing number of lanes, risk exposure, Tempe
+  intersection consolidation
+- May: GMNS signal timing import, cloud map importer, OSM turn lane fixes
+- June: performance, first dynamic vehicle lane-changing, exiting driveways
+  off-sides and across multiple lanes
+- July: pathfinding refactor, Broadmoor blog post, mode shift tool, massive
+  intersection consolidation breakthrough, deduplicating cycleways in OSM, bike
+  lane separators, new day mode colors
