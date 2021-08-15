@@ -947,3 +947,10 @@ changes here.
 - show bike network gaps in the mode shift dashboard
 - progress on snapping cyclepaths, representing buffers, fixing up nearby geometry
 - fixed crosswalks for consolidated intersections on left-handed maps
+
+0.2.55
+
+- more progress on cycleway snapping, but still not ready
+- road editor sets new lane width better
+- load proposals picks a better order
+- a new experiment unfolding...
