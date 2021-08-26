@@ -954,3 +954,13 @@ changes here.
 - road editor sets new lane width better
 - load proposals picks a better order
 - a new experiment unfolding...
+
+0.2.56
+
+- releasing a new tool dedicated to planning bike networks!
+- massive overhaul to the road editor, including lane cards that can be both dragged AND dropped
+- new road labeling in unzoomed mode
+- new tool to quickly sketch roads to edit
+- new tool to plan routes and see elevation/road types along the way
+- load previously saved proposals on web
+- disabled prototype: uploading proposals to a central server for easier sharing
