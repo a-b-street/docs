@@ -15,6 +15,7 @@ Most recent first.
   - [Slides](https://docs.google.com/presentation/d/1wFgkbyVhsa93FxmDsWuMQ6nXPJbHiZDllQ59xGXcKyg/edit?usp=sharing)
 - October 2020: OSM Connect 2020
   - [Slides](https://docs.google.com/presentation/d/1ZudGSXlbOL6xdVZXhAcKJvFaLEgeRkgFIX4pbVKSvLQ/edit?usp=sharing)
+- July 2020: [Silicon Valley Bike Coalition summit](https://bikesiliconvalley.org/2020/07/poster_dustin-carlino/)
 - [March 2021 ActDev workshop](https://youtu.be/P12N51qI5Cs?t=1469)
 - April 2020 Seattle Rust meetup
   - [Video](https://www.youtube.com/watch?v=chYd5I-5oyc)
