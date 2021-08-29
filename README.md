@@ -27,6 +27,7 @@ The following commands will serve a locally hosted version of the book from the 
 
 ```bash
 cargo install mdbook # install the mdbook crate used to serve the book
+cd book
 mdbook serve # serve book locally to dynamically update to show your changes
 ```
 
