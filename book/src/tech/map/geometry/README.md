@@ -140,25 +140,36 @@ Truly Lovecraftian geometry. I don't think I often see points from OSM totally o
 
 For each road, we've got the original center from OSM and our calculated the left and right side:
 
-(pic)
+![](coup_pt1.png)
+*The left and right sides of the 5 roads are shown -- not the original centers. I manually traced this; slight errors are visible.*
 
 Now the magic happens. You'll notice that many of those polylines collide (For sanity, let's call these "collisions" and not "intersections", since that term is overloaded here!). Let's find every collision point:
 
-(pic)
+![](coup_pt2.png)
+*Collisions drawn as black dots*
 
 These collisions represent where two thickened roads overlap. So let's use them to "trim back" the roads and avoid overlap. For each collision, we form an infinitely long line perpendicular to the collision and find where it hits the original center-line. We'll trim the road back to at least that point.
 
-(diagram)
+![](coup_pt3.png)
+*The red road's original center is now shown, in a darker red. The collision between the red and green road is shown, with a yellow line used to find the position along the original center. We'll trim the center back to this point, at least.*
 
 Because we want roads to meet intersections perpendiculously (I'm quite sure that's the proper term), we want the left and right side of a road to line up. There's probably a collision on a road's left and right side, and usually one of them would cause the center-line to be trimmed back more than the other. We'll always trim back as much as possible.
 
-(pic)
+![](coup_pt4.png)
+*The collision between the red and blue road is shown in yellow. The corresponding position on the original red road's center line is found, then trimmed back.*
+
+If we repeat this for every collision, eventually we wind up with:
+
+![](coup_final.png)
+*All roads have been trimmed back, with their left and right sides projected again*
 
 Some questions to consider:
 
 1) Why look for collisions between every pair of left/right lines? Couldn't we just use the "adjacent" pairs?
 
-2) Is it ever possible for the line perpendicular to a collision to NOT hit the center-line?
+2) Is it ever possible for the line perpendicular to a collision to NOT hit the original center-line?
+
+(As I'm reviewing my old code and writing this up, these're things I don't remember, worth revisiting.)
 
 ## Part 3: The clockwise walk
 
