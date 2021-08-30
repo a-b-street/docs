@@ -153,6 +153,53 @@
 <p>Some of the things in A/B Street that seem the simplest have taken me tremendous effort. Determining the shape of roads and intersections is one of those problems, so this article is a deep-dive into how it works and why it's so hard.</p>
 <p>Note 1: There's no &quot;related work&quot; section here -- I haven't found many other projects attempting something like this. I've seen a few research papers going in this direction, but none of them pointed to any code to try. The approach I'll describe has many flaws -- I'm not claiming this is a good solution, just the one that A/B Street uses. If you see a way to improve anything here, let me know about it! Even better, try it for real and send a PR -- there's plenty of tooling to help you debug and visually diff against the existing implementation.</p>
 <p>Note 2: This article would be way more awesome with code and some interactive demos to play around with each step. That level of ambition would prevent this from ever being written, though! I'll link to the real code and am happy to answer questions if anything's unclear.</p>
+<p>Note 3: Apologies for the rough diagrams and lack of polish. I'm time-constrained and communicating the ideas is my priority.</p>
+<ul>
+<li><a href="#background">Background</a>
+<ul>
+<li><a href="#desired-output">Desired output</a></li>
+</ul>
+</li>
+<li><a href="#overview-of-the-process">Overview of the process</a></li>
+<li><a href="#part-1-thickening-the-infinitesmal">Part 1: Thickening the infinitesmal</a>
+<ul>
+<li><a href="#projecting-a-polyline">Projecting a polyline</a></li>
+</ul>
+</li>
+<li><a href="#part-2-counting-coup">Part 2: Counting coup</a></li>
+<li><a href="#part-3-the-clockwise-walk">Part 3: The clockwise walk</a>
+<ul>
+<li><a href="#sorting-roads-around-a-center">Sorting roads around a center</a></li>
+</ul>
+</li>
+<li><a href="#interlude-problems-so-far">Interlude: problems so far</a>
+<ul>
+<li><a href="#funky-sidewalks">Funky sidewalks</a></li>
+<li><a href="#lovecraftian-geometry">Lovecraftian geometry</a></li>
+<li><a href="#bad-osm-data">Bad OSM data</a></li>
+<li><a href="#highway-onoff-ramps">Highway on/off-ramps</a></li>
+</ul>
+</li>
+<li><a href="#intersection-consolidation">Intersection consolidation</a>
+<ul>
+<li><a href="#where-short-roads-conspire">Where short roads conspire</a></li>
+<li><a href="#why-we-want-to-do-something-about-it">Why we want to do something about it</a></li>
+<li><a href="#my-lazy-first-attempt">My lazy first attempt</a></li>
+<li><a href="#current-attempt-two-stage">Current attempt: two stage</a></li>
+<li><a href="#sorting-revisited">Sorting revisited</a></li>
+<li><a href="#finding-the-short-roads">Finding the short roads</a></li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#appendices">Appendices</a>
+<ul>
+<li><a href="#tricks-and-tooling">Tricks and tooling</a></li>
+<li><a href="#hall-of-lovecraftian-horrors--the-stress-tests">Hall of Lovecraftian horrors / the stress tests</a></li>
+<li><a href="#radically-simpler-approach">Radically simpler approach?</a></li>
+<li><a href="#other-data-sources">Other data sources</a></li>
+</ul>
+</li>
+</ul>
 <h2 id="background"><a class="header" href="#background">Background</a></h2>
 <p>Most street maps you'll find provide a simplified view of streets. Google Maps, Apple Maps, and most OpenStreetMap renderers mostly just tell you the road's name, color it by type (a highway, major arterial road, minor residential street), take great liberties with the width, and don't explicitly distinguish intersections from roads. These maps are used for navigation and drawing your attention to nearby businesses, so this is quite a reasonable view.</p>
 <p><img src="rainier_google.png" alt="" />
@@ -261,34 +308,45 @@
 <p>(As I'm reviewing my old code and writing this up, these're things I don't remember, worth revisiting.)</p>
 <h2 id="part-3-the-clockwise-walk"><a class="header" href="#part-3-the-clockwise-walk">Part 3: The clockwise walk</a></h2>
 <p>We've now trimmed roads back to avoid overlapping each other. We just need to generate the polygon for the intersection. As a first cut, let's take these trimmed center-lines, calculate the left and right polylines again (since we've changed the center line), and use the endpoints for the shape.</p>
-<p>(example)</p>
+<p><img src="clockwise_naive.png" alt="" />
+<em>The red polygon is the intersection shape formed from these endpoints. The pink portions don't look right!</em></p>
 <p>Oops, the polygon covers a bit too much space! Cut red tape, queues, and split ends, but not corners. What if we remember all of the collision points, and use those too?</p>
-<p>(example)</p>
+<p><img src="clockwise_better.png" alt="" /></p>
 <p>Much better.</p>
 <h3 id="sorting-roads-around-a-center"><a class="header" href="#sorting-roads-around-a-center">Sorting roads around a center</a></h3>
-<p>When we're forming the intersection polygon, we know all of the points making it up. But what order do they go in? Seemingly innocent question.</p>
-<p>Maybe we can just average all of the points, call that the &quot;center&quot;, calculate the angle to each point, and order clockwise.</p>
-<p>(diagram)</p>
-<p>TODO: Should we talk about the consolidated intersection case here or not?</p>
+<p>I snuck another fast one on ya. When we form a polygon from these left/right endpoints and the original collision points, how do we put those points in the correct order? Seemingly innocent question.</p>
+<p>There are a few approaches that work fine for the simple cases. First, from OSM we know the single point where the 5 road center lines meet. After we've calculated the points for the intersection polygon, we can use that single point, calculate the angle to each polygon point, and sort. That works fine.</p>
+<p><img src="sorting_orig_center.png" alt="" />
+<em>The road center-lines all meet at one point, from the original OSM data.</em></p>
+<p>Foreshadowing: But soon, things won't be so simple. </p>
 <h2 id="interlude-problems-so-far"><a class="header" href="#interlude-problems-so-far">Interlude: problems so far</a></h2>
 <p>That wasn't actually so bad! The results are reasonable in many cases:</p>
-<p>(examples)</p>
+<p><img src="good1.png" alt="" />
+<img src="good2.png" alt="" />
+<img src="good3.png" alt="" /></p>
 <p>But what kind of things go wrong?</p>
-<h3 id="floating-point-fudgery"><a class="header" href="#floating-point-fudgery">Floating point fudgery</a></h3>
-<p>Do we ever wind up with points that're aaaalmost the same? What threshold do we pick to deduplicate?</p>
 <h3 id="funky-sidewalks"><a class="header" href="#funky-sidewalks">Funky sidewalks</a></h3>
-<p>the montlake example</p>
+<p>What's going on with the sidewalk in that last example?</p>
+<p><img src="sidewalk_corners.gif" alt="" /></p>
 <h3 id="lovecraftian-geometry"><a class="header" href="#lovecraftian-geometry">Lovecraftian geometry</a></h3>
-<p>When do we wind up with the polygon looping back on itself? (When two thick roads overlap, but dont share an intersection -- right?)</p>
+<p>Sometimes followers of Cthulu edit OSM, I assume.</p>
+<p><img src="lovecraft1.png" alt="" />
+<em>What... is happening here?</em></p>
+<p><img src="lovecraft2.png" alt="" />
+<em>Even the thickened roads, before calculating intersection polygons, look broken.</em></p>
+<p><img src="lovecraft3.png" alt="" />
+<em>Before I can investigate, somebody has already fixed the problem upstream in OSM!</em></p>
+<!-- I think there are cases where two thick roads overlap, but don't share an intersection. -->
 <h3 id="bad-osm-data"><a class="header" href="#bad-osm-data">Bad OSM data</a></h3>
 <p>Often times, the upstream OSM data is just flat-out wrong. Center lines for divided one-way roads are way too close to each other, so using the number of lanes with a reasonable guess at width produces roads that overlap outside of the intersection. This throws off everything we've done!</p>
-<p>(aurora)</p>
-<p>Another example is people tagging the lane count incorrectly. A common problem when splitting a bidirectional road into two one-ways (which is what you're supposed to do when there's physical separation like a median) is forgetting to change the lane count:</p>
-<p>(example)</p>
+<p><img src="smushed.png" alt="" /></p>
+<p>Another example is people tagging the lane count incorrectly. A common problem when splitting a bidirectional road into two one-ways (which is what you're supposed to do when there's physical separation like a median) is forgetting to change the lane count. I don't have examples handy, because I've fixed every case I've found.</p>
 <p>An important lesson when trying to write algorithms using OSM data: there's a balance between making your code robust to problems in the data, and trying to fix everything upstream. I attempt a compromise. It's a virtuous cycle -- in trying to use OSM data in this new way, I wind up fixing the data sometimes.</p>
 <h3 id="highway-onoff-ramps"><a class="header" href="#highway-onoff-ramps">Highway on/off-ramps</a></h3>
-<p>TODO Problem and solution. How do we detect this case?</p>
-<p>The montlake/520 thing also has this -- if we opt it in, can we fix?</p>
+<p>When three nearly parallel roads meet, our algorithm is a bit over-eager with the size of the intersection:</p>
+<p><img src="ramp1.png" alt="" /></p>
+<p>This case isn't even a real &quot;intersection&quot; -- a one-way highway has two different off-ramps jut out. At some point, I had some scribbled diagrams in a notebook somewhere from when I worked on this, but it's lost -- luckily the <a href="https://github.com/a-b-street/abstreet/blob/e2fc59a31aa043a879a372b2350b1f42391ee740/map_model/src/make/initial/geometry.rs#L434">code for this case</a> is pretty simple. This produces much better results here:</p>
+<p><img src="ramp2.png" alt="" /></p>
 <h2 id="intersection-consolidation"><a class="header" href="#intersection-consolidation">Intersection consolidation</a></h2>
 <p>This strict separation between roads and intersections has a fatal flaw -- the real world is very complicated.</p>
 <h3 id="where-short-roads-conspire"><a class="header" href="#where-short-roads-conspire">Where short roads conspire</a></h3>
@@ -317,7 +375,9 @@
 <p>Pre-trim based on original thing, remember how much to trim back each road center line.</p>
 <p>Then do the merge -- blow up the road. Don't modify any center lines.</p>
 <p>For the geom algorithm, do something totally different -- just project the pre-trimmed thing and use that. Seems to work? Even when editing roads, turns out k?</p>
-<h3 id="sorting-around-a-center"><a class="header" href="#sorting-around-a-center">Sorting around a center</a></h3>
+<h3 id="sorting-revisited"><a class="header" href="#sorting-revisited">Sorting revisited</a></h3>
+<p>Maybe we can just average all of the points, call that the &quot;center&quot;, calculate the angle to each point, and order clockwise.</p>
+<p>(diagram)</p>
 <p>Before trimming, how do you do this? The point farthest away? A point a fixed few meters away?</p>
 <p>For consolidated intersections, probably use the pre-trimmed point</p>
 <p>Example Tempe intersection with light rail that blows it up. Center vs polylabel.</p>
