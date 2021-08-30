@@ -155,9 +155,19 @@
 <p>Note 2: This article would be way more awesome with code and some interactive demos to play around with each step. That level of ambition would prevent this from ever being written, though! I'll link to the real code and am happy to answer questions if anything's unclear.</p>
 <h2 id="background"><a class="header" href="#background">Background</a></h2>
 <p>Most street maps you'll find provide a simplified view of streets. Google Maps, Apple Maps, and most OpenStreetMap renderers mostly just tell you the road's name, color it by type (a highway, major arterial road, minor residential street), take great liberties with the width, and don't explicitly distinguish intersections from roads. These maps are used for navigation and drawing your attention to nearby businesses, so this is quite a reasonable view.</p>
-<p>(example pictures, compared to satellite)</p>
+<p><img src="rainier_google.png" alt="" />
+<em>From Google, it looks like Rainier is a much bigger road than S Massachusetts</em></p>
+<p><img src="rainier_osm.png" alt="" />
+<em>The roads look about the same width in OSM</em></p>
+<p><img src="rainier_abst.png" alt="" />
+<em>A/B Street reveals the turn lanes and also some bike lines on Massachusetts!</em></p>
+<p><img src="rainier_satellite.png" alt="" />
+<em>Finally, Google's satellite imagery reveals the true shape of the intersection, though it's a bit hard to tell with the tree cover. And unless you zoom in, there's no way you'll spot the lane count or bike lanes.</em></p>
 <p>A/B Street is all about imagining how traffic moves through a city and exploring the effects of redesigning streets. So of course, we need way more detail. To imagine a bike lane down Eastlake Ave instead of street parking, we need to first see how the street's space is allocated. To propose a more pedestrian-friendly traffic signal crossing from Husky Stadium to the UW medical building, we need to see that huge intersection.</p>
-<p>(before / after pictures)</p>
+<p><img src="eastlake_before.png" alt="" />
+<em>Does Eastlake really need to dedicate 5 lanes to moving cars and 2 to storing them?</em></p>
+<p><img src="eastlake_after.png" alt="" />
+<em>Talking about Eastlake having a safe cycling route is one thing, but isn't it much easier to imagin when you can just see it?</em></p>
 <p>At a high-level, we want a representation that:</p>
 <ol>
 <li>Clearly communicates how a road is divided into different types of lanes (general purpose driving, turn lanes, bike lanes, bus-only lanes, street parking, sidewalks)</li>
@@ -167,17 +177,26 @@
 <p>We're constrained to publicly available, free data sources. Although some cities have GIS departments with some datasets that might be helpful, we're pretty much going with OpenStreetMap (OSM), which has decent coverage of most cities worldwide.</p>
 <h3 id="desired-output"><a class="header" href="#desired-output">Desired output</a></h3>
 <p>Let's be a little more specific about the representation we want. If you imagine a city as flat 2D space, roads and intersections occupy some portion of it. (Let's ignore bridges and tunnels.)</p>
-<p>(example of the thick stuff)</p>
+<p><img src="thick_pt1.png" alt="" />
+<em>Here's a three-way intersection at your typical Seattle angle</em></p>
 <p>We want to partition this space into individual intersections and road segments. Each road segment (just called &quot;road&quot; for simplicity) leads between exactly two of those intersections. This partition shouldn't have any ambiguous overlap between objects.</p>
-<p>(example)</p>
+<p><img src="thick_pt2.png" alt="" />
+<em>The red part is what we'll deem the intersection. The grey roads and the intersection now partition the space.</em></p>
 <p>A simplifying assumption, mostly coming from OSM, is that roads can be represented as a center-line and width, and individual lanes can be formed by projecting that center-line left and right. This means when the road changes width in the middle (like for pocket parking or to make room for a turn lane), we have to model that transition as a small &quot;degenerate&quot; intersection, which connects only those two roads.</p>
-<p>(examples)</p>
-<p>Another assumption taken by A/B Street is that roads hit intersections at a perpendicular angle:</p>
-<p>(example)</p>
+<p><img src="degenerate.png" alt="" />
+<em>Two lanes become four -- probably some turn lanes appearing. The lighter grey is our intersection.</em></p>
+<p>Another assumption taken by A/B Street is that roads hit intersections at a perpendicular angle.</p>
+<p><img src="perp_no_traffic.png" alt="" />
+<em>Note how the intersection &quot;eats into&quot; Boren, the diagonal road more than you might expect.</em></p>
 <p>We use this division to determine where vehicles stop, and where a crosswalk exists:</p>
-<p>(example with traffic)</p>
-<p>Of course, this assumption isn't always true in reality. At sharp angles, the stop position for adjacent lanes might be offset a fair bit, resulting in a &quot;jagged tooth&quot; look:</p>
-<p>(example broadway and boren!)</p>
+<p><img src="perp_traffic.png" alt="" />
+<em>Does it seem like vehicles have stopped too far away from the intersection?</em></p>
+<p>Of course, this assumption isn't always true in reality:</p>
+<p><img src="perp_satellite.png" alt="" />
+<em>The crosswalks across Boren are horizontal!</em></p>
+<p>If we allowed roads to hit intersections at non-perpendicular angles, but still insisted that the stop position for each individual lane was perpendicular, it might have a &quot;jagged tooth&quot; look:</p>
+<p><img src="perp_teeth.png" alt="" />
+<em>The cyan lines show one way to represent adjacent lanes that extend different lengths.</em></p>
 <p>But for the sake of this article, these're the assumptions we're sticking with. Pedestrian islands, slip lanes, gores, and medians are all real-world elements that don't fit nicely in this model.</p>
 <h2 id="overview-of-the-process"><a class="header" href="#overview-of-the-process">Overview of the process</a></h2>
 <p>We'll now explore the steps to produce geometry for a single intersection and its connected roads. The broad overview:</p>
@@ -187,18 +206,22 @@
 <li>Trim back the roads based on overlap</li>
 <li>Produce the intersection polygon</li>
 </ol>
+<p>Let's pick a particularly illustrative <a href="https://www.openstreetmap.org/node/1705063811">five-way intersection</a> as our example.</p>
 <h2 id="part-1-thickening-the-infinitesmal"><a class="header" href="#part-1-thickening-the-infinitesmal">Part 1: Thickening the infinitesmal</a></h2>
 <p>OSM models roads as a center-line -- supposedly the physical center of the paved area, not the solid or dashed yellow line (t least in the US) separating the two directions of traffic. The schema, and how it gets mapped in practice, is fuzzy when there are more lanes in one direction than the other or when roads join or split up for logical routing, but... let's keep things simple to start.</p>
-<p>(example)</p>
-<p>OSM has a few tags (link) for explicitly mapping road width, but in practice they're not used. Instead, we have a whole bunch of tags that describe the lane configuration of the road. A/B Street interprets these and produces an ordered list of lanes from the left side of the road to the right, guessing the direction, width, and type of each lane. See the <a href="https://github.com/dabreegster/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs">code here</a> -- it's fairly lengthy, but has some intuitive unit tests. This interpretation of tags is hard in practice because the schema is very confusing, there are multiple ways of mapping the same thing, people make many mistakes in practice, etc. TODO, list some examples like cycleway:left:separator:right.</p>
-<p>(example of tags -&gt; lanespecs)</p>
+<p><img src="osm_center_lines.png" alt="" />
+<em>5 roads meet at this intersection. The white lines are OSM's center line.</em></p>
+<p>OSM has a few tags (link) for explicitly mapping road width, but in practice they're not used. Instead, we have a whole bunch of tags that describe the lane configuration of the road. A/B Street interprets these and produces an ordered list of lanes from the left side of the road to the right, guessing the direction, width, and type of each lane. See the <a href="https://github.com/dabreegster/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs">code here</a> -- it's fairly lengthy, but has some intuitive unit tests. This interpretation of tags is hard in practice because the schema is very confusing, there are multiple ways of mapping the same thing, people make many mistakes in practice, etc. <!-- TODO, list some examples like cycleway:left:separator:right. --></p>
+<p><img src="tags_to_lane_specs.png" alt="" />
+<em>A very simple example of OSM tags on the left, and on the right, A/B Street's interpretation of each lane, ordered from the left side of the road.</em></p>
 <p>So for each road, we estimate the total width based on the lane tagging. Then we project the center line to the left and right, giving us a thickened polygon for the entire road:</p>
-<p>(example)</p>
+<p><img src="thickened_5.png" alt="" />
+<em>All 5 of our roads, thickened based on the lane tagging. The red dot is the position of the OSM node shared by these roads.</em></p>
 <h3 id="projecting-a-polyline"><a class="header" href="#projecting-a-polyline">Projecting a polyline</a></h3>
 <p><a href="https://github.com/a-b-street/abstreet/blob/91c152c123924d7b8bfa14722d18c652d7e42966/geom/src/polyline.rs#L435">https://github.com/a-b-street/abstreet/blob/91c152c123924d7b8bfa14722d18c652d7e42966/geom/src/polyline.rs#L435</a></p>
 <p>Explanation of the math. Miters. Examples of it exploding.</p>
 <h2 id="part-2-counting-coup"><a class="header" href="#part-2-counting-coup">Part 2: Counting coup</a></h2>
-<p>Let's pick a particularly illustrative <a href="https://www.openstreetmap.org/node/1705063811">five-way intersection</a> as our example. For each road, we've got the original center from OSM and our calculated the left and right side:</p>
+<p>For each road, we've got the original center from OSM and our calculated the left and right side:</p>
 <p>(pic)</p>
 <p>Now the magic happens. You'll notice that many of those polylines collide (For sanity, let's call these &quot;collisions&quot; and not &quot;intersections&quot;, since that term is overloaded here!). Let's find every collision point:</p>
 <p>(pic)</p>
