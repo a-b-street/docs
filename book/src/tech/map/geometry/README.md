@@ -107,9 +107,34 @@ So for each road, we estimate the total width based on the lane tagging. Then we
 
 ### Projecting a polyline
 
-<https://github.com/a-b-street/abstreet/blob/91c152c123924d7b8bfa14722d18c652d7e42966/geom/src/polyline.rs#L435>
+Before we move on, a quick primer on how to take a polyline (a list of ordered points) and project it to the left or right. There are some better explanations of this online, but I don't have them handy. I wouldn't call A/B Street's [implementation](https://github.com/a-b-street/abstreet/blob/91c152c123924d7b8bfa14722d18c652d7e42966/geom/src/polyline.rs#L435) fantastic, but it's there for reference.
 
-Explanation of the math. Miters. Examples of it exploding.
+![](project_pt1.png)
+
+The original polyline is in black. If you can't tell from my quick drawing, it consists of 3 line segments glued together. We want to shift it to the right some distance. We start by taking each line segment and projecting it to the right that distance. That operation is simple -- rotate the line's angle by 90 degrees, then project the line's endpoints that direction. The 3 projected line segments are shown in blue, green, and red.
+
+There are two types of problems we need to fix for the new polyline to be glued together nicely. The blue and the green line segment intersect each other, so we'll trim both segments to that common point:
+
+![](project_pt2.png)
+*Please forgive my horrid paint editor skills*
+
+The green and the red line segments are far apart. Let's imagine they keep extending until they do intersect. If I recall proper terminology, this is a miter join:
+
+![](project_pt3.png)
+
+And that's it! Easy.
+
+... Except not really. The real world of OSM center-lines has every imaginable edge case. When a road is both thick and sharply angled enough, extending those line segments until they meet works... but the hit might be very far away:
+
+![](project_sharp.png)
+
+My workaround currently is to hardcode a maximum distance away from the original line endpoints. If our miter cap reaches beyond that, just draw a straight line between the two segments. I think this is known as a bevel join.
+
+Just for fun, let's see what happens when a polyline doubles back on itself in some less-than-realistic ways:
+
+![](project_lovecraftian.gif)
+
+Truly Lovecraftian geometry. I don't think I often see points from OSM totally out of order like this, but it happens sometimes and is immediately obvious.
 
 ## Part 2: Counting coup
 
