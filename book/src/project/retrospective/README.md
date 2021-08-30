@@ -245,7 +245,7 @@ Here's a very incomplete sampling of our work:
 
 ### Road labels
 
-Placing road labels on a map is a design and implementation challenge, but Michael and I cranked out something decent in a few days:
+Placing road labels on a map is quite a design and implementation challenge, but Michael and I cranked out something decent in a few days:
 
 ![](road_labels.gif)
 *Labels aren't too densely clustered, but they still appear to help orient by major roads.*
