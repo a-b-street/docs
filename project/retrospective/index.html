@@ -150,7 +150,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="the-ab-street-retrospective"><a class="header" href="#the-ab-street-retrospective">The A/B Street Retrospective</a></h1>
-<p>I want to reflect on what I've been working on for the past 3+ years.</p>
+<p>I want to reflect on what I've been working on for the past 3+ years, as of September 2021.</p>
 <ul>
 <li><a href="#technical-accomplishments--challenges">Technical accomplishments &amp; challenges</a>
 <ul>
@@ -186,10 +186,11 @@
 </li>
 <li><a href="#design-accomplishments-and-challenges">Design accomplishments and challenges</a>
 <ul>
-<li><a href="#color-scheme">Color scheme</a></li>
+<li><a href="#color-schemes">Color schemes</a></li>
 <li><a href="#road-editor">Road editor</a></li>
 <li><a href="#traffic-signal-editor">Traffic signal editor</a></li>
-<li><a href="#product-requirements">Product requirements</a></li>
+<li><a href="#data-visualization">Data visualization</a></li>
+<li><a href="#road-labels">Road labels</a></li>
 </ul>
 </li>
 </ul>
@@ -210,7 +211,7 @@
 </ul>
 </li>
 <li>
-<p><a href="../../tech/map/geometry/README.html">Creating geometry from roads and intersections</a></p>
+<p><a href="../../tech/map/geometry/index.html">Creating geometry from roads and intersections</a></p>
 <ul>
 <li>I believe A/B Street has the most advanced handling of complex OSM intersections of anything that's public</li>
 </ul>
@@ -270,7 +271,7 @@
 <p><img src="data_parcels.png" alt="" />
 <em>The sad blue sea of single-family parcels, from King County parcel data</em></p>
 <h4 id="map-editing"><a class="header" href="#map-editing">Map editing</a></h4>
-<p>It would be so simple if that complex map model representation was nice and immutable. But the whole point of A/B Street is to explore changes to the built environment. Aside from the UIs for this (which themselves went through many design iterations and usability studies), supporting this in the map model layer has been tough.</p>
+<p>It would be so simple if that map model representation was nice and immutable. But the whole point of A/B Street is to explore changes to the built environment. Aside from the UIs for this (which themselves went through many design iterations and usability studies), supporting this in the map model layer has been tough.</p>
 <ul>
 <li>Representing edits durably, even when a map is rebuilt from updated OSM data.</li>
 <li>Handling undo/redo. When you change the lanes of one road, it might invalidate the traffic signal policy nearby.</li>
@@ -319,29 +320,66 @@
 <h4 id="widgetry-a-ui--dataviz-library-from-scratch"><a class="header" href="#widgetry-a-ui--dataviz-library-from-scratch">widgetry: a UI + dataviz library from scratch</a></h4>
 <p>This is probably one of the more ridiculous things that's happened.</p>
 <p>In ~2018 when I started, all of the rendering and GUI libraries for Rust appeared to not do what I needed. So I started with <a href="https://github.com/rust-windowing/winit">raw window event handling</a> and OpenGL and... just went for it. It's not hard to start drawing a big <a href="https://wiki.openstreetmap.org/wiki/Slippy_Map">slippy map</a> with zooming and panning, nor is it tough to wire up a basic clickable button. But... <a href="https://a-b-street.github.io/docs/tech/dev/ui.html">widgetry</a> has turned into something quite feature-full and has a decent API.</p>
-<p>The journey there was quite circuitous. Most of the difficulty was not even knowing how the UI should work (or even having a clear picture of what the app was supposed to do...). But once Yuwen joined the project, this library started shaping up very quickly. And Michael has dumped in countless work into adding complex features to it, polishing the APIs and style, implementing massive design changes from Yuwne like the buttons...</p>
+<p>The journey there was quite circuitous. Most of the difficulty was not even knowing how the UI should work (or even having a clear picture of what the app was supposed to do...). But once Yuwen joined the project, this library started shaping up very quickly. And Michael has dumped in countless work into adding complex features to it, polishing the APIs and style, implementing massive design changes from Yuwen like the buttons...</p>
 <p>The end result is pretty impressive -- it works on native and web (no system dependencies), everything's an infinitely scalable vector (including text), and it has loads of interactive dataviz widgets.</p>
 <p><img src="widgetry_demo.gif" alt="" />
 <em>A quick preview of interactive line plots, draggable cards, and a canvas filled with vector goodies</em></p>
 <h4 id="native-and-web"><a class="header" href="#native-and-web">Native and web</a></h4>
 <p>I never intended to target mobile or the web. But in January 2020ish, winit support for web landed, so I thought... why not? Initial support was surprisingly easy, but properly dealing with asynchronous file loading, loading screens, progress bars, and detangling native-only dependencies has been quite tough.</p>
 <h2 id="design-accomplishments-and-challenges"><a class="header" href="#design-accomplishments-and-challenges">Design accomplishments and challenges</a></h2>
-<p>Yuwen, michael, feedback from others on gh, in UX study sessions, twitter, ...</p>
-<h3 id="color-scheme"><a class="header" href="#color-scheme">Color scheme</a></h3>
+<p>I think it's safe to say my own design skills are somewhat lacking:</p>
+<p><img src="ui_ancient.png" alt="" />
+<em>A/B Street as of September 2019</em></p>
+<p>A/B Street has lots of complex information to convey and data to visualize, and getting people excited about a vision for a more sustainable transportation system requires beautiful design. So... it's quite awesome that <a href="https://www.yuwen-li.com/work/abstreet">Yuwen</a> joined the project at the right time. Thanks to <a href="https://github.com/michaelkirk">Michael</a> and feedback from dozens of people from OpenStreetMap, Github, Twitter, and user testing studies, A/B Street today is quite aesthetic and functional.</p>
+<h3 id="color-schemes"><a class="header" href="#color-schemes">Color schemes</a></h3>
+<p>One of the puzzles I struggled with from the very start was how to communicate both lane types and road types at the same time. Unzoomed, a simple color scheme distinguishes highways from major and minor roads:</p>
+<p><img src="colors_unzoomed.png" alt="" />
+<em>I5 is distinguishable from arterial and residential roads in Seattle, and the Burke Gilman trail is also visible.</em></p>
+<p>But zoom in, and we use coloring to distinguish regular lanes, parking, and sidewalks. It's still useful to distinguish major and minor roads, though! Most maps cheat with road width and use that, but there are many cases where arterials are just as wide as residential streets.</p>
+<p><img src="colors_zoomed_before.png" alt="" />
+<em>Can you spot the arterial?</em></p>
+<p>But inspired by designs from <a href="https://github.com/westnordost">Streetcomplete by Tobias</a>, we found some shades of grey that convey the difference quite effectively, as well as slightly convey the curb height:</p>
+<p><img src="colors_zoomed_after.png" alt="" />
+<em>There it is!</em></p>
+<p>Also, we have a pretty fantastic night mode, although I'm still holding out for something more cyberpunk.</p>
+<p><img src="colors_night.png" alt="" />
+<em>Both the UI and map have colors to show when the simulation is after-hours</em></p>
 <h3 id="road-editor"><a class="header" href="#road-editor">Road editor</a></h3>
+<p>A/B Street's ability to edit roads started simple, but today is quite powerful. Inspired by <a href="http://streetmix.net">Streetmix</a>, you can modify lanes however you want:</p>
+<p><img src="edit_roads.gif" alt="" />
+<em>Drag-and-drop, spear-headed by Michael, is key to this UI working smoothly.</em></p>
+<p>We arrived at this design only after many rounds of designing, implementing prototypes, and gathering feedback.</p>
 <h3 id="traffic-signal-editor"><a class="header" href="#traffic-signal-editor">Traffic signal editor</a></h3>
-<h3 id="product-requirements"><a class="header" href="#product-requirements">Product requirements</a></h3>
-<ul>
-<li>abst as a game
-<ul>
-<li>tutorial, challenge modes, sort of a story (even with character art!)</li>
-</ul>
-</li>
-<li>15m tool</li>
-<li>santa!</li>
-<li>osm viewer, parking mapper</li>
-<li>ungap map tool</li>
-</ul>
+<p>Most people experience traffic signals from the ground, not the sky -- they think about just the direction they want to go, not how the entire intersection behaves over time. At any point in time, a particular movement could be protected by a green arrow or light, permitted after yielding to oncoming traffic, or not allowed. After many iterations, I think we represent and allow changes to this quite well:</p>
+<p><img src="edit_signals.gif" alt="" />
+<em>Left turns should be protected here. So first we remove the left turns from stage 1, where they were just permitted. Then we add a new stage, protect the left turns, and adjust its timing to end early if there's no traffic.</em></p>
+<h3 id="data-visualization"><a class="header" href="#data-visualization">Data visualization</a></h3>
+<p>A/B Street measures all sorts of things -- travel times, delays, throughput, a biking route's steepness, exposure to risky events. All of these things can be understood at the level of individual agents, roads, and intersections, or you can explore aggregate patterns and finder larger trends. You can view the data in absolute terms based on the current simulation running, or if you've edited the map (and the map is one of the lucky few that doesn't gridlock), then you can compare the results to the baseline simulation without edits -- the essence of A/B testing.</p>
+<p>Here's a very incomplete sampling of our work:</p>
+<p><img src="viz_trip.png" alt="" />
+<em>Diving into one person's route</em></p>
+<p><img src="viz_delay_scatter.gif" alt="" />
+<em>Watching a live scatter plot of delays through an intersection, broken down by mode</em></p>
+<p><img src="viz_relative_thruput.png" alt="" />
+<em>The red roads have higher foot traffic, due to converting Broadmoor to a Stay Healthy Street</em></p>
+<p><img src="viz_trip_table.gif" alt="" />
+<em>Using a sortable table of all trips to find individual people whose journey got much faster due to map edits</em></p>
+<p><img src="viz_time_summary.gif" alt="" />
+<em>Understanding how short and long trips got faster or slower due to map edits</em></p>
+<h3 id="road-labels"><a class="header" href="#road-labels">Road labels</a></h3>
+<p>Placing road labels on a map is a design and implementation challenge, but Michael and I cranked out something decent in a few days:</p>
+<p><img src="road_labels.gif" alt="" />
+<em>Labels aren't too densely clustered, but they still appear to help orient by major roads.</em></p>
+<!--
+### Product requirements
+
+- abst as a game
+	- tutorial, challenge modes, sort of a story (even with character art!)
+- 15m tool
+- santa!
+- osm viewer, parking mapper
+- ungap map tool
+-->
 
                     </main>
 
