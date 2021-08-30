@@ -218,8 +218,21 @@
 <p><img src="thickened_5.png" alt="" />
 <em>All 5 of our roads, thickened based on the lane tagging. The red dot is the position of the OSM node shared by these roads.</em></p>
 <h3 id="projecting-a-polyline"><a class="header" href="#projecting-a-polyline">Projecting a polyline</a></h3>
-<p><a href="https://github.com/a-b-street/abstreet/blob/91c152c123924d7b8bfa14722d18c652d7e42966/geom/src/polyline.rs#L435">https://github.com/a-b-street/abstreet/blob/91c152c123924d7b8bfa14722d18c652d7e42966/geom/src/polyline.rs#L435</a></p>
-<p>Explanation of the math. Miters. Examples of it exploding.</p>
+<p>Before we move on, a quick primer on how to take a polyline (a list of ordered points) and project it to the left or right. There are some better explanations of this online, but I don't have them handy. I wouldn't call A/B Street's <a href="https://github.com/a-b-street/abstreet/blob/91c152c123924d7b8bfa14722d18c652d7e42966/geom/src/polyline.rs#L435">implementation</a> fantastic, but it's there for reference.</p>
+<p><img src="project_pt1.png" alt="" /></p>
+<p>The original polyline is in black. If you can't tell from my quick drawing, it consists of 3 line segments glued together. We want to shift it to the right some distance. We start by taking each line segment and projecting it to the right that distance. That operation is simple -- rotate the line's angle by 90 degrees, then project the line's endpoints that direction. The 3 projected line segments are shown in blue, green, and red.</p>
+<p>There are two types of problems we need to fix for the new polyline to be glued together nicely. The blue and the green line segment intersect each other, so we'll trim both segments to that common point:</p>
+<p><img src="project_pt2.png" alt="" />
+<em>Please forgive my horrid paint editor skills</em></p>
+<p>The green and the red line segments are far apart. Let's imagine they keep extending until they do intersect. If I recall proper terminology, this is a miter join:</p>
+<p><img src="project_pt3.png" alt="" /></p>
+<p>And that's it! Easy.</p>
+<p>... Except not really. The real world of OSM center-lines has every imaginable edge case. When a road is both thick and sharply angled enough, extending those line segments until they meet works... but the hit might be very far away:</p>
+<p><img src="project_sharp.png" alt="" /></p>
+<p>My workaround currently is to hardcode a maximum distance away from the original line endpoints. If our miter cap reaches beyond that, just draw a straight line between the two segments. I think this is known as a bevel join.</p>
+<p>Just for fun, let's see what happens when a polyline doubles back on itself in some less-than-realistic ways:</p>
+<p><img src="project_lovecraftian.gif" alt="" /></p>
+<p>Truly Lovecraftian geometry. I don't think I often see points from OSM totally out of order like this, but it happens sometimes and is immediately obvious.</p>
 <h2 id="part-2-counting-coup"><a class="header" href="#part-2-counting-coup">Part 2: Counting coup</a></h2>
 <p>For each road, we've got the original center from OSM and our calculated the left and right side:</p>
 <p>(pic)</p>
