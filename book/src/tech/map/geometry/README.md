@@ -6,6 +6,10 @@ Note 1: There's no "related work" section here -- I haven't found many other pro
 
 Note 2: This article would be way more awesome with code and some interactive demos to play around with each step. That level of ambition would prevent this from ever being written, though! I'll link to the real code and am happy to answer questions if anything's unclear.
 
+Note 3: Apologies for the rough diagrams and lack of polish. I'm time-constrained and communicating the ideas is my priority.
+
+<!-- toc -->
+
 ## Background
 
 Most street maps you'll find provide a simplified view of streets. Google Maps, Apple Maps, and most OpenStreetMap renderers mostly just tell you the road's name, color it by type (a highway, major arterial road, minor residential street), take great liberties with the width, and don't explicitly distinguish intersections from roads. These maps are used for navigation and drawing your attention to nearby businesses, so this is quite a reasonable view.
@@ -175,61 +179,76 @@ Some questions to consider:
 
 We've now trimmed roads back to avoid overlapping each other. We just need to generate the polygon for the intersection. As a first cut, let's take these trimmed center-lines, calculate the left and right polylines again (since we've changed the center line), and use the endpoints for the shape.
 
-(example)
+![](clockwise_naive.png)
+*The red polygon is the intersection shape formed from these endpoints. The pink portions don't look right!*
 
 Oops, the polygon covers a bit too much space! Cut red tape, queues, and split ends, but not corners. What if we remember all of the collision points, and use those too?
 
-(example)
+![](clockwise_better.png)
 
 Much better.
 
 ### Sorting roads around a center
 
-When we're forming the intersection polygon, we know all of the points making it up. But what order do they go in? Seemingly innocent question.
+I snuck another fast one on ya. When we form a polygon from these left/right endpoints and the original collision points, how do we put those points in the correct order? Seemingly innocent question.
 
-Maybe we can just average all of the points, call that the "center", calculate the angle to each point, and order clockwise.
+There are a few approaches that work fine for the simple cases. First, from OSM we know the single point where the 5 road center lines meet. After we've calculated the points for the intersection polygon, we can use that single point, calculate the angle to each polygon point, and sort. That works fine.
 
-(diagram)
+![](sorting_orig_center.png)
+*The road center-lines all meet at one point, from the original OSM data.*
 
-TODO: Should we talk about the consolidated intersection case here or not?
+Foreshadowing: But soon, things won't be so simple. 
 
 ## Interlude: problems so far
 
 That wasn't actually so bad! The results are reasonable in many cases:
 
-(examples)
+![](good1.png)
+![](good2.png)
+![](good3.png)
 
 But what kind of things go wrong?
 
-### Floating point fudgery
-
-Do we ever wind up with points that're aaaalmost the same? What threshold do we pick to deduplicate?
-
 ### Funky sidewalks
 
-the montlake example
+What's going on with the sidewalk in that last example?
+
+![](sidewalk_corners.gif)
 
 ### Lovecraftian geometry
 
-When do we wind up with the polygon looping back on itself? (When two thick roads overlap, but dont share an intersection -- right?)
+Sometimes followers of Cthulu edit OSM, I assume.
+
+![](lovecraft1.png)
+*What... is happening here?*
+
+![](lovecraft2.png)
+*Even the thickened roads, before calculating intersection polygons, look broken.*
+
+![](lovecraft3.png)
+*Before I can investigate, somebody has already fixed the problem upstream in OSM!*
+
+<!-- I think there are cases where two thick roads overlap, but don't share an intersection. -->
 
 ### Bad OSM data
 
 Often times, the upstream OSM data is just flat-out wrong. Center lines for divided one-way roads are way too close to each other, so using the number of lanes with a reasonable guess at width produces roads that overlap outside of the intersection. This throws off everything we've done!
 
-(aurora)
+![](smushed.png)
 
-Another example is people tagging the lane count incorrectly. A common problem when splitting a bidirectional road into two one-ways (which is what you're supposed to do when there's physical separation like a median) is forgetting to change the lane count:
-
-(example)
+Another example is people tagging the lane count incorrectly. A common problem when splitting a bidirectional road into two one-ways (which is what you're supposed to do when there's physical separation like a median) is forgetting to change the lane count. I don't have examples handy, because I've fixed every case I've found.
 
 An important lesson when trying to write algorithms using OSM data: there's a balance between making your code robust to problems in the data, and trying to fix everything upstream. I attempt a compromise. It's a virtuous cycle -- in trying to use OSM data in this new way, I wind up fixing the data sometimes.
 
 ### Highway on/off-ramps
 
-TODO Problem and solution. How do we detect this case?
+When three nearly parallel roads meet, our algorithm is a bit over-eager with the size of the intersection:
 
-The montlake/520 thing also has this -- if we opt it in, can we fix?
+![](ramp1.png)
+
+This case isn't even a real "intersection" -- a one-way highway has two different off-ramps jut out. At some point, I had some scribbled diagrams in a notebook somewhere from when I worked on this, but it's lost -- luckily the [code for this case](https://github.com/a-b-street/abstreet/blob/e2fc59a31aa043a879a372b2350b1f42391ee740/map_model/src/make/initial/geometry.rs#L434) is pretty simple. This produces much better results here:
+
+![](ramp2.png)
 
 ## Intersection consolidation
 
@@ -287,13 +306,18 @@ Then do the merge -- blow up the road. Don't modify any center lines.
 
 For the geom algorithm, do something totally different -- just project the pre-trimmed thing and use that. Seems to work? Even when editing roads, turns out k?
 
-### Sorting around a center
+### Sorting revisited
+
+Maybe we can just average all of the points, call that the "center", calculate the angle to each point, and order clockwise.
+
+(diagram)
 
 Before trimming, how do you do this? The point farthest away? A point a fixed few meters away?
 
 For consolidated intersections, probably use the pre-trimmed point
 
 Example Tempe intersection with light rail that blows it up. Center vs polylabel.
+
 
 ### Finding the short roads
 
