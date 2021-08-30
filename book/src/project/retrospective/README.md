@@ -39,22 +39,41 @@ But A/B Street needed lots of this, and OSM is the most enticing data source ava
   - Some complex features: responding to map edits (that might reverse roads, close things off to some vehicles), handling complex turn restriction relations, modeling private neighborhoods and streets with no through-traffic, turning left or right out of a driveway, and elevation-aware cost functions for vehicles, pedestrians, making unprotected turns, etc
 <!-- Snapping -->
 
-pictures of OSM / abst.
+![](road_width_osm.png)
+*Do you have any idea what's on these roads?*
 
-- parking lots
-- complex tempe junctions
-- complex seattle roads
-- traffic signals
+![](road_width_abst.png)
+*A/B Street shows the bus lanes and guesses road width.*
+
+![](tempe_junction_osm.png)
+*An arterial road with light rail crosses a minor road in OSM*
+
+![](tempe_junction_abst.png)
+*In A/B Street, one consolidated traffic signal represents this situation*
+
+![](parking_lot_osm.png)
+*A parking lot in OSM*
+![](parking_lot_abst.png)
+*The same lot in A/B Street -- 1500 spots, based on geometry*
+
+![](tsig_two_stage.png)
+*Is turning traffic backing up here?*
+
+![](tsig_four_stage.png)
+*Add some protected left turns!*
 
 #### Joining data sources
 
 A/B Street brings in other public data for some cities, joining it with the OSM-based map model.
 
-pic of blockface, note about segments not matching and wrong data
+![](data_blockface.png)
+*Blockface data in Seattle describes street parking restrictions... in theory. Many segments disagree with OSM's splitting of roads, and many blocks have incorrect data.*
 
-pic of elevation
+![](data_elevation.png)
+*LIDAR elevation data overlaid with the bike network shows why Aurora would be such a nicer route to bike north from downtown than Fremont*
 
-pic of kc parcels
+![](data_parcels.png)
+*The sad blue sea of single-family parcels, from King County parcel data*
 
 #### Map editing
 
@@ -103,13 +122,17 @@ A/B Street simulates the movement of individual people walking, biking, and driv
 
 Actually making this work with on-demand rendering at any moment in time is one of the more clever things I've come up with. The model is quite fast (until gridlock happens...) and looks reasonably realistic in aggregate. Things like smooth acceleration are missing, but few people have seemed to notice. Making vehicles change lanes and over-take is one of the main limitations -- this is very hard to squeeze into the discrete event model, and only half-done.
 
+![](traffic_sim.gif)
+*Drivers, cyclists, and pedestrians negotiate the traffic signal at Greenwood and N 87th*
+
 #### Parking
 
 Some traffic simulators out there are only focused on highways, not even inner-city driving. Many don't include pedestrians and cyclists, or bolt them on as an after-thought. But I'll bet A/B Street is one of the only ones including a detail crucial to the experience of driving: [parking](../../tech/trafficsim/parking.md). How many times have you heard a friend complain that it took 10 minutes to drive over, but 15 to find parking? Exactly.
 
 Except in some maps that disable it, every driving trip in A/B Street begins and ends with somebody walking between their actual endpoint and a parking spot with their car. There's lots of estimation with the capacity along streets, in parking lots, and especially with private residences and businesses, but at least A/B Street tries. Maybe this pushes the rest of the field towards a bit more realism. Abstractions matter! Parking occupies a huge amount of space, and when your phone says driving somewhere is 20 minutes faster than taking a bus, it may not be giving you the full picture -- are you sure you won't circle around a dense neighborhood for 10 minutes finding that free spot? Abstractions matter. I hope I've done justice to Donald Shoup.
 
-(pictures from the article)
+![](../../tech/trafficsim/parking_efficiency.png)
+*Darker red dots are vehicles parked farther away from their final destination*
 
 #### Gridlock
 
@@ -117,7 +140,8 @@ In both the real world and in a traffic simulation, vehicles get a bit stuck. In
 
 This has so many causes -- broken intersection geometry causing impossible turn conflicts, weird lane-changing behavior, vehicles being too cautious about partially blocking an intersection, pedestrians darting into non-existent crosswalks, hilariously Byzantine traffic signal timing, travel demand models sending all 80,000 trips to UW campus to a single tiny building... and so I've dumped countless hours into trying to fix them, with only very modest success. Sometimes it's trying to fix the data, or improve signal timing heuristics. Sometimes it's building in complex cycle detectors into the simulation to figure out when vehicles in a roundabout are all waiting for each other. Sometimes it works. Usually it doesn't.
 
-![traffic_seitan](traffic_seitan.png)
+![](traffic_seitan.png)
+*Traffic Seitan spreads from one broken Fremont bridge*
 
 #### Travel demand models
 
@@ -129,7 +153,8 @@ Then during the [Actdev](https://actdev.cyipt.bike/) work, it became necessary l
 
 We've also done a fair bit of work into data visualization to understand the outut of these travel demand models. Part of this even includes heuristics that automatically group buildings into "neighborhoods" -- roughly, tracing along arterial roads and finding everything in the middle.
 
-(pictures of commuter viz)
+![](commuter_patterns.png)
+*Where do trips starting from Broadview go, according to Soundcast data?*
 
 ### UI
 
@@ -143,7 +168,8 @@ The journey there was quite circuitous. Most of the difficulty was not even know
 
 The end result is pretty impressive -- it works on native and web (no system dependencies), everything's an infinitely scalable vector (including text), and it has loads of interactive dataviz widgets.
 
-(demos)
+![](widgetry_demo.gif)
+*A quick preview of interactive line plots, draggable cards, and a canvas filled with vector goodies*
 
 #### Native and web
 
