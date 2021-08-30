@@ -197,18 +197,30 @@
 </li>
 </ul>
 <!-- Snapping -->
-<p>pictures of OSM / abst.</p>
-<ul>
-<li>parking lots</li>
-<li>complex tempe junctions</li>
-<li>complex seattle roads</li>
-<li>traffic signals</li>
-</ul>
+<p><img src="road_width_osm.png" alt="" />
+<em>Do you have any idea what's on these roads?</em></p>
+<p><img src="road_width_abst.png" alt="" />
+<em>A/B Street shows the bus lanes and guesses road width.</em></p>
+<p><img src="tempe_junction_osm.png" alt="" />
+<em>An arterial road with light rail crosses a minor road in OSM</em></p>
+<p><img src="tempe_junction_abst.png" alt="" />
+<em>In A/B Street, one consolidated traffic signal represents this situation</em></p>
+<p><img src="parking_lot_osm.png" alt="" />
+<em>A parking lot in OSM</em>
+<img src="parking_lot_abst.png" alt="" />
+<em>The same lot in A/B Street -- 1500 spots, based on geometry</em></p>
+<p><img src="tsig_two_stage.png" alt="" />
+<em>Is turning traffic backing up here?</em></p>
+<p><img src="tsig_four_stage.png" alt="" />
+<em>Add some protected left turns!</em></p>
 <h4 id="joining-data-sources"><a class="header" href="#joining-data-sources">Joining data sources</a></h4>
 <p>A/B Street brings in other public data for some cities, joining it with the OSM-based map model.</p>
-<p>pic of blockface, note about segments not matching and wrong data</p>
-<p>pic of elevation</p>
-<p>pic of kc parcels</p>
+<p><img src="data_blockface.png" alt="" />
+<em>Blockface data in Seattle describes street parking restrictions... in theory. Many segments disagree with OSM's splitting of roads, and many blocks have incorrect data.</em></p>
+<p><img src="data_elevation.png" alt="" />
+<em>LIDAR elevation data overlaid with the bike network shows why Aurora would be such a nicer route to bike north from downtown than Fremont</em></p>
+<p><img src="data_parcels.png" alt="" />
+<em>The sad blue sea of single-family parcels, from King County parcel data</em></p>
 <h4 id="map-editing"><a class="header" href="#map-editing">Map editing</a></h4>
 <p>It would be so simple if that complex map model representation was nice and immutable. But the whole point of A/B Street is to explore changes to the built environment. Aside from the UIs for this (which themselves went through many design iterations and usability studies), supporting this in the map model layer has been tough.</p>
 <ul>
@@ -236,27 +248,33 @@
 <p>Although there's lots of academic papers out there describing car-following models and other &quot;microscopic,&quot; agent-based traffic models, it's always seemed to me that they omit details about how to actually implement them. So, I rolled my own. Not claiming this is a good approach -- simulation results have to be met with <strong>much</strong> more skepticism -- but I'm very proud of the model.</p>
 <p>A/B Street simulates the movement of individual people walking, biking, and driving. It doesn't do so in fixed time-steps (every 0.1 seconds, update everything). It uses a &quot;discrete event&quot; approach. Each agent is in a state, like traveling along a lane or waiting at an intersection, for some amount of time. Updates only happen when that state possibly transitions to another one, like when a vehicle reaches the end of a lane or a traffic signal &quot;wakes up&quot; people on a green light. Instead of updating every agent every 0.1 seconds, we just &quot;skip ahead&quot; to the next interesting time, per agent.</p>
 <p>Actually making this work with on-demand rendering at any moment in time is one of the more clever things I've come up with. The model is quite fast (until gridlock happens...) and looks reasonably realistic in aggregate. Things like smooth acceleration are missing, but few people have seemed to notice. Making vehicles change lanes and over-take is one of the main limitations -- this is very hard to squeeze into the discrete event model, and only half-done.</p>
+<p><img src="traffic_sim.gif" alt="" />
+<em>Drivers, cyclists, and pedestrians negotiate the traffic signal at Greenwood and N 87th</em></p>
 <h4 id="parking"><a class="header" href="#parking">Parking</a></h4>
 <p>Some traffic simulators out there are only focused on highways, not even inner-city driving. Many don't include pedestrians and cyclists, or bolt them on as an after-thought. But I'll bet A/B Street is one of the only ones including a detail crucial to the experience of driving: <a href="../../tech/trafficsim/parking.html">parking</a>. How many times have you heard a friend complain that it took 10 minutes to drive over, but 15 to find parking? Exactly.</p>
 <p>Except in some maps that disable it, every driving trip in A/B Street begins and ends with somebody walking between their actual endpoint and a parking spot with their car. There's lots of estimation with the capacity along streets, in parking lots, and especially with private residences and businesses, but at least A/B Street tries. Maybe this pushes the rest of the field towards a bit more realism. Abstractions matter! Parking occupies a huge amount of space, and when your phone says driving somewhere is 20 minutes faster than taking a bus, it may not be giving you the full picture -- are you sure you won't circle around a dense neighborhood for 10 minutes finding that free spot? Abstractions matter. I hope I've done justice to Donald Shoup.</p>
-<p>(pictures from the article)</p>
+<p><img src="../../tech/trafficsim/parking_efficiency.png" alt="" />
+<em>Darker red dots are vehicles parked farther away from their final destination</em></p>
 <h4 id="gridlock"><a class="header" href="#gridlock">Gridlock</a></h4>
 <p>In both the real world and in a traffic simulation, vehicles get a bit stuck. In the real world, this is usually resolved by humans slightly breaking strict abstractions like usage of distinct lanes, slowly creeping into a partially blocked intersection, or deciding to detour around a problem last minute. I've had a hard time capturing that robustness in simulation, so well, in most simulations on larger maps, vehicles get stuck. Like, permanently.</p>
 <p>This has so many causes -- broken intersection geometry causing impossible turn conflicts, weird lane-changing behavior, vehicles being too cautious about partially blocking an intersection, pedestrians darting into non-existent crosswalks, hilariously Byzantine traffic signal timing, travel demand models sending all 80,000 trips to UW campus to a single tiny building... and so I've dumped countless hours into trying to fix them, with only very modest success. Sometimes it's trying to fix the data, or improve signal timing heuristics. Sometimes it's building in complex cycle detectors into the simulation to figure out when vehicles in a roundabout are all waiting for each other. Sometimes it works. Usually it doesn't.</p>
-<p><img src="traffic_seitan.png" alt="traffic_seitan" /></p>
+<p><img src="traffic_seitan.png" alt="" />
+<em>Traffic Seitan spreads from one broken Fremont bridge</em></p>
 <h4 id="travel-demand-models"><a class="header" href="#travel-demand-models">Travel demand models</a></h4>
 <p>You can't run a traffic simulation if you don't know where people are going, when they're leaving, or how they're trying to get there. The naive approach of uniformly distributing some number of trips between all possible buildings is hilariously unrealistic. And the amount of complex modeling and <a href="https://www.psrc.org/sites/default/files/soundcastdesign2014.pdf">specialized knowledge</a> needed to properly do activity modeling or something simpler is overwhelming. I've tried as much as possible to punt on this -- importing Soundcast data for Seattle, relying on collaborators like <a href="https://github.com/asu-trans-ai-lab/grid2demand">grid2demand</a> and <a href="https://a-b-street.github.io/abstr">abstr</a>.</p>
 <p>But inevitably, A/B Street has wound up with its own simple travel demand models. Mateusz started the <a href="https://github.com/a-b-street/abstreet/issues/154">proletariat robot model</a>, using naught but OSM tags on buildings to estimate the number of people living and working, and using simple matching to send people to and from work, and nothing else. Such robots.</p>
 <p>Then during the <a href="https://actdev.cyipt.bike/">Actdev</a> work, it became necessary last-minute to generate traffic using UK census flow data, which describes the number of people commuting between different polygonal areas for work, broken down by mode. The <a href="https://github.com/a-b-street/abstreet/blob/master/popdat/src/od.rs">pipeline</a> is simple.</p>
 <p>We've also done a fair bit of work into data visualization to understand the outut of these travel demand models. Part of this even includes heuristics that automatically group buildings into &quot;neighborhoods&quot; -- roughly, tracing along arterial roads and finding everything in the middle.</p>
-<p>(pictures of commuter viz)</p>
+<p><img src="commuter_patterns.png" alt="" />
+<em>Where do trips starting from Broadview go, according to Soundcast data?</em></p>
 <h3 id="ui"><a class="header" href="#ui">UI</a></h3>
 <h4 id="widgetry-a-ui--dataviz-library-from-scratch"><a class="header" href="#widgetry-a-ui--dataviz-library-from-scratch">widgetry: a UI + dataviz library from scratch</a></h4>
 <p>This is probably one of the more ridiculous things that's happened.</p>
 <p>In ~2018 when I started, all of the rendering and GUI libraries for Rust appeared to not do what I needed. So I started with <a href="https://github.com/rust-windowing/winit">raw window event handling</a> and OpenGL and... just went for it. It's not hard to start drawing a big <a href="https://wiki.openstreetmap.org/wiki/Slippy_Map">slippy map</a> with zooming and panning, nor is it tough to wire up a basic clickable button. But... <a href="https://a-b-street.github.io/docs/tech/dev/ui.html">widgetry</a> has turned into something quite feature-full and has a decent API.</p>
 <p>The journey there was quite circuitous. Most of the difficulty was not even knowing how the UI should work (or even having a clear picture of what the app was supposed to do...). But once Yuwen joined the project, this library started shaping up very quickly. And Michael has dumped in countless work into adding complex features to it, polishing the APIs and style, implementing massive design changes from Yuwne like the buttons...</p>
 <p>The end result is pretty impressive -- it works on native and web (no system dependencies), everything's an infinitely scalable vector (including text), and it has loads of interactive dataviz widgets.</p>
-<p>(demos)</p>
+<p><img src="widgetry_demo.gif" alt="" />
+<em>A quick preview of interactive line plots, draggable cards, and a canvas filled with vector goodies</em></p>
 <h4 id="native-and-web"><a class="header" href="#native-and-web">Native and web</a></h4>
 <p>I never intended to target mobile or the web. But in January 2020ish, winit support for web landed, so I thought... why not? Initial support was surprisingly easy, but properly dealing with asynchronous file loading, loading screens, progress bars, and detangling native-only dependencies has been quite tough.</p>
 <h2 id="design-accomplishments-and-challenges"><a class="header" href="#design-accomplishments-and-challenges">Design accomplishments and challenges</a></h2>
