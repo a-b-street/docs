@@ -250,9 +250,31 @@ Placing road labels on a map is a design and implementation challenge, but Micha
 ![](road_labels.gif)
 *Labels aren't too densely clustered, but they still appear to help orient by major roads.*
 
-<!--
-### Product requirements
+## Project management
 
+Here's the section where I feel like the challenges have swallowed me, with very little success.
+
+### Collaborations
+
+I was pretty quiet the first year, but then I started actively looking for people interested in working on this. I've lost track of all the people I've spent at least an hour talking to and seriously trying to set up some sort of collaboration -- at least 100? I've tried everything I can to attract [contributors](../contributing.md) for programming, design, business, outreach, writing. Many start, but wind up vanishing. It's exhausting for me; I get emotionally invested in everybody who wants something from A/B Street. Running an open source project is really hard. **But I want to emphasize it has partly worked -- I'm super thankful for the ~dozen people who have stuck around and really made working on this project a true pleasure.** I probably need to learn to filter better, fail-fast, and put some barriers up before I invest.
+
+There were a few low moments that stand out. Accidentally CC'd on an internal email literally stood the question, "It's open souce, why pay him anything?" when I was trying to set up a small consulting deal. There was also a group that was too cheap to hire somebody for their own idea, so exploited the fact that this is a passion project for me and for a while, somewhat successfully coerced me to work on their quasi-startup. There were also some highlights, especially when butting heads philosophically. Not everybody understood my [mission](../motivations.md) before reaching out. I'll never forget one video call with a company that was going splendidly, until I explicitly stated all work I do will be open source -- watching the other person scramble to control their plummeting facial expression was perfect. And once I got the most Silicon Valley-ish email ever that started, "I'm the founder of a XYZ billion dollar AV startup." After thinking a moment, I led back with, "Well I think your XYZ billion dollar startup is a reasonable stepping towards car-free cities, but AVs aren't part of the world that I ultimately want to build towards."
+
+These moments still bring me strength.
+
+### Project scope
+
+Traffic simulation is such a massively broad endeavor, and because I dabble in so many parts of it, people really brought strong expectations about what they wanted it to be. What about Monte Carlo simulations? Or gondolas? (No, really.) Why not build a city from scratch, just merge with Citybound? Oh, there's no lane-changing? Not calibrated to real traffic volume data? Well then it must be useless.
+
+I tried my best to balance all of that input with establishing boundaries and pursuing MY vision.
+
+... But what exactly was my vision? I said early on, "this is an identity crisis between a game and a serious planning tool." At first that was a way to punt on the realism and calibration problem -- I couldn't hope to alone compete with industry standard simulation software. It was also a way to engage the general public, or at least the percentage that plays games.
+
+<!-- And where do things stand? What're the use cases, who is the audience? Advocacy? Education? Placating fears of NIMBYs? -->
+
+### Teasing apart the monolith
+
+<!--
 - abst as a game
 	- tutorial, challenge modes, sort of a story (even with character art!)
 - 15m tool
@@ -260,3 +282,58 @@ Placing road labels on a map is a design and implementation challenge, but Micha
 - osm viewer, parking mapper
 - ungap map tool
 -->
+
+### Marketing
+
+The successful marketing basically came for free. A single bold post to [r/seattle](https://old.reddit.com/r/Seattle/comments/hdtucd/ab_street_think_you_can_fix_seattles_traffic/) was magic. Someone "leaked" the project to [Hacker News](https://news.ycombinator.com/item?id=23605048). I think the [alpha launch trailer](https://www.youtube.com/watch?v=LxPD4n_1-LU) got the point across. [The Stranger](https://www.thestranger.com/slog/2020/06/29/43999454/ab-streets-game-lets-you-create-the-seattle-street-grid-of-your-dreams) made a shocking connection between my childhood with Banjo Kazooie and my current fascination with multi-modal travel.
+
+But I've also hustled near-constantly online and in-person, at countless hackathons and [conferences](../presentations.md). I've cold-emailed so many companies trying to set up collaborations.
+
+### Community
+
+The A/B Street Slack has a sense of home to me; it might've started for work, but I've forged friendships there.
+
+I think I did a reasonable job amassing a small army of people interested in open source transportation software. Some of the academic and data science communities weren't talking to each other before I got people into the same (virtual) room.
+
+### Money
+
+I self-funded from savings from my previous big tech job. I feel super fortunate to have had zero pressure to make money with A/B Street, letting me prioritize what really matters to me. I've even personally funded a few people to create [new open source libraries](../funding.md) that I needed.
+
+But not starting a business, even some kind of consulting firm, was likely a mistake. Many of the groups I tried to collaborate with probably had no idea how to deal with me. There's no legal entity for the project, I'm not in academia, I'm not even calling it a startup.
+
+# The problem
+
+That thing I've poured 3+ years of my life into? Nobody's using it.
+
+(Except maybe a few members of the OSM community, in a way I mostly don't hear about.)
+
+## Advocacy groups
+
+For a long time, I've insisted that either advocacy groups who fight for biking/walking-friendly changes in cities or individual Twitter urbanists with large followings would find some use for A/B Street. Maybe the traffic simulation stuff is overwhelming and not trustworthy, fine. But at least the top-down road visualization and editing is better at communicating an idea than some squiggly lines on top of Google Maps? Surely groups pushing for a better bike network want to see how elevation and collision data relate to their ideas?
+
+And the more I understand about how advocacy groups (at least in Seattle) work, the less I have faith in them to avert the climate crisis. I seriously respect their longevity and determination, but fighting for years to get only the slightest improvement isn't a time-scale I believe in. Cities need a massive culture shift. I want to find and work with the people who have some sense of urgency, even if that's not realistic.
+
+## The public
+
+The thesis behind A/B Street is that ordinary citizens are experts in some small slice of the city that they interact with. And so when they see a problem, A/B Street is a tool for them to explore and express ideas for changing it. But I'm beginning to believe I'm wrong about this -- because, where are they? If somebody's only casually interested, they're not going to dedicate their time to fighting for a real change. And if somebody really does care enough, they'll... possibly wind up working for a city government, where they actually have power to change things (and slowly have their spirit crushed by bureaucracy).
+
+I had many goals with A/B Street that are about sparking culture shifts:
+
+1) Pushing people towards sustainable car-free cities
+2) Getting more ordinary citizens involved, in a productive way
+3) Getting different parties -- government, citizen, advocacy group -- on the same level, communicating in a standard way
+4) Promoting open data and open source software for use in government planning -- why trust the traffic analysis that you can't read and reproduce yourself?
+
+I don't feel I've budged the needle on any of these.
+
+## What this project means to me
+
+I try to inject my humor into A/B Street wherever I can. When I skim through the [release names](https://github.com/a-b-street/abstreet/releases), I remember the story of my life that week, or something bizarre I cooked/ate/"foraged" -- ajitummy, twice-dumpstered anything, beef welldoneington, tostonical vows, the rise of Fridgehaus, rubducks in the laptub, taro bingsoothsayer, Hausbroken.
+
+After weeks of sweating over what the 15-minute neighborhood tool is supposed to do and just one stout, I exploded out of my room and drunkenly pitched [15 minute Santa](../../software/santa.md) to my bewildered housemates. Then Michael and Yuwen and I made it (thank you for putting up with me).
+
+A/B Street is my self-expression. Its origins are tangled in a mess of bittersweet memory (I wasn't the one who thought a game should be about traffic) and near-misses with trucks passing too closely on Boyer. I used it to pull out of a nose-dive of depression -- that's a story I'm still trying to write. I broke my fear and landed some of the largest jumps of my life (I do [parkour](http://dcarlino.org/parkour)) as an escape from constantly thinking about A/B Street. I've worked on this project for the entirety of COVID. I've coded while taking the shinkansen from Tokyo to Miyazaki and the TGV from Paris to Berlin. I pushed code the morning of my ACL surgery, and reviewed a PR when I got home (and was remarkably lucid). It's safe to call me obsessed. I quit my job to do this. I've worked on it basically every weekday and weekend for 3 years, and thought about it constantly for at least 6 months before starting the project full-time. 
+
+A/B Street lets me take a bird's eye view of the messy world I move through, imagine it a bit differently, and try to convince others to see it the same way.
+
+If anybody wants to convince me to do something else instead, now you know what you're up against. And if you succeed, you know how important your idea must be to me instead.
