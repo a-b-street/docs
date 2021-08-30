@@ -17,6 +17,9 @@ jobs:
         with:
           mdbook-version: "latest"
 
+      - name: Install mdbook-toc
+        run: cargo install mdbook-toc
+
       - name: Generate book from markdown
         run: |
             cd book

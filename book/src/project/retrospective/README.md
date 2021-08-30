@@ -2,7 +2,7 @@
 
 I want to reflect on what I've been working on for the past 3+ years.
 
-<!-- a TOC seems necessary -->
+<!-- toc -->
 
 ## Technical accomplishments & challenges
 
