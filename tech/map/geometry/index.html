@@ -235,22 +235,30 @@
 <p>Truly Lovecraftian geometry. I don't think I often see points from OSM totally out of order like this, but it happens sometimes and is immediately obvious.</p>
 <h2 id="part-2-counting-coup"><a class="header" href="#part-2-counting-coup">Part 2: Counting coup</a></h2>
 <p>For each road, we've got the original center from OSM and our calculated the left and right side:</p>
-<p>(pic)</p>
+<p><img src="coup_pt1.png" alt="" />
+<em>The left and right sides of the 5 roads are shown -- not the original centers. I manually traced this; slight errors are visible.</em></p>
 <p>Now the magic happens. You'll notice that many of those polylines collide (For sanity, let's call these &quot;collisions&quot; and not &quot;intersections&quot;, since that term is overloaded here!). Let's find every collision point:</p>
-<p>(pic)</p>
+<p><img src="coup_pt2.png" alt="" />
+<em>Collisions drawn as black dots</em></p>
 <p>These collisions represent where two thickened roads overlap. So let's use them to &quot;trim back&quot; the roads and avoid overlap. For each collision, we form an infinitely long line perpendicular to the collision and find where it hits the original center-line. We'll trim the road back to at least that point.</p>
-<p>(diagram)</p>
+<p><img src="coup_pt3.png" alt="" />
+<em>The red road's original center is now shown, in a darker red. The collision between the red and green road is shown, with a yellow line used to find the position along the original center. We'll trim the center back to this point, at least.</em></p>
 <p>Because we want roads to meet intersections perpendiculously (I'm quite sure that's the proper term), we want the left and right side of a road to line up. There's probably a collision on a road's left and right side, and usually one of them would cause the center-line to be trimmed back more than the other. We'll always trim back as much as possible.</p>
-<p>(pic)</p>
+<p><img src="coup_pt4.png" alt="" />
+<em>The collision between the red and blue road is shown in yellow. The corresponding position on the original red road's center line is found, then trimmed back.</em></p>
+<p>If we repeat this for every collision, eventually we wind up with:</p>
+<p><img src="coup_final.png" alt="" />
+<em>All roads have been trimmed back, with their left and right sides projected again</em></p>
 <p>Some questions to consider:</p>
 <ol>
 <li>
 <p>Why look for collisions between every pair of left/right lines? Couldn't we just use the &quot;adjacent&quot; pairs?</p>
 </li>
 <li>
-<p>Is it ever possible for the line perpendicular to a collision to NOT hit the center-line?</p>
+<p>Is it ever possible for the line perpendicular to a collision to NOT hit the original center-line?</p>
 </li>
 </ol>
+<p>(As I'm reviewing my old code and writing this up, these're things I don't remember, worth revisiting.)</p>
 <h2 id="part-3-the-clockwise-walk"><a class="header" href="#part-3-the-clockwise-walk">Part 3: The clockwise walk</a></h2>
 <p>We've now trimmed roads back to avoid overlapping each other. We just need to generate the polygon for the intersection. As a first cut, let's take these trimmed center-lines, calculate the left and right polylines again (since we've changed the center line), and use the endpoints for the shape.</p>
 <p>(example)</p>
