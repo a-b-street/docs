@@ -13,14 +13,17 @@ It's easiest to follow the example below.
 
 ## Example
 
-This defines a scenario containing a single person, who takes one trip. They
+This defines a scenario containing a single person, who takes two trips. They
 begin at midnight at the building nearest to the `origin`, then at 3AM (`10800`
 is seconds after midnight), they drive to the building nearest to the
-`destination`. The `mode` field could also be `Walk`, `Bike`, or `Transit`. The
-`purpose` field is mostly unused; you could pick
-[other values](https://a-b-street.github.io/abstreet/rustdoc/sim/enum.TripPurpose.html)
-that show up in the UI. You could add more trips to this person, with increasing
-departure time. And of course, you can add as many people as you like.
+`destination`. Then an hour later (`14400`), they walk to another location
+(quite far away -- I made up the `destination` coordinates). Note that the
+`destination` of trip 1 must match the `origin` of trip 2.
+
+The `mode` field could also be `Walk`, `Bike`, or `Transit`. The `purpose`
+field is mostly unused; you could pick [other
+values](https://a-b-street.github.io/abstreet/rustdoc/sim/enum.TripPurpose.html)
+that show up in the UI. And of course, you can add as many people as you like.
 
 ```
 {
@@ -44,6 +47,23 @@ departure time. And of course, you can add as many people as you like.
           },
           "mode": "Drive",
           "purpose": "Shopping"
+        },
+        {
+          "departure": 14400.0,
+          "origin": {
+            "Position": {
+              "longitude": -122.3075948,
+              "latitude": 47.6394773
+	    }
+          },
+          "destination": {
+            "Position": {
+              "longitude": -123.3075948,
+              "latitude": 46.6394773
+	    }
+          },
+          "mode": "Walk",
+          "purpose": "Leisure"
         }
       ]
     }
