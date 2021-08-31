@@ -2218,14 +2218,16 @@ deserialization happens from
 <a href="https://github.com/a-b-street/abstreet/blob/master/sim/src/make/external.rs">Rust code</a>.
 It's easiest to follow the example below.</p>
 <h2 id="example"><a class="header" href="#example">Example</a></h2>
-<p>This defines a scenario containing a single person, who takes one trip. They
+<p>This defines a scenario containing a single person, who takes two trips. They
 begin at midnight at the building nearest to the <code>origin</code>, then at 3AM (<code>10800</code>
 is seconds after midnight), they drive to the building nearest to the
-<code>destination</code>. The <code>mode</code> field could also be <code>Walk</code>, <code>Bike</code>, or <code>Transit</code>. The
-<code>purpose</code> field is mostly unused; you could pick
-<a href="https://a-b-street.github.io/abstreet/rustdoc/sim/enum.TripPurpose.html">other values</a>
-that show up in the UI. You could add more trips to this person, with increasing
-departure time. And of course, you can add as many people as you like.</p>
+<code>destination</code>. Then an hour later (<code>14400</code>), they walk to another location
+(quite far away -- I made up the <code>destination</code> coordinates). Note that the
+<code>destination</code> of trip 1 must match the <code>origin</code> of trip 2.</p>
+<p>The <code>mode</code> field could also be <code>Walk</code>, <code>Bike</code>, or <code>Transit</code>. The <code>purpose</code>
+field is mostly unused; you could pick <a href="https://a-b-street.github.io/abstreet/rustdoc/sim/enum.TripPurpose.html">other
+values</a>
+that show up in the UI. And of course, you can add as many people as you like.</p>
 <pre><code>{
   &quot;scenario_name&quot;: &quot;monday&quot;,
   &quot;people&quot;: [
@@ -2247,6 +2249,23 @@ departure time. And of course, you can add as many people as you like.</p>
           },
           &quot;mode&quot;: &quot;Drive&quot;,
           &quot;purpose&quot;: &quot;Shopping&quot;
+        },
+        {
+          &quot;departure&quot;: 14400.0,
+          &quot;origin&quot;: {
+            &quot;Position&quot;: {
+              &quot;longitude&quot;: -122.3075948,
+              &quot;latitude&quot;: 47.6394773
+	    }
+          },
+          &quot;destination&quot;: {
+            &quot;Position&quot;: {
+              &quot;longitude&quot;: -123.3075948,
+              &quot;latitude&quot;: 46.6394773
+	    }
+          },
+          &quot;mode&quot;: &quot;Walk&quot;,
+          &quot;purpose&quot;: &quot;Leisure&quot;
         }
       ]
     }
