@@ -17,6 +17,25 @@ web.
 
 This may take a few minutes, depending on download speed.
 
+## If the city has already been imported
+
+A/B Street includes many cities already. Once you're running the game (natively
+or on the web), click on the Sandbox option, then check the top for a button to
+change the map:
+
+![](change_map.png)
+
+You can browse through a list of cities per country, or use a text search:
+
+![](search_maps.png)
+
+You may need to download data for that city:
+
+![](download_map.png)
+
+You should be able to open the map. In this case above, the map data was saved
+as `data/system/gb/exeter_red_cow_village/maps/center.bin`.
+
 ## Advanced: Using the command-line
 
 The process above using the UI just calls a tool to do all of the work. If you
