@@ -151,7 +151,7 @@
                     <main>
                         <h1 id="deep-dive-into-devilish-details-intersection-geometry"><a class="header" href="#deep-dive-into-devilish-details-intersection-geometry">Deep dive into devilish details: Intersection geometry</a></h1>
 <p>Some of the things in A/B Street that seem the simplest have taken me tremendous effort. Determining the shape of roads and intersections is one of those problems, so this article is a deep-dive into how it works and why it's so hard.</p>
-<p>Note 1: There's no &quot;related work&quot; section here -- I haven't found many other projects attempting something like this. I've seen a few research papers going in this direction, but none of them pointed to any code to try. The approach I'll describe has many flaws -- I'm not claiming this is a good solution, just the one that A/B Street uses. If you see a way to improve anything here, let me know about it! Even better, try it for real and send a PR -- there's plenty of tooling to help you debug and visually diff against the existing implementation.</p>
+<p>Note 1: There's no &quot;related work&quot; section here -- I haven't found many other projects attempting something like this. I've seen a few research papers going in this direction, but none of them pointed to any code to try. The approach I'll describe has many flaws -- I'm not claiming this is a good solution, just the one that A/B Street uses. If you see a way to improve anything here, let me know about it! Even better, try it for real and send a PR -- there's plenty of tooling to help you debug and visually diff against the existing implementation. There should be a convenient button at the top-right of this page to suggest an edit in Github.</p>
 <p>Note 2: This article would be way more awesome with code and some interactive demos to play around with each step. That level of ambition would prevent this from ever being written, though! I'll link to the real code and am happy to answer questions if anything's unclear.</p>
 <p>Note 3: Apologies for the rough diagrams and lack of polish. I'm time-constrained and communicating the ideas is my priority.</p>
 <ul>
@@ -184,8 +184,8 @@
 <ul>
 <li><a href="#where-short-roads-conspire">Where short roads conspire</a></li>
 <li><a href="#why-we-want-to-do-something-about-it">Why we want to do something about it</a></li>
-<li><a href="#my-lazy-first-attempt">My lazy first attempt</a></li>
-<li><a href="#current-attempt-two-stage">Current attempt: two stage</a></li>
+<li><a href="#goal">Goal</a></li>
+<li><a href="#a-solution-two-passes">A solution: two passes</a></li>
 <li><a href="#sorting-revisited">Sorting revisited</a></li>
 <li><a href="#finding-the-short-roads">Finding the short roads</a></li>
 </ul>
@@ -348,29 +348,45 @@
 <p>This case isn't even a real &quot;intersection&quot; -- a one-way highway has two different off-ramps jut out. At some point, I had some scribbled diagrams in a notebook somewhere from when I worked on this, but it's lost -- luckily the <a href="https://github.com/a-b-street/abstreet/blob/e2fc59a31aa043a879a372b2350b1f42391ee740/map_model/src/make/initial/geometry.rs#L434">code for this case</a> is pretty simple. This produces much better results here:</p>
 <p><img src="ramp2.png" alt="" /></p>
 <h2 id="intersection-consolidation"><a class="header" href="#intersection-consolidation">Intersection consolidation</a></h2>
-<p>This strict separation between roads and intersections has a fatal flaw -- the real world is very complicated.</p>
+<p>The skeptical reader has noticed the suspicious lack of complex intersections so far. Time to dive into that.</p>
 <h3 id="where-short-roads-conspire"><a class="header" href="#where-short-roads-conspire">Where short roads conspire</a></h3>
-<p>&quot;Dog-leg&quot; intersections: We model the short highlighted piece as its own road, and there two intersections super close together.</p>
-<p>(example)</p>
-<p>But sometimes something looking like a dog-leg actually isn't -- if vehicles can legitimately stop and queue there, even if it's only one or two of them, then I think it deserves to remain separate:</p>
-<p>(phinney/market example)</p>
-<p>Another common case is divided highways, aka dual carriageways, aka parallel one-way roads. Every time these intersect, we wind up with some short roads and lots of intersections.</p>
-<p>(example of 2 crossing a normal bidi, example of two oneways crossing)</p>
-<p>And then there's just the funky cases where I'm pretty sure civil engineers anticipated me writing this algorithm, and found the most obnoxious angles for roads to meet in order to maximize my frustration:</p>
-<p>(weird boston example)</p>
+<p>In OSM, roads with opposite directions of traffic separated by any sort of center median -- even if it's just a small raised curb -- are mapped as two parallel one-way roads. These're also called divided highways or dual carriageways. When these intersect, we wind up with lots of short &quot;road segments&quot; and several intersections all clustered together:</p>
+<p><img src="divided_simple.png" alt="" />
+<em>The simplest case: the east/west road is a pair of one-ways, and the north/south is a regular road without a median</em></p>
+<p><img src="divided_angle.png" alt="" />
+<em>In case you were hoping these situations always happened at nice 90 degree angles, think again</em></p>
+<p><img src="divided_join.png" alt="" />
+<em>Sometimes one dual carriageway joins back as a regular bidirectional road just before intersecting another dual carriageway...</em></p>
+<p><img src="divided_streetcar.png" alt="" />
+<em>Why not 4 parallel one-way roads? Can't forget street cars!</em></p>
+<p><img src="divided_taipei.png" alt="" />
+<em>And everytime I think I might've handled most cases, I'm humbled by Taipei.</em></p>
+<p>But wait, there's more. How about &quot;dog-leg&quot; intersections, where one road shifts over slightly as it crosses another?</p>
+<p><img src="dogleg_alley.png" alt="" />
+<em>The not-at-all elusive alley dog-leg</em></p>
+<p>But sometimes something looking like a dog-leg actually isn't -- if vehicles can legitimately stop and queue in the middle of the &quot;intersection&quot;, even if it's only one or two of them, then I think that interior &quot;road&quot; deserves to remain separate:</p>
+<p><img src="dogleg_false.png" alt="" /></p>
+<p>And then there's just the cases where I'm pretty sure civil engineers anticipated me writing this algorithm, and found the most obnoxious angles for roads to meet in order to maximize my pain:</p>
+<p><img src="boston_merge.png" alt="" /></p>
 <h3 id="why-we-want-to-do-something-about-it"><a class="header" href="#why-we-want-to-do-something-about-it">Why we want to do something about it</a></h3>
-<p>So why is this a problem? For starters, it's visually incomprehensible:</p>
-<p>(examples)</p>
-<p>Oh, that's not enough convincing for you? These complicated areas often are the ones that would be most interesting to study in A/B Street, but just try adding or removing lanes in these cases:</p>
-<p>(example)</p>
+<p>So hold up, what's the problem? Some areas that people treat as one physical intersection in reality are modelled in OSM as a cluster of intersections, with lots of short &quot;roads&quot; linking them together. It's fine from a graph connectivity and routing perspective. What could go wrong?</p>
+<p>Well for starters, with the algorithm described so far that tries to render the physical shape, it's completely visually incomprehensible:</p>
+<p><img src="hard_to_see.png" alt="" />
+<em>The 4 &quot;interior&quot; intersections here even get stop signs placed!</em></p>
+<p>These complicated intersections are often the ones that would be the most interesting to study in A/B Street, but just try modifying lanes in these cases:</p>
+<p><img src="edit_transit.png" alt="" />
+<em>Considering a bus lane for the 520 off-ramp at Montlake?</em></p>
 <p>Now throw traffic signals into the mix. A/B Street tries to simulate those, so when we have a cluster of two or four of them super close, now we have to somehow try to synchronize their timing. When somebody wants to edit them, now they have to operate on all of them at once! We even extended the UI to handle that, but it's quite a poor editing experience.</p>
-<p>(example before, and after)</p>
+<p><img src="edit_one.png" alt="" />
+<em>Reasoning about 4 separate pieces of one traffic signal is not pleasant</em></p>
+<p><img src="edit_multiple.png" alt="" />
+<em>We can do slightly better by editing all 4 at once, but what do those movement arrows in the middle even mean? You have to reason about where vehicles might've come from to even get there.</em></p>
 <p>And finally, traffic simulation gets MUCH harder. A/B Street models vehicles as having some length, meaning a vehicle's front can make it through one intersection, but its tail gets stuck there:</p>
-<p>(example)</p>
-<p>Turns through intersections are just modeled as polylines. They conflict with each other very coarsely. In reality, humans might try to wiggle around a vehicle partially blocking an intersection, but we don't have that robustness. So to prevent this problem from happening, the simulation has complicated rules so that vehicles do not &quot;block the box&quot; -- if they enter an intersection, they must be guaranteed to fully exit and clear it, not get stuck somewhere in the middle. These rules blow up in the presence of short roads. Lots of effort has gone into workarounds at the simulation layer, but... just fixing the representation in the map model seems much more desirable. So let's do that!</p>
-<h3 id="my-lazy-first-attempt"><a class="header" href="#my-lazy-first-attempt">My lazy first attempt</a></h3>
-<p>Remove the short road, extend the road geometry (or not?), run it through the same algorithm. Miraculously this worked sometimes?!</p>
-<h3 id="current-attempt-two-stage"><a class="header" href="#current-attempt-two-stage">Current attempt: two stage</a></h3>
+<p><img src="tails.png" alt="" />
+<em>These two cars are blocking all movements through the pair of intersections</em></p>
+<p>At the simulation layer, vehicles moving through an intersection conflict with each other very coarsely. If a vehicle is partially stuck in the intersection, it prevents othr vehicles from starting potentially conflicting turns. So to prevent this problem from happening, the simulation has complicated rules so that vehicles do not &quot;block the box&quot; -- if they enter an intersection, they must be guaranteed to fully exit and clear it, not get stuck somewhere in the middle. These rules blow up in the presence of short roads like this. Lots of effort has gone into workarounds at the simulation layer, but... just fixing the representation in the map model seems much more desirable.</p>
+<h3 id="goal"><a class="header" href="#goal">Goal</a></h3>
+<h3 id="a-solution-two-passes"><a class="header" href="#a-solution-two-passes">A solution: two passes</a></h3>
 <p>TODO: Write.</p>
 <p>Pre-trim based on original thing, remember how much to trim back each road center line.</p>
 <p>Then do the merge -- blow up the road. Don't modify any center lines.</p>
