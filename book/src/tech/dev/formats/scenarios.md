@@ -32,7 +32,7 @@ that show up in the UI. And of course, you can add as many people as you like.
     {
       "trips": [
         {
-          "departure": 10800.0,
+          "departure": 1000,
           "origin": {
             "Position": {
               "longitude": -122.303723,
@@ -41,29 +41,29 @@ that show up in the UI. And of course, you can add as many people as you like.
           },
           "destination": {
             "Position": {
-              "longitude": -122.3075948,
-              "latitude": 47.6394773
-	    }
+             "longitude": -122.3190500,
+              "latitude": 47.6378600
+        }
           },
-          "mode": "Drive",
-          "purpose": "Shopping"
+          "mode": "Bike",
+          "purpose": "Meal"
         },
         {
-          "departure": 14400.0,
+          "departure": 10000000,
           "origin": {
             "Position": {
-              "longitude": -122.3075948,
-              "latitude": 47.6394773
-	    }
+             "longitude": -122.3190500,
+              "latitude": 47.6378600
+        }
           },
           "destination": {
             "Position": {
-              "longitude": -122.3190500,
-              "latitude": 47.6278600
-	    }
+              "longitude": -122.3075948,
+              "latitude": 47.6394773
+        }
           },
           "mode": "Walk",
-          "purpose": "Leisure"
+          "purpose": "Recreation"
         }
       ]
     }
