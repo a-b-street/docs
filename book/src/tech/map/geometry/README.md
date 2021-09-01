@@ -317,19 +317,61 @@ At the simulation layer, vehicles moving through an intersection conflict with e
 
 ### Goal
 
+In reality, many of these clusters of intersections and short roads are actually just one "logical" intersection. If you consider where vehicles stop or where crosswalks are placed, this can make this definition a little bit more clear, but it's somewhat subjective. In A/B Street, we aim to "consolidate" this cluster into just one intersection. Visually coherent geometry, reasoning about a single traffic signal, and preventing vehicles from getting stuck in the cluster are the goals.
+
+Before we dive into the approach to consolidate, let's look at some success stories.
+
+![](better_streetcar.png)
+*A single intersection handles the 4 parallel OSM ways.*
+
+![](better_tsigs.png)
+*You can now edit the signal timing as if this is just a regular massive Arizona intersection.*
+
+![](better_angled.png)
+*The angled cut is a bit too aggressive and the crosswalk "leaks" out, but this is a definite improvement.*
+
+![](better_montlake.png)
+*Four intersections become one, again with a slight geometric distortion*
+
 ### A solution: two passes
 
-TODO: Write.
+For some history getting to this point, check out [previous attempts](https://github.com/a-b-street/abstreet/issues/654) and [more before/after examples](https://github.com/a-b-street/abstreet/pull/710).
 
-Pre-trim based on original thing, remember how much to trim back each road center line.
+Consolidating a complex intersection happens in a few steps.
 
-Then do the merge -- blow up the road. Don't modify any center lines.
+1.  Identify the short roads
+2.  Run the regular algorithm for intersection geometry, and remember how much each road's center line gets trimmed back
+3.  Remove the short road and fix up graph connectivity
+4.  Use the "pre-trimmed" center line to project each surviving road to the left and right
+5.  Assemble those points in order to create the consolidated intersection's polygon
 
-For the geom algorithm, do something totally different -- just project the pre-trimmed thing and use that. Seems to work? Even when editing roads, turns out k?
+Step 1 and 5 are covered in more detail in below sections.
+
+For step 2, we start with the regular algorithm described so far, applied to each intersection:
+
+![](consolidate_pt1.png)
+*The results of running the algorithm on the 2 green intersections. The pink road in the middle is marked for merging.*
+
+Then we delete the short road. The [details](https://github.com/a-b-street/abstreet/blob/c5671557defbd80ce749b8fa7faf7c166b3d23dd/map_model/src/raw.rs#L300) of how this is done are particular to A/B Street's intermediate representation of a map model. Graph connectivity and all sorts of turn restrictions must be preserved. But geometrically, it just looks like this:
+
+![](consolidate_pt2.png)
+
+Then we run step 4, finding the left and right side of each surviving road:
+
+![](consolidate_pt3.png)
+*Black lines show the left and right side of each road. The red dots are the endpoints of each line.*
+
+Now if we just use those red dots, we can create the final polygon for this consolidated intersection.
 
 ### Sorting revisited
 
-Maybe we can just average all of the points, call that the "center", calculate the angle to each point, and order clockwise.
+To assemble the endpoints into a polygon, we need to know what order they go in. If you recall from an earlier section, we used the original shared point from OSM to do this:
+
+![](sorting_orig_center.png)
+
+But now things are less clear -- we have multiple shared points, from before consolidation. As a first pass, maybe we can just average all of the points, call that the "center," calculate the angle to each point, and order clockwise.
+
+
 
 (diagram)
 
