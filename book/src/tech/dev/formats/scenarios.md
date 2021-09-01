@@ -58,8 +58,8 @@ that show up in the UI. And of course, you can add as many people as you like.
           },
           "destination": {
             "Position": {
-              "longitude": -123.3075948,
-              "latitude": 46.6394773
+              "longitude": -122.3190500,
+              "latitude": 47.6278600
 	    }
           },
           "mode": "Walk",
