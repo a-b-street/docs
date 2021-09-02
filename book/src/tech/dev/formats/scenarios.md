@@ -14,25 +14,25 @@ It's easiest to follow the example below.
 ## Example
 
 This defines a scenario containing a single person, who takes two trips. They
-begin at midnight at the building nearest to the `origin`, then at 3AM (`10800`
-is seconds after midnight), they drive to the building nearest to the
-`destination`. Then an hour later (`14400`), they walk to another location
-(quite far away -- I made up the `destination` coordinates). Note that the
+begin at 1 second past midnight (`10000`) at the building nearest to the `origin`,
+'find' a bike and cycle to the `destination`.
+Then at 12:20 (`12000000` is `1200` seconds after midnight), they walk to the building nearest to the
+`destination`. Note that the
 `destination` of trip 1 must match the `origin` of trip 2.
 
-The `mode` field could also be `Walk`, `Bike`, or `Transit`. The `purpose`
+The `mode` field can be be `Walk`, `Bike`, or `Transit`. The `purpose`
 field is mostly unused; you could pick [other
 values](https://a-b-street.github.io/abstreet/rustdoc/sim/enum.TripPurpose.html)
 that show up in the UI. And of course, you can add as many people as you like.
 
 ```
 {
-  "scenario_name": "monday",
+  "scenario_name": "minimal",
   "people": [
     {
       "trips": [
         {
-          "departure": 10800.0,
+          "departure": 10000,
           "origin": {
             "Position": {
               "longitude": -122.303723,
@@ -41,29 +41,29 @@ that show up in the UI. And of course, you can add as many people as you like.
           },
           "destination": {
             "Position": {
-              "longitude": -122.3075948,
-              "latitude": 47.6394773
-	    }
+             "longitude": -122.3190500,
+              "latitude": 47.6378600
+        }
           },
-          "mode": "Drive",
-          "purpose": "Shopping"
+          "mode": "Bike",
+          "purpose": "Meal"
         },
         {
-          "departure": 14400.0,
+          "departure": 12000000,
           "origin": {
             "Position": {
-              "longitude": -122.3075948,
-              "latitude": 47.6394773
-	    }
+             "longitude": -122.3190500,
+              "latitude": 47.6378600
+        }
           },
           "destination": {
             "Position": {
-              "longitude": -122.3190500,
-              "latitude": 47.6278600
-	    }
+              "longitude": -122.3075948,
+              "latitude": 47.6394773
+        }
           },
           "mode": "Walk",
-          "purpose": "Leisure"
+          "purpose": "Recreation"
         }
       ]
     }
@@ -79,6 +79,14 @@ To import this JSON file into A/B Street:
 cargo run --bin import_traffic -- --map=data/system/us/seattle/maps/montlake.bin --input=/path/to/input.json
 ```
 
+Then run the game as follows:
+
+```
+cargo run --bin game -- --dev data/system/us/seattle/maps/montlake.bin
+```
+
+You will need to select the senario with the user interface.
+
 This tool matches input positions to the nearest building, within 100 meters. If
 the point lies outside the map boundary, it's snapped to the nearest map border.
 The tool will fail if any point doesn't match to a building. If you pass
@@ -87,6 +95,8 @@ The tool will fail if any point doesn't match to a building. If you pass
 There are also a few tools that produce this JSON file:
 
 - <https://github.com/a-b-street/abstreet/blob/master/headless/examples/generate_traffic.py>
+- <https://github.com/a-b-street/abstr>
+
 
 ## Future requests
 
