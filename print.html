@@ -2229,22 +2229,22 @@ deserialization happens from
 It's easiest to follow the example below.</p>
 <h2 id="example"><a class="header" href="#example">Example</a></h2>
 <p>This defines a scenario containing a single person, who takes two trips. They
-begin at midnight at the building nearest to the <code>origin</code>, then at 3AM (<code>10800</code>
-is seconds after midnight), they drive to the building nearest to the
-<code>destination</code>. Then an hour later (<code>14400</code>), they walk to another location
-(quite far away -- I made up the <code>destination</code> coordinates). Note that the
+begin at 1 second past midnight (<code>10000</code>) at the building nearest to the <code>origin</code>,
+'find' a bike and cycle to the <code>destination</code>.
+Then at 12:20 (<code>12000000</code> is <code>1200</code> seconds after midnight), they walk to the building nearest to the
+<code>destination</code>. Note that the
 <code>destination</code> of trip 1 must match the <code>origin</code> of trip 2.</p>
-<p>The <code>mode</code> field could also be <code>Walk</code>, <code>Bike</code>, or <code>Transit</code>. The <code>purpose</code>
+<p>The <code>mode</code> field can be be <code>Walk</code>, <code>Bike</code>, or <code>Transit</code>. The <code>purpose</code>
 field is mostly unused; you could pick <a href="https://a-b-street.github.io/abstreet/rustdoc/sim/enum.TripPurpose.html">other
 values</a>
 that show up in the UI. And of course, you can add as many people as you like.</p>
 <pre><code>{
-  &quot;scenario_name&quot;: &quot;monday&quot;,
+  &quot;scenario_name&quot;: &quot;minimal&quot;,
   &quot;people&quot;: [
     {
       &quot;trips&quot;: [
         {
-          &quot;departure&quot;: 10800.0,
+          &quot;departure&quot;: 10000,
           &quot;origin&quot;: {
             &quot;Position&quot;: {
               &quot;longitude&quot;: -122.303723,
@@ -2253,29 +2253,29 @@ that show up in the UI. And of course, you can add as many people as you like.</
           },
           &quot;destination&quot;: {
             &quot;Position&quot;: {
-              &quot;longitude&quot;: -122.3075948,
-              &quot;latitude&quot;: 47.6394773
-	    }
+             &quot;longitude&quot;: -122.3190500,
+              &quot;latitude&quot;: 47.6378600
+        }
           },
-          &quot;mode&quot;: &quot;Drive&quot;,
-          &quot;purpose&quot;: &quot;Shopping&quot;
+          &quot;mode&quot;: &quot;Bike&quot;,
+          &quot;purpose&quot;: &quot;Meal&quot;
         },
         {
-          &quot;departure&quot;: 14400.0,
+          &quot;departure&quot;: 12000000,
           &quot;origin&quot;: {
             &quot;Position&quot;: {
-              &quot;longitude&quot;: -122.3075948,
-              &quot;latitude&quot;: 47.6394773
-	    }
+             &quot;longitude&quot;: -122.3190500,
+              &quot;latitude&quot;: 47.6378600
+        }
           },
           &quot;destination&quot;: {
             &quot;Position&quot;: {
-              &quot;longitude&quot;: -122.3190500,
-              &quot;latitude&quot;: 47.6278600
-	    }
+              &quot;longitude&quot;: -122.3075948,
+              &quot;latitude&quot;: 47.6394773
+        }
           },
           &quot;mode&quot;: &quot;Walk&quot;,
-          &quot;purpose&quot;: &quot;Leisure&quot;
+          &quot;purpose&quot;: &quot;Recreation&quot;
         }
       ]
     }
@@ -2286,6 +2286,10 @@ that show up in the UI. And of course, you can add as many people as you like.</
 <p>To import this JSON file into A/B Street:</p>
 <pre><code>cargo run --bin import_traffic -- --map=data/system/us/seattle/maps/montlake.bin --input=/path/to/input.json
 </code></pre>
+<p>Then run the game as follows:</p>
+<pre><code>cargo run --bin game -- --dev data/system/us/seattle/maps/montlake.bin
+</code></pre>
+<p>You will need to select the senario with the user interface.</p>
 <p>This tool matches input positions to the nearest building, within 100 meters. If
 the point lies outside the map boundary, it's snapped to the nearest map border.
 The tool will fail if any point doesn't match to a building. If you pass
@@ -2293,6 +2297,7 @@ The tool will fail if any point doesn't match to a building. If you pass
 <p>There are also a few tools that produce this JSON file:</p>
 <ul>
 <li><a href="https://github.com/a-b-street/abstreet/blob/master/headless/examples/generate_traffic.py">https://github.com/a-b-street/abstreet/blob/master/headless/examples/generate_traffic.py</a></li>
+<li><a href="https://github.com/a-b-street/abstr">https://github.com/a-b-street/abstr</a></li>
 </ul>
 <h2 id="future-requests"><a class="header" href="#future-requests">Future requests</a></h2>
 <ul>
