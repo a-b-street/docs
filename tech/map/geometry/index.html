@@ -445,9 +445,24 @@
 <p>south of fremont bridge</p>
 <h3 id="radically-simpler-approach"><a class="header" href="#radically-simpler-approach">Radically simpler approach?</a></h3>
 <p>Why not just thicken roads, calc bool overlap?  robust bool-op library, and also three-ways</p>
+<p>why not map manually? OSM sort of has schema. maybe infer for most but not all.</p>
 <h3 id="other-data-sources"><a class="header" href="#other-data-sources">Other data sources</a></h3>
-<p>philly curb vectors?</p>
-<p>streets illustrated</p>
+<p>I've come across a few cities that seem to have a vector dataset describing road polygons or curbs. I haven't tried working with any of these before, but it would be a useful exercise to start with one of these as the base, and snap OSM road segments to this to get metadata about lanes and connectivity, but not geometry.</p>
+<ul>
+<li><a href="https://streetsillustrated.seattle.gov/map/">Seattle Streets Illustrated</a> includes some kind of CAD basemap that looks amazingly realistic
+<ul>
+<li>From some old emails with King County GIS, this is based on an impervious surface layer with a license preventing it from being released as public data</li>
+</ul>
+</li>
+<li>Actually, <a href="https://data.seattle.gov/dataset/Pavement-Edge-zip/gy82-cq84">https://data.seattle.gov/dataset/Pavement-Edge-zip/gy82-cq84</a> appears to be the curbs for Seattle! Possibly the data is from 1999, updated maybe in 2011.</li>
+<li><a href="https://distanciamiento.inspide.com">https://distanciamiento.inspide.com</a> appears to have detailed sidewalk polygons for Madrid</li>
+</ul>
+<p><img src="streets_illustrated.png" alt="" />
+<em>The Fremont bridge and Nickerson looks fantastic in Seattle Streets Illustrated, but the data isn't public</em></p>
+<p><img src="pavement_edge.png" alt="" />
+<em>The pavement edge dataset is public, though, and seems to be quite similar!</em></p>
+<p><img src="pullman.png" alt="" />
+<em>Pullman, WA provided sidewalk polygons for mapping in OSM</em></p>
 
                     </main>
 
