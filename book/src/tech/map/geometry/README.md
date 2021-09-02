@@ -396,7 +396,7 @@ Focusing on tsig clusters for now, since they cause the most problems to traffic
 
 ## Conclusion
 
-Given how much time I've sank into trying to automatically generate decent geometry from an OSM schema absolutely not meant for this, I hope you don't fault me for wanting to try some radically different ideas, like mapping from scratch. There are some intersections just not worth trying to squeeze into OSM's model. Maybe in some future, I'll explore something very different. Or play around with some of the proposals to tag OSM junction areas.
+Given how much time I've sunk into trying to automatically generate decent geometry from an OSM schema absolutely not meant for this, I hope you don't fault me for wanting to try some radically different ideas, like mapping from scratch. There are some intersections just not worth trying to squeeze into OSM's model. Maybe in some future, I'll explore something very different. Or play around with some of the proposals to tag OSM junction areas.
 
 ## Appendices
 
