@@ -2,6 +2,10 @@
 
 Most recent first.
 
+- August 2021: [Actdev promo video](https://www.youtube.com/watch?v=nNYroA16JEQ)
+- July 2021: State of the Map 2021, Using OSM for transportation advocacy
+  - [Slides](https://docs.google.com/presentation/d/1glV5DTq2M-XMHOwiNyAmQ6LeeyaKynOHRA-XoU02qYk/edit?usp=sharing)
+  - [Video](https://www.youtube.com/watch?v=27uxMlF8th8)
 - June 2021: Smart Planning, Digital Twins, & Open Data
   - [Slides](https://docs.google.com/presentation/d/1Tt6oentuh_q-WpIC8auX67HBocpTj7ywnKZN-x6Ny8w/edit?usp=sharing)
   - [Video](https://www.dropbox.com/s/ywsshog7vbdkf9x/TOMNETWebinar_060721.mp4?dl=0)
@@ -15,6 +19,7 @@ Most recent first.
   - [Slides](https://docs.google.com/presentation/d/1wFgkbyVhsa93FxmDsWuMQ6nXPJbHiZDllQ59xGXcKyg/edit?usp=sharing)
 - October 2020: OSM Connect 2020
   - [Slides](https://docs.google.com/presentation/d/1ZudGSXlbOL6xdVZXhAcKJvFaLEgeRkgFIX4pbVKSvLQ/edit?usp=sharing)
+  - [Video](https://www.youtube.com/watch?v=JUN5GWfb4Qo)
 - July 2020: [Silicon Valley Bike Coalition summit](https://bikesiliconvalley.org/2020/07/poster_dustin-carlino/)
 - [March 2021 ActDev workshop](https://youtu.be/P12N51qI5Cs?t=1469)
 - April 2020 Seattle Rust meetup
@@ -35,6 +40,5 @@ Most recent first.
 
 Don't forget to link to these!
 
-- Actdev demo video
-- OSM Connect 2021
 - FOSS4G 2021
+- SUMO

@@ -437,3 +437,8 @@ I've come across a few cities that seem to have a vector dataset describing road
 
 ![](pullman.png)
 *Pullman, WA provided sidewalk polygons for mapping in OSM*
+
+These vector datasets feel like some sort of holy grail, but all of the work described in this article is still useful, because:
+
+1.  Not every city has this kind of public data
+2.  If road edits need to legitimately widen or shrink a road, it's not obvious how to modify these curbs. But then again, just rechannelizing lanes, subject to the area that's already been paved, is kind of the main type of edit in A/B Street...
