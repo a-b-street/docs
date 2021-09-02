@@ -418,8 +418,22 @@ south of fremont bridge
 
 Why not just thicken roads, calc bool overlap?  robust bool-op library, and also three-ways
 
+why not map manually? OSM sort of has schema. maybe infer for most but not all.
+
 ### Other data sources
 
-philly curb vectors?
+I've come across a few cities that seem to have a vector dataset describing road polygons or curbs. I haven't tried working with any of these before, but it would be a useful exercise to start with one of these as the base, and snap OSM road segments to this to get metadata about lanes and connectivity, but not geometry.
 
-streets illustrated
+- [Seattle Streets Illustrated](https://streetsillustrated.seattle.gov/map/) includes some kind of CAD basemap that looks amazingly realistic
+  - From some old emails with King County GIS, this is based on an impervious surface layer with a license preventing it from being released as public data
+- Actually, <https://data.seattle.gov/dataset/Pavement-Edge-zip/gy82-cq84> appears to be the curbs for Seattle! Possibly the data is from 1999, updated maybe in 2011.
+- <https://distanciamiento.inspide.com> appears to have detailed sidewalk polygons for Madrid
+
+![](streets_illustrated.png)
+*The Fremont bridge and Nickerson looks fantastic in Seattle Streets Illustrated, but the data isn't public*
+
+![](pavement_edge.png)
+*The pavement edge dataset is public, though, and seems to be quite similar!*
+
+![](pullman.png)
+*Pullman, WA provided sidewalk polygons for mapping in OSM*
