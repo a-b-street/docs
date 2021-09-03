@@ -5029,6 +5029,7 @@ lane separators, new day mode colors</li>
 <li><a href="project/retrospective/index.html#traffic-signal-editor">Traffic signal editor</a></li>
 <li><a href="project/retrospective/index.html#data-visualization">Data visualization</a></li>
 <li><a href="project/retrospective/index.html#road-labels">Road labels</a></li>
+<li><a href="project/retrospective/index.html#charm">Charm</a></li>
 </ul>
 </li>
 <li><a href="project/retrospective/index.html#project-management">Project management</a>
@@ -5225,6 +5226,17 @@ lane separators, new day mode colors</li>
 <p>Placing road labels on a map is quite a design and implementation challenge, but Michael and I cranked out something decent in a few days:</p>
 <p><img src="project/retrospective/road_labels.gif" alt="" />
 <em>Labels aren't too densely clustered, but they still appear to help orient by major roads.</em></p>
+<h3 id="charm"><a class="header" href="#charm">Charm</a></h3>
+<p>Some design decisions in A/B Street are a love story to the city that started it:</p>
+<p><img src="project/retrospective/rainbow_crosswalks.png" alt="" />
+<em>The cycletrack may not be snapped to Broadway properly, but we do have the rainbow crosswalks on Pike</em></p>
+<p>We tried to create a narrative around the game's challenge modes, with character art from a <a href="https://hollarity.com/">college friend</a>:</p>
+<p><img src="project/retrospective/characters_cutscene.png" alt="" />
+<em>The Boss doles out assignments and placates irate citizens</em></p>
+<p>One of the first things people point out about A/B Street is the unusually bendy buses:</p>
+<p><img src="project/retrospective/articulate.gif" alt="" />
+<em>&quot;This frustrated tension and brief relief I can’t articulate / oh, but the bus can.&quot; - from <a href="https://dabreegster.github.io/poetry/adult/public_transit.html">public transit</a></em></p>
+<p>For the record, this started because the simpler alternative is much worse. If you draw a long bus as a straight line and use any one point to determine the angle, the bus will pendulum around tight curves, happily smashing into anything in the way. Snakes are a slightly better approximation of reality. (I think the bendy buses have been called some less polite, but more hilarious, things too...)</p>
 <h2 id="project-management-1"><a class="header" href="#project-management-1">Project management</a></h2>
 <p>Here's the section where I feel like the challenges have swallowed me, with very little success.</p>
 <h3 id="collaborations"><a class="header" href="#collaborations">Collaborations</a></h3>
@@ -5276,6 +5288,7 @@ lane separators, new day mode colors</li>
 <p>A/B Street is my self-expression. Its origins are tangled in a mess of bittersweet memory (I wasn't the one who thought a game should be about traffic) and near-misses with trucks passing too closely on Boyer. I used it to pull out of a nose-dive of depression -- that's a story I'm still trying to write. I broke my fear and landed some of the largest jumps of my life (I do <a href="http://dcarlino.org/parkour">parkour</a>) as an escape from constantly thinking about A/B Street. I've worked on this project for the entirety of COVID. I've coded while taking the shinkansen from Tokyo to Miyazaki and the TGV from Paris to Berlin. I pushed code the morning of my ACL surgery, and reviewed a PR when I got home (and was remarkably lucid). It's safe to call me obsessed. I quit my job to do this. I've worked on it basically every weekday and weekend for 3 years, and thought about it constantly for at least 6 months before starting the project full-time. </p>
 <p>A/B Street lets me take a bird's eye view of the messy world I move through, imagine it a bit differently, and try to convince others to see it the same way.</p>
 <p>If anybody wants to convince me to do something else instead, now you know what you're up against. And if you succeed, you know how important your idea must be to me instead.</p>
+<!-- A street and B Street... ->
 <div style="break-before: page; page-break-before: always;"></div><h1 id="changelog"><a class="header" href="#changelog">CHANGELOG</a></h1>
 <p>Every time I upload a new <a href="https://github.com/a-b-street/abstreet/releases">binary
 release</a>, I'll list major
