@@ -5258,14 +5258,17 @@ lane separators, new day mode colors</li>
 <p>... But what exactly was my vision? I said early on, &quot;this is an identity crisis between a game and a serious planning tool.&quot; At first that was a way to punt on the realism and calibration problem -- I couldn't hope to alone compete with industry standard simulation software. It was also a way to engage the general public, or at least the percentage that plays games.</p>
 <!-- And where do things stand? What're the use cases, who is the audience? Advocacy? Education? Placating fears of NIMBYs? -->
 <h3 id="teasing-apart-the-monolith"><a class="header" href="#teasing-apart-the-monolith">Teasing apart the monolith</a></h3>
-<!--
-- abst as a game
-	- tutorial, challenge modes, sort of a story (even with character art!)
-- 15m tool
-- santa!
-- osm viewer, parking mapper
-- ungap map tool
--->
+<p>The scope of A/B Street is <strong>way</strong> too broad. Early on, all of the new experiments were just crowded onto the title screen, but at some point, we split out more tools with more focused purposes.</p>
+<p>The &quot;main&quot; app is A/B Street -- that thing that lets you simulate traffic and edit roads. Part of it still tries to act like a computer game, but we haven't put much effort into this in quite a while. It does have a tutorial and a few challenge modes with particular objectives (and even a narrative with some characters!). But I wouldn't call A/B Street as a game &quot;fun&quot; -- one of the challenge modes is impossible to win, because we picked too large a map to ever hope to get past the gridlock bugs. We could chop up the challenges into much smaller &quot;levels&quot; and properly tune the difficulty curve, but it would honestly take somebody dedicated to game design to spearhead that.</p>
+<p><img src="project/retrospective/tutorial.png" alt="" />
+<em>The user interface can be overwhelming, but the tutorial slowly introduces and motivates different features. The more ambitious idea was always to have the player slowly &quot;unlock&quot; more of the tools as they complete challenges.</em></p>
+<p>Instead, most uses of A/B Street are in the &quot;sandbox&quot; mode, where no specific objectives exist. Instead, this is a place to edit the map, explore all the different data visualizations, and try to inch towards completing a full simulation without gridlock.</p>
+<p>I feel bad that A/B Street as a properly fun game was never realized, but I'm proud of <a href="project/retrospective/../../software/santa.html">15-minute Santa</a>. By no means is Santa attempting to split the difference between serious planning and entertainment; it's just a silly arcade game that loosely involves transportation and land use.</p>
+<p><img src="project/retrospective/santa.gif" alt="" />
+<em>Paperboy modernized with OpenStreetMap, a Santa sprite, and plenty of silliness</em></p>
+<p>We also made a tool to explore <a href="project/retrospective/../../software/fifteen_min.html">15-minute neighborhoods</a>. The isochrones are hopefully useful to understand what parts of a city have good or bad access to different types of shops, and how hills and slow traffic signals affect walk or bike-sheds. Editing the map -- particularly to modify land use -- and checking out the differential isochrone would be the ultimate use for this tool, should we ever revive it.</p>
+<p>As I realized the most active audience for A/B Street is the OpenStreetMap community, I spun out some tools to <a href="project/retrospective/../../software/osm_viewer.html">validate lane tagging</a> and <a href="project/retrospective/../../software/parking_mapper.html">tag street parking</a>.</p>
+<p>And finally, after some feedback from advocacy groups and people who felt overwhelmed by the broad scope of A/B Street, we're working on a simple interface for sketching and evaluating a bike network. Stay tuned.</p>
 <h3 id="marketing"><a class="header" href="#marketing">Marketing</a></h3>
 <p>The successful marketing basically came for free. A single bold post to <a href="https://old.reddit.com/r/Seattle/comments/hdtucd/ab_street_think_you_can_fix_seattles_traffic/">r/seattle</a> was magic. Someone &quot;leaked&quot; the project to <a href="https://news.ycombinator.com/item?id=23605048">Hacker News</a>. I think the <a href="https://www.youtube.com/watch?v=LxPD4n_1-LU">alpha launch trailer</a> got the point across. <a href="https://www.thestranger.com/slog/2020/06/29/43999454/ab-streets-game-lets-you-create-the-seattle-street-grid-of-your-dreams">The Stranger</a> made a shocking connection between my childhood with Banjo Kazooie and my current fascination with multi-modal travel.</p>
 <p>But I've also hustled near-constantly online and in-person, at countless hackathons and <a href="project/retrospective/../presentations.html">conferences</a>. I've cold-emailed so many companies trying to set up collaborations.</p>
