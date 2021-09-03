@@ -6,8 +6,6 @@ I want to reflect on what I've been working on for the past 3+ years, as of Sept
 
 ## Technical accomplishments & challenges
 
-<!-- A/B Street has pushed the envelope on some problems compared to anything else out there publicly. -->
-
 ### The map model
 
 To support a traffic simulation, A/B Street's map model isn't just a graph. It represents the physical geometry of roads and intersections and includes land-use semantics, like estimates of residential units and commercial spaces within each building.
@@ -32,7 +30,7 @@ But A/B Street needed lots of this, and OSM is the most enticing data source ava
 - A traffic signal is just a node in OSM -- or worse, a bunch of individual nodes for a complex junction. There's no way to describe its timing.
   - A/B Street has reasonable heuristics for grouping movements together in stages for many different shapes of intersections. (I never did much work on automatically improving the timing, though.)
   - I invented a [JSON interchange format](../../tech/dev/formats/traffic_signals.md) referencing OSM IDs to describe signal configuration.
-  <!-- worked with Dr. Xuesong Zhou from ASU to import GMNS signal timing -->
+  - I worked with Dr. Xuezong Zhou's ASU group to import [GMNS signal timing](https://github.com/asu-trans-ai-lab/Vol2Timing) and match the movements to A/B Street's representation.
   - The city of Seattle has still yet to release any public data about how signals are really timed, so for a while, I was [manually mapping them](https://docs.google.com/document/d/1Od_7WvBVYsvpY4etRI0sKmYmZnwXMAXcJxVmm8Iwdcg/edit?usp=sharing) with a notebook and stopwatch, and even convinced a few other people to join. (Of course this was futile; most interesting intersections depend on actuators, which can't be observed directly.)
 - Built pathfinding into the map model for vehicles and pedestrians. <!-- article -->
   - Funded the creation of a new [Rust contraction hierarchy library](https://github.com/easbar/fast_paths) to achieve the performance necessary for a traffic simulation
@@ -281,6 +279,18 @@ There were a few low moments that stand out. Accidentally CC'd on an internal em
 
 These moments still bring me strength.
 
+#### The success stories
+
+I want to particularly thank Robin for his involvement with A/B Street. He fought to make it a part of [ActDev](https://actdev.cyipt.bike), a really neat data science tool studying how people living in new residential sites in the UK are likely to commute. This integration provided a strong push to solidify the web deployment of A/B Street.
+
+![](poundbury_actdev.png)
+*You can explore mode split patterns and other data in the ActDev site*
+
+![](poundbury_abst.png)
+*and then just click to simulate the site at an agent-based level, and edit the cycle network*
+
+Robin has also massively helped evangelize the project and network with possible users. Along with Nathanael, they've made A/B Street more accessible to the data science community, creating an [R package](https://a-b-street.github.io/abstr/) to transform travel demand models into individual trips to simulate. Robin's enthusiasm for open source and reproducible research is infectious.
+
 ### Project scope
 
 Traffic simulation is such a massively broad endeavor, and because I dabble in so many parts of it, people really brought strong expectations about what they wanted it to be. What about Monte Carlo simulations? Or gondolas? (No, really.) Why not build a city from scratch, just merge with Citybound? Oh, there's no lane-changing? Not calibrated to real traffic volume data? Well then it must be useless.
@@ -344,6 +354,12 @@ I had many goals with A/B Street that are about sparking culture shifts:
 4) Promoting open data and open source software for use in government planning -- why trust the traffic analysis that you can't read and reproduce yourself?
 
 I don't feel I've budged the needle on any of these.
+
+## Who's our audience?
+
+I've tried to avoid actually advocating myself for specific changes in Seattle. Partly this is because there are well-established groups here that do this already, and I want to spend my energy doing what I enjoy more -- creating software to empower them. Partly I'm afraid of promoting ideas that're tied to my own biases and wouldn't serve everyone in Seattle well -- I have a conspicuous gap of knowledge about biking in South Seattle, a place with much more traffic violence and much less cycling-friendly infrastructure. And partly, I'm just lazy and avoiding writing -- I can do it, but it's so draining -- writing this document was quite difficult for me. As a team, we have published [one simple advocacy piece](../../proposals/broadmoor.md) -- written by Michael -- more to experiment with the format than to push for a real change (although the idea would be fantastic, asking to open up private roads is a non-starter).
+
+I don't have a good understanding of politics or how to actually help advance real changes on the ground. But since we've failed to find users for A/B Street that're advancing some cause, then... there is one last thing we could try. Will I rip off such an adhesive bandage before it's too late?
 
 ## What this project means to me
 
