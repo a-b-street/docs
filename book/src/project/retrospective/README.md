@@ -250,6 +250,25 @@ Placing road labels on a map is quite a design and implementation challenge, but
 ![](road_labels.gif)
 *Labels aren't too densely clustered, but they still appear to help orient by major roads.*
 
+### Charm
+
+Some design decisions in A/B Street are a love story to the city that started it:
+
+![](rainbow_crosswalks.png)
+*The cycletrack may not be snapped to Broadway properly, but we do have the rainbow crosswalks on Pike*
+
+We tried to create a narrative around the game's challenge modes, with character art from a [college friend](https://hollarity.com/):
+
+![](characters_cutscene.png)
+*The Boss doles out assignments and placates irate citizens*
+
+One of the first things people point out about A/B Street is the unusually bendy buses:
+
+![](articulate.gif)
+*"This frustrated tension and brief relief I can’t articulate / oh, but the bus can." - from [public transit](https://dabreegster.github.io/poetry/adult/public_transit.html)*
+
+For the record, this started because the simpler alternative is much worse. If you draw a long bus as a straight line and use any one point to determine the angle, the bus will pendulum around tight curves, happily smashing into anything in the way. Snakes are a slightly better approximation of reality. (I think the bendy buses have been called some less polite, but more hilarious, things too...)
+
 ## Project management
 
 Here's the section where I feel like the challenges have swallowed me, with very little success.
@@ -337,3 +356,5 @@ A/B Street is my self-expression. Its origins are tangled in a mess of bitterswe
 A/B Street lets me take a bird's eye view of the messy world I move through, imagine it a bit differently, and try to convince others to see it the same way.
 
 If anybody wants to convince me to do something else instead, now you know what you're up against. And if you succeed, you know how important your idea must be to me instead.
+
+<!-- A street and B Street... ->
