@@ -303,14 +303,25 @@ I tried my best to balance all of that input with establishing boundaries and pu
 
 ### Teasing apart the monolith
 
-<!--
-- abst as a game
-	- tutorial, challenge modes, sort of a story (even with character art!)
-- 15m tool
-- santa!
-- osm viewer, parking mapper
-- ungap map tool
--->
+The scope of A/B Street is **way** too broad. Early on, all of the new experiments were just crowded onto the title screen, but at some point, we split out more tools with more focused purposes.
+
+The "main" app is A/B Street -- that thing that lets you simulate traffic and edit roads. Part of it still tries to act like a computer game, but we haven't put much effort into this in quite a while. It does have a tutorial and a few challenge modes with particular objectives (and even a narrative with some characters!). But I wouldn't call A/B Street as a game "fun" -- one of the challenge modes is impossible to win, because we picked too large a map to ever hope to get past the gridlock bugs. We could chop up the challenges into much smaller "levels" and properly tune the difficulty curve, but it would honestly take somebody dedicated to game design to spearhead that.
+
+![](tutorial.png)
+*The user interface can be overwhelming, but the tutorial slowly introduces and motivates different features. The more ambitious idea was always to have the player slowly "unlock" more of the tools as they complete challenges.*
+
+Instead, most uses of A/B Street are in the "sandbox" mode, where no specific objectives exist. Instead, this is a place to edit the map, explore all the different data visualizations, and try to inch towards completing a full simulation without gridlock.
+
+I feel bad that A/B Street as a properly fun game was never realized, but I'm proud of [15-minute Santa](../../software/santa.md). By no means is Santa attempting to split the difference between serious planning and entertainment; it's just a silly arcade game that loosely involves transportation and land use.
+
+![](santa.gif)
+*Paperboy modernized with OpenStreetMap, a Santa sprite, and plenty of silliness*
+
+We also made a tool to explore [15-minute neighborhoods](../../software/fifteen_min.md). The isochrones are hopefully useful to understand what parts of a city have good or bad access to different types of shops, and how hills and slow traffic signals affect walk or bike-sheds. Editing the map -- particularly to modify land use -- and checking out the differential isochrone would be the ultimate use for this tool, should we ever revive it.
+
+As I realized the most active audience for A/B Street is the OpenStreetMap community, I spun out some tools to [validate lane tagging](../../software/osm_viewer.md) and [tag street parking](../../software/parking_mapper.md).
+
+And finally, after some feedback from advocacy groups and people who felt overwhelmed by the broad scope of A/B Street, we're working on a simple interface for sketching and evaluating a bike network. Stay tuned.
 
 ### Marketing
 
