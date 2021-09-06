@@ -964,3 +964,10 @@ changes here.
 - new tool to plan routes and see elevation/road types along the way
 - load previously saved proposals on web
 - disabled prototype: uploading proposals to a central server for easier sharing
+
+0.2.57
+
+- bike network tool UI fixes, especially for the routing tool
+- use drag and drop for traffic signal editor and route waypoints
+- small internal map model performance boost
+- heavy documentation week
