@@ -14,15 +14,15 @@ It's easiest to follow the example below.
 ## Example
 
 This defines a scenario containing a single person, who takes two trips. They
-begin at 1 second past midnight (`10000`) at the building nearest to the `origin`,
-'find' a bike and cycle to the `destination`.
-Then at 12:20 (`12000000` is `1200` seconds after midnight), they walk to the building nearest to the
-`destination`. Note that the
-`destination` of trip 1 must match the `origin` of trip 2.
+begin at 1 second past midnight (`10000`) at the building nearest to the
+`origin`, 'find' a bike and cycle to the `destination`. Then at 12:20
+(`12000000` is `1200` seconds after midnight), they walk to the building nearest
+to the `destination`. Note that the `destination` of trip 1 must match the
+`origin` of trip 2.
 
-The `mode` field can be be `Walk`, `Bike`, or `Transit`. The `purpose`
-field is mostly unused; you could pick [other
-values](https://a-b-street.github.io/abstreet/rustdoc/sim/enum.TripPurpose.html)
+The `mode` field can be be `Walk`, `Bike`, or `Transit`. The `purpose` field is
+mostly unused; you could pick
+[other values](https://a-b-street.github.io/abstreet/rustdoc/sim/enum.TripPurpose.html)
 that show up in the UI. And of course, you can add as many people as you like.
 
 ```
@@ -96,7 +96,6 @@ There are also a few tools that produce this JSON file:
 
 - <https://github.com/a-b-street/abstreet/blob/master/headless/examples/generate_traffic.py>
 - <https://github.com/a-b-street/abstr>
-
 
 ## Future requests
 

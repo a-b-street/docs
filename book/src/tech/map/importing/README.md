@@ -1,8 +1,8 @@
 # Importing
 
 This chapter describes the process of transforming OSM extracts into A/B
-Street's map model. These are implementation details; you may be looking [for
-the user guide to importing a new city](../../../user/new_city.md).
+Street's map model. These are implementation details; you may be looking
+[for the user guide to importing a new city](../../../user/new_city.md).
 
 The steps are:
 

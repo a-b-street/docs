@@ -41,9 +41,9 @@
   generation started, 15 minute Santa
 - January: experimented with SUMO import, UI button overhaul, day/night mode,
   first separate cycleways
-- February: better web loading and URL sharing, randomized parking,
-  procedurally generated houses, actdev integration, geofabrik picker, new day
-  theme, static routing penalties
+- February: better web loading and URL sharing, randomized parking, procedurally
+  generated houses, actdev integration, geofabrik picker, new day theme, static
+  routing penalties
 - March: UK flow-based scenario generation, roundabout gridlock fixes, UI panel
   redesign, one-step OSM importer with UI, elevation data & layers
 - April: pathfinding by roads, editing number of lanes, risk exposure, Tempe
