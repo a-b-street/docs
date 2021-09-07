@@ -48,7 +48,7 @@
     - [Live edits](tech/map/edits.md)
     - [Exporting](tech/map/platform.md)
   - [Traffic simulation](tech/trafficsim/README.md)
-    - [Discrete event simulation](tech/trafficsim/discrete_event.md)
+    - [Discrete event simulation](tech/trafficsim/discrete_event/README.md)
     - [Travel demand](tech/trafficsim/travel_demand.md)
     - [Gridlock](tech/trafficsim/gridlock.md)
     - [Multi-modal trips](tech/trafficsim/trips.md)

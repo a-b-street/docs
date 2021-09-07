@@ -1,4 +1,8 @@
-# Discrete-event simulation
+# Discrete event traffic simulation, laggy heads, and ghosts
+
+<!-- goal of article, explain this newish thing-->
+
+<!-- start by describing timestep vs event, very broad overview -->
 
 The traffic simulation models different agents (cars, bikes, buses, pedestrians,
 and intersections) over time. Agents don't constantly sense and react to the
@@ -8,7 +12,26 @@ scheduled for some time in the future, and handling them changes the state of
 some agents. The core simulation loop simply processes events in order -- see
 `scheduler.rs` and the `step` method in `sim.rs`.
 
-## Cars
+## Starting simple: Pedestrians
+
+<!-- FSM diagram? -->
+<!-- show what ghosting looks like -->
+
+Pedestrian modeling -- in `mechanics/walking.rs` is way simpler. Pedestrians
+don't need to queue on sidewalks; they can "ghost" through each other. In
+Seattle, there aren't huge crowds of people walking and slowing down, except for
+niche cases like Pike Place Market. So in A/B Street, the only scarce resource
+modeled is the time spent waiting to cross intersections.
+
+<!-- go to sleep at intersections -->
+
+## Vehicles
+
+<!-- introduce queueing. leaders, followers -->
+
+<!-- the front-to-back drawing algo -->
+
+<!-- laggy head details -->
 
 (Note: Cars, bikes, and buses are all modeled the same way -- bikes just have a
 max speed, and buses/bikes can use restricted lanes.)
@@ -78,6 +101,8 @@ we have to schedule frequent events to check when a laggy head is clear.
 
 ## Lane-changing
 
+<!-- https://github.com/a-b-street/abstreet/pull/682 -->
+
 Lane-changing (LCing) deserves special mention. A/B Street cheats by not
 allowing it on lanes themselves. Instead, at intersections, cars can perform
 turns that shift them over any number of lanes. These LCing turns conflict with
@@ -101,15 +126,9 @@ choice. They make this decision once when they reach the front of a queue; look
 for `opportunistically_lanechange` in `router.rs`. The decision could be
 improved.
 
-## Pedestrians
-
-Pedestrian modeling -- in `mechanics/walking.rs` is way simpler. Pedestrians
-don't need to queue on sidewalks; they can "ghost" through each other. In
-Seattle, there aren't huge crowds of people walking and slowing down, except for
-niche cases like Pike Place Market. So in A/B Street, the only scarce resource
-modeled is the time spent waiting to cross intersections.
-
 ## Intersections
+
+<!-- maybe move all this to gridlock article -->
 
 I need to flesh this section out. See `mechanics/intersections.rs` for how stop
 signs and traffic signals work. Two things I need to fix before making this
@@ -143,6 +162,8 @@ constraints:
 - Don't hit the lead vehicle (which might suddenly slam on its brakes)
 - Stop at the end of a lane, unless the intersection says to go
 
+<!-- why was lookahead hard: short lanes? -->
+
 After fighting with this approach for a long time, I eventually scrapped it in
 favor of the simpler discrete-event model because:
 
@@ -162,3 +183,5 @@ favor of the simpler discrete-event model because:
   Additionally, the kinematics model made silly assumptions about driving anyway
   -- cars would smash on their accelerators and brakes as hard as possible
   within all of the constraints.
+
+<!-- following papers is hard. diffeq's, no advice how to deal with real geometry or do LCing.. slow down to shift? -->
