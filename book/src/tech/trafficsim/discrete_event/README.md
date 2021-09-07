@@ -1,92 +1,99 @@
 # Discrete event traffic simulation, laggy heads, and ghosts
 
-<!-- goal of article, explain this newish thing-->
+A/B Street's traffic simulation isn't based on any research papers or existing systems, so this article aims to motivate and explain how it works. This article focuses on how the different agents (drivers, bicyclists, and pedestrians) move around. If you're wondering how we figure out where these agents should go or what time they decide to take trips, go read about [travel demand models](../travel_demand.md).
 
-<!-- start by describing timestep vs event, very broad overview -->
+I'm not aiming to survey how other traffic simulation models work here. In short, some focus on "macroscopic" patterns, like the volume of traffic along a particular highway over time. A/B Street is more on the "microscopic" side, modeling individual agents making decisions over time. Many such models use "discrete-time" simulation, where every agent senses and reacts to the world every time-step (0.1 seconds or so). A/B Street actually started with this -- see the [appendix](#appendix-discrete-time-simulation) for more background. But early on, I switched to a discrete-event simulation instead. So, let's jump into that!
 
-The traffic simulation models different agents (cars, bikes, buses, pedestrians,
-and intersections) over time. Agents don't constantly sense and react to the
-world every second; instead, they remain in some state until something
-interesting happens. This is a discrete-event architecture -- events are
-scheduled for some time in the future, and handling them changes the state of
-some agents. The core simulation loop simply processes events in order -- see
-`scheduler.rs` and the `step` method in `sim.rs`.
+Note: I'll provide references to the current implementation. Someday I'll write that article describing how to build a traffic simulation from scratch...
+
+<!-- toc -->
 
 ## Starting simple: Pedestrians
 
+Imagine a simple movement model for pedestrians. Usually they exist at some point along a sidewalk and can move in one direction or the other.  At intersections, different sidewalks are connected by crosswalks, and pedestrians can also move bidirectionally on those, after waiting for the right time to cross.
+
+<!-- diagram sidewalk and turn -->
+
+We'll make a few assumptions about pedestrians. They follow the sidewalks and crosswalks perfectly, never deciding to [honor their inner Pythagorean](link). They travel at a fixed speed and change that speed instantly -- no smooth acceleration. That fixed speed could depend on both their preferred walking speed and on the current sidewalk's elevation gain. These poor robotic pedestrians never stop to smell the flowers, write an angry neighborly note, or pet a pupper -- they just walk, or wait. Online dating is also so pervasive in this simulation that pedestrians ghost -- through each other, that is. There are more interesting models of pedestrian movement like the [social force model](link...) where people change speeds in crowds, but A/B Street is focused on sad American cities where you don't really see many people walking in one place. So there's no collision between pedestrians at all; they just pass through each other, temporarily losing their individuality for rendering purposes:
+
+<!-- gif -->
+
+In the world of discrete timesteps, you could imagine each pedestrian has very simple logic. At any moment, they just continue walking one direction or the other at their fixed speed along a sidewalk or crosswalk. Or they pause at the end of a sidewalk, awaiting their turn at a stop sign or traffic signal.
+
+### Discrete events
+
+Don't the constant updates every time-step seem wasteful? Most of the time, a pedestrian is in a steady-state -- walking or waiting. Since they walk at a fixed speed, we can just linearly interpolate their exact position at any moment in time if we want to draw them.
+
+Instead of looping through every agent every time-step, in a discrete-event system, we just have one giant priority queue of events, scheduled to happen at some time in the future. Each agent remains in a certain state for a period of time, and schedules an event to transition themselves to a different state.
+
+In the case of pedestrians, this works like this:
+
+1.  A pedestrian begins at 30 meters distance along their first sidewalk. They want to walk forwards on the sidewalk, so they calculate the distance to the end of the sidewalk -- say another 70 meters -- and divide that by their preferred speed, scheduling an event an appropriate amount of time later -- say 10 seconds.
+2.  For the next 10 seconds, that pedestrian is in the `Crossing` state, which has a `DistanceInterval` stating that they're moving on a certain sidewalk from 30 to 70 meters. The `TimeInterval` says that this state is occuring from time 0 to 10 seconds. We can linearly interpolate to find their position for drawing.
+3.  At 10 seconds, the scheduler wakes up the pedestrian. They're now at the end of the sidewalk, so they look at the intersection and ask to cross. There's a traffic signal, and the almighty hand says NOPE, so they hand over control to the intersection and just mark themselves as `WaitingToTurn` state. No events are scheduled to update them.
+4.  But the intersection remembers the list of waiting agents. Some time later, the light changes, and the intersection "wakes up" all of the agents who now have a green.
+5.  Our pedestrian calculates a new `Crossing` state for the crosswalk. This state too happens over some distance and time interval.
+6.  At the end of the crosswalk, the pedestrian immediately enters another `Crossing` state for the next sidewalk.
+
+We can visualize this with a finite-state machine diagram:
+
 <!-- FSM diagram? -->
-<!-- show what ghosting looks like -->
 
-Pedestrian modeling -- in `mechanics/walking.rs` is way simpler. Pedestrians
-don't need to queue on sidewalks; they can "ghost" through each other. In
-Seattle, there aren't huge crowds of people walking and slowing down, except for
-niche cases like Pike Place Market. So in A/B Street, the only scarce resource
-modeled is the time spent waiting to cross intersections.
-
-<!-- go to sleep at intersections -->
+<!-- link to mechanics/walking.rs, scheduler.rs, sim step() -->
 
 ## Vehicles
 
-<!-- introduce queueing. leaders, followers -->
+Discrete events are obviously much simpler for pedestrians, but there were some pretty drastic assumptions there that won't work for vehicles. It takes a few more tricks for A/B Street to model cars, bikes, and buses (I'll just use "vehicle" from here on.)
 
-<!-- the front-to-back drawing algo -->
+First let's understand what vehicles can do. They travel in one direction along individual lanes, and they queue behind each other -- no ghosting. At intersections, they wait as needed, then move along a "turn," destined for a target lane. There are two major differences from reality that we'll take as assumptions.
 
-<!-- laggy head details -->
+First, vehicles instantly change speeds -- no smooth acceleration from rest, or modeling of safe stoping distance. So if a vehicle starts at the beginning of an empty lane, they instantly jump from rest to the maximum speed limit for that road. They travel at that maximum speed limit until the moment their front bumper strikes the boundary between road and intersection, then they stop immediately. This doesn't model highway driving at all, where things like jam waves are interesting to study and require more realistic kinematics and a model of driver reaction time. But A/B Street is focused on in-city movement, and the essence of scarcity I want to model is capacity on lanes and contention at intersections. What happens in between isn't as important. I think you'll find that the overall traffic patterns emerging in A/B Street still look compellingly realistic.
 
-(Note: Cars, bikes, and buses are all modeled the same way -- bikes just have a
-max speed, and buses/bikes can use restricted lanes.)
+<!-- show perfect stop -->
 
-Cars move through a sequence of lanes and turns (movements through an
-intersection). They queue and can't over-take a slow lead vehicle. The main
-simplifying assumption in A/B Street is that cars can instantly accelerate and
-decelerate. This wouldn't model highway driving at all, where things like jam
-waves are important, but it's reasonable for in-city driving. The essence of
-scarcity is the capacity on lanes and the contention at intersections. What
-happens in between isn't vital to get exactly right.
+The second article of funny business is lane-changing. Let's assume that vehicles don't change lanes in the middle of a road. Instead, vehicles shift left and right while moving through intersections. So if somebody needs to use a left turn lane, then at the intersection one road back, they'll choose to slide over during their turn. Any conflicting movements with other vehicles is handled at the intersection already.
 
-A car has a few states (`mechanics/car.rs`):
+<!-- show path moving to the left -->
 
-- **Crossing** some distance of a lane/turn over some time interval
-- **Queued** behind another car on a lane/turn
-- **WaitingToAdvance** at the end of a lane, blocked on an intersection
-- A few states where the car stays in one place: **Parking**, **Unparking**, and
-  **Idling** (for buses at a stop)
+This also means there's no over-taking. If a car gets stuck behind a bike moving slowly uphill, so be it.
 
-State transitions happen in `mechanics/driving.rs`. This is best explained by an
-example sequence:
+<!-- slow uphill -->
 
-- A car enters the Unparking state, taking a fixed 30s to exit a parking spot
-  and enter the adjacent driving lane. The driving lane is blocked during this
-  time, to mimic somebody pulling out from a parallel parking spot.
-- The car is now fully somewhere on the driving lane. It enters the Crossing
-  state, covering the remaining distance to the end of the road. The time
-  interval is calculated assuming the car travels at the max speed limit of the
-  road.
-- After that time, the car checks if there's anybody in the queue before it.
-  Nope? Then it attempts to initiate a turn through the intersection, but the
-  stop sign says no, so the car enters the WaitingToAdvance state.
-- Some time later, the stop sign wakes up the car. The car starts the turn,
-  entering the Crossing state again.
-- After finishing the turn, the car starts Crossing the next lane. When it's
-  finished, it turns out there are a few cars ahead of it, so it enters the
-  Queued state.
-- When the lead vehicle directly in front of the car exits the lane, it wakes up
-  the car, putting it in the Crossing state, starting at the appropriate
-  following distance behind the lead vehicle. This prevents the car from
-  immediately warping to the end of the lane when the lead vehicle is out of the
-  way.
-- And so on...
+We'll try to relax this second assumption later.
+
+### The state machine
+
+So let's figure out how to model these vehicles. The approach used by pedestrians, with `Crossing` and `WaitingToAdvance` states doesn't quite work, because nothing would stop vehicles from plowing into each other. So let's introduce a third state -- `Queued`. When a vehicle enters a new lane, it enters the `Crossing` state as usual, calculating the "best-case" time to cross the entire length of the lane at the max speed limit. This assumes nobody's in the way! But when this state ends, we can only transition the vehicle to the `WaitingToAdvance` state if they're the "lead" vehicle in the current lane's queue. If they have a "leader" vehicle, then they enter the `Queued` state and register as a "follower" of this "leader" in the queue.
+
+<!-- time0: leader in Crossing, follower in Crossing -->
+<!-- time1: leader in WaitingToAdvance, follower in Crossing -->
+<!-- time2: leader in WaitingToAdvance, follower in Queued -->
+
+When the vehicle at the very front of a lane enters the intersection and vacates their old lane, then they "wake up" their follower. The follower changes from `Queued` back to `Crossing`. Note that the follower doesn't instantly transition to `WaitingToAdvance`, since they're not quite at the end of the lane. Based on the length of the leader vehicle, the follower has some short distance left to cover. <!-- check details here... -->
+
+We can again understand all of this with a finite-state machine:
+
+![](vehicle_fsm.png)
+
+<!-- code in mechanics/car,driving -->
 
 ### Exact positions
 
-For a discrete-event simulation, we don't usually care exactly where on a lane a
-car is at some time. But we do need to know for drawing and for a few cases
-during simulation, such as determining when a bus is lined up with a bus stop in
-the middle of a lane. `mechanics/queue.rs` handles this, computing the distance
-of every car in a lane. For cars in the `Crossing` state, we linearly
-interpolate distance based on the current time. Of course, cars have to remain
-in order, so Queued cars are limited by the lead vehicle's position + the lead
-vehicle's length + a fixed following distance of 1m.
+Most of the time, we don't care exactly where on a lane some vehicle is. But we
+do need to know for drawing and for a few cases during simulation, such as
+determining when a bus is lined up with a bus stop in the middle of a lane.
+
+To calculate exact positions, we walk along each lane's queue from front to back. The key idea is that leaders bound the position of followers, and we can "lazily evaluate" the position of followers. This means that calculating one vehicle's position costs as much as calculating the entire queue's in the worst case, but that's usually fine -- for drawing, we want everyone anyway.
+
+The process is simple. We use each vehicle's state to determine the possible position of their front bumper. `WaitingToAdvance` means the vehicle is at the very end of the lane. For vehicles still `Crossing`, we linearly interpolate the time and distance intervals. Then as we walk from front to back, we maintain a "bound" for the next vehicle's position. This is based on the front position of the current vehicle, plus the vehicle's length and a fixed following distance (which, note, is not based on speed).
+
+<!-- diagram -->
+
+<!-- queue.rs -->
+
+### Laggy heads
+
+<!-- laggy head details -->
 
 Another case where we need to know exact positions of cars is to prevent the
 first vehicle on a lane from hitting the back of a car who just left the lane.
@@ -98,6 +105,10 @@ After the laggy head has made it sufficient distance along its new turn or lane,
 the laggy head on the old lane can be erased, unblocking the lead vehicle. This
 requires calculating exact distances and some occasionally expensive cases where
 we have to schedule frequent events to check when a laggy head is clear.
+
+### Performance
+
+<!-- estimate number of events -->
 
 ## Lane-changing
 
