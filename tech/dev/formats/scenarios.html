@@ -160,14 +160,14 @@ deserialization happens from
 It's easiest to follow the example below.</p>
 <h2 id="example"><a class="header" href="#example">Example</a></h2>
 <p>This defines a scenario containing a single person, who takes two trips. They
-begin at 1 second past midnight (<code>10000</code>) at the building nearest to the <code>origin</code>,
-'find' a bike and cycle to the <code>destination</code>.
-Then at 12:20 (<code>12000000</code> is <code>1200</code> seconds after midnight), they walk to the building nearest to the
-<code>destination</code>. Note that the
-<code>destination</code> of trip 1 must match the <code>origin</code> of trip 2.</p>
-<p>The <code>mode</code> field can be be <code>Walk</code>, <code>Bike</code>, or <code>Transit</code>. The <code>purpose</code>
-field is mostly unused; you could pick <a href="https://a-b-street.github.io/abstreet/rustdoc/sim/enum.TripPurpose.html">other
-values</a>
+begin at 1 second past midnight (<code>10000</code>) at the building nearest to the
+<code>origin</code>, 'find' a bike and cycle to the <code>destination</code>. Then at 12:20
+(<code>12000000</code> is <code>1200</code> seconds after midnight), they walk to the building nearest
+to the <code>destination</code>. Note that the <code>destination</code> of trip 1 must match the
+<code>origin</code> of trip 2.</p>
+<p>The <code>mode</code> field can be be <code>Walk</code>, <code>Bike</code>, or <code>Transit</code>. The <code>purpose</code> field is
+mostly unused; you could pick
+<a href="https://a-b-street.github.io/abstreet/rustdoc/sim/enum.TripPurpose.html">other values</a>
 that show up in the UI. And of course, you can add as many people as you like.</p>
 <pre><code>{
   &quot;scenario_name&quot;: &quot;minimal&quot;,

@@ -2229,14 +2229,14 @@ deserialization happens from
 It's easiest to follow the example below.</p>
 <h2 id="example"><a class="header" href="#example">Example</a></h2>
 <p>This defines a scenario containing a single person, who takes two trips. They
-begin at 1 second past midnight (<code>10000</code>) at the building nearest to the <code>origin</code>,
-'find' a bike and cycle to the <code>destination</code>.
-Then at 12:20 (<code>12000000</code> is <code>1200</code> seconds after midnight), they walk to the building nearest to the
-<code>destination</code>. Note that the
-<code>destination</code> of trip 1 must match the <code>origin</code> of trip 2.</p>
-<p>The <code>mode</code> field can be be <code>Walk</code>, <code>Bike</code>, or <code>Transit</code>. The <code>purpose</code>
-field is mostly unused; you could pick <a href="https://a-b-street.github.io/abstreet/rustdoc/sim/enum.TripPurpose.html">other
-values</a>
+begin at 1 second past midnight (<code>10000</code>) at the building nearest to the
+<code>origin</code>, 'find' a bike and cycle to the <code>destination</code>. Then at 12:20
+(<code>12000000</code> is <code>1200</code> seconds after midnight), they walk to the building nearest
+to the <code>destination</code>. Note that the <code>destination</code> of trip 1 must match the
+<code>origin</code> of trip 2.</p>
+<p>The <code>mode</code> field can be be <code>Walk</code>, <code>Bike</code>, or <code>Transit</code>. The <code>purpose</code> field is
+mostly unused; you could pick
+<a href="https://a-b-street.github.io/abstreet/rustdoc/sim/enum.TripPurpose.html">other values</a>
 that show up in the UI. And of course, you can add as many people as you like.</p>
 <pre><code>{
   &quot;scenario_name&quot;: &quot;minimal&quot;,
@@ -2762,10 +2762,24 @@ alongside a road. A/B Street attempts to detect these and &quot;snap&quot; them 
 main road as extra lanes.</p>
 <p>... But this doesn't work yet at all.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="deep-dive-into-devilish-details-intersection-geometry"><a class="header" href="#deep-dive-into-devilish-details-intersection-geometry">Deep dive into devilish details: Intersection geometry</a></h1>
-<p>Some of the things in A/B Street that seem the simplest have taken me tremendous effort. Determining the shape of roads and intersections is one of those problems, so this article is a deep-dive into how it works and why it's so hard.</p>
-<p>Note 1: There's no &quot;related work&quot; section here -- I haven't found many other projects attempting something like this. I've seen a few research papers going in this direction, but none of them pointed to any code to try. The approach I'll describe has many flaws -- I'm not claiming this is a good solution, just the one that A/B Street uses. If you see a way to improve anything here, let me know about it! Even better, try it for real and send a PR -- there's plenty of tooling to help you debug and visually diff against the existing implementation. There should be a convenient button at the top-right of this page to suggest an edit in Github.</p>
-<p>Note 2: This article would be way more awesome with code and some interactive demos to play around with each step. That level of ambition would prevent this from ever being written, though! I'll link to the real code and am happy to answer questions if anything's unclear.</p>
-<p>Note 3: Apologies for the rough diagrams and lack of polish. I'm time-constrained and communicating the ideas is my priority.</p>
+<p>Some of the things in A/B Street that seem the simplest have taken me tremendous
+effort. Determining the shape of roads and intersections is one of those
+problems, so this article is a deep-dive into how it works and why it's so hard.</p>
+<p>Note 1: There's no &quot;related work&quot; section here -- I haven't found many other
+projects attempting something like this. I've seen a few research papers going
+in this direction, but none of them pointed to any code to try. The approach
+I'll describe has many flaws -- I'm not claiming this is a good solution, just
+the one that A/B Street uses. If you see a way to improve anything here, let me
+know about it! Even better, try it for real and send a PR -- there's plenty of
+tooling to help you debug and visually diff against the existing implementation.
+There should be a convenient button at the top-right of this page to suggest an
+edit in Github.</p>
+<p>Note 2: This article would be way more awesome with code and some interactive
+demos to play around with each step. That level of ambition would prevent this
+from ever being written, though! I'll link to the real code and am happy to
+answer questions if anything's unclear.</p>
+<p>Note 3: Apologies for the rough diagrams and lack of polish. I'm
+time-constrained and communicating the ideas is my priority.</p>
 <ul>
 <li><a href="tech/map/geometry/index.html#background">Background</a>
 <ul>
@@ -2813,272 +2827,460 @@ main road as extra lanes.</p>
 </li>
 </ul>
 <h2 id="background"><a class="header" href="#background">Background</a></h2>
-<p>Most street maps you'll find provide a simplified view of streets. Google Maps, Apple Maps, and most OpenStreetMap renderers mostly just tell you the road's name, color it by type (a highway, major arterial road, minor residential street), take great liberties with the width, and don't explicitly distinguish intersections from roads. These maps are used for navigation and drawing your attention to nearby businesses, so this is quite a reasonable view.</p>
-<p><img src="tech/map/geometry/rainier_google.png" alt="" />
-<em>From Google, it looks like Rainier is a much bigger road than S Massachusetts</em></p>
-<p><img src="tech/map/geometry/rainier_osm.png" alt="" />
-<em>The roads look about the same width in OSM</em></p>
-<p><img src="tech/map/geometry/rainier_abst.png" alt="" />
-<em>A/B Street reveals the turn lanes and also some bike lines on Massachusetts!</em></p>
-<p><img src="tech/map/geometry/rainier_satellite.png" alt="" />
-<em>Finally, Google's satellite imagery reveals the true shape of the intersection, though it's a bit hard to tell with the tree cover. And unless you zoom in, there's no way you'll spot the lane count or bike lanes.</em></p>
-<p>A/B Street is all about imagining how traffic moves through a city and exploring the effects of redesigning streets. So of course, we need way more detail. To imagine a bike lane down Eastlake Ave instead of street parking, we need to first see how the street's space is allocated. To propose a more pedestrian-friendly traffic signal crossing from Husky Stadium to the UW medical building, we need to see that huge intersection.</p>
-<p><img src="tech/map/geometry/eastlake_before.png" alt="" />
-<em>Does Eastlake really need to dedicate 5 lanes to moving cars and 2 to storing them?</em></p>
-<p><img src="tech/map/geometry/eastlake_after.png" alt="" />
-<em>Talking about Eastlake having a safe cycling route is one thing, but isn't it much easier to imagin when you can just see it?</em></p>
+<p>Most street maps you'll find provide a simplified view of streets. Google Maps,
+Apple Maps, and most OpenStreetMap renderers mostly just tell you the road's
+name, color it by type (a highway, major arterial road, minor residential
+street), take great liberties with the width, and don't explicitly distinguish
+intersections from roads. These maps are used for navigation and drawing your
+attention to nearby businesses, so this is quite a reasonable view.</p>
+<p><img src="tech/map/geometry/rainier_google.png" alt="" /> <em>From Google, it looks like Rainier is a much bigger
+road than S Massachusetts</em></p>
+<p><img src="tech/map/geometry/rainier_osm.png" alt="" /> <em>The roads look about the same width in OSM</em></p>
+<p><img src="tech/map/geometry/rainier_abst.png" alt="" /> <em>A/B Street reveals the turn lanes and also some bike
+lines on Massachusetts!</em></p>
+<p><img src="tech/map/geometry/rainier_satellite.png" alt="" /> <em>Finally, Google's satellite imagery reveals the true
+shape of the intersection, though it's a bit hard to tell with the tree cover.
+And unless you zoom in, there's no way you'll spot the lane count or bike
+lanes.</em></p>
+<p>A/B Street is all about imagining how traffic moves through a city and exploring
+the effects of redesigning streets. So of course, we need way more detail. To
+imagine a bike lane down Eastlake Ave instead of street parking, we need to
+first see how the street's space is allocated. To propose a more
+pedestrian-friendly traffic signal crossing from Husky Stadium to the UW medical
+building, we need to see that huge intersection.</p>
+<p><img src="tech/map/geometry/eastlake_before.png" alt="" /> <em>Does Eastlake really need to dedicate 5 lanes to
+moving cars and 2 to storing them?</em></p>
+<p><img src="tech/map/geometry/eastlake_after.png" alt="" /> <em>Talking about Eastlake having a safe cycling route is
+one thing, but isn't it much easier to imagin when you can just see it?</em></p>
 <p>At a high-level, we want a representation that:</p>
 <ol>
-<li>Clearly communicates how a road is divided into different types of lanes (general purpose driving, turn lanes, bike lanes, bus-only lanes, street parking, sidewalks)</li>
-<li>Represents the total road width, which tells us how we might change that lane configuration</li>
-<li>Divides paved area into distinct roads and intersections. This division tells us where vehicles stop before entering an intersection, how pedestrians and vehicles are likely to move through the space, and what conflicts between them might occur.</li>
+<li>Clearly communicates how a road is divided into different types of lanes
+(general purpose driving, turn lanes, bike lanes, bus-only lanes, street
+parking, sidewalks)</li>
+<li>Represents the total road width, which tells us how we might change that lane
+configuration</li>
+<li>Divides paved area into distinct roads and intersections. This division tells
+us where vehicles stop before entering an intersection, how pedestrians and
+vehicles are likely to move through the space, and what conflicts between
+them might occur.</li>
 </ol>
-<p>We're constrained to publicly available, free data sources. Although some cities have GIS departments with some datasets that might be helpful, we're pretty much going with OpenStreetMap (OSM), which has decent coverage of most cities worldwide.</p>
+<p>We're constrained to publicly available, free data sources. Although some cities
+have GIS departments with some datasets that might be helpful, we're pretty much
+going with OpenStreetMap (OSM), which has decent coverage of most cities
+worldwide.</p>
 <h3 id="desired-output"><a class="header" href="#desired-output">Desired output</a></h3>
-<p>Let's be a little more specific about the representation we want. If you imagine a city as flat 2D space, roads and intersections occupy some portion of it. (Let's ignore bridges and tunnels.)</p>
-<p><img src="tech/map/geometry/thick_pt1.png" alt="" />
-<em>Here's a three-way intersection at your typical Seattle angle</em></p>
-<p>We want to partition this space into individual intersections and road segments. Each road segment (just called &quot;road&quot; for simplicity) leads between exactly two of those intersections. This partition shouldn't have any ambiguous overlap between objects.</p>
-<p><img src="tech/map/geometry/thick_pt2.png" alt="" />
-<em>The red part is what we'll deem the intersection. The grey roads and the intersection now partition the space.</em></p>
-<p>A simplifying assumption, mostly coming from OSM, is that roads can be represented as a center-line and width, and individual lanes can be formed by projecting that center-line left and right. This means when the road changes width in the middle (like for pocket parking or to make room for a turn lane), we have to model that transition as a small &quot;degenerate&quot; intersection, which connects only those two roads.</p>
-<p><img src="tech/map/geometry/degenerate.png" alt="" />
-<em>Two lanes become four -- probably some turn lanes appearing. The lighter grey is our intersection.</em></p>
-<p>Another assumption taken by A/B Street is that roads hit intersections at a perpendicular angle.</p>
-<p><img src="tech/map/geometry/perp_no_traffic.png" alt="" />
-<em>Note how the intersection &quot;eats into&quot; Boren, the diagonal road more than you might expect.</em></p>
-<p>We use this division to determine where vehicles stop, and where a crosswalk exists:</p>
-<p><img src="tech/map/geometry/perp_traffic.png" alt="" />
-<em>Does it seem like vehicles have stopped too far away from the intersection?</em></p>
+<p>Let's be a little more specific about the representation we want. If you imagine
+a city as flat 2D space, roads and intersections occupy some portion of it.
+(Let's ignore bridges and tunnels.)</p>
+<p><img src="tech/map/geometry/thick_pt1.png" alt="" /> <em>Here's a three-way intersection at your typical Seattle
+angle</em></p>
+<p>We want to partition this space into individual intersections and road segments.
+Each road segment (just called &quot;road&quot; for simplicity) leads between exactly two
+of those intersections. This partition shouldn't have any ambiguous overlap
+between objects.</p>
+<p><img src="tech/map/geometry/thick_pt2.png" alt="" /> <em>The red part is what we'll deem the intersection. The grey
+roads and the intersection now partition the space.</em></p>
+<p>A simplifying assumption, mostly coming from OSM, is that roads can be
+represented as a center-line and width, and individual lanes can be formed by
+projecting that center-line left and right. This means when the road changes
+width in the middle (like for pocket parking or to make room for a turn lane),
+we have to model that transition as a small &quot;degenerate&quot; intersection, which
+connects only those two roads.</p>
+<p><img src="tech/map/geometry/degenerate.png" alt="" /> <em>Two lanes become four -- probably some turn lanes
+appearing. The lighter grey is our intersection.</em></p>
+<p>Another assumption taken by A/B Street is that roads hit intersections at a
+perpendicular angle.</p>
+<p><img src="tech/map/geometry/perp_no_traffic.png" alt="" /> <em>Note how the intersection &quot;eats into&quot; Boren, the
+diagonal road more than you might expect.</em></p>
+<p>We use this division to determine where vehicles stop, and where a crosswalk
+exists:</p>
+<p><img src="tech/map/geometry/perp_traffic.png" alt="" /> <em>Does it seem like vehicles have stopped too far away from
+the intersection?</em></p>
 <p>Of course, this assumption isn't always true in reality:</p>
-<p><img src="tech/map/geometry/perp_satellite.png" alt="" />
-<em>The crosswalks across Boren are horizontal!</em></p>
-<p>If we allowed roads to hit intersections at non-perpendicular angles, but still insisted that the stop position for each individual lane was perpendicular, it might have a &quot;jagged tooth&quot; look:</p>
-<p><img src="tech/map/geometry/perp_teeth.png" alt="" />
-<em>The cyan lines show one way to represent adjacent lanes that extend different lengths.</em></p>
-<p>But for the sake of this article, these're the assumptions we're sticking with. Pedestrian islands, slip lanes, gores, and medians are all real-world elements that don't fit nicely in this model.</p>
+<p><img src="tech/map/geometry/perp_satellite.png" alt="" /> <em>The crosswalks across Boren are horizontal!</em></p>
+<p>If we allowed roads to hit intersections at non-perpendicular angles, but still
+insisted that the stop position for each individual lane was perpendicular, it
+might have a &quot;jagged tooth&quot; look:</p>
+<p><img src="tech/map/geometry/perp_teeth.png" alt="" /> <em>The cyan lines show one way to represent adjacent lanes
+that extend different lengths.</em></p>
+<p>But for the sake of this article, these're the assumptions we're sticking with.
+Pedestrian islands, slip lanes, gores, and medians are all real-world elements
+that don't fit nicely in this model.</p>
 <h2 id="overview-of-the-process"><a class="header" href="#overview-of-the-process">Overview of the process</a></h2>
-<p>We'll now explore the steps to produce geometry for a single intersection and its connected roads. The broad overview:</p>
+<p>We'll now explore the steps to produce geometry for a single intersection and
+its connected roads. The broad overview:</p>
 <ol>
-<li>Pre-process OSM into road center-lines with attributes, with each road connecting just two intersections.</li>
+<li>Pre-process OSM into road center-lines with attributes, with each road
+connecting just two intersections.</li>
 <li>Thicken each road</li>
 <li>Trim back the roads based on overlap</li>
 <li>Produce the intersection polygon</li>
 </ol>
-<p>Let's pick a particularly illustrative <a href="https://www.openstreetmap.org/node/1705063811">five-way intersection</a> as our example.</p>
+<p>Let's pick a particularly illustrative
+<a href="https://www.openstreetmap.org/node/1705063811">five-way intersection</a> as our
+example.</p>
 <h2 id="part-1-thickening-the-infinitesmal"><a class="header" href="#part-1-thickening-the-infinitesmal">Part 1: Thickening the infinitesmal</a></h2>
-<p>OSM models roads as a center-line -- supposedly the physical center of the paved area, not the solid or dashed yellow line (t least in the US) separating the two directions of traffic. The schema, and how it gets mapped in practice, is fuzzy when there are more lanes in one direction than the other or when roads join or split up for logical routing, but... let's keep things simple to start.</p>
-<p><img src="tech/map/geometry/osm_center_lines.png" alt="" />
-<em>5 roads meet at this intersection. The white lines are OSM's center line.</em></p>
-<p>OSM has a few tags (link) for explicitly mapping road width, but in practice they're not used. Instead, we have a whole bunch of tags that describe the lane configuration of the road. A/B Street interprets these and produces an ordered list of lanes from the left side of the road to the right, guessing the direction, width, and type of each lane. See the <a href="https://github.com/dabreegster/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs">code here</a> -- it's fairly lengthy, but has some intuitive unit tests. This interpretation of tags is hard in practice because the schema is very confusing, there are multiple ways of mapping the same thing, people make many mistakes in practice, etc. <!-- TODO, list some examples like cycleway:left:separator:right. --></p>
-<p><img src="tech/map/geometry/tags_to_lane_specs.png" alt="" />
-<em>A very simple example of OSM tags on the left, and on the right, A/B Street's interpretation of each lane, ordered from the left side of the road.</em></p>
-<p>So for each road, we estimate the total width based on the lane tagging. Then we project the center line to the left and right, giving us a thickened polygon for the entire road:</p>
-<p><img src="tech/map/geometry/thickened_5.png" alt="" />
-<em>All 5 of our roads, thickened based on the lane tagging. The red dot is the position of the OSM node shared by these roads.</em></p>
+<p>OSM models roads as a center-line -- supposedly the physical center of the paved
+area, not the solid or dashed yellow line (t least in the US) separating the two
+directions of traffic. The schema, and how it gets mapped in practice, is fuzzy
+when there are more lanes in one direction than the other or when roads join or
+split up for logical routing, but... let's keep things simple to start.</p>
+<p><img src="tech/map/geometry/osm_center_lines.png" alt="" /> <em>5 roads meet at this intersection. The white lines
+are OSM's center line.</em></p>
+<p>OSM has a few tags (link) for explicitly mapping road width, but in practice
+they're not used. Instead, we have a whole bunch of tags that describe the lane
+configuration of the road. A/B Street interprets these and produces an ordered
+list of lanes from the left side of the road to the right, guessing the
+direction, width, and type of each lane. See the
+<a href="https://github.com/dabreegster/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs">code here</a>
+-- it's fairly lengthy, but has some intuitive unit tests. This interpretation
+of tags is hard in practice because the schema is very confusing, there are
+multiple ways of mapping the same thing, people make many mistakes in practice,
+etc. <!-- TODO, list some examples like cycleway:left:separator:right. --></p>
+<p><img src="tech/map/geometry/tags_to_lane_specs.png" alt="" /> <em>A very simple example of OSM tags on the left, and
+on the right, A/B Street's interpretation of each lane, ordered from the left
+side of the road.</em></p>
+<p>So for each road, we estimate the total width based on the lane tagging. Then we
+project the center line to the left and right, giving us a thickened polygon for
+the entire road:</p>
+<p><img src="tech/map/geometry/thickened_5.png" alt="" /> <em>All 5 of our roads, thickened based on the lane tagging.
+The red dot is the position of the OSM node shared by these roads.</em></p>
 <h3 id="projecting-a-polyline"><a class="header" href="#projecting-a-polyline">Projecting a polyline</a></h3>
-<p>Before we move on, a quick primer on how to take a polyline (a list of ordered points) and project it to the left or right. There are some better explanations of this online, but I don't have them handy. I wouldn't call A/B Street's <a href="https://github.com/a-b-street/abstreet/blob/91c152c123924d7b8bfa14722d18c652d7e42966/geom/src/polyline.rs#L435">implementation</a> fantastic, but it's there for reference.</p>
+<p>Before we move on, a quick primer on how to take a polyline (a list of ordered
+points) and project it to the left or right. There are some better explanations
+of this online, but I don't have them handy. I wouldn't call A/B Street's
+<a href="https://github.com/a-b-street/abstreet/blob/91c152c123924d7b8bfa14722d18c652d7e42966/geom/src/polyline.rs#L435">implementation</a>
+fantastic, but it's there for reference.</p>
 <p><img src="tech/map/geometry/project_pt1.png" alt="" /></p>
-<p>The original polyline is in black. If you can't tell from my quick drawing, it consists of 3 line segments glued together. We want to shift it to the right some distance. We start by taking each line segment and projecting it to the right that distance. That operation is simple -- rotate the line's angle by 90 degrees, then project the line's endpoints that direction. The 3 projected line segments are shown in blue, green, and red.</p>
-<p>There are two types of problems we need to fix for the new polyline to be glued together nicely. The blue and the green line segment intersect each other, so we'll trim both segments to that common point:</p>
-<p><img src="tech/map/geometry/project_pt2.png" alt="" />
-<em>Please forgive my horrid paint editor skills</em></p>
-<p>The green and the red line segments are far apart. Let's imagine they keep extending until they do intersect. If I recall proper terminology, this is a miter join:</p>
+<p>The original polyline is in black. If you can't tell from my quick drawing, it
+consists of 3 line segments glued together. We want to shift it to the right
+some distance. We start by taking each line segment and projecting it to the
+right that distance. That operation is simple -- rotate the line's angle by 90
+degrees, then project the line's endpoints that direction. The 3 projected line
+segments are shown in blue, green, and red.</p>
+<p>There are two types of problems we need to fix for the new polyline to be glued
+together nicely. The blue and the green line segment intersect each other, so
+we'll trim both segments to that common point:</p>
+<p><img src="tech/map/geometry/project_pt2.png" alt="" /> <em>Please forgive my horrid paint editor skills</em></p>
+<p>The green and the red line segments are far apart. Let's imagine they keep
+extending until they do intersect. If I recall proper terminology, this is a
+miter join:</p>
 <p><img src="tech/map/geometry/project_pt3.png" alt="" /></p>
 <p>And that's it! Easy.</p>
-<p>... Except not really. The real world of OSM center-lines has every imaginable edge case. When a road is both thick and sharply angled enough, extending those line segments until they meet works... but the hit might be very far away:</p>
+<p>... Except not really. The real world of OSM center-lines has every imaginable
+edge case. When a road is both thick and sharply angled enough, extending those
+line segments until they meet works... but the hit might be very far away:</p>
 <p><img src="tech/map/geometry/project_sharp.png" alt="" /></p>
-<p>My workaround currently is to hardcode a maximum distance away from the original line endpoints. If our miter cap reaches beyond that, just draw a straight line between the two segments. I think this is known as a bevel join.</p>
-<p>Just for fun, let's see what happens when a polyline doubles back on itself in some less-than-realistic ways:</p>
+<p>My workaround currently is to hardcode a maximum distance away from the original
+line endpoints. If our miter cap reaches beyond that, just draw a straight line
+between the two segments. I think this is known as a bevel join.</p>
+<p>Just for fun, let's see what happens when a polyline doubles back on itself in
+some less-than-realistic ways:</p>
 <p><img src="tech/map/geometry/project_lovecraftian.gif" alt="" /></p>
-<p>Truly Lovecraftian geometry. I don't think I often see points from OSM totally out of order like this, but it happens sometimes and is immediately obvious.</p>
+<p>Truly Lovecraftian geometry. I don't think I often see points from OSM totally
+out of order like this, but it happens sometimes and is immediately obvious.</p>
 <h2 id="part-2-counting-coup"><a class="header" href="#part-2-counting-coup">Part 2: Counting coup</a></h2>
-<p>For each road, we've got the original center from OSM and our calculated the left and right side:</p>
-<p><img src="tech/map/geometry/coup_pt1.png" alt="" />
-<em>The left and right sides of the 5 roads are shown -- not the original centers. I manually traced this; slight errors are visible.</em></p>
-<p>Now the magic happens. You'll notice that many of those polylines collide (For sanity, let's call these &quot;collisions&quot; and not &quot;intersections&quot;, since that term is overloaded here!). Let's find every collision point:</p>
-<p><img src="tech/map/geometry/coup_pt2.png" alt="" />
-<em>Collisions drawn as black dots</em></p>
-<p>These collisions represent where two thickened roads overlap. So let's use them to &quot;trim back&quot; the roads and avoid overlap. For each collision, we form an infinitely long line perpendicular to the collision and find where it hits the original center-line. We'll trim the road back to at least that point.</p>
-<p><img src="tech/map/geometry/coup_pt3.png" alt="" />
-<em>The red road's original center is now shown, in a darker red. The collision between the red and green road is shown, with a yellow line used to find the position along the original center. We'll trim the center back to this point, at least.</em></p>
-<p>Because we want roads to meet intersections perpendiculously (I'm quite sure that's the proper term), we want the left and right side of a road to line up. There's probably a collision on a road's left and right side, and usually one of them would cause the center-line to be trimmed back more than the other. We'll always trim back as much as possible.</p>
-<p><img src="tech/map/geometry/coup_pt4.png" alt="" />
-<em>The collision between the red and blue road is shown in yellow. The corresponding position on the original red road's center line is found, then trimmed back.</em></p>
+<p>For each road, we've got the original center from OSM and our calculated the
+left and right side:</p>
+<p><img src="tech/map/geometry/coup_pt1.png" alt="" /> <em>The left and right sides of the 5 roads are shown -- not the
+original centers. I manually traced this; slight errors are visible.</em></p>
+<p>Now the magic happens. You'll notice that many of those polylines collide (For
+sanity, let's call these &quot;collisions&quot; and not &quot;intersections&quot;, since that term
+is overloaded here!). Let's find every collision point:</p>
+<p><img src="tech/map/geometry/coup_pt2.png" alt="" /> <em>Collisions drawn as black dots</em></p>
+<p>These collisions represent where two thickened roads overlap. So let's use them
+to &quot;trim back&quot; the roads and avoid overlap. For each collision, we form an
+infinitely long line perpendicular to the collision and find where it hits the
+original center-line. We'll trim the road back to at least that point.</p>
+<p><img src="tech/map/geometry/coup_pt3.png" alt="" /> <em>The red road's original center is now shown, in a darker red.
+The collision between the red and green road is shown, with a yellow line used
+to find the position along the original center. We'll trim the center back to
+this point, at least.</em></p>
+<p>Because we want roads to meet intersections perpendiculously (I'm quite sure
+that's the proper term), we want the left and right side of a road to line up.
+There's probably a collision on a road's left and right side, and usually one of
+them would cause the center-line to be trimmed back more than the other. We'll
+always trim back as much as possible.</p>
+<p><img src="tech/map/geometry/coup_pt4.png" alt="" /> <em>The collision between the red and blue road is shown in
+yellow. The corresponding position on the original red road's center line is
+found, then trimmed back.</em></p>
 <p>If we repeat this for every collision, eventually we wind up with:</p>
-<p><img src="tech/map/geometry/coup_final.png" alt="" />
-<em>All roads have been trimmed back, with their left and right sides projected again</em></p>
+<p><img src="tech/map/geometry/coup_final.png" alt="" /> <em>All roads have been trimmed back, with their left and right
+sides projected again</em></p>
 <p>Some questions to consider:</p>
 <ol>
 <li>
-<p>Why look for collisions between every pair of left/right lines? Couldn't we just use the &quot;adjacent&quot; pairs?</p>
+<p>Why look for collisions between every pair of left/right lines? Couldn't we
+just use the &quot;adjacent&quot; pairs?</p>
 </li>
 <li>
-<p>Is it ever possible for the line perpendicular to a collision to NOT hit the original center-line?</p>
+<p>Is it ever possible for the line perpendicular to a collision to NOT hit the
+original center-line?</p>
 </li>
 </ol>
-<p>(As I'm reviewing my old code and writing this up, these're things I don't remember, worth revisiting.)</p>
+<p>(As I'm reviewing my old code and writing this up, these're things I don't
+remember, worth revisiting.)</p>
 <h2 id="part-3-the-clockwise-walk"><a class="header" href="#part-3-the-clockwise-walk">Part 3: The clockwise walk</a></h2>
-<p>We've now trimmed roads back to avoid overlapping each other. We just need to generate the polygon for the intersection. As a first cut, let's take these trimmed center-lines, calculate the left and right polylines again (since we've changed the center line), and use the endpoints for the shape.</p>
-<p><img src="tech/map/geometry/clockwise_naive.png" alt="" />
-<em>The red polygon is the intersection shape formed from these endpoints. The pink portions don't look right!</em></p>
-<p>Oops, the polygon covers a bit too much space! Cut red tape, queues, and split ends, but not corners. What if we remember all of the collision points, and use those too?</p>
+<p>We've now trimmed roads back to avoid overlapping each other. We just need to
+generate the polygon for the intersection. As a first cut, let's take these
+trimmed center-lines, calculate the left and right polylines again (since we've
+changed the center line), and use the endpoints for the shape.</p>
+<p><img src="tech/map/geometry/clockwise_naive.png" alt="" /> <em>The red polygon is the intersection shape formed from
+these endpoints. The pink portions don't look right!</em></p>
+<p>Oops, the polygon covers a bit too much space! Cut red tape, queues, and split
+ends, but not corners. What if we remember all of the collision points, and use
+those too?</p>
 <p><img src="tech/map/geometry/clockwise_better.png" alt="" /></p>
 <p>Much better.</p>
 <h3 id="sorting-roads-around-a-center"><a class="header" href="#sorting-roads-around-a-center">Sorting roads around a center</a></h3>
-<p>I snuck another fast one on ya. When we form a polygon from these left/right endpoints and the original collision points, how do we put those points in the correct order? Seemingly innocent question.</p>
-<p>There are a few approaches that work fine for the simple cases. First, from OSM we know the single point where the 5 road center lines meet. After we've calculated the points for the intersection polygon, we can use that single point, calculate the angle to each polygon point, and sort. That works fine.</p>
-<p><img src="tech/map/geometry/sorting_orig_center.png" alt="" />
-<em>The road center-lines all meet at one point, from the original OSM data.</em></p>
-<p>Foreshadowing: But soon, things won't be so simple. </p>
+<p>I snuck another fast one on ya. When we form a polygon from these left/right
+endpoints and the original collision points, how do we put those points in the
+correct order? Seemingly innocent question.</p>
+<p>There are a few approaches that work fine for the simple cases. First, from OSM
+we know the single point where the 5 road center lines meet. After we've
+calculated the points for the intersection polygon, we can use that single
+point, calculate the angle to each polygon point, and sort. That works fine.</p>
+<p><img src="tech/map/geometry/sorting_orig_center.png" alt="" /> <em>The road center-lines all meet at one point, from
+the original OSM data.</em></p>
+<p>Foreshadowing: But soon, things won't be so simple.</p>
 <h2 id="interlude-problems-so-far"><a class="header" href="#interlude-problems-so-far">Interlude: problems so far</a></h2>
 <p>That wasn't actually so bad! The results are reasonable in many cases:</p>
-<p><img src="tech/map/geometry/good1.png" alt="" />
-<img src="tech/map/geometry/good2.png" alt="" />
-<img src="tech/map/geometry/good3.png" alt="" /></p>
+<p><img src="tech/map/geometry/good1.png" alt="" /> <img src="tech/map/geometry/good2.png" alt="" /> <img src="tech/map/geometry/good3.png" alt="" /></p>
 <p>But what kind of things go wrong?</p>
 <h3 id="funky-sidewalks"><a class="header" href="#funky-sidewalks">Funky sidewalks</a></h3>
 <p>What's going on with the sidewalk in that last example?</p>
 <p><img src="tech/map/geometry/sidewalk_corners.gif" alt="" /></p>
 <h3 id="lovecraftian-geometry"><a class="header" href="#lovecraftian-geometry">Lovecraftian geometry</a></h3>
 <p>Sometimes followers of Cthulu edit OSM, I assume.</p>
-<p><img src="tech/map/geometry/lovecraft1.png" alt="" />
-<em>What... is happening here?</em></p>
-<p><img src="tech/map/geometry/lovecraft2.png" alt="" />
-<em>Even the thickened roads, before calculating intersection polygons, look broken.</em></p>
-<p><img src="tech/map/geometry/lovecraft3.png" alt="" />
-<em>Before I can investigate, somebody has already fixed the problem upstream in OSM!</em></p>
+<p><img src="tech/map/geometry/lovecraft1.png" alt="" /> <em>What... is happening here?</em></p>
+<p><img src="tech/map/geometry/lovecraft2.png" alt="" /> <em>Even the thickened roads, before calculating intersection
+polygons, look broken.</em></p>
+<p><img src="tech/map/geometry/lovecraft3.png" alt="" /> <em>Before I can investigate, somebody has already fixed the
+problem upstream in OSM!</em></p>
 <!-- I think there are cases where two thick roads overlap, but don't share an intersection. -->
 <h3 id="bad-osm-data"><a class="header" href="#bad-osm-data">Bad OSM data</a></h3>
-<p>Often times, the upstream OSM data is just flat-out wrong. Center lines for divided one-way roads are way too close to each other, so using the number of lanes with a reasonable guess at width produces roads that overlap outside of the intersection. This throws off everything we've done!</p>
+<p>Often times, the upstream OSM data is just flat-out wrong. Center lines for
+divided one-way roads are way too close to each other, so using the number of
+lanes with a reasonable guess at width produces roads that overlap outside of
+the intersection. This throws off everything we've done!</p>
 <p><img src="tech/map/geometry/smushed.png" alt="" /></p>
-<p>Another example is people tagging the lane count incorrectly. A common problem when splitting a bidirectional road into two one-ways (which is what you're supposed to do when there's physical separation like a median) is forgetting to change the lane count. I don't have examples handy, because I've fixed every case I've found.</p>
-<p>An important lesson when trying to write algorithms using OSM data: there's a balance between making your code robust to problems in the data, and trying to fix everything upstream. I attempt a compromise. It's a virtuous cycle -- in trying to use OSM data in this new way, I wind up fixing the data sometimes.</p>
+<p>Another example is people tagging the lane count incorrectly. A common problem
+when splitting a bidirectional road into two one-ways (which is what you're
+supposed to do when there's physical separation like a median) is forgetting to
+change the lane count. I don't have examples handy, because I've fixed every
+case I've found.</p>
+<p>An important lesson when trying to write algorithms using OSM data: there's a
+balance between making your code robust to problems in the data, and trying to
+fix everything upstream. I attempt a compromise. It's a virtuous cycle -- in
+trying to use OSM data in this new way, I wind up fixing the data sometimes.</p>
 <h3 id="highway-onoff-ramps"><a class="header" href="#highway-onoff-ramps">Highway on/off-ramps</a></h3>
-<p>When three nearly parallel roads meet, our algorithm is a bit over-eager with the size of the intersection:</p>
+<p>When three nearly parallel roads meet, our algorithm is a bit over-eager with
+the size of the intersection:</p>
 <p><img src="tech/map/geometry/ramp1.png" alt="" /></p>
-<p>This case isn't even a real &quot;intersection&quot; -- a one-way highway has two different off-ramps jut out. At some point, I had some scribbled diagrams in a notebook somewhere from when I worked on this, but it's lost -- luckily the <a href="https://github.com/a-b-street/abstreet/blob/e2fc59a31aa043a879a372b2350b1f42391ee740/map_model/src/make/initial/geometry.rs#L434">code for this case</a> is pretty simple. This produces much better results here:</p>
+<p>This case isn't even a real &quot;intersection&quot; -- a one-way highway has two
+different off-ramps jut out. At some point, I had some scribbled diagrams in a
+notebook somewhere from when I worked on this, but it's lost -- luckily the
+<a href="https://github.com/a-b-street/abstreet/blob/e2fc59a31aa043a879a372b2350b1f42391ee740/map_model/src/make/initial/geometry.rs#L434">code for this case</a>
+is pretty simple. This produces much better results here:</p>
 <p><img src="tech/map/geometry/ramp2.png" alt="" /></p>
 <h2 id="intersection-consolidation"><a class="header" href="#intersection-consolidation">Intersection consolidation</a></h2>
-<p>The skeptical reader has noticed the suspicious lack of complex intersections so far. Time to dive into that.</p>
+<p>The skeptical reader has noticed the suspicious lack of complex intersections so
+far. Time to dive into that.</p>
 <h3 id="where-short-roads-conspire"><a class="header" href="#where-short-roads-conspire">Where short roads conspire</a></h3>
-<p>In OSM, roads with opposite directions of traffic separated by any sort of center median -- even if it's just a small raised curb -- are mapped as two parallel one-way roads. These're also called divided highways or dual carriageways. When these intersect, we wind up with lots of short &quot;road segments&quot; and several intersections all clustered together:</p>
-<p><img src="tech/map/geometry/divided_simple.png" alt="" />
-<em>The simplest case: the east/west road is a pair of one-ways, and the north/south is a regular road without a median</em></p>
-<p><img src="tech/map/geometry/divided_angle.png" alt="" />
-<em>In case you were hoping these situations always happened at nice 90 degree angles, think again</em></p>
-<p><img src="tech/map/geometry/divided_join.png" alt="" />
-<em>Sometimes one dual carriageway joins back as a regular bidirectional road just before intersecting another dual carriageway...</em></p>
-<p><img src="tech/map/geometry/divided_streetcar.png" alt="" />
-<em>Why not 4 parallel one-way roads? Can't forget street cars!</em></p>
-<p><img src="tech/map/geometry/divided_taipei.png" alt="" />
-<em>And everytime I think I might've handled most cases, I'm humbled by Taipei.</em></p>
-<p>But wait, there's more. How about &quot;dog-leg&quot; intersections, where one road shifts over slightly as it crosses another?</p>
-<p><img src="tech/map/geometry/dogleg_alley.png" alt="" />
-<em>The not-at-all elusive alley dog-leg</em></p>
-<p>But sometimes something looking like a dog-leg actually isn't -- if vehicles can legitimately stop and queue in the middle of the &quot;intersection&quot;, even if it's only one or two of them, then I think that interior &quot;road&quot; deserves to remain separate:</p>
+<p>In OSM, roads with opposite directions of traffic separated by any sort of
+center median -- even if it's just a small raised curb -- are mapped as two
+parallel one-way roads. These're also called divided highways or dual
+carriageways. When these intersect, we wind up with lots of short &quot;road
+segments&quot; and several intersections all clustered together:</p>
+<p><img src="tech/map/geometry/divided_simple.png" alt="" /> <em>The simplest case: the east/west road is a pair of
+one-ways, and the north/south is a regular road without a median</em></p>
+<p><img src="tech/map/geometry/divided_angle.png" alt="" /> <em>In case you were hoping these situations always happened
+at nice 90 degree angles, think again</em></p>
+<p><img src="tech/map/geometry/divided_join.png" alt="" /> <em>Sometimes one dual carriageway joins back as a regular
+bidirectional road just before intersecting another dual carriageway...</em></p>
+<p><img src="tech/map/geometry/divided_streetcar.png" alt="" /> <em>Why not 4 parallel one-way roads? Can't forget
+street cars!</em></p>
+<p><img src="tech/map/geometry/divided_taipei.png" alt="" /> <em>And everytime I think I might've handled most cases,
+I'm humbled by Taipei.</em></p>
+<p>But wait, there's more. How about &quot;dog-leg&quot; intersections, where one road shifts
+over slightly as it crosses another?</p>
+<p><img src="tech/map/geometry/dogleg_alley.png" alt="" /> <em>The not-at-all elusive alley dog-leg</em></p>
+<p>But sometimes something looking like a dog-leg actually isn't -- if vehicles can
+legitimately stop and queue in the middle of the &quot;intersection&quot;, even if it's
+only one or two of them, then I think that interior &quot;road&quot; deserves to remain
+separate:</p>
 <p><img src="tech/map/geometry/dogleg_false.png" alt="" /></p>
-<p>And then there's just the cases where I'm pretty sure civil engineers anticipated me writing this algorithm, and found the most obnoxious angles for roads to meet in order to maximize my pain:</p>
+<p>And then there's just the cases where I'm pretty sure civil engineers
+anticipated me writing this algorithm, and found the most obnoxious angles for
+roads to meet in order to maximize my pain:</p>
 <p><img src="tech/map/geometry/boston_merge.png" alt="" /></p>
 <h3 id="why-we-want-to-do-something-about-it"><a class="header" href="#why-we-want-to-do-something-about-it">Why we want to do something about it</a></h3>
-<p>So hold up, what's the problem? Some areas that people treat as one physical intersection in reality are modelled in OSM as a cluster of intersections, with lots of short &quot;roads&quot; linking them together. It's fine from a graph connectivity and routing perspective. What could go wrong?</p>
-<p>Well for starters, with the algorithm described so far that tries to render the physical shape, it's completely visually incomprehensible:</p>
-<p><img src="tech/map/geometry/hard_to_see.png" alt="" />
-<em>The 4 &quot;interior&quot; intersections here even get stop signs placed!</em></p>
-<p>These complicated intersections are often the ones that would be the most interesting to study in A/B Street, but just try modifying lanes in these cases:</p>
-<p><img src="tech/map/geometry/edit_transit.png" alt="" />
-<em>Considering a bus lane for the 520 off-ramp at Montlake?</em></p>
-<p>Now throw traffic signals into the mix. A/B Street tries to simulate those, so when we have a cluster of two or four of them super close, now we have to somehow try to synchronize their timing. When somebody wants to edit them, now they have to operate on all of them at once! We even extended the UI to handle that, but it's quite a poor editing experience.</p>
-<p><img src="tech/map/geometry/edit_one.png" alt="" />
-<em>Reasoning about 4 separate pieces of one traffic signal is not pleasant</em></p>
-<p><img src="tech/map/geometry/edit_multiple.png" alt="" />
-<em>We can do slightly better by editing all 4 at once, but what do those movement arrows in the middle even mean? You have to reason about where vehicles might've come from to even get there.</em></p>
-<p>And finally, traffic simulation gets MUCH harder. A/B Street models vehicles as having some length, meaning a vehicle's front can make it through one intersection, but its tail gets stuck there:</p>
-<p><img src="tech/map/geometry/tails.png" alt="" />
-<em>These two cars are blocking all movements through the pair of intersections</em></p>
-<p>At the simulation layer, vehicles moving through an intersection conflict with each other very coarsely. If a vehicle is partially stuck in the intersection, it prevents othr vehicles from starting potentially conflicting turns. So to prevent this problem from happening, the simulation has complicated rules so that vehicles do not &quot;block the box&quot; -- if they enter an intersection, they must be guaranteed to fully exit and clear it, not get stuck somewhere in the middle. These rules blow up in the presence of short roads like this. Lots of effort has gone into workarounds at the simulation layer, but... just fixing the representation in the map model seems much more desirable.</p>
+<p>So hold up, what's the problem? Some areas that people treat as one physical
+intersection in reality are modelled in OSM as a cluster of intersections, with
+lots of short &quot;roads&quot; linking them together. It's fine from a graph connectivity
+and routing perspective. What could go wrong?</p>
+<p>Well for starters, with the algorithm described so far that tries to render the
+physical shape, it's completely visually incomprehensible:</p>
+<p><img src="tech/map/geometry/hard_to_see.png" alt="" /> <em>The 4 &quot;interior&quot; intersections here even get stop signs
+placed!</em></p>
+<p>These complicated intersections are often the ones that would be the most
+interesting to study in A/B Street, but just try modifying lanes in these cases:</p>
+<p><img src="tech/map/geometry/edit_transit.png" alt="" /> <em>Considering a bus lane for the 520 off-ramp at Montlake?</em></p>
+<p>Now throw traffic signals into the mix. A/B Street tries to simulate those, so
+when we have a cluster of two or four of them super close, now we have to
+somehow try to synchronize their timing. When somebody wants to edit them, now
+they have to operate on all of them at once! We even extended the UI to handle
+that, but it's quite a poor editing experience.</p>
+<p><img src="tech/map/geometry/edit_one.png" alt="" /> <em>Reasoning about 4 separate pieces of one traffic signal is
+not pleasant</em></p>
+<p><img src="tech/map/geometry/edit_multiple.png" alt="" /> <em>We can do slightly better by editing all 4 at once, but
+what do those movement arrows in the middle even mean? You have to reason about
+where vehicles might've come from to even get there.</em></p>
+<p>And finally, traffic simulation gets MUCH harder. A/B Street models vehicles as
+having some length, meaning a vehicle's front can make it through one
+intersection, but its tail gets stuck there:</p>
+<p><img src="tech/map/geometry/tails.png" alt="" /> <em>These two cars are blocking all movements through the pair of
+intersections</em></p>
+<p>At the simulation layer, vehicles moving through an intersection conflict with
+each other very coarsely. If a vehicle is partially stuck in the intersection,
+it prevents othr vehicles from starting potentially conflicting turns. So to
+prevent this problem from happening, the simulation has complicated rules so
+that vehicles do not &quot;block the box&quot; -- if they enter an intersection, they must
+be guaranteed to fully exit and clear it, not get stuck somewhere in the middle.
+These rules blow up in the presence of short roads like this. Lots of effort has
+gone into workarounds at the simulation layer, but... just fixing the
+representation in the map model seems much more desirable.</p>
 <h3 id="goal"><a class="header" href="#goal">Goal</a></h3>
-<p>In reality, many of these clusters of intersections and short roads are actually just one &quot;logical&quot; intersection. If you consider where vehicles stop or where crosswalks are placed, this can make this definition a little bit more clear, but it's somewhat subjective. In A/B Street, we aim to &quot;consolidate&quot; this cluster into just one intersection. Visually coherent geometry, reasoning about a single traffic signal, and preventing vehicles from getting stuck in the cluster are the goals.</p>
-<p>Before we dive into the approach to consolidate, let's look at some success stories.</p>
-<p><img src="tech/map/geometry/better_streetcar.png" alt="" />
-<em>A single intersection handles the 4 parallel OSM ways.</em></p>
-<p><img src="tech/map/geometry/better_tsigs.png" alt="" />
-<em>You can now edit the signal timing as if this is just a regular massive Arizona intersection.</em></p>
-<p><img src="tech/map/geometry/better_angled.png" alt="" />
-<em>The angled cut is a bit too aggressive and the crosswalk &quot;leaks&quot; out, but this is a definite improvement.</em></p>
-<p><img src="tech/map/geometry/better_montlake.png" alt="" />
-<em>Four intersections become one, again with a slight geometric distortion</em></p>
+<p>In reality, many of these clusters of intersections and short roads are actually
+just one &quot;logical&quot; intersection. If you consider where vehicles stop or where
+crosswalks are placed, this can make this definition a little bit more clear,
+but it's somewhat subjective. In A/B Street, we aim to &quot;consolidate&quot; this
+cluster into just one intersection. Visually coherent geometry, reasoning about
+a single traffic signal, and preventing vehicles from getting stuck in the
+cluster are the goals.</p>
+<p>Before we dive into the approach to consolidate, let's look at some success
+stories.</p>
+<p><img src="tech/map/geometry/better_streetcar.png" alt="" /> <em>A single intersection handles the 4 parallel OSM
+ways.</em></p>
+<p><img src="tech/map/geometry/better_tsigs.png" alt="" /> <em>You can now edit the signal timing as if this is just a
+regular massive Arizona intersection.</em></p>
+<p><img src="tech/map/geometry/better_angled.png" alt="" /> <em>The angled cut is a bit too aggressive and the crosswalk
+&quot;leaks&quot; out, but this is a definite improvement.</em></p>
+<p><img src="tech/map/geometry/better_montlake.png" alt="" /> <em>Four intersections become one, again with a slight
+geometric distortion</em></p>
 <h3 id="a-solution-two-passes"><a class="header" href="#a-solution-two-passes">A solution: two passes</a></h3>
-<p>For some history getting to this point, check out <a href="https://github.com/a-b-street/abstreet/issues/654">previous attempts</a> and <a href="https://github.com/a-b-street/abstreet/pull/710">more before/after examples</a>.</p>
+<p>For some history getting to this point, check out
+<a href="https://github.com/a-b-street/abstreet/issues/654">previous attempts</a> and
+<a href="https://github.com/a-b-street/abstreet/pull/710">more before/after examples</a>.</p>
 <p>Consolidating a complex intersection happens in a few steps.</p>
 <ol>
 <li>Identify the short roads</li>
-<li>Run the regular algorithm for intersection geometry, and remember how much each road's center line gets trimmed back</li>
+<li>Run the regular algorithm for intersection geometry, and remember how much
+each road's center line gets trimmed back</li>
 <li>Remove the short road and fix up graph connectivity</li>
-<li>Use the &quot;pre-trimmed&quot; center line to project each surviving road to the left and right</li>
-<li>Assemble those points in order to create the consolidated intersection's polygon</li>
+<li>Use the &quot;pre-trimmed&quot; center line to project each surviving road to the left
+and right</li>
+<li>Assemble those points in order to create the consolidated intersection's
+polygon</li>
 </ol>
 <p>Step 1 and 5 are covered in more detail in below sections.</p>
-<p>For step 2, we start with the regular algorithm described so far, applied to each intersection:</p>
-<p><img src="tech/map/geometry/consolidate_pt1.png" alt="" />
-<em>The results of running the algorithm on the 2 green intersections. The pink road in the middle is marked for merging.</em></p>
-<p>Then we delete the short road. The <a href="https://github.com/a-b-street/abstreet/blob/c5671557defbd80ce749b8fa7faf7c166b3d23dd/map_model/src/raw.rs#L300">details</a> of how this is done are particular to A/B Street's intermediate representation of a map model. Graph connectivity and all sorts of turn restrictions must be preserved. But geometrically, it just looks like this:</p>
+<p>For step 2, we start with the regular algorithm described so far, applied to
+each intersection:</p>
+<p><img src="tech/map/geometry/consolidate_pt1.png" alt="" /> <em>The results of running the algorithm on the 2 green
+intersections. The pink road in the middle is marked for merging.</em></p>
+<p>Then we delete the short road. The
+<a href="https://github.com/a-b-street/abstreet/blob/c5671557defbd80ce749b8fa7faf7c166b3d23dd/map_model/src/raw.rs#L300">details</a>
+of how this is done are particular to A/B Street's intermediate representation
+of a map model. Graph connectivity and all sorts of turn restrictions must be
+preserved. But geometrically, it just looks like this:</p>
 <p><img src="tech/map/geometry/consolidate_pt2.png" alt="" /></p>
 <p>Then we run step 4, finding the left and right side of each surviving road:</p>
-<p><img src="tech/map/geometry/consolidate_pt3.png" alt="" />
-<em>Black lines show the left and right side of each road. The red dots are the endpoints of each line.</em></p>
-<p>Now if we just use those red dots, we can create the final polygon for this consolidated intersection.</p>
+<p><img src="tech/map/geometry/consolidate_pt3.png" alt="" /> <em>Black lines show the left and right side of each road.
+The red dots are the endpoints of each line.</em></p>
+<p>Now if we just use those red dots, we can create the final polygon for this
+consolidated intersection.</p>
 <h3 id="sorting-revisited"><a class="header" href="#sorting-revisited">Sorting revisited</a></h3>
-<p>To assemble the endpoints into a polygon, we need to know what order they go in. If you recall from an earlier section, we used the original shared point from OSM to do this:</p>
+<p>To assemble the endpoints into a polygon, we need to know what order they go in.
+If you recall from an earlier section, we used the original shared point from
+OSM to do this:</p>
 <p><img src="tech/map/geometry/sorting_orig_center.png" alt="" /></p>
-<p>But now things are less clear -- we have multiple shared points, from before consolidation. As a first pass, maybe we can just average all of the points, call that the &quot;center,&quot; calculate the angle to each point, and order clockwise.</p>
+<p>But now things are less clear -- we have multiple shared points, from before
+consolidation. As a first pass, maybe we can just average all of the points,
+call that the &quot;center,&quot; calculate the angle to each point, and order clockwise.</p>
 <p>(diagram)</p>
-<p>Before trimming, how do you do this? The point farthest away? A point a fixed few meters away?</p>
+<p>Before trimming, how do you do this? The point farthest away? A point a fixed
+few meters away?</p>
 <p>For consolidated intersections, probably use the pre-trimmed point</p>
-<p>Example Tempe intersection with light rail that blows it up. Center vs polylabel.</p>
+<p>Example Tempe intersection with light rail that blows it up. Center vs
+polylabel.</p>
 <h3 id="finding-the-short-roads"><a class="header" href="#finding-the-short-roads">Finding the short roads</a></h3>
 <p>I've been tagging junction=intersection manually upstream to opt them in slowly.</p>
-<p>Tried some approaches that look for all short road (pre trimmed or post?). Usually breaks.</p>
+<p>Tried some approaches that look for all short road (pre trimmed or post?).
+Usually breaks.</p>
 <p>Targeted heuristics for 2 and 4-clusters of tsigs.</p>
 <p>Examples in Loop 101 -- it gets crazy.</p>
-<p>Focusing on tsig clusters for now, since they cause the most problems to traffic sim, but very much ongoing work.</p>
+<p>Focusing on tsig clusters for now, since they cause the most problems to traffic
+sim, but very much ongoing work.</p>
 <h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
-<p>Given how much time I've sunk into trying to automatically generate decent geometry from an OSM schema absolutely not meant for this, I hope you don't fault me for wanting to try some radically different ideas, like mapping from scratch. There are some intersections just not worth trying to squeeze into OSM's model. Maybe in some future, I'll explore something very different. Or play around with some of the proposals to tag OSM junction areas.</p>
+<p>Given how much time I've sunk into trying to automatically generate decent
+geometry from an OSM schema absolutely not meant for this, I hope you don't
+fault me for wanting to try some radically different ideas, like mapping from
+scratch. There are some intersections just not worth trying to squeeze into
+OSM's model. Maybe in some future, I'll explore something very different. Or
+play around with some of the proposals to tag OSM junction areas.</p>
 <h2 id="appendices"><a class="header" href="#appendices">Appendices</a></h2>
 <h3 id="tricks-and-tooling"><a class="header" href="#tricks-and-tooling">Tricks and tooling</a></h3>
 <ul>
 <li>screenshot diff as a regression test!</li>
-<li>back and forth on RawMap editor and marking stuff in the main game. fast reimports. be able to adjust road centers in rawmap, quickly toggle shorties on or off, preview geometry.</li>
-<li>how to debug? this is wedged in the middle of an import process, should we emit extra &quot;side output&quot; files to visualize later? Some kind of step-through debugger, live edit code would be fantastic.</li>
+<li>back and forth on RawMap editor and marking stuff in the main game. fast
+reimports. be able to adjust road centers in rawmap, quickly toggle shorties
+on or off, preview geometry.</li>
+<li>how to debug? this is wedged in the middle of an import process, should we
+emit extra &quot;side output&quot; files to visualize later? Some kind of step-through
+debugger, live edit code would be fantastic.</li>
 </ul>
 <h3 id="hall-of-lovecraftian-horrors--the-stress-tests"><a class="header" href="#hall-of-lovecraftian-horrors--the-stress-tests">Hall of Lovecraftian horrors / the stress tests</a></h3>
 <p>montlake/520</p>
 <p>roundabouts</p>
 <p>south of fremont bridge</p>
 <h3 id="radically-simpler-approach"><a class="header" href="#radically-simpler-approach">Radically simpler approach?</a></h3>
-<p>Why not just thicken roads, calc bool overlap?  robust bool-op library, and also three-ways</p>
+<p>Why not just thicken roads, calc bool overlap? robust bool-op library, and also
+three-ways</p>
 <p>why not map manually? OSM sort of has schema. maybe infer for most but not all.</p>
 <h3 id="other-data-sources"><a class="header" href="#other-data-sources">Other data sources</a></h3>
-<p>I've come across a few cities that seem to have a vector dataset describing road polygons or curbs. I haven't tried working with any of these before, but it would be a useful exercise to start with one of these as the base, and snap OSM road segments to this to get metadata about lanes and connectivity, but not geometry.</p>
+<p>I've come across a few cities that seem to have a vector dataset describing road
+polygons or curbs. I haven't tried working with any of these before, but it
+would be a useful exercise to start with one of these as the base, and snap OSM
+road segments to this to get metadata about lanes and connectivity, but not
+geometry.</p>
 <ul>
-<li><a href="https://streetsillustrated.seattle.gov/map/">Seattle Streets Illustrated</a> includes some kind of CAD basemap that looks amazingly realistic
+<li><a href="https://streetsillustrated.seattle.gov/map/">Seattle Streets Illustrated</a>
+includes some kind of CAD basemap that looks amazingly realistic
 <ul>
-<li>From some old emails with King County GIS, this is based on an impervious surface layer with a license preventing it from being released as public data</li>
+<li>From some old emails with King County GIS, this is based on an impervious
+surface layer with a license preventing it from being released as public
+data</li>
 </ul>
 </li>
-<li>Actually, <a href="https://data.seattle.gov/dataset/Pavement-Edge-zip/gy82-cq84">https://data.seattle.gov/dataset/Pavement-Edge-zip/gy82-cq84</a> appears to be the curbs for Seattle! Possibly the data is from 1999, updated maybe in 2011.</li>
-<li><a href="https://distanciamiento.inspide.com">https://distanciamiento.inspide.com</a> appears to have detailed sidewalk polygons for Madrid</li>
+<li>Actually, <a href="https://data.seattle.gov/dataset/Pavement-Edge-zip/gy82-cq84">https://data.seattle.gov/dataset/Pavement-Edge-zip/gy82-cq84</a>
+appears to be the curbs for Seattle! Possibly the data is from 1999, updated
+maybe in 2011.</li>
+<li><a href="https://distanciamiento.inspide.com">https://distanciamiento.inspide.com</a> appears to have detailed sidewalk
+polygons for Madrid</li>
 </ul>
-<p><img src="tech/map/geometry/streets_illustrated.png" alt="" />
-<em>The Fremont bridge and Nickerson looks fantastic in Seattle Streets Illustrated, but the data isn't public</em></p>
-<p><img src="tech/map/geometry/pavement_edge.png" alt="" />
-<em>The pavement edge dataset is public, though, and seems to be quite similar!</em></p>
-<p><img src="tech/map/geometry/pullman.png" alt="" />
-<em>Pullman, WA provided sidewalk polygons for mapping in OSM</em></p>
-<p>These vector datasets feel like some sort of holy grail, but all of the work described in this article is still useful, because:</p>
+<p><img src="tech/map/geometry/streets_illustrated.png" alt="" /> <em>The Fremont bridge and Nickerson looks fantastic
+in Seattle Streets Illustrated, but the data isn't public</em></p>
+<p><img src="tech/map/geometry/pavement_edge.png" alt="" /> <em>The pavement edge dataset is public, though, and seems
+to be quite similar!</em></p>
+<p><img src="tech/map/geometry/pullman.png" alt="" /> <em>Pullman, WA provided sidewalk polygons for mapping in OSM</em></p>
+<p>These vector datasets feel like some sort of holy grail, but all of the work
+described in this article is still useful, because:</p>
 <ol>
 <li>Not every city has this kind of public data</li>
-<li>If road edits need to legitimately widen or shrink a road, it's not obvious how to modify these curbs. But then again, just rechannelizing lanes, subject to the area that's already been paved, is kind of the main type of edit in A/B Street...</li>
+<li>If road edits need to legitimately widen or shrink a road, it's not obvious
+how to modify these curbs. But then again, just rechannelizing lanes,
+subject to the area that's already been paved, is kind of the main type of
+edit in A/B Street...</li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="map-model-details"><a class="header" href="#map-model-details">Map model details</a></h1>
 <p>A/B Street builds a rich representation of a city map using OpenStreetMap (OSM)
@@ -3181,8 +3383,8 @@ temporary/unintentional reasons, where pedestrian&lt;-&gt;bicycle transitions wi
 happen.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="importing"><a class="header" href="#importing">Importing</a></h1>
 <p>This chapter describes the process of transforming OSM extracts into A/B
-Street's map model. These are implementation details; you may be looking <a href="tech/map/importing/../../../user/new_city.html">for
-the user guide to importing a new city</a>.</p>
+Street's map model. These are implementation details; you may be looking
+<a href="tech/map/importing/../../../user/new_city.html">for the user guide to importing a new city</a>.</p>
 <p>The steps are:</p>
 <ol>
 <li>A large .osm file is clipped to a hand-drawn boundary region, using
@@ -3670,9 +3872,23 @@ A/B Street. All code lives in the <code>sim</code> crate.</p>
 <p><a href="https://youtu.be/chYd5I-5oyc?t=1086">This recorded presentation</a> covers some of
 this.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="discrete-event-traffic-simulation-laggy-heads-and-ghosts"><a class="header" href="#discrete-event-traffic-simulation-laggy-heads-and-ghosts">Discrete event traffic simulation, laggy heads, and ghosts</a></h1>
-<p>A/B Street's traffic simulation isn't based on any research papers or existing systems, so this article aims to motivate and explain how it works. This article focuses on how the different agents (drivers, bicyclists, and pedestrians) move around. If you're wondering how we figure out where these agents should go or what time they decide to take trips, go read about <a href="tech/trafficsim/discrete_event/../travel_demand.html">travel demand models</a>.</p>
-<p>I'm not aiming to survey how other traffic simulation models work here. In short, some focus on &quot;macroscopic&quot; patterns, like the volume of traffic along a particular highway over time. A/B Street is more on the &quot;microscopic&quot; side, modeling individual agents making decisions over time. Many such models use &quot;discrete-time&quot; simulation, where every agent senses and reacts to the world every time-step (0.1 seconds or so). A/B Street actually started with this -- see the <a href="tech/trafficsim/discrete_event/index.html#appendix-discrete-time-simulation">appendix</a> for more background. But early on, I switched to a discrete-event simulation instead. So, let's jump into that!</p>
-<p>Note: I'll provide references to the current implementation. Someday I'll write that article describing how to build a traffic simulation from scratch...</p>
+<p>A/B Street's traffic simulation isn't based on any research papers or existing
+systems, so this article aims to motivate and explain how it works. This article
+focuses on how the different agents (drivers, bicyclists, and pedestrians) move
+around. If you're wondering how we figure out where these agents should go or
+what time they decide to take trips, go read about
+<a href="tech/trafficsim/discrete_event/../travel_demand.html">travel demand models</a>.</p>
+<p>I'm not aiming to survey how other traffic simulation models work here. In
+short, some focus on &quot;macroscopic&quot; patterns, like the volume of traffic along a
+particular highway over time. A/B Street is more on the &quot;microscopic&quot; side,
+modeling individual agents making decisions over time. Many such models use
+&quot;discrete-time&quot; simulation, where every agent senses and reacts to the world
+every time-step (0.1 seconds or so). A/B Street actually started with this --
+see the <a href="tech/trafficsim/discrete_event/index.html#appendix-discrete-time-simulation">appendix</a> for more background. But
+early on, I switched to a discrete-event simulation instead. So, let's jump into
+that!</p>
+<p>Note: I'll provide references to the current implementation. Someday I'll write
+that article describing how to build a traffic simulation from scratch...</p>
 <ul>
 <li><a href="tech/trafficsim/discrete_event/index.html#starting-simple-pedestrians">Starting simple: Pedestrians</a>
 <ul>
@@ -3692,42 +3908,122 @@ this.</p>
 <li><a href="tech/trafficsim/discrete_event/index.html#appendix-discrete-time-simulation">Appendix: discrete-time simulation</a></li>
 </ul>
 <h2 id="starting-simple-pedestrians"><a class="header" href="#starting-simple-pedestrians">Starting simple: Pedestrians</a></h2>
-<p>Imagine a simple movement model for pedestrians. Usually they exist at some point along a sidewalk and can move in one direction or the other.  At intersections, different sidewalks are connected by crosswalks, and pedestrians can also move bidirectionally on those, after waiting for the right time to cross.</p>
+<p>Imagine a simple movement model for pedestrians. Usually they exist at some
+point along a sidewalk and can move in one direction or the other. At
+intersections, different sidewalks are connected by crosswalks, and pedestrians
+can also move bidirectionally on those, after waiting for the right time to
+cross.</p>
 <!-- diagram sidewalk and turn -->
-<p>We'll make a few assumptions about pedestrians. They follow the sidewalks and crosswalks perfectly, never deciding to <a href="tech/trafficsim/discrete_event/link">honor their inner Pythagorean</a>. They travel at a fixed speed and change that speed instantly -- no smooth acceleration. That fixed speed could depend on both their preferred walking speed and on the current sidewalk's elevation gain. These poor robotic pedestrians never stop to smell the flowers, write an angry neighborly note, or pet a pupper -- they just walk, or wait. Online dating is also so pervasive in this simulation that pedestrians ghost -- through each other, that is. There are more interesting models of pedestrian movement like the <a href="tech/trafficsim/discrete_event/link...">social force model</a> where people change speeds in crowds, but A/B Street is focused on sad American cities where you don't really see many people walking in one place. So there's no collision between pedestrians at all; they just pass through each other, temporarily losing their individuality for rendering purposes:</p>
+<p>We'll make a few assumptions about pedestrians. They follow the sidewalks and
+crosswalks perfectly, never deciding to <a href="tech/trafficsim/discrete_event/link">honor their inner Pythagorean</a>.
+They travel at a fixed speed and change that speed instantly -- no smooth
+acceleration. That fixed speed could depend on both their preferred walking
+speed and on the current sidewalk's elevation gain. These poor robotic
+pedestrians never stop to smell the flowers, write an angry neighborly note, or
+pet a pupper -- they just walk, or wait. Online dating is also so pervasive in
+this simulation that pedestrians ghost -- through each other, that is. There are
+more interesting models of pedestrian movement like the
+<a href="tech/trafficsim/discrete_event/link...">social force model</a> where people change speeds in crowds, but A/B
+Street is focused on sad American cities where you don't really see many people
+walking in one place. So there's no collision between pedestrians at all; they
+just pass through each other, temporarily losing their individuality for
+rendering purposes:</p>
 <!-- gif -->
-<p>In the world of discrete timesteps, you could imagine each pedestrian has very simple logic. At any moment, they just continue walking one direction or the other at their fixed speed along a sidewalk or crosswalk. Or they pause at the end of a sidewalk, awaiting their turn at a stop sign or traffic signal.</p>
+<p>In the world of discrete timesteps, you could imagine each pedestrian has very
+simple logic. At any moment, they just continue walking one direction or the
+other at their fixed speed along a sidewalk or crosswalk. Or they pause at the
+end of a sidewalk, awaiting their turn at a stop sign or traffic signal.</p>
 <h3 id="discrete-events"><a class="header" href="#discrete-events">Discrete events</a></h3>
-<p>Don't the constant updates every time-step seem wasteful? Most of the time, a pedestrian is in a steady-state -- walking or waiting. Since they walk at a fixed speed, we can just linearly interpolate their exact position at any moment in time if we want to draw them.</p>
-<p>Instead of looping through every agent every time-step, in a discrete-event system, we just have one giant priority queue of events, scheduled to happen at some time in the future. Each agent remains in a certain state for a period of time, and schedules an event to transition themselves to a different state.</p>
+<p>Don't the constant updates every time-step seem wasteful? Most of the time, a
+pedestrian is in a steady-state -- walking or waiting. Since they walk at a
+fixed speed, we can just linearly interpolate their exact position at any moment
+in time if we want to draw them.</p>
+<p>Instead of looping through every agent every time-step, in a discrete-event
+system, we just have one giant priority queue of events, scheduled to happen at
+some time in the future. Each agent remains in a certain state for a period of
+time, and schedules an event to transition themselves to a different state.</p>
 <p>In the case of pedestrians, this works like this:</p>
 <ol>
-<li>A pedestrian begins at 30 meters distance along their first sidewalk. They want to walk forwards on the sidewalk, so they calculate the distance to the end of the sidewalk -- say another 70 meters -- and divide that by their preferred speed, scheduling an event an appropriate amount of time later -- say 10 seconds.</li>
-<li>For the next 10 seconds, that pedestrian is in the <code>Crossing</code> state, which has a <code>DistanceInterval</code> stating that they're moving on a certain sidewalk from 30 to 70 meters. The <code>TimeInterval</code> says that this state is occuring from time 0 to 10 seconds. We can linearly interpolate to find their position for drawing.</li>
-<li>At 10 seconds, the scheduler wakes up the pedestrian. They're now at the end of the sidewalk, so they look at the intersection and ask to cross. There's a traffic signal, and the almighty hand says NOPE, so they hand over control to the intersection and just mark themselves as <code>WaitingToTurn</code> state. No events are scheduled to update them.</li>
-<li>But the intersection remembers the list of waiting agents. Some time later, the light changes, and the intersection &quot;wakes up&quot; all of the agents who now have a green.</li>
-<li>Our pedestrian calculates a new <code>Crossing</code> state for the crosswalk. This state too happens over some distance and time interval.</li>
-<li>At the end of the crosswalk, the pedestrian immediately enters another <code>Crossing</code> state for the next sidewalk.</li>
+<li>A pedestrian begins at 30 meters distance along their first sidewalk. They
+want to walk forwards on the sidewalk, so they calculate the distance to the
+end of the sidewalk -- say another 70 meters -- and divide that by their
+preferred speed, scheduling an event an appropriate amount of time later --
+say 10 seconds.</li>
+<li>For the next 10 seconds, that pedestrian is in the <code>Crossing</code> state, which
+has a <code>DistanceInterval</code> stating that they're moving on a certain sidewalk
+from 30 to 70 meters. The <code>TimeInterval</code> says that this state is occuring
+from time 0 to 10 seconds. We can linearly interpolate to find their
+position for drawing.</li>
+<li>At 10 seconds, the scheduler wakes up the pedestrian. They're now at the end
+of the sidewalk, so they look at the intersection and ask to cross. There's
+a traffic signal, and the almighty hand says NOPE, so they hand over control
+to the intersection and just mark themselves as <code>WaitingToTurn</code> state. No
+events are scheduled to update them.</li>
+<li>But the intersection remembers the list of waiting agents. Some time later,
+the light changes, and the intersection &quot;wakes up&quot; all of the agents who now
+have a green.</li>
+<li>Our pedestrian calculates a new <code>Crossing</code> state for the crosswalk. This
+state too happens over some distance and time interval.</li>
+<li>At the end of the crosswalk, the pedestrian immediately enters another
+<code>Crossing</code> state for the next sidewalk.</li>
 </ol>
 <p>We can visualize this with a finite-state machine diagram:</p>
 <!-- FSM diagram? -->
 <!-- link to mechanics/walking.rs, scheduler.rs, sim step() -->
 <h2 id="vehicles"><a class="header" href="#vehicles">Vehicles</a></h2>
-<p>Discrete events are obviously much simpler for pedestrians, but there were some pretty drastic assumptions there that won't work for vehicles. It takes a few more tricks for A/B Street to model cars, bikes, and buses (I'll just use &quot;vehicle&quot; from here on.)</p>
-<p>First let's understand what vehicles can do. They travel in one direction along individual lanes, and they queue behind each other -- no ghosting. At intersections, they wait as needed, then move along a &quot;turn,&quot; destined for a target lane. There are two major differences from reality that we'll take as assumptions.</p>
-<p>First, vehicles instantly change speeds -- no smooth acceleration from rest, or modeling of safe stoping distance. So if a vehicle starts at the beginning of an empty lane, they instantly jump from rest to the maximum speed limit for that road. They travel at that maximum speed limit until the moment their front bumper strikes the boundary between road and intersection, then they stop immediately. This doesn't model highway driving at all, where things like jam waves are interesting to study and require more realistic kinematics and a model of driver reaction time. But A/B Street is focused on in-city movement, and the essence of scarcity I want to model is capacity on lanes and contention at intersections. What happens in between isn't as important. I think you'll find that the overall traffic patterns emerging in A/B Street still look compellingly realistic.</p>
+<p>Discrete events are obviously much simpler for pedestrians, but there were some
+pretty drastic assumptions there that won't work for vehicles. It takes a few
+more tricks for A/B Street to model cars, bikes, and buses (I'll just use
+&quot;vehicle&quot; from here on.)</p>
+<p>First let's understand what vehicles can do. They travel in one direction along
+individual lanes, and they queue behind each other -- no ghosting. At
+intersections, they wait as needed, then move along a &quot;turn,&quot; destined for a
+target lane. There are two major differences from reality that we'll take as
+assumptions.</p>
+<p>First, vehicles instantly change speeds -- no smooth acceleration from rest, or
+modeling of safe stoping distance. So if a vehicle starts at the beginning of an
+empty lane, they instantly jump from rest to the maximum speed limit for that
+road. They travel at that maximum speed limit until the moment their front
+bumper strikes the boundary between road and intersection, then they stop
+immediately. This doesn't model highway driving at all, where things like jam
+waves are interesting to study and require more realistic kinematics and a model
+of driver reaction time. But A/B Street is focused on in-city movement, and the
+essence of scarcity I want to model is capacity on lanes and contention at
+intersections. What happens in between isn't as important. I think you'll find
+that the overall traffic patterns emerging in A/B Street still look compellingly
+realistic.</p>
 <!-- show perfect stop -->
-<p>The second article of funny business is lane-changing. Let's assume that vehicles don't change lanes in the middle of a road. Instead, vehicles shift left and right while moving through intersections. So if somebody needs to use a left turn lane, then at the intersection one road back, they'll choose to slide over during their turn. Any conflicting movements with other vehicles is handled at the intersection already.</p>
+<p>The second article of funny business is lane-changing. Let's assume that
+vehicles don't change lanes in the middle of a road. Instead, vehicles shift
+left and right while moving through intersections. So if somebody needs to use a
+left turn lane, then at the intersection one road back, they'll choose to slide
+over during their turn. Any conflicting movements with other vehicles is handled
+at the intersection already.</p>
 <!-- show path moving to the left -->
-<p>This also means there's no over-taking. If a car gets stuck behind a bike moving slowly uphill, so be it.</p>
+<p>This also means there's no over-taking. If a car gets stuck behind a bike moving
+slowly uphill, so be it.</p>
 <!-- slow uphill -->
 <p>We'll try to relax this second assumption later.</p>
 <h3 id="the-state-machine"><a class="header" href="#the-state-machine">The state machine</a></h3>
-<p>So let's figure out how to model these vehicles. The approach used by pedestrians, with <code>Crossing</code> and <code>WaitingToAdvance</code> states doesn't quite work, because nothing would stop vehicles from plowing into each other. So let's introduce a third state -- <code>Queued</code>. When a vehicle enters a new lane, it enters the <code>Crossing</code> state as usual, calculating the &quot;best-case&quot; time to cross the entire length of the lane at the max speed limit. This assumes nobody's in the way! But when this state ends, we can only transition the vehicle to the <code>WaitingToAdvance</code> state if they're the &quot;lead&quot; vehicle in the current lane's queue. If they have a &quot;leader&quot; vehicle, then they enter the <code>Queued</code> state and register as a &quot;follower&quot; of this &quot;leader&quot; in the queue.</p>
+<p>So let's figure out how to model these vehicles. The approach used by
+pedestrians, with <code>Crossing</code> and <code>WaitingToAdvance</code> states doesn't quite work,
+because nothing would stop vehicles from plowing into each other. So let's
+introduce a third state -- <code>Queued</code>. When a vehicle enters a new lane, it enters
+the <code>Crossing</code> state as usual, calculating the &quot;best-case&quot; time to cross the
+entire length of the lane at the max speed limit. This assumes nobody's in the
+way! But when this state ends, we can only transition the vehicle to the
+<code>WaitingToAdvance</code> state if they're the &quot;lead&quot; vehicle in the current lane's
+queue. If they have a &quot;leader&quot; vehicle, then they enter the <code>Queued</code> state and
+register as a &quot;follower&quot; of this &quot;leader&quot; in the queue.</p>
 <!-- time0: leader in Crossing, follower in Crossing -->
 <!-- time1: leader in WaitingToAdvance, follower in Crossing -->
 <!-- time2: leader in WaitingToAdvance, follower in Queued -->
-<p>When the vehicle at the very front of a lane enters the intersection and vacates their old lane, then they &quot;wake up&quot; their follower. The follower changes from <code>Queued</code> back to <code>Crossing</code>. Note that the follower doesn't instantly transition to <code>WaitingToAdvance</code>, since they're not quite at the end of the lane. Based on the length of the leader vehicle, the follower has some short distance left to cover. <!-- check details here... --></p>
+<p>When the vehicle at the very front of a lane enters the intersection and vacates
+their old lane, then they &quot;wake up&quot; their follower. The follower changes from
+<code>Queued</code> back to <code>Crossing</code>. Note that the follower doesn't instantly transition
+to <code>WaitingToAdvance</code>, since they're not quite at the end of the lane. Based on
+the length of the leader vehicle, the follower has some short distance left to
+cover. <!-- check details here... --></p>
 <p>We can again understand all of this with a finite-state machine:</p>
 <p><img src="tech/trafficsim/discrete_event/vehicle_fsm.png" alt="" /></p>
 <!-- code in mechanics/car,driving -->
@@ -3735,8 +4031,18 @@ this.</p>
 <p>Most of the time, we don't care exactly where on a lane some vehicle is. But we
 do need to know for drawing and for a few cases during simulation, such as
 determining when a bus is lined up with a bus stop in the middle of a lane.</p>
-<p>To calculate exact positions, we walk along each lane's queue from front to back. The key idea is that leaders bound the position of followers, and we can &quot;lazily evaluate&quot; the position of followers. This means that calculating one vehicle's position costs as much as calculating the entire queue's in the worst case, but that's usually fine -- for drawing, we want everyone anyway.</p>
-<p>The process is simple. We use each vehicle's state to determine the possible position of their front bumper. <code>WaitingToAdvance</code> means the vehicle is at the very end of the lane. For vehicles still <code>Crossing</code>, we linearly interpolate the time and distance intervals. Then as we walk from front to back, we maintain a &quot;bound&quot; for the next vehicle's position. This is based on the front position of the current vehicle, plus the vehicle's length and a fixed following distance (which, note, is not based on speed).</p>
+<p>To calculate exact positions, we walk along each lane's queue from front to
+back. The key idea is that leaders bound the position of followers, and we can
+&quot;lazily evaluate&quot; the position of followers. This means that calculating one
+vehicle's position costs as much as calculating the entire queue's in the worst
+case, but that's usually fine -- for drawing, we want everyone anyway.</p>
+<p>The process is simple. We use each vehicle's state to determine the possible
+position of their front bumper. <code>WaitingToAdvance</code> means the vehicle is at the
+very end of the lane. For vehicles still <code>Crossing</code>, we linearly interpolate the
+time and distance intervals. Then as we walk from front to back, we maintain a
+&quot;bound&quot; for the next vehicle's position. This is based on the front position of
+the current vehicle, plus the vehicle's length and a fixed following distance
+(which, note, is not based on speed).</p>
 <!-- diagram -->
 <!-- queue.rs -->
 <h3 id="laggy-heads"><a class="header" href="#laggy-heads">Laggy heads</a></h3>
@@ -4985,9 +5291,9 @@ font support on web, saving player state on web, census-based scenario
 generation started, 15 minute Santa</li>
 <li>January: experimented with SUMO import, UI button overhaul, day/night mode,
 first separate cycleways</li>
-<li>February: better web loading and URL sharing, randomized parking,
-procedurally generated houses, actdev integration, geofabrik picker, new day
-theme, static routing penalties</li>
+<li>February: better web loading and URL sharing, randomized parking, procedurally
+generated houses, actdev integration, geofabrik picker, new day theme, static
+routing penalties</li>
 <li>March: UK flow-based scenario generation, roundabout gridlock fixes, UI panel
 redesign, one-step OSM importer with UI, elevation data &amp; layers</li>
 <li>April: pathfinding by roads, editing number of lanes, risk exposure, Tempe
@@ -5000,7 +5306,8 @@ intersection consolidation breakthrough, deduplicating cycleways in OSM, bike
 lane separators, new day mode colors</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="the-ab-street-retrospective"><a class="header" href="#the-ab-street-retrospective">The A/B Street Retrospective</a></h1>
-<p>I want to reflect on what I've been working on for the past 3+ years, as of September 2021.</p>
+<p>I want to reflect on what I've been working on for the past 3+ years, as of
+September 2021.</p>
 <ul>
 <li><a href="project/retrospective/index.html#technical-accomplishments--challenges">Technical accomplishments &amp; challenges</a>
 <ul>
@@ -5069,252 +5376,624 @@ lane separators, new day mode colors</li>
 </ul>
 <h2 id="technical-accomplishments--challenges"><a class="header" href="#technical-accomplishments--challenges">Technical accomplishments &amp; challenges</a></h2>
 <h3 id="the-map-model"><a class="header" href="#the-map-model">The map model</a></h3>
-<p>To support a traffic simulation, A/B Street's map model isn't just a graph. It represents the physical geometry of roads and intersections and includes land-use semantics, like estimates of residential units and commercial spaces within each building.</p>
-<p>One thing that's surprising to people with a GIS background is how from-scratch everything is. There's no QGIS, Leaflet, PostGIS, or map tiles. The map is just a single file with simple data structures and a clipped study area.</p>
+<p>To support a traffic simulation, A/B Street's map model isn't just a graph. It
+represents the physical geometry of roads and intersections and includes
+land-use semantics, like estimates of residential units and commercial spaces
+within each building.</p>
+<p>One thing that's surprising to people with a GIS background is how from-scratch
+everything is. There's no QGIS, Leaflet, PostGIS, or map tiles. The map is just
+a single file with simple data structures and a clipped study area.</p>
 <h4 id="render-osm-in-gory-detail"><a class="header" href="#render-osm-in-gory-detail">Render OSM in gory detail</a></h4>
-<p>OpenStreetMap represents streets loosely as a graph, with road center-lines and a pretty free-form key/value tagging system. It was designed for ease of mapping certain features, not for maintaining data quality, representing roads as physical space, or describing semantics of movement along the transportation network.</p>
-<p>But A/B Street needed lots of this, and OSM is the most enticing data source available, so I wrote aggressive heuristics to extract meaning from the formless chaos. Perfect results are unattainable, but I'm quite proud of how far it's come and how robust it is to most cities I've imported.</p>
+<p>OpenStreetMap represents streets loosely as a graph, with road center-lines and
+a pretty free-form key/value tagging system. It was designed for ease of mapping
+certain features, not for maintaining data quality, representing roads as
+physical space, or describing semantics of movement along the transportation
+network.</p>
+<p>But A/B Street needed lots of this, and OSM is the most enticing data source
+available, so I wrote aggressive heuristics to extract meaning from the formless
+chaos. Perfect results are unattainable, but I'm quite proud of how far it's
+come and how robust it is to most cities I've imported.</p>
 <ul>
 <li>
 <p><a href="https://github.com/dabreegster/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs">transforming road tagging into lanes</a></p>
 <ul>
-<li>The tagging schema described by the OSM wiki is complicated to begin with. But real mapping still diverges from this. I wound up fixing many discrepencies in Seattle, and made <a href="project/retrospective/../../software/osm_viewer.html">a dedicated tool</a> to help other mappers validate their work.</li>
-<li>Because of A/B Street, I've mapped OSM tags that're just proposals or not widely used -- like <a href="project/retrospective/../../software/parking_mapper.html">street parking</a> and <a href="https://wiki.openstreetmap.org/wiki/Talk:Proposed_features/cycleway:separation">cycleway:separation</a>.</li>
+<li>The tagging schema described by the OSM wiki is complicated to begin with.
+But real mapping still diverges from this. I wound up fixing many
+discrepencies in Seattle, and made
+<a href="project/retrospective/../../software/osm_viewer.html">a dedicated tool</a> to help other mappers
+validate their work.</li>
+<li>Because of A/B Street, I've mapped OSM tags that're just proposals or not
+widely used -- like <a href="project/retrospective/../../software/parking_mapper.html">street parking</a> and
+<a href="https://wiki.openstreetmap.org/wiki/Talk:Proposed_features/cycleway:separation">cycleway:separation</a>.</li>
 </ul>
 </li>
 <li>
 <p><a href="project/retrospective/../../tech/map/geometry/index.html">Creating geometry from roads and intersections</a></p>
 <ul>
-<li>I believe A/B Street has the most advanced handling of complex OSM intersections of anything that's public</li>
+<li>I believe A/B Street has the most advanced handling of complex OSM
+intersections of anything that's public</li>
 </ul>
 </li>
 <li>
-<p>OSM doesn't directly encode what movements are possible through each intersection. A/B Street generates this for vehicles and pedestrians with aggressive heuristics.</p>
+<p>OSM doesn't directly encode what movements are possible through each
+intersection. A/B Street generates this for vehicles and pedestrians with
+aggressive heuristics.</p>
 <ul>
-<li>OSM turn lane tagging is often flat-out wrong (not matching the lane count) or broken when ways are split before an intersection</li>
-<li>OSM has turn restriction relations that can span multiple road segments. This impacts graph pathfinding and traffic simulation in subtle ways. <!-- link pathfinding article --></li>
+<li>OSM turn lane tagging is often flat-out wrong (not matching the lane count)
+or broken when ways are split before an intersection</li>
+<li>OSM has turn restriction relations that can span multiple road segments.
+This impacts graph pathfinding and traffic simulation in subtle ways.<!-- link pathfinding article --></li>
 </ul>
 </li>
 <li>
-<p>OSM includes parking lots and aisles, but A/B Street needs to know capacity, which is rarely mapped. So it procedurally generates individual stalls fitting the geometry.</p>
+<p>OSM includes parking lots and aisles, but A/B Street needs to know capacity,
+which is rarely mapped. So it procedurally generates individual stalls fitting
+the geometry.</p>
 </li>
 <li>
-<p>A traffic signal is just a node in OSM -- or worse, a bunch of individual nodes for a complex junction. There's no way to describe its timing.</p>
+<p>A traffic signal is just a node in OSM -- or worse, a bunch of individual
+nodes for a complex junction. There's no way to describe its timing.</p>
 <ul>
-<li>A/B Street has reasonable heuristics for grouping movements together in stages for many different shapes of intersections. (I never did much work on automatically improving the timing, though.)</li>
-<li>I invented a <a href="project/retrospective/../../tech/dev/formats/traffic_signals.html">JSON interchange format</a> referencing OSM IDs to describe signal configuration.</li>
-<li>I worked with Dr. Xuezong Zhou's ASU group to import <a href="https://github.com/asu-trans-ai-lab/Vol2Timing">GMNS signal timing</a> and match the movements to A/B Street's representation.</li>
-<li>The city of Seattle has still yet to release any public data about how signals are really timed, so for a while, I was <a href="https://docs.google.com/document/d/1Od_7WvBVYsvpY4etRI0sKmYmZnwXMAXcJxVmm8Iwdcg/edit?usp=sharing">manually mapping them</a> with a notebook and stopwatch, and even convinced a few other people to join. (Of course this was futile; most interesting intersections depend on actuators, which can't be observed directly.)</li>
+<li>A/B Street has reasonable heuristics for grouping movements together in
+stages for many different shapes of intersections. (I never did much work on
+automatically improving the timing, though.)</li>
+<li>I invented a
+<a href="project/retrospective/../../tech/dev/formats/traffic_signals.html">JSON interchange format</a>
+referencing OSM IDs to describe signal configuration.</li>
+<li>I worked with Dr. Xuezong Zhou's ASU group to import
+<a href="https://github.com/asu-trans-ai-lab/Vol2Timing">GMNS signal timing</a> and
+match the movements to A/B Street's representation.</li>
+<li>The city of Seattle has still yet to release any public data about how
+signals are really timed, so for a while, I was
+<a href="https://docs.google.com/document/d/1Od_7WvBVYsvpY4etRI0sKmYmZnwXMAXcJxVmm8Iwdcg/edit?usp=sharing">manually mapping them</a>
+with a notebook and stopwatch, and even convinced a few other people to
+join. (Of course this was futile; most interesting intersections depend on
+actuators, which can't be observed directly.)</li>
 </ul>
 </li>
 <li>
-<p>Built pathfinding into the map model for vehicles and pedestrians. <!-- article --></p>
+<p>Built pathfinding into the map model for vehicles and pedestrians.<!-- article --></p>
 <ul>
-<li>Funded the creation of a new <a href="https://github.com/easbar/fast_paths">Rust contraction hierarchy library</a> to achieve the performance necessary for a traffic simulation</li>
-<li>Some complex features: responding to map edits (that might reverse roads, close things off to some vehicles), handling complex turn restriction relations, modeling private neighborhoods and streets with no through-traffic, turning left or right out of a driveway, and elevation-aware cost functions for vehicles, pedestrians, making unprotected turns, etc</li>
-</ul>
-</li>
+<li>Funded the creation of a new
+<a href="https://github.com/easbar/fast_paths">Rust contraction hierarchy library</a>
+to achieve the performance necessary for a traffic simulation</li>
+<li>Some complex features: responding to map edits (that might reverse roads,
+close things off to some vehicles), handling complex turn restriction
+relations, modeling private neighborhoods and streets with no through-traffic,
+turning left or right out of a driveway, and elevation-aware cost functions
+for vehicles, pedestrians, making unprotected turns, etc</li>
 </ul>
 <!-- Snapping -->
-<p><img src="project/retrospective/road_width_osm.png" alt="" />
-<em>Do you have any idea what's on these roads?</em></p>
-<p><img src="project/retrospective/road_width_abst.png" alt="" />
-<em>A/B Street shows the bus lanes and guesses road width.</em></p>
-<p><img src="project/retrospective/tempe_junction_osm.png" alt="" />
-<em>An arterial road with light rail crosses a minor road in OSM</em></p>
-<p><img src="project/retrospective/tempe_junction_abst.png" alt="" />
-<em>In A/B Street, one consolidated traffic signal represents this situation</em></p>
-<p><img src="project/retrospective/parking_lot_osm.png" alt="" />
-<em>A parking lot in OSM</em>
-<img src="project/retrospective/parking_lot_abst.png" alt="" />
-<em>The same lot in A/B Street -- 1500 spots, based on geometry</em></p>
-<p><img src="project/retrospective/tsig_two_stage.png" alt="" />
-<em>Is turning traffic backing up here?</em></p>
-<p><img src="project/retrospective/tsig_four_stage.png" alt="" />
-<em>Add some protected left turns!</em></p>
+</li>
+</ul>
+<p><img src="project/retrospective/road_width_osm.png" alt="" /> <em>Do you have any idea what's on these roads?</em></p>
+<p><img src="project/retrospective/road_width_abst.png" alt="" /> <em>A/B Street shows the bus lanes and guesses road
+width.</em></p>
+<p><img src="project/retrospective/tempe_junction_osm.png" alt="" /> <em>An arterial road with light rail crosses a minor
+road in OSM</em></p>
+<p><img src="project/retrospective/tempe_junction_abst.png" alt="" /> <em>In A/B Street, one consolidated traffic signal
+represents this situation</em></p>
+<p><img src="project/retrospective/parking_lot_osm.png" alt="" /> <em>A parking lot in OSM</em> <img src="project/retrospective/parking_lot_abst.png" alt="" /> <em>The
+same lot in A/B Street -- 1500 spots, based on geometry</em></p>
+<p><img src="project/retrospective/tsig_two_stage.png" alt="" /> <em>Is turning traffic backing up here?</em></p>
+<p><img src="project/retrospective/tsig_four_stage.png" alt="" /> <em>Add some protected left turns!</em></p>
 <h4 id="joining-data-sources"><a class="header" href="#joining-data-sources">Joining data sources</a></h4>
-<p>A/B Street brings in other public data for some cities, joining it with the OSM-based map model.</p>
-<p><img src="project/retrospective/data_blockface.png" alt="" />
-<em>Blockface data in Seattle describes street parking restrictions... in theory. Many segments disagree with OSM's splitting of roads, and many blocks have incorrect data.</em></p>
-<p><img src="project/retrospective/data_elevation.png" alt="" />
-<em>LIDAR elevation data overlaid with the bike network shows why Aurora would be such a nicer route to bike north from downtown than Fremont</em></p>
-<p><img src="project/retrospective/data_parcels.png" alt="" />
-<em>The sad blue sea of single-family parcels, from King County parcel data</em></p>
+<p>A/B Street brings in other public data for some cities, joining it with the
+OSM-based map model.</p>
+<p><img src="project/retrospective/data_blockface.png" alt="" /> <em>Blockface data in Seattle describes street parking
+restrictions... in theory. Many segments disagree with OSM's splitting of roads,
+and many blocks have incorrect data.</em></p>
+<p><img src="project/retrospective/data_elevation.png" alt="" /> <em>LIDAR elevation data overlaid with the bike network
+shows why Aurora would be such a nicer route to bike north from downtown than
+Fremont</em></p>
+<p><img src="project/retrospective/data_parcels.png" alt="" /> <em>The sad blue sea of single-family parcels, from King
+County parcel data</em></p>
 <h4 id="map-editing"><a class="header" href="#map-editing">Map editing</a></h4>
-<p>It would be so simple if that map model representation was nice and immutable. But the whole point of A/B Street is to explore changes to the built environment. Aside from the UIs for this (which themselves went through many design iterations and usability studies), supporting this in the map model layer has been tough.</p>
+<p>It would be so simple if that map model representation was nice and immutable.
+But the whole point of A/B Street is to explore changes to the built
+environment. Aside from the UIs for this (which themselves went through many
+design iterations and usability studies), supporting this in the map model layer
+has been tough.</p>
 <ul>
 <li>Representing edits durably, even when a map is rebuilt from updated OSM data.</li>
-<li>Handling undo/redo. When you change the lanes of one road, it might invalidate the traffic signal policy nearby.</li>
-<li>When you widen or shrink a road, it affects intersection geometry. Especially when that intersection has been consolidated from several in OSM, there are some edge cases...</li>
+<li>Handling undo/redo. When you change the lanes of one road, it might invalidate
+the traffic signal policy nearby.</li>
+<li>When you widen or shrink a road, it affects intersection geometry. Especially
+when that intersection has been consolidated from several in OSM, there are
+some edge cases...</li>
 <li>Applying edits has to be fast -- jokes on loading screens are hard to write!</li>
 </ul>
 <h4 id="the-map-importer"><a class="header" href="#the-map-importer">The map importer</a></h4>
-<p>At first, I was just importing a few parts of Seattle, so running a little tool was fine. But as word of the project spread, of course people wanted to see it in more places. (And in fact, the most solid audience for the project has been the OSM community -- mappers tend to already be very invested in OSM as a hobby, so they're willing to get past any clunky UX hurdles in order to play with something cool!) By now, I'm importing ~130 maps from ~80 cities. Anytime I update the OSM import code, I've committed to regenerating everything and at least not totally breaking a city!</p>
-<p>I've <a href="https://github.com/a-b-street/abstreet/issues/326">only barely managed</a> to stay on top of this growing scale. My faster laptop died for a few months and I scrambled to parallelize the import process in the cloud just to survive. Something that I haven't solved is expressing the complex importing process as a proper pipeline. Ideally it's a DAG of tasks depending on each other, with clear logging, progress tracking, parallelization, and error handling. One reason this is hard is expressing which parts of the graph to invalidate and recalculate. Should we grab new upstream OSM data? Just recalculat scenarios, leaving the maps alone? Only re-run one stage of the map import?</p>
-<p>I'm pretty happy with how easy it is to <a href="https://a-b-street.github.io/docs/user/new_city.html">import a new city</a>. Originally you had to email me a boundary or compile the project yourself, but now the UI just asks you to draw a GeoJSON boundary, uses Overpass to grab fresh data, and runs the importer for you.</p>
+<p>At first, I was just importing a few parts of Seattle, so running a little tool
+was fine. But as word of the project spread, of course people wanted to see it
+in more places. (And in fact, the most solid audience for the project has been
+the OSM community -- mappers tend to already be very invested in OSM as a hobby,
+so they're willing to get past any clunky UX hurdles in order to play with
+something cool!) By now, I'm importing ~130 maps from ~80 cities. Anytime I
+update the OSM import code, I've committed to regenerating everything and at
+least not totally breaking a city!</p>
+<p>I've <a href="https://github.com/a-b-street/abstreet/issues/326">only barely managed</a> to
+stay on top of this growing scale. My faster laptop died for a few months and I
+scrambled to parallelize the import process in the cloud just to survive.
+Something that I haven't solved is expressing the complex importing process as a
+proper pipeline. Ideally it's a DAG of tasks depending on each other, with clear
+logging, progress tracking, parallelization, and error handling. One reason this
+is hard is expressing which parts of the graph to invalidate and recalculate.
+Should we grab new upstream OSM data? Just recalculat scenarios, leaving the
+maps alone? Only re-run one stage of the map import?</p>
+<p>I'm pretty happy with how easy it is to
+<a href="https://a-b-street.github.io/docs/user/new_city.html">import a new city</a>.
+Originally you had to email me a boundary or compile the project yourself, but
+now the UI just asks you to draw a GeoJSON boundary, uses Overpass to grab fresh
+data, and runs the importer for you.</p>
 <h3 id="software-engineering"><a class="header" href="#software-engineering">Software engineering</a></h3>
 <h4 id="testing"><a class="header" href="#testing">Testing</a></h4>
-<p>A huge challenge to maintaining maps over time is not breaking things, either from my own importing code or when grabbing new OSM data upstream. Writing tests to guarantee some kind of invariants in the map model layer (like no two roads overlapping each other, no disconnected bits of the graph, minimum road length, etc...) was something I wanted to do, but all of those are pretty impossible targets to meet with the messiness of OSM data. So I settled on regression tests and manual tool-assisted diffing. Screenshot diffing is one trick -- inspect an imported map once, take screenshots of it, then later compare to manually validate changes. There are also tests that re-run a full traffic simulation on maps known to work. They ensure gridlock isn't re-introduced, that overall travel time patterns don't change radically, etc.</p>
-<p>There aren't tons of unit tests. Usually expressing the input and expected output for any of the interesting problems is just too hard manually. There are some hybrid solutions, like generating turns at an intersection. The input (a map's roads) isn't easy to understand by looking at some text encoding, but viewing in the UI is. Likewise, a human can't glance at output like &quot;left turn from lane #5 to lane #84&quot; and hope to understand it. But we can store the text output as goldenfiles and, when there's a diff, again use the UI to inspect the change.</p>
+<p>A huge challenge to maintaining maps over time is not breaking things, either
+from my own importing code or when grabbing new OSM data upstream. Writing tests
+to guarantee some kind of invariants in the map model layer (like no two roads
+overlapping each other, no disconnected bits of the graph, minimum road length,
+etc...) was something I wanted to do, but all of those are pretty impossible
+targets to meet with the messiness of OSM data. So I settled on regression tests
+and manual tool-assisted diffing. Screenshot diffing is one trick -- inspect an
+imported map once, take screenshots of it, then later compare to manually
+validate changes. There are also tests that re-run a full traffic simulation on
+maps known to work. They ensure gridlock isn't re-introduced, that overall
+travel time patterns don't change radically, etc.</p>
+<p>There aren't tons of unit tests. Usually expressing the input and expected
+output for any of the interesting problems is just too hard manually. There are
+some hybrid solutions, like generating turns at an intersection. The input (a
+map's roads) isn't easy to understand by looking at some text encoding, but
+viewing in the UI is. Likewise, a human can't glance at output like &quot;left turn
+from lane #5 to lane #84&quot; and hope to understand it. But we can store the text
+output as goldenfiles and, when there's a diff, again use the UI to inspect the
+change.</p>
 <h4 id="releases"><a class="header" href="#releases">Releases</a></h4>
-<p>At my previous job, there was quite a bit of hassle maintaining a production service without downtime. It was initially very freeing to just write software quickly without worrying about breaking people, but of couse that didn't last long after I started releasing public builds every week. The <a href="project/retrospective/../../tech/dev/release.html">release process</a> is mostly automated.</p>
-<p>At first, I just shipped all map and scenario data with the .zip releases and bundled this in one big .wasm blob (yes, really). Of course this didn't scale as we increased the number of imported cities. So eventually I made the UI download each city only when needed. This required <a href="project/retrospective/../../tech/dev/data.html">versioning the data</a> -- the code in a release from weeks ago is probably binary incompatible with the current map data.</p>
-<p>Originally I just threw all the files in my personal Dropbox, but moved to S3 at some point (every single public file in Dropbox needs its own URL, and I broke the Python tool spamming it with requests for hundreds of files...). I really wanted to just re-use some existing tool to sync with S3 (both for me uploading and for people downloading), but never found anything that met all my needs -- cross-platform without system dependencies, grouping files into per-city data packs, gzipping. So I rolled my own <a href="https://github.com/a-b-street/abstreet/blob/master/updater/src/main.rs">updater</a>.</p>
-<p>I'd still love to conceptually use real version control; maybe Git LFS is worth another try.</p>
+<p>At my previous job, there was quite a bit of hassle maintaining a production
+service without downtime. It was initially very freeing to just write software
+quickly without worrying about breaking people, but of couse that didn't last
+long after I started releasing public builds every week. The
+<a href="project/retrospective/../../tech/dev/release.html">release process</a> is mostly automated.</p>
+<p>At first, I just shipped all map and scenario data with the .zip releases and
+bundled this in one big .wasm blob (yes, really). Of course this didn't scale as
+we increased the number of imported cities. So eventually I made the UI download
+each city only when needed. This required
+<a href="project/retrospective/../../tech/dev/data.html">versioning the data</a> -- the code in a release from
+weeks ago is probably binary incompatible with the current map data.</p>
+<p>Originally I just threw all the files in my personal Dropbox, but moved to S3 at
+some point (every single public file in Dropbox needs its own URL, and I broke
+the Python tool spamming it with requests for hundreds of files...). I really
+wanted to just re-use some existing tool to sync with S3 (both for me uploading
+and for people downloading), but never found anything that met all my needs --
+cross-platform without system dependencies, grouping files into per-city data
+packs, gzipping. So I rolled my own
+<a href="https://github.com/a-b-street/abstreet/blob/master/updater/src/main.rs">updater</a>.</p>
+<p>I'd still love to conceptually use real version control; maybe Git LFS is worth
+another try.</p>
 <h3 id="simulation-1"><a class="header" href="#simulation-1">Simulation</a></h3>
 <h4 id="discrete-event-traffic-simulation"><a class="header" href="#discrete-event-traffic-simulation">Discrete event traffic simulation</a></h4>
 <!-- Full article... (maybe some of this is the intro to it) -->
-<p>Although there's lots of academic papers out there describing car-following models and other &quot;microscopic,&quot; agent-based traffic models, it's always seemed to me that they omit details about how to actually implement them. So, I rolled my own. Not claiming this is a good approach -- simulation results have to be met with <strong>much</strong> more skepticism -- but I'm very proud of the model.</p>
-<p>A/B Street simulates the movement of individual people walking, biking, and driving. It doesn't do so in fixed time-steps (every 0.1 seconds, update everything). It uses a &quot;discrete event&quot; approach. Each agent is in a state, like traveling along a lane or waiting at an intersection, for some amount of time. Updates only happen when that state possibly transitions to another one, like when a vehicle reaches the end of a lane or a traffic signal &quot;wakes up&quot; people on a green light. Instead of updating every agent every 0.1 seconds, we just &quot;skip ahead&quot; to the next interesting time, per agent.</p>
-<p>Actually making this work with on-demand rendering at any moment in time is one of the more clever things I've come up with. The model is quite fast (until gridlock happens...) and looks reasonably realistic in aggregate. Things like smooth acceleration are missing, but few people have seemed to notice. Making vehicles change lanes and over-take is one of the main limitations -- this is very hard to squeeze into the discrete event model, and only half-done.</p>
-<p><img src="project/retrospective/traffic_sim.gif" alt="" />
-<em>Drivers, cyclists, and pedestrians negotiate the traffic signal at Greenwood and N 87th</em></p>
+<p>Although there's lots of academic papers out there describing car-following
+models and other &quot;microscopic,&quot; agent-based traffic models, it's always seemed
+to me that they omit details about how to actually implement them. So, I rolled
+my own. Not claiming this is a good approach -- simulation results have to be
+met with <strong>much</strong> more skepticism -- but I'm very proud of the model.</p>
+<p>A/B Street simulates the movement of individual people walking, biking, and
+driving. It doesn't do so in fixed time-steps (every 0.1 seconds, update
+everything). It uses a &quot;discrete event&quot; approach. Each agent is in a state, like
+traveling along a lane or waiting at an intersection, for some amount of time.
+Updates only happen when that state possibly transitions to another one, like
+when a vehicle reaches the end of a lane or a traffic signal &quot;wakes up&quot; people
+on a green light. Instead of updating every agent every 0.1 seconds, we just
+&quot;skip ahead&quot; to the next interesting time, per agent.</p>
+<p>Actually making this work with on-demand rendering at any moment in time is one
+of the more clever things I've come up with. The model is quite fast (until
+gridlock happens...) and looks reasonably realistic in aggregate. Things like
+smooth acceleration are missing, but few people have seemed to notice. Making
+vehicles change lanes and over-take is one of the main limitations -- this is
+very hard to squeeze into the discrete event model, and only half-done.</p>
+<p><img src="project/retrospective/traffic_sim.gif" alt="" /> <em>Drivers, cyclists, and pedestrians negotiate the traffic
+signal at Greenwood and N 87th</em></p>
 <h4 id="parking-1"><a class="header" href="#parking-1">Parking</a></h4>
-<p>Some traffic simulators out there are only focused on highways, not even inner-city driving. Many don't include pedestrians and cyclists, or bolt them on as an after-thought. But I'll bet A/B Street is one of the only ones including a detail crucial to the experience of driving: <a href="project/retrospective/../../tech/trafficsim/parking.html">parking</a>. How many times have you heard a friend complain that it took 10 minutes to drive over, but 15 to find parking? Exactly.</p>
-<p>Except in some maps that disable it, every driving trip in A/B Street begins and ends with somebody walking between their actual endpoint and a parking spot with their car. There's lots of estimation with the capacity along streets, in parking lots, and especially with private residences and businesses, but at least A/B Street tries. Maybe this pushes the rest of the field towards a bit more realism. Abstractions matter! Parking occupies a huge amount of space, and when your phone says driving somewhere is 20 minutes faster than taking a bus, it may not be giving you the full picture -- are you sure you won't circle around a dense neighborhood for 10 minutes finding that free spot? Abstractions matter. I hope I've done justice to Donald Shoup.</p>
-<p><img src="project/retrospective/../../tech/trafficsim/parking_efficiency.png" alt="" />
-<em>Darker red dots are vehicles parked farther away from their final destination</em></p>
+<p>Some traffic simulators out there are only focused on highways, not even
+inner-city driving. Many don't include pedestrians and cyclists, or bolt them on
+as an after-thought. But I'll bet A/B Street is one of the only ones including a
+detail crucial to the experience of driving:
+<a href="project/retrospective/../../tech/trafficsim/parking.html">parking</a>. How many times have you heard a
+friend complain that it took 10 minutes to drive over, but 15 to find parking?
+Exactly.</p>
+<p>Except in some maps that disable it, every driving trip in A/B Street begins and
+ends with somebody walking between their actual endpoint and a parking spot with
+their car. There's lots of estimation with the capacity along streets, in
+parking lots, and especially with private residences and businesses, but at
+least A/B Street tries. Maybe this pushes the rest of the field towards a bit
+more realism. Abstractions matter! Parking occupies a huge amount of space, and
+when your phone says driving somewhere is 20 minutes faster than taking a bus,
+it may not be giving you the full picture -- are you sure you won't circle
+around a dense neighborhood for 10 minutes finding that free spot? Abstractions
+matter. I hope I've done justice to Donald Shoup.</p>
+<p><img src="project/retrospective/../../tech/trafficsim/parking_efficiency.png" alt="" /> <em>Darker red dots are vehicles
+parked farther away from their final destination</em></p>
 <h4 id="gridlock-1"><a class="header" href="#gridlock-1">Gridlock</a></h4>
-<p>In both the real world and in a traffic simulation, vehicles get a bit stuck. In the real world, this is usually resolved by humans slightly breaking strict abstractions like usage of distinct lanes, slowly creeping into a partially blocked intersection, or deciding to detour around a problem last minute. I've had a hard time capturing that robustness in simulation, so well, in most simulations on larger maps, vehicles get stuck. Like, permanently.</p>
-<p>This has so many causes -- broken intersection geometry causing impossible turn conflicts, weird lane-changing behavior, vehicles being too cautious about partially blocking an intersection, pedestrians darting into non-existent crosswalks, hilariously Byzantine traffic signal timing, travel demand models sending all 80,000 trips to UW campus to a single tiny building... and so I've dumped countless hours into trying to fix them, with only very modest success. Sometimes it's trying to fix the data, or improve signal timing heuristics. Sometimes it's building in complex cycle detectors into the simulation to figure out when vehicles in a roundabout are all waiting for each other. Sometimes it works. Usually it doesn't.</p>
-<p><img src="project/retrospective/traffic_seitan.png" alt="" />
-<em>Traffic Seitan spreads from one broken Fremont bridge</em></p>
+<p>In both the real world and in a traffic simulation, vehicles get a bit stuck. In
+the real world, this is usually resolved by humans slightly breaking strict
+abstractions like usage of distinct lanes, slowly creeping into a partially
+blocked intersection, or deciding to detour around a problem last minute. I've
+had a hard time capturing that robustness in simulation, so well, in most
+simulations on larger maps, vehicles get stuck. Like, permanently.</p>
+<p>This has so many causes -- broken intersection geometry causing impossible turn
+conflicts, weird lane-changing behavior, vehicles being too cautious about
+partially blocking an intersection, pedestrians darting into non-existent
+crosswalks, hilariously Byzantine traffic signal timing, travel demand models
+sending all 80,000 trips to UW campus to a single tiny building... and so I've
+dumped countless hours into trying to fix them, with only very modest success.
+Sometimes it's trying to fix the data, or improve signal timing heuristics.
+Sometimes it's building in complex cycle detectors into the simulation to figure
+out when vehicles in a roundabout are all waiting for each other. Sometimes it
+works. Usually it doesn't.</p>
+<p><img src="project/retrospective/traffic_seitan.png" alt="" /> <em>Traffic Seitan spreads from one broken Fremont bridge</em></p>
 <h4 id="travel-demand-models"><a class="header" href="#travel-demand-models">Travel demand models</a></h4>
-<p>You can't run a traffic simulation if you don't know where people are going, when they're leaving, or how they're trying to get there. The naive approach of uniformly distributing some number of trips between all possible buildings is hilariously unrealistic. And the amount of complex modeling and <a href="https://www.psrc.org/sites/default/files/soundcastdesign2014.pdf">specialized knowledge</a> needed to properly do activity modeling or something simpler is overwhelming. I've tried as much as possible to punt on this -- importing Soundcast data for Seattle, relying on collaborators like <a href="https://github.com/asu-trans-ai-lab/grid2demand">grid2demand</a> and <a href="https://a-b-street.github.io/abstr">abstr</a>.</p>
-<p>But inevitably, A/B Street has wound up with its own simple travel demand models. Mateusz started the <a href="https://github.com/a-b-street/abstreet/issues/154">proletariat robot model</a>, using naught but OSM tags on buildings to estimate the number of people living and working, and using simple matching to send people to and from work, and nothing else. Such robots.</p>
-<p>Then during the <a href="https://actdev.cyipt.bike/">Actdev</a> work, it became necessary last-minute to generate traffic using UK census flow data, which describes the number of people commuting between different polygonal areas for work, broken down by mode. The <a href="https://github.com/a-b-street/abstreet/blob/master/popdat/src/od.rs">pipeline</a> is simple.</p>
-<p>We've also done a fair bit of work into data visualization to understand the outut of these travel demand models. Part of this even includes heuristics that automatically group buildings into &quot;neighborhoods&quot; -- roughly, tracing along arterial roads and finding everything in the middle.</p>
-<p><img src="project/retrospective/commuter_patterns.png" alt="" />
-<em>Where do trips starting from Broadview go, according to Soundcast data?</em></p>
+<p>You can't run a traffic simulation if you don't know where people are going,
+when they're leaving, or how they're trying to get there. The naive approach of
+uniformly distributing some number of trips between all possible buildings is
+hilariously unrealistic. And the amount of complex modeling and
+<a href="https://www.psrc.org/sites/default/files/soundcastdesign2014.pdf">specialized knowledge</a>
+needed to properly do activity modeling or something simpler is overwhelming.
+I've tried as much as possible to punt on this -- importing Soundcast data for
+Seattle, relying on collaborators like
+<a href="https://github.com/asu-trans-ai-lab/grid2demand">grid2demand</a> and
+<a href="https://a-b-street.github.io/abstr">abstr</a>.</p>
+<p>But inevitably, A/B Street has wound up with its own simple travel demand
+models. Mateusz started the
+<a href="https://github.com/a-b-street/abstreet/issues/154">proletariat robot model</a>,
+using naught but OSM tags on buildings to estimate the number of people living
+and working, and using simple matching to send people to and from work, and
+nothing else. Such robots.</p>
+<p>Then during the <a href="https://actdev.cyipt.bike/">Actdev</a> work, it became necessary
+last-minute to generate traffic using UK census flow data, which describes the
+number of people commuting between different polygonal areas for work, broken
+down by mode. The
+<a href="https://github.com/a-b-street/abstreet/blob/master/popdat/src/od.rs">pipeline</a>
+is simple.</p>
+<p>We've also done a fair bit of work into data visualization to understand the
+outut of these travel demand models. Part of this even includes heuristics that
+automatically group buildings into &quot;neighborhoods&quot; -- roughly, tracing along
+arterial roads and finding everything in the middle.</p>
+<p><img src="project/retrospective/commuter_patterns.png" alt="" /> <em>Where do trips starting from Broadview go, according
+to Soundcast data?</em></p>
 <h3 id="ui"><a class="header" href="#ui">UI</a></h3>
 <h4 id="widgetry-a-ui--dataviz-library-from-scratch"><a class="header" href="#widgetry-a-ui--dataviz-library-from-scratch">widgetry: a UI + dataviz library from scratch</a></h4>
 <p>This is probably one of the more ridiculous things that's happened.</p>
-<p>In ~2018 when I started, all of the rendering and GUI libraries for Rust appeared to not do what I needed. So I started with <a href="https://github.com/rust-windowing/winit">raw window event handling</a> and OpenGL and... just went for it. It's not hard to start drawing a big <a href="https://wiki.openstreetmap.org/wiki/Slippy_Map">slippy map</a> with zooming and panning, nor is it tough to wire up a basic clickable button. But... <a href="https://a-b-street.github.io/docs/tech/dev/ui.html">widgetry</a> has turned into something quite feature-full and has a decent API.</p>
-<p>The journey there was quite circuitous. Most of the difficulty was not even knowing how the UI should work (or even having a clear picture of what the app was supposed to do...). But once Yuwen joined the project, this library started shaping up very quickly. And Michael has dumped in countless work into adding complex features to it, polishing the APIs and style, implementing massive design changes from Yuwen like the buttons...</p>
-<p>The end result is pretty impressive -- it works on native and web (no system dependencies), everything's an infinitely scalable vector (including text), and it has loads of interactive dataviz widgets.</p>
-<p><img src="project/retrospective/widgetry_demo.gif" alt="" />
-<em>A quick preview of interactive line plots, draggable cards, and a canvas filled with vector goodies</em></p>
+<p>In ~2018 when I started, all of the rendering and GUI libraries for Rust
+appeared to not do what I needed. So I started with
+<a href="https://github.com/rust-windowing/winit">raw window event handling</a> and OpenGL
+and... just went for it. It's not hard to start drawing a big
+<a href="https://wiki.openstreetmap.org/wiki/Slippy_Map">slippy map</a> with zooming and
+panning, nor is it tough to wire up a basic clickable button. But...
+<a href="https://a-b-street.github.io/docs/tech/dev/ui.html">widgetry</a> has turned into
+something quite feature-full and has a decent API.</p>
+<p>The journey there was quite circuitous. Most of the difficulty was not even
+knowing how the UI should work (or even having a clear picture of what the app
+was supposed to do...). But once Yuwen joined the project, this library started
+shaping up very quickly. And Michael has dumped in countless work into adding
+complex features to it, polishing the APIs and style, implementing massive
+design changes from Yuwen like the buttons...</p>
+<p>The end result is pretty impressive -- it works on native and web (no system
+dependencies), everything's an infinitely scalable vector (including text), and
+it has loads of interactive dataviz widgets.</p>
+<p><img src="project/retrospective/widgetry_demo.gif" alt="" /> <em>A quick preview of interactive line plots, draggable
+cards, and a canvas filled with vector goodies</em></p>
 <h4 id="native-and-web"><a class="header" href="#native-and-web">Native and web</a></h4>
-<p>I never intended to target mobile or the web. But in January 2020ish, winit support for web landed, so I thought... why not? Initial support was surprisingly easy, but properly dealing with asynchronous file loading, loading screens, progress bars, and detangling native-only dependencies has been quite tough.</p>
+<p>I never intended to target mobile or the web. But in January 2020ish, winit
+support for web landed, so I thought... why not? Initial support was
+surprisingly easy, but properly dealing with asynchronous file loading, loading
+screens, progress bars, and detangling native-only dependencies has been quite
+tough.</p>
 <h2 id="design-accomplishments-and-challenges"><a class="header" href="#design-accomplishments-and-challenges">Design accomplishments and challenges</a></h2>
 <p>I think it's safe to say my own design skills are somewhat lacking:</p>
-<p><img src="project/retrospective/ui_ancient.png" alt="" />
-<em>A/B Street as of September 2019</em></p>
-<p>A/B Street has lots of complex information to convey and data to visualize, and getting people excited about a vision for a more sustainable transportation system requires beautiful design. So... it's quite awesome that <a href="https://www.yuwen-li.com/work/abstreet">Yuwen</a> joined the project at the right time. Thanks to <a href="https://github.com/michaelkirk">Michael</a> and feedback from dozens of people from OpenStreetMap, Github, Twitter, and user testing studies, A/B Street today is quite aesthetic and functional.</p>
+<p><img src="project/retrospective/ui_ancient.png" alt="" /> <em>A/B Street as of September 2019</em></p>
+<p>A/B Street has lots of complex information to convey and data to visualize, and
+getting people excited about a vision for a more sustainable transportation
+system requires beautiful design. So... it's quite awesome that
+<a href="https://www.yuwen-li.com/work/abstreet">Yuwen</a> joined the project at the right
+time. Thanks to <a href="https://github.com/michaelkirk">Michael</a> and feedback from
+dozens of people from OpenStreetMap, Github, Twitter, and user testing studies,
+A/B Street today is quite aesthetic and functional.</p>
 <h3 id="color-schemes"><a class="header" href="#color-schemes">Color schemes</a></h3>
-<p>One of the puzzles I struggled with from the very start was how to communicate both lane types and road types at the same time. Unzoomed, a simple color scheme distinguishes highways from major and minor roads:</p>
-<p><img src="project/retrospective/colors_unzoomed.png" alt="" />
-<em>I5 is distinguishable from arterial and residential roads in Seattle, and the Burke Gilman trail is also visible.</em></p>
-<p>But zoom in, and we use coloring to distinguish regular lanes, parking, and sidewalks. It's still useful to distinguish major and minor roads, though! Most maps cheat with road width and use that, but there are many cases where arterials are just as wide as residential streets.</p>
-<p><img src="project/retrospective/colors_zoomed_before.png" alt="" />
-<em>Can you spot the arterial?</em></p>
-<p>But inspired by designs from <a href="https://github.com/westnordost">Streetcomplete by Tobias</a>, we found some shades of grey that convey the difference quite effectively, as well as slightly convey the curb height:</p>
-<p><img src="project/retrospective/colors_zoomed_after.png" alt="" />
-<em>There it is!</em></p>
-<p>Also, we have a pretty fantastic night mode, although I'm still holding out for something more cyberpunk.</p>
-<p><img src="project/retrospective/colors_night.png" alt="" />
-<em>Both the UI and map have colors to show when the simulation is after-hours</em></p>
+<p>One of the puzzles I struggled with from the very start was how to communicate
+both lane types and road types at the same time. Unzoomed, a simple color scheme
+distinguishes highways from major and minor roads:</p>
+<p><img src="project/retrospective/colors_unzoomed.png" alt="" /> <em>I5 is distinguishable from arterial and residential
+roads in Seattle, and the Burke Gilman trail is also visible.</em></p>
+<p>But zoom in, and we use coloring to distinguish regular lanes, parking, and
+sidewalks. It's still useful to distinguish major and minor roads, though! Most
+maps cheat with road width and use that, but there are many cases where
+arterials are just as wide as residential streets.</p>
+<p><img src="project/retrospective/colors_zoomed_before.png" alt="" /> <em>Can you spot the arterial?</em></p>
+<p>But inspired by designs from
+<a href="https://github.com/westnordost">Streetcomplete by Tobias</a>, we found some shades
+of grey that convey the difference quite effectively, as well as slightly convey
+the curb height:</p>
+<p><img src="project/retrospective/colors_zoomed_after.png" alt="" /> <em>There it is!</em></p>
+<p>Also, we have a pretty fantastic night mode, although I'm still holding out for
+something more cyberpunk.</p>
+<p><img src="project/retrospective/colors_night.png" alt="" /> <em>Both the UI and map have colors to show when the
+simulation is after-hours</em></p>
 <h3 id="road-editor"><a class="header" href="#road-editor">Road editor</a></h3>
-<p>A/B Street's ability to edit roads started simple, but today is quite powerful. Inspired by <a href="http://streetmix.net">Streetmix</a>, you can modify lanes however you want:</p>
-<p><img src="project/retrospective/edit_roads.gif" alt="" />
-<em>Drag-and-drop, spear-headed by Michael, is key to this UI working smoothly.</em></p>
-<p>We arrived at this design only after many rounds of designing, implementing prototypes, and gathering feedback.</p>
+<p>A/B Street's ability to edit roads started simple, but today is quite powerful.
+Inspired by <a href="http://streetmix.net">Streetmix</a>, you can modify lanes however you
+want:</p>
+<p><img src="project/retrospective/edit_roads.gif" alt="" /> <em>Drag-and-drop, spear-headed by Michael, is key to this UI
+working smoothly.</em></p>
+<p>We arrived at this design only after many rounds of designing, implementing
+prototypes, and gathering feedback.</p>
 <h3 id="traffic-signal-editor"><a class="header" href="#traffic-signal-editor">Traffic signal editor</a></h3>
-<p>Most people experience traffic signals from the ground, not the sky -- they think about just the direction they want to go, not how the entire intersection behaves over time. At any point in time, a particular movement could be protected by a green arrow or light, permitted after yielding to oncoming traffic, or not allowed. After many iterations, I think we represent and allow changes to this quite well:</p>
-<p><img src="project/retrospective/edit_signals.gif" alt="" />
-<em>Left turns should be protected here. So first we remove the left turns from stage 1, where they were just permitted. Then we add a new stage, protect the left turns, and adjust its timing to end early if there's no traffic.</em></p>
+<p>Most people experience traffic signals from the ground, not the sky -- they
+think about just the direction they want to go, not how the entire intersection
+behaves over time. At any point in time, a particular movement could be
+protected by a green arrow or light, permitted after yielding to oncoming
+traffic, or not allowed. After many iterations, I think we represent and allow
+changes to this quite well:</p>
+<p><img src="project/retrospective/edit_signals.gif" alt="" /> <em>Left turns should be protected here. So first we remove
+the left turns from stage 1, where they were just permitted. Then we add a new
+stage, protect the left turns, and adjust its timing to end early if there's no
+traffic.</em></p>
 <h3 id="data-visualization"><a class="header" href="#data-visualization">Data visualization</a></h3>
-<p>A/B Street measures all sorts of things -- travel times, delays, throughput, a biking route's steepness, exposure to risky events. All of these things can be understood at the level of individual agents, roads, and intersections, or you can explore aggregate patterns and finder larger trends. You can view the data in absolute terms based on the current simulation running, or if you've edited the map (and the map is one of the lucky few that doesn't gridlock), then you can compare the results to the baseline simulation without edits -- the essence of A/B testing.</p>
+<p>A/B Street measures all sorts of things -- travel times, delays, throughput, a
+biking route's steepness, exposure to risky events. All of these things can be
+understood at the level of individual agents, roads, and intersections, or you
+can explore aggregate patterns and finder larger trends. You can view the data
+in absolute terms based on the current simulation running, or if you've edited
+the map (and the map is one of the lucky few that doesn't gridlock), then you
+can compare the results to the baseline simulation without edits -- the essence
+of A/B testing.</p>
 <p>Here's a very incomplete sampling of our work:</p>
-<p><img src="project/retrospective/viz_trip.png" alt="" />
-<em>Diving into one person's route</em></p>
-<p><img src="project/retrospective/viz_delay_scatter.gif" alt="" />
-<em>Watching a live scatter plot of delays through an intersection, broken down by mode</em></p>
-<p><img src="project/retrospective/viz_relative_thruput.png" alt="" />
-<em>The red roads have higher foot traffic, due to converting Broadmoor to a Stay Healthy Street</em></p>
-<p><img src="project/retrospective/viz_trip_table.gif" alt="" />
-<em>Using a sortable table of all trips to find individual people whose journey got much faster due to map edits</em></p>
-<p><img src="project/retrospective/viz_time_summary.gif" alt="" />
-<em>Understanding how short and long trips got faster or slower due to map edits</em></p>
+<p><img src="project/retrospective/viz_trip.png" alt="" /> <em>Diving into one person's route</em></p>
+<p><img src="project/retrospective/viz_delay_scatter.gif" alt="" /> <em>Watching a live scatter plot of delays through an
+intersection, broken down by mode</em></p>
+<p><img src="project/retrospective/viz_relative_thruput.png" alt="" /> <em>The red roads have higher foot traffic, due to
+converting Broadmoor to a Stay Healthy Street</em></p>
+<p><img src="project/retrospective/viz_trip_table.gif" alt="" /> <em>Using a sortable table of all trips to find individual
+people whose journey got much faster due to map edits</em></p>
+<p><img src="project/retrospective/viz_time_summary.gif" alt="" /> <em>Understanding how short and long trips got faster or
+slower due to map edits</em></p>
 <h3 id="road-labels"><a class="header" href="#road-labels">Road labels</a></h3>
-<p>Placing road labels on a map is quite a design and implementation challenge, but Michael and I cranked out something decent in a few days:</p>
-<p><img src="project/retrospective/road_labels.gif" alt="" />
-<em>Labels aren't too densely clustered, but they still appear to help orient by major roads.</em></p>
+<p>Placing road labels on a map is quite a design and implementation challenge, but
+Michael and I cranked out something decent in a few days:</p>
+<p><img src="project/retrospective/road_labels.gif" alt="" /> <em>Labels aren't too densely clustered, but they still appear
+to help orient by major roads.</em></p>
 <h3 id="charm"><a class="header" href="#charm">Charm</a></h3>
-<p>Some design decisions in A/B Street are a love story to the city that started it:</p>
-<p><img src="project/retrospective/rainbow_crosswalks.png" alt="" />
-<em>The cycletrack may not be snapped to Broadway properly, but we do have the rainbow crosswalks on Pike</em></p>
-<p>We tried to create a narrative around the game's challenge modes, with character art from a <a href="https://hollarity.com/">college friend</a>:</p>
-<p><img src="project/retrospective/characters_cutscene.png" alt="" />
-<em>The Boss doles out assignments and placates irate citizens</em></p>
-<p>One of the first things people point out about A/B Street is the unusually bendy buses:</p>
-<p><img src="project/retrospective/articulate.gif" alt="" />
-<em>&quot;This frustrated tension and brief relief I can’t articulate / oh, but the bus can.&quot; - from <a href="https://dabreegster.github.io/poetry/adult/public_transit.html">public transit</a></em></p>
-<p>For the record, this started because the simpler alternative is much worse. If you draw a long bus as a straight line and use any one point to determine the angle, the bus will pendulum around tight curves, happily smashing into anything in the way. Snakes are a slightly better approximation of reality. (I think the bendy buses have been called some less polite, but more hilarious, things too...)</p>
+<p>Some design decisions in A/B Street are a love story to the city that started
+it:</p>
+<p><img src="project/retrospective/rainbow_crosswalks.png" alt="" /> <em>The cycletrack may not be snapped to Broadway
+properly, but we do have the rainbow crosswalks on Pike</em></p>
+<p>We tried to create a narrative around the game's challenge modes, with character
+art from a <a href="https://hollarity.com/">college friend</a>:</p>
+<p><img src="project/retrospective/characters_cutscene.png" alt="" /> <em>The Boss doles out assignments and placates irate
+citizens</em></p>
+<p>One of the first things people point out about A/B Street is the unusually bendy
+buses:</p>
+<p><img src="project/retrospective/articulate.gif" alt="" /> <em>&quot;This frustrated tension and brief relief I can’t
+articulate / oh, but the bus can.&quot; - from
+<a href="https://dabreegster.github.io/poetry/adult/public_transit.html">public transit</a></em></p>
+<p>For the record, this started because the simpler alternative is much worse. If
+you draw a long bus as a straight line and use any one point to determine the
+angle, the bus will pendulum around tight curves, happily smashing into anything
+in the way. Snakes are a slightly better approximation of reality. (I think the
+bendy buses have been called some less polite, but more hilarious, things
+too...)</p>
 <h2 id="project-management-1"><a class="header" href="#project-management-1">Project management</a></h2>
-<p>Here's the section where I feel like the challenges have swallowed me, with very little success.</p>
+<p>Here's the section where I feel like the challenges have swallowed me, with very
+little success.</p>
 <h3 id="collaborations"><a class="header" href="#collaborations">Collaborations</a></h3>
-<p>I was pretty quiet the first year, but then I started actively looking for people interested in working on this. I've lost track of all the people I've spent at least an hour talking to and seriously trying to set up some sort of collaboration -- at least 100? I've tried everything I can to attract <a href="project/retrospective/../contributing.html">contributors</a> for programming, design, business, outreach, writing. Many start, but wind up vanishing. It's exhausting for me; I get emotionally invested in everybody who wants something from A/B Street. Running an open source project is really hard. <strong>But I want to emphasize it has partly worked -- I'm super thankful for the ~dozen people who have stuck around and really made working on this project a true pleasure.</strong> I probably need to learn to filter better, fail-fast, and put some barriers up before I invest.</p>
-<p>There were a few low moments that stand out. Accidentally CC'd on an internal email literally stood the question, &quot;It's open souce, why pay him anything?&quot; when I was trying to set up a small consulting deal. There was also a group that was too cheap to hire somebody for their own idea, so exploited the fact that this is a passion project for me and for a while, somewhat successfully coerced me to work on their quasi-startup. There were also some highlights, especially when butting heads philosophically. Not everybody understood my <a href="project/retrospective/../motivations.html">mission</a> before reaching out. I'll never forget one video call with a company that was going splendidly, until I explicitly stated all work I do will be open source -- watching the other person scramble to control their plummeting facial expression was perfect. And once I got the most Silicon Valley-ish email ever that started, &quot;I'm the founder of a XYZ billion dollar AV startup.&quot; After thinking a moment, I led back with, &quot;Well I think your XYZ billion dollar startup is a reasonable stepping towards car-free cities, but AVs aren't part of the world that I ultimately want to build towards.&quot;</p>
+<p>I was pretty quiet the first year, but then I started actively looking for
+people interested in working on this. I've lost track of all the people I've
+spent at least an hour talking to and seriously trying to set up some sort of
+collaboration -- at least 100? I've tried everything I can to attract
+<a href="project/retrospective/../contributing.html">contributors</a> for programming, design, business, outreach,
+writing. Many start, but wind up vanishing. It's exhausting for me; I get
+emotionally invested in everybody who wants something from A/B Street. Running
+an open source project is really hard. <strong>But I want to emphasize it has partly
+worked -- I'm super thankful for the ~dozen people who have stuck around and
+really made working on this project a true pleasure.</strong> I probably need to learn
+to filter better, fail-fast, and put some barriers up before I invest.</p>
+<p>There were a few low moments that stand out. Accidentally CC'd on an internal
+email literally stood the question, &quot;It's open souce, why pay him anything?&quot;
+when I was trying to set up a small consulting deal. There was also a group that
+was too cheap to hire somebody for their own idea, so exploited the fact that
+this is a passion project for me and for a while, somewhat successfully coerced
+me to work on their quasi-startup. There were also some highlights, especially
+when butting heads philosophically. Not everybody understood my
+<a href="project/retrospective/../motivations.html">mission</a> before reaching out. I'll never forget one video
+call with a company that was going splendidly, until I explicitly stated all
+work I do will be open source -- watching the other person scramble to control
+their plummeting facial expression was perfect. And once I got the most Silicon
+Valley-ish email ever that started, &quot;I'm the founder of a XYZ billion dollar AV
+startup.&quot; After thinking a moment, I led back with, &quot;Well I think your XYZ
+billion dollar startup is a reasonable stepping towards car-free cities, but AVs
+aren't part of the world that I ultimately want to build towards.&quot;</p>
 <p>These moments still bring me strength.</p>
 <h4 id="the-success-stories"><a class="header" href="#the-success-stories">The success stories</a></h4>
-<p>I want to particularly thank Robin for his involvement with A/B Street. He fought to make it a part of <a href="https://actdev.cyipt.bike">ActDev</a>, a really neat data science tool studying how people living in new residential sites in the UK are likely to commute. This integration provided a strong push to solidify the web deployment of A/B Street.</p>
-<p><img src="project/retrospective/poundbury_actdev.png" alt="" />
-<em>You can explore mode split patterns and other data in the ActDev site</em></p>
-<p><img src="project/retrospective/poundbury_abst.png" alt="" />
-<em>and then just click to simulate the site at an agent-based level, and edit the cycle network</em></p>
-<p>Robin has also massively helped evangelize the project and network with possible users. Along with Nathanael, they've made A/B Street more accessible to the data science community, creating an <a href="https://a-b-street.github.io/abstr/">R package</a> to transform travel demand models into individual trips to simulate. Robin's enthusiasm for open source and reproducible research is infectious.</p>
+<p>I want to particularly thank Robin for his involvement with A/B Street. He
+fought to make it a part of <a href="https://actdev.cyipt.bike">ActDev</a>, a really neat
+data science tool studying how people living in new residential sites in the UK
+are likely to commute. This integration provided a strong push to solidify the
+web deployment of A/B Street.</p>
+<p><img src="project/retrospective/poundbury_actdev.png" alt="" /> <em>You can explore mode split patterns and other data in
+the ActDev site</em></p>
+<p><img src="project/retrospective/poundbury_abst.png" alt="" /> <em>and then just click to simulate the site at an
+agent-based level, and edit the cycle network</em></p>
+<p>Robin has also massively helped evangelize the project and network with possible
+users. Along with Nathanael, they've made A/B Street more accessible to the data
+science community, creating an <a href="https://a-b-street.github.io/abstr/">R package</a>
+to transform travel demand models into individual trips to simulate. Robin's
+enthusiasm for open source and reproducible research is infectious.</p>
 <h3 id="project-scope"><a class="header" href="#project-scope">Project scope</a></h3>
-<p>Traffic simulation is such a massively broad endeavor, and because I dabble in so many parts of it, people really brought strong expectations about what they wanted it to be. What about Monte Carlo simulations? Or gondolas? (No, really.) Why not build a city from scratch, just merge with Citybound? Oh, there's no lane-changing? Not calibrated to real traffic volume data? Well then it must be useless.</p>
-<p>I tried my best to balance all of that input with establishing boundaries and pursuing MY vision.</p>
-<p>... But what exactly was my vision? I said early on, &quot;this is an identity crisis between a game and a serious planning tool.&quot; At first that was a way to punt on the realism and calibration problem -- I couldn't hope to alone compete with industry standard simulation software. It was also a way to engage the general public, or at least the percentage that plays games.</p>
+<p>Traffic simulation is such a massively broad endeavor, and because I dabble in
+so many parts of it, people really brought strong expectations about what they
+wanted it to be. What about Monte Carlo simulations? Or gondolas? (No, really.)
+Why not build a city from scratch, just merge with Citybound? Oh, there's no
+lane-changing? Not calibrated to real traffic volume data? Well then it must be
+useless.</p>
+<p>I tried my best to balance all of that input with establishing boundaries and
+pursuing MY vision.</p>
+<p>... But what exactly was my vision? I said early on, &quot;this is an identity crisis
+between a game and a serious planning tool.&quot; At first that was a way to punt on
+the realism and calibration problem -- I couldn't hope to alone compete with
+industry standard simulation software. It was also a way to engage the general
+public, or at least the percentage that plays games.</p>
 <!-- And where do things stand? What're the use cases, who is the audience? Advocacy? Education? Placating fears of NIMBYs? -->
 <h3 id="teasing-apart-the-monolith"><a class="header" href="#teasing-apart-the-monolith">Teasing apart the monolith</a></h3>
-<p>The scope of A/B Street is <strong>way</strong> too broad. Early on, all of the new experiments were just crowded onto the title screen, but at some point, we split out more tools with more focused purposes.</p>
-<p>The &quot;main&quot; app is A/B Street -- that thing that lets you simulate traffic and edit roads. Part of it still tries to act like a computer game, but we haven't put much effort into this in quite a while. It does have a tutorial and a few challenge modes with particular objectives (and even a narrative with some characters!). But I wouldn't call A/B Street as a game &quot;fun&quot; -- one of the challenge modes is impossible to win, because we picked too large a map to ever hope to get past the gridlock bugs. We could chop up the challenges into much smaller &quot;levels&quot; and properly tune the difficulty curve, but it would honestly take somebody dedicated to game design to spearhead that.</p>
-<p><img src="project/retrospective/tutorial.png" alt="" />
-<em>The user interface can be overwhelming, but the tutorial slowly introduces and motivates different features. The more ambitious idea was always to have the player slowly &quot;unlock&quot; more of the tools as they complete challenges.</em></p>
-<p>Instead, most uses of A/B Street are in the &quot;sandbox&quot; mode, where no specific objectives exist. Instead, this is a place to edit the map, explore all the different data visualizations, and try to inch towards completing a full simulation without gridlock.</p>
-<p>I feel bad that A/B Street as a properly fun game was never realized, but I'm proud of <a href="project/retrospective/../../software/santa.html">15-minute Santa</a>. By no means is Santa attempting to split the difference between serious planning and entertainment; it's just a silly arcade game that loosely involves transportation and land use.</p>
-<p><img src="project/retrospective/santa.gif" alt="" />
-<em>Paperboy modernized with OpenStreetMap, a Santa sprite, and plenty of silliness</em></p>
-<p>We also made a tool to explore <a href="project/retrospective/../../software/fifteen_min.html">15-minute neighborhoods</a>. The isochrones are hopefully useful to understand what parts of a city have good or bad access to different types of shops, and how hills and slow traffic signals affect walk or bike-sheds. Editing the map -- particularly to modify land use -- and checking out the differential isochrone would be the ultimate use for this tool, should we ever revive it.</p>
-<p>As I realized the most active audience for A/B Street is the OpenStreetMap community, I spun out some tools to <a href="project/retrospective/../../software/osm_viewer.html">validate lane tagging</a> and <a href="project/retrospective/../../software/parking_mapper.html">tag street parking</a>.</p>
-<p>And finally, after some feedback from advocacy groups and people who felt overwhelmed by the broad scope of A/B Street, we're working on a simple interface for sketching and evaluating a bike network. Stay tuned.</p>
+<p>The scope of A/B Street is <strong>way</strong> too broad. Early on, all of the new
+experiments were just crowded onto the title screen, but at some point, we split
+out more tools with more focused purposes.</p>
+<p>The &quot;main&quot; app is A/B Street -- that thing that lets you simulate traffic and
+edit roads. Part of it still tries to act like a computer game, but we haven't
+put much effort into this in quite a while. It does have a tutorial and a few
+challenge modes with particular objectives (and even a narrative with some
+characters!). But I wouldn't call A/B Street as a game &quot;fun&quot; -- one of the
+challenge modes is impossible to win, because we picked too large a map to ever
+hope to get past the gridlock bugs. We could chop up the challenges into much
+smaller &quot;levels&quot; and properly tune the difficulty curve, but it would honestly
+take somebody dedicated to game design to spearhead that.</p>
+<p><img src="project/retrospective/tutorial.png" alt="" /> <em>The user interface can be overwhelming, but the tutorial
+slowly introduces and motivates different features. The more ambitious idea was
+always to have the player slowly &quot;unlock&quot; more of the tools as they complete
+challenges.</em></p>
+<p>Instead, most uses of A/B Street are in the &quot;sandbox&quot; mode, where no specific
+objectives exist. Instead, this is a place to edit the map, explore all the
+different data visualizations, and try to inch towards completing a full
+simulation without gridlock.</p>
+<p>I feel bad that A/B Street as a properly fun game was never realized, but I'm
+proud of <a href="project/retrospective/../../software/santa.html">15-minute Santa</a>. By no means is Santa
+attempting to split the difference between serious planning and entertainment;
+it's just a silly arcade game that loosely involves transportation and land use.</p>
+<p><img src="project/retrospective/santa.gif" alt="" /> <em>Paperboy modernized with OpenStreetMap, a Santa sprite, and
+plenty of silliness</em></p>
+<p>We also made a tool to explore
+<a href="project/retrospective/../../software/fifteen_min.html">15-minute neighborhoods</a>. The isochrones are
+hopefully useful to understand what parts of a city have good or bad access to
+different types of shops, and how hills and slow traffic signals affect walk or
+bike-sheds. Editing the map -- particularly to modify land use -- and checking
+out the differential isochrone would be the ultimate use for this tool, should
+we ever revive it.</p>
+<p>As I realized the most active audience for A/B Street is the OpenStreetMap
+community, I spun out some tools to
+<a href="project/retrospective/../../software/osm_viewer.html">validate lane tagging</a> and
+<a href="project/retrospective/../../software/parking_mapper.html">tag street parking</a>.</p>
+<p>And finally, after some feedback from advocacy groups and people who felt
+overwhelmed by the broad scope of A/B Street, we're working on a simple
+interface for sketching and evaluating a bike network. Stay tuned.</p>
 <h3 id="marketing"><a class="header" href="#marketing">Marketing</a></h3>
-<p>The successful marketing basically came for free. A single bold post to <a href="https://old.reddit.com/r/Seattle/comments/hdtucd/ab_street_think_you_can_fix_seattles_traffic/">r/seattle</a> was magic. Someone &quot;leaked&quot; the project to <a href="https://news.ycombinator.com/item?id=23605048">Hacker News</a>. I think the <a href="https://www.youtube.com/watch?v=LxPD4n_1-LU">alpha launch trailer</a> got the point across. <a href="https://www.thestranger.com/slog/2020/06/29/43999454/ab-streets-game-lets-you-create-the-seattle-street-grid-of-your-dreams">The Stranger</a> made a shocking connection between my childhood with Banjo Kazooie and my current fascination with multi-modal travel.</p>
-<p>But I've also hustled near-constantly online and in-person, at countless hackathons and <a href="project/retrospective/../presentations.html">conferences</a>. I've cold-emailed so many companies trying to set up collaborations.</p>
+<p>The successful marketing basically came for free. A single bold post to
+<a href="https://old.reddit.com/r/Seattle/comments/hdtucd/ab_street_think_you_can_fix_seattles_traffic/">r/seattle</a>
+was magic. Someone &quot;leaked&quot; the project to
+<a href="https://news.ycombinator.com/item?id=23605048">Hacker News</a>. I think the
+<a href="https://www.youtube.com/watch?v=LxPD4n_1-LU">alpha launch trailer</a> got the
+point across.
+<a href="https://www.thestranger.com/slog/2020/06/29/43999454/ab-streets-game-lets-you-create-the-seattle-street-grid-of-your-dreams">The Stranger</a>
+made a shocking connection between my childhood with Banjo Kazooie and my
+current fascination with multi-modal travel.</p>
+<p>But I've also hustled near-constantly online and in-person, at countless
+hackathons and <a href="project/retrospective/../presentations.html">conferences</a>. I've cold-emailed so many
+companies trying to set up collaborations.</p>
 <h3 id="community"><a class="header" href="#community">Community</a></h3>
-<p>The A/B Street Slack has a sense of home to me; it might've started for work, but I've forged friendships there.</p>
-<p>I think I did a reasonable job amassing a small army of people interested in open source transportation software. Some of the academic and data science communities weren't talking to each other before I got people into the same (virtual) room.</p>
+<p>The A/B Street Slack has a sense of home to me; it might've started for work,
+but I've forged friendships there.</p>
+<p>I think I did a reasonable job amassing a small army of people interested in
+open source transportation software. Some of the academic and data science
+communities weren't talking to each other before I got people into the same
+(virtual) room.</p>
 <h3 id="money"><a class="header" href="#money">Money</a></h3>
-<p>I self-funded from savings from my previous big tech job. I feel super fortunate to have had zero pressure to make money with A/B Street, letting me prioritize what really matters to me. I've even personally funded a few people to create <a href="project/retrospective/../funding.html">new open source libraries</a> that I needed.</p>
-<p>But not starting a business, even some kind of consulting firm, was likely a mistake. Many of the groups I tried to collaborate with probably had no idea how to deal with me. There's no legal entity for the project, I'm not in academia, I'm not even calling it a startup.</p>
+<p>I self-funded from savings from my previous big tech job. I feel super fortunate
+to have had zero pressure to make money with A/B Street, letting me prioritize
+what really matters to me. I've even personally funded a few people to create
+<a href="project/retrospective/../funding.html">new open source libraries</a> that I needed.</p>
+<p>But not starting a business, even some kind of consulting firm, was likely a
+mistake. Many of the groups I tried to collaborate with probably had no idea how
+to deal with me. There's no legal entity for the project, I'm not in academia,
+I'm not even calling it a startup.</p>
 <h1 id="the-problem"><a class="header" href="#the-problem">The problem</a></h1>
 <p>That thing I've poured 3+ years of my life into? Nobody's using it.</p>
-<p>(Except maybe a few members of the OSM community, in a way I mostly don't hear about.)</p>
+<p>(Except maybe a few members of the OSM community, in a way I mostly don't hear
+about.)</p>
 <h2 id="advocacy-groups"><a class="header" href="#advocacy-groups">Advocacy groups</a></h2>
-<p>For a long time, I've insisted that either advocacy groups who fight for biking/walking-friendly changes in cities or individual Twitter urbanists with large followings would find some use for A/B Street. Maybe the traffic simulation stuff is overwhelming and not trustworthy, fine. But at least the top-down road visualization and editing is better at communicating an idea than some squiggly lines on top of Google Maps? Surely groups pushing for a better bike network want to see how elevation and collision data relate to their ideas?</p>
-<p>And the more I understand about how advocacy groups (at least in Seattle) work, the less I have faith in them to avert the climate crisis. I seriously respect their longevity and determination, but fighting for years to get only the slightest improvement isn't a time-scale I believe in. Cities need a massive culture shift. I want to find and work with the people who have some sense of urgency, even if that's not realistic.</p>
+<p>For a long time, I've insisted that either advocacy groups who fight for
+biking/walking-friendly changes in cities or individual Twitter urbanists with
+large followings would find some use for A/B Street. Maybe the traffic
+simulation stuff is overwhelming and not trustworthy, fine. But at least the
+top-down road visualization and editing is better at communicating an idea than
+some squiggly lines on top of Google Maps? Surely groups pushing for a better
+bike network want to see how elevation and collision data relate to their ideas?</p>
+<p>And the more I understand about how advocacy groups (at least in Seattle) work,
+the less I have faith in them to avert the climate crisis. I seriously respect
+their longevity and determination, but fighting for years to get only the
+slightest improvement isn't a time-scale I believe in. Cities need a massive
+culture shift. I want to find and work with the people who have some sense of
+urgency, even if that's not realistic.</p>
 <h2 id="the-public"><a class="header" href="#the-public">The public</a></h2>
-<p>The thesis behind A/B Street is that ordinary citizens are experts in some small slice of the city that they interact with. And so when they see a problem, A/B Street is a tool for them to explore and express ideas for changing it. But I'm beginning to believe I'm wrong about this -- because, where are they? If somebody's only casually interested, they're not going to dedicate their time to fighting for a real change. And if somebody really does care enough, they'll... possibly wind up working for a city government, where they actually have power to change things (and slowly have their spirit crushed by bureaucracy).</p>
+<p>The thesis behind A/B Street is that ordinary citizens are experts in some small
+slice of the city that they interact with. And so when they see a problem, A/B
+Street is a tool for them to explore and express ideas for changing it. But I'm
+beginning to believe I'm wrong about this -- because, where are they? If
+somebody's only casually interested, they're not going to dedicate their time to
+fighting for a real change. And if somebody really does care enough, they'll...
+possibly wind up working for a city government, where they actually have power
+to change things (and slowly have their spirit crushed by bureaucracy).</p>
 <p>I had many goals with A/B Street that are about sparking culture shifts:</p>
 <ol>
 <li>Pushing people towards sustainable car-free cities</li>
 <li>Getting more ordinary citizens involved, in a productive way</li>
-<li>Getting different parties -- government, citizen, advocacy group -- on the same level, communicating in a standard way</li>
-<li>Promoting open data and open source software for use in government planning -- why trust the traffic analysis that you can't read and reproduce yourself?</li>
+<li>Getting different parties -- government, citizen, advocacy group -- on the
+same level, communicating in a standard way</li>
+<li>Promoting open data and open source software for use in government planning
+-- why trust the traffic analysis that you can't read and reproduce yourself?</li>
 </ol>
 <p>I don't feel I've budged the needle on any of these.</p>
 <h2 id="whos-our-audience"><a class="header" href="#whos-our-audience">Who's our audience?</a></h2>
-<p>I've tried to avoid actually advocating myself for specific changes in Seattle. Partly this is because there are well-established groups here that do this already, and I want to spend my energy doing what I enjoy more -- creating software to empower them. Partly I'm afraid of promoting ideas that're tied to my own biases and wouldn't serve everyone in Seattle well -- I have a conspicuous gap of knowledge about biking in South Seattle, a place with much more traffic violence and much less cycling-friendly infrastructure. And partly, I'm just lazy and avoiding writing -- I can do it, but it's so draining -- writing this document was quite difficult for me. As a team, we have published <a href="project/retrospective/../../proposals/broadmoor.html">one simple advocacy piece</a> -- written by Michael -- more to experiment with the format than to push for a real change (although the idea would be fantastic, asking to open up private roads is a non-starter).</p>
-<p>I don't have a good understanding of politics or how to actually help advance real changes on the ground. But since we've failed to find users for A/B Street that're advancing some cause, then... there is one last thing we could try. Will I rip off such an adhesive bandage before it's too late?</p>
+<p>I've tried to avoid actually advocating myself for specific changes in Seattle.
+Partly this is because there are well-established groups here that do this
+already, and I want to spend my energy doing what I enjoy more -- creating
+software to empower them. Partly I'm afraid of promoting ideas that're tied to
+my own biases and wouldn't serve everyone in Seattle well -- I have a
+conspicuous gap of knowledge about biking in South Seattle, a place with much
+more traffic violence and much less cycling-friendly infrastructure. And partly,
+I'm just lazy and avoiding writing -- I can do it, but it's so draining --
+writing this document was quite difficult for me. As a team, we have published
+<a href="project/retrospective/../../proposals/broadmoor.html">one simple advocacy piece</a> -- written by Michael
+-- more to experiment with the format than to push for a real change (although
+the idea would be fantastic, asking to open up private roads is a non-starter).</p>
+<p>I don't have a good understanding of politics or how to actually help advance
+real changes on the ground. But since we've failed to find users for A/B Street
+that're advancing some cause, then... there is one last thing we could try. Will
+I rip off such an adhesive bandage before it's too late?</p>
 <h2 id="what-this-project-means-to-me"><a class="header" href="#what-this-project-means-to-me">What this project means to me</a></h2>
-<p>I try to inject my humor into A/B Street wherever I can. When I skim through the <a href="https://github.com/a-b-street/abstreet/releases">release names</a>, I remember the story of my life that week, or something bizarre I cooked/ate/&quot;foraged&quot; -- ajitummy, twice-dumpstered anything, beef welldoneington, tostonical vows, the rise of Fridgehaus, rubducks in the laptub, taro bingsoothsayer, Hausbroken.</p>
-<p>After weeks of sweating over what the 15-minute neighborhood tool is supposed to do and just one stout, I exploded out of my room and drunkenly pitched <a href="project/retrospective/../../software/santa.html">15 minute Santa</a> to my bewildered housemates. Then Michael and Yuwen and I made it (thank you for putting up with me).</p>
-<p>A/B Street is my self-expression. Its origins are tangled in a mess of bittersweet memory (I wasn't the one who thought a game should be about traffic) and near-misses with trucks passing too closely on Boyer. I used it to pull out of a nose-dive of depression -- that's a story I'm still trying to write. I broke my fear and landed some of the largest jumps of my life (I do <a href="http://dcarlino.org/parkour">parkour</a>) as an escape from constantly thinking about A/B Street. I've worked on this project for the entirety of COVID. I've coded while taking the shinkansen from Tokyo to Miyazaki and the TGV from Paris to Berlin. I pushed code the morning of my ACL surgery, and reviewed a PR when I got home (and was remarkably lucid). It's safe to call me obsessed. I quit my job to do this. I've worked on it basically every weekday and weekend for 3 years, and thought about it constantly for at least 6 months before starting the project full-time. </p>
-<p>A/B Street lets me take a bird's eye view of the messy world I move through, imagine it a bit differently, and try to convince others to see it the same way.</p>
-<p>If anybody wants to convince me to do something else instead, now you know what you're up against. And if you succeed, you know how important your idea must be to me instead.</p>
+<p>I try to inject my humor into A/B Street wherever I can. When I skim through the
+<a href="https://github.com/a-b-street/abstreet/releases">release names</a>, I remember the
+story of my life that week, or something bizarre I cooked/ate/&quot;foraged&quot; --
+ajitummy, twice-dumpstered anything, beef welldoneington, tostonical vows, the
+rise of Fridgehaus, rubducks in the laptub, taro bingsoothsayer, Hausbroken.</p>
+<p>After weeks of sweating over what the 15-minute neighborhood tool is supposed to
+do and just one stout, I exploded out of my room and drunkenly pitched
+<a href="project/retrospective/../../software/santa.html">15 minute Santa</a> to my bewildered housemates. Then
+Michael and Yuwen and I made it (thank you for putting up with me).</p>
+<p>A/B Street is my self-expression. Its origins are tangled in a mess of
+bittersweet memory (I wasn't the one who thought a game should be about traffic)
+and near-misses with trucks passing too closely on Boyer. I used it to pull out
+of a nose-dive of depression -- that's a story I'm still trying to write. I
+broke my fear and landed some of the largest jumps of my life (I do
+<a href="http://dcarlino.org/parkour">parkour</a>) as an escape from constantly thinking
+about A/B Street. I've worked on this project for the entirety of COVID. I've
+coded while taking the shinkansen from Tokyo to Miyazaki and the TGV from Paris
+to Berlin. I pushed code the morning of my ACL surgery, and reviewed a PR when I
+got home (and was remarkably lucid). It's safe to call me obsessed. I quit my
+job to do this. I've worked on it basically every weekday and weekend for 3
+years, and thought about it constantly for at least 6 months before starting the
+project full-time.</p>
+<p>A/B Street lets me take a bird's eye view of the messy world I move through,
+imagine it a bit differently, and try to convince others to see it the same way.</p>
+<p>If anybody wants to convince me to do something else instead, now you know what
+you're up against. And if you succeed, you know how important your idea must be
+to me instead.</p>
 <!-- A street and B Street... ->
 <div style="break-before: page; page-break-before: always;"></div><h1 id="changelog"><a class="header" href="#changelog">CHANGELOG</a></h1>
 <p>Every time I upload a new <a href="https://github.com/a-b-street/abstreet/releases">binary
@@ -6471,7 +7150,8 @@ the end</li>
 <li><a href="https://www.youtube.com/watch?v=JUN5GWfb4Qo">Video</a></li>
 </ul>
 </li>
-<li>July 2020: <a href="https://bikesiliconvalley.org/2020/07/poster_dustin-carlino/">Silicon Valley Bike Coalition summit</a></li>
+<li>July 2020:
+<a href="https://bikesiliconvalley.org/2020/07/poster_dustin-carlino/">Silicon Valley Bike Coalition summit</a></li>
 <li><a href="https://youtu.be/P12N51qI5Cs?t=1469">March 2021 ActDev workshop</a></li>
 <li>April 2020 Seattle Rust meetup
 <ul>
