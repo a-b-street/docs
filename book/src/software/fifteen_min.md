@@ -82,8 +82,9 @@ contour might be a little off by about that much.
 ![gaps](gaps.png)
 
 You can see some gaps in the middle of the park. Because there are no buildings
-in the middle, the grid cell has 0 cost in there. There's probably some better
-approaches to calculating isochrones.
+in the middle, the grid cell has 0 cost in there. There's probably some [better
+approaches](https://github.com/a-b-street/abstreet/issues/669) to calculating
+isochrones.
 
 ### Finding the perfect home
 
