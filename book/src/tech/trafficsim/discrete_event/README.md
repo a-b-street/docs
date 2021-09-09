@@ -30,24 +30,26 @@ intersections, different sidewalks are connected by crosswalks, and pedestrians
 can also move bidirectionally on those, after waiting for the right time to
 cross.
 
-<!-- diagram sidewalk and turn -->
+![](sidewalks.png) _Sidewalks shown in blue, connected by pink crosswalks and
+also cyan connections.Everything is bidirectional._
 
 We'll make a few assumptions about pedestrians. They follow the sidewalks and
-crosswalks perfectly, never deciding to [honor their inner Pythagorean](link).
-They travel at a fixed speed and change that speed instantly -- no smooth
+crosswalks perfectly, never deciding to honor their inner Pythagorean. They
+travel at a fixed speed and change that speed instantly -- no smooth
 acceleration. That fixed speed could depend on both their preferred walking
 speed and on the current sidewalk's elevation gain. These poor robotic
 pedestrians never stop to smell the flowers, write an angry neighborly note, or
 pet a pupper -- they just walk, or wait. Online dating is also so pervasive in
 this simulation that pedestrians ghost -- through each other, that is. There are
 more interesting models of pedestrian movement like the
-[social force model](link...) where people change speeds in crowds, but A/B
-Street is focused on sad American cities where you don't really see many people
-walking in one place. So there's no collision between pedestrians at all; they
-just pass through each other, temporarily losing their individuality for
-rendering purposes:
+[social force model](https://en.wikipedia.org/wiki/Crowd_simulation) where
+people change speeds in crowds, but A/B Street is focused on sad American cities
+where you don't really see many people walking in one place. So there's no
+collision between pedestrians at all; they just pass through each other,
+temporarily losing their individuality for rendering purposes:
 
-<!-- gif -->
+![](ghosts.gif)
+_[This is what it's like when people collide](https://www.youtube.com/watch?v=lsV500W4BHU)_
 
 In the world of discrete timesteps, you could imagine each pedestrian has very
 simple logic. At any moment, they just continue walking one direction or the
@@ -62,9 +64,11 @@ fixed speed, we can just linearly interpolate their exact position at any moment
 in time if we want to draw them.
 
 Instead of looping through every agent every time-step, in a discrete-event
-system, we just have one giant priority queue of events, scheduled to happen at
-some time in the future. Each agent remains in a certain state for a period of
-time, and schedules an event to transition themselves to a different state.
+system, we just have one giant
+[priority queue of events](https://github.com/a-b-street/abstreet/blob/master/sim/src/scheduler.rs),
+scheduled to happen at some time in the future. Each agent remains in a certain
+state for a period of time, and schedules an event to transition themselves to a
+different state.
 
 In the case of pedestrians, this works like this:
 
@@ -93,9 +97,10 @@ In the case of pedestrians, this works like this:
 
 We can visualize this with a finite-state machine diagram:
 
-<!-- FSM diagram? -->
+![](pedestrian_fsm.png)
 
-<!-- link to mechanics/walking.rs, scheduler.rs, sim step() -->
+Code references
+[here](https://github.com/a-b-street/abstreet/blob/master/sim/src/mechanics/walking.rs).
 
 ## Vehicles
 
