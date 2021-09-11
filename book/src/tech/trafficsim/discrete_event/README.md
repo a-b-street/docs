@@ -205,30 +205,38 @@ time and distance intervals. Then as we walk from front to back, we maintain a
 the current vehicle, plus the vehicle's length and a fixed following distance
 (which, note, is not based on speed).
 
-<!-- diagram -->
+![](exact_pos.png)
+
+Let's walk through the example above, from front (the left side) to back. The yellow car is `WaitingToAdvance` at the intersection, so their front position **(1)** is the full length of the lane. Based on the length of that car and a following distance of 1 meter, the bound imposed by this first car is at **(2)** -- nobody following could possibly be beyond this position.
+
+The second vehicle in the queue is the bike. Based on their `Crossing` state, which says they're crossing from 0 meters along the lane to the full length of it from 30 seconds to 90 seconds, we linearly interpolate and get their front position **(3)**. This position is smaller than the bound of **(2)**, so no adjustment is needed.
+
+The third vehicle is the red car. Based on their `Crossing` state, optimistically they would be at position **(4a)** by this time. But since they're following the bike, then they're bound by position **(4)**, so that's where this algorithm places them. The bound for the next vehicle is then **(4)** plus the vehicle's length and a following buffer, giving us **(5)**. The final vehicle hasn't reached that position yet based on its `Crossing` state, so it's unaffected by that bound and is just at **(6)**.
 
 Code [here](https://github.com/a-b-street/abstreet/blob/master/sim/src/mechanics/queue.rs).
 
 ### Laggy heads
 
-<!-- laggy head details -->
-
-Another case where we need to know exact positions of cars is to prevent the
-first vehicle on a lane from hitting the back of a car who just left the lane.
-All vehicles have length, and position is tracked by the front of the car. When
-a car's front leaves a lane, its back is still partly in the lane. Logically,
-the new lead car in the lane still needs to act like it's Queued. So each lane
-keeps a "laggy head", pointing to the car with its back partly in the lane.
-After the laggy head has made it sufficient distance along its new turn or lane,
-the laggy head on the old lane can be erased, unblocking the lead vehicle. This
-requires calculating exact distances and some occasionally expensive cases where
-we have to schedule frequent events to check when a laggy head is clear.
+Vehicles aren't infinitesmal dots; they have a length, so each one has a front and back. This means we have to be a little careful about defining when a vehicle has left a lane and its follower should be considered the "first" in the queue:
 
 ![](laggy_heads.png)
+*The front of the yellow car is in the intersection and thus out of the queue. But its back is still in the lane, so the bike can't truly be at the front of the queue yet.*
+
+To model this, every lane's queue may have a "laggy head." (Naming things is hard...) The head of this queue may be the bike, but because the yellow car is still the laggy head, the bike remains `Queued`. When the yellow car enters the intersection, we need to determine when its back will clear the lane, letting the bike wind up at the very front. Optimistically we assume the yellow car will travel through the turn as fast as possible, so we can calculate the time to cross the car's length, and schedule a check there. When that check happens, we calculate the exact position of the yellow car -- maybe it's queued behind other vehicles making the same turn, or blocked by other vehicles in its target queue. If it's advanced far enough, then we unregister the yellow car as a laggy head and wake up the bike, who changes from `Queued` to `WaitingToAdvance`. If the yellow car's back end is still sticking out into the lane, then we schedule another check a fixed 0.1 seconds. This retry policy is quite aggressive and will slow down the simulation as traffic jams start to form.
+
+This logic to determine when a vehicle's back has fully cleared a lane is unfortunately complicated by the presence of short roads and turns, a currently unsolved problem in the underlying map model. A long vehicle like a bus may partly be overlapping several lanes and turns at a time, meaning we have to carefully calculate when the back of the bus has cleared each piece.
 
 ### Performance
 
-<!-- estimate number of events -->
+It's been a very long time since I've measured the performance of this discrete-event simulation, so these numbers are very out-of-date:
+
+![](perf.png)
+
+One of the reasons the simulation is more performant than discrete time-steps is by how much time the simulation advances between updates. With discrete time, it's always a fixed amount -- 0.1 seconds usually. With discrete events, it depnds when the next event is scheduled -- the later that event occurs, the faster the overall simulation proceeds. On a nearly empty map with really long roads, a single agent only needs a few updates to complete its trip -- very loosely, an update at the beginning and end of each lane and turn in its path. As more vehicles queue along the same lane at the same time, we increase the number of updates to process all of them, but it's still less than updating every agent every 0.1 seconds.
+
+There are a few big opportunities to improve performance, by requiring less updates when vehicles are stuck waiting at intersections or stuck behind laggy heads. From some [older investigation](https://github.com/a-b-street/abstreet/issues/368#issuecomment-728289865), it's clear that a huge amount of processing is spent on agents trying to start a turn and on checks that a laggy head has cleared a queue.
+
+![](perf_stats.png)
 
 ## Lane-changing
 
