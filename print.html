@@ -3998,17 +3998,20 @@ essence of scarcity I want to model is capacity on lanes and contention at
 intersections. What happens in between isn't as important. I think you'll find
 that the overall traffic patterns emerging in A/B Street still look compellingly
 realistic.</p>
-<!-- show perfect stop -->
+<p><img src="tech/trafficsim/discrete_event/quick_stop.gif" alt="" />
+<em>A perfect stop from 70mph.</em></p>
 <p>The second article of funny business is lane-changing. Let's assume that
 vehicles don't change lanes in the middle of a road. Instead, vehicles shift
 left and right while moving through intersections. So if somebody needs to use a
 left turn lane, then at the intersection one road back, they'll choose to slide
 over during their turn. Any conflicting movements with other vehicles is handled
 at the intersection already.</p>
-<!-- show path moving to the left -->
+<p><img src="tech/trafficsim/discrete_event/lc_intersections.png" alt="" />
+<em>On a two lane road, a vehicle changes lanes in the south intersection, then makes a left turn at the north intersection. Don't try this at home!</em></p>
 <p>This also means there's no over-taking. If a car gets stuck behind a bike moving
 slowly uphill, so be it.</p>
-<!-- slow uphill -->
+<p><img src="tech/trafficsim/discrete_event/no_overtaking.gif" alt="" />
+<em>A car patiently follows a bike. In reality, they would likely over-take here.</em></p>
 <p>We'll try to relax this second assumption later.</p>
 <h3 id="the-state-machine"><a class="header" href="#the-state-machine">The state machine</a></h3>
 <p>So let's figure out how to model these vehicles. The approach used by
@@ -4021,18 +4024,20 @@ way! But when this state ends, we can only transition the vehicle to the
 <code>WaitingToAdvance</code> state if they're the &quot;lead&quot; vehicle in the current lane's
 queue. If they have a &quot;leader&quot; vehicle, then they enter the <code>Queued</code> state and
 register as a &quot;follower&quot; of this &quot;leader&quot; in the queue.</p>
-<!-- time0: leader in Crossing, follower in Crossing -->
-<!-- time1: leader in WaitingToAdvance, follower in Crossing -->
-<!-- time2: leader in WaitingToAdvance, follower in Queued -->
-<p>When the vehicle at the very front of a lane enters the intersection and vacates
-their old lane, then they &quot;wake up&quot; their follower. The follower changes from
-<code>Queued</code> back to <code>Crossing</code>. Note that the follower doesn't instantly transition
-to <code>WaitingToAdvance</code>, since they're not quite at the end of the lane. Based on
-the length of the leader vehicle, the follower has some short distance left to
-cover. <!-- check details here... --></p>
+<p><img src="tech/trafficsim/discrete_event/car_ex_time1.png" alt="" />
+<em>Both the cyan and green car are in the Crossing state.</em></p>
+<p><img src="tech/trafficsim/discrete_event/car_ex_time2.png" alt="" />
+<em>The green car has reached the intersection and is WaitingToAdvance, but the cyan car is still Crossing.</em></p>
+<p><img src="tech/trafficsim/discrete_event/car_ex_time3.png" alt="" />
+<em>The cyan car caught up and is now Queued.</em></p>
+<p>Note that somebody might enter <code>Queued</code> well before they're near the intersection, like if they're following a slower vehicle. <code>Queued</code> just means the faster vehicle has already spent the &quot;best-case&quot; time to cross the road at the full speed limit.</p>
+<p><img src="tech/trafficsim/discrete_event/car_ex_slow.png" alt="" />
+<em>The cyan car is already Queued, but its leader, the green vehicle, is still Crossing.</em></p>
+<p>When the vehicle at the very front of a lane enters the intersection and fully vacates
+their old lane, then they &quot;wake up&quot; their follower. Since the <code>Queued</code> follower has been following along as closely as possible, they instantly transition to <code>WaitingToAdvance</code>, since we know they're at the end of the lane. &quot;Fully vacating&quot; the lane means the back of the vehicle clears the lane; see the <a href="tech/trafficsim/discrete_event/index.html#laggy-heads">section below</a>.</p>
 <p>We can again understand all of this with a finite-state machine:</p>
 <p><img src="tech/trafficsim/discrete_event/vehicle_fsm.png" alt="" /></p>
-<!-- code in mechanics/car,driving -->
+<p>Code references <a href="https://github.com/a-b-street/abstreet/blob/master/sim/src/mechanics/car.rs">here</a> and <a href="https://github.com/a-b-street/abstreet/blob/master/sim/src/mechanics/driving.rs">here</a>.</p>
 <h3 id="exact-positions"><a class="header" href="#exact-positions">Exact positions</a></h3>
 <p>Most of the time, we don't care exactly where on a lane some vehicle is. But we
 do need to know for drawing and for a few cases during simulation, such as
@@ -4050,7 +4055,7 @@ time and distance intervals. Then as we walk from front to back, we maintain a
 the current vehicle, plus the vehicle's length and a fixed following distance
 (which, note, is not based on speed).</p>
 <!-- diagram -->
-<!-- queue.rs -->
+<p>Code <a href="https://github.com/a-b-street/abstreet/blob/master/sim/src/mechanics/queue.rs">here</a>.</p>
 <h3 id="laggy-heads"><a class="header" href="#laggy-heads">Laggy heads</a></h3>
 <!-- laggy head details -->
 <p>Another case where we need to know exact positions of cars is to prevent the
@@ -4063,6 +4068,7 @@ After the laggy head has made it sufficient distance along its new turn or lane,
 the laggy head on the old lane can be erased, unblocking the lead vehicle. This
 requires calculating exact distances and some occasionally expensive cases where
 we have to schedule frequent events to check when a laggy head is clear.</p>
+<p><img src="tech/trafficsim/discrete_event/laggy_heads.png" alt="" /></p>
 <h3 id="performance"><a class="header" href="#performance">Performance</a></h3>
 <!-- estimate number of events -->
 <h2 id="lane-changing"><a class="header" href="#lane-changing">Lane-changing</a></h2>
