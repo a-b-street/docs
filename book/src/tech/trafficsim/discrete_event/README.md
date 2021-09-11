@@ -128,7 +128,8 @@ intersections. What happens in between isn't as important. I think you'll find
 that the overall traffic patterns emerging in A/B Street still look compellingly
 realistic.
 
-<!-- show perfect stop -->
+![](quick_stop.gif)
+*A perfect stop from 70mph.*
 
 The second article of funny business is lane-changing. Let's assume that
 vehicles don't change lanes in the middle of a road. Instead, vehicles shift
@@ -137,12 +138,14 @@ left turn lane, then at the intersection one road back, they'll choose to slide
 over during their turn. Any conflicting movements with other vehicles is handled
 at the intersection already.
 
-<!-- show path moving to the left -->
+![](lc_intersections.png)
+*On a two lane road, a vehicle changes lanes in the south intersection, then makes a left turn at the north intersection. Don't try this at home!*
 
 This also means there's no over-taking. If a car gets stuck behind a bike moving
 slowly uphill, so be it.
 
-<!-- slow uphill -->
+![](no_overtaking.gif)
+*A car patiently follows a bike. In reality, they would likely over-take here.*
 
 We'll try to relax this second assumption later.
 
@@ -159,22 +162,28 @@ way! But when this state ends, we can only transition the vehicle to the
 queue. If they have a "leader" vehicle, then they enter the `Queued` state and
 register as a "follower" of this "leader" in the queue.
 
-<!-- time0: leader in Crossing, follower in Crossing -->
-<!-- time1: leader in WaitingToAdvance, follower in Crossing -->
-<!-- time2: leader in WaitingToAdvance, follower in Queued -->
+![](car_ex_time1.png)
+*Both the cyan and green car are in the Crossing state.*
 
-When the vehicle at the very front of a lane enters the intersection and vacates
-their old lane, then they "wake up" their follower. The follower changes from
-`Queued` back to `Crossing`. Note that the follower doesn't instantly transition
-to `WaitingToAdvance`, since they're not quite at the end of the lane. Based on
-the length of the leader vehicle, the follower has some short distance left to
-cover. <!-- check details here... -->
+![](car_ex_time2.png)
+*The green car has reached the intersection and is WaitingToAdvance, but the cyan car is still Crossing.*
+
+![](car_ex_time3.png)
+*The cyan car caught up and is now Queued.*
+
+Note that somebody might enter `Queued` well before they're near the intersection, like if they're following a slower vehicle. `Queued` just means the faster vehicle has already spent the "best-case" time to cross the road at the full speed limit.
+
+![](car_ex_slow.png)
+*The cyan car is already Queued, but its leader, the green vehicle, is still Crossing.*
+
+When the vehicle at the very front of a lane enters the intersection and fully vacates
+their old lane, then they "wake up" their follower. Since the `Queued` follower has been following along as closely as possible, they instantly transition to `WaitingToAdvance`, since we know they're at the end of the lane. "Fully vacating" the lane means the back of the vehicle clears the lane; see the [section below](#laggy-heads).
 
 We can again understand all of this with a finite-state machine:
 
 ![](vehicle_fsm.png)
 
-<!-- code in mechanics/car,driving -->
+Code references [here](https://github.com/a-b-street/abstreet/blob/master/sim/src/mechanics/car.rs) and [here](https://github.com/a-b-street/abstreet/blob/master/sim/src/mechanics/driving.rs).
 
 ### Exact positions
 
@@ -198,7 +207,7 @@ the current vehicle, plus the vehicle's length and a fixed following distance
 
 <!-- diagram -->
 
-<!-- queue.rs -->
+Code [here](https://github.com/a-b-street/abstreet/blob/master/sim/src/mechanics/queue.rs).
 
 ### Laggy heads
 
@@ -214,6 +223,8 @@ After the laggy head has made it sufficient distance along its new turn or lane,
 the laggy head on the old lane can be erased, unblocking the lead vehicle. This
 requires calculating exact distances and some occasionally expensive cases where
 we have to schedule frequent events to check when a laggy head is clear.
+
+![](laggy_heads.png)
 
 ### Performance
 
