@@ -2,6 +2,8 @@
 
 Most recent first.
 
+- September 2021: [SUMO user conference](https://www.eclipse.org/sumo/conference/)
+  - [Slides](https://docs.google.com/presentation/d/1_xaR0LQCkZVhcxIep1YgzWm18NVxhGwZVHh-tNfDpjY/edit?usp=sharing)
 - August 2021: [Actdev promo video](https://www.youtube.com/watch?v=nNYroA16JEQ)
 - July 2021: State of the Map 2021, Using OSM for transportation advocacy
   - [Slides](https://docs.google.com/presentation/d/1glV5DTq2M-XMHOwiNyAmQ6LeeyaKynOHRA-XoU02qYk/edit?usp=sharing)
@@ -42,4 +44,3 @@ Most recent first.
 Don't forget to link to these!
 
 - FOSS4G 2021
-- SUMO
