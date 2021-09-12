@@ -1,5 +1,7 @@
 # Deep dive into devilish details: Intersection geometry
 
+_By Dustin Carlino, last updated September 2021_
+
 Some of the things in A/B Street that seem the simplest have taken me tremendous
 effort. Determining the shape of roads and intersections is one of those
 problems, so this article is a deep-dive into how it works and why it's so hard.
@@ -622,13 +624,36 @@ through the code, print things, and more importantly, dump some kind of extra
 output files to visualize intermediate shifted polylines or something. I've
 never figured out an IDE setup for this, but it'd be very worthwhile.
 
-### Hall of Lovecraftian horrors / the stress tests
+### Hall of Lovecraftian horrors
 
-montlake/520
+Here's my list of stress test cases. Avert your eyes...
 
-roundabouts
+![](better_montlake.png)
+[Montlake/520](https://www.openstreetmap.org/node/3391701883) in Seattle. I
+happened to live close to this intersection when I started A/B Street, so it
+holds a special place. And as of September 2021, it's been dramatically changed
+in real life and in OSM, so this rendering is now out-of-date and has probably
+blown up again.
 
-south of fremont bridge
+![](nickerson.png) The confluence of
+[Nickerson, Dexter, Westlake, and the Fremont Bridge](https://www.openstreetmap.org/node/53128122)
+in Seattle. We've got tiny road segments, a cycletrack that starts off parallel
+to the road but splits off, and a complete lack of 90 degree angles.
+
+![](triangle_doom.png) The triangle of doom:
+[Lenora and Westlake](https://www.openstreetmap.org/node/1884382823) in Seattle.
+Try synchronizing the 3 traffic signals!
+
+![](dublin.png) Let's not let the USA have all the fun. Here's
+[Custom House Quay and the Talbot Memorial Bridge](https://www.openstreetmap.org/node/3594434240)
+in Dublin. A divided highway overlapping itself and some cycleways.
+
+![](taipei.png) Loads of the junctions in
+[Taipei](https://www.openstreetmap.org/node/1505012053) look like this. Two
+parallel one-ways isn't hard enough; we need at least six.
+
+![](loop101.png) And finally, the eerie symmetry of
+[Arizona freeways](https://www.openstreetmap.org/node/760159861).
 
 ### A radically simpler approach?
 
