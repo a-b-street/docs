@@ -2822,7 +2822,7 @@ time-constrained and communicating the ideas is my priority.</p>
 <ul>
 <li><a href="tech/map/geometry/index.html#tricks-and-tooling">Tricks and tooling</a></li>
 <li><a href="tech/map/geometry/index.html#hall-of-lovecraftian-horrors--the-stress-tests">Hall of Lovecraftian horrors / the stress tests</a></li>
-<li><a href="tech/map/geometry/index.html#radically-simpler-approach">Radically simpler approach?</a></li>
+<li><a href="tech/map/geometry/index.html#a-radically-simpler-approach">A radically simpler approach?</a></li>
 <li><a href="tech/map/geometry/index.html#other-data-sources">Other data sources</a></li>
 </ul>
 </li>
@@ -3223,31 +3223,65 @@ Usually breaks.</p>
 <p>Focusing on tsig clusters for now, since they cause the most problems to traffic
 sim, but very much ongoing work.</p>
 <h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
-<p>Given how much time I've sunk into trying to automatically generate decent
-geometry from an OSM schema absolutely not meant for this, I hope you don't
-fault me for wanting to try some radically different ideas, like mapping from
-scratch. There are some intersections just not worth trying to squeeze into
-OSM's model. Maybe in some future, I'll explore something very different. Or
-play around with some of the proposals to tag OSM junction areas.</p>
+<p>Given how much time I've sunk into automatically generating decent geometry from
+an OSM schema absolutely not meant for this, I hope you don't fault me for
+wanting to try some radically different ideas. There've been some OSM proposals
+over the years to just explicitly draw roads and intersections as areas -- the
+<a href="https://wiki.openstreetmap.org/wiki/Proposed_features/Street_area">street area</a>
+and
+<a href="https://wiki.openstreetmap.org/wiki/Proposed_features/area_highway/mapping_guidelines">area:highway</a>
+pages describe these ideas the best. These proposals don't seem to have caught
+on, but I think they're worth an attempt.</p>
+<p>I've also toyed around with designing a schema to map roads and intersections
+from scratch, but that's an article to write on a rainier day...</p>
 <h2 id="appendices"><a class="header" href="#appendices">Appendices</a></h2>
 <h3 id="tricks-and-tooling"><a class="header" href="#tricks-and-tooling">Tricks and tooling</a></h3>
-<ul>
-<li>screenshot diff as a regression test!</li>
-<li>back and forth on RawMap editor and marking stuff in the main game. fast
-reimports. be able to adjust road centers in rawmap, quickly toggle shorties
-on or off, preview geometry.</li>
-<li>how to debug? this is wedged in the middle of an import process, should we
-emit extra &quot;side output&quot; files to visualize later? Some kind of step-through
-debugger, live edit code would be fantastic.</li>
-</ul>
+<p>Iterating quickly on these algorithms and preventing regressions are often at
+odds. These are some parts of my development workflow that help balance a bit.</p>
+<p>First, how do you automatically test this? Expressing properties about the
+output -- like no road and intersection polygons should overlap -- would be a
+start, but it's a tough standard to reach. It's easy for a human to subjectively
+judge output and spot regressions. So, screenshot diff-testing it is! For a
+select few maps, I
+<a href="https://github.com/a-b-street/abstreet/blob/master/widgetry/src/tools/screenshot.rs">take a bunch of screenshots</a>
+covering the whole map and store them as &quot;golden-files.&quot; After importing new OSM
+data or changing the code, I take more screenshots, then automatically compare
+them with
+<a href="https://github.com/a-b-street/abstreet/blob/master/game/compare_screencaps.sh">imagemagick's compare</a>
+tool and manually inspect any differences.</p>
+<p>The
+<a href="https://github.com/a-b-street/abstreet/tree/master/map_editor/">RawMap editor</a>
+serves as an interactive tool for quickly adjusting the input -- what if this
+road center-line curved less sharply, what if the width implied by tags was a
+little different, what if this road was marked for merging? But at the same
+time, just previewing the intersection geometry doesn't reveal all problems --
+sometimes the turns generated at a consolidated intersection are wrong, or the
+traffic signal heuristic turns out poorly. The full A/B Street UI already has
+tools to explore these things. So this UI also has a mode to load a second map
+and quickly flip between the two:</p>
+<p><img src="tech/map/geometry/compare_ui.gif" alt="" /></p>
+<p>Something I've always wanted is an interactive debugger -- the ability to step
+through the code, print things, and more importantly, dump some kind of extra
+output files to visualize intermediate shifted polylines or something. I've
+never figured out an IDE setup for this, but it'd be very worthwhile.</p>
 <h3 id="hall-of-lovecraftian-horrors--the-stress-tests"><a class="header" href="#hall-of-lovecraftian-horrors--the-stress-tests">Hall of Lovecraftian horrors / the stress tests</a></h3>
 <p>montlake/520</p>
 <p>roundabouts</p>
 <p>south of fremont bridge</p>
-<h3 id="radically-simpler-approach"><a class="header" href="#radically-simpler-approach">Radically simpler approach?</a></h3>
-<p>Why not just thicken roads, calc bool overlap? robust bool-op library, and also
-three-ways</p>
-<p>why not map manually? OSM sort of has schema. maybe infer for most but not all.</p>
+<h3 id="a-radically-simpler-approach"><a class="header" href="#a-radically-simpler-approach">A radically simpler approach?</a></h3>
+<p>I think many people's first instinct to solve the problem of forming an
+intersection polygon from thickened roads is to use boolean operations. Just
+find the intersection between all of the road polygons. Or maybe, find the
+intersection between any pair of road polygons, then union all of those pieces.</p>
+<p>Early on, I tried some variations of this. One difficulty was a lack of a robust
+boolean geometry library in Rust, but if bindings to a native GEOS library were
+acceptable, maybe this was possible. But also, this simple idea doesn't work for
+three-way intersections:</p>
+<p><img src="tech/map/geometry/three_way_overlap.png" alt="" /> <em>The horizontal road partly intersects the two
+vertical roads (shown in red), but doesn't extend to cover enough of the
+intersection.</em></p>
+<p>The two vertical road pieces don't even intersect at all, except right at their
+boundary. We'd need to special-case that, at least.</p>
 <h3 id="other-data-sources"><a class="header" href="#other-data-sources">Other data sources</a></h3>
 <p>I've come across a few cities that seem to have a vector dataset describing road
 polygons or curbs. I haven't tried working with any of these before, but it
@@ -7238,7 +7272,8 @@ the end</li>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="presentations"><a class="header" href="#presentations">Presentations</a></h1>
 <p>Most recent first.</p>
 <ul>
-<li>September 2021: <a href="https://www.eclipse.org/sumo/conference/">SUMO user conference</a>
+<li>September 2021:
+<a href="https://www.eclipse.org/sumo/conference/">SUMO user conference</a>
 <ul>
 <li><a href="https://docs.google.com/presentation/d/1_xaR0LQCkZVhcxIep1YgzWm18NVxhGwZVHh-tNfDpjY/edit?usp=sharing">Slides</a></li>
 </ul>
