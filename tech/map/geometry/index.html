@@ -150,6 +150,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="deep-dive-into-devilish-details-intersection-geometry"><a class="header" href="#deep-dive-into-devilish-details-intersection-geometry">Deep dive into devilish details: Intersection geometry</a></h1>
+<p><em>By Dustin Carlino, last updated September 2021</em></p>
 <p>Some of the things in A/B Street that seem the simplest have taken me tremendous
 effort. Determining the shape of roads and intersections is one of those
 problems, so this article is a deep-dive into how it works and why it's so hard.</p>
@@ -208,7 +209,7 @@ time-constrained and communicating the ideas is my priority.</p>
 <li><a href="#appendices">Appendices</a>
 <ul>
 <li><a href="#tricks-and-tooling">Tricks and tooling</a></li>
-<li><a href="#hall-of-lovecraftian-horrors--the-stress-tests">Hall of Lovecraftian horrors / the stress tests</a></li>
+<li><a href="#hall-of-lovecraftian-horrors">Hall of Lovecraftian horrors</a></li>
 <li><a href="#a-radically-simpler-approach">A radically simpler approach?</a></li>
 <li><a href="#other-data-sources">Other data sources</a></li>
 </ul>
@@ -651,10 +652,29 @@ and quickly flip between the two:</p>
 through the code, print things, and more importantly, dump some kind of extra
 output files to visualize intermediate shifted polylines or something. I've
 never figured out an IDE setup for this, but it'd be very worthwhile.</p>
-<h3 id="hall-of-lovecraftian-horrors--the-stress-tests"><a class="header" href="#hall-of-lovecraftian-horrors--the-stress-tests">Hall of Lovecraftian horrors / the stress tests</a></h3>
-<p>montlake/520</p>
-<p>roundabouts</p>
-<p>south of fremont bridge</p>
+<h3 id="hall-of-lovecraftian-horrors"><a class="header" href="#hall-of-lovecraftian-horrors">Hall of Lovecraftian horrors</a></h3>
+<p>Here's my list of stress test cases. Avert your eyes...</p>
+<p><img src="better_montlake.png" alt="" />
+<a href="https://www.openstreetmap.org/node/3391701883">Montlake/520</a> in Seattle. I
+happened to live close to this intersection when I started A/B Street, so it
+holds a special place. And as of September 2021, it's been dramatically changed
+in real life and in OSM, so this rendering is now out-of-date and has probably
+blown up again.</p>
+<p><img src="nickerson.png" alt="" /> The confluence of
+<a href="https://www.openstreetmap.org/node/53128122">Nickerson, Dexter, Westlake, and the Fremont Bridge</a>
+in Seattle. We've got tiny road segments, a cycletrack that starts off parallel
+to the road but splits off, and a complete lack of 90 degree angles.</p>
+<p><img src="triangle_doom.png" alt="" /> The triangle of doom:
+<a href="https://www.openstreetmap.org/node/1884382823">Lenora and Westlake</a> in Seattle.
+Try synchronizing the 3 traffic signals!</p>
+<p><img src="dublin.png" alt="" /> Let's not let the USA have all the fun. Here's
+<a href="https://www.openstreetmap.org/node/3594434240">Custom House Quay and the Talbot Memorial Bridge</a>
+in Dublin. A divided highway overlapping itself and some cycleways.</p>
+<p><img src="taipei.png" alt="" /> Loads of the junctions in
+<a href="https://www.openstreetmap.org/node/1505012053">Taipei</a> look like this. Two
+parallel one-ways isn't hard enough; we need at least six.</p>
+<p><img src="loop101.png" alt="" /> And finally, the eerie symmetry of
+<a href="https://www.openstreetmap.org/node/760159861">Arizona freeways</a>.</p>
 <h3 id="a-radically-simpler-approach"><a class="header" href="#a-radically-simpler-approach">A radically simpler approach?</a></h3>
 <p>I think many people's first instinct to solve the problem of forming an
 intersection polygon from thickened roads is to use boolean operations. Just
