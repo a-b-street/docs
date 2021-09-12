@@ -652,6 +652,8 @@ in Dublin. A divided highway overlapping itself and some cycleways.
 [Taipei](https://www.openstreetmap.org/node/1505012053) look like this. Two
 parallel one-ways isn't hard enough; we need at least six.
 
+![](chorlton_traffic.jpeg) And how about [Chester Road and Kingsway](https://www.openstreetmap.org/node/31287523) with some gridlocked traffic?
+
 ![](loop101.png) And finally, the eerie symmetry of
 [Arizona freeways](https://www.openstreetmap.org/node/760159861).
 

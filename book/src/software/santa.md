@@ -16,11 +16,11 @@ Contact <dabreegster@gmail.com> with any feedback or
 
 ## Play it
 
-- [Play online](http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.57/santa.html)
+- [Play online](http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.58/santa.html)
   (slower and no music -- download below if possible)
-- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.2.57/abstreet_windows_v0_2_57.zip)
-- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.2.57/abstreet_mac_v0_2_57.zip)
-- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.2.57/abstreet_linux_v0_2_57.zip)
+- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.2.58/abstreet_windows_v0_2_58.zip)
+- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.2.58/abstreet_mac_v0_2_58.zip)
+- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.2.58/abstreet_linux_v0_2_58.zip)
 
 Unzip, then run `santa.exe` or `santa`. No mobile/tablet support, sorry -- you
 need a keyboard.

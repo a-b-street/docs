@@ -971,3 +971,10 @@ changes here.
 - use drag and drop for traffic signal editor and route waypoints
 - small internal map model performance boost
 - heavy documentation week
+
+0.2.58
+
+- dramatically improve time to recalculate pathfinding
+- deploy raw map editor to web, to support a long-form article: https://a-b-street.github.io/docs/tech/map/geometry/index.html
+- long-form article about the simulation: https://a-b-street.github.io/docs/tech/trafficsim/discrete_event/index.html
+- small fixes to ungap route tool
