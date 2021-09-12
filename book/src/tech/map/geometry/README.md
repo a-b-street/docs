@@ -572,24 +572,55 @@ sim, but very much ongoing work.
 
 ## Conclusion
 
-Given how much time I've sunk into trying to automatically generate decent
-geometry from an OSM schema absolutely not meant for this, I hope you don't
-fault me for wanting to try some radically different ideas, like mapping from
-scratch. There are some intersections just not worth trying to squeeze into
-OSM's model. Maybe in some future, I'll explore something very different. Or
-play around with some of the proposals to tag OSM junction areas.
+Given how much time I've sunk into automatically generating decent geometry from
+an OSM schema absolutely not meant for this, I hope you don't fault me for
+wanting to try some radically different ideas. There've been some OSM proposals
+over the years to just explicitly draw roads and intersections as areas -- the
+[street area](https://wiki.openstreetmap.org/wiki/Proposed_features/Street_area)
+and
+[area:highway](https://wiki.openstreetmap.org/wiki/Proposed_features/area_highway/mapping_guidelines)
+pages describe these ideas the best. These proposals don't seem to have caught
+on, but I think they're worth an attempt.
+
+I've also toyed around with designing a schema to map roads and intersections
+from scratch, but that's an article to write on a rainier day...
 
 ## Appendices
 
 ### Tricks and tooling
 
-- screenshot diff as a regression test!
-- back and forth on RawMap editor and marking stuff in the main game. fast
-  reimports. be able to adjust road centers in rawmap, quickly toggle shorties
-  on or off, preview geometry.
-- how to debug? this is wedged in the middle of an import process, should we
-  emit extra "side output" files to visualize later? Some kind of step-through
-  debugger, live edit code would be fantastic.
+Iterating quickly on these algorithms and preventing regressions are often at
+odds. These are some parts of my development workflow that help balance a bit.
+
+First, how do you automatically test this? Expressing properties about the
+output -- like no road and intersection polygons should overlap -- would be a
+start, but it's a tough standard to reach. It's easy for a human to subjectively
+judge output and spot regressions. So, screenshot diff-testing it is! For a
+select few maps, I
+[take a bunch of screenshots](https://github.com/a-b-street/abstreet/blob/master/widgetry/src/tools/screenshot.rs)
+covering the whole map and store them as "golden-files." After importing new OSM
+data or changing the code, I take more screenshots, then automatically compare
+them with
+[imagemagick's compare](https://github.com/a-b-street/abstreet/blob/master/game/compare_screencaps.sh)
+tool and manually inspect any differences.
+
+The
+[RawMap editor](https://github.com/a-b-street/abstreet/tree/master/map_editor/)
+serves as an interactive tool for quickly adjusting the input -- what if this
+road center-line curved less sharply, what if the width implied by tags was a
+little different, what if this road was marked for merging? But at the same
+time, just previewing the intersection geometry doesn't reveal all problems --
+sometimes the turns generated at a consolidated intersection are wrong, or the
+traffic signal heuristic turns out poorly. The full A/B Street UI already has
+tools to explore these things. So this UI also has a mode to load a second map
+and quickly flip between the two:
+
+![](compare_ui.gif)
+
+Something I've always wanted is an interactive debugger -- the ability to step
+through the code, print things, and more importantly, dump some kind of extra
+output files to visualize intermediate shifted polylines or something. I've
+never figured out an IDE setup for this, but it'd be very worthwhile.
 
 ### Hall of Lovecraftian horrors / the stress tests
 
@@ -599,12 +630,24 @@ roundabouts
 
 south of fremont bridge
 
-### Radically simpler approach?
+### A radically simpler approach?
 
-Why not just thicken roads, calc bool overlap? robust bool-op library, and also
-three-ways
+I think many people's first instinct to solve the problem of forming an
+intersection polygon from thickened roads is to use boolean operations. Just
+find the intersection between all of the road polygons. Or maybe, find the
+intersection between any pair of road polygons, then union all of those pieces.
 
-why not map manually? OSM sort of has schema. maybe infer for most but not all.
+Early on, I tried some variations of this. One difficulty was a lack of a robust
+boolean geometry library in Rust, but if bindings to a native GEOS library were
+acceptable, maybe this was possible. But also, this simple idea doesn't work for
+three-way intersections:
+
+![](three_way_overlap.png) _The horizontal road partly intersects the two
+vertical roads (shown in red), but doesn't extend to cover enough of the
+intersection._
+
+The two vertical road pieces don't even intersect at all, except right at their
+boundary. We'd need to special-case that, at least.
 
 ### Other data sources
 
