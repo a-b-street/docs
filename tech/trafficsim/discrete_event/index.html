@@ -150,6 +150,13 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="discrete-event-traffic-simulation-laggy-heads-and-ghosts"><a class="header" href="#discrete-event-traffic-simulation-laggy-heads-and-ghosts">Discrete event traffic simulation, laggy heads, and ghosts</a></h1>
+<style>
+figure {
+    outline: 1px solid black;
+    padding: 16px;
+}
+</style>
+<p><em>By Dustin Carlino, last updated September 2021</em></p>
 <p>A/B Street's traffic simulation isn't based on any research papers or existing
 systems, so this article aims to motivate and explain how it works. This article
 focuses on how the different agents (drivers, bicyclists, and pedestrians) move
@@ -197,8 +204,11 @@ point along a sidewalk and can move in one direction or the other. At
 intersections, different sidewalks are connected by crosswalks, and pedestrians
 can also move bidirectionally on those, after waiting for the right time to
 cross.</p>
-<p><img src="sidewalks.png" alt="" /> <em>Sidewalks shown in blue, connected by pink crosswalks and
-also cyan connections.Everything is bidirectional.</em></p>
+<figure>
+  <a href="sidewalks.png" target="_blank"><img src="sidewalks.png"/></a>
+  <figcaption>Sidewalks shown in blue, connected by pink crosswalks and
+also cyan connections.Everything is bidirectional.</figcaption>
+</figure>
 <p>We'll make a few assumptions about pedestrians. They follow the sidewalks and
 crosswalks perfectly, never deciding to honor their inner Pythagorean. They
 travel at a fixed speed and change that speed instantly -- no smooth
@@ -213,8 +223,10 @@ people change speeds in crowds, but A/B Street is focused on sad American cities
 where you don't really see many people walking in one place. So there's no
 collision between pedestrians at all; they just pass through each other,
 temporarily losing their individuality for rendering purposes:</p>
-<p><img src="ghosts.gif" alt="" />
-<em><a href="https://www.youtube.com/watch?v=lsV500W4BHU">This is what it's like when people collide</a></em></p>
+<figure>
+  <a href="ghosts.gif" target="_blank"><img src="ghosts.gif"/></a>
+  <figcaption>[This is what it's like when people collide](https://www.youtube.com/watch?v=lsV500W4BHU)</figcaption>
+</figure>
 <p>In the world of discrete timesteps, you could imagine each pedestrian has very
 simple logic. At any moment, they just continue walking one direction or the
 other at their fixed speed along a sidewalk or crosswalk. Or they pause at the
@@ -256,7 +268,9 @@ state too happens over some distance and time interval.</li>
 <code>Crossing</code> state for the next sidewalk.</li>
 </ol>
 <p>We can visualize this with a finite-state machine diagram:</p>
-<p><img src="pedestrian_fsm.png" alt="" /></p>
+<figure>
+  <a href="pedestrian_fsm.png" target="_blank"><img src="pedestrian_fsm.png"/></a>
+</figure>
 <p>Code references
 <a href="https://github.com/a-b-street/abstreet/blob/master/sim/src/mechanics/walking.rs">here</a>.</p>
 <h2 id="vehicles"><a class="header" href="#vehicles">Vehicles</a></h2>
@@ -281,20 +295,29 @@ essence of scarcity I want to model is capacity on lanes and contention at
 intersections. What happens in between isn't as important. I think you'll find
 that the overall traffic patterns emerging in A/B Street still look compellingly
 realistic.</p>
-<p><img src="quick_stop.gif" alt="" /> <em>A perfect stop from 70mph.</em></p>
+<figure>
+  <a href="quick_stop.gif" target="_blank"><img src="quick_stop.gif"/></a>
+  <figcaption>A perfect stop from 70mph.</figcaption>
+</figure>
 <p>The second article of funny business is lane-changing. Let's assume that
 vehicles don't change lanes in the middle of a road. Instead, vehicles shift
 left and right while moving through intersections. So if somebody needs to use a
 left turn lane, then at the intersection one road back, they'll choose to slide
 over during their turn. Any conflicting movements with other vehicles is handled
 at the intersection already.</p>
-<p><img src="lc_intersections.png" alt="" /> <em>On a two lane road, a vehicle changes lanes in the
+<figure>
+  <a href="lc_intersections.png" target="_blank"><img src="lc_intersections.png"/></a>
+  <figcaption>On a two lane road, a vehicle changes lanes in the
 south intersection, then makes a left turn at the north intersection. Don't try
-this at home!</em></p>
+this at home!</figcaption>
+</figure>
 <p>This also means there's no over-taking. If a car gets stuck behind a bike moving
 slowly uphill, so be it.</p>
-<p><img src="no_overtaking.gif" alt="" /> <em>A car patiently follows a bike. In reality, they would
-likely over-take here.</em></p>
+<figure>
+  <a href="no_overtaking.gif" target="_blank"><img src="no_overtaking.gif"/></a>
+  <figcaption>A car patiently follows a bike. In reality, they would
+likely over-take here.</figcaption>
+</figure>
 <p>We'll try to relax this second assumption later.</p>
 <h3 id="the-state-machine"><a class="header" href="#the-state-machine">The state machine</a></h3>
 <p>So let's figure out how to model these vehicles. The approach used by
@@ -307,16 +330,28 @@ way! But when this state ends, we can only transition the vehicle to the
 <code>WaitingToAdvance</code> state if they're the &quot;lead&quot; vehicle in the current lane's
 queue. If they have a &quot;leader&quot; vehicle, then they enter the <code>Queued</code> state and
 register as a &quot;follower&quot; of this &quot;leader&quot; in the queue.</p>
-<p><img src="car_ex_time1.png" alt="" /> <em>Both the cyan and green car are in the Crossing state.</em></p>
-<p><img src="car_ex_time2.png" alt="" /> <em>The green car has reached the intersection and is
-WaitingToAdvance, but the cyan car is still Crossing.</em></p>
-<p><img src="car_ex_time3.png" alt="" /> <em>The cyan car caught up and is now Queued.</em></p>
+<figure>
+  <a href="car_ex_time1.png" target="_blank"><img src="car_ex_time1.png"/></a>
+  <figcaption>Both the cyan and green car are in the Crossing state.</figcaption>
+</figure>
+<figure>
+  <a href="car_ex_time2.png" target="_blank"><img src="car_ex_time2.png"/></a>
+  <figcaption>The green car has reached the intersection and is
+WaitingToAdvance, but the cyan car is still Crossing.</figcaption>
+</figure>
+<figure>
+  <a href="car_ex_time3.png" target="_blank"><img src="car_ex_time3.png"/></a>
+  <figcaption>The cyan car caught up and is now Queued.</figcaption>
+</figure>
 <p>Note that somebody might enter <code>Queued</code> well before they're near the
 intersection, like if they're following a slower vehicle. <code>Queued</code> just means
 the faster vehicle has already spent the &quot;best-case&quot; time to cross the road at
 the full speed limit.</p>
-<p><img src="car_ex_slow.png" alt="" /> <em>The cyan car is already Queued, but its leader, the green
-vehicle, is still Crossing.</em></p>
+<figure>
+  <a href="car_ex_slow.png" target="_blank"><img src="car_ex_slow.png"/></a>
+  <figcaption>The cyan car is already Queued, but its leader, the green
+vehicle, is still Crossing.</figcaption>
+</figure>
 <p>When the vehicle at the very front of a lane enters the intersection and fully
 vacates their old lane, then they &quot;wake up&quot; their follower. Since the <code>Queued</code>
 follower has been following along as closely as possible, they instantly
@@ -324,7 +359,9 @@ transition to <code>WaitingToAdvance</code>, since we know they're at the end of
 &quot;Fully vacating&quot; the lane means the back of the vehicle clears the lane; see the
 <a href="#laggy-heads">section below</a>.</p>
 <p>We can again understand all of this with a finite-state machine:</p>
-<p><img src="vehicle_fsm.png" alt="" /></p>
+<figure>
+  <a href="vehicle_fsm.png" target="_blank"><img src="vehicle_fsm.png"/></a>
+</figure>
 <p>Code references
 <a href="https://github.com/a-b-street/abstreet/blob/master/sim/src/mechanics/car.rs">here</a>
 and
@@ -345,7 +382,9 @@ time and distance intervals. Then as we walk from front to back, we maintain a
 &quot;bound&quot; for the next vehicle's position. This is based on the front position of
 the current vehicle, plus the vehicle's length and a fixed following distance
 (which, note, is not based on speed).</p>
-<p><img src="exact_pos.png" alt="" /></p>
+<figure>
+  <a href="exact_pos.png" target="_blank"><img src="exact_pos.png"/></a>
+</figure>
 <p>Let's walk through the example above, from front (the left side) to back. The
 yellow car is <code>WaitingToAdvance</code> at the intersection, so their front position
 <strong>(1)</strong> is the full length of the lane. Based on the length of that car and a
@@ -370,9 +409,12 @@ unaffected by that bound and is just at <strong>(6)</strong>.</p>
 and back. This means we have to be a little careful about defining when a
 vehicle has left a lane and its follower should be considered the &quot;first&quot; in the
 queue:</p>
-<p><img src="laggy_heads.png" alt="" /> <em>The front of the yellow car is in the intersection and
+<figure>
+  <a href="laggy_heads.png" target="_blank"><img src="laggy_heads.png"/></a>
+  <figcaption>The front of the yellow car is in the intersection and
 thus out of the queue. But its back is still in the lane, so the bike can't
-truly be at the front of the queue yet.</em></p>
+truly be at the front of the queue yet.</figcaption>
+</figure>
 <p>To model this, every lane's queue may have a &quot;laggy head.&quot; (Naming things is
 hard...) The head of this queue may be the bike, but because the yellow car is
 still the laggy head, the bike remains <code>Queued</code>. When the yellow car enters the
@@ -395,7 +437,9 @@ carefully calculate when the back of the bus has cleared each piece.</p>
 <h3 id="performance"><a class="header" href="#performance">Performance</a></h3>
 <p>It's been a very long time since I've measured the performance of this
 discrete-event simulation, so these numbers are very out-of-date:</p>
-<p><img src="perf.png" alt="" /></p>
+<figure>
+  <a href="perf.png" target="_blank"><img src="perf.png"/></a>
+</figure>
 <p>One of the reasons the simulation is more performant than discrete time-steps is
 by how much time the simulation advances between updates. With discrete time,
 it's always a fixed amount -- 0.1 seconds usually. With discrete events, it
@@ -412,7 +456,9 @@ heads. From some
 <a href="https://github.com/a-b-street/abstreet/issues/368#issuecomment-728289865">older investigation</a>,
 it's clear that a huge amount of processing is spent on agents trying to start a
 turn and on checks that a laggy head has cleared a queue.</p>
-<p><img src="perf_stats.png" alt="" /></p>
+<figure>
+  <a href="perf_stats.png" target="_blank"><img src="perf_stats.png"/></a>
+</figure>
 <h2 id="lane-changing"><a class="header" href="#lane-changing">Lane-changing</a></h2>
 <p>For a long time, A/B Street had no dynamic lane-changing or over-taking. As
 described earlier, vehicles used the conflict handling at intersections to
@@ -420,8 +466,11 @@ change lanes in order to pick the lane required for a turn (&quot;mandatory
 lane-changing&quot;) or that's likely to be fastest (&quot;discretionary lane-changing&quot;).
 But that finally changed in
 <a href="https://github.com/a-b-street/abstreet/pull/682">June 2021</a>.</p>
-<p><img src="lanechanging.gif" alt="" /> <em>Two vehicles change lanes to pass a slower bike. They
-follow the bike for a few seconds before starting to over-take.</em></p>
+<figure>
+  <a href="lanechanging.gif" target="_blank"><img src="lanechanging.gif"/></a>
+  <figcaption>Two vehicles change lanes to pass a slower bike. They
+follow the bike for a few seconds before starting to over-take.</figcaption>
+</figure>
 <h3 id="background"><a class="header" href="#background">Background</a></h3>
 <p>The lane-changing implemented right now is only discretionary, meant for cars to
 over-take slower vehicles. In a
@@ -478,7 +527,9 @@ same time, so that a vehicle doesn't start to over-take and then wind up unable
 to return to the original lane. This involves inserting a ghost in front of the
 slow vehicle, but there are some unsolved conceptual problems that I've...
 completely lost context on.</p>
-<p><img src="two_phase_overtaking.gif" alt="" /></p>
+<figure>
+  <a href="two_phase_overtaking.gif" target="_blank"><img src="two_phase_overtaking.gif"/></a>
+</figure>
 <p>Once full over-taking works, letting vehicles cross into incoming traffic to
 over-take would be the next step. This will require calculating what part of
 that opposite direction queue should be blocked off for the duration of the
