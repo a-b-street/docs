@@ -36,7 +36,7 @@
     - [Data formats](tech/dev/formats/README.md)
       - [Scenarios](tech/dev/formats/scenarios.md)
       - [Traffic signals](tech/dev/formats/traffic_signals.md)
-    - [UI](tech/dev/ui.md)
+    - [widgetry UI](tech/dev/ui.md)
   - [Map model](tech/map/README.md)
     - [Intersection geometry](tech/map/geometry/README.md)
     - [Details](tech/map/details.md)
