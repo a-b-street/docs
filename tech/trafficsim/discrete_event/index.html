@@ -224,8 +224,8 @@ where you don't really see many people walking in one place. So there's no
 collision between pedestrians at all; they just pass through each other,
 temporarily losing their individuality for rendering purposes:</p>
 <figure>
-  <a href="ghosts.gif" target="_blank"><img src="ghosts.gif"/></a>
-  <figcaption>[This is what it's like when people collide](https://www.youtube.com/watch?v=lsV500W4BHU)</figcaption>
+  <a href="pedestrian_ghosts.gif" target="_blank"><img src="pedestrian_ghosts.gif"/></a>
+  <figcaption><a href="https://www.youtube.com/watch?v=lsV500W4BHU" target="_blank">This is what it's like when people collide</a></figcaption>
 </figure>
 <p>In the world of discrete timesteps, you could imagine each pedestrian has very
 simple logic. At any moment, they just continue walking one direction or the
@@ -517,6 +517,10 @@ their original lane, replacing themselves with a &quot;ghost&quot; in that queue
 ghost follows the leader vehicle and shares the same length as the actual
 vehicle. This ghost prevents another vehicle from advancing too close to the
 slow leader and &quot;clipping&quot; into the vehicle changing lanes.</p>
+<figure>
+  <a href="lc_ghost.gif" target="_blank"><img src="lc_ghost.gif"/></a>
+  <figcaption>A car follows a bike, then starts changing lanes. The time to complete the movement is artifically stretched out to 3 seconds. While the car is sliding over, it leaves a "ghost" vehicle following the bike in the original lane, to prevent other vehicles from getting too close.
+</figure>
 <h3 id="future-work"><a class="header" href="#future-work">Future work</a></h3>
 <p>There are many limits with the current approach.</p>
 <p>First, vehicles should be able to change lanes twice and return to the original
