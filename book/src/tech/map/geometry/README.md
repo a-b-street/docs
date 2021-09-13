@@ -43,23 +43,23 @@ intersections from roads. These maps are used for navigation and drawing your
 attention to nearby businesses, so this is quite a reasonable view.
 
 <figure>
-  <img src="rainier_google.png"/>
+  <a href="rainier_google.png" target="_blank"><img src="rainier_google.png"/></a>
   <figcaption>From Google, it looks like Rainier is a much bigger road than S Massachusetts</figcaption>
 </figure>
 
 <figure>
-  <img src="rainier_osm.png"/>
+  <a href="rainier_osm.png" target="_blank"><img src="rainier_osm.png"/></a>
   <figcaption>The roads look about the same width in OSM</figcaption>
 </figure>
 
 <figure>
-  <img src="rainier_abst.png"/>
+  <a href="rainier_abst.png" target="_blank"><img src="rainier_abst.png"/></a>
   <figcaption>A/B Street reveals the turn lanes and also some bike
 lines on Massachusetts!</figcaption>
 </figure>
 
 <figure>
-  <img src="rainier_satellite.png"/>
+  <a href="rainier_satellite.png" target="_blank"><img src="rainier_satellite.png"/></a>
   <figcaption>Finally, Google's satellite imagery reveals the true
 shape of the intersection, though it's a bit hard to tell with the tree cover.
 And unless you zoom in, there's no way you'll spot the lane count or bike
@@ -74,13 +74,13 @@ pedestrian-friendly traffic signal crossing from Husky Stadium to the UW medical
 building, we need to see that huge intersection.
 
 <figure>
-  <img src="eastlake_before.png"/>
+  <a href="eastlake_before.png" target="_blank"><img src="eastlake_before.png"/></a>
   <figcaption>Does Eastlake really need to dedicate 5 lanes to
 moving cars and 2 to storing them?</figcaption>
 </figure>
 
 <figure>
-  <img src="eastlake_after.png"/>
+  <a href="eastlake_after.png" target="_blank"><img src="eastlake_after.png"/></a>
   <figcaption>Talking about Eastlake having a safe cycling route is
 one thing, but isn't it much easier to imagin when you can just see it?</figcaption>
 </figure>
@@ -109,7 +109,7 @@ a city as flat 2D space, roads and intersections occupy some portion of it.
 (Let's ignore bridges and tunnels.)
 
 <figure>
-  <img src="thick_pt1.png"/>
+  <a href="thick_pt1.png" target="_blank"><img src="thick_pt1.png"/></a>
   <figcaption>Here's a three-way intersection at your typical Seattle
 angle</figcaption>
 </figure>
@@ -120,7 +120,7 @@ of those intersections. This partition shouldn't have any ambiguous overlap
 between objects.
 
 <figure>
-  <img src="thick_pt2.png"/>
+  <a href="thick_pt2.png" target="_blank"><img src="thick_pt2.png"/></a>
   <figcaption>The red part is what we'll deem the intersection. The grey
 roads and the intersection now partition the space.</figcaption>
 </figure>
@@ -133,7 +133,7 @@ we have to model that transition as a small "degenerate" intersection, which
 connects only those two roads.
 
 <figure>
-  <img src="degenerate.png"/>
+  <a href="degenerate.png" target="_blank"><img src="degenerate.png"/></a>
   <figcaption>Two lanes become four -- probably some turn lanes
 appearing. The lighter grey is our intersection.</figcaption>
 </figure>
@@ -142,7 +142,7 @@ Another assumption taken by A/B Street is that roads hit intersections at a
 perpendicular angle.
 
 <figure>
-  <img src="perp_no_traffic.png"/>
+  <a href="perp_no_traffic.png" target="_blank"><img src="perp_no_traffic.png"/></a>
   <figcaption>Note how the intersection "eats into" Boren, the
 diagonal road more than you might expect.</figcaption>
 </figure>
@@ -151,7 +151,7 @@ We use this division to determine where vehicles stop, and where a crosswalk
 exists:
 
 <figure>
-  <img src="perp_traffic.png"/>
+  <a href="perp_traffic.png" target="_blank"><img src="perp_traffic.png"/></a>
   <figcaption>Does it seem like vehicles have stopped too far away from
 the intersection?</figcaption>
 </figure>
@@ -159,7 +159,7 @@ the intersection?</figcaption>
 Of course, this assumption isn't always true in reality:
 
 <figure>
-  <img src="perp_satellite.png"/>
+  <a href="perp_satellite.png" target="_blank"><img src="perp_satellite.png"/></a>
   <figcaption>The crosswalks across Boren are horizontal!</figcaption>
 </figure>
 
@@ -168,7 +168,7 @@ insisted that the stop position for each individual lane was perpendicular, it
 might have a "jagged tooth" look:
 
 <figure>
-  <img src="perp_teeth.png"/>
+  <a href="perp_teeth.png" target="_blank"><img src="perp_teeth.png"/></a>
   <figcaption>The cyan lines show one way to represent adjacent lanes
 that extend different lengths.</figcaption>
 </figure>
@@ -201,7 +201,7 @@ when there are more lanes in one direction than the other or when roads join or
 split up for logical routing, but... let's keep things simple to start.
 
 <figure>
-  <img src="osm_center_lines.png"/>
+  <a href="osm_center_lines.png" target="_blank"><img src="osm_center_lines.png"/></a>
   <figcaption>5 roads meet at this intersection. The white lines
 are OSM's center line.</figcaption>
 </figure>
@@ -218,7 +218,7 @@ multiple ways of mapping the same thing, people make many mistakes in practice,
 etc. <!-- TODO, list some examples like cycleway:left:separator:right. -->
 
 <figure>
-  <img src="tags_to_lane_specs.png"/>
+  <a href="tags_to_lane_specs.png" target="_blank"><img src="tags_to_lane_specs.png"/></a>
   <figcaption>A very simple example of OSM tags on the left, and
 on the right, A/B Street's interpretation of each lane, ordered from the left
 side of the road.</figcaption>
@@ -229,7 +229,7 @@ project the center line to the left and right, giving us a thickened polygon for
 the entire road:
 
 <figure>
-  <img src="thickened_5.png"/>
+  <a href="thickened_5.png" target="_blank"><img src="thickened_5.png"/></a>
   <figcaption>All 5 of our roads, thickened based on the lane tagging.
 The red dot is the position of the OSM node shared by these roads.</figcaption>
 </figure>
@@ -243,7 +243,7 @@ of this online, but I don't have them handy. I wouldn't call A/B Street's
 fantastic, but it's there for reference.
 
 <figure>
-  <img src="project_pt1.png"/>
+  <a href="project_pt1.png" target="_blank"><img src="project_pt1.png"/></a>
 </figure>
 
 The original polyline is in black. If you can't tell from my quick drawing, it
@@ -258,7 +258,7 @@ together nicely. The blue and the green line segment intersect each other, so
 we'll trim both segments to that common point:
 
 <figure>
-  <img src="project_pt2.png"/>
+  <a href="project_pt2.png" target="_blank"><img src="project_pt2.png"/></a>
   <figcaption>Please forgive my horrid paint editor skills</figcaption>
 </figure>
 
@@ -267,7 +267,7 @@ extending until they do intersect. If I recall proper terminology, this is a
 miter join:
 
 <figure>
-  <img src="project_pt3.png"/>
+  <a href="project_pt3.png" target="_blank"><img src="project_pt3.png"/></a>
 </figure>
 
 And that's it! Easy.
@@ -277,7 +277,7 @@ edge case. When a road is both thick and sharply angled enough, extending those
 line segments until they meet works... but the hit might be very far away:
 
 <figure>
-  <img src="project_sharp.png"/>
+  <a href="project_sharp.png" target="_blank"><img src="project_sharp.png"/></a>
 </figure>
 
 My workaround currently is to hardcode a maximum distance away from the original
@@ -288,7 +288,7 @@ Just for fun, let's see what happens when a polyline doubles back on itself in
 some less-than-realistic ways:
 
 <figure>
-  <img src="project_lovecraftian.gif"/>
+  <a href="project_lovecraftian.gif" target="_blank"><img src="project_lovecraftian.gif"/></a>
 </figure>
 
 Truly Lovecraftian geometry. I don't think I often see points from OSM totally
@@ -300,7 +300,7 @@ For each road, we've got the original center from OSM and our calculated the
 left and right side:
 
 <figure>
-  <img src="coup_pt1.png"/>
+  <a href="coup_pt1.png" target="_blank"><img src="coup_pt1.png"/></a>
   <figcaption>The left and right sides of the 5 roads are shown -- not the
 original centers. I manually traced this; slight errors are visible.</figcaption>
 </figure>
@@ -310,7 +310,7 @@ sanity, let's call these "collisions" and not "intersections", since that term
 is overloaded here!). Let's find every collision point:
 
 <figure>
-  <img src="coup_pt2.png"/>
+  <a href="coup_pt2.png" target="_blank"><img src="coup_pt2.png"/></a>
   <figcaption>Collisions drawn as black dots</figcaption>
 </figure>
 
@@ -320,7 +320,7 @@ infinitely long line perpendicular to the collision and find where it hits the
 original center-line. We'll trim the road back to at least that point.
 
 <figure>
-  <img src="coup_pt3.png"/>
+  <a href="coup_pt3.png" target="_blank"><img src="coup_pt3.png"/></a>
   <figcaption>The red road's original center is now shown, in a darker red.
 The collision between the red and green road is shown, with a yellow line used
 to find the position along the original center. We'll trim the center back to
@@ -334,7 +334,7 @@ them would cause the center-line to be trimmed back more than the other. We'll
 always trim back as much as possible.
 
 <figure>
-  <img src="coup_pt4.png"/>
+  <a href="coup_pt4.png" target="_blank"><img src="coup_pt4.png"/></a>
   <figcaption>The collision between the red and blue road is shown in
 yellow. The corresponding position on the original red road's center line is
 found, then trimmed back.</figcaption>
@@ -343,7 +343,7 @@ found, then trimmed back.</figcaption>
 If we repeat this for every collision, eventually we wind up with:
 
 <figure>
-  <img src="coup_final.png"/>
+  <a href="coup_final.png" target="_blank"><img src="coup_final.png"/></a>
   <figcaption>All roads have been trimmed back, with their left and right
 sides projected again</figcaption>
 </figure>
@@ -367,7 +367,7 @@ trimmed center-lines, calculate the left and right polylines again (since we've
 changed the center line), and use the endpoints for the shape.
 
 <figure>
-  <img src="clockwise_naive.png"/>
+  <a href="clockwise_naive.png" target="_blank"><img src="clockwise_naive.png"/></a>
   <figcaption>The red polygon is the intersection shape formed from
 these endpoints. The pink portions don't look right!</figcaption>
 </figure>
@@ -377,7 +377,7 @@ ends, but not corners. What if we remember all of the collision points, and use
 those too?
 
 <figure>
-  <img src="clockwise_better.png"/>
+  <a href="clockwise_better.png" target="_blank"><img src="clockwise_better.png"/></a>
 </figure>
 
 Much better.
@@ -394,7 +394,7 @@ calculated the points for the intersection polygon, we can use that single
 point, calculate the angle to each polygon point, and sort. That works fine.
 
 <figure>
-  <img src="sorting_orig_center.png"/>
+  <a href="sorting_orig_center.png" target="_blank"><img src="sorting_orig_center.png"/></a>
   <figcaption>The road center-lines all meet at one point, from
 the original OSM data.</figcaption>
 </figure>
@@ -406,15 +406,15 @@ Foreshadowing: But soon, things won't be so simple.
 That wasn't actually so bad! The results are reasonable in many cases:
 
 <figure>
-  <img src="good1.png"/>
+  <a href="good1.png" target="_blank"><img src="good1.png"/></a>
 </figure>
 
 <figure>
-  <img src="good2.png"/>
+  <a href="good2.png" target="_blank"><img src="good2.png"/></a>
 </figure>
 
 <figure>
-  <img src="good3.png"/>
+  <a href="good3.png" target="_blank"><img src="good3.png"/></a>
 </figure>
 
 But what kind of things go wrong?
@@ -424,7 +424,7 @@ But what kind of things go wrong?
 What's going on with the sidewalk in that last example?
 
 <figure>
-  <img src="sidewalk_corners.gif"/>
+  <a href="sidewalk_corners.gif" target="_blank"><img src="sidewalk_corners.gif"/></a>
 </figure>
 
 ### Lovecraftian geometry
@@ -432,18 +432,18 @@ What's going on with the sidewalk in that last example?
 Sometimes followers of Cthulu edit OSM, I assume.
 
 <figure>
-  <img src="lovecraft1.png"/>
+  <a href="lovecraft1.png" target="_blank"><img src="lovecraft1.png"/></a>
   <figcaption>What... is happening here?</figcaption>
 </figure>
 
 <figure>
-  <img src="lovecraft2.png"/>
+  <a href="lovecraft2.png" target="_blank"><img src="lovecraft2.png"/></a>
   <figcaption>Even the thickened roads, before calculating intersection
 polygons, look broken.</figcaption>
 </figure>
 
 <figure>
-  <img src="lovecraft3.png"/>
+  <a href="lovecraft3.png" target="_blank"><img src="lovecraft3.png"/></a>
   <figcaption>Before I can investigate, somebody has already fixed the
 problem upstream in OSM!</figcaption>
 </figure>
@@ -458,7 +458,7 @@ lanes with a reasonable guess at width produces roads that overlap outside of
 the intersection. This throws off everything we've done!
 
 <figure>
-  <img src="smushed.png"/>
+  <a href="smushed.png" target="_blank"><img src="smushed.png"/></a>
 </figure>
 
 Another example is people tagging the lane count incorrectly. A common problem
@@ -478,7 +478,7 @@ When three nearly parallel roads meet, our algorithm is a bit over-eager with
 the size of the intersection:
 
 <figure>
-  <img src="ramp1.png"/>
+  <a href="ramp1.png" target="_blank"><img src="ramp1.png"/></a>
 </figure>
 
 This case isn't even a real "intersection" -- a one-way highway has two
@@ -488,7 +488,7 @@ notebook somewhere from when I worked on this, but it's lost -- luckily the
 is pretty simple. This produces much better results here:
 
 <figure>
-  <img src="ramp2.png"/>
+  <a href="ramp2.png" target="_blank"><img src="ramp2.png"/></a>
 </figure>
 
 ## Intersection consolidation
@@ -505,31 +505,31 @@ carriageways. When these intersect, we wind up with lots of short "road
 segments" and several intersections all clustered together:
 
 <figure>
-  <img src="divided_simple.png"/>
+  <a href="divided_simple.png" target="_blank"><img src="divided_simple.png"/></a>
   <figcaption>The simplest case: the east/west road is a pair of
 one-ways, and the north/south is a regular road without a median</figcaption>
 </figure>
 
 <figure>
-  <img src="divided_angle.png"/>
+  <a href="divided_angle.png" target="_blank"><img src="divided_angle.png"/></a>
   <figcaption>In case you were hoping these situations always happened
 at nice 90 degree angles, think again</figcaption>
 </figure>
 
 <figure>
-  <img src="divided_join.png"/>
+  <a href="divided_join.png" target="_blank"><img src="divided_join.png"/></a>
   <figcaption>Sometimes one dual carriageway joins back as a regular
 bidirectional road just before intersecting another dual carriageway...</figcaption>
 </figure>
 
 <figure>
-  <img src="divided_streetcar.png"/>
+  <a href="divided_streetcar.png" target="_blank"><img src="divided_streetcar.png"/></a>
   <figcaption>Why not 4 parallel one-way roads? Can't forget
 street cars!</figcaption>
 </figure>
 
 <figure>
-  <img src="divided_taipei.png"/>
+  <a href="divided_taipei.png" target="_blank"><img src="divided_taipei.png"/></a>
   <figcaption>And everytime I think I might've handled most cases,
 I'm humbled by Taipei.</figcaption>
 </figure>
@@ -538,7 +538,7 @@ But wait, there's more. How about "dog-leg" intersections, where one road shifts
 over slightly as it crosses another?
 
 <figure>
-  <img src="dogleg_alley.png"/>
+  <a href="dogleg_alley.png" target="_blank"><img src="dogleg_alley.png"/></a>
   <figcaption>The not-at-all elusive alley dog-leg</figcaption>
 </figure>
 
@@ -548,7 +548,7 @@ only one or two of them, then I think that interior "road" deserves to remain
 separate:
 
 <figure>
-  <img src="dogleg_false.png"/>
+  <a href="dogleg_false.png" target="_blank"><img src="dogleg_false.png"/></a>
 </figure>
 
 And then there's just the cases where I'm pretty sure civil engineers
@@ -556,7 +556,7 @@ anticipated me writing this algorithm, and found the most obnoxious angles for
 roads to meet in order to maximize my pain:
 
 <figure>
-  <img src="boston_merge.png"/>
+  <a href="boston_merge.png" target="_blank"><img src="boston_merge.png"/></a>
 </figure>
 
 ### Why we want to do something about it
@@ -570,7 +570,7 @@ Well for starters, with the algorithm described so far that tries to render the
 physical shape, it's completely visually incomprehensible:
 
 <figure>
-  <img src="hard_to_see.png"/>
+  <a href="hard_to_see.png" target="_blank"><img src="hard_to_see.png"/></a>
   <figcaption>The 4 "interior" intersections here even get stop signs
 placed!</figcaption>
 </figure>
@@ -579,7 +579,7 @@ These complicated intersections are often the ones that would be the most
 interesting to study in A/B Street, but just try modifying lanes in these cases:
 
 <figure>
-  <img src="edit_transit.png"/>
+  <a href="edit_transit.png" target="_blank"><img src="edit_transit.png"/></a>
   <figcaption>Considering a bus lane for the 520 off-ramp at Montlake?</figcaption>
 </figure>
 
@@ -590,13 +590,13 @@ they have to operate on all of them at once! We even extended the UI to handle
 that, but it's quite a poor editing experience.
 
 <figure>
-  <img src="edit_one.png"/>
+  <a href="edit_one.png" target="_blank"><img src="edit_one.png"/></a>
   <figcaption>Reasoning about 4 separate pieces of one traffic signal is
 not pleasant</figcaption>
 </figure>
 
 <figure>
-  <img src="edit_multiple.png"/>
+  <a href="edit_multiple.png" target="_blank"><img src="edit_multiple.png"/></a>
   <figcaption>We can do slightly better by editing all 4 at once, but
 what do those movement arrows in the middle even mean? You have to reason about
 where vehicles might've come from to even get there.</figcaption>
@@ -607,7 +607,7 @@ having some length, meaning a vehicle's front can make it through one
 intersection, but its tail gets stuck there:
 
 <figure>
-  <img src="tails.png"/>
+  <a href="tails.png" target="_blank"><img src="tails.png"/></a>
   <figcaption>These two cars are blocking all movements through the pair of
 intersections</figcaption>
 </figure>
@@ -636,25 +636,25 @@ Before we dive into the approach to consolidate, let's look at some success
 stories.
 
 <figure>
-  <img src="better_streetcar.png"/>
+  <a href="better_streetcar.png" target="_blank"><img src="better_streetcar.png"/></a>
   <figcaption>A single intersection handles the 4 parallel OSM
 ways.</figcaption>
 </figure>
 
 <figure>
-  <img src="better_tsigs.png"/>
+  <a href="better_tsigs.png" target="_blank"><img src="better_tsigs.png"/></a>
   <figcaption>You can now edit the signal timing as if this is just a
 regular massive Arizona intersection.</figcaption>
 </figure>
 
 <figure>
-  <img src="better_angled.png"/>
+  <a href="better_angled.png" target="_blank"><img src="better_angled.png"/></a>
   <figcaption>The angled cut is a bit too aggressive and the crosswalk
 "leaks" out, but this is a definite improvement.</figcaption>
 </figure>
 
 <figure>
-  <img src="better_montlake.png"/>
+  <a href="better_montlake.png" target="_blank"><img src="better_montlake.png"/></a>
   <figcaption>Four intersections become one, again with a slight
 geometric distortion</figcaption>
 </figure>
@@ -682,7 +682,7 @@ For step 2, we start with the regular algorithm described so far, applied to
 each intersection:
 
 <figure>
-  <img src="consolidate_pt1.png"/>
+  <a href="consolidate_pt1.png" target="_blank"><img src="consolidate_pt1.png"/></a>
   <figcaption>The results of running the algorithm on the 2 green
 intersections. The pink road in the middle is marked for merging.</figcaption>
 </figure>
@@ -694,13 +694,13 @@ of a map model. Graph connectivity and all sorts of turn restrictions must be
 preserved. But geometrically, it just looks like this:
 
 <figure>
-  <img src="consolidate_pt2.png"/>
+  <a href="consolidate_pt2.png" target="_blank"><img src="consolidate_pt2.png"/></a>
 </figure>
 
 Then we run step 4, finding the left and right side of each surviving road:
 
 <figure>
-  <img src="consolidate_pt3.png"/>
+  <a href="consolidate_pt3.png" target="_blank"><img src="consolidate_pt3.png"/></a>
   <figcaption>Black lines show the left and right side of each road.
 The red dots are the endpoints of each line.</figcaption>
 </figure>
@@ -715,7 +715,7 @@ If you recall from an earlier section, we used the original shared point from
 OSM to do this:
 
 <figure>
-  <img src="sorting_orig_center.png"/>
+  <a href="sorting_orig_center.png" target="_blank"><img src="sorting_orig_center.png"/></a>
 </figure>
 
 But now things are less clear -- we have multiple shared points, from before
@@ -792,7 +792,7 @@ tools to explore these things. So this UI also has a mode to load a second map
 and quickly flip between the two:
 
 <figure>
-  <img src="compare_ui.gif"/>
+  <a href="compare_ui.gif" target="_blank"><img src="compare_ui.gif"/></a>
 </figure>
 
 Something I've always wanted is an interactive debugger -- the ability to step
@@ -805,38 +805,38 @@ never figured out an IDE setup for this, but it'd be very worthwhile.
 Here's my list of stress test cases. Avert your eyes...
 
 <figure>
-  <img src="better_montlake.png"/>
+  <a href="better_montlake.png" target="_blank"><img src="better_montlake.png"/></a>
   <figcaption><a href="https://www.openstreetmap.org/node/3391701883" target="_blank">Montlake/520</a> in Seattle. I happened to live close to this intersection when I started A/B Street, so it holds a special place. And as of September 2021, it's been dramatically changed in real life and in OSM, so this rendering is now out-of-date and has probably blown up again.</figcaption>
 </figure>
 
 <figure>
-  <img src="nickerson.png"/>
+  <a href="nickerson.png" target="_blank"><img src="nickerson.png"/></a>
   <figcaption>The confluence of <a href="https://www.openstreetmap.org/node/53128122" target="_blank">Nickerson, Dexter, Westlake, and the Fremont Bridge</a> in Seattle. We've got tiny road segments, a cycletrack that starts off parallel to the road but splits off, and a complete lack of 90 degree angles.</figcaption>
 </figure>
 
 <figure>
-  <img src="triangle_doom.png"/>
+  <a href="triangle_doom.png" target="_blank"><img src="triangle_doom.png"/></a>
   <figcaption>The triangle of doom: <a href="https://www.openstreetmap.org/node/1884382823" target="_blank">Lenora and Westlake</a> in Seattle. Try synchronizing the 3 traffic signals!</figcaption>
 </figure>
 
 <figure>
-  <img src="dublin.png"/>
+  <a href="dublin.png" target="_blank"><img src="dublin.png"/></a>
   <figcaption>Let's not let the USA have all the fun. Here's <a href="https://www.openstreetmap.org/node/3594434240" target="_blank">Custom House Quay and the Talbot Memorial Bridge</a> in Dublin. A divided highway overlapping itself and some cycleways.</figcaption>
 </figure>
 
 <figure>
-  <img src="taipei.png"/>
+  <a href="taipei.png" target="_blank"><img src="taipei.png"/></a>
   <figcaption>Loads of the junctions in <a href="https://www.openstreetmap.org/node/1505012053" target="_blank">
 Taipei</a> look like this. Two parallel one-ways isn't hard enough; we need at least six.</figcaption>
 </figure>
 
 <figure>
-  <img src="chorlton_traffic.jpeg"/>
+  <a href="chorlton_traffic.jpeg" target="_blank"><img src="chorlton_traffic.jpeg"/></a>
   <figcaption>And how about <a href="https://www.openstreetmap.org/node/31287523" target="_blank">Chester Road and Kingsway</a> with some gridlocked traffic?</figcaption>
 </figure>
 
 <figure>
-  <img src="loop101.png"/>
+  <a href="loop101.png" target="_blank"><img src="loop101.png"/></a>
   <figcaption>And finally, the eerie symmetry of <a href="https://www.openstreetmap.org/node/760159861" target="_blank">Arizona freeways</a>.</figcaption>
 </figure>
 
@@ -853,7 +853,7 @@ acceptable, maybe this was possible. But also, this simple idea doesn't work for
 three-way intersections:
 
 <figure>
-  <img src="three_way_overlap.png"/>
+  <a href="three_way_overlap.png" target="_blank"><img src="three_way_overlap.png"/></a>
   <figcaption>The horizontal road partly intersects the two
 vertical roads (shown in red), but doesn't extend to cover enough of the
 intersection.</figcaption>
@@ -882,19 +882,19 @@ geometry.
   polygons for Madrid
 
 <figure>
-  <img src="streets_illustrated.png"/>
+  <a href="streets_illustrated.png" target="_blank"><img src="streets_illustrated.png"/></a>
   <figcaption>The Fremont bridge and Nickerson looks fantastic
 in Seattle Streets Illustrated, but the data isn't public</figcaption>
 </figure>
 
 <figure>
-  <img src="pavement_edge.png"/>
+  <a href="pavement_edge.png" target="_blank"><img src="pavement_edge.png"/></a>
   <figcaption>The pavement edge dataset is public, though, and seems
 to be quite similar!</figcaption>
 </figure>
 
 <figure>
-  <img src="pullman.png"/>
+  <a href="pullman.png" target="_blank"><img src="pullman.png"/></a>
   <figcaption>Pullman, WA provided sidewalk polygons for mapping in OSM</figcaption>
 </figure>
 
