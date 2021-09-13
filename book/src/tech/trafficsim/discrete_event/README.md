@@ -61,8 +61,8 @@ collision between pedestrians at all; they just pass through each other,
 temporarily losing their individuality for rendering purposes:
 
 <figure>
-  <a href="ghosts.gif" target="_blank"><img src="ghosts.gif"/></a>
-  <figcaption>[This is what it's like when people collide](https://www.youtube.com/watch?v=lsV500W4BHU)</figcaption>
+  <a href="pedestrian_ghosts.gif" target="_blank"><img src="pedestrian_ghosts.gif"/></a>
+  <figcaption><a href="https://www.youtube.com/watch?v=lsV500W4BHU" target="_blank">This is what it's like when people collide</a></figcaption>
 </figure>
 
 In the world of discrete timesteps, you could imagine each pedestrian has very
@@ -415,6 +415,11 @@ their original lane, replacing themselves with a "ghost" in that queue. The
 ghost follows the leader vehicle and shares the same length as the actual
 vehicle. This ghost prevents another vehicle from advancing too close to the
 slow leader and "clipping" into the vehicle changing lanes.
+
+<figure>
+  <a href="lc_ghost.gif" target="_blank"><img src="lc_ghost.gif"/></a>
+  <figcaption>A car follows a bike, then starts changing lanes. The time to complete the movement is artifically stretched out to 3 seconds. While the car is sliding over, it leaves a "ghost" vehicle following the bike in the original lane, to prevent other vehicles from getting too close.
+</figure>
 
 ### Future work
 
