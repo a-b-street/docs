@@ -492,3 +492,8 @@ favor of the simpler discrete-event model because:
   within all of the constraints.
 
 <!-- following papers is hard. diffeq's, no advice how to deal with real geometry or do LCing.. slow down to shift? -->
+
+And if you made it this far, have a
+[poem](https://dabreegster.github.io/poetry/college/discrete_event_simulation.html)
+about discrete event simulation (and also compilers) that I wrote many years
+ago...
