@@ -1,8 +1,7 @@
 # A/B Street
 
 - Download: <https://a-b-street.github.io/docs/howto/index.html>
-- Play on the web:
-  <http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.58/abstreet.html>
+- Play on the web: <http://play.abstreet.org/0.2.58/abstreet.html>
 - Github: <https://github.com/a-b-street/abstreet/tree/master/game/src>
 
 ## Overview

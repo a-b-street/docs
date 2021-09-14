@@ -177,7 +177,7 @@ But for the sake of this article, these're the assumptions we're sticking with.
 Pedestrian islands, slip lanes, gores, and medians are all real-world elements
 that don't fit nicely in this model.
 
-## Overview of the process
+## The main process
 
 We'll now explore the steps to produce geometry for a single intersection and
 its connected roads. The broad overview:
@@ -192,7 +192,7 @@ Let's pick a particularly illustrative
 [five-way intersection](https://www.openstreetmap.org/node/1705063811) as our
 example.
 
-## Part 1: Thickening the infinitesmal
+### Part 1: Thickening the infinitesmal
 
 OSM models roads as a center-line -- supposedly the physical center of the paved
 area, not the solid or dashed yellow line (t least in the US) separating the two
@@ -234,7 +234,7 @@ the entire road:
 The red dot is the position of the OSM node shared by these roads.</figcaption>
 </figure>
 
-### Projecting a polyline
+#### Projecting a polyline
 
 Before we move on, a quick primer on how to take a polyline (a list of ordered
 points) and project it to the left or right. There are some better explanations
@@ -294,7 +294,7 @@ some less-than-realistic ways:
 Truly Lovecraftian geometry. I don't think I often see points from OSM totally
 out of order like this, but it happens sometimes and is immediately obvious.
 
-## Part 2: Counting coup
+### Part 2: Counting coup
 
 For each road, we've got the original center from OSM and our calculated the
 left and right side:
@@ -359,7 +359,7 @@ Some questions to consider:
 (As I'm reviewing my old code and writing this up, these're things I don't
 remember, worth revisiting.)
 
-## Part 3: The clockwise walk
+### Part 3: The clockwise walk
 
 We've now trimmed roads back to avoid overlapping each other. We just need to
 generate the polygon for the intersection. As a first cut, let's take these
@@ -382,7 +382,7 @@ those too?
 
 Much better.
 
-### Sorting roads around a center
+#### Sorting roads around a center
 
 I snuck another fast one on ya. When we form a polygon from these left/right
 endpoints and the original collision points, how do we put those points in the

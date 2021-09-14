@@ -37,6 +37,9 @@ version of all data files. The numbered versions correspond to
 over time, I'll commit to keeping around at least 3 of the previous numbered
 versions, but I might delete older ones after that.
 
+`play.abstreet.org` is wired up to Cloudfront, via Google Domains. The CDN is
+faster than accessing the S3 bucket (in one region) directly.
+
 ## Native, running from source
 
 For people building the game [from source](index.md), the process to keep data

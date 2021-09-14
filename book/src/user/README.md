@@ -32,8 +32,8 @@ Grab a pre-built binary release -- updated every Sunday, announced at
   [Yuri](https://github.com/yurivict)
 
 Or you can play
-[directly in your web browser](http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.58/abstreet.html)
--- some things don't work as well, but no install required.
+[directly in your web browser](http://play.abstreet.org/0.2.58/abstreet.html) --
+some things don't work as well, but no install required.
 
 Or you can [compile from source](../tech/dev/index.md).
 
