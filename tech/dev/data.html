@@ -179,6 +179,8 @@ version of all data files. The numbered versions correspond to
 <code>data/system/</code>, not <code>data/input/</code>. Depending how large these directories grow
 over time, I'll commit to keeping around at least 3 of the previous numbered
 versions, but I might delete older ones after that.</p>
+<p><code>play.abstreet.org</code> is wired up to Cloudfront, via Google Domains. The CDN is
+faster than accessing the S3 bucket (in one region) directly.</p>
 <h2 id="native-running-from-source"><a class="header" href="#native-running-from-source">Native, running from source</a></h2>
 <p>For people building the game <a href="index.html">from source</a>, the process to keep data
 files fresh is to <code>cargo run --bin updater</code>. This tool calculates md5sums of all

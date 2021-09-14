@@ -204,8 +204,7 @@ for transforming OpenStreetMap key/values to a clear schema of lanes</li>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ab-street"><a class="header" href="#ab-street">A/B Street</a></h1>
 <ul>
 <li>Download: <a href="https://a-b-street.github.io/docs/howto/index.html">https://a-b-street.github.io/docs/howto/index.html</a></li>
-<li>Play on the web:
-<a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.58/abstreet.html">http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.58/abstreet.html</a></li>
+<li>Play on the web: <a href="http://play.abstreet.org/0.2.58/abstreet.html">http://play.abstreet.org/0.2.58/abstreet.html</a></li>
 <li>Github: <a href="https://github.com/a-b-street/abstreet/tree/master/game/src">https://github.com/a-b-street/abstreet/tree/master/game/src</a></li>
 </ul>
 <h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
@@ -289,7 +288,7 @@ people</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="15-minute-neighborhood-explorer"><a class="header" href="#15-minute-neighborhood-explorer">15-minute neighborhood explorer</a></h1>
 <p><img src="software/walkshed.gif" alt="walkshed" /></p>
 <ul>
-<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.58/fifteen_min.html">Web version</a></li>
+<li><a href="http://play.abstreet.org/0.2.58/fifteen_min.html">Web version</a></li>
 <li>To run locally, get the
 <a href="https://github.com/a-b-street/abstreet/releases">latest release</a> for Windows,
 Mac, or Linux. After unzipping, run <code>fifteen_min.exe</code> or <code>fifteen_min</code>.</li>
@@ -379,8 +378,8 @@ work and shop.</p>
 <a href="https://github.com/a-b-street/abstreet/issues/new">file an issue on Github</a>.</p>
 <h2 id="play-it"><a class="header" href="#play-it">Play it</a></h2>
 <ul>
-<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.58/santa.html">Play online</a>
-(slower and no music -- download below if possible)</li>
+<li><a href="http://play.abstreet.org/0.2.58/santa.html">Play online</a> (slower and no music
+-- download below if possible)</li>
 <li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.58/abstreet_windows_v0_2_58.zip">Windows</a></li>
 <li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.58/abstreet_mac_v0_2_58.zip">Mac</a></li>
 <li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.58/abstreet_linux_v0_2_58.zip">Linux</a></li>
@@ -429,7 +428,7 @@ time limit, goal, and starting point on the map. If you have a public data
 source for the number of housing units per building, please include it!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="openstreetmap-viewer"><a class="header" href="#openstreetmap-viewer">OpenStreetMap viewer</a></h1>
 <ul>
-<li><a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.58/osm_viewer.html">Web version</a></li>
+<li><a href="http://play.abstreet.org/0.2.58/osm_viewer.html">Web version</a></li>
 <li>To run locally, get the
 <a href="https://github.com/a-b-street/abstreet/releases">latest release</a> for Windows,
 Mac, or Linux. After unzipping, run <code>osm_viewer.exe</code> or <code>osm_viewer</code>.</li>
@@ -558,8 +557,8 @@ this as a Mac .app, to make this process simpler</li>
 <a href="https://github.com/yurivict">Yuri</a></li>
 </ul>
 <p>Or you can play
-<a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.58/abstreet.html">directly in your web browser</a>
--- some things don't work as well, but no install required.</p>
+<a href="http://play.abstreet.org/0.2.58/abstreet.html">directly in your web browser</a> --
+some things don't work as well, but no install required.</p>
 <p>Or you can <a href="user/../tech/dev/index.html">compile from source</a>.</p>
 <h2 id="playing-the-game"><a class="header" href="#playing-the-game">Playing the game</a></h2>
 <ul>
@@ -1504,7 +1503,7 @@ safer, and more pleasant trips without unduly impacting other traffic.</p>
 <!-- TODO: it'd be nice to link to something like `https://abstreet.org/web` or even http://abstreet.s3-website.us-east-2.amazonaws.com/latest/abstreet.html rather than a specific version -->
 <p>If you'd like to see for yourself what the Broadmoor proposal looks like, give
 it a try,
-<a href="http://abstreet.s3-website.us-east-2.amazonaws.com/0.2.51/abstreet.html?--dev&amp;system/us/seattle/scenarios/arboretum/weekday.bin&amp;--edits=broadmoor%20access">you can run A/B Street in your browser</a>
+<a href="http://play.abstreet.org/0.2.58/abstreet.html?--dev&amp;system/us/seattle/scenarios/arboretum/weekday.bin&amp;--edits=broadmoor%20access">you can run A/B Street in your browser</a>
 or <a href="proposals/../user/index.html">download the desktop client</a>.</p>
 <p>Or, if you have a different idea for improving how we get around, in Seattle or
 elsewhere, give it a go! Please contact us on
@@ -2127,6 +2126,8 @@ version of all data files. The numbered versions correspond to
 <code>data/system/</code>, not <code>data/input/</code>. Depending how large these directories grow
 over time, I'll commit to keeping around at least 3 of the previous numbered
 versions, but I might delete older ones after that.</p>
+<p><code>play.abstreet.org</code> is wired up to Cloudfront, via Google Domains. The CDN is
+faster than accessing the S3 bucket (in one region) directly.</p>
 <h2 id="native-running-from-source"><a class="header" href="#native-running-from-source">Native, running from source</a></h2>
 <p>For people building the game <a href="tech/dev/index.html">from source</a>, the process to keep data
 files fresh is to <code>cargo run --bin updater</code>. This tool calculates md5sums of all
@@ -2794,7 +2795,8 @@ time-constrained and communicating the ideas is my priority.</p>
 <li><a href="tech/map/geometry/index.html#desired-output">Desired output</a></li>
 </ul>
 </li>
-<li><a href="tech/map/geometry/index.html#overview-of-the-process">Overview of the process</a></li>
+<li><a href="tech/map/geometry/index.html#the-main-process">The main process</a>
+<ul>
 <li><a href="tech/map/geometry/index.html#part-1-thickening-the-infinitesmal">Part 1: Thickening the infinitesmal</a>
 <ul>
 <li><a href="tech/map/geometry/index.html#projecting-a-polyline">Projecting a polyline</a></li>
@@ -2804,6 +2806,8 @@ time-constrained and communicating the ideas is my priority.</p>
 <li><a href="tech/map/geometry/index.html#part-3-the-clockwise-walk">Part 3: The clockwise walk</a>
 <ul>
 <li><a href="tech/map/geometry/index.html#sorting-roads-around-a-center">Sorting roads around a center</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="tech/map/geometry/index.html#interlude-problems-so-far">Interlude: problems so far</a>
@@ -2952,7 +2956,7 @@ that extend different lengths.</figcaption>
 <p>But for the sake of this article, these're the assumptions we're sticking with.
 Pedestrian islands, slip lanes, gores, and medians are all real-world elements
 that don't fit nicely in this model.</p>
-<h2 id="overview-of-the-process"><a class="header" href="#overview-of-the-process">Overview of the process</a></h2>
+<h2 id="the-main-process"><a class="header" href="#the-main-process">The main process</a></h2>
 <p>We'll now explore the steps to produce geometry for a single intersection and
 its connected roads. The broad overview:</p>
 <ol>
@@ -2965,7 +2969,7 @@ connecting just two intersections.</li>
 <p>Let's pick a particularly illustrative
 <a href="https://www.openstreetmap.org/node/1705063811">five-way intersection</a> as our
 example.</p>
-<h2 id="part-1-thickening-the-infinitesmal"><a class="header" href="#part-1-thickening-the-infinitesmal">Part 1: Thickening the infinitesmal</a></h2>
+<h3 id="part-1-thickening-the-infinitesmal"><a class="header" href="#part-1-thickening-the-infinitesmal">Part 1: Thickening the infinitesmal</a></h3>
 <p>OSM models roads as a center-line -- supposedly the physical center of the paved
 area, not the solid or dashed yellow line (t least in the US) separating the two
 directions of traffic. The schema, and how it gets mapped in practice, is fuzzy
@@ -3000,7 +3004,7 @@ the entire road:</p>
   <figcaption>All 5 of our roads, thickened based on the lane tagging.
 The red dot is the position of the OSM node shared by these roads.</figcaption>
 </figure>
-<h3 id="projecting-a-polyline"><a class="header" href="#projecting-a-polyline">Projecting a polyline</a></h3>
+<h4 id="projecting-a-polyline"><a class="header" href="#projecting-a-polyline">Projecting a polyline</a></h4>
 <p>Before we move on, a quick primer on how to take a polyline (a list of ordered
 points) and project it to the left or right. There are some better explanations
 of this online, but I don't have them handy. I wouldn't call A/B Street's
@@ -3045,7 +3049,7 @@ some less-than-realistic ways:</p>
 </figure>
 <p>Truly Lovecraftian geometry. I don't think I often see points from OSM totally
 out of order like this, but it happens sometimes and is immediately obvious.</p>
-<h2 id="part-2-counting-coup"><a class="header" href="#part-2-counting-coup">Part 2: Counting coup</a></h2>
+<h3 id="part-2-counting-coup"><a class="header" href="#part-2-counting-coup">Part 2: Counting coup</a></h3>
 <p>For each road, we've got the original center from OSM and our calculated the
 left and right side:</p>
 <figure>
@@ -3101,7 +3105,7 @@ original center-line?</p>
 </ol>
 <p>(As I'm reviewing my old code and writing this up, these're things I don't
 remember, worth revisiting.)</p>
-<h2 id="part-3-the-clockwise-walk"><a class="header" href="#part-3-the-clockwise-walk">Part 3: The clockwise walk</a></h2>
+<h3 id="part-3-the-clockwise-walk"><a class="header" href="#part-3-the-clockwise-walk">Part 3: The clockwise walk</a></h3>
 <p>We've now trimmed roads back to avoid overlapping each other. We just need to
 generate the polygon for the intersection. As a first cut, let's take these
 trimmed center-lines, calculate the left and right polylines again (since we've
@@ -3118,7 +3122,7 @@ those too?</p>
   <a href="tech/map/geometry/clockwise_better.png" target="_blank"><img src="tech/map/geometry/clockwise_better.png"/></a>
 </figure>
 <p>Much better.</p>
-<h3 id="sorting-roads-around-a-center"><a class="header" href="#sorting-roads-around-a-center">Sorting roads around a center</a></h3>
+<h4 id="sorting-roads-around-a-center"><a class="header" href="#sorting-roads-around-a-center">Sorting roads around a center</a></h4>
 <p>I snuck another fast one on ya. When we form a polygon from these left/right
 endpoints and the original collision points, how do we put those points in the
 correct order? Seemingly innocent question.</p>

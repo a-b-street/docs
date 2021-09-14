@@ -181,7 +181,8 @@ time-constrained and communicating the ideas is my priority.</p>
 <li><a href="#desired-output">Desired output</a></li>
 </ul>
 </li>
-<li><a href="#overview-of-the-process">Overview of the process</a></li>
+<li><a href="#the-main-process">The main process</a>
+<ul>
 <li><a href="#part-1-thickening-the-infinitesmal">Part 1: Thickening the infinitesmal</a>
 <ul>
 <li><a href="#projecting-a-polyline">Projecting a polyline</a></li>
@@ -191,6 +192,8 @@ time-constrained and communicating the ideas is my priority.</p>
 <li><a href="#part-3-the-clockwise-walk">Part 3: The clockwise walk</a>
 <ul>
 <li><a href="#sorting-roads-around-a-center">Sorting roads around a center</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#interlude-problems-so-far">Interlude: problems so far</a>
@@ -339,7 +342,7 @@ that extend different lengths.</figcaption>
 <p>But for the sake of this article, these're the assumptions we're sticking with.
 Pedestrian islands, slip lanes, gores, and medians are all real-world elements
 that don't fit nicely in this model.</p>
-<h2 id="overview-of-the-process"><a class="header" href="#overview-of-the-process">Overview of the process</a></h2>
+<h2 id="the-main-process"><a class="header" href="#the-main-process">The main process</a></h2>
 <p>We'll now explore the steps to produce geometry for a single intersection and
 its connected roads. The broad overview:</p>
 <ol>
@@ -352,7 +355,7 @@ connecting just two intersections.</li>
 <p>Let's pick a particularly illustrative
 <a href="https://www.openstreetmap.org/node/1705063811">five-way intersection</a> as our
 example.</p>
-<h2 id="part-1-thickening-the-infinitesmal"><a class="header" href="#part-1-thickening-the-infinitesmal">Part 1: Thickening the infinitesmal</a></h2>
+<h3 id="part-1-thickening-the-infinitesmal"><a class="header" href="#part-1-thickening-the-infinitesmal">Part 1: Thickening the infinitesmal</a></h3>
 <p>OSM models roads as a center-line -- supposedly the physical center of the paved
 area, not the solid or dashed yellow line (t least in the US) separating the two
 directions of traffic. The schema, and how it gets mapped in practice, is fuzzy
@@ -387,7 +390,7 @@ the entire road:</p>
   <figcaption>All 5 of our roads, thickened based on the lane tagging.
 The red dot is the position of the OSM node shared by these roads.</figcaption>
 </figure>
-<h3 id="projecting-a-polyline"><a class="header" href="#projecting-a-polyline">Projecting a polyline</a></h3>
+<h4 id="projecting-a-polyline"><a class="header" href="#projecting-a-polyline">Projecting a polyline</a></h4>
 <p>Before we move on, a quick primer on how to take a polyline (a list of ordered
 points) and project it to the left or right. There are some better explanations
 of this online, but I don't have them handy. I wouldn't call A/B Street's
@@ -432,7 +435,7 @@ some less-than-realistic ways:</p>
 </figure>
 <p>Truly Lovecraftian geometry. I don't think I often see points from OSM totally
 out of order like this, but it happens sometimes and is immediately obvious.</p>
-<h2 id="part-2-counting-coup"><a class="header" href="#part-2-counting-coup">Part 2: Counting coup</a></h2>
+<h3 id="part-2-counting-coup"><a class="header" href="#part-2-counting-coup">Part 2: Counting coup</a></h3>
 <p>For each road, we've got the original center from OSM and our calculated the
 left and right side:</p>
 <figure>
@@ -488,7 +491,7 @@ original center-line?</p>
 </ol>
 <p>(As I'm reviewing my old code and writing this up, these're things I don't
 remember, worth revisiting.)</p>
-<h2 id="part-3-the-clockwise-walk"><a class="header" href="#part-3-the-clockwise-walk">Part 3: The clockwise walk</a></h2>
+<h3 id="part-3-the-clockwise-walk"><a class="header" href="#part-3-the-clockwise-walk">Part 3: The clockwise walk</a></h3>
 <p>We've now trimmed roads back to avoid overlapping each other. We just need to
 generate the polygon for the intersection. As a first cut, let's take these
 trimmed center-lines, calculate the left and right polylines again (since we've
@@ -505,7 +508,7 @@ those too?</p>
   <a href="clockwise_better.png" target="_blank"><img src="clockwise_better.png"/></a>
 </figure>
 <p>Much better.</p>
-<h3 id="sorting-roads-around-a-center"><a class="header" href="#sorting-roads-around-a-center">Sorting roads around a center</a></h3>
+<h4 id="sorting-roads-around-a-center"><a class="header" href="#sorting-roads-around-a-center">Sorting roads around a center</a></h4>
 <p>I snuck another fast one on ya. When we form a polygon from these left/right
 endpoints and the original collision points, how do we put those points in the
 correct order? Seemingly innocent question.</p>
