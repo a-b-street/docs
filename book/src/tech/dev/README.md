@@ -1,5 +1,9 @@
 # Developer guide
 
+This guide is meant for people who want to work on A/B Street's code. In most
+cases as a user, even for importing new cities, you shouldn't need to bother
+with any of this.
+
 ## Getting started
 
 You will first need:
@@ -66,7 +70,11 @@ You can also opt into downloading updates for more cities by editing
 ## Building map data
 
 You can skip this section if you're just touching code in `game`, `widgetry`,
-and `sim`.
+and `sim`. If you're just trying to import a new city, follow
+[the user guide](../../user/new_city.md). This section is relevant if you're
+working on the code that imports maps and scenarios.
+
+### Dependencies
 
 To run all pieces of the importer, you'll need some extra dependencies:
 
@@ -77,19 +85,57 @@ To run all pieces of the importer, you'll need some extra dependencies:
   `--features scenarios` from `import.sh`. You won't be able to build the
   Seattle scenarios.
 - Standard Unix utilities: `unzip` and `gunzip`
+- If you have Docker installed, you'll notice the `--raw` stage will run a
+  container for <https://github.com/eldang/elevation_lookups>. If you're missing
+  Docker, elevation data should just be skipped.
 
-The first stage of the importer, `--raw`, will download input files from OSM,
-King County GIS, and so on. If the mirrors are slow or the files vanish, you
-could fill out `data/config` and use the `updater` described above to grab the
-latest input.
+### The importer pipeline
 
-Building contraction hierarchies for pathfinding occurs in the --map stage. It
-can take a few minutes for larger maps. To view occasional progress updates, you
-can run the importer with
+The import process is split into two main steps. When you run the importer, you
+specify what work you want to do, so understanding these steps is important.
+First is the `--raw` step, which:
 
-    RUST_LOG="fast_paths=debug/contracted node [0-9]+0000 "
+1.  Downloads all input data needed for a map -- a .osm.pbf file from Geofabrik,
+    at minimum
+2.  Uses `osmconvert` to clip the large OSM file into smaller pieces
+3.  Reads in all of the input, producing a `RawMap` file. This is an
+    intermediate format that's useful for debugging, using the `map_editor`
+    tool.
 
-You can rerun specific stages of the importer:
+If you look in `data/input/us/nyc/` (substituting the country and city, of
+course), you'll see `osm` and `raw_maps` directories. In places like
+`data/input/us/seattle/`, there are many other input files.
+
+The second step, `--map`, transforms the `RawMap` to the final `Map` file used
+by all of the applications. These files live in `data/system/us/nyc/maps`.
+
+### Running the importer
+
+The importer tool has many CLI flags not described here; the source is the best
+reference. But we can start with a few common examples.
+
+After creating configuration files for a city, you can import it, running both
+the `--raw` and `--map` steps:
+
+`./import.sh --raw --map --city=br/sao_paulo`
+
+If your city is split into many maps, you can operate on just one of them (the
+`west` boundary):
+
+`./import.sh --raw --map --city=fr/paris west`
+
+If you want to regenerate a map with the latest OSM data, you need to first
+delete the OSM input files cached locally. Then running with `--raw` will
+download them again. Note the OSM files are downloaded from Geofabrik, so they
+may be up to one day out-of-date. You can additionally use `osmupdate` if
+needed.
+
+```
+rm -rfv data/input/fr/paris/osm/
+./import.sh --raw --map --city=fr/paris
+```
+
+Some more tips for running specific stages of the importer:
 
 - If you're modifying the initial OSM data -> RawMap conversion in
   `convert_osm`, you need `./import.sh --raw --map`.
@@ -101,6 +147,12 @@ You can rerun specific stages of the importer:
   `./import.sh --map downtown`.
 - By default, Seattle is assumed as the city. You have to specify otherwise:
   `./import.sh --city=us/detroit --map downtown`.
+
+Building contraction hierarchies for pathfinding occurs in the `--map` stage. It
+can take a few minutes for larger maps. To view occasional progress updates, you
+can run the importer with
+
+    RUST_LOG="fast_paths=debug/contracted node [0-9]+0000 "
 
 You can also make the importer [import a new city](../../user/new_city.md).
 
