@@ -1565,6 +1565,9 @@ what you'd like to see.</p>
 <p>This section of the site is intended for anybody who wants to understand or work
 on A/B Street's internals.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="developer-guide"><a class="header" href="#developer-guide">Developer guide</a></h1>
+<p>This guide is meant for people who want to work on A/B Street's code. In most
+cases as a user, even for importing new cities, you shouldn't need to bother
+with any of this.</p>
 <h2 id="getting-started"><a class="header" href="#getting-started">Getting started</a></h2>
 <p>You will first need:</p>
 <ul>
@@ -1638,7 +1641,10 @@ files that have changed.</p>
 <code>cargo run --bin updater -- --opt-into-all &gt; data/player/data.json</code></p>
 <h2 id="building-map-data"><a class="header" href="#building-map-data">Building map data</a></h2>
 <p>You can skip this section if you're just touching code in <code>game</code>, <code>widgetry</code>,
-and <code>sim</code>.</p>
+and <code>sim</code>. If you're just trying to import a new city, follow
+<a href="tech/dev/../../user/new_city.html">the user guide</a>. This section is relevant if you're
+working on the code that imports maps and scenarios.</p>
+<h3 id="dependencies"><a class="header" href="#dependencies">Dependencies</a></h3>
 <p>To run all pieces of the importer, you'll need some extra dependencies:</p>
 <ul>
 <li><code>osmconvert</code>: See <a href="https://wiki.openstreetmap.org/wiki/Osmconvert#Download">https://wiki.openstreetmap.org/wiki/Osmconvert#Download</a> or
@@ -1648,17 +1654,45 @@ this. If you keep hitting linking errors, then just remove
 <code>--features scenarios</code> from <code>import.sh</code>. You won't be able to build the
 Seattle scenarios.</li>
 <li>Standard Unix utilities: <code>unzip</code> and <code>gunzip</code></li>
+<li>If you have Docker installed, you'll notice the <code>--raw</code> stage will run a
+container for <a href="https://github.com/eldang/elevation_lookups">https://github.com/eldang/elevation_lookups</a>. If you're missing
+Docker, elevation data should just be skipped.</li>
 </ul>
-<p>The first stage of the importer, <code>--raw</code>, will download input files from OSM,
-King County GIS, and so on. If the mirrors are slow or the files vanish, you
-could fill out <code>data/config</code> and use the <code>updater</code> described above to grab the
-latest input.</p>
-<p>Building contraction hierarchies for pathfinding occurs in the --map stage. It
-can take a few minutes for larger maps. To view occasional progress updates, you
-can run the importer with</p>
-<pre><code>RUST_LOG=&quot;fast_paths=debug/contracted node [0-9]+0000 &quot;
+<h3 id="the-importer-pipeline"><a class="header" href="#the-importer-pipeline">The importer pipeline</a></h3>
+<p>The import process is split into two main steps. When you run the importer, you
+specify what work you want to do, so understanding these steps is important.
+First is the <code>--raw</code> step, which:</p>
+<ol>
+<li>Downloads all input data needed for a map -- a .osm.pbf file from Geofabrik,
+at minimum</li>
+<li>Uses <code>osmconvert</code> to clip the large OSM file into smaller pieces</li>
+<li>Reads in all of the input, producing a <code>RawMap</code> file. This is an
+intermediate format that's useful for debugging, using the <code>map_editor</code>
+tool.</li>
+</ol>
+<p>If you look in <code>data/input/us/nyc/</code> (substituting the country and city, of
+course), you'll see <code>osm</code> and <code>raw_maps</code> directories. In places like
+<code>data/input/us/seattle/</code>, there are many other input files.</p>
+<p>The second step, <code>--map</code>, transforms the <code>RawMap</code> to the final <code>Map</code> file used
+by all of the applications. These files live in <code>data/system/us/nyc/maps</code>.</p>
+<h3 id="running-the-importer"><a class="header" href="#running-the-importer">Running the importer</a></h3>
+<p>The importer tool has many CLI flags not described here; the source is the best
+reference. But we can start with a few common examples.</p>
+<p>After creating configuration files for a city, you can import it, running both
+the <code>--raw</code> and <code>--map</code> steps:</p>
+<p><code>./import.sh --raw --map --city=br/sao_paulo</code></p>
+<p>If your city is split into many maps, you can operate on just one of them (the
+<code>west</code> boundary):</p>
+<p><code>./import.sh --raw --map --city=fr/paris west</code></p>
+<p>If you want to regenerate a map with the latest OSM data, you need to first
+delete the OSM input files cached locally. Then running with <code>--raw</code> will
+download them again. Note the OSM files are downloaded from Geofabrik, so they
+may be up to one day out-of-date. You can additionally use <code>osmupdate</code> if
+needed.</p>
+<pre><code>rm -rfv data/input/fr/paris/osm/
+./import.sh --raw --map --city=fr/paris
 </code></pre>
-<p>You can rerun specific stages of the importer:</p>
+<p>Some more tips for running specific stages of the importer:</p>
 <ul>
 <li>If you're modifying the initial OSM data -&gt; RawMap conversion in
 <code>convert_osm</code>, you need <code>./import.sh --raw --map</code>.</li>
@@ -1671,6 +1705,11 @@ regenerate.</li>
 <li>By default, Seattle is assumed as the city. You have to specify otherwise:
 <code>./import.sh --city=us/detroit --map downtown</code>.</li>
 </ul>
+<p>Building contraction hierarchies for pathfinding occurs in the <code>--map</code> stage. It
+can take a few minutes for larger maps. To view occasional progress updates, you
+can run the importer with</p>
+<pre><code>RUST_LOG=&quot;fast_paths=debug/contracted node [0-9]+0000 &quot;
+</code></pre>
 <p>You can also make the importer <a href="tech/dev/../../user/new_city.html">import a new city</a>.</p>
 <h2 id="understanding-stuff"><a class="header" href="#understanding-stuff">Understanding stuff</a></h2>
 <p>The docs listed at <a href="https://github.com/a-b-street/abstreet#documentation">https://github.com/a-b-street/abstreet#documentation</a>
