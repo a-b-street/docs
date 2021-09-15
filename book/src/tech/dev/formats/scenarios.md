@@ -76,7 +76,7 @@ that show up in the UI. And of course, you can add as many people as you like.
 To import this JSON file into A/B Street:
 
 ```
-cargo run --bin import_traffic -- --map=data/system/us/seattle/maps/montlake.bin --input=/path/to/input.json
+cargo run --release --bin cli -- import-scenario --map=data/system/us/seattle/maps/montlake.bin --input=/path/to/input.json
 ```
 
 Then run the game as follows:

@@ -110,7 +110,7 @@ are missing, etc. A summary of the commands available so far:
 If you need to deeply inspect the map, you can dump it to JSON:
 
 ```
-cargo run --bin dump_map data/system/us/seattle/maps/montlake.bin > montlake.json
+cargo run --release --bin cli -- dump-json data/system/us/seattle/maps/montlake.bin > montlake.json
 ```
 
 See some example code that
@@ -125,7 +125,7 @@ a building not explicitly designated in OpenStreetMap as a garage. After editing
 the JSON, you have to convert it back to the binary format:
 
 ```
-cargo run --bin json_to_binary_map -- --input=montlake.json out=data/system/us/seattle/maps/montlake_modified.bin`
+cargo run --release --bin cli -- import-json-map --input=montlake.json --output=data/system/us/seattle/maps/montlake_modified.bin`
 ```
 
 The format of the map isn't well-documented yet. See the
@@ -147,21 +147,21 @@ You can also generate different variations of one of the
 an RNG seed:
 
 ```
-cargo run --bin random_scenario -- --rng=123 --map=data/system/us/seattle/maps/montlake.bin --scenario_name=home_to_work
+cargo run --release --bin cli -- random-scenario --rng=123 --map=data/system/us/seattle/maps/montlake.bin --scenario_name=home_to_work
 ```
 
 You can also dump Scenarios (the file that defines all of the people and trips)
 to JSON:
 
 ```
-cargo run --bin dump_scenario data/system/us/seattle/scenarios/montlake/weekday.bin > montlake_weekday.json
+cargo run --release --bin cli -- dump-json data/system/us/seattle/scenarios/montlake/weekday.bin > montlake_weekday.json
 ```
 
 You can modify the JSON, then put the file back in the appropriate directory and
 use it in-game:
 
 ```
-cargo run --bin game data/system/us/seattle/scenarios/montlake/modified_scenario.json
+cargo run --bin game -- --dev data/system/us/seattle/scenarios/montlake/modified_scenario.json
 ```
 
 The Scenario format is [documented here](formats/scenarios.md).

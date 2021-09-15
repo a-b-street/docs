@@ -21,27 +21,6 @@ apitrace dump game.trace
 
 Understand XML: just use firefox
 
-## Building releases
-
-Cross-compilation notes: <https://github.com/rust-embedded/cross> Or use
-<https://github.com/japaric/trust>
-
-Initially have to:
-
-```shell
-cargo install cross
-sudo apt-get install docker.io
-sudo usermod -aG docker ${USER}
-```
-
-Then:
-
-```
-sudo systemctl start docker
-cross build --release --target x86_64-pc-windows-gnu --bin game
-wine target/x86_64-pc-windows-gnu/release/game.exe data/system/seattle/maps/montlake.bin
-```
-
 ## Markdown
 
 For formatting:

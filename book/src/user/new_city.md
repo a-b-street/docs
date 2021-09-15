@@ -42,10 +42,10 @@ The process above using the UI just calls a tool to do all of the work. If you
 want, you can just call that tool from the command line. First save a GeoJSON
 file with your boundary. Then...
 
-Using a .zip release: `./tools/one_step_import boundary.geojson`
+Using a .zip release: `./cli one-step-import boundary.geojson`
 
 Building from source:
-`cargo build --release --bin importer --bin one_step_import --bin geojson_to_osmosis --bin pick_geofabrik --bin clip_osm && ./target/release/one_step_import boundary.geojson`
+`cargo build --release --bin cli -- one-step-import boundary.geojson`
 
 The new map is located in the country with code "zz" (this isn't a real
 country), in the "oneshot" city. This is stored in
@@ -67,8 +67,8 @@ The easiest method is to just ask Dustin to do this. The full process:
     [geoman.io](https://geoman.io/geojson-editor) to draw a boundary around the
     region you want to simulate and save the geojson locally.
 
-4.  Use `cargo run --bin geojson_to_osmosis < boundary.geojson` to convert that
-    geojson to the
+4.  Use `cargo run --release --bin cli -- geojson-to-osmosis boundary.geojson`
+    to convert that geojson to the
     [Osmosis format](https://wiki.openstreetmap.org/wiki/Osmosis/Polygon_Filter_File_Format)
     required by osmconvert. This tool writes one file per feature in the input,
     so you'd then

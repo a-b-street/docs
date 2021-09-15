@@ -175,7 +175,8 @@ Constructing the map:
   intermediate map format into the final format
 - `map_editor`: GUI for modifying geometry of maps and creating maps from
   scratch. pretty abandoned as of June 2020
-- `importer`: tool to run the entire import pipeline
+- `importer`: the entire import pipeline
+- `cli`: a collection of command-line tools to manage importing
 - `updater`: tool to download/upload large files used in the import pipeline
 
 Traffic simulation:

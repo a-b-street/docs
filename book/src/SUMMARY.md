@@ -30,7 +30,6 @@
     - [Misc developer tricks](tech/dev/misc_tricks.md)
     - [API](tech/dev/api.md)
     - [Testing](tech/dev/testing.md)
-    - [Importing many maps](tech/dev/mass_import.md)
     - [Data organization](tech/dev/data.md)
     - [Release process](tech/dev/release.md)
     - [Data formats](tech/dev/formats/README.md)
