@@ -13,7 +13,7 @@ Some of the things in A/B Street that seem the simplest have taken me tremendous
 effort. Determining the shape of roads and intersections is one of those
 problems, so this article is a deep-dive into how it works and why it's so hard.
 
-Note 1: There's no "related work" section here -- I haven't found many other
+Note: There's no "related work" section here -- I haven't found many other
 projects attempting something like this. I've seen a few research papers going
 in this direction, but none of them pointed to any code to try. The approach
 I'll describe has many flaws -- I'm not claiming this is a good solution, just
@@ -23,15 +23,23 @@ tooling to help you debug and visually diff against the existing implementation.
 There should be a convenient button at the top-right of this page to suggest an
 edit in Github.
 
-Note 2: This article would be way more awesome with code and some interactive
-demos to play around with each step. That level of ambition would prevent this
-from ever being written, though! I'll link to the real code and am happy to
-answer questions if anything's unclear.
-
-Note 3: Apologies for the rough diagrams and lack of polish. I'm
-time-constrained and communicating the ideas is my priority.
-
 <!-- toc -->
+
+## Trying this out
+
+Originally I wanted to embed code in this article and have interactive demos to
+explore each step. That level of ambition fell through, but there is a geometry
+debugging tool, running in your browser (with WASM and WebGL required):
+<a href="http://play.abstreet.org/dev/map_editor.html?input/us/seattle/raw_maps/aurora_central.bin&--cam=17.39/47.68621/-122.32484" target="_blank">launch
+the tool</a>.
+
+The tool wasn't designed for ease-of-use, so some hints on using it:
+
+1.  Click and drag to move, scroll to zoom
+2.  Toggle intersection geometry on/off with the right panel or by pressing
+    **g**
+3.  Click and drag an intersection or an internal point in a curved road to move
+    it
 
 ## Background
 
