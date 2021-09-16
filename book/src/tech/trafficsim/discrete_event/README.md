@@ -56,7 +56,7 @@ this simulation that pedestrians ghost -- through each other, that is. There are
 more interesting models of pedestrian movement like the
 [social force model](https://en.wikipedia.org/wiki/Crowd_simulation) where
 people change speeds in crowds, but A/B Street is focused on sad American cities
-where you don't really see many people walking in one place. So there's no
+where you don't often see many people walking in one place. So there's no
 collision between pedestrians at all; they just pass through each other,
 temporarily losing their individuality for rendering purposes:
 
@@ -93,7 +93,7 @@ In the case of pedestrians, this works like this:
     say 10 seconds.
 2.  For the next 10 seconds, that pedestrian is in the `Crossing` state, which
     has a `DistanceInterval` stating that they're moving on a certain sidewalk
-    from 30 to 70 meters. The `TimeInterval` says that this state is occuring
+    from 30 to 70 meters. The `TimeInterval` says that this state is occurring
     from time 0 to 10 seconds. We can linearly interpolate to find their
     position for drawing.
 3.  At 10 seconds, the scheduler wakes up the pedestrian. They're now at the end
@@ -109,7 +109,7 @@ In the case of pedestrians, this works like this:
 6.  At the end of the crosswalk, the pedestrian immediately enters another
     `Crossing` state for the next sidewalk.
 
-We can visualize this with a finite-state machine diagram:
+We can visualize this with a finite-state machine:
 
 <figure>
   <a href="pedestrian_fsm.png" target="_blank"><img src="pedestrian_fsm.png"/></a>
@@ -132,8 +132,8 @@ target lane. There are two major differences from reality that we'll take as
 assumptions.
 
 First, vehicles instantly change speeds -- no smooth acceleration from rest, or
-modeling of safe stoping distance. So if a vehicle starts at the beginning of an
-empty lane, they instantly jump from rest to the maximum speed limit for that
+modeling of safe stopping distance. So if a vehicle starts at the beginning of
+an empty lane, they instantly jump from rest to the maximum speed limit for that
 road. They travel at that maximum speed limit until the moment their front
 bumper strikes the boundary between road and intersection, then they stop
 immediately. This doesn't model highway driving at all, where things like jam
@@ -225,6 +225,7 @@ We can again understand all of this with a finite-state machine:
 
 <figure>
   <a href="vehicle_fsm.png" target="_blank"><img src="vehicle_fsm.png"/></a>
+  <figcaption>Unparking is an initial state, where a vehicle exits a driveway or street parking spot.</figcaption>
 </figure>
 
 Code references
@@ -244,7 +245,7 @@ back. The key idea is that leaders bound the position of followers, and we can
 vehicle's position costs as much as calculating the entire queue's in the worst
 case, but that's usually fine -- for drawing, we want everyone anyway.
 
-The process is simple. We use each vehicle's state to determine the possible
+The process is simple. We use each vehicle's state to determine the "best-case"
 position of their front bumper. `WaitingToAdvance` means the vehicle is at the
 very end of the lane. For vehicles still `Crossing`, we linearly interpolate the
 time and distance intervals. Then as we walk from front to back, we maintain a
@@ -281,7 +282,7 @@ Code
 
 ### Laggy heads
 
-Vehicles aren't infinitesmal dots; they have a length, so each one has a front
+Vehicles aren't infinitesimal dots; they have a length, so each one has a front
 and back. This means we have to be a little careful about defining when a
 vehicle has left a lane and its follower should be considered the "first" in the
 queue:
@@ -317,7 +318,7 @@ carefully calculate when the back of the bus has cleared each piece.
 ### Performance
 
 It's been a very long time since I've measured the performance of this
-discrete-event simulation, so these numbers are very out-of-date:
+discrete-event simulation, so these numbers are rather out-of-date:
 
 <figure>
   <a href="perf.png" target="_blank"><img src="perf.png"/></a>
@@ -326,7 +327,7 @@ discrete-event simulation, so these numbers are very out-of-date:
 One of the reasons the simulation is more performant than discrete time-steps is
 by how much time the simulation advances between updates. With discrete time,
 it's always a fixed amount -- 0.1 seconds usually. With discrete events, it
-depnds when the next event is scheduled -- the later that event occurs, the
+depends when the next event is scheduled -- the later that event occurs, the
 faster the overall simulation proceeds. On a nearly empty map with really long
 roads, a single agent only needs a few updates to complete its trip -- very
 loosely, an update at the beginning and end of each lane and turn in its path.
@@ -348,11 +349,10 @@ turn and on checks that a laggy head has cleared a queue.
 ## Lane-changing
 
 For a long time, A/B Street had no dynamic lane-changing or over-taking. As
-described earlier, vehicles used the conflict handling at intersections to
-change lanes in order to pick the lane required for a turn ("mandatory
-lane-changing") or that's likely to be fastest ("discretionary lane-changing").
-But that finally changed in
-[June 2021](https://github.com/a-b-street/abstreet/pull/682).
+described earlier, vehicles use the conflict handling at intersections to change
+lanes in order to pick the lane required for a turn ("mandatory lane-changing")
+or that's likely to be fastest ("discretionary lane-changing"). But that finally
+changed in [June 2021](https://github.com/a-b-street/abstreet/pull/682).
 
 <figure>
   <a href="lanechanging.gif" target="_blank"><img src="lanechanging.gif"/></a>
@@ -377,7 +377,7 @@ actually pull off in the simulation. This greatly skewed results -- some agents
 experienced really high trip times as they repeatedly rerouted and kept
 attempting difficult maneuvers.
 
-I considered making the process infalliable -- vehicles would slow down and
+I considered making the process infallible -- vehicles would slow down and
 eventually stop, until they forced their way into another lane. I suspect this
 could also lead to lots of unrealistic gridlock, but I never tried it.
 
@@ -403,7 +403,7 @@ Finally, the vehicle will attempt to initiate the lane-changing. There's a bunch
 of
 [checks](https://github.com/a-b-street/abstreet/blob/83ebc96bb115c263edf3cf5f3567709ca52f2d52/sim/src/mechanics/driving.rs#L1128)
 in the code that I won't repeat here. In summary, we require a fixed 1 second
-duration to perform the maneuever. During this, the vehicle will exist in two
+duration to perform the manuever. During this, the vehicle will exist in two
 queues. Committing to the move requires completion before reaching the end of
 the road, and nothing in the way in the target lane.
 
@@ -418,7 +418,7 @@ slow leader and "clipping" into the vehicle changing lanes.
 
 <figure>
   <a href="lc_ghost.gif" target="_blank"><img src="lc_ghost.gif"/></a>
-  <figcaption>A car follows a bike, then starts changing lanes. The time to complete the movement is artifically stretched out to 3 seconds. While the car is sliding over, it leaves a "ghost" vehicle following the bike in the original lane, to prevent other vehicles from getting too close.
+  <figcaption>A car follows a bike, then starts changing lanes. The time to complete the movement is artificially stretched out to 3 seconds. While the car is sliding over, it leaves a "ghost" vehicle following the bike in the original lane, to prevent other vehicles from getting too close.
 </figure>
 
 ### Future work
