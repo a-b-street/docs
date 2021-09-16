@@ -720,39 +720,73 @@ consolidated intersection.
 
 To assemble the endpoints into a polygon, we need to know what order they go in.
 If you recall from an earlier section, we used the original shared point from
-OSM to do this:
+OSM as the center, and the point farthest away from that shared point to do
+this:
 
 <figure>
   <a href="sorting_orig_center.png" target="_blank"><img src="sorting_orig_center.png"/></a>
 </figure>
 
 But now things are less clear -- we have multiple shared points, from before
-consolidation. As a first pass, maybe we can just average all of the points,
-call that the "center," calculate the angle to each point, and order clockwise.
+consolidation. As a first pass, maybe we can just average all of the original
+shared OSM points and call that the "center." And since we've already trimmed
+back the roads around the complex junction, we can use that point to determine
+order.
 
-(diagram)
+<figure>
+  <a href="sorting_complex.png" target="_blank"><img src="sorting_complex.png"/></a>
+  <figcaption>The center is the average of all the original intersection nodes from OSM. Since the first pass trimmed th roads back for each of these nodes, we can use that point to calculate an angle to the center and get a clockwise ordering.</figcaption>
+</figure>
 
-Before trimming, how do you do this? The point farthest away? A point a fixed
-few meters away?
+But let's imagine we didn't use that pre-trimmed point, and still used the point
+farthest from the shared center, like we do for the first pass. Sometimes that
+can break down!
 
-For consolidated intersections, probably use the pre-trimmed point
+<figure>
+  <a href="sorting_inversion.png" target="_blank"><img src="sorting_inversion.png"/></a>
+  <figcaption>Two roads are on the east side of the green intersection. They start out roughly parallel, but curve and are split on the other end at different distances. The purple lines show the angle to the green intersection's center. The ordering of the two roads is switched if we use these purple lines to calculate angle!</figcaption>
+</figure>
 
-Example Tempe intersection with light rail that blows it up. Center vs
-polylabel.
+What happens when we get the ordering of roads wrong? The polygon will loop back
+on itself, looking like a bowtie:
+
+<figure>
+  <a href="sorting_bowtie.png" target="_blank"><img src="sorting_bowtie.png"/></a>
+</figure>
 
 ### Finding the short roads
 
-I've been tagging junction=intersection manually upstream to opt them in slowly.
+The algorithm described relies on knowing short roads to merge. Conveniently,
+there's a proposed OSM tag
+[junction=intersection](https://wiki.openstreetmap.org/wiki/Proposed_features/junction%3Dintersection)
+that describes road segments that're physically located in the interior of
+intersections. So far, I've been manually tagging this and using it as the
+trigger to merge a junction. But of course, ideally heuristics would instead
+discover these cases automatically.
 
-Tried some approaches that look for all short road (pre trimmed or post?).
-Usually breaks.
+The simplest start is to just define a threshold, like 5 meters, and try to
+merge any road shorter than that. The road's original length could be used, or
+-- perhaps more usefully -- we can first generate intersections normally and use
+the trimmed road length. After merging a short road, perhaps some other ones
+nearby change their trimmed length, so merging should happen in a fixed-point
+loop, until no road has changed.
 
-Targeted heuristics for 2 and 4-clusters of tsigs.
+So far, I haven't made good progress with
+[this heuristic](https://github.com/a-b-street/abstreet/blob/14ce21c80dc0d7f2b1ac69c988f10e2dd14f17e0/map_model/src/make/merge_intersections.rs).
+Merging happens in too many places, or in a strange order, and causes assertion
+failures. Much of the time, this exposes actual bugs, but exposing dozens at a
+time is hard to handle, so that's why the slower approach of manually opting in
+a few intersections to merging still remains.
 
-Examples in Loop 101 -- it gets crazy.
+In the spirit of a more gradual rollout of merging code, I've also attempted
+heuristics just focused on common patterns of complex junctions with 2 or 4
+pieces, resulting from one or two divided highways crossing. Sometimes just
+looking for two or four traffic signal nodes close to each other reveals really
+complex situations that break:
 
-Focusing on tsig clusters for now, since they cause the most problems to traffic
-sim, but very much ongoing work.
+<figure>
+  <a href="heuristic_loop101.png" target="_blank"><img src="heuristic_loop101.png"/></a>
+</figure>
 
 ## Conclusion
 
