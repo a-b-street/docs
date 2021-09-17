@@ -13,15 +13,9 @@ Some of the things in A/B Street that seem the simplest have taken me tremendous
 effort. Determining the shape of roads and intersections is one of those
 problems, so this article is a deep-dive into how it works and why it's so hard.
 
-Note: There's no "related work" section here -- I haven't found many other
-projects attempting something like this. I've seen a few research papers going
-in this direction, but none of them pointed to any code to try. The approach
-I'll describe has many flaws -- I'm not claiming this is a good solution, just
-the one that A/B Street uses. If you see a way to improve anything here, let me
-know about it! Even better, try it for real and send a PR -- there's plenty of
-tooling to help you debug and visually diff against the existing implementation.
-There should be a convenient button at the top-right of this page to suggest an
-edit in Github.
+Note: The approach I'll describe has many flaws -- I'm not claiming this is a
+good solution, just the one that A/B Street uses. If you see a way to improve
+anything here, let me know about it!
 
 <!-- toc -->
 
@@ -44,8 +38,8 @@ The tool wasn't designed for ease-of-use, so some hints on using it:
 ## Background
 
 Most street maps you'll find provide a simplified view of streets. Google Maps,
-Apple Maps, and most OpenStreetMap renderers mostly just tell you the road's
-name, color it by type (a highway, major arterial road, minor residential
+Apple Maps, and most OpenStreetMap (OSM) renderers mostly just tell you the
+road's name, color it by type (a highway, major arterial road, minor residential
 street), take great liberties with the width, and don't explicitly distinguish
 intersections from roads. These maps are used for navigation and drawing your
 attention to nearby businesses, so this is quite a reasonable view.
@@ -804,6 +798,13 @@ I've also toyed around with designing a schema to map roads and intersections
 from scratch, but that's an article to write on a rainier day...
 
 ## Appendices
+
+### Related work
+
+I've found a few other active projects aiming to render details about lanes:
+
+- <https://github.com/enzet/map-machine>
+- <http://blog.imagico.de/navigating-the-maze-part-1/> (and don't miss part 2!)
 
 ### Tricks and tooling
 
