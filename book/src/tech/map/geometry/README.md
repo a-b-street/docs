@@ -9,7 +9,7 @@ figure {
 
 _By Dustin Carlino, last updated September 2021_
 
-Some of the things in A/B Street that seem the simplest have taken me tremendous
+Some of the things in A/B Street that seem the simplest have taken tremendous
 effort. Determining the shape of roads and intersections is one of those
 problems, so this article is a deep-dive into how it works and why it's so hard.
 
@@ -146,7 +146,7 @@ perpendicular angle.
 <figure>
   <a href="perp_no_traffic.png" target="_blank"><img src="perp_no_traffic.png"/></a>
   <figcaption>Note how the intersection "eats into" Boren, the
-diagonal road more than you might expect.</figcaption>
+diagonal road, more than you might expect.</figcaption>
 </figure>
 
 We use this division to determine where vehicles stop, and where a crosswalk
@@ -197,10 +197,10 @@ example.
 ### Part 1: Thickening the infinitesimal
 
 OSM models roads as a center-line -- supposedly the physical center of the paved
-area, not the solid or dashed yellow line (t least in the US) separating the two
-directions of traffic. The schema, and how it gets mapped in practice, is fuzzy
-when there are more lanes in one direction than the other or when roads join or
-split up for logical routing, but... let's keep things simple to start.
+area, not the solid or dashed yellow line (at least in the US) separating the
+two directions of traffic. The schema, and how it gets mapped in practice, is
+fuzzy when there are more lanes in one direction than the other or when roads
+join or split up for logical routing, but... let's keep things simple to start.
 
 <figure>
   <a href="osm_center_lines.png" target="_blank"><img src="osm_center_lines.png"/></a>
@@ -386,9 +386,9 @@ Much better.
 
 #### Sorting roads around a center
 
-I snuck another fast one on ya. When we form a polygon from these left/right
-endpoints and the original collision points, how do we put those points in the
-correct order? Seemingly innocent question.
+I snuck a fast one on ya. When we form a polygon from these left/right endpoints
+and the original collision points, how do we put those points in the correct
+order? Seemingly innocent question.
 
 There are a few approaches that work fine for the simple cases. First, from OSM
 we know the single point where the 5 road center lines meet. After we've
@@ -409,6 +409,7 @@ That wasn't actually so bad! The results are reasonable in many cases:
 
 <figure>
   <a href="good1.png" target="_blank"><img src="good1.png"/></a>
+  <figcaption>The curve that resembles a rail-road track is a light rail line, located beneath the road; it doesn't affect the intersection geometry here.
 </figure>
 
 <figure>
@@ -466,8 +467,10 @@ the intersection. This throws off everything we've done!
 Another example is people tagging the lane count incorrectly. A common problem
 when splitting a bidirectional road into two one-ways (which is what you're
 supposed to do when there's physical separation like a median) is forgetting to
-change the lane count. I don't have examples handy, because I've fixed every
-case I've found.
+change the lane count.
+[Here's](https://www.openstreetmap.org/changeset/111311212) a recent example,
+where `sidewalk=both` was copied when a bidirectional road was split into
+divided one-ways.
 
 An important lesson when trying to write algorithms using OSM data: there's a
 balance between making your code robust to problems in the data, and trying to
@@ -781,6 +784,19 @@ complex situations that break:
 <figure>
   <a href="heuristic_loop101.png" target="_blank"><img src="heuristic_loop101.png"/></a>
 </figure>
+
+### Phantom collisions
+
+There's a particularly insidious edge case not handled yet:
+
+<figure>
+  <a href="phantom_collision.gif" target="_blank"><img src="phantom_collision.gif"/></a>
+  <figcaption>The south road is connected to the left intersection in OSM's graph. But based on the geometry inferred for the two separate intersections, this road actually collides with the right intersection as well.
+</figure>
+
+How could we handle this? Is it necessary to consider collisions between roads
+one or two hops away in the graph, in case they might be thick enough to
+interfere?
 
 ## Conclusion
 
