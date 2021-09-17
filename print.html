@@ -2813,15 +2813,9 @@ figure {
 <p>Some of the things in A/B Street that seem the simplest have taken me tremendous
 effort. Determining the shape of roads and intersections is one of those
 problems, so this article is a deep-dive into how it works and why it's so hard.</p>
-<p>Note: There's no &quot;related work&quot; section here -- I haven't found many other
-projects attempting something like this. I've seen a few research papers going
-in this direction, but none of them pointed to any code to try. The approach
-I'll describe has many flaws -- I'm not claiming this is a good solution, just
-the one that A/B Street uses. If you see a way to improve anything here, let me
-know about it! Even better, try it for real and send a PR -- there's plenty of
-tooling to help you debug and visually diff against the existing implementation.
-There should be a convenient button at the top-right of this page to suggest an
-edit in Github.</p>
+<p>Note: The approach I'll describe has many flaws -- I'm not claiming this is a
+good solution, just the one that A/B Street uses. If you see a way to improve
+anything here, let me know about it!</p>
 <ul>
 <li><a href="tech/map/geometry/index.html#trying-this-out">Trying this out</a></li>
 <li><a href="tech/map/geometry/index.html#background">Background</a>
@@ -2865,6 +2859,7 @@ edit in Github.</p>
 <li><a href="tech/map/geometry/index.html#conclusion">Conclusion</a></li>
 <li><a href="tech/map/geometry/index.html#appendices">Appendices</a>
 <ul>
+<li><a href="tech/map/geometry/index.html#related-work">Related work</a></li>
 <li><a href="tech/map/geometry/index.html#tricks-and-tooling">Tricks and tooling</a></li>
 <li><a href="tech/map/geometry/index.html#hall-of-lovecraftian-horrors">Hall of Lovecraftian horrors</a></li>
 <li><a href="tech/map/geometry/index.html#a-radically-simpler-approach">A radically simpler approach?</a></li>
@@ -2888,8 +2883,8 @@ it</li>
 </ol>
 <h2 id="background"><a class="header" href="#background">Background</a></h2>
 <p>Most street maps you'll find provide a simplified view of streets. Google Maps,
-Apple Maps, and most OpenStreetMap renderers mostly just tell you the road's
-name, color it by type (a highway, major arterial road, minor residential
+Apple Maps, and most OpenStreetMap (OSM) renderers mostly just tell you the
+road's name, color it by type (a highway, major arterial road, minor residential
 street), take great liberties with the width, and don't explicitly distinguish
 intersections from roads. These maps are used for navigation and drawing your
 attention to nearby businesses, so this is quite a reasonable view.</p>
@@ -3492,6 +3487,12 @@ on, but I think they're worth an attempt.</p>
 <p>I've also toyed around with designing a schema to map roads and intersections
 from scratch, but that's an article to write on a rainier day...</p>
 <h2 id="appendices"><a class="header" href="#appendices">Appendices</a></h2>
+<h3 id="related-work"><a class="header" href="#related-work">Related work</a></h3>
+<p>I've found a few other active projects aiming to render details about lanes:</p>
+<ul>
+<li><a href="https://github.com/enzet/map-machine">https://github.com/enzet/map-machine</a></li>
+<li><a href="http://blog.imagico.de/navigating-the-maze-part-1/">http://blog.imagico.de/navigating-the-maze-part-1/</a> (and don't miss part 2!)</li>
+</ul>
 <h3 id="tricks-and-tooling"><a class="header" href="#tricks-and-tooling">Tricks and tooling</a></h3>
 <p>Iterating quickly on these algorithms and preventing regressions are often at
 odds. These are some parts of my development workflow that help balance a bit.</p>
