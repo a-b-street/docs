@@ -2810,7 +2810,7 @@ figure {
 }
 </style>
 <p><em>By Dustin Carlino, last updated September 2021</em></p>
-<p>Some of the things in A/B Street that seem the simplest have taken me tremendous
+<p>Some of the things in A/B Street that seem the simplest have taken tremendous
 effort. Determining the shape of roads and intersections is one of those
 problems, so this article is a deep-dive into how it works and why it's so hard.</p>
 <p>Note: The approach I'll describe has many flaws -- I'm not claiming this is a
@@ -2854,6 +2854,7 @@ anything here, let me know about it!</p>
 <li><a href="tech/map/geometry/index.html#a-solution-two-passes">A solution: two passes</a></li>
 <li><a href="tech/map/geometry/index.html#sorting-revisited">Sorting revisited</a></li>
 <li><a href="tech/map/geometry/index.html#finding-the-short-roads">Finding the short roads</a></li>
+<li><a href="tech/map/geometry/index.html#phantom-collisions">Phantom collisions</a></li>
 </ul>
 </li>
 <li><a href="tech/map/geometry/index.html#conclusion">Conclusion</a></li>
@@ -2974,7 +2975,7 @@ perpendicular angle.</p>
 <figure>
   <a href="tech/map/geometry/perp_no_traffic.png" target="_blank"><img src="tech/map/geometry/perp_no_traffic.png"/></a>
   <figcaption>Note how the intersection "eats into" Boren, the
-diagonal road more than you might expect.</figcaption>
+diagonal road, more than you might expect.</figcaption>
 </figure>
 <p>We use this division to determine where vehicles stop, and where a crosswalk
 exists:</p>
@@ -3014,10 +3015,10 @@ connecting just two intersections.</li>
 example.</p>
 <h3 id="part-1-thickening-the-infinitesimal"><a class="header" href="#part-1-thickening-the-infinitesimal">Part 1: Thickening the infinitesimal</a></h3>
 <p>OSM models roads as a center-line -- supposedly the physical center of the paved
-area, not the solid or dashed yellow line (t least in the US) separating the two
-directions of traffic. The schema, and how it gets mapped in practice, is fuzzy
-when there are more lanes in one direction than the other or when roads join or
-split up for logical routing, but... let's keep things simple to start.</p>
+area, not the solid or dashed yellow line (at least in the US) separating the
+two directions of traffic. The schema, and how it gets mapped in practice, is
+fuzzy when there are more lanes in one direction than the other or when roads
+join or split up for logical routing, but... let's keep things simple to start.</p>
 <figure>
   <a href="tech/map/geometry/osm_center_lines.png" target="_blank"><img src="tech/map/geometry/osm_center_lines.png"/></a>
   <figcaption>5 roads meet at this intersection. The white lines
@@ -3166,9 +3167,9 @@ those too?</p>
 </figure>
 <p>Much better.</p>
 <h4 id="sorting-roads-around-a-center"><a class="header" href="#sorting-roads-around-a-center">Sorting roads around a center</a></h4>
-<p>I snuck another fast one on ya. When we form a polygon from these left/right
-endpoints and the original collision points, how do we put those points in the
-correct order? Seemingly innocent question.</p>
+<p>I snuck a fast one on ya. When we form a polygon from these left/right endpoints
+and the original collision points, how do we put those points in the correct
+order? Seemingly innocent question.</p>
 <p>There are a few approaches that work fine for the simple cases. First, from OSM
 we know the single point where the 5 road center lines meet. After we've
 calculated the points for the intersection polygon, we can use that single
@@ -3183,6 +3184,7 @@ the original OSM data.</figcaption>
 <p>That wasn't actually so bad! The results are reasonable in many cases:</p>
 <figure>
   <a href="tech/map/geometry/good1.png" target="_blank"><img src="tech/map/geometry/good1.png"/></a>
+  <figcaption>The curve that resembles a rail-road track is a light rail line, located beneath the road; it doesn't affect the intersection geometry here.
 </figure>
 <figure>
   <a href="tech/map/geometry/good2.png" target="_blank"><img src="tech/map/geometry/good2.png"/></a>
@@ -3224,8 +3226,10 @@ the intersection. This throws off everything we've done!</p>
 <p>Another example is people tagging the lane count incorrectly. A common problem
 when splitting a bidirectional road into two one-ways (which is what you're
 supposed to do when there's physical separation like a median) is forgetting to
-change the lane count. I don't have examples handy, because I've fixed every
-case I've found.</p>
+change the lane count.
+<a href="https://www.openstreetmap.org/changeset/111311212">Here's</a> a recent example,
+where <code>sidewalk=both</code> was copied when a bidirectional road was split into
+divided one-ways.</p>
 <p>An important lesson when trying to write algorithms using OSM data: there's a
 balance between making your code robust to problems in the data, and trying to
 fix everything upstream. I attempt a compromise. It's a virtuous cycle -- in
@@ -3474,6 +3478,15 @@ complex situations that break:</p>
 <figure>
   <a href="tech/map/geometry/heuristic_loop101.png" target="_blank"><img src="tech/map/geometry/heuristic_loop101.png"/></a>
 </figure>
+<h3 id="phantom-collisions"><a class="header" href="#phantom-collisions">Phantom collisions</a></h3>
+<p>There's a particularly insidious edge case not handled yet:</p>
+<figure>
+  <a href="tech/map/geometry/phantom_collision.gif" target="_blank"><img src="tech/map/geometry/phantom_collision.gif"/></a>
+  <figcaption>The south road is connected to the left intersection in OSM's graph. But based on the geometry inferred for the two separate intersections, this road actually collides with the right intersection as well.
+</figure>
+<p>How could we handle this? Is it necessary to consider collisions between roads
+one or two hops away in the graph, in case they might be thick enough to
+interfere?</p>
 <h2 id="conclusion"><a class="header" href="#conclusion">Conclusion</a></h2>
 <p>Given how much time I've sunk into automatically generating decent geometry from
 an OSM schema absolutely not meant for this, I hope you don't fault me for
