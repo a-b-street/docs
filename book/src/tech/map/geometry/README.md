@@ -84,7 +84,7 @@ moving cars and 2 to storing them?</figcaption>
 <figure>
   <a href="eastlake_after.png" target="_blank"><img src="eastlake_after.png"/></a>
   <figcaption>Talking about Eastlake having a safe cycling route is
-one thing, but isn't it much easier to imagin when you can just see it?</figcaption>
+one thing, but isn't it much easier to imagine when you can just see it?</figcaption>
 </figure>
 
 At a high-level, we want a representation that:
@@ -194,7 +194,7 @@ Let's pick a particularly illustrative
 [five-way intersection](https://www.openstreetmap.org/node/1705063811) as our
 example.
 
-### Part 1: Thickening the infinitesmal
+### Part 1: Thickening the infinitesimal
 
 OSM models roads as a center-line -- supposedly the physical center of the paved
 area, not the solid or dashed yellow line (t least in the US) separating the two
@@ -238,7 +238,7 @@ The red dot is the position of the OSM node shared by these roads.</figcaption>
 
 #### Projecting a polyline
 
-Before we move on, a quick primer on how to take a polyline (a list of ordered
+Before we move on, a quick primer on how to take a polyline (an ordered list of
 points) and project it to the left or right. There are some better explanations
 of this online, but I don't have them handy. I wouldn't call A/B Street's
 [implementation](https://github.com/a-b-street/abstreet/blob/91c152c123924d7b8bfa14722d18c652d7e42966/geom/src/polyline.rs#L435)
@@ -532,7 +532,7 @@ street cars!</figcaption>
 
 <figure>
   <a href="divided_taipei.png" target="_blank"><img src="divided_taipei.png"/></a>
-  <figcaption>And everytime I think I might've handled most cases,
+  <figcaption>And every time I think I might've handled most cases,
 I'm humbled by Taipei.</figcaption>
 </figure>
 
@@ -616,7 +616,7 @@ intersections</figcaption>
 
 At the simulation layer, vehicles moving through an intersection conflict with
 each other very coarsely. If a vehicle is partially stuck in the intersection,
-it prevents othr vehicles from starting potentially conflicting turns. So to
+it prevents other vehicles from starting potentially conflicting turns. So to
 prevent this problem from happening, the simulation has complicated rules so
 that vehicles do not "block the box" -- if they enter an intersection, they must
 be guaranteed to fully exit and clear it, not get stuck somewhere in the middle.
