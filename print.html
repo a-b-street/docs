@@ -2975,11 +2975,13 @@ join or split up for logical routing, but... let's keep things simple to start.<
   <figcaption>5 roads meet at this intersection. The white lines
 are OSM's center line.</figcaption>
 </figure>
-<p>OSM has a few tags (link) for explicitly mapping road width, but in practice
-they're not used. Instead, we have a whole bunch of tags that describe the lane
-configuration of the road. A/B Street interprets these and produces an ordered
-list of lanes from the left side of the road to the right, guessing the
-direction, width, and type of each lane. See the
+<p>OSM has a few
+<a href="https://wiki.openstreetmap.org/wiki/Key:width#Width_of_streets">tags</a> for
+explicitly mapping road width, but in practice they're not widely used. Instead,
+we have a whole bunch of tags that describe the lane configuration of the road.
+A/B Street interprets these and produces an ordered list of lanes from the left
+side of the road to the right, guessing the direction, width, and type of each
+lane. See the
 <a href="https://github.com/dabreegster/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs">code here</a>
 -- it's fairly lengthy, but has some intuitive unit tests. This interpretation
 of tags is hard in practice because the schema is very confusing, there are
@@ -3199,6 +3201,9 @@ is pretty simple. This produces much better results here:</p>
 <figure>
   <a href="tech/map/geometry/ramp2.png" target="_blank"><img src="tech/map/geometry/ramp2.png"/></a>
 </figure>
+<p>OSM has a
+<a href="https://wiki.openstreetmap.org/wiki/Proposed_features/placement">placement</a> tag
+that may also be useful here.</p>
 <h2 id="intersection-consolidation"><a class="header" href="#intersection-consolidation">Intersection consolidation</a></h2>
 <p>The skeptical reader has noticed the suspicious lack of complex intersections so
 far. Time to dive into that.</p>
@@ -3456,6 +3461,12 @@ from scratch, but that's an article to write on a rainier day...</p>
 <ul>
 <li><a href="https://github.com/enzet/map-machine">https://github.com/enzet/map-machine</a></li>
 <li><a href="http://blog.imagico.de/navigating-the-maze-part-1/">http://blog.imagico.de/navigating-the-maze-part-1/</a> (and don't miss part 2!)</li>
+<li><a href="https://github.com/BjornRasmussen/Lanes">https://github.com/BjornRasmussen/Lanes</a> (there are some nice demos in the
+OSMUS Slack somewhere)</li>
+<li><a href="https://supaplexosm.github.io/strassenraumkarte-neukoelln/?map=micromap#20/52.48535/13.42666">micro-map of Neukölln in Berlin</a>,
+see
+<a href="https://supaplexosm.github.io/strassenraumkarte-neukoelln/posts/2021-07-18-strassenraumkarte">this blog</a>
+for an introduction</li>
 </ul>
 <h3 id="tricks-and-tooling"><a class="header" href="#tricks-and-tooling">Tricks and tooling</a></h3>
 <p>Iterating quickly on these algorithms and preventing regressions are often at
