@@ -208,11 +208,13 @@ join or split up for logical routing, but... let's keep things simple to start.
 are OSM's center line.</figcaption>
 </figure>
 
-OSM has a few tags (link) for explicitly mapping road width, but in practice
-they're not used. Instead, we have a whole bunch of tags that describe the lane
-configuration of the road. A/B Street interprets these and produces an ordered
-list of lanes from the left side of the road to the right, guessing the
-direction, width, and type of each lane. See the
+OSM has a few
+[tags](https://wiki.openstreetmap.org/wiki/Key:width#Width_of_streets) for
+explicitly mapping road width, but in practice they're not widely used. Instead,
+we have a whole bunch of tags that describe the lane configuration of the road.
+A/B Street interprets these and produces an ordered list of lanes from the left
+side of the road to the right, guessing the direction, width, and type of each
+lane. See the
 [code here](https://github.com/dabreegster/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs)
 -- it's fairly lengthy, but has some intuitive unit tests. This interpretation
 of tags is hard in practice because the schema is very confusing, there are
@@ -495,6 +497,10 @@ is pretty simple. This produces much better results here:
 <figure>
   <a href="ramp2.png" target="_blank"><img src="ramp2.png"/></a>
 </figure>
+
+OSM has a
+[placement](https://wiki.openstreetmap.org/wiki/Proposed_features/placement) tag
+that may also be useful here.
 
 ## Intersection consolidation
 
@@ -821,6 +827,12 @@ I've found a few other active projects aiming to render details about lanes:
 
 - <https://github.com/enzet/map-machine>
 - <http://blog.imagico.de/navigating-the-maze-part-1/> (and don't miss part 2!)
+- <https://github.com/BjornRasmussen/Lanes> (there are some nice demos in the
+  OSMUS Slack somewhere)
+- [micro-map of Neukölln in Berlin](https://supaplexosm.github.io/strassenraumkarte-neukoelln/?map=micromap#20/52.48535/13.42666),
+  see
+  [this blog](https://supaplexosm.github.io/strassenraumkarte-neukoelln/posts/2021-07-18-strassenraumkarte)
+  for an introduction
 
 ### Tricks and tooling
 
