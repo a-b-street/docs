@@ -56,15 +56,32 @@ One-time setup:
 
 ## Downloading more cities
 
-Most easily, you can download new cities using the UI directly.
+Most easily, you can download new cities using the GUI directly.
 
 As data formats change over time, things in the `data/` directory not under
 version control will get out of date. At any time, you can run
 `cargo run --bin updater` from the main repository directory to update only the
 files that have changed.
 
-You can also opt into downloading updates for more cities by editing
-`data/player/data.json`. If you want to opt into absolutely everything:
+You can also opt into downloading updates for more cities from the command
+line by editing `data/player/data.json`.
+If you want to add data for Leeds, GB, for example, you could edit that file
+so that it contains the following:
+
+```json
+{ 
+  "runtime": [
+    "gb/leeds",
+    "us/seattle"
+  ],
+  "input": [
+    "gb/leeds",
+    "us/seattle"
+  ]
+}
+```
+
+If you want to opt into absolutely everything:
 `cargo run --bin updater -- --opt-into-all > data/player/data.json`
 
 ## Building map data
