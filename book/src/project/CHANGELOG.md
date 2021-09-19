@@ -978,3 +978,11 @@ changes here.
 - deploy raw map editor to web, to support a long-form article: https://a-b-street.github.io/docs/tech/map/geometry/index.html
 - long-form article about the simulation: https://a-b-street.github.io/docs/tech/trafficsim/discrete_event/index.html
 - small fixes to ungap route tool
+
+0.2.59
+
+- bike network's route tool: naming saved routes, showing details about the route
+- switch from s3 to cloudfront CDN; all downloads should be faster
+- further pathfinding performance improvements
+- fix bike quick sketch tool in left-handed maps
+- consolidate tools into a single CLI and include it in the release
