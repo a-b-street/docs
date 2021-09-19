@@ -1636,19 +1636,12 @@ experience, so they're hidden for now.</li>
 version control will get out of date. At any time, you can run
 <code>cargo run --bin updater</code> from the main repository directory to update only the
 files that have changed.</p>
-<p>You can also opt into downloading updates for more cities from the command
-line by editing <code>data/player/data.json</code>.
-If you want to add data for Leeds, GB, for example, you could edit that file
-so that it contains the following:</p>
-<pre><code class="language-json">{ 
-  &quot;runtime&quot;: [
-    &quot;gb/leeds&quot;,
-    &quot;us/seattle&quot;
-  ],
-  &quot;input&quot;: [
-    &quot;gb/leeds&quot;,
-    &quot;us/seattle&quot;
-  ]
+<p>You can also opt into downloading updates for more cities from the command line
+by editing <code>data/player/data.json</code>. If you want to add data for Leeds, GB, for
+example, you could edit that file so that it contains the following:</p>
+<pre><code class="language-json">{
+  &quot;runtime&quot;: [&quot;gb/leeds&quot;, &quot;us/seattle&quot;],
+  &quot;input&quot;: [&quot;gb/leeds&quot;, &quot;us/seattle&quot;]
 }
 </code></pre>
 <p>If you want to opt into absolutely everything:
@@ -4650,10 +4643,8 @@ where the travel demand data comes from.</p>
 <h2 id="scenarios"><a class="header" href="#scenarios">Scenarios</a></h2>
 <p>A <em>scenario</em> encodes the people and trips taken over a day. See the
 <a href="https://github.com/a-b-street/abstreet/blob/master/sim/src/make/scenario.rs">code</a>.</p>
-<p>TODO:</p>
-<ul>
-<li>talk about vehicle assignment / parked car seeding</li>
-</ul>
+<p>See <a href="tech/trafficsim/parking.html#seeding-cars">here</a> for details how vehicles are initially
+placed and used by the driving trips specified by the scenario.</p>
 <h2 id="data-sources-1"><a class="header" href="#data-sources-1">Data sources</a></h2>
 <h3 id="seattle-soundcast"><a class="header" href="#seattle-soundcast">Seattle: Soundcast</a></h3>
 <p>Seattle luckily has the Puget Sound Regional Council, which has produced the
