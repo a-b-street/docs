@@ -45,7 +45,7 @@ file with your boundary. Then...
 Using a .zip release: `./cli one-step-import boundary.geojson`
 
 Building from source:
-`cargo build --release --bin cli -- one-step-import boundary.geojson`
+`cargo run --release --bin cli -- one-step-import boundary.geojson`
 
 The new map is located in the country with code "zz" (this isn't a real
 country), in the "oneshot" city. This is stored in
