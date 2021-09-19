@@ -63,21 +63,14 @@ version control will get out of date. At any time, you can run
 `cargo run --bin updater` from the main repository directory to update only the
 files that have changed.
 
-You can also opt into downloading updates for more cities from the command
-line by editing `data/player/data.json`.
-If you want to add data for Leeds, GB, for example, you could edit that file
-so that it contains the following:
+You can also opt into downloading updates for more cities from the command line
+by editing `data/player/data.json`. If you want to add data for Leeds, GB, for
+example, you could edit that file so that it contains the following:
 
 ```json
-{ 
-  "runtime": [
-    "gb/leeds",
-    "us/seattle"
-  ],
-  "input": [
-    "gb/leeds",
-    "us/seattle"
-  ]
+{
+  "runtime": ["gb/leeds", "us/seattle"],
+  "input": ["gb/leeds", "us/seattle"]
 }
 ```
 

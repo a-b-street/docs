@@ -14,9 +14,8 @@ where the travel demand data comes from.
 A _scenario_ encodes the people and trips taken over a day. See the
 [code](https://github.com/a-b-street/abstreet/blob/master/sim/src/make/scenario.rs).
 
-TODO:
-
-- talk about vehicle assignment / parked car seeding
+See [here](parking.md#seeding-cars) for details how vehicles are initially
+placed and used by the driving trips specified by the scenario.
 
 ## Data sources
 
