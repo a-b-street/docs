@@ -203,9 +203,9 @@ for transforming OpenStreetMap key/values to a clear schema of lanes</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ab-street"><a class="header" href="#ab-street">A/B Street</a></h1>
 <ul>
-<li>Download: <a href="https://a-b-street.github.io/docs/howto/index.html">https://a-b-street.github.io/docs/howto/index.html</a></li>
-<li>Play on the web: <a href="http://play.abstreet.org/0.2.59/abstreet.html">http://play.abstreet.org/0.2.59/abstreet.html</a></li>
-<li>Github: <a href="https://github.com/a-b-street/abstreet/tree/master/game/src">https://github.com/a-b-street/abstreet/tree/master/game/src</a></li>
+<li><a href="software/../user/README.html">Download</a></li>
+<li><a href="http://play.abstreet.org/0.2.59/abstreet.html">Play on the web</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/tree/master/game/src">Github</a></li>
 </ul>
 <h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
 <p>A/B Street is &quot;a traffic simulation game exploring how small changes to roads
@@ -419,10 +419,9 @@ you come up with a better gameplay progression, please share -- tuning a game is
 hard!</p>
 <h3 id="adding-new-maps"><a class="header" href="#adding-new-maps">Adding new maps</a></h3>
 <p>Missing your slice of Seattle, or want to run somewhere else? If you have a bit
-of technical experience,
-<a href="https://a-b-street.github.io/docs/howto/new_city.html">follow this guide</a> and
-then the above instructions for modding the game. Otherwise, draw the map
-boundaries in <a href="http://geojson.io">http://geojson.io</a> and
+of technical experience, <a href="software/../user/new_city.html">follow this guide</a> and then the
+above instructions for modding the game. Otherwise, draw the map boundaries in
+<a href="http://geojson.io">http://geojson.io</a> and
 <a href="https://github.com/a-b-street/abstreet/issues/new">send it to us</a> along with a
 time limit, goal, and starting point on the map. If you have a public data
 source for the number of housing units per building, please include it!</p>
@@ -606,9 +605,7 @@ with Creative Commons licenses</li>
 quick turnaround time. All you need to do is send the boundary of the area you
 want, drawn with <a href="http://geojson.io">geojson.io</a>.</p>
 <h2 id="the-easy-method"><a class="header" href="#the-easy-method">The easy method</a></h2>
-<p>This only works in the
-<a href="https://a-b-street.github.io/docs/howto/index.html">downloaded version</a>, not on
-web.</p>
+<p>This only works in the <a href="user/README.html">downloaded version</a>, not on web.</p>
 <ol>
 <li>Click the map name in sandbox mode to change your location.</li>
 <li>Scroll down and click &quot;import a new city&quot;</li>
@@ -4169,7 +4166,7 @@ out cleanly from A/B Street today:</p>
 etc
 <ul>
 <li>This has been initially
-<a href="https://a-b-street.github.io/docs/trafficsim/travel_demand.html#proletariat-robot">prototyped</a></li>
+<a href="tech/map/../trafficsim/travel_demand.html#proletariat-robot">prototyped</a></li>
 </ul>
 </li>
 <li>the discrete-event traffic simulation that A/B Street uses today</li>
@@ -6015,10 +6012,10 @@ is hard is expressing which parts of the graph to invalidate and recalculate.
 Should we grab new upstream OSM data? Just recalculat scenarios, leaving the
 maps alone? Only re-run one stage of the map import?</p>
 <p>I'm pretty happy with how easy it is to
-<a href="https://a-b-street.github.io/docs/user/new_city.html">import a new city</a>.
-Originally you had to email me a boundary or compile the project yourself, but
-now the UI just asks you to draw a GeoJSON boundary, uses Overpass to grab fresh
-data, and runs the importer for you.</p>
+<a href="project/retrospective/../../user/new_city.html">import a new city</a>. Originally you had to email me a
+boundary or compile the project yourself, but now the UI just asks you to draw a
+GeoJSON boundary, uses Overpass to grab fresh data, and runs the importer for
+you.</p>
 <h3 id="software-engineering"><a class="header" href="#software-engineering">Software engineering</a></h3>
 <h4 id="testing"><a class="header" href="#testing">Testing</a></h4>
 <p>A huge challenge to maintaining maps over time is not breaking things, either
@@ -6162,8 +6159,8 @@ appeared to not do what I needed. So I started with
 and... just went for it. It's not hard to start drawing a big
 <a href="https://wiki.openstreetmap.org/wiki/Slippy_Map">slippy map</a> with zooming and
 panning, nor is it tough to wire up a basic clickable button. But...
-<a href="https://a-b-street.github.io/docs/tech/dev/ui.html">widgetry</a> has turned into
-something quite feature-full and has a decent API.</p>
+<a href="project/retrospective/../../tech/dev/ui.html">widgetry</a> has turned into something quite feature-full
+and has a decent API.</p>
 <p>The journey there was quite circuitous. Most of the difficulty was not even
 knowing how the UI should work (or even having a clear picture of what the app
 was supposed to do...). But once Yuwen joined the project, this library started
