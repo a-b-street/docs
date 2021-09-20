@@ -155,10 +155,10 @@ Should we grab new upstream OSM data? Just recalculat scenarios, leaving the
 maps alone? Only re-run one stage of the map import?
 
 I'm pretty happy with how easy it is to
-[import a new city](https://a-b-street.github.io/docs/user/new_city.html).
-Originally you had to email me a boundary or compile the project yourself, but
-now the UI just asks you to draw a GeoJSON boundary, uses Overpass to grab fresh
-data, and runs the importer for you.
+[import a new city](../../user/new_city.md). Originally you had to email me a
+boundary or compile the project yourself, but now the UI just asks you to draw a
+GeoJSON boundary, uses Overpass to grab fresh data, and runs the importer for
+you.
 
 ### Software engineering
 
@@ -336,8 +336,8 @@ appeared to not do what I needed. So I started with
 and... just went for it. It's not hard to start drawing a big
 [slippy map](https://wiki.openstreetmap.org/wiki/Slippy_Map) with zooming and
 panning, nor is it tough to wire up a basic clickable button. But...
-[widgetry](https://a-b-street.github.io/docs/tech/dev/ui.html) has turned into
-something quite feature-full and has a decent API.
+[widgetry](../../tech/dev/ui.md) has turned into something quite feature-full
+and has a decent API.
 
 The journey there was quite circuitous. Most of the difficulty was not even
 knowing how the UI should work (or even having a clear picture of what the app
