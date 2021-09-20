@@ -1,6 +1,6 @@
 # A/B Street
 
-- [Download](../user/README.md)
+- [Download](../user/index.md)
 - [Play on the web](http://play.abstreet.org/0.2.59/abstreet.html)
 - [Github](https://github.com/a-b-street/abstreet/tree/master/game/src)
 
@@ -10,7 +10,7 @@ A/B Street is "a traffic simulation game exploring how small changes to roads
 affect cyclists, transit users, pedestrians, and drivers." In other words, you
 can transform that street parking into a bus lane or fix that pesky left turn at
 a traffic signal, measure the effects, then
-[propose actually making the change](../proposals/README.md).
+[propose actually making the change](../proposals/index.md).
 
 A/B Street uses game-like elements to gradually introduce all of the features of
 the simulation, with a tutorial and a few challenge modes. (Or at least, that's

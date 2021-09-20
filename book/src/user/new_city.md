@@ -7,7 +7,7 @@ want, drawn with [geojson.io](http://geojson.io).
 
 ## The easy method
 
-This only works in the [downloaded version](README.md), not on web.
+This only works in the [downloaded version](index.md), not on web.
 
 1.  Click the map name in sandbox mode to change your location.
 2.  Scroll down and click "import a new city"

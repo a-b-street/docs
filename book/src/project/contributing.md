@@ -106,7 +106,7 @@ That's why we made this! Just go try and make the change, initially without help
 from us. Write down your experience and all of the problems you hit. Then tell
 us the problems and any ideas for fixing them.
 
-Then write up a [proposal](../proposals/README.md) and start advocating for it!
+Then write up a [proposal](../proposals/index.md) and start advocating for it!
 
 ### You're an advocacy group
 
@@ -118,7 +118,7 @@ touch! It's easiest if you:
 - Have a pretty specific idea of what roads/intersections you want to actually
   change
 - Have an idea of how you want to communicate your idea; browse
-  [our proposals](../proposals/README.md) for inspiration
+  [our proposals](../proposals/index.md) for inspiration
 
 ### Researching car-free cities
 
