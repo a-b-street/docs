@@ -40,6 +40,8 @@ Graphics / design:
 - Color and street rendering help from
   [Tobias Zwick](https://github.com/westnordost) of
   [StreetComplete](https://github.com/streetcomplete/StreetComplete)
+- Additional UX design and research from [Trang Le](https://trang.io) and
+  [Mara Cruz](https://www.mara-cruz.com)
 
 Software dependencies:
 
