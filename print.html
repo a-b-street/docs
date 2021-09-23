@@ -608,7 +608,7 @@ want, drawn with <a href="http://geojson.io">geojson.io</a>.</p>
 <p>This only works in the <a href="user/index.html">downloaded version</a>, not on web.</p>
 <ol>
 <li>Click the map name in sandbox mode to change your location.</li>
-<li>Scroll down and click &quot;import a new city&quot;</li>
+<li>Click &quot;import a new city&quot;</li>
 <li>Follow the instructions. That's it!</li>
 </ol>
 <p>This may take a few minutes, depending on download speed.</p>
@@ -627,9 +627,10 @@ as <code>data/system/gb/exeter_red_cow_village/maps/center.bin</code>.</p>
 <p>The process above using the UI just calls a tool to do all of the work. If you
 want, you can just call that tool from the command line. First save a GeoJSON
 file with your boundary. Then...</p>
-<p>Using a .zip release: <code>./cli one-step-import boundary.geojson</code></p>
+<p>Using a .zip release:
+<code>./cli one-step-import --geojson-path=boundary.geojson --map-name=prague</code></p>
 <p>Building from source:
-<code>cargo run --release --bin cli -- one-step-import boundary.geojson</code></p>
+<code>cargo run --release --bin cli -- one-step-import --geojson-path=boundary.geojson --map-name=prague</code></p>
 <p>The new map is located in the country with code &quot;zz&quot; (this isn't a real
 country), in the &quot;oneshot&quot; city. This is stored in
 <code>data/system/zz/oneshot/maps</code>.</p>
@@ -693,12 +694,10 @@ at least a vague goal in mind for what you want to study.</p>
 .osm XML file, you can import it directly by running
 <code>./import.sh --oneshot=/path/to/extract.osm</code>. If you're running from a .zip
 release and not building from source, replace the first part with
-<code>./tools/importer</code>.</p>
-<p>Assuming this succeeds, it'll create a file called
-<code>data/system/zz/oneshot/maps/extract.bin</code>. Currently the UI won't list this
-file, so you have to launch the game pointed at this file directly; see
-<a href="user/asu.html#a-shortcut-and-improving-the-simulation-in-tempe">here</a> for how to do
-that.</p>
+<code>./cli import</code>.</p>
+<p>Assuming this succeeds, it'll create a file in the
+<code>data/system/zz/oneshot/maps/</code> directory. In the UI, you can open the &quot;zz&quot;
+country to find it.</p>
 <p>If you save a .osm file from JOSM, you might get an error importing related to
 <code>convert_osm/src/clip.rs</code>. If so, delete the <code>&lt;bounds&gt;</code> element from the top of
 the .osm file and try again.</p>
