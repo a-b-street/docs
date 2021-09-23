@@ -10,7 +10,7 @@ want, drawn with [geojson.io](http://geojson.io).
 This only works in the [downloaded version](index.md), not on web.
 
 1.  Click the map name in sandbox mode to change your location.
-2.  Scroll down and click "import a new city"
+2.  Click "import a new city"
 3.  Follow the instructions. That's it!
 
 This may take a few minutes, depending on download speed.
@@ -40,10 +40,11 @@ The process above using the UI just calls a tool to do all of the work. If you
 want, you can just call that tool from the command line. First save a GeoJSON
 file with your boundary. Then...
 
-Using a .zip release: `./cli one-step-import boundary.geojson`
+Using a .zip release:
+`./cli one-step-import --geojson-path=boundary.geojson --map-name=prague`
 
 Building from source:
-`cargo run --release --bin cli -- one-step-import boundary.geojson`
+`cargo run --release --bin cli -- one-step-import --geojson-path=boundary.geojson --map-name=prague`
 
 The new map is located in the country with code "zz" (this isn't a real
 country), in the "oneshot" city. This is stored in
@@ -104,13 +105,11 @@ This section assumes you're comfortable working on a command line. If you have a
 .osm XML file, you can import it directly by running
 `./import.sh --oneshot=/path/to/extract.osm`. If you're running from a .zip
 release and not building from source, replace the first part with
-`./tools/importer`.
+`./cli import`.
 
-Assuming this succeeds, it'll create a file called
-`data/system/zz/oneshot/maps/extract.bin`. Currently the UI won't list this
-file, so you have to launch the game pointed at this file directly; see
-[here](asu.md#a-shortcut-and-improving-the-simulation-in-tempe) for how to do
-that.
+Assuming this succeeds, it'll create a file in the
+`data/system/zz/oneshot/maps/` directory. In the UI, you can open the "zz"
+country to find it.
 
 If you save a .osm file from JOSM, you might get an error importing related to
 `convert_osm/src/clip.rs`. If so, delete the `<bounds>` element from the top of
