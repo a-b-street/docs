@@ -1,7 +1,7 @@
 # A/B Street
 
 - [Download](../user/index.md)
-- [Play on the web](http://play.abstreet.org/0.2.59/abstreet.html)
+- [Play on the web](http://play.abstreet.org/0.2.60/abstreet.html)
 - [Github](https://github.com/a-b-street/abstreet/tree/master/game/src)
 
 ## Overview

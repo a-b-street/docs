@@ -986,3 +986,10 @@ changes here.
 - further pathfinding performance improvements
 - fix bike quick sketch tool in left-handed maps
 - consolidate tools into a single CLI and include it in the release
+
+0.2.60
+
+- incorporated a configurable mode shift and carbon emissions model with the bike network tool
+- partially implemented Mara's UX changes to the bike tool
+- improved UI map importing: no more overwriting, and naming new maps
+- prototyped a new low-traffic neighborhood / rat-run tool
