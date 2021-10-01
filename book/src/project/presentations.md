@@ -2,6 +2,10 @@
 
 Most recent first.
 
+- FOSS4G 2021
+
+- October 2021: [FOSS4G](https://callforpapers.2021.foss4g.org/foss4g2021/talk/CA8M8U/)
+  - [Slides](https://docs.google.com/presentation/d/1EkQNWc0c-UKoz1hbefMoz4KIxgsIE5YJ_B-KnLQFglQ/edit?usp=sharing)
 - September 2021:
   [SUMO user conference](https://www.eclipse.org/sumo/conference/)
   - [Slides](https://docs.google.com/presentation/d/1_xaR0LQCkZVhcxIep1YgzWm18NVxhGwZVHh-tNfDpjY/edit?usp=sharing)
@@ -43,5 +47,3 @@ Most recent first.
 ## Upcoming
 
 Don't forget to link to these!
-
-- FOSS4G 2021
