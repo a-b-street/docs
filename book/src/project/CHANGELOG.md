@@ -993,3 +993,9 @@ changes here.
 - partially implemented Mara's UX changes to the bike tool
 - improved UI map importing: no more overwriting, and naming new maps
 - prototyped a new low-traffic neighborhood / rat-run tool
+
+0.2.61
+
+- bike network tool now shows alternate routes
+- small fixes to mode shift and LTN tool
+- major internal UI refactors started
