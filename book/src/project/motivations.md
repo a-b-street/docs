@@ -41,10 +41,10 @@ these here. In no particular order:
   environment. Even ignoring that, many cities are out of room to build more
   roads. We can't keep scaling population like this.
 
-- **Autonomous vehicles will NOT save the day**: They can squeeze more
-  throughput out of existing infrastructure, but only up to a point. They might
-  encourage people to move and tolerate longer commutes. Mass transit and dense
-  land-use patterns handle population growth better.
+- **[Autonomous vehicles will NOT save the day](https://macwright.com/2019/07/27/beware-the-ethical-car.html)**:
+  They can squeeze more throughput out of existing infrastructure, but only up
+  to a point. They might encourage people to move and tolerate longer commutes.
+  Mass transit and dense land-use patterns handle population growth better.
 
 - **Compromise and trade-offs**: I see lots of rhetoric calling for extreme,
   sudden change. I don't want to ban all cars from downtown Seattle, because
