@@ -241,8 +241,10 @@ The red dot is the position of the OSM node shared by these roads.</figcaption>
 #### Projecting a polyline
 
 Before we move on, a quick primer on how to take a polyline (an ordered list of
-points) and project it to the left or right. There are some better explanations
-of this online, but I don't have them handy. I wouldn't call A/B Street's
+points) and project it to the left or right. For a much better explanation, see
+[part 1](https://wwwtyro.net/2019/11/18/instanced-lines.html) and
+[2](https://wwwtyro.net/2021/10/01/instanced-lines-part-2.html) from Rye
+Terrell's blog. I wouldn't call A/B Street's
 [implementation](https://github.com/a-b-street/abstreet/blob/91c152c123924d7b8bfa14722d18c652d7e42966/geom/src/polyline.rs#L435)
 fantastic, but it's there for reference.
 
