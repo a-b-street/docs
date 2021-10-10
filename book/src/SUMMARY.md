@@ -6,6 +6,11 @@
 
 - [Software](software/README.md)
   - [A/B Street](software/abstreet.md)
+  - [Bike network tool](software/bike_network/README.md)
+    - [User guide](software/bike_network/user_guide.md)
+    - [Motivation](software/bike_network/motivation.md)
+    - [Project plan](software/bike_network/plan.md)
+    - [Technical details](software/bike_network/tech_details.md)
   - [15-minute neighborhoods explorer](software/fifteen_min.md)
   - [15-minute Santa](software/santa.md)
   - [OpenStreetMap viewer](software/osm_viewer.md)
@@ -20,8 +25,9 @@
 ---
 
 - [Proposals](proposals/README.md)
-  - [Lake Washington Blvd Stay Healthy Street](proposals/lake_wash.md)
+  - [Seattle bike network vision](proposals/seattle_bikes/README.md)
   - [Allow bike and foot traffic through Broadmoor](proposals/broadmoor.md)
+  - [Lake Washington Blvd Stay Healthy Street](proposals/lake_wash.md)
 
 ---
 
