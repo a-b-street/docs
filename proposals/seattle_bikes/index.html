@@ -1,0 +1,355 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Seattle bike network vision - A/B Street</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Homepage</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../../software/index.html"><strong aria-hidden="true">2.</strong> Software</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../software/abstreet.html"><strong aria-hidden="true">2.1.</strong> A/B Street</a></li><li class="chapter-item expanded "><a href="../../software/bike_network/index.html"><strong aria-hidden="true">2.2.</strong> Bike network tool</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../software/bike_network/user_guide.html"><strong aria-hidden="true">2.2.1.</strong> User guide</a></li><li class="chapter-item expanded "><a href="../../software/bike_network/motivation.html"><strong aria-hidden="true">2.2.2.</strong> Motivation</a></li><li class="chapter-item expanded "><a href="../../software/bike_network/plan.html"><strong aria-hidden="true">2.2.3.</strong> Project plan</a></li><li class="chapter-item expanded "><a href="../../software/bike_network/tech_details.html"><strong aria-hidden="true">2.2.4.</strong> Technical details</a></li></ol></li><li class="chapter-item expanded "><a href="../../software/fifteen_min.html"><strong aria-hidden="true">2.3.</strong> 15-minute neighborhoods explorer</a></li><li class="chapter-item expanded "><a href="../../software/santa.html"><strong aria-hidden="true">2.4.</strong> 15-minute Santa</a></li><li class="chapter-item expanded "><a href="../../software/osm_viewer.html"><strong aria-hidden="true">2.5.</strong> OpenStreetMap viewer</a></li><li class="chapter-item expanded "><a href="../../software/parking_mapper.html"><strong aria-hidden="true">2.6.</strong> Mapping on-street parking</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../../user/index.html"><strong aria-hidden="true">3.</strong> User guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../user/new_city.html"><strong aria-hidden="true">3.1.</strong> Importing a new city</a></li><li class="chapter-item expanded "><a href="../../user/asu.html"><strong aria-hidden="true">3.2.</strong> ASU Lab guide</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../../proposals/index.html"><strong aria-hidden="true">4.</strong> Proposals</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../proposals/seattle_bikes/index.html" class="active"><strong aria-hidden="true">4.1.</strong> Seattle bike network vision</a></li><li class="chapter-item expanded "><a href="../../proposals/broadmoor.html"><strong aria-hidden="true">4.2.</strong> Allow bike and foot traffic through Broadmoor</a></li><li class="chapter-item expanded "><a href="../../proposals/lake_wash.html"><strong aria-hidden="true">4.3.</strong> Lake Washington Blvd Stay Healthy Street</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../../tech/index.html"><strong aria-hidden="true">5.</strong> Technical details</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tech/dev/index.html"><strong aria-hidden="true">5.1.</strong> Developer guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tech/dev/misc_tricks.html"><strong aria-hidden="true">5.1.1.</strong> Misc developer tricks</a></li><li class="chapter-item expanded "><a href="../../tech/dev/api.html"><strong aria-hidden="true">5.1.2.</strong> API</a></li><li class="chapter-item expanded "><a href="../../tech/dev/testing.html"><strong aria-hidden="true">5.1.3.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../../tech/dev/data.html"><strong aria-hidden="true">5.1.4.</strong> Data organization</a></li><li class="chapter-item expanded "><a href="../../tech/dev/release.html"><strong aria-hidden="true">5.1.5.</strong> Release process</a></li><li class="chapter-item expanded "><a href="../../tech/dev/formats/index.html"><strong aria-hidden="true">5.1.6.</strong> Data formats</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tech/dev/formats/scenarios.html"><strong aria-hidden="true">5.1.6.1.</strong> Scenarios</a></li><li class="chapter-item expanded "><a href="../../tech/dev/formats/traffic_signals.html"><strong aria-hidden="true">5.1.6.2.</strong> Traffic signals</a></li></ol></li><li class="chapter-item expanded "><a href="../../tech/dev/ui.html"><strong aria-hidden="true">5.1.7.</strong> widgetry UI</a></li></ol></li><li class="chapter-item expanded "><a href="../../tech/map/index.html"><strong aria-hidden="true">5.2.</strong> Map model</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tech/map/geometry/index.html"><strong aria-hidden="true">5.2.1.</strong> Intersection geometry</a></li><li class="chapter-item expanded "><a href="../../tech/map/details.html"><strong aria-hidden="true">5.2.2.</strong> Details</a></li><li class="chapter-item expanded "><a href="../../tech/map/importing/index.html"><strong aria-hidden="true">5.2.3.</strong> Importing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tech/map/importing/convert_osm.html"><strong aria-hidden="true">5.2.3.1.</strong> convert_osm</a></li><li class="chapter-item expanded "><a href="../../tech/map/importing/geometry.html"><strong aria-hidden="true">5.2.3.2.</strong> Road/intersection geometry</a></li><li class="chapter-item expanded "><a href="../../tech/map/importing/rest.html"><strong aria-hidden="true">5.2.3.3.</strong> The rest</a></li><li class="chapter-item expanded "><a href="../../tech/map/importing/misc.html"><strong aria-hidden="true">5.2.3.4.</strong> Misc</a></li></ol></li><li class="chapter-item expanded "><a href="../../tech/map/edits.html"><strong aria-hidden="true">5.2.4.</strong> Live edits</a></li><li class="chapter-item expanded "><a href="../../tech/map/platform.html"><strong aria-hidden="true">5.2.5.</strong> Exporting</a></li></ol></li><li class="chapter-item expanded "><a href="../../tech/trafficsim/index.html"><strong aria-hidden="true">5.3.</strong> Traffic simulation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tech/trafficsim/discrete_event/index.html"><strong aria-hidden="true">5.3.1.</strong> Discrete event simulation</a></li><li class="chapter-item expanded "><a href="../../tech/trafficsim/travel_demand.html"><strong aria-hidden="true">5.3.2.</strong> Travel demand</a></li><li class="chapter-item expanded "><a href="../../tech/trafficsim/gridlock.html"><strong aria-hidden="true">5.3.3.</strong> Gridlock</a></li><li class="chapter-item expanded "><a href="../../tech/trafficsim/trips.html"><strong aria-hidden="true">5.3.4.</strong> Multi-modal trips</a></li><li class="chapter-item expanded "><a href="../../tech/trafficsim/live_edits.html"><strong aria-hidden="true">5.3.5.</strong> Live edits</a></li><li class="chapter-item expanded "><a href="../../tech/trafficsim/parking.html"><strong aria-hidden="true">5.3.6.</strong> Parking</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../project/index.html"><strong aria-hidden="true">6.</strong> Project</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../project/team.html"><strong aria-hidden="true">6.1.</strong> Team</a></li><li class="chapter-item expanded "><a href="../../project/contributing.html"><strong aria-hidden="true">6.2.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="../../project/funding.html"><strong aria-hidden="true">6.3.</strong> Funding</a></li><li class="chapter-item expanded "><a href="../../project/hiring.html"><strong aria-hidden="true">6.4.</strong> Hiring</a></li><li class="chapter-item expanded "><a href="../../project/roadmap.html"><strong aria-hidden="true">6.5.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="../../project/motivations.html"><strong aria-hidden="true">6.6.</strong> Motivations</a></li><li class="chapter-item expanded "><a href="../../project/history/index.html"><strong aria-hidden="true">6.7.</strong> History</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../project/history/backstory.html"><strong aria-hidden="true">6.7.1.</strong> Backstory</a></li><li class="chapter-item expanded "><a href="../../project/history/year1.html"><strong aria-hidden="true">6.7.2.</strong> Year 1</a></li><li class="chapter-item expanded "><a href="../../project/history/year2.html"><strong aria-hidden="true">6.7.3.</strong> Year 2</a></li><li class="chapter-item expanded "><a href="../../project/history/year3.html"><strong aria-hidden="true">6.7.4.</strong> Year 3</a></li></ol></li><li class="chapter-item expanded "><a href="../../project/retrospective/index.html"><strong aria-hidden="true">6.8.</strong> Retrospective</a></li><li class="chapter-item expanded "><a href="../../project/CHANGELOG.html"><strong aria-hidden="true">6.9.</strong> Full CHANGELOG</a></li><li class="chapter-item expanded "><a href="../../project/references.html"><strong aria-hidden="true">6.10.</strong> References</a></li><li class="chapter-item expanded "><a href="../../project/presentations.html"><strong aria-hidden="true">6.11.</strong> Presentations</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">A/B Street</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/a-b-street/docs/tree/main/book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/a-b-street/docs/edit/main/book/src/proposals/seattle_bikes/README.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="dustins-vision-for-seattles-bike-network"><a class="header" href="#dustins-vision-for-seattles-bike-network">Dustin's vision for Seattle's bike network</a></h1>
+<p>I've been commuting almost exclusively by bike here since 2014. I've had too
+many close calls and plenty of frustratign moments when it feels like the design
+is trying to discourage this mode of transport as much as possible. i want to
+see network tht encourages as many people as possible to choose biking over
+driving.</p>
+<p>so many times, i wish i had a magic wand that could just fix things -- often
+very ridiculous stupid things. i don't, and pushing actual changes is super slow
+and hairy, and i'm impatient -- so i (and team) built that magic wand, software
+to let me sketch out my vision. my hope is that if people can more easily
+imagine and visualize something different, they'll communicate more effectively
+about it and those changes will go through more easily, and with more
+particpation from people.</p>
+<p>the vision here will just be transforming existing roadspace to add cycle infra,
+often with actual protection from vehicles. usually taking awayparking or extra
+lanes. there are plenty of other changes I want to see to MASS, many in the
+light rail, bus, LTN/superblock, land use directions, not covered here.</p>
+<p>bias, south seattle but the good news is, the tool built is designed to let YOU
+share your own vision. so give it a spin and share your dream.</p>
+<p>link to alt plans, like near-term / in progress builds, and the basic bike
+network master plan</p>
+<h2 id="interacting"><a class="header" href="#interacting">interacting</a></h2>
+<p>link to tool</p>
+<p>quick instructions</p>
+<p>share your own thing!!</p>
+<p>i'll try to give motivation about elevation / alt routes sucking.</p>
+<p>then at the end, a mor data-driven argument about why these extensions would
+&quot;ungap the map&quot;</p>
+<h2 id="the-changes"><a class="header" href="#the-changes">the changes</a></h2>
+<h3 id="boyer--fuhrman"><a class="header" href="#boyer--fuhrman">Boyer / Fuhrman</a></h3>
+<p>This is practically the origin story of A/B Street; it only takes one truck
+passing super close and almost pancaking me into the line of parked cars...</p>
+<p>Swapping parking for some dedicated lanes is a really tough sell between the
+university bridge and 520 underpass, though. Having lived in the area for a few
+years (when I still had a jeep to park), I can confirm how low the area is on
+street parking. Although the area's strategically close to UW and downtown for
+biking, nearby transit connections are a bit of a walk. Also, Fuhrman has a
+bunch of curb bulbs and traffic islands that would force bikes to merge back
+into the main lane every few blocks, so this would probably be a bigger paving
+project.</p>
+<p>The alternative route is to cross the university or Montlake bridge and take the
+Burke, or take the scenic route through south campus. But depending which way
+you're going, this is a long detour, and probably forces you over the Montlake
+bridge, meaning navigating the absolute mess of Montlake/520. It's possible the
+<a href="https://wsdot.wa.gov/projects/sr520/montlake/home">the lid</a> will make this area
+less terrible, but... not sure how. (There are some tricks like the Bill Dawson
+trail that slightly ease the pain...)</p>
+<p>It's possible there's some
+<a href="https://twitter.com/typewriteralley/status/1445922612421402626/photo/1">plan</a>
+for Fuhrman?!</p>
+<h3 id="ne-45th-st"><a class="header" href="#ne-45th-st">NE 45th St</a></h3>
+<p><a href="https://www.theurbanist.org/2021/01/27/reclaiming-ne-45th-street-from-cars/">Joe Mangan</a>
+presents this vision way more eloquently than I could. Another organization has
+called for better facilities on
+<a href="https://www.glwstreets.org/45th-st-bridge-overview">the I5 bridge</a>, but I'd
+personally like to make the connecton all the way from the udistrict to
+Wallingfjord, patronizing all the shops along the way without hustling to keep
+up with traffic.</p>
+<p>I thought about 50th as an alternative, but it's farther from the action in the
+udistrict (including the brand new Link station!) and would skip the Wallingford
+business district.</p>
+<h3 id="aurora-ave"><a class="header" href="#aurora-ave">Aurora Ave</a></h3>
+<p>This is a trivial argument by checking elevation. If you're going north from
+Fremont, climbing Fremont Ave, then Phinney and Greenwood Ave at least has some
+paint. But just look at how gentle the elevation using Aurora would be! Looking
+the other direction, it could be a straight shot -- a bicycle superhighway --
+from all of north Seattle right to downtown.</p>
+<p>I would sometimes brave the bus lane when I lived in Lichton Springs. If you've
+got your wits about you and don't mind cars flying by at 50mph, it's, uh, fine.
+The right-of-way is massive -- there's absolutely room at</p>
+<p>stretches of it when i lived in lichton. it's fine in the bus lane, but it's a
+little unnerving with cars flying by at 50-60. i'm on high alert for somebody
+using it as an acceleration lane or to turn right quickly, which... happens. so,
+planters here.</p>
+<p><a href="https://www.got99problems.org">Aurora Reimagined Coalition</a></p>
+<p>https://www.glwstreets.org/complete-the-loop</p>
+<h3 id="rainier-ave"><a class="header" href="#rainier-ave">Rainier Ave</a></h3>
+<p>The most direct connection between the international district and Colombia City
+is straight down Rainier, a nearly flat route:</p>
+<!-- profile -->
+<p>But Rainier has one of the highest fatality rates (link)... In most places, it's
+a 5-lane highway, meaning there's plenty of room to add some protected lanes,
+giving more people easy access to the many businesses along the corridor:</p>
+<!-- img -->
+<p>I've ended the changes at Orcas, since I'm not familiar with what's south of
+that and might be a useful connection.</p>
+<p>https://twitter.com/Zee_Shaner/status/1433630099924946962 lists this...</p>
+<h3 id="eastlake-ave"><a class="header" href="#eastlake-ave">Eastlake Ave</a></h3>
+<p>Eastlake would be the de facto route between the university district and
+downtown, if it weren't for the intermitent mess of parked cars currently.
+Shoulder space to avoid traffic appears and disappears, and some of the parking
+is even supposed to be banned during rush hour. I believe as part of the
+RapidRide J plan, Eastlake is supposed to get some dedicated lanes! Until then,
+we can imagine how awesome it'll be:</p>
+<!-- img -->
+<p>The alternative today is following the Chesiudad (sp) loop through
+neighborhoods. It's nice and scenic, but weaves through steep alleyways -- not a
+commuter route.</p>
+<ul>
+<li>https://twitter.com/SD70MACMAN/status/1446148993042423813/photo/1</li>
+</ul>
+<h3 id="lakeview"><a class="header" href="#lakeview">Lakeview</a></h3>
+<p>One reasonable way to access lower Capitol Hill or downtown from the university
+district area is along Lakeview. This makes use of a nice bike-only connection
+near Melrose, and pops you out right into the heart of a commercial area. The
+gap is near the I5 colonnade. Currently this is one lane each direction, with
+parking usually on both sides. There's an I5 exit in the middle. So in practice,
+this nonsense happens:</p>
+<ul>
+<li>twitter footage</li>
+</ul>
+<p>Just nuke the parking and add bike lanes. I'm not sure what to do with the
+Boylston Ave portion. There's a physical median there today, making the lane
+pretty narrow, and I've heard stories about really aggressive cars squeezing
+past at high speed. There is parking on the west side of that street, so
+potentially that could be sacrificed and the median shifted over, to dedicate
+shoulder space for biking on both sides.</p>
+<h3 id="harvard-from-shelby-to-roanoke"><a class="header" href="#harvard-from-shelby-to-roanoke">Harvard from Shelby to Roanoke</a></h3>
+<p>If you're crossing the university bridge and want to go to Capitol Hill, you're
+probably taking Harvard to Roanoke to Broadway:</p>
+<p>route</p>
+<p>There's a climbing lane up Harvard, but it just gives up at Shelby. There are
+two full lanes at this point and is usually OK, but I've had a few stressful
+experiences with aggressive vehicles. There's just one driving lane uphill
+before Shelby, so why not just keep it that way, or make it a bus/bike lane for
+the (i forget the number)?</p>
+<ul>
+<li>it just disappears! supposed to cut across and go through the neighborhood,
+theres even a diagonal diverter at broadway/edgar to prevent rat-runs. but...
+eh</li>
+<li>be generous northbound/downhill, leave the 2 lanes for passing people tryng to
+get on i5?</li>
+</ul>
+<h3 id="broadway-between-highland-and-denny"><a class="header" href="#broadway-between-highland-and-denny">Broadway between Highland and Denny</a></h3>
+<ul>
+<li>detouring on harvard maybe, but bumpy and away from business</li>
+<li>note OSM data super funky, looks like the road changes width constantly,
+should go fix that. same eastlake</li>
+<li>this is a mess, maybe parking to loading zones. really one of those places
+super well served by transit, driving is kind of inexcusable</li>
+<li>i happened to be walking by few months ago and saw someone hit, so...
+anecdata's strong.</li>
+</ul>
+<h3 id="the-missing-link"><a class="header" href="#the-missing-link">The missing link</a></h3>
+<ul>
+<li>this one's a story. i'm not going to weigh in on preferred option (though that
+ballard cafe street is awesome)</li>
+</ul>
+<h3 id="airport-way-s"><a class="header" href="#airport-way-s">Airport Way S</a></h3>
+<ul>
+<li>fedex in afternoon rush hour</li>
+<li>another nice flat one. the edits here show a lane taken away, but actualy
+southbound, the shoulder is wide enough to work without taking a lane.
+absolutely dumb that vehicles flying around the 15ft lane</li>
+<li>SODO trail and 6th a quieter alt; i wasnt familiar and google maps routing
+sucked (hey another use...)</li>
+</ul>
+<h3 id="others"><a class="header" href="#others">Others</a></h3>
+<ul>
+<li>east/west in north seattle?
+<ul>
+<li>based on contours, 75th</li>
+</ul>
+</li>
+<li>lake wash blvd. not lanes, some kind of extended stay healthy</li>
+<li>15th to elliot</li>
+<li>madison?</li>
+</ul>
+<h2 id="estimating-how-much-these-might-help"><a class="header" href="#estimating-how-much-these-might-help">Estimating how much these might help</a></h2>
+<p>link to methodology</p>
+<p>in summary, VMT and carbon... number of trips converted</p>
+<h2 id="conclusion"><a class="header" href="#conclusion">conclusion</a></h2>
+<p>hopefully this is helpful to see. feedback. share your own vision.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../proposals/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../proposals/broadmoor.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../proposals/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../proposals/broadmoor.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

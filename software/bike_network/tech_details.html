@@ -1,0 +1,395 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Technical details - A/B Street</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../index.html"><strong aria-hidden="true">1.</strong> Homepage</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="../../software/index.html"><strong aria-hidden="true">2.</strong> Software</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../software/abstreet.html"><strong aria-hidden="true">2.1.</strong> A/B Street</a></li><li class="chapter-item expanded "><a href="../../software/bike_network/index.html"><strong aria-hidden="true">2.2.</strong> Bike network tool</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../software/bike_network/user_guide.html"><strong aria-hidden="true">2.2.1.</strong> User guide</a></li><li class="chapter-item expanded "><a href="../../software/bike_network/motivation.html"><strong aria-hidden="true">2.2.2.</strong> Motivation</a></li><li class="chapter-item expanded "><a href="../../software/bike_network/plan.html"><strong aria-hidden="true">2.2.3.</strong> Project plan</a></li><li class="chapter-item expanded "><a href="../../software/bike_network/tech_details.html" class="active"><strong aria-hidden="true">2.2.4.</strong> Technical details</a></li></ol></li><li class="chapter-item expanded "><a href="../../software/fifteen_min.html"><strong aria-hidden="true">2.3.</strong> 15-minute neighborhoods explorer</a></li><li class="chapter-item expanded "><a href="../../software/santa.html"><strong aria-hidden="true">2.4.</strong> 15-minute Santa</a></li><li class="chapter-item expanded "><a href="../../software/osm_viewer.html"><strong aria-hidden="true">2.5.</strong> OpenStreetMap viewer</a></li><li class="chapter-item expanded "><a href="../../software/parking_mapper.html"><strong aria-hidden="true">2.6.</strong> Mapping on-street parking</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../../user/index.html"><strong aria-hidden="true">3.</strong> User guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../user/new_city.html"><strong aria-hidden="true">3.1.</strong> Importing a new city</a></li><li class="chapter-item expanded "><a href="../../user/asu.html"><strong aria-hidden="true">3.2.</strong> ASU Lab guide</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../../proposals/index.html"><strong aria-hidden="true">4.</strong> Proposals</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../proposals/seattle_bikes/index.html"><strong aria-hidden="true">4.1.</strong> Seattle bike network vision</a></li><li class="chapter-item expanded "><a href="../../proposals/broadmoor.html"><strong aria-hidden="true">4.2.</strong> Allow bike and foot traffic through Broadmoor</a></li><li class="chapter-item expanded "><a href="../../proposals/lake_wash.html"><strong aria-hidden="true">4.3.</strong> Lake Washington Blvd Stay Healthy Street</a></li><li class="spacer"></li></ol></li><li class="chapter-item expanded "><a href="../../tech/index.html"><strong aria-hidden="true">5.</strong> Technical details</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tech/dev/index.html"><strong aria-hidden="true">5.1.</strong> Developer guide</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tech/dev/misc_tricks.html"><strong aria-hidden="true">5.1.1.</strong> Misc developer tricks</a></li><li class="chapter-item expanded "><a href="../../tech/dev/api.html"><strong aria-hidden="true">5.1.2.</strong> API</a></li><li class="chapter-item expanded "><a href="../../tech/dev/testing.html"><strong aria-hidden="true">5.1.3.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../../tech/dev/data.html"><strong aria-hidden="true">5.1.4.</strong> Data organization</a></li><li class="chapter-item expanded "><a href="../../tech/dev/release.html"><strong aria-hidden="true">5.1.5.</strong> Release process</a></li><li class="chapter-item expanded "><a href="../../tech/dev/formats/index.html"><strong aria-hidden="true">5.1.6.</strong> Data formats</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tech/dev/formats/scenarios.html"><strong aria-hidden="true">5.1.6.1.</strong> Scenarios</a></li><li class="chapter-item expanded "><a href="../../tech/dev/formats/traffic_signals.html"><strong aria-hidden="true">5.1.6.2.</strong> Traffic signals</a></li></ol></li><li class="chapter-item expanded "><a href="../../tech/dev/ui.html"><strong aria-hidden="true">5.1.7.</strong> widgetry UI</a></li></ol></li><li class="chapter-item expanded "><a href="../../tech/map/index.html"><strong aria-hidden="true">5.2.</strong> Map model</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tech/map/geometry/index.html"><strong aria-hidden="true">5.2.1.</strong> Intersection geometry</a></li><li class="chapter-item expanded "><a href="../../tech/map/details.html"><strong aria-hidden="true">5.2.2.</strong> Details</a></li><li class="chapter-item expanded "><a href="../../tech/map/importing/index.html"><strong aria-hidden="true">5.2.3.</strong> Importing</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tech/map/importing/convert_osm.html"><strong aria-hidden="true">5.2.3.1.</strong> convert_osm</a></li><li class="chapter-item expanded "><a href="../../tech/map/importing/geometry.html"><strong aria-hidden="true">5.2.3.2.</strong> Road/intersection geometry</a></li><li class="chapter-item expanded "><a href="../../tech/map/importing/rest.html"><strong aria-hidden="true">5.2.3.3.</strong> The rest</a></li><li class="chapter-item expanded "><a href="../../tech/map/importing/misc.html"><strong aria-hidden="true">5.2.3.4.</strong> Misc</a></li></ol></li><li class="chapter-item expanded "><a href="../../tech/map/edits.html"><strong aria-hidden="true">5.2.4.</strong> Live edits</a></li><li class="chapter-item expanded "><a href="../../tech/map/platform.html"><strong aria-hidden="true">5.2.5.</strong> Exporting</a></li></ol></li><li class="chapter-item expanded "><a href="../../tech/trafficsim/index.html"><strong aria-hidden="true">5.3.</strong> Traffic simulation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../tech/trafficsim/discrete_event/index.html"><strong aria-hidden="true">5.3.1.</strong> Discrete event simulation</a></li><li class="chapter-item expanded "><a href="../../tech/trafficsim/travel_demand.html"><strong aria-hidden="true">5.3.2.</strong> Travel demand</a></li><li class="chapter-item expanded "><a href="../../tech/trafficsim/gridlock.html"><strong aria-hidden="true">5.3.3.</strong> Gridlock</a></li><li class="chapter-item expanded "><a href="../../tech/trafficsim/trips.html"><strong aria-hidden="true">5.3.4.</strong> Multi-modal trips</a></li><li class="chapter-item expanded "><a href="../../tech/trafficsim/live_edits.html"><strong aria-hidden="true">5.3.5.</strong> Live edits</a></li><li class="chapter-item expanded "><a href="../../tech/trafficsim/parking.html"><strong aria-hidden="true">5.3.6.</strong> Parking</a></li><li class="spacer"></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../project/index.html"><strong aria-hidden="true">6.</strong> Project</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../project/team.html"><strong aria-hidden="true">6.1.</strong> Team</a></li><li class="chapter-item expanded "><a href="../../project/contributing.html"><strong aria-hidden="true">6.2.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="../../project/funding.html"><strong aria-hidden="true">6.3.</strong> Funding</a></li><li class="chapter-item expanded "><a href="../../project/hiring.html"><strong aria-hidden="true">6.4.</strong> Hiring</a></li><li class="chapter-item expanded "><a href="../../project/roadmap.html"><strong aria-hidden="true">6.5.</strong> Roadmap</a></li><li class="chapter-item expanded "><a href="../../project/motivations.html"><strong aria-hidden="true">6.6.</strong> Motivations</a></li><li class="chapter-item expanded "><a href="../../project/history/index.html"><strong aria-hidden="true">6.7.</strong> History</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../project/history/backstory.html"><strong aria-hidden="true">6.7.1.</strong> Backstory</a></li><li class="chapter-item expanded "><a href="../../project/history/year1.html"><strong aria-hidden="true">6.7.2.</strong> Year 1</a></li><li class="chapter-item expanded "><a href="../../project/history/year2.html"><strong aria-hidden="true">6.7.3.</strong> Year 2</a></li><li class="chapter-item expanded "><a href="../../project/history/year3.html"><strong aria-hidden="true">6.7.4.</strong> Year 3</a></li></ol></li><li class="chapter-item expanded "><a href="../../project/retrospective/index.html"><strong aria-hidden="true">6.8.</strong> Retrospective</a></li><li class="chapter-item expanded "><a href="../../project/CHANGELOG.html"><strong aria-hidden="true">6.9.</strong> Full CHANGELOG</a></li><li class="chapter-item expanded "><a href="../../project/references.html"><strong aria-hidden="true">6.10.</strong> References</a></li><li class="chapter-item expanded "><a href="../../project/presentations.html"><strong aria-hidden="true">6.11.</strong> Presentations</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">A/B Street</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/a-b-street/docs/tree/main/book" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                        <a href="https://github.com/a-b-street/docs/edit/main/book/src/software/bike_network/tech_details.md" title="Suggest an edit" aria-label="Suggest an edit">
+                            <i id="git-edit-button" class="fa fa-edit"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="technical-details"><a class="header" href="#technical-details">Technical details</a></h1>
+<p>This document summarizes how the bike network tool works. The tool is just one
+piece of the A/B Street platform, which has <a href="../../tech/README.html">much more</a>
+technical documentation.</p>
+<h2 id="system-overview"><a class="header" href="#system-overview">System overview</a></h2>
+<!-- refactor/lift this -->
+<p>A/B Street is generally organized into 3 layers. The lowest is the map model,
+which represents the transportation network of some portion of a city. This
+model combines the geometry of roads and intersections, routing for different
+vehicle types, and semantics like turn restrictions, parking, traffic signal
+timing, and land use patterns. In some regions, there's also a travel demand
+model describing the trips that people regularly make. Lane configuration,
+intersection control policy, and access restrictions can all be changed in
+real-time (usually sub-second). You can think of the map model along with the
+travel demand as a digital twin of the city, at least from a transportation
+perspective.</p>
+<p>A map and travel demand scenario are just files covering some manually-drawn
+boundary. The map has &quot;borders&quot; along the boundary, and the travel demand model
+can describe trips beginning or ending off-map somewhere. There's a complex
+process to generate a map, pulling in and heavily processing data from
+OpenStreetMap, different travel demand sources, city-specific datasets about
+parking, and elevation. All of the datasets are public. This process works for
+any city with sufficient OpenStreetMap coverage, but it still takes lots of work
+to improve the imported map. Many cities have already been imported; most users
+will never need to perform this themselves.</p>
+<p>The next layer is a 2D rendering and user interface library, written from
+scratch on top of OpenGL. These libraries have common code for interacting with
+the map in many ways, and managing things like downloading files for new cities.
+There's also a traffic simulation in this layer, although the bike network tool
+doesn't use it. Everything in A/B Street is written in
+<a href="https://www.rust-lang.org">Rust</a>. One advantage of this is that everything can
+run either natively on Mac, Windows, or Linux, or be compiled to WebAssembly and
+run in web browsers without any installation.</p>
+<p>Finally, the third layer consists of user-facing apps that make use of
+everything. The bike network tool lives here, alongside tools that're focused on
+related topics like 15-minute neighborhoods and low-traffic neighborhoods.</p>
+<h2 id="sharing-proposals"><a class="header" href="#sharing-proposals">Sharing proposals</a></h2>
+<p>When the user adds bike lanes to some roads, all of the changes are saved
+locally as a JSON file. Since the tool's goal is for people to communicate about
+their ideas and spread the word, there has to be some way for them to share
+these files. This could be done manually by email or something else, but that
+would be really painful. So the software can upload the files to a central
+server, and people can just share a URL to download the file later.</p>
+<p>Ideally, this feature would include a proper user account system, where people
+can sign up, modify their proposals, and maybe even share comments or feedback
+about other proposals. There are many technical and design challenges with this
+-- for example, how to prevent abusive users from posting rude comments? In the
+long-term, this is worth tackling, with careful design to facilitate useful
+interactions.</p>
+<p>But to get something working in the meantime, the JSON proposals can just be
+shared anonymously. They're uploaded to a central server, which returns a URL to
+share. Somebody else can load the proposal with that URL. Everybody remains
+anonymous; it's impossible to prove who uploaded a proposal, or to edit or
+delete it. The <a href="https://github.com/a-b-street/yimbyhoodlum">central server</a> is a
+simple Go API hosted in Google App Engine, storing files in Google Cloud
+Storage, and using MD5 checksums to identify and de-duplicate proposals.</p>
+<!-- add a creative commons license -->
+<h2 id="routing"><a class="header" href="#routing">Routing</a></h2>
+<p>Unsurprisingly, A/B Street uses
+<a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstra's algorithm</a> to
+find paths. The interesting details are how the graph's edge weights are set for
+bicycles. The weights are expressed in units of time, guessing how long it'll
+take the typical cyclist to cross a road or turn through an intersection. This
+is usually just <code>distance / speed</code>. The speed accounts for elevation, and
+<a href="https://github.com/a-b-street/abstreet/blob/5f75656cc3760436659eb731106f9f886a6339e2/map_model/src/traversable.rs#L258">the calculation</a>
+is adapted from the Valhalla routing engine. See the
+<a href="https://github.com/a-b-street/abstreet/blob/master/map_model/src/pathfind/vehicles.rs">vehicle_cost method</a>
+for specifics.</p>
+<p>Additionally, the user can specify preferences to avoid steep hills or stressful
+roads. Steep hills are defined as having over 8% incline, and when one is
+encountered, the cost to cross it is multiplied by 2. Note this multiplication
+happens <em>after</em> adjusting the typical biking speed to account for the incline.
+Stressful roads are similar -- if a road is classified as an arterial or highway
+and lacks bike lanes, the edge weight is multiplied by 2. There are many
+possible ways to tune these parameters; the current implementation is simple,
+but produces results that match personal experience around Seattle.</p>
+<p>Note the mode shift calculation instead uses
+<a href="https://en.wikipedia.org/wiki/Contraction_hierarchies">contraction hierarchies</a>,
+which require an expensive one-time preparation step, but answer queries
+<strong>much</strong> faster than Dijkstra's. On most of the Seattle maps, the travel demand
+models require at least 100,000 paths!</p>
+<h2 id="adding-bike-lanes"><a class="header" href="#adding-bike-lanes">Adding bike lanes</a></h2>
+<p>The user can edit an individual road segment in detail, configuring individual
+lane widths. But of course this is really tedious, so most people will probably
+use this tool to automatically add lanes to an entire path at once. This tool
+shouldn't require the road to be physically widened -- this is incredibly
+expensive, and often there's no room to expand in the middle of a city. So
+instead, the heuristics try to replace existing street parking or extraneous
+driving lanes. In reality, OpenStreetMap data isn't high-fidelity enough to
+capture the real width of a road. Often a driving lane might be 15 feet wide,
+and there's plenty of room on the shoulder to at least paint a lane. See the
+<a href="https://github.com/a-b-street/abstreet/blob/5f75656cc3760436659eb731106f9f886a6339e2/game/src/ungap/quick_sketch.rs#L163">heuristics and unit tests</a>
+for details.</p>
+<h2 id="predict-impact"><a class="header" href="#predict-impact">Predict impact</a></h2>
+<p>This is the most complex piece, due to the number of assumptions made.
+Particular thanks to <a href="https://www.robinlovelace.net">Robin Lovelace</a> for
+<a href="https://github.com/a-b-street/abstreet/issues/448">lots of advice</a> here.</p>
+<p>For a planner to evaluate building out a proposed bike network, the key question
+is: how many people will use it? This is an incredibly open-ended research
+question. For example, there might be some people today who live in an area
+where driving is the only reasonable mode of transport, but they don't have
+access to a vehicle or have an impairment preventing them from driving. They
+might choose (or be forced to) work remotely in this situaton, and wait to
+car-pool for groceries. If cycling became a cheap and safe possibility, they
+might start taking entirely new trips -- this would be a positive instance of
+<a href="https://en.wikipedia.org/wiki/Induced_demand">induced demand</a>. Over time, if a
+city becomes friendlier to walking and biking and builds more affordable
+housing, travel patterns may change dramatically as people decide to live and
+work in the city, instead of commuting from the suburbs. This long-term,
+region-scale forecasting is the domain of groups like the
+<a href="https://www.psrc.org/activity-based-travel-model-soundcast">Puget Sound Regional Council</a>.</p>
+<h3 id="mode-shift-part-1"><a class="header" href="#mode-shift-part-1">Mode shift: part 1</a></h3>
+<p>So let's narrow our focus and just consider &quot;mode shifting&quot; existing trips that
+people currently perform by driving. We start with a
+<a href="../../tech/trafficsim/travel_demand.html">travel demand model</a> describing
+individual people's typical weekday schedule. The schedule defines a sequence of
+trips, with specific locations, departure time, and mode of transport. The tool
+first filters these trips to find all driving trips happening entirely within
+the map boundary. (If a trip begins or ends somewhere off-map, we don't really
+know its full distance and can't evaluate relevant factors along the whole
+journey.)</p>
+<h3 id="mode-shift-part-2"><a class="header" href="#mode-shift-part-2">Mode shift: part 2</a></h3>
+<p>Once we've found the initial set of driving trips, we have to figure out which
+ones would even consider switching to biking. If somebody drives somewhere in 10
+minutes now, it's unlikely they'll be willing to bike for an hour, especially if
+they have to climb steep hills. That's the intuition behind the
+<a href="https://www.jtlu.org/index.php/jtlu/article/view/862">Propensity to Cycle tool</a>,
+which calculated a distance and hilliness decay model to predict the percentage
+of trips that would consider biking. Currently the software defines a hard
+threshold for these two parameters -- the user can specify the maximum time
+someone is willing to bike, and the max elevation gain they'll endure. In the
+future, we can change this to use the decay functions from that prior research,
+and use data particular to different regions to make this more evidence-based.
+For instance, as e-bikes become more popular, hilliness becomes a less important
+factor.</p>
+<h3 id="mode-shift-part-3"><a class="header" href="#mode-shift-part-3">Mode shift: part 3</a></h3>
+<p>Based on those settings, the software will calculate all of the biking routes
+that the filtered trips would take. The question then becomes, why don't those
+people choose to bike today? The barrier this project focuses on is safety --
+even if the most direct cycling route isn't long or hilly, many people aren't
+willing to risk riding alongside heavy traffic when the street isn't designed
+for that.</p>
+<p>So the tool first displays a red heatmap showing a count of all of the roads
+where trips <strong>would</strong> switch, if it was safer. This guides the user to consider
+adding lanes there.</p>
+<p>Then the tool calculates if the proposal makes each trip safe enough. Currently
+this just sees if even one road segment of the trip now has infrastructure, but
+this will be made configurable soon!</p>
+<h3 id="carbon-score"><a class="header" href="#carbon-score">Carbon score</a></h3>
+<p>Finally we have an estimate of which trips might switch from driving to biking!
+So we can sum up the total mileage of the driving route, multiply by 5 days a
+week, and 52 weeks a year. This gives us the annual vehicle miles travelled that
+a proposal will remove. Assuming
+<a href="https://www.epa.gov/greenvehicles/greenhouse-gas-emissions-typical-passenger-vehicle#driving">404 grams of CO2 per mile</a>
+-- since we don't have more details about the distribution of vehicle types
+available -- we can estimate the annual CO2 savings.</p>
+<h2 id="caveats-and-assumptions"><a class="header" href="#caveats-and-assumptions">Caveats and assumptions</a></h2>
+<p>This software aims to do something pretty complicated, based on imperfect public
+data, and without the help of many people. So naturally it has many problems,
+but hopefully the goal is still achieved. Regardless, let's be clear about some
+limitations.</p>
+<h3 id="map-data"><a class="header" href="#map-data">Map data</a></h3>
+<p>First, OpenStreetMap is produced by volunteers. The tagging schemas can be quite
+complicated, and detailed lane data is often missing or wrong. Road width is
+almost never mapped directly. A/B Street tries to workaround these issues with
+aggressive heuristics.</p>
+<p>You'll notice many parts of the map look visually broken, especially near major
+junctions. That's because
+<a href="../../tech/map/geometry/README.html">generating intersection geometry</a> is
+incredibly hard.</p>
+<p>One particular problem is how protected bike lanes are mapped in many places
+(like Seattle). In OpenStreetMap, these are represented as separate, but
+parallel, objects from the main street. This usually appears in A/B Street as
+the cyclepath just overlapping the road in a completely broken way. &quot;Snapping&quot;
+the parallel objects together and treating as one road segment is the goal, but
+<a href="https://github.com/a-b-street/abstreet/issues/330">this is very hard</a> and
+ongoing work. The routing <strong>should</strong> still be able to use the separate
+cyclepaths, and so things like mode shift calculations should still be fine.</p>
+<h3 id="elevation-data"><a class="header" href="#elevation-data">Elevation data</a></h3>
+<p>A/B Street uses
+<a href="https://github.com/eldang/elevation_lookups">this Python library</a> to process
+elevation data and figure out which streets are steep. Currently the results are
+quite realistic in Seattle, thanks to King County LIDAR data. Everywhere else,
+currently NASA's SRTM is used, and the results don't seem to be working yet.
+Additionally, elevation data near bridges is usually messed up, with the bridge
+suddenly having the ground or water's elevation, and we're not working around
+this problem yet.</p>
+<h3 id="regional-differences"><a class="header" href="#regional-differences">Regional differences</a></h3>
+<p>Although A/B Street can work anywhere in the world, its model of roads and
+travel behavior along them makes some assumptions more tuned to North America
+and the United Kingdom. A notable example where these assumptions break down is
+in Taipei. If you look at A/B Street, it seems like there's a phenomenal network
+of dedicated cyclepaths along most major roads!</p>
+<!-- image -->
+<p>But actually, these are just the sidewalks. Cyclists and pedestrians share this
+space, and may come into conflict if many people switch to cycling.</p>
+<!-- image -->
+<p>Apparently there were some efforts some time ago to install dedicated bike lanes
+on the roads, but not many people used them, because there's less shade from the
+sun during summer. In my own research about biking in Taiwan, I didn't discover
+anything like this; it took local knowledge to clue me in! Barriers to cycling
+uptake vary across the world. Also, in Taiwan, smaller vehicles like mopeds and
+bikes use <a href="https://en.wikipedia.org/wiki/Hook_turn">hook turns</a>, which should
+affect routing and simulation. But A/B Street doesn't model this yet.</p>
+<!-- credit -->
+<h3 id="high-stress-roads"><a class="header" href="#high-stress-roads">High-stress roads</a></h3>
+<p>One of the key metrics for evaluating a cycling route in the software is how
+much of it crosses high-stress roads. Currently that's just defined as a &quot;major&quot;
+(arterial or highway) classification without any bike lanes. There are much more
+rigorous ways to define stress, such as the one by
+<a href="https://bna.peopleforbikes.org/#/places/0ea909ec-0b15-4bae-b593-a40da8a72312/">People For Bikes</a>.
+Quickly comparing the results from this tool and A/B Street, we mostly agree,
+though.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../software/bike_network/plan.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../software/fifteen_min.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../software/bike_network/plan.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../software/fifteen_min.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
