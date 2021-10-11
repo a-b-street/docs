@@ -141,7 +141,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="user-guide"><a class="header" href="#user-guide">User guide</a></h1>
-<!-- flip order of routing and modifying? -->
+<!-- flip order of routing and modifying in the tool itself -->
 <p>You can use the different parts of this tool in any order you like, but the
 recommended flow is:</p>
 <ol>
@@ -159,8 +159,10 @@ with your local city government or advocacy groups!</li>
 </ol>
 <h2 id="general-tips"><a class="header" href="#general-tips">General tips</a></h2>
 <p>This software can run in your web browser without any installation. If the
-loading times are slow, <a href="link">install and run</a> for a much faster experience.
-There's no support for mobile devices yet.</p>
+loading times are slow,
+<a href="https://github.com/a-b-street/abstreet/releases">install and run</a> for a much
+faster experience, especially for larger areas. There's no support for mobile
+devices yet.</p>
 <p>You can move around the map just like most digital maps. Click and drag to pan
 around. To zoom in, just scroll with your mouse or touchpad, double click, or
 use the buttons in the corner. This map shows much more detail when you zoom in
@@ -168,17 +170,11 @@ use the buttons in the corner. This map shows much more detail when you zoom in
 <p>The map works anywhere in the world. You can use the button at the top to change
 regions. Many cities have already been set up. If you're using the downloaded
 version, you can also import another region yourself. (Sorry, no web support for
-that yet.) If you want any help importing your region, just
-<a href="link">get in touch</a>!</p>
+that yet.) If you want any help importing your region,
+<a href="https://github.com/a-b-street/abstreet/issues">file an issue</a> or contact
+<a href="dabreegster@gmail.com">dabreegster@gmail.com</a>.</p>
 <h2 id="exploring-the-map"><a class="header" href="#exploring-the-map">Exploring the map</a></h2>
-<p>overview?</p>
-<h3 id="proposals"><a class="header" href="#proposals">Proposals</a></h3>
-<p>Once you make changes to the map, you can save and load them. Maybe you have a
-few different alternatives you'd like to try, or you'd like to compare your
-ideas when your city's official plans.</p>
-<p>You can also upload your proposal and share the URL with others. Note that
-proposals are uploaded anonymously, and when you make any changes, you have to
-upload again and share a new URL.</p>
+<!-- gif of poking through the layers, clicking a lane... -->
 <h3 id="types-of-bike-infrastructure"><a class="header" href="#types-of-bike-infrastructure">Types of bike infrastructure</a></h3>
 <p>If you open the layers in the corner, you'll see that bike infrastructure is
 divided into 4 categories. Dedicated trails are usually the most segregated from
@@ -203,13 +199,8 @@ the cyclist doesn't really have any sort of priority here.</p>
 <p>Finally, some cities use &quot;sharrows&quot;, or painted markings, on general-purpose
 lanes to indicate to drivers that they're supposed to share the road. These
 aren't reflected in the map at all, because they're not real infrastructure.
-Studies have showwn they can actually make things worse.</p>
-<h3 id="editing-roads-in-detail"><a class="header" href="#editing-roads-in-detail">Editing roads in detail</a></h3>
-<!-- it really feels weird to put this in this mode -->
-<p>If you zoom into an individual road, you can click on it to edit. With this
-mode, you can customize the width of each lane and other details. If you're
-focused only on a small area, this might be useful. But if you're interested in
-quickly sketching over a large area, use the &quot;create new bike lanes&quot; mode.</p>
+Studies have showwn they can actually
+<a href="https://www.bloomberg.com/news/articles/2016-02-05/study-sharrows-might-be-more-dangerous-to-cyclists-than-having-no-bike-infrastructure">make things worse</a>.</p>
 <h3 id="understanding-elevation-layers"><a class="header" href="#understanding-elevation-layers">Understanding elevation layers</a></h3>
 <p>Many places are flat or have widespread adoption of e-bikes. But in cities like
 Seattle and San Francisco, the city is arranged on steep hills, which can deter
@@ -218,16 +209,31 @@ ways to understand how the topography affects biking.</p>
 <p>The elevation layer draws a contour map, drawing higher elevation in red. You
 can quickly get a sense of how the city is arranged, and discover unexpected
 flat &quot;shortcuts&quot; when the streets aren't aligned to the hills!</p>
-<!-- example in greenwood -->
+<p><img src="greenwood_elevation.png" alt="" /></p>
 <p>You can also check the incline on individual street segments. The arrows point
 uphill.</p>
-<!-- disable steep streets on light rail, darnit! -->
-<p>Note the elevation data is high-quality for Seattle, but has issues in the rest
-of the world. And the estimated incline on bridges is usually wrong!</p>
-<!-- link to caveats -->
+<p><img src="steep_streets.png" alt="" /></p>
+<p>Note the elevation data is high-quality for Seattle, but has
+<a href="tech_details.html#elevation-data">issues in the rest of the world</a>. And the
+estimated incline on bridges is usually wrong!</p>
+<h3 id="proposals"><a class="header" href="#proposals">Proposals</a></h3>
+<p>Once you make changes to the map, you can save and load them. Maybe you have a
+few different alternatives you'd like to try, or you'd like to compare your
+ideas when your city's official plans.</p>
+<p>You can also upload your proposal and share the URL with others. Note that
+proposals are uploaded anonymously, and when you make any changes, you have to
+upload again and share a new URL.</p>
+<h3 id="editing-roads-in-detail"><a class="header" href="#editing-roads-in-detail">Editing roads in detail</a></h3>
+<!-- it really feels weird to put this in this mode -->
+<p>If you zoom into an individual road, you can click on it to edit. With this
+mode, you can customize the width of each lane and other details. If you're
+focused only on a small area, this might be useful. But if you're interested in
+quickly sketching over a large area, use the &quot;create new bike lanes&quot; mode.</p>
+<p><img src="../../project/retrospective/edit_roads.gif" alt="" /></p>
 <h2 id="planning-a-route"><a class="header" href="#planning-a-route">Planning a route</a></h2>
 <p>Use this mode to plan a cycling trip. Just click the map to add waypoints, or
 drag the waypoints to adjust.</p>
+<!-- gif of doing everything here -->
 <h3 id="saving-routes"><a class="header" href="#saving-routes">Saving routes</a></h3>
 <p>You can name each route, then save it. This is useful to define &quot;test cases&quot; for
 evaluating how well the bike network serves the route. The sample routes could
@@ -238,7 +244,6 @@ university to the popular night-life district.</p>
 hilliness, and stress. The fastest, most direct route often forces you to ride
 alongside high-speed traffic. Often the safer route will avoid major roads and
 take longer, and maybe also force you to climb steeper hills.</p>
-<!-- reconsider defaults -->
 <p>By default, the most direct route is shown. You can change your preferences with
 the checkboxes. Alternative routes are also shown, and if you hover over it, you
 can compare to the current route.</p>
@@ -250,6 +255,7 @@ dedicted bike lanes. You can also explore the elevation profile of your route,
 see the number of traffic signals you'll encounter, and check any potentially
 difficult turns.</p>
 <h2 id="creating-new-bike-lanes"><a class="header" href="#creating-new-bike-lanes">Creating new bike lanes</a></h2>
+<!-- gif demo -->
 <p>Once you know where you'd like to add new bike infrastructure, use this tool to
 quickly sketch it up. Click the start and end of the path you want to modify,
 then you can adjust by dragging intermediate points.</p>
@@ -265,6 +271,8 @@ always use explore mode to edit the road individually to fix up any problems.</p
 physical median. When you select a route to modify, this only traces one
 direction. You might need to repeat for the other side.</p>
 <h2 id="predict-impact"><a class="header" href="#predict-impact">Predict impact</a></h2>
+<p><img src="predict_impact.png" alt="" /></p>
+<!-- prettyprint_usize in all of the bars -->
 <p>Evaluating your proposed network against a few sample routes is useful, but from
 a planner's perspective, you want to predict how many people will make use of
 the new infrastructure. This tool analyzes all short driving trips in the area,
