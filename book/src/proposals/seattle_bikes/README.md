@@ -1,44 +1,50 @@
 # Dustin's vision for Seattle's bike network
 
 I've been commuting almost exclusively by bike here since 2014. I've had too
-many close calls and plenty of frustratign moments when it feels like the design
-is trying to discourage this mode of transport as much as possible. i want to
-see network tht encourages as many people as possible to choose biking over
-driving.
+many close calls and plenty of frustrating moments when it feels like the design
+is trying to discourage this mode of transport as much as possible. I want to
+see a network tht encourages as many people as possible to choose biking over
+driving, for [these reasons](../../software/bike_network/motivation.md).
 
-so many times, i wish i had a magic wand that could just fix things -- often
-very ridiculous stupid things. i don't, and pushing actual changes is super slow
-and hairy, and i'm impatient -- so i (and team) built that magic wand, software
-to let me sketch out my vision. my hope is that if people can more easily
-imagine and visualize something different, they'll communicate more effectively
-about it and those changes will go through more easily, and with more
-particpation from people.
+So many times, I wish I had a magic wand that could just fix things. I don't,
+and it takes years of concentrated effort to campaign and push for redesigned
+streets, and I'm impatient -- so I (along with [my team](../../project/team.md))
+built that magic wand: software to sketch out my vision for biking in Seattle.
+My hope is that if people can more easily imagine and visualize things like the
+[bike master plan](https://www.seattle.gov/transportation/document-library/citywide-plans/modal-plans/bicycle-master-plan),
+they'll debate more effectively about them, proposals will be funded more easily
+and with greater participation from more people.
 
-the vision here will just be transforming existing roadspace to add cycle infra,
-often with actual protection from vehicles. usually taking awayparking or extra
-lanes. there are plenty of other changes I want to see to MASS, many in the
-light rail, bus, LTN/superblock, land use directions, not covered here.
+The vision here will just be limited to adding bike lanes, protected by planter
+boxes or just paint, to existing road-space, usually by sacrificing street
+parking or an extra driving lane. There are plenty of other changes I want to
+see involving ligh rail, bus frequencies, Stay Healthy Streets, and zoning
+changes... but that's not the focus here.
 
-bias, south seattle but the good news is, the tool built is designed to let YOU
-share your own vision. so give it a spin and share your dream.
+## Disclaimer
 
+This is what I personally want to see, based on where I live and commute. I'm
+very much bringing all of my biases into the proposal. You'll notice much less
+focus in South and West Seattle, because I don't happen to spend much time
+there. Of course I think they also deserve great bike infrastructure, but I'm
+not experienced enough to talk about it.
+
+Because of this, I'm not very attached to this specific proposal. What I
+_really_ want is for _you_ to try out this software yourself and share your own
+vision. This write-up just serves as an example use of the tool. Please give it
+a spin and blog or tweet about it, so I can go back to writing code, not
+English!
+
+<!--
 link to alt plans, like near-term / in progress builds, and the basic bike
-network master plan
+network master plan -->
 
-## interacting
+## The network
 
-link to tool
+<!-- link to tool with huge_seattle? split into pieces? -->
 
-quick instructions
-
-share your own thing!!
-
-i'll try to give motivation about elevation / alt routes sucking.
-
-then at the end, a mor data-driven argument about why these extensions would
-"ungap the map"
-
-## the changes
+If you have trouble using the tool, check the
+[user guide](../../software/bike_network/user_guide.md) or send feedback.
 
 ### Boyer / Fuhrman
 
@@ -175,42 +181,80 @@ the (i forget the number)?
 
 ### Broadway between Highland and Denny
 
-- detouring on harvard maybe, but bumpy and away from business
-- note OSM data super funky, looks like the road changes width constantly,
-  should go fix that. same eastlake
-- this is a mess, maybe parking to loading zones. really one of those places
-  super well served by transit, driving is kind of inexcusable
-- i happened to be walking by few months ago and saw someone hit, so...
-  anecdata's strong.
+South of the light rail, Broadway has a protected two-way cycletrack and north
+of Highland, there are painted lanes. But inexplicably they vanish between
+Highland and Denny. If you want to dodge less cars, you can cut onto Harvard, a
+much bumpier street without any businesses along it. Why not take out the center
+lane and extend the cycletrack or the painted lanes on both sides?
 
-### The missing link
+The street parking along this stretch is usually pretty full, and often trucks
+use the center lane as a makeshift loading zone. This is a commercial hub and
+should still have a way to drive and park here, but given how well-connected the
+area is by public transit, I don't think prioritizing parking makes sense.
 
-- this one's a story. i'm not going to weigh in on preferred option (though that
-  ballard cafe street is awesome)
+### The Missing Link
+
+The Burke Gilman trail, which is probably the highest-traffic walking/biking
+path in Seattle, has had a
+[missing link](https://www.seattle.gov/transportation/projects-and-programs/programs/bike-program/ballard-multimodal-corridor)
+literally since the 90's. I'm not going to weigh in on the debate on exactly how
+this should be fixed; I've just put it on Shilshole. Maybe we'll see it
+completed in another 30 years.
 
 ### Airport Way S
 
-- fedex in afternoon rush hour
-- another nice flat one. the edits here show a lane taken away, but actualy
-  southbound, the shoulder is wide enough to work without taking a lane.
-  absolutely dumb that vehicles flying around the 15ft lane
-- SODO trail and 6th a quieter alt; i wasnt familiar and google maps routing
-  sucked (hey another use...)
+Once upon a time, I made the mistake of biking to Fedex in SODO during afternoon
+rush hour (the narrow window when you can retrieve packages). I took Airport
+because it's flat and direct, and there was plenty of room for cars to pass --
+there's a pretty generous shoulder. But even though I was gunning it and keeping
+pace with the stop-and-go traffic, there were still some vehicles that insisted
+on flying across the 15-foot lane and almost swerving into me. So, I'd like to
+add a protected lane here:
+
+Note the edits show a driving lane taken away, but that's just because we don't
+have accurate road width data. There's enough room to keep all the lanes, and
+add some paint and barriers to the shoulder.
+
+Why didn't I take the SODO trail and 6th Ave S? (Well, I certainly did on the
+way back!) Honestly, I was just following Google Maps routing (which doesn't
+have an option to avoid high-stress roads), and getting to the SODO trail from
+the international district is more confusing than following the natural path
+onto Airport. Maybe some wayfinding could help.
 
 ### Others
 
-- east/west in north seattle?
-  - based on contours, 75th
-- lake wash blvd. not lanes, some kind of extended stay healthy
-- 15th to elliot
-- madison?
+This has been a very modest "vision" map. Part of me wants to just add lanes on
+every arterial, but then I'd have to write about the nuances of each of these
+cases. Nonetheless, a few other areas I considered:
+
+How're you supposed to comfortably go east/west in north Seattle? After living
+in Lichton Springs for a while, I probably cut through different sequences of
+residential streets every single ride. Looking at a contour map, 75th looks like
+a candidate, but I'll have to go try it out.
+
+![](75th_contours.png)
+
+It's ridiculous to me that Lake Washington Blvd from Montlake all the way to
+Seaward isn't better designed for biking; it's part of the Lake Washington loop,
+and loads of people ride it. Greenways successfully fought for a
+[Keep Moving Street](http://stayhealthystreets.org/streets/lwb/) that had loads
+of usage, but it ended after September.
+
+Going from Ballard to downtown, normally I'd just take the scenic Elliot Bay
+trail through to Centennial Park, but once I had an errand somewhere around 15th
+Ave NW and Elliot. That's another huge road through a commercial area that
+probably deserves some protected lanes.
 
 ## Estimating how much these might help
 
-link to methodology
+The software includes a tool to
+[predict the impact](../../software/bike_network/user_guide.md#predict-impact)
+of all of these changes to the region's current travel patterns. There's lots of
+assumptions and limitations with the calculation that you should read and mutter
+quietly to yourself about, but nonetheless, what's the verdict?
 
-in summary, VMT and carbon... number of trips converted
+<!-- in summary, VMT and carbon... number of trips converted -->
 
-## conclusion
-
-hopefully this is helpful to see. feedback. share your own vision.
+Thanks for reading this far. Please share your feedback about these ideas and
+the new tool, and more importantly, your own vision for what biking in Seattle
+could be!
