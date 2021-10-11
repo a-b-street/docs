@@ -271,9 +271,15 @@ programming.
 
 ### Budget
 
-<!--
-Difficult to figure out; median salaries for some of those roles in different
-places? -->
+Say we want to hire one Rust software engineer and one UX designer (who would
+also help with the cartography and product management roles) for a year.
+Depending where the employees live, median salaries differ significantly.
+Glassdoor estimates
+[£42K](https://www.glassdoor.com/Salaries/london-programmer-salary-SRCH_IL.0,6_IM1035_KO7,17.htm)
+for a general programmer in London, or
+[$85k](https://www.glassdoor.com/Salaries/seattle-programmer-salary-SRCH_IL.0,7_IC1150505_KO8,18.htm)
+for Seattle. Neither the engineer nor designer could be entry-level for a
+project this complicated.
 
 ### Funding sources
 
@@ -284,8 +290,8 @@ research studies should be reproducible. Open-source software and public data
 are vital to this. A business exists to generate profit, even if those profits
 are modest and just meant to sustain the business. The ultimate metric that
 matters for this project is impact on the real world -- making transportation
-more environmentally friendly. Therefore, a [B
-corp](https://en.wikipedia.org/wiki/B_Corporation_(certification) or
+more environmentally friendly. Therefore, a
+[B-corp](https://en.wikipedia.org/wiki/B_Corporation_(certification) or
 [benefit corp](https://en.wikipedia.org/wiki/Benefit_corporation) might be more
 appropriate directions.
 

@@ -60,17 +60,17 @@ bunch of curb bulbs and traffic islands that would force bikes to merge back
 into the main lane every few blocks, so this would probably be a bigger paving
 project.
 
-The alternative route is to cross the university or Montlake bridge and take the
+The alternative route is to cross the University or Montlake bridge and take the
 Burke, or take the scenic route through south campus. But depending which way
 you're going, this is a long detour, and probably forces you over the Montlake
 bridge, meaning navigating the absolute mess of Montlake/520. It's possible the
 [the lid](https://wsdot.wa.gov/projects/sr520/montlake/home) will make this area
 less terrible, but... not sure how. (There are some tricks like the Bill Dawson
-trail that slightly ease the pain...)
+trail that slightly ease the pain, depending where you're going.)
 
 It's possible there's some
 [plan](https://twitter.com/typewriteralley/status/1445922612421402626/photo/1)
-for Fuhrman?!
+for Fuhrman with RapidRide J?
 
 ### NE 45th St
 
