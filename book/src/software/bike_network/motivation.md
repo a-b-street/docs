@@ -109,8 +109,6 @@ mitigate climate disasters.
 
 ## Barriers to change
 
-<!-- portland slide deck on what it takes to build, how long -->
-
 So why isn't every city following Paris and building out a low-cost bike network
 to encourage people to stop driving? The issue is often quite political -- if
 city leaders build without the support of their constituents, they won't be
@@ -155,8 +153,6 @@ the overall direction, and may explain the individual changes in context of this
 vision. But if that story isn't effectively told, then the public can wind up
 arguing too much about the details.
 
-<!-- how do we boost the voice of people fighting for transpo change? by software to visualize. humans are really visual. draw the world how it could be, sell citizens on that idea, engage their imagination how streets could be used instead. -->
-
 In other words, I'm arguing that one of the biggest problems is around
 communication. If city leaders could more effectively market a proposal to their
 constituents, and if the public was better educated about the indirect
@@ -167,15 +163,40 @@ Let's look at how this communication happens today.
 
 ### Large-scale changes
 
-As a first example, let's look at Seattle's bike master plan, which describes
-what the bike network will look like by 2025? The official documents include a
-PDF with a map that's pretty tough to use... and an ArcGIS map that's a little
-better, but...
+As a first example, let's look at
+[Seattle's bike master plan](https://www.seattle.gov/transportation/document-library/citywide-plans/modal-plans/bicycle-master-plan),
+which describes what the bike network will look like by 2024. The official
+documents include a
+[PDF](https://www.seattle.gov/Documents/Departments/SDOT/BikeProgram/BMP_Imp_Plan_2021_FINAL.pdf)
+that has an overview map, which can't even show the road names by virtue of
+being a fixed image:
+
+![](bmp_overview.png)
+
+There are maps showing more detail in different areas:
+
+![](bmp_zoomed.png)
+
+And tables summarizing some new routes:
+
+![](bmp_table.png)
+
+The official page doesn't link to any web map, but digging around reveals an
+[ArcGIS map](https://data-seattlecitygis.opendata.arcgis.com/datasets/f5b80ce716bc437c9a231d8e99f069bb_2/explore?location=47.619800%2C-122.338100%2C11.62):
+
+![](bmp_arcgis.png)
+
+This is a little better, but it's overall pretty tough to just zoom into a road,
+see at a glance what it looks like today, and see what the promised changes
+by 2024.
 
 A second example is Seattle Neighborhood Greenways, an advocacy group,
 describing which streets they'd like to see changed to prioritize people walking
 and biking, as a way to encourage exercise and social distancing during COVID.
-Their plans are a layer on top of Google Maps.
+Their plans are
+[a layer on top of Google Maps](https://www.google.com/maps/d/viewer?mid=1HQMnagRf8EbS1nouqCMLl4LZr0QE8VrC&ll=47.641281552786445%2C-122.31769816918946&z=12):
+
+![](sng_stay_healthy_network.png)
 
 Individuals are accustomed to interacting with maps by routing, to see what
 their particular trip might look like. None of these solutions let you plan a
@@ -185,56 +206,82 @@ hills, or let me comfortably bike past a commercial district. I have to
 interpret these planned changes and apply them to my particular situation. Or if
 I care about broader impact, these documents fail to sell me on the benefits,
 "we forecast that 200,000 weekly trips will likely start biking instead of
-driving if we make these changes. That could lower PM2.5 pollution by X..."
+driving if we make these changes. That could lower PM2.5 pollution by 3%..."
 
 These methods of communication are also very "dry" -- they do nothing to paint a
 picture or tell a story about how awesome the city will be once this is built.
 
 ### Individual projects
 
-Let's examine plans to install a "lid" over the 520 highway in Montlake,
-Seattle. The plans show a new park where there used to just be a loud,
-unpleasant road. This is a little better in terms of visioning. But advocacy
-blogs have called out some important questions about these plans -- notice how
-many lanes pedestrians will have to cross. How long will people wait for a
-light? In other words, what's the actual experience of just moving through the
-space as a pedestrian? A static map or diagram is going to have a hard time
-communicating this.
+Let's examine plans to
+[install a "lid" over the 520 highway in Montlake, Seattle](https://wsdot.wa.gov/projects/sr520/montlake/home).
+The plans show a new park where there used to just be a loud, unpleasant road.
+This is better in terms of visioning! But advocacy blogs have called out some
+important questions about these plans -- how long will it take for a pedestrian
+to wait for a light and cross from the west to east side (from a residential
+area to a light rail station)? In other words, what's the actual experience of
+just moving through the space as a pedestrian? A static map or diagram is going
+to have a hard time communicating this.
 
-<!-- find some of the ~complicated design renderings -->
+![](montlake_lid.png)
 
-<!-- SF's story map is huge step forwards -->
+Visualizations of changes also tend to be very high-level or very low-level, and
+switching between the two views is difficult. For
+[changes around Green Lake](https://www.seattle.gov/transportation/projects-and-programs/programs/maintenance-and-paving/current-paving-projects/green-lake-area-paving-and-safety-projects),
+here's an overview map and a CAD drawing:
+
+![](greenlake_overview.png)
+
+![](greenlake_detail.png)
+
+One of the best examples communicating changes I've found is San Francisco's
+[Golden Gate park story map](https://storymaps.arcgis.com/stories/c44dfec403664e0ca3d2af6bd048b2ae):
+
+![](golden_gate.png)
 
 ### Gathering public feedback
 
 Besides just asking people how they feel about some proposals, sometimes
 governments directly solicit ideas from people -- a form of crowd-sourcing.
-Seattle's Your Voice, Your Choice (link) is an example, where people can drop
-pins on a map, describe a problem and possible solution. This program is meant
-for low-cost, "spot fixes" like making a certain intersection safer.
+Seattle's
+[Your Voice, Your Choice](https://www.seattle.gov/neighborhoods/programs-and-services/your-voice-your-choice)
+is an example, where people can drop pins on a map, describe a problem and
+possible solution. This program is meant for low-cost, "spot fixes" like making
+a certain intersection safer.
 
-Probably the state-of-the-art in public engagement is Streetmix, a very
-easy-to-use and fun website that lets you rearrange space along a single street.
-People routinely share ideas through Streetmix, and public agencies often
-explain changes using it. The sheer ease-of-use and strong visuals are keys to
-its success -- the creators have a strong design background, and it pays off.
-Proposals in Streetmix have even become reality -- Bogota gathered X proposals
+Probably the state-of-the-art in public engagement is
+[Streetmix](https://streetmix.net), a very easy-to-use and fun website that lets
+you rearrange space along a single street. People routinely share ideas through
+Streetmix, and public agencies often explain changes using it. The sheer
+ease-of-use and strong visuals are keys to its success -- the creators have a
+strong design background, and it pays off. Proposals in Streetmix have even
+become reality --
+[Bogota gathered 7,000 proposals](https://thecityfix.com/blog/how-bogota-is-turning-7000-citizen-proposals-into-a-real-plan-to-redesign-a-major-thoroughfare/)
 from the public, then settled on something based on these designs.
 
-Members of the public aren't experts in transportation engineering, so why not
-leave the work to the professionals? Laura Adler writes... "x". Individuals
-_are_ experts at some slice of the city, since they interact with it every day.
-It's unlikely city planners know every corner of the city as deeply as everyone
-else combined, so incorporating their experiences is important.
+![](streetmix.png)
 
-Besides generating better proposals, [participatory design](link) can also
-decrease resistance to change. Brian Deegan, a UK planner, describes this
-[during a workshop for planning low-traffic neighborhoods]. When he frames
-things as a puzzle -- "The number of cars has doubled since X, they just don't
-fit, we have to fix this somehow" -- people set aside their personal biases and
-just treat it as an abstract problem to solve. As a result, everyone in the room
-feels more invested in the ideas produced. "Gamifying" the planning process
-could be powerful.
+Members of the public aren't experts in transportation engineering, so why not
+leave the work to the professionals?
+[Laura Adler](http://www.govtech.com/data/SimCities-Can-City-Planning-Mistakes-Be-Avoided-Through-Data-Driven-Simulations.html)
+writes "Only with simple, accessible simulation programs can citizens become
+active generators of their own urban visions, not just passive recipients of
+options laid out by government officials.". Individuals _are_ experts at some
+slice of the city, since they interact with it every day. It's unlikely city
+planners know every corner of the city as deeply as everyone else combined, so
+incorporating their experiences is important.
+
+Besides generating better proposals,
+[participatory design](https://en.wikipedia.org/wiki/Participatory_design) can
+also decrease resistance to change.
+[Brian Deegan](http://www.urbanmovement.co.uk/brian-deegan.html), one of the
+UK's leading street designers, describes this
+[during a workshop for planning low-traffic neighborhoods](https://youtu.be/pHucS2F33W8?t=1684).
+When he frames things as a puzzle -- "The number of cars has doubled in the last
+few years, they just don't fit, we have to fix this somehow" -- people set aside
+their personal biases and just treat it as an abstract problem to solve. As a
+result, everyone in the room feels more invested in the ideas produced.
+"Gamifying" the planning process could be powerful.
 
 ## How this project can help
 
@@ -246,8 +293,8 @@ A/B Street in general and this bike tool in particular are an attempt to:
 
 Some example "success stories" might look like this:
 
-1. City planners use the software to sell the public on existing plans
-   (struggling with funding cuts)
+1. City planners use the software to sell the public on existing plans that're
+   facing the threat of budget cuts
 2. Advocacy groups help amplify that message
 3. Support for the plans grows, people vote to fund it
 

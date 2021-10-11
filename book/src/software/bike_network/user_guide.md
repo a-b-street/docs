@@ -1,6 +1,6 @@
 # User guide
 
-<!-- flip order of routing and modifying? -->
+<!-- flip order of routing and modifying in the tool itself -->
 
 You can use the different parts of this tool in any order you like, but the
 recommended flow is:
@@ -20,8 +20,10 @@ recommended flow is:
 ## General tips
 
 This software can run in your web browser without any installation. If the
-loading times are slow, [install and run](link) for a much faster experience.
-There's no support for mobile devices yet.
+loading times are slow,
+[install and run](https://github.com/a-b-street/abstreet/releases) for a much
+faster experience, especially for larger areas. There's no support for mobile
+devices yet.
 
 You can move around the map just like most digital maps. Click and drag to pan
 around. To zoom in, just scroll with your mouse or touchpad, double click, or
@@ -31,22 +33,13 @@ use the buttons in the corner. This map shows much more detail when you zoom in
 The map works anywhere in the world. You can use the button at the top to change
 regions. Many cities have already been set up. If you're using the downloaded
 version, you can also import another region yourself. (Sorry, no web support for
-that yet.) If you want any help importing your region, just
-[get in touch](link)!
+that yet.) If you want any help importing your region,
+[file an issue](https://github.com/a-b-street/abstreet/issues) or contact
+<dabreegster@gmail.com>.
 
 ## Exploring the map
 
-overview?
-
-### Proposals
-
-Once you make changes to the map, you can save and load them. Maybe you have a
-few different alternatives you'd like to try, or you'd like to compare your
-ideas when your city's official plans.
-
-You can also upload your proposal and share the URL with others. Note that
-proposals are uploaded anonymously, and when you make any changes, you have to
-upload again and share a new URL.
+<!-- gif of poking through the layers, clicking a lane... -->
 
 ### Types of bike infrastructure
 
@@ -75,16 +68,8 @@ the cyclist doesn't really have any sort of priority here.
 Finally, some cities use "sharrows", or painted markings, on general-purpose
 lanes to indicate to drivers that they're supposed to share the road. These
 aren't reflected in the map at all, because they're not real infrastructure.
-Studies have showwn they can actually make things worse.
-
-### Editing roads in detail
-
-<!-- it really feels weird to put this in this mode -->
-
-If you zoom into an individual road, you can click on it to edit. With this
-mode, you can customize the width of each lane and other details. If you're
-focused only on a small area, this might be useful. But if you're interested in
-quickly sketching over a large area, use the "create new bike lanes" mode.
+Studies have showwn they can actually
+[make things worse](https://www.bloomberg.com/news/articles/2016-02-05/study-sharrows-might-be-more-dangerous-to-cyclists-than-having-no-bike-infrastructure).
 
 ### Understanding elevation layers
 
@@ -97,22 +82,44 @@ The elevation layer draws a contour map, drawing higher elevation in red. You
 can quickly get a sense of how the city is arranged, and discover unexpected
 flat "shortcuts" when the streets aren't aligned to the hills!
 
-<!-- example in greenwood -->
+![](greenwood_elevation.png)
 
 You can also check the incline on individual street segments. The arrows point
 uphill.
 
-<!-- disable steep streets on light rail, darnit! -->
+![](steep_streets.png)
 
-Note the elevation data is high-quality for Seattle, but has issues in the rest
-of the world. And the estimated incline on bridges is usually wrong!
+Note the elevation data is high-quality for Seattle, but has
+[issues in the rest of the world](tech_details.md#elevation-data). And the
+estimated incline on bridges is usually wrong!
 
-<!-- link to caveats -->
+### Proposals
+
+Once you make changes to the map, you can save and load them. Maybe you have a
+few different alternatives you'd like to try, or you'd like to compare your
+ideas when your city's official plans.
+
+You can also upload your proposal and share the URL with others. Note that
+proposals are uploaded anonymously, and when you make any changes, you have to
+upload again and share a new URL.
+
+### Editing roads in detail
+
+<!-- it really feels weird to put this in this mode -->
+
+If you zoom into an individual road, you can click on it to edit. With this
+mode, you can customize the width of each lane and other details. If you're
+focused only on a small area, this might be useful. But if you're interested in
+quickly sketching over a large area, use the "create new bike lanes" mode.
+
+![](../../project/retrospective/edit_roads.gif)
 
 ## Planning a route
 
 Use this mode to plan a cycling trip. Just click the map to add waypoints, or
 drag the waypoints to adjust.
+
+<!-- gif of doing everything here -->
 
 ### Saving routes
 
@@ -128,8 +135,6 @@ hilliness, and stress. The fastest, most direct route often forces you to ride
 alongside high-speed traffic. Often the safer route will avoid major roads and
 take longer, and maybe also force you to climb steeper hills.
 
-<!-- reconsider defaults -->
-
 By default, the most direct route is shown. You can change your preferences with
 the checkboxes. Alternative routes are also shown, and if you hover over it, you
 can compare to the current route.
@@ -144,6 +149,8 @@ see the number of traffic signals you'll encounter, and check any potentially
 difficult turns.
 
 ## Creating new bike lanes
+
+<!-- gif demo -->
 
 Once you know where you'd like to add new bike infrastructure, use this tool to
 quickly sketch it up. Click the start and end of the path you want to modify,
@@ -163,6 +170,10 @@ physical median. When you select a route to modify, this only traces one
 direction. You might need to repeat for the other side.
 
 ## Predict impact
+
+![](predict_impact.png)
+
+<!-- prettyprint_usize in all of the bars -->
 
 Evaluating your proposed network against a few sample routes is useful, but from
 a planner's perspective, you want to predict how many people will make use of

@@ -233,22 +233,23 @@ and the United Kingdom. A notable example where these assumptions break down is
 in Taipei. If you look at A/B Street, it seems like there's a phenomenal network
 of dedicated cyclepaths along most major roads!
 
-<!-- image -->
+![](tw_network.png)
 
 But actually, these are just the sidewalks. Cyclists and pedestrians share this
 space, and may come into conflict if many people switch to cycling.
 
-<!-- image -->
+![](tw_detail.png)
 
 Apparently there were some efforts some time ago to install dedicated bike lanes
 on the roads, but not many people used them, because there's less shade from the
 sun during summer. In my own research about biking in Taiwan, I didn't discover
-anything like this; it took local knowledge to clue me in! Barriers to cycling
-uptake vary across the world. Also, in Taiwan, smaller vehicles like mopeds and
-bikes use [hook turns](https://en.wikipedia.org/wiki/Hook_turn), which should
-affect routing and simulation. But A/B Street doesn't model this yet.
-
-<!-- credit -->
+anything like this; it took local knowledge from the hackathon organizers to
+clue me in! (Later, I found a
+[bit more about the history of biking in Taipei](https://www.theguardian.com/cities/2016/mar/15/bicycle-kingdom-reborn-pavement-cycling-taipei-taiwan).)
+Barriers to cycling uptake vary across the world. Also, in Taiwan, smaller
+vehicles like mopeds and bikes use
+[hook turns](https://en.wikipedia.org/wiki/Hook_turn), which should affect
+routing and simulation. But A/B Street doesn't model this yet.
 
 ### High-stress roads
 

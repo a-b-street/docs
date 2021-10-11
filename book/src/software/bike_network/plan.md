@@ -13,10 +13,12 @@ and vocally push the government to make changes. Third are individual citizens.
 Once they're engaged by the issue of inadequate cycling infrastructure -- often
 because of personal experiences or from looking for safe routes for their
 children to bike to school -- they get involved in a few ways. Many join the
-advocacy groups, volunteering their time. A few -- joe mangan and
-pushingtheneedle as notable examples -- start directly writing about their
-vision. And many more spend endless hours debating strangers online on sites
-like Reddit, Twitter, or the Urbanist blog.
+advocacy groups, volunteering their time. A few --
+[Joe Mangan](https://www.seattlebikeblog.com/2018/01/19/a-roosevelt-junior-redesigned-the-streets-around-his-high-school-and-his-plan-is-better-than-sdots/)
+and [Pushing the Needle](https://twitter.com/pushtheneedle/) as notable examples
+-- start directly writing about their vision. And many more spend endless hours
+debating strangers online on sites like Reddit, Twitter, or the
+[Urbanist blog](https://www.theurbanist.org/).
 
 The aim is for A/B Street to engage all of these stakeholders using the same
 data and software. Engagement strategies so far include meeting people in person
@@ -52,79 +54,90 @@ The launch plan for the bike network tool in Seattle includes all of these
 groups:
 
 - Individuals
-  - The r/seattlebike subreddit
-  - publishing an article to Seattle Bike Blog
+  - The [r/seattlebike subreddit](old.reddit.com/r/seattlebike)
+  - publishing an article to
+    [Seattle Bike Blog](https://www.seattlebikeblog.com)
   - The hope is for individual readers of these online communities to try out
     the software, upload their proposals, and maybe become more involved with
     widely publishing their ideas. This will help demonstrate the people's
     visions to the government in a more visual and specific way than what
     happens now.
 - Advocacy groups
-  - Seattle Neighborhood Greenways, with whom I've been involved for a while.
-    They're starting an "ungap the map" campaign, which was one of the original
-    inspirations for this tool's focus.
-    - Local chapters of this organization are campaigning for
-      https://www.glwstreets.org/aurora-park-path and
-      https://www.got99problems.org/. I'm involved with the latter already; we
-      brought A/B Street to a visioning workshop in August?
-  - Move Redmond, a similar group for a nearby city. I have some contact with
-    them previously.
-  - Bellevue group, same.
+  - [Seattle Neighborhood Greenways](https://seattlegreenways.org/), with whom
+    I've been involved for a while. They're starting an "ungap the map"
+    campaign, which was one of the original inspirations for this tool's focus.
+    - The A/B Street team is lready involved with one local chapter,
+      [the Aurora Reimagined Coalition](https://www.got99problems.org). We
+      attended a live design workshop in late August and got feedback on the
+      initial prototype of the tool.
+  - [Move Redmond](https://www.glwstreets.org/complete-the-loop), a similar
+    group for a nearby city. I have some contact with them previously.
+  - [Complete Streets Bellevue](https://completestreetsbellevue.org/), also have
+    prior contact.
 - Government entities
-  - I've met and demonstrated A/B Street to a few people within SDOT, but
-    unfortunately I don't expect any further response from them.
-  - The Seattle Bike Advisory Board...
-  - Seattle is about to elect a new mayor and city council in November? One of
-    the candidates includes all-ages abilities bike network in their platform,
-    so I'll get in touch.
+  - I've met and demonstrated A/B Street to a few people within
+    [SDOT](https://www.seattle.gov/transportation), but unfortunately I don't
+    expect any further response from them.
+  - The
+    [Seattle Bike Advisory Board](http://www.seattle.gov/seattle-bicycle-advisory-board)
+    is more likely to be responsive.
+  - Seattle is about to elect a new mayor and city council in November. All the
+    major candidates mention biking in their platforms, so I'll get in touch.
 
-A/B Street has wound up local TV and newspaper media before. It might be
-strategic to repeat this for the new software, but I'd like to wait and see how
-many people use the tool and upload proposals. If there's a strong community
-response, I think this would merit another story.
+A/B Street has wound up local [TV](https://www.youtube.com/watch?v=Pk8V-egsUxU)
+and
+[newspaper](https://www.thestranger.com/slog/2020/06/29/43999454/ab-streets-game-lets-you-create-the-seattle-street-grid-of-your-dreams)
+media before. It might be strategic to repeat this for the new software, but I'd
+like to wait and see how many people use the tool and upload proposals. If
+there's a strong community response, I think this would merit another story.
 
 ### UK
 
 There's one exception to the difficulties mentioned previously about getting
-clear product requirements. Brian Deegan is a cycling planner who does
-consulting across the UK and whose consulting company has written lots of design
-manuals (liiiiinks). Thanks to Robin, A/B Street has a relationship with Brian,
-and based on studying a design workshop video by Brian, we've started
-prototyping a new tool focused on placing modal filters to establish low-traffic
-neighborhoods. The UK planning scene is currently more focused on this type of
-intervention than building bike lanes. So, we're planning to pivot and focus on
-this LTN tool after mid-October. The long-term strategy is to continue building
-these smaller, focused tools, all leveraging the common A/B Street technical
-platform. Different regions and situations will demand different planning
-software.
+clear product requirements.
+[Brian Deegan](http://www.urbanmovement.co.uk/brian-deegan.html) is a cycling
+planner who does consulting across the UK and whose company has written lots of
+[design manuals](http://www.urbanmovement.co.uk/beeachampion.html). Thanks to
+[Robin](robinlovelace.net/), A/B Street has a relationship with Brian, and based
+on studying a design workshop video by Brian, we've started prototyping a new
+tool focused on placing modal filters to establish low-traffic neighborhoods.
+The UK planning scene is currently more focused on this type of intervention
+than building bike lanes. So, we're planning to pivot and focus on this LTN tool
+after mid-October. The long-term strategy is to continue building these smaller,
+focused tools, all leveraging the common A/B Street technical platform.
+Different regions and situations will demand different planning software.
 
 ### NYC
 
-Thanks to the tool's part-time UX contributor Mara, we have a future meeting
-with TransAlt, an advocacy group in NYC.
+Thanks to the tool's part-time UX contributor
+[Mara](https://www.mara-cruz.com/), we have a future meeting with
+[TransAlt](https://www.transalt.org), an advocacy group in NYC.
 
 ### Others
 
-The A/B Street team has a collaborator at the ASU lab... The Phoenix metro area
-definitely has a culture shift away from cars underway, as evidenced by the
-popularity of the new Culdesac car-free community
+The A/B Street team has a collaborator at the
+[Arizona State Transportation AI lab](https://github.com/asu-trans-ai-lab/). It
+could be the right time to focus on the currently car-centric Phoenix metro
+area, with things like the [car-free Culdesac community](https://culdesac.com)
+gaining traction.
 
 San Francisco is another high-potential market for the bike tool. They have
-extreme hills, a very active cycling advocacy group, and a large tech industry
-workforce likely to be interested in this kind of software. During covid, they
-established slow streets and lots of PBLs. The A/B Street team has some
-connections to local advocates here.
+extreme hills, a very active
+[cycling advocacy group](https://bikesiliconvalley.org), and a large tech
+industry workforce likely to be interested in this kind of software. During
+COVID, they established many
+[slow streets](https://sf.eater.com/2021/6/3/22457397/sf-restaurants-support-slow-streets-permanent).
+The A/B Street team has some connections to local advocates here.
 
 ## Results so far
 
-Stay tuned? Link to seattle vision doc
-
-- How will you measure the results of your progress and the success of your
-  project?
-
-number of uploads social media buzz new project contributors or partners?
-
-ultimately we'd like to see real published plans using abst
+Stay tuned for the reaction to the tool's launch and the example
+[Seattle proposal](../../proposals/seattle_bikes/README.md). Ultimately the
+measurable result is the number of real bike lane projects that reach
+construction and used A/B Street in some part of the planning or engagement
+process. In the short term, metrics we'll track are the number of proposals
+uploaded, the responses on social media, and any new collaborations that're
+started after launching.
 
 ## Action plan
 
@@ -136,19 +149,20 @@ Francisco, after fixing some elevation data issues there.
 Aside from further bug fixes, performance improvements, and UX polish, there are
 many ideas for future features of the bike tool:
 
-- showing historic collision data
-- animate following the route
-- visualize nearby traffic
+- showing historic collision data to emphasize the dangers of high-stress roads
+- animating cyclists following sample routes before and after, using A/B
+  Street's traffic simulator
+- simulating other vehicles nearby to enhance the visualization
 
-<!--
-- What is the potential for scaling up your project so that it achieves greater impact and visibility?
-- Is your project replicable or scaleable?  Where and how?
--->
+![](../../project/retrospective/traffic_sim.gif)
 
-And at ~any time, we could scale up to more cities. There's one-off work to fix
-the most egregious OSM issues. Getting travel demand is a common challenge, but
-it's less important for this tool, except for mode shift. Limiting factor is
-managing interest -- i'd prefer to spend most of my time building stuff.
+Roughly whenever want, we could scale up to more cities. There's always some
+specialized effort to fix the most egregious OpenStreetMap data quality issues.
+Getting travel demand data is a common challenge, but it's less important for
+this bike network tool. The limiting factor to expanding quickly really is time
+and managing communications with all of the people who will initially be
+interested -- it's important to balance this with time spent actually working on
+the software.
 
 ### Future directions
 
@@ -169,14 +183,16 @@ the bike network tool and rolling out to more cities.
   - Although it's now possible to share individual A/B Street proposals by URL,
     there's no way to browse, upvote, or give feedback on ideas
 - story-mapping
-  - Today we present A/B Street ideas like [the Seattle bike vision] in two
-    formats -- a blog post with pictures, and the software itself. Story maps
-    (example) could be a format to combine these.
+  - Today we present A/B Street ideas like
+    [the Seattle bike vision](../../proposals/seattle_bikes/README.md) in two
+    formats -- a blog post with pictures, and the software itself.
+    [Story maps](https://storymaps.arcgis.com/) could be a format to combine
+    these.
 - more detailed street and intersection design
   - A/B Street doesn't let you visualize or edit details like pocket parking,
     parklets, curb bulbs, or barriers in intersections. This is maybe something
-    we should leave to experts with CAD software, but in the spirit of
-    increasing public accessibility to this planning...
+    we should leave to experts with CAD software, but it could be worth modeling
+    this level of detail too.
   - Incorporating a satellite view layer would also be useful to understand
     changes in context
 - more detailed pedestrian simulation
@@ -192,9 +208,9 @@ the bike network tool and rolling out to more cities.
   - Many cities outlaw medium- and high-density housing in most of the city, and
     force residential and commercial sectors to remain physically distinct. This
     leads to longer trips, which most likely use cars. We've
-    [started](https://a-b-street.github.io/docs//software/fifteen_min.html)
-    exploring this relationship, but there's no way yet to modify the zoning
-    policy for some land parcels and explore possible effects.
+    [started](../fifteen_min.md) exploring this relationship, but there's no way
+    yet to modify the zoning policy for some land parcels and explore possible
+    effects.
 - 3D visualization
   - Another way to visually communicate changes is with 3D renderings. We could
     partner with [3D Street](https://www.3d.st) and export A/B Street designs to
@@ -255,8 +271,9 @@ programming.
 
 ### Budget
 
+<!--
 Difficult to figure out; median salaries for some of those roles in different
-places?
+places? -->
 
 ### Funding sources
 
@@ -281,4 +298,4 @@ like the [Rees Jeffreys road fund](https://www.rjrf.uk/).
 
 ### Gantt chart
 
-R&D / rapid prototyping on some of the large new ideas
+<!-- R&D / rapid prototyping on some of the large new ideas -->
