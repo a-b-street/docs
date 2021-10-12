@@ -281,15 +281,6 @@ started after launching.</p>
 listed Seattle stakeholders. In a few weeks, we'll meet with NYC's TransAlt
 group. If the initial response in Seattle is quiet, we will launch to San
 Francisco, after fixing some elevation data issues there.</p>
-<p>Aside from further bug fixes, performance improvements, and UX polish, there are
-many ideas for future features of the bike tool:</p>
-<ul>
-<li>showing historic collision data to emphasize the dangers of high-stress roads</li>
-<li>animating cyclists following sample routes before and after, using A/B
-Street's traffic simulator</li>
-<li>simulating other vehicles nearby to enhance the visualization</li>
-</ul>
-<p><img src="../../project/retrospective/traffic_sim.gif" alt="" /></p>
 <p>Roughly whenever we want, we could scale up to more cities. There's always some
 specialized effort to fix the most egregious OpenStreetMap data quality issues.
 Getting travel demand data is a common challenge, but it's less important for
@@ -297,6 +288,36 @@ this bike network tool. The limiting factor to expanding quickly really is time
 and managing communications with all of the people who will initially be
 interested -- it's important to balance this with time spent actually working on
 the software.</p>
+<h3 id="next-steps"><a class="header" href="#next-steps">Next steps</a></h3>
+<p>The immediate priorities are to polish the tool and finish things that didn't
+make the deadline:</p>
+<ul>
+<li>draw routes more clearly when unzoomed on large maps</li>
+<li><a href="https://github.com/a-b-street/abstreet/issues/746">get the entire Seattle region to easily load on the web</a></li>
+<li>map out the official Seattle bike master plan as a second example</li>
+<li>add functionality to compare different proposals against each other and the
+current conditions</li>
+<li>implement the
+<a href="https://github.com/a-b-street/abstreet/issues/448">decay curves for mode shift</a>
+to get predictions better calibrated by research</li>
+</ul>
+<p>To support rolling out to more cities:</p>
+<ul>
+<li>improve elevation data (switch from SRTM to
+<a href="https://earthdata.nasa.gov/esds/competitive-programs/measures/nasadem">NASADEM</a></li>
+<li>snapping separate cycleways to the main road</li>
+</ul>
+<p>There are also more features we could add:</p>
+<ul>
+<li>hover on commercial buildings to summarize what's inside</li>
+<li>showing historic collision data to emphasize the dangers of high-stress roads</li>
+<li>animating cyclists following sample routes before and after, using A/B
+Street's traffic simulator</li>
+<li>simulating other vehicles nearby to enhance the visualization</li>
+<li>improve routing by allowing bikes to enter/exit buildings from either side of
+the road</li>
+</ul>
+<p><img src="../../project/retrospective/traffic_sim.gif" alt="" /></p>
 <h3 id="future-directions"><a class="header" href="#future-directions">Future directions</a></h3>
 <p>The longer-term vision for A/B Street in general extends beyond just improving
 the bike network tool and rolling out to more cities.</p>
@@ -468,7 +489,8 @@ open source transportation software funded by different groups as a public good.
 <p>Other options are crowd-funding (like Github sponsors) and applying for grants
 like the <a href="https://www.rjrf.uk/">Rees Jeffreys road fund</a>.</p>
 <h3 id="gantt-chart"><a class="header" href="#gantt-chart">Gantt chart</a></h3>
-<!-- R&D / rapid prototyping on some of the large new ideas -->
+<!-- immediate stuff, then R&D / rapid prototyping on some of the large new ideas -->
+<!-- not going to plan past end of oct, bc time commitment unclear -->
 
                     </main>
 

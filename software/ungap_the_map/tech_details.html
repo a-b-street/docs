@@ -141,7 +141,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="technical-details"><a class="header" href="#technical-details">Technical details</a></h1>
-<p>This document summarizes how the bike network tool works. The tool is just one
+<p>This document summarizes how the Ungap the Map tool works. The tool is just one
 piece of the A/B Street platform, which has <a href="../../tech/README.html">much more</a>
 technical documentation.</p>
 <h2 id="system-overview"><a class="header" href="#system-overview">System overview</a></h2>
@@ -163,8 +163,8 @@ process to generate a map, pulling in and heavily processing data from
 OpenStreetMap, different travel demand sources, city-specific datasets about
 parking, and elevation. All of the datasets are public. This process works for
 any city with sufficient OpenStreetMap coverage, but it still takes lots of work
-to improve the imported map. Many cities have already been imported; most users
-will never need to perform this themselves.</p>
+to improve the imported map. Many cities have already been imported and stored
+in Amazon S3; most users will never need to perform this process themselves.</p>
 <p>The next layer is a 2D rendering and user interface library, written from
 scratch on top of OpenGL. These libraries have common code for interacting with
 the map in many ways, and managing things like downloading files for new cities.
@@ -196,7 +196,6 @@ anonymous; it's impossible to prove who uploaded a proposal, or to edit or
 delete it. The <a href="https://github.com/a-b-street/yimbyhoodlum">central server</a> is a
 simple Go API hosted in Google App Engine, storing files in Google Cloud
 Storage, and using MD5 checksums to identify and de-duplicate proposals.</p>
-<!-- add a creative commons license -->
 <h2 id="routing"><a class="header" href="#routing">Routing</a></h2>
 <p>Unsurprisingly, A/B Street uses
 <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstra's algorithm</a> to
@@ -267,7 +266,7 @@ ones would even consider switching to biking. If somebody drives somewhere in 10
 minutes now, it's unlikely they'll be willing to bike for an hour, especially if
 they have to climb steep hills. That's the intuition behind the
 <a href="https://www.jtlu.org/index.php/jtlu/article/view/862">Propensity to Cycle tool</a>,
-which calculated a distance and hilliness decay model to predict the percentage
+which calculates a distance and hilliness decay model to predict the percentage
 of trips that would consider biking. Currently the software defines a hard
 threshold for these two parameters -- the user can specify the maximum time
 someone is willing to bike, and the max elevation gain they'll endure. In the
@@ -298,8 +297,8 @@ a proposal will remove. Assuming
 available -- we can estimate the annual CO2 savings.</p>
 <h2 id="caveats-and-assumptions"><a class="header" href="#caveats-and-assumptions">Caveats and assumptions</a></h2>
 <p>This software aims to do something pretty complicated, based on imperfect public
-data, and without the help of many people. So naturally it has many problems,
-but hopefully the goal is still achieved. Regardless, let's be clear about some
+data, and was built by a tiny team. So naturally it has many problems, but
+hopefully the goal is still achieved. Regardless, let's be clear about some
 limitations.</p>
 <h3 id="map-data"><a class="header" href="#map-data">Map data</a></h3>
 <p>First, OpenStreetMap is produced by volunteers. The tagging schemas can be quite
@@ -310,14 +309,19 @@ aggressive heuristics.</p>
 junctions. That's because
 <a href="../../tech/map/geometry/README.html">generating intersection geometry</a> is
 incredibly hard.</p>
-<p>One particular problem is how protected bike lanes are mapped in many places
-(like Seattle). In OpenStreetMap, these are represented as separate, but
-parallel, objects from the main street. This usually appears in A/B Street as
-the cyclepath just overlapping the road in a completely broken way. &quot;Snapping&quot;
-the parallel objects together and treating as one road segment is the goal, but
+<p>One particular problem is how protected bike lanes are mapped. In OpenStreetMap,
+these are represented as separate, but parallel, objects from the main street.
+This usually appears in A/B Street as the cyclepath just overlapping the road in
+a completely broken way. &quot;Snapping&quot; the parallel objects together and treating
+as one road segment is the goal, but
 <a href="https://github.com/a-b-street/abstreet/issues/330">this is very hard</a> and
 ongoing work. The routing <strong>should</strong> still be able to use the separate
 cyclepaths, and so things like mode shift calculations should still be fine.</p>
+<h3 id="travel-demand-data"><a class="header" href="#travel-demand-data">Travel demand data</a></h3>
+<p>The impact prediction needs to know trips people take in order to guess which of
+those trips might mode shift from driving to biking. For Seattle, we use
+<a href="https://www.psrc.org/activity-based-travel-model-soundcast">Soundcast</a>, but
+notably the model is only available for 2014, which is quite out-of-date!</p>
 <h3 id="elevation-data"><a class="header" href="#elevation-data">Elevation data</a></h3>
 <p>A/B Street uses
 <a href="https://github.com/eldang/elevation_lookups">this Python library</a> to process

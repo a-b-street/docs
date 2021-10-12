@@ -909,15 +909,6 @@ started after launching.</p>
 listed Seattle stakeholders. In a few weeks, we'll meet with NYC's TransAlt
 group. If the initial response in Seattle is quiet, we will launch to San
 Francisco, after fixing some elevation data issues there.</p>
-<p>Aside from further bug fixes, performance improvements, and UX polish, there are
-many ideas for future features of the bike tool:</p>
-<ul>
-<li>showing historic collision data to emphasize the dangers of high-stress roads</li>
-<li>animating cyclists following sample routes before and after, using A/B
-Street's traffic simulator</li>
-<li>simulating other vehicles nearby to enhance the visualization</li>
-</ul>
-<p><img src="software/ungap_the_map/../../project/retrospective/traffic_sim.gif" alt="" /></p>
 <p>Roughly whenever we want, we could scale up to more cities. There's always some
 specialized effort to fix the most egregious OpenStreetMap data quality issues.
 Getting travel demand data is a common challenge, but it's less important for
@@ -925,6 +916,36 @@ this bike network tool. The limiting factor to expanding quickly really is time
 and managing communications with all of the people who will initially be
 interested -- it's important to balance this with time spent actually working on
 the software.</p>
+<h3 id="next-steps"><a class="header" href="#next-steps">Next steps</a></h3>
+<p>The immediate priorities are to polish the tool and finish things that didn't
+make the deadline:</p>
+<ul>
+<li>draw routes more clearly when unzoomed on large maps</li>
+<li><a href="https://github.com/a-b-street/abstreet/issues/746">get the entire Seattle region to easily load on the web</a></li>
+<li>map out the official Seattle bike master plan as a second example</li>
+<li>add functionality to compare different proposals against each other and the
+current conditions</li>
+<li>implement the
+<a href="https://github.com/a-b-street/abstreet/issues/448">decay curves for mode shift</a>
+to get predictions better calibrated by research</li>
+</ul>
+<p>To support rolling out to more cities:</p>
+<ul>
+<li>improve elevation data (switch from SRTM to
+<a href="https://earthdata.nasa.gov/esds/competitive-programs/measures/nasadem">NASADEM</a></li>
+<li>snapping separate cycleways to the main road</li>
+</ul>
+<p>There are also more features we could add:</p>
+<ul>
+<li>hover on commercial buildings to summarize what's inside</li>
+<li>showing historic collision data to emphasize the dangers of high-stress roads</li>
+<li>animating cyclists following sample routes before and after, using A/B
+Street's traffic simulator</li>
+<li>simulating other vehicles nearby to enhance the visualization</li>
+<li>improve routing by allowing bikes to enter/exit buildings from either side of
+the road</li>
+</ul>
+<p><img src="software/ungap_the_map/../../project/retrospective/traffic_sim.gif" alt="" /></p>
 <h3 id="future-directions"><a class="header" href="#future-directions">Future directions</a></h3>
 <p>The longer-term vision for A/B Street in general extends beyond just improving
 the bike network tool and rolling out to more cities.</p>
@@ -1096,9 +1117,10 @@ open source transportation software funded by different groups as a public good.
 <p>Other options are crowd-funding (like Github sponsors) and applying for grants
 like the <a href="https://www.rjrf.uk/">Rees Jeffreys road fund</a>.</p>
 <h3 id="gantt-chart"><a class="header" href="#gantt-chart">Gantt chart</a></h3>
-<!-- R&D / rapid prototyping on some of the large new ideas -->
+<!-- immediate stuff, then R&D / rapid prototyping on some of the large new ideas -->
+<!-- not going to plan past end of oct, bc time commitment unclear -->
 <div style="break-before: page; page-break-before: always;"></div><h1 id="technical-details"><a class="header" href="#technical-details">Technical details</a></h1>
-<p>This document summarizes how the bike network tool works. The tool is just one
+<p>This document summarizes how the Ungap the Map tool works. The tool is just one
 piece of the A/B Street platform, which has <a href="software/ungap_the_map/../../tech/README.html">much more</a>
 technical documentation.</p>
 <h2 id="system-overview"><a class="header" href="#system-overview">System overview</a></h2>
@@ -1120,8 +1142,8 @@ process to generate a map, pulling in and heavily processing data from
 OpenStreetMap, different travel demand sources, city-specific datasets about
 parking, and elevation. All of the datasets are public. This process works for
 any city with sufficient OpenStreetMap coverage, but it still takes lots of work
-to improve the imported map. Many cities have already been imported; most users
-will never need to perform this themselves.</p>
+to improve the imported map. Many cities have already been imported and stored
+in Amazon S3; most users will never need to perform this process themselves.</p>
 <p>The next layer is a 2D rendering and user interface library, written from
 scratch on top of OpenGL. These libraries have common code for interacting with
 the map in many ways, and managing things like downloading files for new cities.
@@ -1153,7 +1175,6 @@ anonymous; it's impossible to prove who uploaded a proposal, or to edit or
 delete it. The <a href="https://github.com/a-b-street/yimbyhoodlum">central server</a> is a
 simple Go API hosted in Google App Engine, storing files in Google Cloud
 Storage, and using MD5 checksums to identify and de-duplicate proposals.</p>
-<!-- add a creative commons license -->
 <h2 id="routing"><a class="header" href="#routing">Routing</a></h2>
 <p>Unsurprisingly, A/B Street uses
 <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstra's algorithm</a> to
@@ -1224,7 +1245,7 @@ ones would even consider switching to biking. If somebody drives somewhere in 10
 minutes now, it's unlikely they'll be willing to bike for an hour, especially if
 they have to climb steep hills. That's the intuition behind the
 <a href="https://www.jtlu.org/index.php/jtlu/article/view/862">Propensity to Cycle tool</a>,
-which calculated a distance and hilliness decay model to predict the percentage
+which calculates a distance and hilliness decay model to predict the percentage
 of trips that would consider biking. Currently the software defines a hard
 threshold for these two parameters -- the user can specify the maximum time
 someone is willing to bike, and the max elevation gain they'll endure. In the
@@ -1255,8 +1276,8 @@ a proposal will remove. Assuming
 available -- we can estimate the annual CO2 savings.</p>
 <h2 id="caveats-and-assumptions"><a class="header" href="#caveats-and-assumptions">Caveats and assumptions</a></h2>
 <p>This software aims to do something pretty complicated, based on imperfect public
-data, and without the help of many people. So naturally it has many problems,
-but hopefully the goal is still achieved. Regardless, let's be clear about some
+data, and was built by a tiny team. So naturally it has many problems, but
+hopefully the goal is still achieved. Regardless, let's be clear about some
 limitations.</p>
 <h3 id="map-data"><a class="header" href="#map-data">Map data</a></h3>
 <p>First, OpenStreetMap is produced by volunteers. The tagging schemas can be quite
@@ -1267,14 +1288,19 @@ aggressive heuristics.</p>
 junctions. That's because
 <a href="software/ungap_the_map/../../tech/map/geometry/README.html">generating intersection geometry</a> is
 incredibly hard.</p>
-<p>One particular problem is how protected bike lanes are mapped in many places
-(like Seattle). In OpenStreetMap, these are represented as separate, but
-parallel, objects from the main street. This usually appears in A/B Street as
-the cyclepath just overlapping the road in a completely broken way. &quot;Snapping&quot;
-the parallel objects together and treating as one road segment is the goal, but
+<p>One particular problem is how protected bike lanes are mapped. In OpenStreetMap,
+these are represented as separate, but parallel, objects from the main street.
+This usually appears in A/B Street as the cyclepath just overlapping the road in
+a completely broken way. &quot;Snapping&quot; the parallel objects together and treating
+as one road segment is the goal, but
 <a href="https://github.com/a-b-street/abstreet/issues/330">this is very hard</a> and
 ongoing work. The routing <strong>should</strong> still be able to use the separate
 cyclepaths, and so things like mode shift calculations should still be fine.</p>
+<h3 id="travel-demand-data"><a class="header" href="#travel-demand-data">Travel demand data</a></h3>
+<p>The impact prediction needs to know trips people take in order to guess which of
+those trips might mode shift from driving to biking. For Seattle, we use
+<a href="https://www.psrc.org/activity-based-travel-model-soundcast">Soundcast</a>, but
+notably the model is only available for 2014, which is quite out-of-date!</p>
 <h3 id="elevation-data"><a class="header" href="#elevation-data">Elevation data</a></h3>
 <p>A/B Street uses
 <a href="https://github.com/eldang/elevation_lookups">this Python library</a> to process
@@ -1748,7 +1774,7 @@ mis-tagged. Usually the problem is how A/B Street tries to interpret what's in
 OSM. Ideally we could also follow this process using the ID editor, but it can't
 currently
 <a href="https://github.com/openstreetmap/iD/issues/7109">manage changeset files fully</a>.</p>
-<h2 id="next-steps"><a class="header" href="#next-steps">Next steps</a></h2>
+<h2 id="next-steps-1"><a class="header" href="#next-steps-1">Next steps</a></h2>
 <p>OpenStreetMap isn't the only data source we need. If you look at the import
 pipeline for Seattle, you'll see many more sources for parking, GTFS bus
 schedules, person/trip demand data for scenarios, etc. Most of these aren't
@@ -2781,7 +2807,7 @@ residential streets connecting to Madison one-way, discouraging through-traffic.
 In reality, the speed limit changes could be implemented through
 <a href="https://streetsillustrated.seattle.gov/design-standards/trafficcalming/">traffic calming</a>
 or cheap, temporary alternatives.</p>
-<h2 id="next-steps-1"><a class="header" href="#next-steps-1">Next steps</a></h2>
+<h2 id="next-steps-2"><a class="header" href="#next-steps-2">Next steps</a></h2>
 <p>I'm working to model &quot;local access only&quot; roads in A/B Street, and I'll describe
 how to measure the impact on travel times. Stay tuned to see more of the
 <a href="https://drive.google.com/open?id=1HQMnagRf8EbS1nouqCMLl4LZr0QE8VrC&amp;usp=sharing">proposed network</a>
