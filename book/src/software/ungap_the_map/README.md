@@ -12,7 +12,7 @@ would impact your commute, and share the results with others.
   `ungap_the_map.bat`.
 - See an [example vision for Seattle](../../proposals/seattle_bikes/index.md)
 
-<!-- quick gif demos -->
+![](demo.gif)
 
 ## Credits
 

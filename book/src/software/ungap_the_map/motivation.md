@@ -19,7 +19,7 @@ The [theory of change](https://en.wikipedia.org/wiki/Theory_of_change) summary:
 ## Driving is a problem
 
 According to the EPA,
-[29% of greenhouse cases in the USA come from transportation in 2019](https://www.epa.gov/transportation-air-pollution-and-climate-change/carbon-pollution-transportation).
+[29% of greenhouse gases in the USA come from transportation in 2019](https://www.epa.gov/transportation-air-pollution-and-climate-change/carbon-pollution-transportation).
 Driving causes many other externalities -- noise pollution, an incredible amount
 of space is used for parking, collisions kill many people, and incentivizing
 driving reinforces suburban sprawl and unsustainable land use patterns. Even
