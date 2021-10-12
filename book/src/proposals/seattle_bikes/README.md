@@ -18,7 +18,7 @@ and with greater participation from more people.
 The vision here will just be limited to adding bike lanes, protected by planter
 boxes or just paint, to existing road-space, usually by sacrificing street
 parking or an extra driving lane. There are plenty of other changes I want to
-see involving ligh rail, bus frequencies, Stay Healthy Streets, and zoning
+see involving light rail, bus frequencies, Stay Healthy Streets, and zoning
 changes... but that's not the focus here.
 
 ## Disclaimer
@@ -82,13 +82,13 @@ for Fuhrman with RapidRide J?
 presents this vision way more eloquently than I could. Another organization has
 called for better facilities on
 [the I5 bridge](https://www.glwstreets.org/45th-st-bridge-overview), but I'd
-personally like to make the connecton all the way from the udistrict to
+personally like to make the connection all the way from the U-district to
 Wallingfjord, patronizing all the shops along the way without hustling to keep
 up with traffic.
 
 I thought about 50th as an alternative, but it's farther from the action in the
-udistrict (including the brand new Link station!) and would skip the Wallingford
-business district.
+U-district (including the brand new Link station!) and would skip the
+Wallingford business district.
 
 ### Aurora Ave
 
@@ -139,7 +139,7 @@ For more ideas about the current gaps in South Seattle, see
 ### Eastlake Ave
 
 Eastlake would be the de facto route between the university district and
-downtown, if it weren't for the intermitent mess of parked cars currently.
+downtown, if it weren't for the intermittent mess of parked cars currently.
 Shoulder space to avoid traffic appears and disappears, and some of the parking
 is even supposed to be banned during rush hour. I believe as part of the
 RapidRide J plan, Eastlake is supposed to get some dedicated lanes! Until then,

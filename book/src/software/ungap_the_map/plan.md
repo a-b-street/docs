@@ -52,7 +52,7 @@ The launch plan for the bike network tool in Seattle includes all of these
 groups:
 
 - Individuals
-  - The [r/seattlebike subreddit](old.reddit.com/r/seattlebike)
+  - The [r/seattlebike subreddit](https://old.reddit.com/r/seattlebike)
   - publishing an article to
     [Seattle Bike Blog](https://www.seattlebikeblog.com)
   - The hope is for individual readers of these online communities to try out
@@ -64,7 +64,7 @@ groups:
   - [Seattle Neighborhood Greenways](https://seattlegreenways.org/), with whom
     I've been involved for a while. They're starting an "ungap the map"
     campaign, which was one of the original inspirations for this tool's focus.
-    - The A/B Street team is lready involved with one local chapter,
+    - The A/B Street team is already involved with one local chapter,
       [the Aurora Reimagined Coalition](https://www.got99problems.org). We
       attended a live design workshop in late August and got feedback on the
       initial prototype of the tool.
@@ -131,7 +131,7 @@ The A/B Street team has some connections to local advocates here.
 ## Results so far
 
 Stay tuned for the reaction to the tool's launch and the example
-[Seattle proposal](../../proposals/seattle_bikes/README.md). Ultimately the
+[Seattle proposal](../../proposals/seattle_bikes/index.md). Ultimately the
 measurable result is the number of real bike lane projects that reach
 construction and used A/B Street in some part of the planning or engagement
 process. In the short term, metrics we'll track are the number of proposals
@@ -207,7 +207,7 @@ the bike network tool and rolling out to more cities.
     there's no way to browse, upvote, or give feedback on ideas
 - story-mapping
   - Today we present A/B Street ideas like
-    [the Seattle bike vision](../../proposals/seattle_bikes/README.md) in two
+    [the Seattle bike vision](../../proposals/seattle_bikes/index.md) in two
     formats -- a blog post with pictures, and the software itself.
     [Story maps](https://storymaps.arcgis.com/) could be a format to combine
     these.

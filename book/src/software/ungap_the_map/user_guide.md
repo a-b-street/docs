@@ -145,7 +145,7 @@ you can compare to the direct route.
 Besides showing you the distance and estimated time of a route, the tool also
 tells you how comfortable the trip might be. You can see which segments of the
 route travel on high-stress roads, which are defined as major roads without any
-dedicted bike lanes. You can also explore the elevation profile of your route,
+dedicated bike lanes. You can also explore the elevation profile of your route,
 see the number of traffic signals you'll encounter, and check any potentially
 difficult turns.
 

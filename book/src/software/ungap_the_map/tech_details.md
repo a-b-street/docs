@@ -1,7 +1,7 @@
 # Technical details
 
 This document summarizes how the Ungap the Map tool works. The tool is just one
-piece of the A/B Street platform, which has [much more](../../tech/README.md)
+piece of the A/B Street platform, which has [much more](../../tech/index.md)
 technical documentation.
 
 ## System overview
@@ -119,7 +119,7 @@ is: how many people will use it? This is an incredibly open-ended research
 question. For example, there might be some people today who live in an area
 where driving is the only reasonable mode of transport, but they don't have
 access to a vehicle or have an impairment preventing them from driving. They
-might choose (or be forced to) work remotely in this situaton, and wait to
+might choose (or be forced to) work remotely in this situation, and wait to
 car-pool for groceries. If cycling became a cheap and safe possibility, they
 might start taking entirely new trips -- this would be a positive instance of
 [induced demand](https://en.wikipedia.org/wiki/Induced_demand). Over time, if a
@@ -200,7 +200,7 @@ aggressive heuristics.
 
 You'll notice many parts of the map look visually broken, especially near major
 junctions. That's because
-[generating intersection geometry](../../tech/map/geometry/README.md) is
+[generating intersection geometry](../../tech/map/geometry/index.md) is
 incredibly hard.
 
 One particular problem is how protected bike lanes are mapped. In OpenStreetMap,

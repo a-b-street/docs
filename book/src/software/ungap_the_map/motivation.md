@@ -142,7 +142,7 @@ This is a really unfortunate miscommunication. Proper cycling infrastructure and
 land use patterns make it very comfortable for all ages, abilities, and
 demographics to thrive in a city. If cycling is just for young and athletic
 people, why do people in the
-[Nethlands between 18 and 75 years all have similar distances cycled per day](https://www.statista.com/statistics/620201/average-biking-distance-per-person-per-day-netherlands-by-age/)?
+[Netherlands between 18 and 75 years all have similar distances cycled per day](https://www.statista.com/statistics/620201/average-biking-distance-per-person-per-day-netherlands-by-age/)?
 Driving a car is quite expensive, with insurance and maintenance, and children
 or people with vision impairment are totally excluded. Cycling can be more
 inclusive.
