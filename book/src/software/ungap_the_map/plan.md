@@ -1,7 +1,5 @@
 # Project plan
 
-<!-- theory of change diagram -->
-
 ## Stakeholders
 
 There are three groups usually involved with city-scale transportation planning.
@@ -326,7 +324,19 @@ open source transportation software funded by different groups as a public good.
 Other options are crowd-funding (like Github sponsors) and applying for grants
 like the [Rees Jeffreys road fund](https://www.rjrf.uk/).
 
-### Gantt chart
+### Schedule
 
-<!-- immediate stuff, then R&D / rapid prototyping on some of the large new ideas -->
-<!-- not going to plan past end of oct, bc time commitment unclear -->
+My time commitment is unknown starting November, so I'm only describing the next
+few weeks.
+
+- October 11-15
+  - most of the [next steps](#next-steps) items: unzoomed drawing, large maps on
+    the web, comparing proposals
+  - gradually launch Ungap the Map to a Seattle audience
+- October 18-22
+  - mode shift decay curves, NASADEM elevation to support San Francisco and NYC
+    rollout
+  - continue rapid prototyping of the new low-traffic neighborhood tool
+- October 25-29
+  - simulate nearby vehicles (also needed for the LTN tool)
+  - respond to feedback from whichever stakeholders respond

@@ -4,7 +4,17 @@ This document will argue why this bike network software can help achieve the
 UN's [Sustainable Development Goal 11](https://sdgs.un.org/goals/goal11) of
 improving cities.
 
-<!-- theory of change diagram as a summary -->
+The [theory of change](https://en.wikipedia.org/wiki/Theory_of_change) summary:
+
+- **Problem**: Car dependency harms the environment. Biking is one low-cost
+  alternative. Cities need to build infrastructure to make it safe. Poor
+  communication between stakeholders slows down these changes.
+- **Activities**: This new "Ungap the Map" software will help stakeholders
+  communicate more effectively.
+- **Outputs**: Better plans for bike networks and increased civic engagement.
+- **Outcomes**: Bike networks get built more quickly.
+- **Impacts**: More people decide to bike, decreasing the environment impact of
+  transportation.
 
 ## Driving is a problem
 
