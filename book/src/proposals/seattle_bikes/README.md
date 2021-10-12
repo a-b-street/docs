@@ -41,7 +41,7 @@ network master plan -->
 
 ## The network
 
-<!-- link to tool with huge_seattle? split into pieces? -->
+<!-- link to each area? -->
 
 If you have trouble using the tool, check the
 [user guide](../../software/ungap_the_map/user_guide.md) or send feedback.
@@ -253,7 +253,14 @@ of all of these changes to the region's current travel patterns. There's lots of
 assumptions and limitations with the calculation that you should read and mutter
 quietly to yourself about, but nonetheless, what's the verdict?
 
-<!-- in summary, VMT and carbon... number of trips converted -->
+![](impact_prediction.png)
+
+These 30 miles of new lanes could sway about 100,000 daily driving trips (about
+7% of trips that stay within this part of Seattle and don't just pass through)
+to bike instead. That's assuming people will only tolerate up to a 30 minute
+ride with no more than 200 feet of elevation gain. If these driving trips all
+choose a more sustainable mode every weekday for a year, that's roughly 23,000
+tons of CO2 emissions saved. It's a start.
 
 Thanks for reading this far. Please share your feedback about these ideas and
 the new tool, and more importantly, your own vision for what biking in Seattle

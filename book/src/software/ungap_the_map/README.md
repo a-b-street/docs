@@ -10,7 +10,7 @@ would impact your commute, and share the results with others.
   install the [latest release](https://github.com/a-b-street/abstreet/releases)
   for Windows, Mac, or Linux. After unzipping, run `ungap_the_map.sh` or
   `ungap_the_map.bat`.
-- See an [example vision for Seattle](../../seattle_bikes/README.md)
+- See an [example vision for Seattle](../../proposals/seattle_bikes/README.md)
 
 <!-- quick gif demos -->
 

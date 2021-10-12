@@ -170,7 +170,7 @@ make the deadline:
 To support rolling out to more cities:
 
 - improve elevation data (switch from SRTM to
-  [NASADEM](https://earthdata.nasa.gov/esds/competitive-programs/measures/nasadem)
+  [NASADEM](https://earthdata.nasa.gov/esds/competitive-programs/measures/nasadem))
 - snapping separate cycleways to the main road
 
 There are also more features we could add:

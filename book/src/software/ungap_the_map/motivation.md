@@ -345,9 +345,9 @@ city agencies to internally collaborate. It's expensive, unavailable to the
 public, and cities are only just starting to use it for public communication.
 
 [PTV Vissim](https://www.ptvgroup.com/en/solutions/products/ptv-vissim/) is an
-industry-standard traffic simulator, with highly accurate modeling results. But
-it's extremely expensive and very difficult to use, especially when initially
-setting up in a new city.
+industry-standard traffic simulator. Many of its customers use it to calibrate
+traffic models and plan changes. But it's extremely expensive and very difficult
+to use, especially when initially setting up in a new city.
 
 [MATSim](https://www.matsim.org) and [SUMO](https://www.eclipse.org/sumo) are
 open source traffic simulators that can run anywhere in the world. However,
