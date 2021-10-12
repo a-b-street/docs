@@ -1,6 +1,6 @@
 # Technical details
 
-This document summarizes how the bike network tool works. The tool is just one
+This document summarizes how the Ungap the Map tool works. The tool is just one
 piece of the A/B Street platform, which has [much more](../../tech/README.md)
 technical documentation.
 
@@ -26,8 +26,8 @@ process to generate a map, pulling in and heavily processing data from
 OpenStreetMap, different travel demand sources, city-specific datasets about
 parking, and elevation. All of the datasets are public. This process works for
 any city with sufficient OpenStreetMap coverage, but it still takes lots of work
-to improve the imported map. Many cities have already been imported; most users
-will never need to perform this themselves.
+to improve the imported map. Many cities have already been imported and stored
+in Amazon S3; most users will never need to perform this process themselves.
 
 The next layer is a 2D rendering and user interface library, written from
 scratch on top of OpenGL. These libraries have common code for interacting with
@@ -65,8 +65,6 @@ anonymous; it's impossible to prove who uploaded a proposal, or to edit or
 delete it. The [central server](https://github.com/a-b-street/yimbyhoodlum) is a
 simple Go API hosted in Google App Engine, storing files in Google Cloud
 Storage, and using MD5 checksums to identify and de-duplicate proposals.
-
-<!-- add a creative commons license -->
 
 ## Routing
 
@@ -150,7 +148,7 @@ ones would even consider switching to biking. If somebody drives somewhere in 10
 minutes now, it's unlikely they'll be willing to bike for an hour, especially if
 they have to climb steep hills. That's the intuition behind the
 [Propensity to Cycle tool](https://www.jtlu.org/index.php/jtlu/article/view/862),
-which calculated a distance and hilliness decay model to predict the percentage
+which calculates a distance and hilliness decay model to predict the percentage
 of trips that would consider biking. Currently the software defines a hard
 threshold for these two parameters -- the user can specify the maximum time
 someone is willing to bike, and the max elevation gain they'll endure. In the
@@ -189,8 +187,8 @@ available -- we can estimate the annual CO2 savings.
 ## Caveats and assumptions
 
 This software aims to do something pretty complicated, based on imperfect public
-data, and without the help of many people. So naturally it has many problems,
-but hopefully the goal is still achieved. Regardless, let's be clear about some
+data, and was built by a tiny team. So naturally it has many problems, but
+hopefully the goal is still achieved. Regardless, let's be clear about some
 limitations.
 
 ### Map data
@@ -205,14 +203,21 @@ junctions. That's because
 [generating intersection geometry](../../tech/map/geometry/README.md) is
 incredibly hard.
 
-One particular problem is how protected bike lanes are mapped in many places
-(like Seattle). In OpenStreetMap, these are represented as separate, but
-parallel, objects from the main street. This usually appears in A/B Street as
-the cyclepath just overlapping the road in a completely broken way. "Snapping"
-the parallel objects together and treating as one road segment is the goal, but
+One particular problem is how protected bike lanes are mapped. In OpenStreetMap,
+these are represented as separate, but parallel, objects from the main street.
+This usually appears in A/B Street as the cyclepath just overlapping the road in
+a completely broken way. "Snapping" the parallel objects together and treating
+as one road segment is the goal, but
 [this is very hard](https://github.com/a-b-street/abstreet/issues/330) and
 ongoing work. The routing **should** still be able to use the separate
 cyclepaths, and so things like mode shift calculations should still be fine.
+
+### Travel demand data
+
+The impact prediction needs to know trips people take in order to guess which of
+those trips might mode shift from driving to biking. For Seattle, we use
+[Soundcast](https://www.psrc.org/activity-based-travel-model-soundcast), but
+notably the model is only available for 2014, which is quite out-of-date!
 
 ### Elevation data
 

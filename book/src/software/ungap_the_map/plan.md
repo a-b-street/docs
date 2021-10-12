@@ -147,16 +147,6 @@ listed Seattle stakeholders. In a few weeks, we'll meet with NYC's TransAlt
 group. If the initial response in Seattle is quiet, we will launch to San
 Francisco, after fixing some elevation data issues there.
 
-Aside from further bug fixes, performance improvements, and UX polish, there are
-many ideas for future features of the bike tool:
-
-- showing historic collision data to emphasize the dangers of high-stress roads
-- animating cyclists following sample routes before and after, using A/B
-  Street's traffic simulator
-- simulating other vehicles nearby to enhance the visualization
-
-![](../../project/retrospective/traffic_sim.gif)
-
 Roughly whenever we want, we could scale up to more cities. There's always some
 specialized effort to fix the most egregious OpenStreetMap data quality issues.
 Getting travel demand data is a common challenge, but it's less important for
@@ -164,6 +154,38 @@ this bike network tool. The limiting factor to expanding quickly really is time
 and managing communications with all of the people who will initially be
 interested -- it's important to balance this with time spent actually working on
 the software.
+
+### Next steps
+
+The immediate priorities are to polish the tool and finish things that didn't
+make the deadline:
+
+- draw routes more clearly when unzoomed on large maps
+- [get the entire Seattle region to easily load on the web](https://github.com/a-b-street/abstreet/issues/746)
+- map out the official Seattle bike master plan as a second example
+- add functionality to compare different proposals against each other and the
+  current conditions
+- implement the
+  [decay curves for mode shift](https://github.com/a-b-street/abstreet/issues/448)
+  to get predictions better calibrated by research
+
+To support rolling out to more cities:
+
+- improve elevation data (switch from SRTM to
+  [NASADEM](https://earthdata.nasa.gov/esds/competitive-programs/measures/nasadem)
+- snapping separate cycleways to the main road
+
+There are also more features we could add:
+
+- hover on commercial buildings to summarize what's inside
+- showing historic collision data to emphasize the dangers of high-stress roads
+- animating cyclists following sample routes before and after, using A/B
+  Street's traffic simulator
+- simulating other vehicles nearby to enhance the visualization
+- improve routing by allowing bikes to enter/exit buildings from either side of
+  the road
+
+![](../../project/retrospective/traffic_sim.gif)
 
 ### Future directions
 
@@ -306,4 +328,5 @@ like the [Rees Jeffreys road fund](https://www.rjrf.uk/).
 
 ### Gantt chart
 
-<!-- R&D / rapid prototyping on some of the large new ideas -->
+<!-- immediate stuff, then R&D / rapid prototyping on some of the large new ideas -->
+<!-- not going to plan past end of oct, bc time commitment unclear -->
