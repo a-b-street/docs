@@ -166,6 +166,8 @@ make the deadline:
 - implement the
   [decay curves for mode shift](https://github.com/a-b-street/abstreet/issues/448)
   to get predictions better calibrated by research
+- consolidate the user flow into just 3 stages: explore, your trips, and
+  proposals
 
 To support rolling out to more cities:
 

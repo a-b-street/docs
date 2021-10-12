@@ -41,8 +41,10 @@ network master plan -->
 
 ## The network
 
-<!-- link to each area? -->
-
+Follow along in your web browser. Most of the changes are around
+[Central Seattle](http://play.abstreet.org/0.2.61/abstreet.html?--ungap&system/us/seattle/maps/central_seattle.bin&--edits=dustin_bikelino)
+and [South
+Seattle]((http://play.abstreet.org/0.2.61/abstreet.html?--ungap&system/us/seattle/maps/south_seattle.bin&--edits=dustin_bikelino).
 If you have trouble using the tool, check the
 [user guide](../../software/ungap_the_map/user_guide.md) or send feedback.
 
@@ -74,6 +76,8 @@ for Fuhrman with RapidRide J?
 
 ### NE 45th St
 
+![](45th.png)
+
 [Joe Mangan](https://www.theurbanist.org/2021/01/27/reclaiming-ne-45th-street-from-cars/)
 presents this vision way more eloquently than I could. Another organization has
 called for better facilities on
@@ -88,42 +92,49 @@ business district.
 
 ### Aurora Ave
 
+![](aurora_alternative.png)
+
 This is a trivial argument by checking elevation. If you're going north from
 Fremont, climbing Fremont Ave, then Phinney and Greenwood Ave at least has some
 paint. But just look at how gentle the elevation using Aurora would be! Looking
 the other direction, it could be a straight shot -- a bicycle superhighway --
 from all of north Seattle right to downtown.
 
-I would sometimes brave the bus lane when I lived in Lichton Springs. If you've
-got your wits about you and don't mind cars flying by at 50mph, it's, uh, fine.
-The right-of-way is massive -- there's absolutely room at
+I would sometimes brave biking the bus lane when I lived in Lichton Springs. If
+you've got your wits about you and don't mind cars flying by at 50mph, it's, uh,
+fine, until somebody wants to use the bus lane to accelerate or turn right
+quickly. The right-of-way is utterly massive; there's many ways to squeeze in a
+cycletrack of some sort.
 
-stretches of it when i lived in lichton. it's fine in the bus lane, but it's a
-little unnerving with cars flying by at 50-60. i'm on high alert for somebody
-using it as an acceleration lane or to turn right quickly, which... happens. so,
-planters here.
-
-[Aurora Reimagined Coalition](https://www.got99problems.org)
-
-https://www.glwstreets.org/complete-the-loop
+See [Aurora Reimagined Coalition](https://www.got99problems.org) and
+[Complete the Loop](https://www.glwstreets.org/complete-the-loop) for some
+ongoing advocacy efforts in the area.
 
 ### Rainier Ave
 
-The most direct connection between the international district and Colombia City
+The most direct connection between the International District and Colombia City
 is straight down Rainier, a nearly flat route:
 
-<!-- profile -->
+![](rainier_direct.png)
 
-But Rainier has one of the highest fatality rates (link)... In most places, it's
-a 5-lane highway, meaning there's plenty of room to add some protected lanes,
-giving more people easy access to the many businesses along the corridor:
+The quiet route takes longer, is steeper, and doesn't bring you past any
+businesses:
 
-<!-- img -->
+![](rainier_detour.png)
+
+I've biked on Rainier before,
+[fully aware it's called Seattle's most dangerous road for a reason](https://www.seattlebikeblog.com/2020/09/10/seattle-knew-5-years-ago-that-a-rainier-ave-safety-project-would-save-lives-but-is-just-now-starting-work/).
+In most places, it's a massive 5 lanes, meaning there's plenty of room to add
+some protected lanes, giving more people easy access to the many businesses
+along the corridor:
+
+![](rainier_detail.png)
 
 I've ended the changes at Orcas, since I'm not familiar with what's south of
 that and might be a useful connection.
 
-https://twitter.com/Zee_Shaner/status/1433630099924946962 lists this...
+For more ideas about the current gaps in South Seattle, see
+[this list](https://twitter.com/Zee_Shaner/status/1433630099924946962).
 
 ### Eastlake Ave
 
@@ -134,13 +145,14 @@ is even supposed to be banned during rush hour. I believe as part of the
 RapidRide J plan, Eastlake is supposed to get some dedicated lanes! Until then,
 we can imagine how awesome it'll be:
 
-<!-- img -->
+![](eastlake.png)
 
-The alternative today is following the Chesiudad (sp) loop through
+Of course, RapidRide J will bring bus lanes,
+[here's a more accurate future](https://twitter.com/SD70MACMAN/status/1446148993042423813/photo/1).
+
+The alternative today is following the Cheshiahud Loop loop through
 neighborhoods. It's nice and scenic, but weaves through steep alleyways -- not a
 commuter route.
-
-- https://twitter.com/SD70MACMAN/status/1446148993042423813/photo/1
 
 ### Lakeview
 
@@ -149,9 +161,10 @@ district area is along Lakeview. This makes use of a nice bike-only connection
 near Melrose, and pops you out right into the heart of a commercial area. The
 gap is near the I5 colonnade. Currently this is one lane each direction, with
 parking usually on both sides. There's an I5 exit in the middle. So in practice,
-this nonsense happens:
+[this nonsense](https://twitter.com/CarlinoDustin/status/1416988865844240386)
+happens:
 
-- twitter footage
+![](lakeview_fail.png)
 
 Just nuke the parking and add bike lanes. I'm not sure what to do with the
 Boylston Ave portion. There's a physical median there today, making the lane
@@ -160,24 +173,24 @@ past at high speed. There is parking on the west side of that street, so
 potentially that could be sacrificed and the median shifted over, to dedicate
 shoulder space for biking on both sides.
 
+![](lakeview_fixed.png)
+
 ### Harvard from Shelby to Roanoke
 
 If you're crossing the university bridge and want to go to Capitol Hill, you're
 probably taking Harvard to Roanoke to Broadway:
 
-route
+![](harvard.png)
 
 There's a climbing lane up Harvard, but it just gives up at Shelby. There are
 two full lanes at this point and is usually OK, but I've had a few stressful
 experiences with aggressive vehicles. There's just one driving lane uphill
 before Shelby, so why not just keep it that way, or make it a bus/bike lane for
-the (i forget the number)?
+Route 49?
 
-- it just disappears! supposed to cut across and go through the neighborhood,
-  theres even a diagonal diverter at broadway/edgar to prevent rat-runs. but...
-  eh
-- be generous northbound/downhill, leave the 2 lanes for passing people tryng to
-  get on i5?
+The quieter route is to cut into the neighborhood and make use of the diagonal
+diverter at Broadway and Edgar. You'll have to press the beg button at the south
+end of Roanoke Park to continue up the hill.
 
 ### Broadway between Highland and Denny
 
@@ -210,6 +223,8 @@ there's a pretty generous shoulder. But even though I was gunning it and keeping
 pace with the stop-and-go traffic, there were still some vehicles that insisted
 on flying across the 15-foot lane and almost swerving into me. So, I'd like to
 add a protected lane here:
+
+![](airport.png)
 
 Note the edits show a driving lane taken away, but that's just because we don't
 have accurate road width data. There's enough room to keep all the lanes, and

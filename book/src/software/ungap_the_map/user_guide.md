@@ -37,7 +37,7 @@ that yet.) If you want any help importing your region,
 
 ## Exploring the map
 
-<!-- gif of poking through the layers, clicking a lane... -->
+![](exploring_both_zooms.gif)
 
 ### Types of bike infrastructure
 
@@ -118,7 +118,7 @@ quickly sketching over a large area, use the "create new bike lanes" mode.
 Use this mode to plan a cycling trip. Just click the map to add waypoints, or
 drag the waypoints to adjust.
 
-<!-- gif of doing everything here -->
+![](waypoints.gif)
 
 ### Saving trips
 
@@ -140,6 +140,8 @@ you can compare to the direct route.
 
 ### Details
 
+![](route_details.gif)
+
 Besides showing you the distance and estimated time of a route, the tool also
 tells you how comfortable the trip might be. You can see which segments of the
 route travel on high-stress roads, which are defined as major roads without any
@@ -149,7 +151,7 @@ difficult turns.
 
 ## Creating new bike lanes
 
-<!-- gif demo -->
+![](creating_lanes.gif)
 
 Once you know where you'd like to add new bike infrastructure, use this tool to
 quickly sketch it up. Click the start and end of the path you want to modify,
