@@ -484,7 +484,18 @@ is what might be saved.</p>
 <p>This document will argue why this bike network software can help achieve the
 UN's <a href="https://sdgs.un.org/goals/goal11">Sustainable Development Goal 11</a> of
 improving cities.</p>
-<!-- theory of change diagram as a summary -->
+<p>The <a href="https://en.wikipedia.org/wiki/Theory_of_change">theory of change</a> summary:</p>
+<ul>
+<li><strong>Problem</strong>: Car dependency harms the environment. Biking is one low-cost
+alternative. Cities need to build infrastructure to make it safe. Poor
+communication between stakeholders slows down these changes.</li>
+<li><strong>Activities</strong>: This new &quot;Ungap the Map&quot; software will help stakeholders
+communicate more effectively.</li>
+<li><strong>Outputs</strong>: Better plans for bike networks and increased civic engagement.</li>
+<li><strong>Outcomes</strong>: Bike networks get built more quickly.</li>
+<li><strong>Impacts</strong>: More people decide to bike, decreasing the environment impact of
+transportation.</li>
+</ul>
 <h2 id="driving-is-a-problem"><a class="header" href="#driving-is-a-problem">Driving is a problem</a></h2>
 <p>According to the EPA,
 <a href="https://www.epa.gov/transportation-air-pollution-and-climate-change/carbon-pollution-transportation">29% of greenhouse cases in the USA come from transportation in 2019</a>.
@@ -769,7 +780,6 @@ they're hard to setup and use, not focused on visualization, and can't easily
 prototyping changes to roads. They also don't run in web browsers, a further
 barrier towards people that aren't tech-savvy trying them.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="project-plan"><a class="header" href="#project-plan">Project plan</a></h1>
-<!-- theory of change diagram -->
 <h2 id="stakeholders"><a class="header" href="#stakeholders">Stakeholders</a></h2>
 <p>There are three groups usually involved with city-scale transportation planning.
 First are government agencies -- city departments of transportation (DOT),
@@ -1116,9 +1126,31 @@ source. So effectively they would just define priorities for the project.
 open source transportation software funded by different groups as a public good.</p>
 <p>Other options are crowd-funding (like Github sponsors) and applying for grants
 like the <a href="https://www.rjrf.uk/">Rees Jeffreys road fund</a>.</p>
-<h3 id="gantt-chart"><a class="header" href="#gantt-chart">Gantt chart</a></h3>
-<!-- immediate stuff, then R&D / rapid prototyping on some of the large new ideas -->
-<!-- not going to plan past end of oct, bc time commitment unclear -->
+<h3 id="schedule"><a class="header" href="#schedule">Schedule</a></h3>
+<p>My time commitment is unknown starting November, so I'm only describing the next
+few weeks.</p>
+<ul>
+<li>October 11-15
+<ul>
+<li>most of the <a href="software/ungap_the_map/plan.html#next-steps">next steps</a> items: unzoomed drawing, large maps on
+the web, comparing proposals</li>
+<li>gradually launch Ungap the Map to a Seattle audience</li>
+</ul>
+</li>
+<li>October 18-22
+<ul>
+<li>mode shift decay curves, NASADEM elevation to support San Francisco and NYC
+rollout</li>
+<li>continue rapid prototyping of the new low-traffic neighborhood tool</li>
+</ul>
+</li>
+<li>October 25-29
+<ul>
+<li>simulate nearby vehicles (also needed for the LTN tool)</li>
+<li>respond to feedback from whichever stakeholders respond</li>
+</ul>
+</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="technical-details"><a class="header" href="#technical-details">Technical details</a></h1>
 <p>This document summarizes how the Ungap the Map tool works. The tool is just one
 piece of the A/B Street platform, which has <a href="software/ungap_the_map/../../tech/README.html">much more</a>
