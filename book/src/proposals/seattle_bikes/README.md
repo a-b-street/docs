@@ -4,7 +4,7 @@ I've been commuting almost exclusively by bike here since 2014. I've had too
 many close calls and plenty of frustrating moments when it feels like the design
 is trying to discourage this mode of transport as much as possible. I want to
 see a network tht encourages as many people as possible to choose biking over
-driving, for [these reasons](../../software/bike_network/motivation.md).
+driving, for [these reasons](../../software/ungap_the_map/motivation.md).
 
 So many times, I wish I had a magic wand that could just fix things. I don't,
 and it takes years of concentrated effort to campaign and push for redesigned
@@ -44,7 +44,7 @@ network master plan -->
 <!-- link to tool with huge_seattle? split into pieces? -->
 
 If you have trouble using the tool, check the
-[user guide](../../software/bike_network/user_guide.md) or send feedback.
+[user guide](../../software/ungap_the_map/user_guide.md) or send feedback.
 
 ### Boyer / Fuhrman
 
@@ -248,7 +248,7 @@ probably deserves some protected lanes.
 ## Estimating how much these might help
 
 The software includes a tool to
-[predict the impact](../../software/bike_network/user_guide.md#predict-impact)
+[predict the impact](../../software/ungap_the_map/user_guide.md#predict-impact)
 of all of these changes to the region's current travel patterns. There's lots of
 assumptions and limitations with the calculation that you should read and mutter
 quietly to yourself about, but nonetheless, what's the verdict?

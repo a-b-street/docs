@@ -1,17 +1,15 @@
 # User guide
 
-<!-- flip order of routing and modifying in the tool itself -->
-
 You can use the different parts of this tool in any order you like, but the
 recommended flow is:
 
 1.  Start by exploring the existing bike network in your city. Try zooming in to
     see detail about how street space is currently used!
-2.  Go plan a route to see what trade-offs between safety and speed you might
-    experience biking today. You can save these routes to later evaluate your
+2.  Go plan a trip to see what trade-offs between safety and speed you might
+    experience biking today. You can save these trips to later evaluate your
     proposal.
 3.  Create new bike lanes where you think they should exist!
-4.  Check your routes again, to see if the most direct route is now safer.
+4.  Check your trips again, to see if the most direct route is now safer.
 5.  Use the "predict impact" mode to estimate how many other people might make
     use of your changes.
 6.  Upload your proposal, then share on social media or start a conversation
@@ -62,13 +60,14 @@ bulbs, small traffic circles, and signage. These routes have different names
 across the world -- Stay Healthy Streets, neighborhood greenways, low-traffic
 neighborhoods, slow streets, etc. In a place like Seattle, these streets are
 very narrow because of cars parking on both sides, so when a cyclist and an
-oncoming vehicle need to pass each other, both have to slow down. In practice,
-the cyclist doesn't really have any sort of priority here.
+oncoming vehicle need to pass each other, both have to slow down. In the
+author's opinion, it doesn't feel like the cyclist really has any sort of
+priority here.
 
-Finally, some cities use "sharrows", or painted markings, on general-purpose
+Finally, some cities use "sharrows," or painted markings, on general-purpose
 lanes to indicate to drivers that they're supposed to share the road. These
 aren't reflected in the map at all, because they're not real infrastructure.
-Studies have showwn they can actually
+Studies have shown they can actually
 [make things worse](https://www.bloomberg.com/news/articles/2016-02-05/study-sharrows-might-be-more-dangerous-to-cyclists-than-having-no-bike-infrastructure).
 
 ### Understanding elevation layers
@@ -114,18 +113,18 @@ quickly sketching over a large area, use the "create new bike lanes" mode.
 
 ![](../../project/retrospective/edit_roads.gif)
 
-## Planning a route
+## Planning a trip
 
 Use this mode to plan a cycling trip. Just click the map to add waypoints, or
 drag the waypoints to adjust.
 
 <!-- gif of doing everything here -->
 
-### Saving routes
+### Saving trips
 
-You can name each route, then save it. This is useful to define "test cases" for
-evaluating how well the bike network serves the route. The sample routes could
-be based on your own commute, or trips you know are common -- like from a
+You can name each trip, then save it. This is useful to define "test cases" for
+evaluating how well the bike network serves the trip. The sample trips could be
+based on your own commute, or trips you know are common -- like from a
 university to the popular night-life district.
 
 ### Preferences
@@ -136,8 +135,8 @@ alongside high-speed traffic. Often the safer route will avoid major roads and
 take longer, and maybe also force you to climb steeper hills.
 
 By default, the most direct route is shown. You can change your preferences with
-the checkboxes. Alternative routes are also shown, and if you hover over it, you
-can compare to the current route.
+the checkboxes. Alternative routes are also shown, and if you hover over one,
+you can compare to the direct route.
 
 ### Details
 
@@ -173,16 +172,12 @@ direction. You might need to repeat for the other side.
 
 ![](predict_impact.png)
 
-<!-- prettyprint_usize in all of the bars -->
-
-Evaluating your proposed network against a few sample routes is useful, but from
+Evaluating your proposed network against a few sample trips is useful, but from
 a planner's perspective, you want to predict how many people will make use of
 the new infrastructure. This tool analyzes all short driving trips in the area,
 then calculates which of them might decide to switch to cycling. This feature
 only works in Seattle or the UK, where we have a travel demand model describing
 the population's existing commuter patterns.
-
-<!-- actually just link from software to tech details for this section! -->
 
 There are [many assumptions](tech_details.md#predict-impact) going into this
 calculation. You can adjust many of these parameters yourself. The first bar

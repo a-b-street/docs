@@ -23,9 +23,8 @@ A popular deflection currently is that fossil-fuel based cars are the problem,
 and that electric vehicles will solve these problems. While they certainly help
 with engine emissions, they still pollute due to
 [tires](https://epha.org/electric-vehicles-and-air-pollution-the-claims-and-the-facts/)
-and do nothing to help with the space consumption or collision problem. And
-migrating the majority of gas cars to electric would be incredibly expensive
-anyway.
+and do nothing to help with the space consumption or safety problem. And
+migrating the majority of gas cars to electric would be incredibly expensive!
 
 Another false promise is autonomous vehicles. The technology is seemingly always
 a few years away from wide rollout. Even once it's ready, there's a very real
@@ -39,8 +38,8 @@ explained,
 Major European and Asian cities have effective mass public transit, and some --
 the Netherlands being the most famous example -- have a high percentage of trips
 done via bicycle. The world isn't missing some new technology like autonomous
-cars; car-centric places have plenty of sources of inspiration for how to design
-sustainable transportation systems.
+cars; car-centric places can just look at thes existing places for inspiration
+on how to design sustainable transportation systems.
 
 Transitioning away from cars is a very complicated problem, and the solution
 probably involves land use changes (allowing mixed commercial/residential use to
@@ -112,31 +111,31 @@ mitigate climate disasters.
 So why isn't every city following Paris and building out a low-cost bike network
 to encourage people to stop driving? The issue is often quite political -- if
 city leaders build without the support of their constituents, they won't be
-re-elected. The public are very much stakeholders. There's often quite fierce
-opposition to building new bike lanes. Sometimes the arguments are somewhat
-based on specifics -- some parking will be lost, and despite studies showing
-otherwise, nearby businesses fear losing customers. (But these arguments rarely
-quantify how much parking is available nearby -- largely because this data
-doesn't generally exist without an on-the-ground survey.) Others make a very
-short-term argument that vehicle traffic will be delayed by the reduction in
-lanes, and this will actually increase pollution in the area. In other words,
-the concerns raised are by individuals who don't buy into the idea of "mode
-shift" at all -- that the **purpose** of the new cycling infrastructure is to
-make driving a bit less enticing and encourage people to move more sustainably.
-Some people quite understandably feel "left out" by these transformations --
-they've lived in the city for a long time, moved around it in a certain way, and
-they feel threatened by the changes. Making it safer to bike is inextricably
-tied up in this concern about gentrification -- driving out long-time residents
-for younger, often wealthier people who are seen as the target audience of the
-changes.
+re-elected. The public very much are stakeholders. There's often quite fierce
+opposition to building new bike lanes. Sometimes the arguments are based on
+specifics -- some parking will be lost, and despite studies showing otherwise,
+nearby businesses fear losing customers. (But these arguments rarely quantify
+how much parking is available nearby -- largely because this data doesn't
+generally exist without an on-the-ground survey.) Others make a very short-term
+argument that vehicle traffic will be delayed by the reduction in lanes, and
+this will actually increase pollution in the area. In other words, the concerns
+raised are by individuals who don't buy into the idea of "mode shift" at all --
+that the **purpose** of the new cycling infrastructure is to make driving a bit
+less enticing and encourage people to move more sustainably. Some people quite
+understandably feel "left out" by these transformations -- they've lived in the
+city for a long time, moved around it in a certain way, and they feel threatened
+by the changes. Making it safer to bike is inextricably tied up in this concern
+about gentrification -- driving out long-time residents for younger, often
+wealthier people who are seen as the target audience of the changes.
 
 This is a really unfortunate miscommunication. Proper cycling infrastructure and
-land use patterns make it very comfortable for all ages and abilities and
+land use patterns make it very comfortable for all ages, abilities, and
 demographics to thrive in a city. If cycling is just for young and athletic
-people, why does the percentage of people biking in the Netherlands and Japan
-include TODO? Driving a car is quite expensive, with insurance and maintenance,
-and children or people with vision impairment are totally excluded. Cycling can
-be more inclusive.
+people, why do people in the
+[Nethlands between 18 and 75 years all have similar distances cycled per day](https://www.statista.com/statistics/620201/average-biking-distance-per-person-per-day-netherlands-by-age/)?
+Driving a car is quite expensive, with insurance and maintenance, and children
+or people with vision impairment are totally excluded. Cycling can be more
+inclusive.
 
 A strong theme in the rhetoric around resisting change is that "the new
 infrastructure won't serve me individually." This view definitely ignores how
@@ -198,15 +197,15 @@ Their plans are
 
 ![](sng_stay_healthy_network.png)
 
-Individuals are accustomed to interacting with maps by routing, to see what
-their particular trip might look like. None of these solutions let you plan a
-trip and compare how things might look before vs after the changes. As an
-individual, I want to know if these plans will make it safer, let me avoid
-hills, or let me comfortably bike past a commercial district. I have to
-interpret these planned changes and apply them to my particular situation. Or if
-I care about broader impact, these documents fail to sell me on the benefits,
-"we forecast that 200,000 weekly trips will likely start biking instead of
-driving if we make these changes. That could lower PM2.5 pollution by 3%..."
+People are accustomed to interacting with maps by routing, to see what their
+particular trip might look like. None of these solutions let you plan a trip and
+compare how things might look before vs after the changes. As an individual, I
+want to know if these plans will make it safer, let me avoid hills, or let me
+comfortably bike past a commercial district. I have to interpret these planned
+changes and apply them to my particular situation. Or if I care about broader
+impact, these documents fail to sell me on the benefits, "we forecast that
+200,000 weekly trips will likely start biking instead of driving if we make
+these changes. That could lower PM2.5 pollution by 3%..."
 
 These methods of communication are also very "dry" -- they do nothing to paint a
 picture or tell a story about how awesome the city will be once this is built.
@@ -228,9 +227,11 @@ to have a hard time communicating this.
 Visualizations of changes also tend to be very high-level or very low-level, and
 switching between the two views is difficult. For
 [changes around Green Lake](https://www.seattle.gov/transportation/projects-and-programs/programs/maintenance-and-paving/current-paving-projects/green-lake-area-paving-and-safety-projects),
-here's an overview map and a CAD drawing:
+here's an overview map:
 
 ![](greenlake_overview.png)
+
+And a CAD drawing:
 
 ![](greenlake_detail.png)
 
@@ -325,21 +326,21 @@ Other software exists for related problems. But nothing other than A/B Street:
 - works anywhere in the world without substantial setup time
 - is free and available to anybody
 
-http://streetmix.net is a huge inspiration behind A/B Street. But it only
-focuses on an individual street segment; it can't show how bicycle
+[Streetmix](http://streetmix.net) is a huge inspiration behind A/B Street. But
+it only focuses on an individual street segment; it can't show how bicycle
 infrastructure exists in context of an entire city.
 
-http://remix.com has some similar goals, but it's meant for different city
-agencies to internally collaborate. It's expensive, unavailable to the public,
-and cities are only just starting to use it for public communication.
+[Remix](http://remix.com) has some similar goals, but it's meant for different
+city agencies to internally collaborate. It's expensive, unavailable to the
+public, and cities are only just starting to use it for public communication.
 
-https://www.ptvgroup.com/en/solutions/products/ptv-vissim/ is an
+[PTV Vissim](https://www.ptvgroup.com/en/solutions/products/ptv-vissim/) is an
 industry-standard traffic simulator, with highly accurate modeling results. But
 it's extremely expensive and very difficult to use, especially when initially
 setting up in a new city.
 
-https://www.matsim.org/ and https://www.eclipse.org/sumo/ are open source
-traffic simulators that can run anywhere in the world. However, they're hard to
-setup and use, not focused on visualization, and can't easily prototyping
-changes to roads. They also don't run in web browsers, a further barrier towards
-non-technical individuals trying them.
+[MATSim](https://www.matsim.org) and [SUMO](https://www.eclipse.org/sumo) are
+open source traffic simulators that can run anywhere in the world. However,
+they're hard to setup and use, not focused on visualization, and can't easily
+prototyping changes to roads. They also don't run in web browsers, a further
+barrier towards people that aren't tech-savvy trying them.

@@ -15,9 +15,9 @@ because of personal experiences or from looking for safe routes for their
 children to bike to school -- they get involved in a few ways. Many join the
 advocacy groups, volunteering their time. A few --
 [Joe Mangan](https://www.seattlebikeblog.com/2018/01/19/a-roosevelt-junior-redesigned-the-streets-around-his-high-school-and-his-plan-is-better-than-sdots/)
-and [Pushing the Needle](https://twitter.com/pushtheneedle/) as notable examples
--- start directly writing about their vision. And many more spend endless hours
-debating strangers online on sites like Reddit, Twitter, or the
+and [Pushing the Needle](https://twitter.com/pushtheneedle/) being notable
+examples -- start directly writing about their vision. And many more spend
+endless hours debating strangers online on sites like Reddit, Twitter, or the
 [Urbanist blog](https://www.theurbanist.org/).
 
 The aim is for A/B Street to engage all of these stakeholders using the same
@@ -98,14 +98,15 @@ clear product requirements.
 [Brian Deegan](http://www.urbanmovement.co.uk/brian-deegan.html) is a cycling
 planner who does consulting across the UK and whose company has written lots of
 [design manuals](http://www.urbanmovement.co.uk/beeachampion.html). Thanks to
-[Robin](robinlovelace.net/), A/B Street has a relationship with Brian, and based
-on studying a design workshop video by Brian, we've started prototyping a new
-tool focused on placing modal filters to establish low-traffic neighborhoods.
-The UK planning scene is currently more focused on this type of intervention
-than building bike lanes. So, we're planning to pivot and focus on this LTN tool
-after mid-October. The long-term strategy is to continue building these smaller,
-focused tools, all leveraging the common A/B Street technical platform.
-Different regions and situations will demand different planning software.
+[Robin](https://www.robinlovelace.net), A/B Street has a relationship with
+Brian, and based on studying a design workshop video by Brian, we've started
+prototyping a new tool focused on placing modal filters to establish low-traffic
+neighborhoods. The UK planning scene is currently more focused on this type of
+intervention than building bike lanes. So, we're planning to pivot and focus on
+this LTN tool after mid-October. The long-term strategy is to continue building
+these smaller, focused tools, all leveraging the common A/B Street technical
+platform. Different regions and situations will demand different planning
+software.
 
 ### NYC
 
@@ -156,7 +157,7 @@ many ideas for future features of the bike tool:
 
 ![](../../project/retrospective/traffic_sim.gif)
 
-Roughly whenever want, we could scale up to more cities. There's always some
+Roughly whenever we want, we could scale up to more cities. There's always some
 specialized effort to fix the most egregious OpenStreetMap data quality issues.
 Getting travel demand data is a common challenge, but it's less important for
 this bike network tool. The limiting factor to expanding quickly really is time
@@ -201,9 +202,9 @@ the bike network tool and rolling out to more cities.
     and play. A/B Street today just simulates people making trips. We'd like to
     explore crowd simulation and visualization.
 - Incorporating census and demographic information
-  - City planners always need to prioritize changes based on nearby residents'
-    income, age, employment, and other demographic factors. A/B Street could use
-    public data to further measure the impact of changes.
+  - City planners prioritize changes based on nearby residents' income, age,
+    employment, and other demographic factors. A/B Street could use public data
+    to further measure the impact of changes.
 - Modifying land use policies
   - Many cities outlaw medium- and high-density housing in most of the city, and
     force residential and commercial sectors to remain physically distinct. This
@@ -225,9 +226,9 @@ towards the general public's use.
 
 In short:
 
-- people
 - connections to government or industry stakeholders who could sponsor the
   project, provide use cases, etc
+- staff
 - funding (as a way to hire people)
 
 ### Staffing
@@ -260,10 +261,9 @@ the project's ambition, we need more full-time help:
 - software engineers
   - A/B Street is both very broadly-scoped (and so just needs lots of help
     implementing) and tackles some very difficult problems requiring deep focus
-  - Rust is a newer language and intimidates beginners, but... arguably we need
-    help of people very comfortable with programming, so this is fine. It's a
-    tough project for a beginner to contribute to, from experience with open
-    source volunteers.
+  - Because of this and the use of Rust, a programming language that has an
+    initial learning curve, it's a difficult project for beginners to contribute
+    to.
 
 A single person may be able to serve multiple roles -- for instance, visual
 designer, product management, and UX. Or a UX designer who can help with
@@ -293,11 +293,13 @@ matters for this project is impact on the real world -- making transportation
 more environmentally friendly. Therefore, a
 [B-corp](https://en.wikipedia.org/wiki/B_Corporation_(certification) or
 [benefit corp](https://en.wikipedia.org/wiki/Benefit_corporation) might be more
-appropriate directions.
+appropriate.
 
 One possible direction is consulting. Cities contract the A/B Street team to
 specialize the software for their immediate needs. All of the work is open
 source. So effectively they would just define priorities for the project.
+[OpenTripPlanner](http://docs.opentripplanner.org/en/latest/) is an example of
+open source transportation software funded by different groups as a public good.
 
 Other options are crowd-funding (like Github sponsors) and applying for grants
 like the [Rees Jeffreys road fund](https://www.rjrf.uk/).
