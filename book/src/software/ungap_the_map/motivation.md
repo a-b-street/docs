@@ -48,7 +48,7 @@ explained,
 Major European and Asian cities have effective mass public transit, and some --
 the Netherlands being the most famous example -- have a high percentage of trips
 done via bicycle. The world isn't missing some new technology like autonomous
-cars; car-centric places can just look at thes existing places for inspiration
+cars; car-centric places can just look at these existing places for inspiration
 on how to design sustainable transportation systems.
 
 Transitioning away from cars is a very complicated problem, and the solution
@@ -86,7 +86,7 @@ techniques of [tactical urbanism](http://tacticalurbanismguide.com/about/). Some
 advocacy groups or cities will set up a temporary demonstration of a changed
 street by simply using signs and movable barriers for a few days, and in other
 cases, these street improvements are even
-[installed in th dead of night by citizen activists](https://www.seattlebikeblog.com/2013/04/04/guerrilla-road-safety-group-politely-installs-illegal-bike-lane-protectors-on-cherry-street/).
+[installed in the dead of night by citizen activists](https://www.seattlebikeblog.com/2013/04/04/guerrilla-road-safety-group-politely-installs-illegal-bike-lane-protectors-on-cherry-street/).
 
 ### Rising momentum
 
