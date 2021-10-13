@@ -2,6 +2,9 @@
 
 Most recent first.
 
+- October 2021: [Taiwan presidential hackathon](https://presidential-hackathon.taiwan.gov.tw/en/international-track/)
+  - [Slides](https://docs.google.com/presentation/d/1SOnd1D-Y96YZynFjHMPUe6boFZ9YNIBl0WWfwAZ2jGc/edit?usp=sharing)
+  - [Video](https://youtu.be/x--ULeDbeOc)
 - October 2021:
   [FOSS4G](https://callforpapers.2021.foss4g.org/foss4g2021/talk/CA8M8U/)
   - [Slides](https://docs.google.com/presentation/d/1EkQNWc0c-UKoz1hbefMoz4KIxgsIE5YJ_B-KnLQFglQ/edit?usp=sharing)

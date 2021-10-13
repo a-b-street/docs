@@ -999,3 +999,9 @@ changes here.
 - bike network tool now shows alternate routes
 - small fixes to mode shift and LTN tool
 - major internal UI refactors started
+
+0.2.62
+
+- ungap the map bike network tool launched! bike.abstreet.org has documentation and videos
+- uploading and sharing proposals now works!
+- super speedup to applying map edits
