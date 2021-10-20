@@ -147,49 +147,47 @@
 <li><a href="https://github.com/a-b-street/abstreet/tree/master/game/src">Github</a></li>
 </ul>
 <h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
-<p>A/B Street is &quot;a traffic simulation game exploring how small changes to roads
-affect cyclists, transit users, pedestrians, and drivers.&quot; In other words, you
+<p>A/B Street is a traffic simulation game exploring how small changes to roads
+affect cyclists, transit users, pedestrians, and drivers. In other words, you
 can transform that street parking into a bus lane or fix that pesky left turn at
 a traffic signal, measure the effects, then
 <a href="../proposals/index.html">propose actually making the change</a>.</p>
 <p>A/B Street uses game-like elements to gradually introduce all of the features of
-the simulation, with a tutorial and a few challenge modes. (Or at least, that's
-the goal.) But just becaused it's called a &quot;game&quot; doesn't mean it's not trying
-to model the real world as accurately as possible from open data.</p>
-<p>Keep in mind it's impossible to simulate all complexity in the real world of
-people moving around a city. Every traffic model makes lots of assumptions and
-trade-offs, including A/B Street.</p>
+the simulation, with a tutorial and a few challenge modes. But just becaused
+it's called a &quot;game&quot; doesn't mean it's not trying to model the real world as
+accurately as possible from open data. (Keep in mind it's impossible to simulate
+all complexity in the real world of people moving around a city. Every traffic
+model makes lots of assumptions and trade-offs, including A/B Street.)</p>
 <h2 id="explore"><a class="header" href="#explore">Explore</a></h2>
 <p>A/B Street gives you a 2D representation of roads, with as much detail about
 bus/bike/turn/parking lanes, transit stops, traffic signals, and parking lots as
 possible, all from OpenStreetMap.</p>
-<p>(map model pictures)</p>
+<p><img src="../project/retrospective/road_width_abst.png" alt="" /></p>
 <p>Depending on elevation data availability, some areas let you visualize steep
 streets -- because your bike network should be planned accordingly.</p>
-<p>(two elevation pictures)</p>
+<p><img src="../project/retrospective/data_elevation.png" alt="" /></p>
 <p>Using external travel demand models, you can explore patterns of where people
 live, work, and shop.</p>
-<p>(commuter layer picture)</p>
+<p><img src="../project/retrospective/commuter_patterns.png" alt="" /></p>
 <h2 id="simulate"><a class="header" href="#simulate">Simulate</a></h2>
 <p>Using some external data about what trips people take on a typical day, you can
 simulate drivers, bicyclists, and pedestrians moving around. (Public transit and
 scooter/bikeshare micromobility planned.)</p>
-<p>(video of one intersection)</p>
-<p>You can follow individual people and watch them wrestle with problems.</p>
-<p>(follow video)</p>
-<p>Or get a bird's-eye view of how everything is moving.</p>
-<p>(unzoomed video)</p>
-<p>Every driving trip begins and ends with parking, which might be easy in suburban
-areas, but hard in cities.</p>
-<p>(video)</p>
+<p><img src="../project/retrospective/traffic_sim.gif" alt="" /></p>
+<p>You can follow individual people and watch them wrestle with problems, or get a
+bird's-eye view of how everything is moving.</p>
+<p>Every driving trip begins and ends with
+<a href="../tech/trafficsim/parking.html">parking</a>, which might be easy in suburban areas,
+but hard in cities.</p>
 <p>Some details:</p>
 <ul>
 <li>People will take the best route available, <strong>not</strong> accounting for current
 congestion. Drivers prefer the fastest route (shorter distances, higher speed
 limits). Pedestrians and cyclists also factor in elevation changes.</li>
-<li>Vehicles instantly accelerate and stop. This is a useful simplification to
-speed up the simulation, but of course, you shouldn't use A/B Street to
-simulate jam waves on freeways.</li>
+<li>Vehicles
+<a href="../tech/trafficsim/discrete_event/index.html">instantly accelerate and stop</a>.
+This is a useful simplification to speed up the simulation, but of course, you
+shouldn't use A/B Street to simulate jam waves on freeways.</li>
 <li>Vehicles stay in the same lane once they pick it, and sometimes they choose
 their lane really poorly. We're working on improving this.</li>
 <li>We don't simulate accidents -- but we do measure &quot;risk exposure&quot; where a
@@ -200,30 +198,23 @@ collision may be likely.</li>
 vehicle lanes, bus-only lanes, bike lanes, street parking, and new sidewalks.
 You can either transform existing lanes, or slightly widen/shrink the road. You
 can reverse the direction of lanes, or close them down to simulate construction.</p>
-<p>(video)</p>
+<p><img src="../project/retrospective/edit_roads.gif" alt="" /></p>
 <p>You can also change speed limits and restrict access to an area. Only trips that
 start or end in a private area can use the roads within, modelling gated
 communities. Or you can allow through-traffic for people walking and biking, to
 create low-traffic neighborhoods.</p>
-<p>(video)</p>
 <p>You can also change how traffic signals work. You can modify the timing if you
 notice left turns need more time, or set up actuated timing, so that the green
 light lasts longer when many vehicles are waiting. You can also change which
 movements are allowed each stage, so you could try out a dedicated left turn
 stage or a pedestrian all-walk/scramble cycle.</p>
-<p>(video)</p>
+<p><img src="../project/retrospective/edit_signals.gif" alt="" /></p>
 <h2 id="measure"><a class="header" href="#measure">Measure</a></h2>
 <p>A/B Street lets you tell data-driven stories about both infrastructure and
-people</p>
-<p>stories you can tell</p>
-<p>individ/aggregate absolute/relative</p>
-<ul>
-<li>go through all of the layers</li>
-<li>and dashboards</li>
-</ul>
-<h2 id="not-to-crush-your-dreams-but"><a class="header" href="#not-to-crush-your-dreams-but">Not to crush your dreams, but...</a></h2>
-<p>gridlock cant do A/B tests if you cant finish trips</p>
-<p>mode shift!</p>
+people.</p>
+<p><img src="../project/retrospective/viz_delay_scatter.gif" alt="" /></p>
+<p><img src="../project/retrospective/viz_trip_table.gif" alt="" /></p>
+<p><img src="../project/retrospective/viz_time_summary.gif" alt="" /></p>
 
                     </main>
 
