@@ -92,27 +92,6 @@ Note the elevation data is high-quality for Seattle, but has
 [issues in the rest of the world](tech_details.md#elevation-data). And the
 estimated incline on bridges is usually wrong!
 
-### Proposals
-
-Once you make changes to the map, you can save and load them. Maybe you have a
-few different alternatives you'd like to try, or you'd like to compare your
-ideas when your city's official plans.
-
-You can also upload your proposal and share the URL with others. Note that
-proposals are uploaded anonymously, and when you make any changes, you have to
-upload again and share a new URL.
-
-### Editing roads in detail
-
-<!-- it really feels weird to put this in this mode -->
-
-If you zoom into an individual road, you can click on it to edit. With this
-mode, you can customize the width of each lane and other details. If you're
-focused only on a small area, this might be useful. But if you're interested in
-quickly sketching over a large area, use the "create new bike lanes" mode.
-
-![](../../project/retrospective/edit_roads.gif)
-
 ## Planning a trip
 
 Use this mode to plan a cycling trip. Just click the map to add waypoints, or
@@ -169,6 +148,25 @@ always use explore mode to edit the road individually to fix up any problems.
 Also note some roads fork off into separate pieces when there's some kind of
 physical median. When you select a route to modify, this only traces one
 direction. You might need to repeat for the other side.
+
+### Proposals
+
+Once you make changes to the map, you can save and load them. Maybe you have a
+few different alternatives you'd like to try, or you'd like to compare your
+ideas when your city's official plans.
+
+You can also upload your proposal and share the URL with others. Note that
+proposals are uploaded anonymously, and when you make any changes, you have to
+upload again and share a new URL.
+
+### Editing roads in detail
+
+If you zoom into an individual road, you can click on it to edit. With this
+mode, you can customize the width of each lane and other details. If you're
+focused only on a small area, this might be useful. But if you're interested in
+quickly sketching over a large area, use the "create new bike lanes" mode.
+
+![](../../project/retrospective/edit_roads.gif)
 
 ## Predict impact
 
