@@ -9,6 +9,8 @@ The main projects:
 - [A/B Street](abstreet.md) for running a traffic simulation, editing roads and
   intersections, and measuring the impact of your changes. It has game-like
   elements, but leans more on the side of being a real prototyping tool.
+- [Ungap the Map](ungap_the_map/index.md) for exploring current gaps in a city's
+  bicycle network and proposing new bike lanes.
 - [15-minute neighborhood explorer](fifteen_min.md) for seeing where people live
   in relation to commercial and public amenities.
 - [15-minute Santa](santa.md), a light-hearted arcade game to demonstrate the

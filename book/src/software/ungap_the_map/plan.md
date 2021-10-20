@@ -313,7 +313,7 @@ are vital to this. A business exists to generate profit, even if those profits
 are modest and just meant to sustain the business. The ultimate metric that
 matters for this project is impact on the real world -- making transportation
 more environmentally friendly. Therefore, a
-[B-corp](https://en.wikipedia.org/wiki/B_Corporation_(certification)) or
+[B-corp](<https://en.wikipedia.org/wiki/B_Corporation_(certification)>) or
 [benefit corp](https://en.wikipedia.org/wiki/Benefit_corporation) might be more
 appropriate.
 
