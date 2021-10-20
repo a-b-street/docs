@@ -5,7 +5,7 @@ set -e
 if [ -z "$@" ]
 then
 
-echo "formatting everything"
+echo "formatting all of the everything"
 find book/src -name \*.md \! -name CHANGELOG.md | xargs npm run fmt
 
 else

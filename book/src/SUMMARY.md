@@ -67,7 +67,7 @@
   - [Contributing](project/contributing.md)
   - [Funding](project/funding.md)
   - [Hiring](project/hiring.md)
-  - [Roadmap](project/roadmap.md)
+  - [Roadmap](software/ungap_the_map/plan.html#future-directions)
   - [Motivations](project/motivations.md)
   - [History](project/history/README.md)
     - [Backstory](project/history/backstory.md)
