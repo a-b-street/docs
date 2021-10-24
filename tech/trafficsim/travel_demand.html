@@ -189,10 +189,14 @@ information comes from the US Census. To take advantage of this model for areas
 outside the US, you'll need to add your data to the global <code>population_areas</code>
 file. This is one huge file that is shared across regions. This is more work up
 front, but makes adding individual cities relatively straight forward.</p>
+<p>See
+<a href="https://github.com/a-b-street/abstreet/blob/master/popdat/src/lib.rs">the code</a>
+for the very simple activity model using the census data.</p>
 <h4 id="preparing-the-population_areas-file"><a class="header" href="#preparing-the-population_areas-file">Preparing the <code>population_areas</code> file</a></h4>
-<p>See <code>popdat/scripts/build_population_areas.sh</code> for updating or adding to the
-existing population areas. Once rebuilt, you'll need to upload the file so that
-popdat can find it.</p>
+<p>See
+<a href="https://github.com/a-b-street/abstreet/blob/master/popdat/scripts/build_population_areas.sh">this script</a>
+for updating or adding to the existing population areas. Once rebuilt, you'll
+need to upload the file so that popdat can find it.</p>
 <h3 id="grid2demand"><a class="header" href="#grid2demand">Grid2Demand</a></h3>
 <p>Collaborators at ASU are creating
 <a href="https://github.com/asu-trans-ai-lab/grid2demand">https://github.com/asu-trans-ai-lab/grid2demand</a>, which does the traditional
