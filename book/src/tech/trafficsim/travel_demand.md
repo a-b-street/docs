@@ -61,11 +61,16 @@ outside the US, you'll need to add your data to the global `population_areas`
 file. This is one huge file that is shared across regions. This is more work up
 front, but makes adding individual cities relatively straight forward.
 
+See
+[the code](https://github.com/a-b-street/abstreet/blob/master/popdat/src/lib.rs)
+for the very simple activity model using the census data.
+
 #### Preparing the `population_areas` file
 
-See `popdat/scripts/build_population_areas.sh` for updating or adding to the
-existing population areas. Once rebuilt, you'll need to upload the file so that
-popdat can find it.
+See
+[this script](https://github.com/a-b-street/abstreet/blob/master/popdat/scripts/build_population_areas.sh)
+for updating or adding to the existing population areas. Once rebuilt, you'll
+need to upload the file so that popdat can find it.
 
 ### Grid2Demand
 

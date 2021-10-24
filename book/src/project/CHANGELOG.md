@@ -1005,3 +1005,13 @@ changes here.
 - ungap the map bike network tool launched! bike.abstreet.org has documentation and videos
 - uploading and sharing proposals now works!
 - super speedup to applying map edits
+
+0.2.63
+
+- ungap: consolidate editing controls
+- workaround some bugs loading map edits
+- ungap: add ability to compare a trip before/after some proposed changes
+- ungap: make the high-stress metric handle one side of a road missing bike lanes
+- ungap route sketcher easier to use when zoomed far out
+- ui fixes: units in barrier type, dropdowns focus-fighting with drag-drop cards
+- perf: smaller city overview maps
