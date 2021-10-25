@@ -121,7 +121,7 @@ by all of the applications. These files live in `data/system/us/nyc/maps`.
 
 ### Running the importer
 
-The importer tool has many CLI flags not described here; the source is the best
+The importer tool has many CLI flags not described here; `--help` is the best
 reference. But we can start with a few common examples.
 
 After creating configuration files for a city, you can import it, running both

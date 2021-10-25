@@ -103,9 +103,9 @@ at least a vague goal in mind for what you want to study.
 
 This section assumes you're comfortable working on a command line. If you have a
 .osm XML file, you can import it directly by running
-`./import.sh --oneshot=/path/to/extract.osm`. If you're running from a .zip
-release and not building from source, replace the first part with
-`./cli import`.
+`cargo run --release --bin cli -- oneshot-import /path/to/extract.osm`. If
+you're running from a .zip release and not building from source, replace the
+first part with `./cli oneshot-import`.
 
 Assuming this succeeds, it'll create a file in the
 `data/system/zz/oneshot/maps/` directory. In the UI, you can open the "zz"
@@ -121,7 +121,7 @@ intersections, which will break parts of the simulation:
 ![no_clip](no_clip.png)
 
 You can fix this by creating the Osmosis .poly file and passing
-`--oneshot_clip=/path/to/clip.poly` to the import command.
+`--clip-path=/path/to/clip.poly` to the import command.
 
 One use case for following this section is to temporarily work around
 [broken intersection geometry](https://github.com/a-b-street/abstreet/issues/654).
