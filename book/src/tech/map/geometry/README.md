@@ -759,6 +759,9 @@ on itself, looking like a bowtie:
   <a href="sorting_bowtie.png" target="_blank"><img src="sorting_bowtie.png"/></a>
 </figure>
 
+[This article](https://www.baeldung.com/cs/sort-points-clockwise) has a clever
+idea to break ties using distance from the center.
+
 ### Finding the short roads
 
 The algorithm described relies on knowing short roads to merge. Conveniently,
