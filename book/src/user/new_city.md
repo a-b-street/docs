@@ -13,7 +13,8 @@ This only works in the [downloaded version](index.md), not on web.
 2.  Click "import a new city"
 3.  Follow the instructions. That's it!
 
-This may take a few minutes, depending on download speed.
+This may take a few minutes, depending on download speed. Be sure to use the
+polygon tool to draw an area, not the polyline tool.
 
 ## If the city has already been imported
 
@@ -33,6 +34,43 @@ You may need to download data for that city:
 
 You should be able to open the map. In this case above, the map data was saved
 as `data/system/gb/exeter_red_cow_village/maps/center.bin`.
+
+## How to pick boundaries
+
+How do you decide what part of a city to import? It can be tempting to use
+pre-existing administrative boundaries. There are a few problems:
+
+1.  Official boundaries might exclude something relevant to transportation in
+    the area. For example, London boroughs don't cover the River Thames or its
+    bridges! Or if you're studying low-traffic neighborhoods, an area near the
+    border of two boroughs might not include enough surrounding context.
+
+![](london_boroughs.png)
+
+2.  File size is hard to tune. You have to play around with this to make the
+    resulting area large enough to be useful, but the map file small enough to
+    comfortably load. About 50MB uncompressed (usually 20MB gzipped) is a good
+    target.
+
+3.  You might have to adjust the boundary to exclude the coastline and ocean,
+    due to [a bug](https://github.com/dabreegster/abstreet/issues/32).
+
+You can create multiple districts covering a city. The districts can partially
+overlap, and you don't have to cover everything. It's totally dependent on what
+you want to study. The current Seattle boundaries are just based on different
+projects we've worked on:
+
+![](seattle_boundaries.png)
+
+You can also just make best geographic guesses like in Paris:
+
+![](paris_boundaries.png)
+
+The more maps configured to always be imported, the slower my development
+workflow gets when working on map importer code. So I'd also request you don't
+go overboard and ask for lots of areas, unless you're going to actively work on
+some advocacy or research across multiple A/B Street releases. You can always
+import an area yourself in the UI.
 
 ## Advanced: Using the command-line
 
