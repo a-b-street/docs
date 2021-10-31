@@ -1015,3 +1015,10 @@ changes here.
 - ungap route sketcher easier to use when zoomed far out
 - ui fixes: units in barrier type, dropdowns focus-fighting with drag-drop cards
 - perf: smaller city overview maps
+
+0.2.64
+
+- new algorithms to find and render city block and neighborhoods. almost ready for use in main applications
+- fixed the worst of curb rendering bugs
+- new mapbox gl + abstreet demo
+- adding command-line --help to most programs
