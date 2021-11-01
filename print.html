@@ -2916,7 +2916,7 @@ or the equivalent for your distro</li>
 </li>
 <li>
 <p>Grab the minimal amount of data to get started:
-<code>cargo run --bin updater -- --minimal</code></p>
+<code>cargo run --bin updater -- download --minimal</code></p>
 </li>
 <li>
 <p>Run the game: <code>RUST_BACKTRACE=1 cargo run --bin game --release</code>. On Windows,
@@ -2961,8 +2961,8 @@ experience, so they're hidden for now.</li>
 <p>Most easily, you can download new cities using the GUI directly.</p>
 <p>As data formats change over time, things in the <code>data/</code> directory not under
 version control will get out of date. At any time, you can run
-<code>cargo run --bin updater</code> from the main repository directory to update only the
-files that have changed.</p>
+<code>cargo run --bin updater -- download</code> from the main repository directory to
+update only the files that have changed.</p>
 <p>You can also opt into downloading updates for more cities from the command line
 by editing <code>data/player/data.json</code>. If you want to add data for Leeds, GB, for
 example, you could edit that file so that it contains the following:</p>
@@ -2972,7 +2972,7 @@ example, you could edit that file so that it contains the following:</p>
 }
 </code></pre>
 <p>If you want to opt into absolutely everything:
-<code>cargo run --bin updater -- --opt-into-all &gt; data/player/data.json</code></p>
+<code>cargo run --bin updater -- opt-into-all &gt; data/player/data.json</code></p>
 <h2 id="building-map-data"><a class="header" href="#building-map-data">Building map data</a></h2>
 <p>You can skip this section if you're just touching code in <code>game</code>, <code>widgetry</code>,
 and <code>sim</code>. If you're just trying to import a new city, follow
@@ -3094,6 +3094,8 @@ polygons, circles, durations, speeds</li>
 <li><code>fifteen_min</code>: a standalone tool to explore 15-minute neighborhoods</li>
 <li><code>popdat</code>: use census data to produce traffic simulation input</li>
 <li><code>traffic_signal_data</code>: manual timing overrides for some traffic signals</li>
+<li><code>piggyback</code>: a small WebAssembly API to layer parts of A/B Street on top of
+Mapbox or other web maps</li>
 </ul>
 <h2 id="code-conventions"><a class="header" href="#code-conventions">Code conventions</a></h2>
 <p>All code is automatically formatted using
@@ -3394,7 +3396,7 @@ screenshots as the new goldenfiles.</li>
 </ol>
 <h2 id="dataregensh"><a class="header" href="#dataregensh">data/regen.sh</a></h2>
 <p>This tool regenerates all maps and scenarios from scratch.
-<code>cargo run --bin updater -- --dry</code> then reveals what files have changed.</p>
+<code>cargo run --bin updater -- dry-run</code> then reveals what files have changed.</p>
 <p>Additionally, this script does a few more tests:</p>
 <ul>
 <li><code>--prebake</code> runs the full weekday scenario on two maps that've previously been
@@ -3454,12 +3456,12 @@ versions, but I might delete older ones after that.</p>
 faster than accessing the S3 bucket (in one region) directly.</p>
 <h2 id="native-running-from-source"><a class="header" href="#native-running-from-source">Native, running from source</a></h2>
 <p>For people building the game <a href="tech/dev/index.html">from source</a>, the process to keep data
-files fresh is to <code>cargo run --bin updater</code>. This tool calculates md5sums of all
-local files, then compares it with the checked-in <code>data/MANIFEST.json</code>. Any
-difference results in a local file being deleted or a new file from S3 being
-downloaded. By editing <code>data/player/data.json</code> manually or using the UI in the
-game (found by loading a map, then choosing to download more maps), somebody can
-opt into downloading &quot;extra/optional&quot; cities.</p>
+files fresh is to <code>cargo run --bin updater -- download</code>. This tool calculates
+md5sums of all local files, then compares it with the checked-in
+<code>data/MANIFEST.json</code>. Any difference results in a local file being deleted or a
+new file from S3 being downloaded. By editing <code>data/player/data.json</code> manually
+or using the UI in the game (found by loading a map, then choosing to download
+more maps), somebody can opt into downloading &quot;extra/optional&quot; cities.</p>
 <h2 id="native-running-from-a-release-zip"><a class="header" href="#native-running-from-a-release-zip">Native, running from a release .zip</a></h2>
 <p>When the weekly .zip binary release for Mac, Linux, and Windows is produced, the
 <code>game</code> crate is built with <code>--features release_s3</code>. When the downloader UI is

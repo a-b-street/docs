@@ -174,12 +174,12 @@ versions, but I might delete older ones after that.</p>
 faster than accessing the S3 bucket (in one region) directly.</p>
 <h2 id="native-running-from-source"><a class="header" href="#native-running-from-source">Native, running from source</a></h2>
 <p>For people building the game <a href="index.html">from source</a>, the process to keep data
-files fresh is to <code>cargo run --bin updater</code>. This tool calculates md5sums of all
-local files, then compares it with the checked-in <code>data/MANIFEST.json</code>. Any
-difference results in a local file being deleted or a new file from S3 being
-downloaded. By editing <code>data/player/data.json</code> manually or using the UI in the
-game (found by loading a map, then choosing to download more maps), somebody can
-opt into downloading &quot;extra/optional&quot; cities.</p>
+files fresh is to <code>cargo run --bin updater -- download</code>. This tool calculates
+md5sums of all local files, then compares it with the checked-in
+<code>data/MANIFEST.json</code>. Any difference results in a local file being deleted or a
+new file from S3 being downloaded. By editing <code>data/player/data.json</code> manually
+or using the UI in the game (found by loading a map, then choosing to download
+more maps), somebody can opt into downloading &quot;extra/optional&quot; cities.</p>
 <h2 id="native-running-from-a-release-zip"><a class="header" href="#native-running-from-a-release-zip">Native, running from a release .zip</a></h2>
 <p>When the weekly .zip binary release for Mac, Linux, and Windows is produced, the
 <code>game</code> crate is built with <code>--features release_s3</code>. When the downloader UI is
