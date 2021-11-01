@@ -31,7 +31,7 @@ final rendered map.
 ## data/regen.sh
 
 This tool regenerates all maps and scenarios from scratch.
-`cargo run --bin updater -- --dry` then reveals what files have changed.
+`cargo run --bin updater -- dry-run` then reveals what files have changed.
 
 Additionally, this script does a few more tests:
 

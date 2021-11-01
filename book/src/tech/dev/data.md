@@ -43,12 +43,12 @@ faster than accessing the S3 bucket (in one region) directly.
 ## Native, running from source
 
 For people building the game [from source](index.md), the process to keep data
-files fresh is to `cargo run --bin updater`. This tool calculates md5sums of all
-local files, then compares it with the checked-in `data/MANIFEST.json`. Any
-difference results in a local file being deleted or a new file from S3 being
-downloaded. By editing `data/player/data.json` manually or using the UI in the
-game (found by loading a map, then choosing to download more maps), somebody can
-opt into downloading "extra/optional" cities.
+files fresh is to `cargo run --bin updater -- download`. This tool calculates
+md5sums of all local files, then compares it with the checked-in
+`data/MANIFEST.json`. Any difference results in a local file being deleted or a
+new file from S3 being downloaded. By editing `data/player/data.json` manually
+or using the UI in the game (found by loading a map, then choosing to download
+more maps), somebody can opt into downloading "extra/optional" cities.
 
 ## Native, running from a release .zip
 
