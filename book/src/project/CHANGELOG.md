@@ -1022,3 +1022,8 @@ changes here.
 - fixed the worst of curb rendering bugs
 - new mapbox gl + abstreet demo
 - adding command-line --help to most programs
+
+0.2.65
+
+- rewrote the low-traffic neighborhood prototype. neighborhood detection much better, internal streets grouped into traffic cells, two rendering styles for cells. browsing rat runs not ready yet, disabled
+- new shared title screen, to switch easily between all A/B Street apps

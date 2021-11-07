@@ -9,13 +9,13 @@ problems.
 Grab a pre-built binary release -- updated every Sunday, announced at
 [r/abstreet](http://old.reddit.com/r/abstreet):
 
-- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.2.64/abstreet_windows_v0_2_64.zip)
+- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_windows_v0_2_65.zip)
   - Unzip the folder, then run `play_abstreet.bat`. If you get a warning about
     compressed files, choose to extract -- you can't run from the .zip directly.
   - If you get a "Windows protected you" security warning, click "more info",
     then "run anyway." We don't sign the release yet, so A/B Street shows up as
     an unknown publisher.
-- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.2.64/abstreet_mac_v0_2_64.zip)
+- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_mac_v0_2_65.zip)
   - Unzip the directory, then run `play_abstreet.sh`.
   - If you get an error about the developer unverified,
     [follow this](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac).
@@ -26,13 +26,13 @@ Grab a pre-built binary release -- updated every Sunday, announced at
     `cd game; RUST_BACKTRACE=1 ./game 1> ../output.txt 2>&1`
   - [Help needed](https://github.com/a-b-street/abstreet/issues/77) to package
     this as a Mac .app, to make this process simpler
-- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.2.64/abstreet_linux_v0_2_64.zip)
+- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_linux_v0_2_65.zip)
   - Unzip the directory, then run `play_abstreet.sh`.
 - [FreeBSD](https://www.freshports.org/games/abstreet/), thanks to
   [Yuri](https://github.com/yurivict)
 
 Or you can play
-[directly in your web browser](http://play.abstreet.org/0.2.64/abstreet.html) --
+[directly in your web browser](http://play.abstreet.org/0.2.65/abstreet.html) --
 some things don't work as well, but no install required.
 
 Or you can [compile from source](../tech/dev/index.md).
