@@ -14,7 +14,8 @@
     }
 
     .mySlides {
-      display: none
+      display: flex;
+      align-items: center;
     }
 
     img {
@@ -68,6 +69,7 @@
       text-align: center;
     }
 
+
     /* The dots/bullets/indicators */
     .dot {
       cursor: pointer;
@@ -103,22 +105,22 @@
 
     <div class="mySlides">
       <img src="https://a-b-street.github.io/docs/project/retrospective/edit_roads.gif" style="width:100%">
-      <div class="text">Edit streets</div>
+      <p>Edit streets</p>
     </div>
 
     <div class="mySlides">
       <img src="https://a-b-street.github.io/docs/software/ungap_the_map/demo.gif" style="width:100%">
-      <div class="text">Ungap the Map - bike network planning</div>
+      <p>Ungap the Map - bike network planning</p>
     </div>
 
     <div class="mySlides">
       <img src="https://a-b-street.github.io/docs/software/walkshed.gif" style="width:100%">
-      <div class="text">15-minute neighborhoods</div>
+      <p>15-minute neighborhoods</p>
     </div>
 
     <div class="mySlides">
       <img src="https://a-b-street.github.io/docs/project/retrospective/santa.gif" style="width:100%">
-      <div class="text">15-minute Santa</div>
+      <p>15-minute Santa</p>
     </div>
 
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -158,7 +160,8 @@
       for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
       }
-      slides[slideIndex - 1].style.display = "block";
+      slides[slideIndex - 1].style.display = "flex";
+      slides[slideIndex - 1].style["flex-direction"] = "column";
       dots[slideIndex - 1].className += " active";
     }
   </script>
