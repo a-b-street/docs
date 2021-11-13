@@ -96,10 +96,20 @@
         font-size: 11px
       }
     }
+
+	.separator {
+	  height: 10px;
+	  width: 10px;
+	  background-color: #bbb;
+	  border-radius: 50%;
+	  display: inline-block;
+	}
   </style>
 </head>
 
 <body>
+  <img src="https://raw.githubusercontent.com/a-b-street/abstreet/master/data/system/assets/pregame/logo.svg" height="100px">
+  <a href="https://github.com/a-b-street/abstreet"><img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" height="50px" align="right"></a>
 
   <div class="slideshow-container">
 
@@ -135,6 +145,18 @@
     <span class="dot" onclick="currentSlide(3)"></span>
     <span class="dot" onclick="currentSlide(4)"></span>
   </div>
+
+  <div style="text-align:center">
+	  <span><a href="http://play.abstreet.org/0.2.65/abstreet.html">Try in your web browser</a></span>
+	  <span class="separator"></span>
+	  <span><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_windows_v0_2_65.zip">Windows</a></span>
+	  <span class="separator"></span>
+	  <span><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_mac_v0_2_65.zip">Mac</a></span>
+	  <span class="separator"></span>
+	  <span><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_linux_v0_2_65.zip">Linux</a></span>
+ </div>
+
+
 
   <script>
     var slideIndex = 1;
