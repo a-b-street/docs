@@ -15,6 +15,8 @@ The main projects:
   in relation to commercial and public amenities.
 - [15-minute Santa](santa.md), a light-hearted arcade game to demonstrate the
   concept of a 15-minute neighborhood.
+- [Low-traffic neighborhood](ltn/index.md) for understanding how modal filters
+  can discourage vehicle traffic from cutting through residential areas.
 
 Some dedicated tools for the OpenStreetMap community:
 
