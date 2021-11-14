@@ -25,8 +25,8 @@ This happens every Sunday.
     update that script first. This updates the latest release from `0.2.37` to
     `0.2.38`. It assumes the <https://github.com/a-b-street/docs> repo is in
     your home directory named `~/docs`.
-10. Go fill out `~/docs/book/src/project/CHANGELOG.md`; the notes should match
-    what's in the Github release.
+10. Go fill out `~/docs/book/src/project/history/CHANGELOG.md`; the notes should
+    match what's in the Github release.
 11. Follow the steps that the `update_docs.sh` script tells you. Don't forget to
     push the commit on the main abstreet repo as well.
 

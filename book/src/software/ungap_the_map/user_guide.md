@@ -166,7 +166,7 @@ mode, you can customize the width of each lane and other details. If you're
 focused only on a small area, this might be useful. But if you're interested in
 quickly sketching over a large area, use the "create new bike lanes" mode.
 
-![](../../project/retrospective/edit_roads.gif)
+![](../../project/history/retrospective/edit_roads.gif)
 
 ## Predict impact
 

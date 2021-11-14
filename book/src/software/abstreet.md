@@ -25,17 +25,17 @@ A/B Street gives you a 2D representation of roads, with as much detail about
 bus/bike/turn/parking lanes, transit stops, traffic signals, and parking lots as
 possible, all from OpenStreetMap.
 
-![](../project/retrospective/road_width_abst.png)
+![](../project/history/retrospective/road_width_abst.png)
 
 Depending on elevation data availability, some areas let you visualize steep
 streets -- because your bike network should be planned accordingly.
 
-![](../project/retrospective/data_elevation.png)
+![](../project/history/retrospective/data_elevation.png)
 
 Using external travel demand models, you can explore patterns of where people
 live, work, and shop.
 
-![](../project/retrospective/commuter_patterns.png)
+![](../project/history/retrospective/commuter_patterns.png)
 
 ## Simulate
 
@@ -43,7 +43,7 @@ Using some external data about what trips people take on a typical day, you can
 simulate drivers, bicyclists, and pedestrians moving around. (Public transit and
 scooter/bikeshare micromobility planned.)
 
-![](../project/retrospective/traffic_sim.gif)
+![](../project/history/retrospective/traffic_sim.gif)
 
 You can follow individual people and watch them wrestle with problems, or get a
 bird's-eye view of how everything is moving.
@@ -73,7 +73,7 @@ vehicle lanes, bus-only lanes, bike lanes, street parking, and new sidewalks.
 You can either transform existing lanes, or slightly widen/shrink the road. You
 can reverse the direction of lanes, or close them down to simulate construction.
 
-![](../project/retrospective/edit_roads.gif)
+![](../project/history/retrospective/edit_roads.gif)
 
 You can also change speed limits and restrict access to an area. Only trips that
 start or end in a private area can use the roads within, modelling gated
@@ -86,15 +86,15 @@ light lasts longer when many vehicles are waiting. You can also change which
 movements are allowed each stage, so you could try out a dedicated left turn
 stage or a pedestrian all-walk/scramble cycle.
 
-![](../project/retrospective/edit_signals.gif)
+![](../project/history/retrospective/edit_signals.gif)
 
 ## Measure
 
 A/B Street lets you tell data-driven stories about both infrastructure and
 people.
 
-![](../project/retrospective/viz_delay_scatter.gif)
+![](../project/history/retrospective/viz_delay_scatter.gif)
 
-![](../project/retrospective/viz_trip_table.gif)
+![](../project/history/retrospective/viz_trip_table.gif)
 
-![](../project/retrospective/viz_time_summary.gif)
+![](../project/history/retrospective/viz_time_summary.gif)

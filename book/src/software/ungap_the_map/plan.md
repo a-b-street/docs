@@ -185,7 +185,7 @@ There are also more features we could add:
 - improve routing by allowing bikes to enter/exit buildings from either side of
   the road
 
-![](../../project/retrospective/traffic_sim.gif)
+![](../../project/history/retrospective/traffic_sim.gif)
 
 ### Future directions
 
