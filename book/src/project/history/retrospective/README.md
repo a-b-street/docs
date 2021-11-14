@@ -35,12 +35,13 @@ come and how robust it is to most cities I've imported.
   - The tagging schema described by the OSM wiki is complicated to begin with.
     But real mapping still diverges from this. I wound up fixing many
     discrepencies in Seattle, and made
-    [a dedicated tool](../../software/osm_viewer.md) to help other mappers
+    [a dedicated tool](../../../software/osm_viewer.md) to help other mappers
     validate their work.
   - Because of A/B Street, I've mapped OSM tags that're just proposals or not
-    widely used -- like [street parking](../../software/parking_mapper.md) and
+    widely used -- like [street parking](../../../software/parking_mapper.md)
+    and
     [cycleway:separation](https://wiki.openstreetmap.org/wiki/Talk:Proposed_features/cycleway:separation).
-- [Creating geometry from roads and intersections](../../tech/map/geometry/index.md)
+- [Creating geometry from roads and intersections](../../../tech/map/geometry/index.md)
   - I believe A/B Street has the most advanced handling of complex OSM
     intersections of anything that's public
 - OSM doesn't directly encode what movements are possible through each
@@ -60,7 +61,7 @@ come and how robust it is to most cities I've imported.
     stages for many different shapes of intersections. (I never did much work on
     automatically improving the timing, though.)
   - I invented a
-    [JSON interchange format](../../tech/dev/formats/traffic_signals.md)
+    [JSON interchange format](../../../tech/dev/formats/traffic_signals.md)
     referencing OSM IDs to describe signal configuration.
   - I worked with Dr. Xuezong Zhou's ASU group to import
     [GMNS signal timing](https://github.com/asu-trans-ai-lab/Vol2Timing) and
@@ -155,7 +156,7 @@ Should we grab new upstream OSM data? Just recalculat scenarios, leaving the
 maps alone? Only re-run one stage of the map import?
 
 I'm pretty happy with how easy it is to
-[import a new city](../../user/new_city.md). Originally you had to email me a
+[import a new city](../../../user/new_city.md). Originally you had to email me a
 boundary or compile the project yourself, but now the UI just asks you to draw a
 GeoJSON boundary, uses Overpass to grab fresh data, and runs the importer for
 you.
@@ -191,13 +192,13 @@ At my previous job, there was quite a bit of hassle maintaining a production
 service without downtime. It was initially very freeing to just write software
 quickly without worrying about breaking people, but of couse that didn't last
 long after I started releasing public builds every week. The
-[release process](../../tech/dev/release.md) is mostly automated.
+[release process](../../../tech/dev/release.md) is mostly automated.
 
 At first, I just shipped all map and scenario data with the .zip releases and
 bundled this in one big .wasm blob (yes, really). Of course this didn't scale as
 we increased the number of imported cities. So eventually I made the UI download
 each city only when needed. This required
-[versioning the data](../../tech/dev/data.md) -- the code in a release from
+[versioning the data](../../../tech/dev/data.md) -- the code in a release from
 weeks ago is probably binary incompatible with the current map data.
 
 Originally I just threw all the files in my personal Dropbox, but moved to S3 at
@@ -216,7 +217,7 @@ another try.
 
 #### Discrete event traffic simulation
 
-Read the [full article](../../tech/trafficsim/index.md).
+Read the [full article](../../../tech/trafficsim/index.md).
 
 Although there's lots of academic papers out there describing car-following
 models and other "microscopic," agent-based traffic models, it's always seemed
@@ -249,7 +250,7 @@ Some traffic simulators out there are only focused on highways, not even
 inner-city driving. Many don't include pedestrians and cyclists, or bolt them on
 as an after-thought. But I'll bet A/B Street is one of the only ones including a
 detail crucial to the experience of driving:
-[parking](../../tech/trafficsim/parking.md). How many times have you heard a
+[parking](../../../tech/trafficsim/parking.md). How many times have you heard a
 friend complain that it took 10 minutes to drive over, but 15 to find parking?
 Exactly.
 
@@ -264,8 +265,8 @@ it may not be giving you the full picture -- are you sure you won't circle
 around a dense neighborhood for 10 minutes finding that free spot? Abstractions
 matter. I hope I've done justice to Donald Shoup.
 
-![](../../tech/trafficsim/parking_efficiency.png) _Darker red dots are vehicles
-parked farther away from their final destination_
+![](../../../tech/trafficsim/parking_efficiency.png) _Darker red dots are
+vehicles parked farther away from their final destination_
 
 #### Gridlock
 
@@ -336,7 +337,7 @@ appeared to not do what I needed. So I started with
 and... just went for it. It's not hard to start drawing a big
 [slippy map](https://wiki.openstreetmap.org/wiki/Slippy_Map) with zooming and
 panning, nor is it tough to wire up a basic clickable button. But...
-[widgetry](../../tech/dev/ui.md) has turned into something quite feature-full
+[widgetry](../../../tech/dev/ui.md) has turned into something quite feature-full
 and has a decent API.
 
 The journey there was quite circuitous. Most of the difficulty was not even
@@ -504,13 +505,13 @@ I was pretty quiet the first year, but then I started actively looking for
 people interested in working on this. I've lost track of all the people I've
 spent at least an hour talking to and seriously trying to set up some sort of
 collaboration -- at least 100? I've tried everything I can to attract
-[contributors](../contributing.md) for programming, design, business, outreach,
-writing. Many start, but wind up vanishing. It's exhausting for me; I get
-emotionally invested in everybody who wants something from A/B Street. Running
-an open source project is really hard. **But I want to emphasize it has partly
-worked -- I'm super thankful for the ~dozen people who have stuck around and
-really made working on this project a true pleasure.** I probably need to learn
-to filter better, fail-fast, and put some barriers up before I invest.
+[contributors](../../contributing.md) for programming, design, business,
+outreach, writing. Many start, but wind up vanishing. It's exhausting for me; I
+get emotionally invested in everybody who wants something from A/B Street.
+Running an open source project is really hard. **But I want to emphasize it has
+partly worked -- I'm super thankful for the ~dozen people who have stuck around
+and really made working on this project a true pleasure.** I probably need to
+learn to filter better, fail-fast, and put some barriers up before I invest.
 
 There were a few low moments that stand out. Accidentally CC'd on an internal
 email literally stood the question, "It's open souce, why pay him anything?"
@@ -519,7 +520,7 @@ was too cheap to hire somebody for their own idea, so exploited the fact that
 this is a passion project for me and for a while, somewhat successfully coerced
 me to work on their quasi-startup. There were also some highlights, especially
 when butting heads philosophically. Not everybody understood my
-[mission](../motivations.md) before reaching out. I'll never forget one video
+[mission](../../motivations.md) before reaching out. I'll never forget one video
 call with a company that was going splendidly, until I explicitly stated all
 work I do will be open source -- watching the other person scramble to control
 their plummeting facial expression was perfect. And once I got the most Silicon
@@ -595,7 +596,7 @@ different data visualizations, and try to inch towards completing a full
 simulation without gridlock.
 
 I feel bad that A/B Street as a properly fun game was never realized, but I'm
-proud of [15-minute Santa](../../software/santa.md). By no means is Santa
+proud of [15-minute Santa](../../../software/santa.md). By no means is Santa
 attempting to split the difference between serious planning and entertainment;
 it's just a silly arcade game that loosely involves transportation and land use.
 
@@ -603,7 +604,7 @@ it's just a silly arcade game that loosely involves transportation and land use.
 plenty of silliness_
 
 We also made a tool to explore
-[15-minute neighborhoods](../../software/fifteen_min.md). The isochrones are
+[15-minute neighborhoods](../../../software/fifteen_min.md). The isochrones are
 hopefully useful to understand what parts of a city have good or bad access to
 different types of shops, and how hills and slow traffic signals affect walk or
 bike-sheds. Editing the map -- particularly to modify land use -- and checking
@@ -612,15 +613,15 @@ we ever revive it.
 
 As I realized the most active audience for A/B Street is the OpenStreetMap
 community, I spun out some tools to
-[validate lane tagging](../../software/osm_viewer.md) and
-[tag street parking](../../software/parking_mapper.md).
+[validate lane tagging](../../../software/osm_viewer.md) and
+[tag street parking](../../../software/parking_mapper.md).
 
 After some feedback from advocacy groups and people who felt overwhelmed by the
 broad scope of A/B Street, we created a
-[simple interface for sketching and evaluating a bike network](../../software/ungap_the_map/index.md).
+[simple interface for sketching and evaluating a bike network](../../../software/ungap_the_map/index.md).
 
 And now we're spinning up a dedicated tool for
-[low traffic neighborhoods](../../software/ltn/index.md).
+[low traffic neighborhoods](../../../software/ltn/index.md).
 
 ### Marketing
 
@@ -635,7 +636,7 @@ made a shocking connection between my childhood with Banjo Kazooie and my
 current fascination with multi-modal travel.
 
 But I've also hustled near-constantly online and in-person, at countless
-hackathons and [conferences](../presentations.md). I've cold-emailed so many
+hackathons and [conferences](../../presentations.md). I've cold-emailed so many
 companies trying to set up collaborations.
 
 ### Community
@@ -653,7 +654,7 @@ communities weren't talking to each other before I got people into the same
 I self-funded from savings from my previous big tech job. I feel super fortunate
 to have had zero pressure to make money with A/B Street, letting me prioritize
 what really matters to me. I've even personally funded a few people to create
-[new open source libraries](../funding.md) that I needed.
+[new open source libraries](../../funding.md) that I needed.
 
 But not starting a business, even some kind of consulting firm, was likely a
 mistake. Many of the groups I tried to collaborate with probably had no idea how
@@ -717,9 +718,10 @@ conspicuous gap of knowledge about biking in South Seattle, a place with much
 more traffic violence and much less cycling-friendly infrastructure. And partly,
 I'm just lazy and avoiding writing -- I can do it, but it's so draining --
 writing this document was quite difficult for me. As a team, we have published
-[one simple advocacy piece](../../proposals/broadmoor.md) -- written by Michael
--- more to experiment with the format than to push for a real change (although
-the idea would be fantastic, asking to open up private roads is a non-starter).
+[one simple advocacy piece](../../../proposals/broadmoor.md) -- written by
+Michael -- more to experiment with the format than to push for a real change
+(although the idea would be fantastic, asking to open up private roads is a
+non-starter).
 
 I don't have a good understanding of politics or how to actually help advance
 real changes on the ground. But since we've failed to find users for A/B Street
@@ -736,7 +738,7 @@ rise of Fridgehaus, rubducks in the laptub, taro bingsoothsayer, Hausbroken.
 
 After weeks of sweating over what the 15-minute neighborhood tool is supposed to
 do and just one stout, I exploded out of my room and drunkenly pitched
-[15 minute Santa](../../software/santa.md) to my bewildered housemates. Then
+[15 minute Santa](../../../software/santa.md) to my bewildered housemates. Then
 Michael and Yuwen and I made it (thank you for putting up with me).
 
 A/B Street is my self-expression. Its origins are tangled in a mess of
