@@ -7195,15 +7195,16 @@ come and how robust it is to most cities I've imported.</p>
 <li>The tagging schema described by the OSM wiki is complicated to begin with.
 But real mapping still diverges from this. I wound up fixing many
 discrepencies in Seattle, and made
-<a href="project/history/retrospective/../../software/osm_viewer.html">a dedicated tool</a> to help other mappers
+<a href="project/history/retrospective/../../../software/osm_viewer.html">a dedicated tool</a> to help other mappers
 validate their work.</li>
 <li>Because of A/B Street, I've mapped OSM tags that're just proposals or not
-widely used -- like <a href="project/history/retrospective/../../software/parking_mapper.html">street parking</a> and
+widely used -- like <a href="project/history/retrospective/../../../software/parking_mapper.html">street parking</a>
+and
 <a href="https://wiki.openstreetmap.org/wiki/Talk:Proposed_features/cycleway:separation">cycleway:separation</a>.</li>
 </ul>
 </li>
 <li>
-<p><a href="project/history/retrospective/../../tech/map/geometry/index.html">Creating geometry from roads and intersections</a></p>
+<p><a href="project/history/retrospective/../../../tech/map/geometry/index.html">Creating geometry from roads and intersections</a></p>
 <ul>
 <li>I believe A/B Street has the most advanced handling of complex OSM
 intersections of anything that's public</li>
@@ -7233,7 +7234,7 @@ nodes for a complex junction. There's no way to describe its timing.</p>
 stages for many different shapes of intersections. (I never did much work on
 automatically improving the timing, though.)</li>
 <li>I invented a
-<a href="project/history/retrospective/../../tech/dev/formats/traffic_signals.html">JSON interchange format</a>
+<a href="project/history/retrospective/../../../tech/dev/formats/traffic_signals.html">JSON interchange format</a>
 referencing OSM IDs to describe signal configuration.</li>
 <li>I worked with Dr. Xuezong Zhou's ASU group to import
 <a href="https://github.com/asu-trans-ai-lab/Vol2Timing">GMNS signal timing</a> and
@@ -7317,7 +7318,7 @@ is hard is expressing which parts of the graph to invalidate and recalculate.
 Should we grab new upstream OSM data? Just recalculat scenarios, leaving the
 maps alone? Only re-run one stage of the map import?</p>
 <p>I'm pretty happy with how easy it is to
-<a href="project/history/retrospective/../../user/new_city.html">import a new city</a>. Originally you had to email me a
+<a href="project/history/retrospective/../../../user/new_city.html">import a new city</a>. Originally you had to email me a
 boundary or compile the project yourself, but now the UI just asks you to draw a
 GeoJSON boundary, uses Overpass to grab fresh data, and runs the importer for
 you.</p>
@@ -7347,12 +7348,12 @@ change.</p>
 service without downtime. It was initially very freeing to just write software
 quickly without worrying about breaking people, but of couse that didn't last
 long after I started releasing public builds every week. The
-<a href="project/history/retrospective/../../tech/dev/release.html">release process</a> is mostly automated.</p>
+<a href="project/history/retrospective/../../../tech/dev/release.html">release process</a> is mostly automated.</p>
 <p>At first, I just shipped all map and scenario data with the .zip releases and
 bundled this in one big .wasm blob (yes, really). Of course this didn't scale as
 we increased the number of imported cities. So eventually I made the UI download
 each city only when needed. This required
-<a href="project/history/retrospective/../../tech/dev/data.html">versioning the data</a> -- the code in a release from
+<a href="project/history/retrospective/../../../tech/dev/data.html">versioning the data</a> -- the code in a release from
 weeks ago is probably binary incompatible with the current map data.</p>
 <p>Originally I just threw all the files in my personal Dropbox, but moved to S3 at
 some point (every single public file in Dropbox needs its own URL, and I broke
@@ -7366,7 +7367,7 @@ packs, gzipping. So I rolled my own
 another try.</p>
 <h3 id="simulation-1"><a class="header" href="#simulation-1">Simulation</a></h3>
 <h4 id="discrete-event-traffic-simulation"><a class="header" href="#discrete-event-traffic-simulation">Discrete event traffic simulation</a></h4>
-<p>Read the <a href="project/history/retrospective/../../tech/trafficsim/index.html">full article</a>.</p>
+<p>Read the <a href="project/history/retrospective/../../../tech/trafficsim/index.html">full article</a>.</p>
 <p>Although there's lots of academic papers out there describing car-following
 models and other &quot;microscopic,&quot; agent-based traffic models, it's always seemed
 to me that they omit details about how to actually implement them. So, I rolled
@@ -7393,7 +7394,7 @@ signal at Greenwood and N 87th</em></p>
 inner-city driving. Many don't include pedestrians and cyclists, or bolt them on
 as an after-thought. But I'll bet A/B Street is one of the only ones including a
 detail crucial to the experience of driving:
-<a href="project/history/retrospective/../../tech/trafficsim/parking.html">parking</a>. How many times have you heard a
+<a href="project/history/retrospective/../../../tech/trafficsim/parking.html">parking</a>. How many times have you heard a
 friend complain that it took 10 minutes to drive over, but 15 to find parking?
 Exactly.</p>
 <p>Except in some maps that disable it, every driving trip in A/B Street begins and
@@ -7406,8 +7407,8 @@ when your phone says driving somewhere is 20 minutes faster than taking a bus,
 it may not be giving you the full picture -- are you sure you won't circle
 around a dense neighborhood for 10 minutes finding that free spot? Abstractions
 matter. I hope I've done justice to Donald Shoup.</p>
-<p><img src="project/history/retrospective/../../tech/trafficsim/parking_efficiency.png" alt="" /> <em>Darker red dots are vehicles
-parked farther away from their final destination</em></p>
+<p><img src="project/history/retrospective/../../../tech/trafficsim/parking_efficiency.png" alt="" /> <em>Darker red dots are
+vehicles parked farther away from their final destination</em></p>
 <h4 id="gridlock-1"><a class="header" href="#gridlock-1">Gridlock</a></h4>
 <p>In both the real world and in a traffic simulation, vehicles get a bit stuck. In
 the real world, this is usually resolved by humans slightly breaking strict
@@ -7464,7 +7465,7 @@ appeared to not do what I needed. So I started with
 and... just went for it. It's not hard to start drawing a big
 <a href="https://wiki.openstreetmap.org/wiki/Slippy_Map">slippy map</a> with zooming and
 panning, nor is it tough to wire up a basic clickable button. But...
-<a href="project/history/retrospective/../../tech/dev/ui.html">widgetry</a> has turned into something quite feature-full
+<a href="project/history/retrospective/../../../tech/dev/ui.html">widgetry</a> has turned into something quite feature-full
 and has a decent API.</p>
 <p>The journey there was quite circuitous. Most of the difficulty was not even
 knowing how the UI should work (or even having a clear picture of what the app
@@ -7584,13 +7585,13 @@ little success.</p>
 people interested in working on this. I've lost track of all the people I've
 spent at least an hour talking to and seriously trying to set up some sort of
 collaboration -- at least 100? I've tried everything I can to attract
-<a href="project/history/retrospective/../contributing.html">contributors</a> for programming, design, business, outreach,
-writing. Many start, but wind up vanishing. It's exhausting for me; I get
-emotionally invested in everybody who wants something from A/B Street. Running
-an open source project is really hard. <strong>But I want to emphasize it has partly
-worked -- I'm super thankful for the ~dozen people who have stuck around and
-really made working on this project a true pleasure.</strong> I probably need to learn
-to filter better, fail-fast, and put some barriers up before I invest.</p>
+<a href="project/history/retrospective/../../contributing.html">contributors</a> for programming, design, business,
+outreach, writing. Many start, but wind up vanishing. It's exhausting for me; I
+get emotionally invested in everybody who wants something from A/B Street.
+Running an open source project is really hard. <strong>But I want to emphasize it has
+partly worked -- I'm super thankful for the ~dozen people who have stuck around
+and really made working on this project a true pleasure.</strong> I probably need to
+learn to filter better, fail-fast, and put some barriers up before I invest.</p>
 <p>There were a few low moments that stand out. Accidentally CC'd on an internal
 email literally stood the question, &quot;It's open souce, why pay him anything?&quot;
 when I was trying to set up a small consulting deal. There was also a group that
@@ -7598,7 +7599,7 @@ was too cheap to hire somebody for their own idea, so exploited the fact that
 this is a passion project for me and for a while, somewhat successfully coerced
 me to work on their quasi-startup. There were also some highlights, especially
 when butting heads philosophically. Not everybody understood my
-<a href="project/history/retrospective/../motivations.html">mission</a> before reaching out. I'll never forget one video
+<a href="project/history/retrospective/../../motivations.html">mission</a> before reaching out. I'll never forget one video
 call with a company that was going splendidly, until I explicitly stated all
 work I do will be open source -- watching the other person scramble to control
 their plummeting facial expression was perfect. And once I got the most Silicon
@@ -7658,13 +7659,13 @@ objectives exist. Instead, this is a place to edit the map, explore all the
 different data visualizations, and try to inch towards completing a full
 simulation without gridlock.</p>
 <p>I feel bad that A/B Street as a properly fun game was never realized, but I'm
-proud of <a href="project/history/retrospective/../../software/santa.html">15-minute Santa</a>. By no means is Santa
+proud of <a href="project/history/retrospective/../../../software/santa.html">15-minute Santa</a>. By no means is Santa
 attempting to split the difference between serious planning and entertainment;
 it's just a silly arcade game that loosely involves transportation and land use.</p>
 <p><img src="project/history/retrospective/santa.gif" alt="" /> <em>Paperboy modernized with OpenStreetMap, a Santa sprite, and
 plenty of silliness</em></p>
 <p>We also made a tool to explore
-<a href="project/history/retrospective/../../software/fifteen_min.html">15-minute neighborhoods</a>. The isochrones are
+<a href="project/history/retrospective/../../../software/fifteen_min.html">15-minute neighborhoods</a>. The isochrones are
 hopefully useful to understand what parts of a city have good or bad access to
 different types of shops, and how hills and slow traffic signals affect walk or
 bike-sheds. Editing the map -- particularly to modify land use -- and checking
@@ -7672,13 +7673,13 @@ out the differential isochrone would be the ultimate use for this tool, should
 we ever revive it.</p>
 <p>As I realized the most active audience for A/B Street is the OpenStreetMap
 community, I spun out some tools to
-<a href="project/history/retrospective/../../software/osm_viewer.html">validate lane tagging</a> and
-<a href="project/history/retrospective/../../software/parking_mapper.html">tag street parking</a>.</p>
+<a href="project/history/retrospective/../../../software/osm_viewer.html">validate lane tagging</a> and
+<a href="project/history/retrospective/../../../software/parking_mapper.html">tag street parking</a>.</p>
 <p>After some feedback from advocacy groups and people who felt overwhelmed by the
 broad scope of A/B Street, we created a
-<a href="project/history/retrospective/../../software/ungap_the_map/index.html">simple interface for sketching and evaluating a bike network</a>.</p>
+<a href="project/history/retrospective/../../../software/ungap_the_map/index.html">simple interface for sketching and evaluating a bike network</a>.</p>
 <p>And now we're spinning up a dedicated tool for
-<a href="project/history/retrospective/../../software/ltn/index.html">low traffic neighborhoods</a>.</p>
+<a href="project/history/retrospective/../../../software/ltn/index.html">low traffic neighborhoods</a>.</p>
 <h3 id="marketing"><a class="header" href="#marketing">Marketing</a></h3>
 <p>The successful marketing basically came for free. A single bold post to
 <a href="https://old.reddit.com/r/Seattle/comments/hdtucd/ab_street_think_you_can_fix_seattles_traffic/">r/seattle</a>
@@ -7690,7 +7691,7 @@ point across.
 made a shocking connection between my childhood with Banjo Kazooie and my
 current fascination with multi-modal travel.</p>
 <p>But I've also hustled near-constantly online and in-person, at countless
-hackathons and <a href="project/history/retrospective/../presentations.html">conferences</a>. I've cold-emailed so many
+hackathons and <a href="project/history/retrospective/../../presentations.html">conferences</a>. I've cold-emailed so many
 companies trying to set up collaborations.</p>
 <h3 id="community"><a class="header" href="#community">Community</a></h3>
 <p>The A/B Street Slack has a sense of home to me; it might've started for work,
@@ -7703,7 +7704,7 @@ communities weren't talking to each other before I got people into the same
 <p>I self-funded from savings from my previous big tech job. I feel super fortunate
 to have had zero pressure to make money with A/B Street, letting me prioritize
 what really matters to me. I've even personally funded a few people to create
-<a href="project/history/retrospective/../funding.html">new open source libraries</a> that I needed.</p>
+<a href="project/history/retrospective/../../funding.html">new open source libraries</a> that I needed.</p>
 <p>But not starting a business, even some kind of consulting firm, was likely a
 mistake. Many of the groups I tried to collaborate with probably had no idea how
 to deal with me. There's no legal entity for the project, I'm not in academia,
@@ -7755,9 +7756,10 @@ conspicuous gap of knowledge about biking in South Seattle, a place with much
 more traffic violence and much less cycling-friendly infrastructure. And partly,
 I'm just lazy and avoiding writing -- I can do it, but it's so draining --
 writing this document was quite difficult for me. As a team, we have published
-<a href="project/history/retrospective/../../proposals/broadmoor.html">one simple advocacy piece</a> -- written by Michael
--- more to experiment with the format than to push for a real change (although
-the idea would be fantastic, asking to open up private roads is a non-starter).</p>
+<a href="project/history/retrospective/../../../proposals/broadmoor.html">one simple advocacy piece</a> -- written by
+Michael -- more to experiment with the format than to push for a real change
+(although the idea would be fantastic, asking to open up private roads is a
+non-starter).</p>
 <p>I don't have a good understanding of politics or how to actually help advance
 real changes on the ground. But since we've failed to find users for A/B Street
 that're advancing some cause, then... there is one last thing we could try. Will
@@ -7770,7 +7772,7 @@ ajitummy, twice-dumpstered anything, beef welldoneington, tostonical vows, the
 rise of Fridgehaus, rubducks in the laptub, taro bingsoothsayer, Hausbroken.</p>
 <p>After weeks of sweating over what the 15-minute neighborhood tool is supposed to
 do and just one stout, I exploded out of my room and drunkenly pitched
-<a href="project/history/retrospective/../../software/santa.html">15 minute Santa</a> to my bewildered housemates. Then
+<a href="project/history/retrospective/../../../software/santa.html">15 minute Santa</a> to my bewildered housemates. Then
 Michael and Yuwen and I made it (thank you for putting up with me).</p>
 <p>A/B Street is my self-expression. Its origins are tangled in a mess of
 bittersweet memory (I wasn't the one who thought a game should be about traffic)
