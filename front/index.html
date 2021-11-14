@@ -3,6 +3,7 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A/B Street: Open source software for planning less car-centric cities</title>
   <style>
     * {
       box-sizing: border-box
@@ -22,14 +23,12 @@
       vertical-align: middle;
     }
 
-    /* Slideshow container */
     .slideshow-container {
       max-width: 1000px;
       position: relative;
       margin: auto;
     }
 
-    /* Next & previous buttons */
     .prev,
     .next {
       cursor: pointer;
@@ -46,19 +45,16 @@
       user-select: none;
     }
 
-    /* Position the "next button" to the right */
     .next {
       right: 0;
       border-radius: 3px 0 0 3px;
     }
 
-    /* On hover, add a black background color with a little bit see-through */
     .prev:hover,
     .next:hover {
       background-color: rgba(0, 0, 0, 0.8);
     }
 
-    /* Caption text */
     .text {
       color: #f2f2f2;
       font-size: 15px;
@@ -70,7 +66,6 @@
     }
 
 
-    /* The dots/bullets/indicators */
     .dot {
       cursor: pointer;
       height: 15px;
@@ -86,34 +81,32 @@
     .dot:hover {
       background-color: #717171;
     }
-
-    /* On smaller screens, decrease text size */
-    @media only screen and (max-width: 300px) {
-
-      .prev,
-      .next,
-      .text {
-        font-size: 11px
-      }
-    }
-
-    .separator {
-      height: 10px;
-      width: 10px;
-      background-color: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-    }
   </style>
-  <title>A/B Street</title>
 </head>
 
 <body>
-  <img src="https://raw.githubusercontent.com/a-b-street/abstreet/master/data/system/assets/pregame/logo.svg"
-    height="100px">
-  Open source software for planning less car-centric cities
+  <div>
+	  <span><img src="https://raw.githubusercontent.com/a-b-street/abstreet/master/data/system/assets/pregame/logo.svg"
+		     height="100px"></span>
+	  <span>
+		  Open source software for planning less car-centric cities<br/>
+    <a href="http://play.abstreet.org/0.2.65/abstreet.html" target="_blank">Try in your web browser</a>
+    /
+    <a
+        href="https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_windows_v0_2_65.zip">Windows</a>
+    /
+    <a
+        href="https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_mac_v0_2_65.zip">Mac</a>
+    /
+    <a
+        href="https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_linux_v0_2_65.zip">Linux</a>
+    /
+    <a href="https://a-b-street.github.io/docs/user/index.html" target="_blank">User guide</a>
+  </span>
   <a href="https://github.com/a-b-street/abstreet" target="_blank"><img
       src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" height="50px" align="right"></a>
+  </div>
+
 
   <div class="slideshow-container">
 
@@ -165,19 +158,6 @@
     <span class="dot" onclick="currentSlide(4)"></span>
     <span class="dot" onclick="currentSlide(5)"></span>
     <span class="dot" onclick="currentSlide(6)"></span>
-  </div>
-
-  <div style="text-align:center">
-    <span><a href="http://play.abstreet.org/0.2.65/abstreet.html" target="_blank">Try in your web browser</a></span>
-    <span class="separator"></span>
-    <span><a
-        href="https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_windows_v0_2_65.zip">Windows</a></span>
-    <span class="separator"></span>
-    <span><a
-        href="https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_mac_v0_2_65.zip">Mac</a></span>
-    <span class="separator"></span>
-    <span><a
-        href="https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_linux_v0_2_65.zip">Linux</a></span>
   </div>
 
   <p>Ever been stuck in traffic on a bus, wondering why is there legal street parking instead of a dedicated bus lane?
