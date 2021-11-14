@@ -1,7 +1,7 @@
-# The A/B Street Retrospective
+# The A/B Street "Almost" Postmortem
 
-I want to reflect on what I've been working on for the past 3+ years, as of
-September 2021.
+This was written September 2021, originally meant as a project postmortem.
+(Spoiler alert: we're still alive and kicking)
 
 <!-- toc -->
 
@@ -216,7 +216,7 @@ another try.
 
 #### Discrete event traffic simulation
 
-<!-- Full article... (maybe some of this is the intro to it) -->
+Read the [full article](../../tech/trafficsim/index.md).
 
 Although there's lots of academic papers out there describing car-following
 models and other "microscopic," agent-based traffic models, it's always seemed
@@ -568,8 +568,6 @@ the realism and calibration problem -- I couldn't hope to alone compete with
 industry standard simulation software. It was also a way to engage the general
 public, or at least the percentage that plays games.
 
-<!-- And where do things stand? What're the use cases, who is the audience? Advocacy? Education? Placating fears of NIMBYs? -->
-
 ### Teasing apart the monolith
 
 The scope of A/B Street is **way** too broad. Early on, all of the new
@@ -617,9 +615,12 @@ community, I spun out some tools to
 [validate lane tagging](../../software/osm_viewer.md) and
 [tag street parking](../../software/parking_mapper.md).
 
-And finally, after some feedback from advocacy groups and people who felt
-overwhelmed by the broad scope of A/B Street, we're working on a simple
-interface for sketching and evaluating a bike network. Stay tuned.
+After some feedback from advocacy groups and people who felt overwhelmed by the
+broad scope of A/B Street, we created a
+[simple interface for sketching and evaluating a bike network](../../software/ungap_the_map/index.md).
+
+And now we're spinning up a dedicated tool for
+[low traffic neighborhoods](../../software/ltn/index.md).
 
 ### Marketing
 
@@ -759,4 +760,10 @@ If anybody wants to convince me to do something else instead, now you know what
 you're up against. And if you succeed, you know how important your idea must be
 to me instead.
 
-<!-- A street and B Street... ->
+# Epilogue
+
+(November 2021, a few months after this article was first written.)
+
+After a rocky few months, I've decided to continue this "passion project," but
+with some changes and a much more clear understanding of what I want out of it.
+Stay tuned.
