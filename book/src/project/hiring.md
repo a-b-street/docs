@@ -78,8 +78,8 @@ expectations are pretty high.
 - Ideally this contract would be full-time (35-40 hours a week) for about 6
   months -- so that's about $5,000 per month.
 - Can't offer any benefits, sorry -- we're not a company yet!
-- Remote only. Anywhere in the world is fine, but most of us are in Seattle
-  (PST).
+- Remote only. Anywhere in the world is fine. The main person you'd be
+  collaborating with is in the UK.
 
 If we can figure out how to financially sustain ourselves, this could become a
 permanent position, but don't count on it.
