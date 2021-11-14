@@ -7099,9 +7099,9 @@ off-sides and across multiple lanes</li>
 intersection consolidation breakthrough, deduplicating cycleways in OSM, bike
 lane separators, new day mode colors</li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="the-ab-street-retrospective"><a class="header" href="#the-ab-street-retrospective">The A/B Street Retrospective</a></h1>
-<p>I want to reflect on what I've been working on for the past 3+ years, as of
-September 2021.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-ab-street-almost-postmortem"><a class="header" href="#the-ab-street-almost-postmortem">The A/B Street &quot;Almost&quot; Postmortem</a></h1>
+<p>This was written September 2021, originally meant as a project postmortem.
+(Spoiler alert: we're still alive and kicking)</p>
 <ul>
 <li><a href="project/history/retrospective/index.html#technical-accomplishments--challenges">Technical accomplishments &amp; challenges</a>
 <ul>
@@ -7167,6 +7167,7 @@ September 2021.</p>
 <li><a href="project/history/retrospective/index.html#what-this-project-means-to-me">What this project means to me</a></li>
 </ul>
 </li>
+<li><a href="project/history/retrospective/index.html#epilogue">Epilogue</a></li>
 </ul>
 <h2 id="technical-accomplishments--challenges"><a class="header" href="#technical-accomplishments--challenges">Technical accomplishments &amp; challenges</a></h2>
 <h3 id="the-map-model"><a class="header" href="#the-map-model">The map model</a></h3>
@@ -7365,7 +7366,7 @@ packs, gzipping. So I rolled my own
 another try.</p>
 <h3 id="simulation-1"><a class="header" href="#simulation-1">Simulation</a></h3>
 <h4 id="discrete-event-traffic-simulation"><a class="header" href="#discrete-event-traffic-simulation">Discrete event traffic simulation</a></h4>
-<!-- Full article... (maybe some of this is the intro to it) -->
+<p>Read the <a href="project/history/retrospective/../../tech/trafficsim/index.html">full article</a>.</p>
 <p>Although there's lots of academic papers out there describing car-following
 models and other &quot;microscopic,&quot; agent-based traffic models, it's always seemed
 to me that they omit details about how to actually implement them. So, I rolled
@@ -7635,7 +7636,6 @@ between a game and a serious planning tool.&quot; At first that was a way to pun
 the realism and calibration problem -- I couldn't hope to alone compete with
 industry standard simulation software. It was also a way to engage the general
 public, or at least the percentage that plays games.</p>
-<!-- And where do things stand? What're the use cases, who is the audience? Advocacy? Education? Placating fears of NIMBYs? -->
 <h3 id="teasing-apart-the-monolith"><a class="header" href="#teasing-apart-the-monolith">Teasing apart the monolith</a></h3>
 <p>The scope of A/B Street is <strong>way</strong> too broad. Early on, all of the new
 experiments were just crowded onto the title screen, but at some point, we split
@@ -7674,9 +7674,11 @@ we ever revive it.</p>
 community, I spun out some tools to
 <a href="project/history/retrospective/../../software/osm_viewer.html">validate lane tagging</a> and
 <a href="project/history/retrospective/../../software/parking_mapper.html">tag street parking</a>.</p>
-<p>And finally, after some feedback from advocacy groups and people who felt
-overwhelmed by the broad scope of A/B Street, we're working on a simple
-interface for sketching and evaluating a bike network. Stay tuned.</p>
+<p>After some feedback from advocacy groups and people who felt overwhelmed by the
+broad scope of A/B Street, we created a
+<a href="project/history/retrospective/../../software/ungap_the_map/index.html">simple interface for sketching and evaluating a bike network</a>.</p>
+<p>And now we're spinning up a dedicated tool for
+<a href="project/history/retrospective/../../software/ltn/index.html">low traffic neighborhoods</a>.</p>
 <h3 id="marketing"><a class="header" href="#marketing">Marketing</a></h3>
 <p>The successful marketing basically came for free. A single bold post to
 <a href="https://old.reddit.com/r/Seattle/comments/hdtucd/ab_street_think_you_can_fix_seattles_traffic/">r/seattle</a>
@@ -7788,7 +7790,11 @@ imagine it a bit differently, and try to convince others to see it the same way.
 <p>If anybody wants to convince me to do something else instead, now you know what
 you're up against. And if you succeed, you know how important your idea must be
 to me instead.</p>
-<!-- A street and B Street... ->
+<h1 id="epilogue"><a class="header" href="#epilogue">Epilogue</a></h1>
+<p>(November 2021, a few months after this article was first written.)</p>
+<p>After a rocky few months, I've decided to continue this &quot;passion project,&quot; but
+with some changes and a much more clear understanding of what I want out of it.
+Stay tuned.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="changelog"><a class="header" href="#changelog">CHANGELOG</a></h1>
 <p>Every time I upload a new <a href="https://github.com/a-b-street/abstreet/releases">binary
 release</a>, I'll list major
