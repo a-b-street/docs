@@ -24,6 +24,7 @@ jobs:
         run: |
             cd book
             mdbook build
+            cp ../homepage.html book
 
       - name: Publish HTML
         uses: peaceiris/actions-gh-pages@v3
