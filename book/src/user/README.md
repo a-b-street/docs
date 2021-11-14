@@ -1,13 +1,15 @@
 # User guide
 
-This is an alpha-quality demo. Please email <dabreegster@gmail.com> or
-[file a Github issue](https://github.com/a-b-street/abstreet/issues/) if you hit
-problems.
+Please [file a Github issue](https://github.com/a-b-street/abstreet/issues/) or
+email <dabreegster@gmail.com> if you encounter any problems.
 
-## Installing the game
+## Installing A/B Street
 
-Grab a pre-built binary release -- updated every Sunday, announced at
-[r/abstreet](http://old.reddit.com/r/abstreet):
+You can run A/B Street
+[directly in your web browser](http://play.abstreet.org/0.2.65/abstreet.html).
+It's slower and there are some limitations compared to installing locally.
+
+Grab a pre-built binary release:
 
 - [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_windows_v0_2_65.zip)
   - Unzip the folder, then run `play_abstreet.bat`. If you get a warning about
@@ -21,8 +23,8 @@ Grab a pre-built binary release -- updated every Sunday, announced at
     [follow this](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac).
     Help needed to start
     [signing the release](https://github.com/a-b-street/abstreet/issues/107)!
-  - If that just opens a text file instead of running the game, then instead
-    open terminal, `cd` to the directory you just unzipped. Then do:
+  - If that just opens a text file, then instead open terminal, `cd` to the
+    directory you just unzipped. Then do:
     `cd game; RUST_BACKTRACE=1 ./game 1> ../output.txt 2>&1`
   - [Help needed](https://github.com/a-b-street/abstreet/issues/77) to package
     this as a Mac .app, to make this process simpler
@@ -31,17 +33,7 @@ Grab a pre-built binary release -- updated every Sunday, announced at
 - [FreeBSD](https://www.freshports.org/games/abstreet/), thanks to
   [Yuri](https://github.com/yurivict)
 
-Or you can play
-[directly in your web browser](http://play.abstreet.org/0.2.65/abstreet.html) --
-some things don't work as well, but no install required.
-
 Or you can [compile from source](../tech/dev/index.md).
-
-## Playing the game
-
-- Use the **tutorial** to learn the controls.
-- Play the **challenges** for directed gameplay.
-- Try out any ideas in the **sandbox**.
 
 ## Common issues
 
