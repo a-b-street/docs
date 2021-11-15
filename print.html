@@ -1466,9 +1466,9 @@ work and shop.</p>
 <ul>
 <li><a href="http://play.abstreet.org/0.2.65/santa.html">Play online</a> (slower and no music
 -- download below if possible)</li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_windows_v0_2_65.zip">Windows</a></li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_mac_v0_2_65.zip">Mac</a></li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_linux_v0_2_65.zip">Linux</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.0/abstreet_windows_v0_3_0.zip">Windows</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.0/abstreet_mac_v0_3_0.zip">Mac</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.0/abstreet_linux_v0_3_0.zip">Linux</a></li>
 </ul>
 <p>Unzip, then run <code>santa.exe</code> or <code>santa</code>. No mobile/tablet support, sorry -- you
 need a keyboard.</p>
@@ -1619,7 +1619,7 @@ email <a href="user/dabreegster@gmail.com">dabreegster@gmail.com</a> if you enco
 It's slower and there are some limitations compared to installing locally.</p>
 <p>Grab a pre-built binary release:</p>
 <ul>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_windows_v0_2_65.zip">Windows</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.0/abstreet_windows_v0_3_0.zip">Windows</a>
 <ul>
 <li>Unzip the folder, then run <code>play_abstreet.bat</code>. If you get a warning about
 compressed files, choose to extract -- you can't run from the .zip directly.</li>
@@ -1628,7 +1628,7 @@ then &quot;run anyway.&quot; We don't sign the release yet, so A/B Street shows 
 an unknown publisher.</li>
 </ul>
 </li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_mac_v0_2_65.zip">Mac</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.0/abstreet_mac_v0_3_0.zip">Mac</a>
 <ul>
 <li>Unzip the directory, then run <code>play_abstreet.sh</code>.</li>
 <li>If you get an error about the developer unverified,
@@ -1642,7 +1642,7 @@ directory you just unzipped. Then do:
 this as a Mac .app, to make this process simpler</li>
 </ul>
 </li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.2.65/abstreet_linux_v0_2_65.zip">Linux</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.0/abstreet_linux_v0_3_0.zip">Linux</a>
 <ul>
 <li>Unzip the directory, then run <code>play_abstreet.sh</code>.</li>
 </ul>
@@ -8837,6 +8837,15 @@ changes here.</p>
 <ul>
 <li>rewrote the low-traffic neighborhood prototype. neighborhood detection much better, internal streets grouped into traffic cells, two rendering styles for cells. browsing rat runs not ready yet, disabled</li>
 <li>new shared title screen, to switch easily between all A/B Street apps</li>
+</ul>
+<p>0.3.0 (major release)</p>
+<p>See https://a-b-street.github.io/docs/project/history/retrospective/index.html for a look back on the project so far. I started https://github.com/sponsors/dabreegster to fundraise for a full-time Rust developer.</p>
+<ul>
+<li>added basic routing to LTN tool</li>
+<li>roads with modal filters belong to two traffic cells</li>
+<li>progress on LTN rat run detection, but still not ready</li>
+<li>new option to use OSM crossing nodes to model unmarked foot crossings</li>
+<li>better road label placement</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="references"><a class="header" href="#references">References</a></h1>
 <h2 id="example-use-cases"><a class="header" href="#example-use-cases">Example use cases</a></h2>
