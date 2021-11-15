@@ -1027,3 +1027,13 @@ changes here.
 
 - rewrote the low-traffic neighborhood prototype. neighborhood detection much better, internal streets grouped into traffic cells, two rendering styles for cells. browsing rat runs not ready yet, disabled
 - new shared title screen, to switch easily between all A/B Street apps
+
+0.3.0 (major release)
+
+See https://a-b-street.github.io/docs/project/history/retrospective/index.html for a look back on the project so far. I started https://github.com/sponsors/dabreegster to fundraise for a full-time Rust developer.
+
+- added basic routing to LTN tool
+- roads with modal filters belong to two traffic cells
+- progress on LTN rat run detection, but still not ready
+- new option to use OSM crossing nodes to model unmarked foot crossings
+- better road label placement
