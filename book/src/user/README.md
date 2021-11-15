@@ -6,7 +6,7 @@ email <dabreegster@gmail.com> if you encounter any problems.
 ## Installing A/B Street
 
 You can run A/B Street
-[directly in your web browser](http://play.abstreet.org/0.2.65/abstreet.html).
+[directly in your web browser](http://play.abstreet.org/0.3.0/abstreet.html).
 It's slower and there are some limitations compared to installing locally.
 
 Grab a pre-built binary release:

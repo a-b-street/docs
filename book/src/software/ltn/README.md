@@ -7,4 +7,4 @@ impacts on vehicle traffic trying to cut through residential areas.
 
 ![](ltn.png)
 
-- [Web version](http://play.abstreet.org/0.2.65/abstreet.html?--ltn&system/gb/leeds/maps/north.bin)
+- [Web version](http://play.abstreet.org/0.3.0/abstreet.html?--ltn&system/gb/leeds/maps/north.bin)
