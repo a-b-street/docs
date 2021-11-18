@@ -238,13 +238,8 @@ so you'd then
 if you drew multiple polygons.</p>
 </li>
 <li>
-<p>Copy <code>importer/config/il/tel_aviv/cfg.json</code> to
-<code>importer/config/xy/your_city/cfg.json</code> and edit this file. See
-<a href="https://github.com/a-b-street/abstreet/blob/master/importer/src/generic.rs">here</a>
-for details on the different fields. The defaults are a reasonable start;
-the only thing you need to change is <code>osm_url</code>. You can use
-<a href="https://github.com/a-b-street/abstreet/blob/master/importer/src/bin/pick_geofabrik.rs">pick_geofabrik</a>
-to figure out this URL.</p>
+<p>Edit <code>importer/src/map_config.rs</code> if needed. If you're the first to import a
+new country, you may need to configure left-handed drivng, for example.</p>
 </li>
 <li>
 <p>Run the import: <code>./import.sh --city=xy/your_city --raw --map</code></p>
