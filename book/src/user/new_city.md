@@ -112,13 +112,8 @@ The easiest method is to just ask Dustin to do this. The full process:
     `mv boundary0.poly importer/config/xy/your_city/region_name.poly`, repeating
     if you drew multiple polygons.
 
-5.  Copy `importer/config/il/tel_aviv/cfg.json` to
-    `importer/config/xy/your_city/cfg.json` and edit this file. See
-    [here](https://github.com/a-b-street/abstreet/blob/master/importer/src/generic.rs)
-    for details on the different fields. The defaults are a reasonable start;
-    the only thing you need to change is `osm_url`. You can use
-    [pick_geofabrik](https://github.com/a-b-street/abstreet/blob/master/importer/src/bin/pick_geofabrik.rs)
-    to figure out this URL.
+5.  Edit `importer/src/map_config.rs` if needed. If you're the first to import a
+    new country, you may need to configure left-handed drivng, for example.
 
 6.  Run the import: `./import.sh --city=xy/your_city --raw --map`
 
