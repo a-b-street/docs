@@ -1037,3 +1037,12 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - progress on LTN rat run detection, but still not ready
 - new option to use OSM crossing nodes to model unmarked foot crossings
 - better road label placement
+
+0.3.1
+
+- no right turn at red lights, in most of the world. thanks Marcel!
+- simplify map importing config
+- some fixes to OSM crosswalk matching
+- placing LTN modal filters more intuitively
+- change level of traffic assumptions in LTN pathfinder. thanks Andrew!
+- diagonal modal filters for LTNs
