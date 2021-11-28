@@ -2,6 +2,7 @@
 
 Most recent first.
 
+- November 2021: [Ideas with Beers](https://youtu.be/S1h2EYSmNpo?t=2156)
 - October 2021:
   [Taiwan presidential hackathon](https://presidential-hackathon.taiwan.gov.tw/en/international-track/)
   - [Slides](https://docs.google.com/presentation/d/1SOnd1D-Y96YZynFjHMPUe6boFZ9YNIBl0WWfwAZ2jGc/edit?usp=sharing)
@@ -47,7 +48,3 @@ Most recent first.
   - [Video](https://vimeo.com/557955717)
 - January 2021: TRB Network Models in Practice
   - [Slides](https://docs.google.com/presentation/d/1-yC_WsdHN5RjmEvdN1wpa8Pdy-BJIZGhyV_dPYbaxyI/edit?usp=sharing)
-
-## Upcoming
-
-Don't forget to link to these!
