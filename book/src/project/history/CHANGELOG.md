@@ -1046,3 +1046,9 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - placing LTN modal filters more intuitively
 - change level of traffic assumptions in LTN pathfinder. thanks Andrew!
 - diagonal modal filters for LTNs
+
+0.3.2
+
+- render one-way markings as outlines by Marcel
+- few fixes, mostly just importing some new places
+- the project lead has moved to London ;)
