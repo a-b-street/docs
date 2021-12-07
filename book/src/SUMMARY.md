@@ -14,6 +14,7 @@
   - [15-minute neighborhoods explorer](software/fifteen_min.md)
   - [15-minute Santa](software/santa.md)
   - [Low-traffic neighborhoods](software/ltn/README.md)
+    - [Technical details](software/ltn/tech_details.md)
   - [OpenStreetMap viewer](software/osm_viewer.md)
   - [Mapping on-street parking](software/parking_mapper.md)
 
