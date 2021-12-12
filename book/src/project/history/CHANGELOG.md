@@ -1052,3 +1052,10 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - render one-way markings as outlines by Marcel
 - few fixes, mostly just importing some new places
 - the project lead has moved to London ;)
+
+0.3.3
+
+- bus routes now imported for Seattle and SF, from GTFS
+- fix "bowtie" intersection shapes, resulting from incorrect clockwise ordering
+- few small OSM data fixes for London and Leeds
+- fix crash when customizing a route in Ungap the Map
