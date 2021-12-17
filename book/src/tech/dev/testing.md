@@ -28,6 +28,29 @@ final rendered map.
 5.  If this manual inspection of the diff is good, they commit the new
     screenshots as the new goldenfiles.
 
+How do you actually run this test? Open the main sandbox mode (on a release
+build, unless you're very patient), go to debug mode (**Ctrl+D**), then hit
+"screenshot all of the everything" on the right. This will fly through a few
+maps, tiling them into screen-sized chunks and saving a screenshot for each one.
+The maps configured for this test are in `game/src/debug/mod.rs`, near the
+string `"screenshot all of the everything"`.
+
+This process produces a `screenshots/` directory. You can then use
+`./compare_screencaps.sh us phoenix tempe` to see if that map's screenshots have
+changed since the last recorded run of the test. This script assumes you've
+opted into the [input data](index.html#downloading-more-cities) and run the
+updater for the appropriate cities. It also assumes the `compare` command (from
+ImageMagick) and `feh` (to view images; you could change the script to something
+else). Very critically, all the stored screenshots are sized `1920 x 948` (from
+a `1920 x 1080` monitor, subtracting titlebars and such for my GNOME setup). The
+diffs won't make sense if the size is different!
+
+After confirming any diffs are intentional, the `./confirm_screencap.sh` script
+replaces the new source-of-truth in
+`data/input/us/phoenix/screenshots/tempe.zip` or similar. The `updater` tool is
+then used to upload the new data to S3 -- this is a step that currently only
+Dustin has access to run.
+
 ## data/regen.sh
 
 This tool regenerates all maps and scenarios from scratch.
