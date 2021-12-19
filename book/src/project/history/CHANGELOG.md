@@ -1059,3 +1059,9 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - fix "bowtie" intersection shapes, resulting from incorrect clockwise ordering
 - few small OSM data fixes for London and Leeds
 - fix crash when customizing a route in Ungap the Map
+
+0.3.4
+
+- draw custom boundaries for LTNs (but can't yet save the boundaries)
+- rendering modal filters better when zoomed in
+- v3 of a rat-run detector, and showing a heatmap of quiet/busy streets
