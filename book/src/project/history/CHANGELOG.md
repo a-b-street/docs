@@ -1065,3 +1065,14 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - draw custom boundaries for LTNs (but can't yet save the boundaries)
 - rendering modal filters better when zoomed in
 - v3 of a rat-run detector, and showing a heatmap of quiet/busy streets
+
+0.3.5
+
+- improved LTN rat-run detection
+- LTN UI overhaul, expressing 3 modes for per-neighborhood analysis, all of which can edit modal filters
+- LTN drawing fixes -- including the 4-color theorem to make sure adjacent areas appear distinct
+- LTN tool now understands roads that're already tagged as car-free in OSM
+- LTN tool can adjust boundaries a bit more precisely, but this still half-broken
+- Marcel overhauled walking turns, letting them be bidirectional and switching to a simpler implementation of crosswalk generation
+- Marcel improved the geometry of all turns
+- fix downloading maps in the Windows version
