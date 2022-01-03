@@ -30,6 +30,7 @@ Grab a pre-built binary release:
     this as a Mac .app, to make this process simpler
 - [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.3.5/abstreet_linux_v0_3_5.zip)
   - Unzip the directory, then run `play_abstreet.sh`.
+  - For a video illustrating this and more detailed instructions on installing the tool on Linux, see [here](run_on_linux.gif).
 - [FreeBSD](https://www.freshports.org/games/abstreet/), thanks to
   [Yuri](https://github.com/yurivict)
 
