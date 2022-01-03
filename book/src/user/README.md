@@ -29,7 +29,14 @@ Grab a pre-built binary release:
   - [Help needed](https://github.com/a-b-street/abstreet/issues/77) to package
     this as a Mac .app, to make this process simpler
 - [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.3.5/abstreet_linux_v0_3_5.zip)
-  - Unzip the directory, then run `play_abstreet.sh`.
+  - Unzip the directory, then run `play_abstreet.sh`, e.g. with the following commands
+```bash
+cd ~/Downloads  
+wget https://github.com/a-b-street/abstreet/releases/download/v0.3.5/abstreet_linux_v0_3_5.zip
+unzip abstreet_linux_v0_3_5.zip
+cd abstreet_linux_v0_3_5
+./play_abstreet.sh
+```
   - For a video illustrating this and more detailed instructions on installing the tool on Linux, see [here](run_on_linux.gif).
 - [FreeBSD](https://www.freshports.org/games/abstreet/), thanks to
   [Yuri](https://github.com/yurivict)
