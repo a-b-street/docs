@@ -35,6 +35,8 @@ Grab a pre-built binary release:
 
 Or you can [compile from source](../tech/dev/index.md).
 
+For a GIF + instructions demonstrating how to run A/B Street on Linux, see [here](https://github.com/a-b-street/docs/issues/29).
+
 ## Common issues
 
 If the size of text and panels
