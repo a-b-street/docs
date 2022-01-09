@@ -1076,3 +1076,7 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - Marcel overhauled walking turns, letting them be bidirectional and switching to a simpler implementation of crosswalk generation
 - Marcel improved the geometry of all turns
 - fix downloading maps in the Windows version
+
+0.3.6
+
+- bugfixes for partitioning space into blocks, which helps the LTN tool
