@@ -129,3 +129,6 @@ modify the mode for some people (change 50% of all driving trips between 7 and
 - <https://spatial-microsim-book.robinlovelace.net/smsimr.html>
 - <https://github.com/DLR-VF/TAPAS>
 - <https://sumo.dlr.de/docs/Demand/Activity-based_Demand_Generation.html>
+- [Watch Dogs: Legion](https://www.youtube.com/watch?v=oYUZp4I3ksE&t=213s) has a
+  synthetic population of London, generating individual detail lazily from real
+  statistical data
