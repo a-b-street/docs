@@ -1080,3 +1080,14 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 0.3.6
 
 - bugfixes for partitioning space into blocks, which helps the LTN tool
+
+0.3.7
+
+- experimenting with a few heuristics for automatically placing modal filters
+- improved rendering in the "browse neighborhoods" screen: show all filters, emphasize boundary roads, optionally show cell connectivity, and optionally show how "good" the neighborhood is
+- draw disconnected cells more loudly
+- fix bug introduced recently that broke listing files (especially newly imported maps)
+- add an "undo" button for the LTN tool
+- export all LTN data to GeoJSON -- the cell polygons are slow to produce, and buggy, though
+- start ranking neighborhoods by how many streets with through-traffic exist
+- make the "adjust boundary" UI mostly work now -- individual blocks are transferred between neighborhoods properly in most cases
