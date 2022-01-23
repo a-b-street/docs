@@ -1091,3 +1091,11 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - export all LTN data to GeoJSON -- the cell polygons are slow to produce, and buggy, though
 - start ranking neighborhoods by how many streets with through-traffic exist
 - make the "adjust boundary" UI mostly work now -- individual blocks are transferred between neighborhoods properly in most cases
+
+0.3.8
+
+- sped up initial loading of the LTN tool on web by splitting it from the main A/B Street binary
+- LTN UX: preserve dropdown settings and saved routes
+- draw LTN cells as proper polygons, always clipped to the neighborhood boundary (instead of a grid)
+- support LTN GeoJSON export in web
+- prototyped an impact prediction for LTN schemes by comparing per-road volumes using a demand model. Not working yet.
