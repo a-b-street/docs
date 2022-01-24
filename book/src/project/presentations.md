@@ -2,6 +2,7 @@
 
 Most recent first.
 
+- January 2022: [Geomob podcast](https://thegeomob.com/podcast/episode-113)
 - January 2022: An open source transportation planning platform (for the U-Shift lab)
   - [Slides](https://docs.google.com/presentation/d/1kyh5dZxjZIrFf4N6rk48jMcdxXIpDraRv-A0MsEd_48/edit?usp=sharing)
 - December 2021: A/B Street in the UK
