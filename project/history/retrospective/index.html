@@ -230,8 +230,7 @@ available, so I wrote aggressive heuristics to extract meaning from the formless
 chaos. Perfect results are unattainable, but I'm quite proud of how far it's
 come and how robust it is to most cities I've imported.</p>
 <ul>
-<li>
-<p><a href="https://github.com/dabreegster/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs">transforming road tagging into lanes</a></p>
+<li><a href="https://github.com/dabreegster/abstreet/blob/master/map_model/src/make/initial/lane_specs.rs">transforming road tagging into lanes</a>
 <ul>
 <li>The tagging schema described by the OSM wiki is complicated to begin with.
 But real mapping still diverges from this. I wound up fixing many
@@ -244,32 +243,28 @@ and
 <a href="https://wiki.openstreetmap.org/wiki/Talk:Proposed_features/cycleway:separation">cycleway:separation</a>.</li>
 </ul>
 </li>
-<li>
-<p><a href="../../../tech/map/geometry/index.html">Creating geometry from roads and intersections</a></p>
+<li><a href="../../../tech/map/geometry/index.html">Creating geometry from roads and intersections</a>
 <ul>
 <li>I believe A/B Street has the most advanced handling of complex OSM
 intersections of anything that's public</li>
 </ul>
 </li>
-<li>
-<p>OSM doesn't directly encode what movements are possible through each
+<li>OSM doesn't directly encode what movements are possible through each
 intersection. A/B Street generates this for vehicles and pedestrians with
-aggressive heuristics.</p>
+aggressive heuristics.
 <ul>
 <li>OSM turn lane tagging is often flat-out wrong (not matching the lane count)
 or broken when ways are split before an intersection</li>
 <li>OSM has turn restriction relations that can span multiple road segments.
-This impacts graph pathfinding and traffic simulation in subtle ways.<!-- link pathfinding article --></li>
+This impacts graph pathfinding and traffic simulation in subtle ways.<!-- link pathfinding article -->
+</li>
 </ul>
 </li>
-<li>
-<p>OSM includes parking lots and aisles, but A/B Street needs to know capacity,
+<li>OSM includes parking lots and aisles, but A/B Street needs to know capacity,
 which is rarely mapped. So it procedurally generates individual stalls fitting
-the geometry.</p>
-</li>
-<li>
-<p>A traffic signal is just a node in OSM -- or worse, a bunch of individual
-nodes for a complex junction. There's no way to describe its timing.</p>
+the geometry.</li>
+<li>A traffic signal is just a node in OSM -- or worse, a bunch of individual
+nodes for a complex junction. There's no way to describe its timing.
 <ul>
 <li>A/B Street has reasonable heuristics for grouping movements together in
 stages for many different shapes of intersections. (I never did much work on
@@ -288,8 +283,7 @@ join. (Of course this was futile; most interesting intersections depend on
 actuators, which can't be observed directly.)</li>
 </ul>
 </li>
-<li>
-<p>Built pathfinding into the map model for vehicles and pedestrians.<!-- article --></p>
+<li>Built pathfinding into the map model for vehicles and pedestrians.<!-- article -->
 <ul>
 <li>Funded the creation of a new
 <a href="https://github.com/easbar/fast_paths">Rust contraction hierarchy library</a>

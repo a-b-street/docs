@@ -245,6 +245,8 @@ polygon coordinates are measured in meters, with the origin centered at the
 intersection's center.</li>
 <li><strong>GET /map/get-all-geometry</strong>: Returns a huge GeoJSON object with one
 feature per road and intersection in the map. The coordinate space is WGS84.</li>
+<li><strong>GET /map/get-nearest-road?lat=1.23&amp;lon=4.56&amp;threshold_meters=100</strong>: Snaps
+a point to the nearest road center line, and returns the RoadID.</li>
 </ul>
 </li>
 </ul>
