@@ -3,9 +3,11 @@
 Most recent first.
 
 - January 2022: [Geomob podcast](https://thegeomob.com/podcast/episode-113)
-- January 2022: An open source transportation planning platform (for the U-Shift lab)
+- January 2022: An open source transportation planning platform (for the U-Shift
+  lab)
   - [Slides](https://docs.google.com/presentation/d/1kyh5dZxjZIrFf4N6rk48jMcdxXIpDraRv-A0MsEd_48/edit?usp=sharing)
-- December 2021: [Lightning talk at ATI's Towards Urban Analytics 2.0](https://www.youtube.com/watch?v=d-8u5ONfie4)
+- December 2021:
+  [Lightning talk at ATI's Towards Urban Analytics 2.0](https://www.youtube.com/watch?v=d-8u5ONfie4)
 - December 2021: A/B Street in the UK
   - [Slides](https://docs.google.com/presentation/d/1D-f1qjc1f_2vTs12ilIIZjoNJlgO0t3sYFRc9D2OCSk/edit?usp=sharing)
 - November 2021: [Ideas with Beers](https://youtu.be/S1h2EYSmNpo?t=2156)

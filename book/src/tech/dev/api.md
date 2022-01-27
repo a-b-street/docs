@@ -104,6 +104,8 @@ are missing, etc. A summary of the commands available so far:
     intersection's center.
   - **GET /map/get-all-geometry**: Returns a huge GeoJSON object with one
     feature per road and intersection in the map. The coordinate space is WGS84.
+  - **GET /map/get-nearest-road?lat=1.23&lon=4.56&threshold_meters=100**: Snaps
+    a point to the nearest road center line, and returns the RoadID.
 
 ## Working with the map model
 
