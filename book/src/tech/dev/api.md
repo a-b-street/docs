@@ -53,6 +53,8 @@ are missing, etc. A summary of the commands available so far:
     `/sim/load`.
   - **POST /sim/load**: Switch the scenario being simulated, and also optionally
     sets the map edits.
+  - **GET /sim/load-blank?map=data/system/gb/london/maps/southwark.bin**:
+    Switch to a different map, loading a blank simulation.
   - **GET /sim/get-time**: Returns the current simulation time.
   - **GET /sim/goto-time?t=06:30:00**: Simulate until 6:30 AM. If the time you
     specify is before the current time, you have to call **/sim/reset** first.
