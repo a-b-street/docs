@@ -185,6 +185,8 @@ things like <code>/traffic-signals/set</code>, they'll be reset to the <code>edi
 <code>/sim/load</code>.</li>
 <li><strong>POST /sim/load</strong>: Switch the scenario being simulated, and also optionally
 sets the map edits.</li>
+<li><strong>GET /sim/load-blank?map=data/system/gb/london/maps/southwark.bin</strong>:
+Switch to a different map, loading a blank simulation.</li>
 <li><strong>GET /sim/get-time</strong>: Returns the current simulation time.</li>
 <li><strong>GET /sim/goto-time?t=06:30:00</strong>: Simulate until 6:30 AM. If the time you
 specify is before the current time, you have to call <strong>/sim/reset</strong> first.</li>
