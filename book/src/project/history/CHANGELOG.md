@@ -1099,3 +1099,12 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - draw LTN cells as proper polygons, always clipped to the neighborhood boundary (instead of a grid)
 - support LTN GeoJSON export in web
 - prototyped an impact prediction for LTN schemes by comparing per-road volumes using a demand model. Not working yet.
+
+0.3.9
+
+- LTN boundary selection can now split neighborhoods in most ways
+- allow UK scenarios to be generated with one-shot imports
+- fix pedestrian rendering crash that happened in some maps
+- fix how cycle-and-foot-only roads are drawn unzoomed
+- make LTN impact prediction tool stop running out of video memory
+- internal refactoring to separate Scenario stuff from rest of simulation code
