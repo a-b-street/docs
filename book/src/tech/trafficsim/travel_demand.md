@@ -132,3 +132,64 @@ modify the mode for some people (change 50% of all driving trips between 7 and
 - [Watch Dogs: Legion](https://www.youtube.com/watch?v=oYUZp4I3ksE&t=213s) has a
   synthetic population of London, generating individual detail lazily from real
   statistical data
+
+## Future ideas
+
+### UK data sources
+
+Currently A/B Street is using
+[2011 flow data](https://www.ons.gov.uk/census/2011census/2011censusdata/originanddestinationdata)
+-- specifically WU03UK (the location of usual residence and place of work by
+method of travel to work).
+
+There are some others to consider:
+
+- WF01AEW_oa from
+  [here](https://wicid.ukdataservice.ac.uk/flowdata/cider/wicid/downloads.php)
+  has even more granular home<->work zones
+  - Need to compare to
+    [WF01BEW](https://webarchive.nationalarchives.gov.uk/ukgwa/20160202161811/http://www.nomisweb.co.uk/census/2011/wf01bew)
+- <https://www.nomisweb.co.uk/sources/ukbc> could be used to understand how many
+  people work at different places
+- [NTEM](https://github.com/ITSLeeds/NTEM2OD/) has forecasted OD pairs
+- [QUANT](http://quant.casa.ucl.ac.uk/) and [SPENSER](https://geospenser.com/)
+  are two other population and activity/time-use datasets, used by another
+  project I'm working on called
+  [RAMP](https://github.com/Urban-Analytics/RAMP-UA)
+
+### Use cases
+
+What're all the uses of an accurate travel demand model? And when might it be
+helpful to represent synthetic people with more info than just their daily
+trips?
+
+- the obvious: traffic simulation
+- Ungap the Map's mode shift calculation -- look for short driving trips, then
+  check the network to see if there are common gaps that might prevent cycling.
+  Do we need to understand the demographics of people taking these "possible to
+  switch" trips?
+- the LTN tool's impact predicton -- without using traffic simulation, just
+  calculate routes before and after changes
+- Equity and health analysis
+  - If we think some interventions might cause higher traffic (and thus
+    noise/air pollution and safety issues) on major roads, who lives near the
+    affected area?
+
+### Validation / calibration
+
+How do we judge whether a given travel demand model is "good"?
+
+For comparing two different models, one idea is to "re-aggregate" individual
+trips from each of them and see if overall counts look similar. For example,
+partition the map into zones (maybe using zones that one of the models being
+compared used originally, or maybe making up new ones), count the trips between
+zones, and compare between models -- grouping by departure time and mode, or
+not.
+
+This comparison could sanity check that roughly the same number of people live
+and commute to the same places. But it's not a very satisfying judgment, because
+it's not really what we're trying to measure. I think the validation that makes
+sense is to plug the model into an analysis we actually care about and where we
+have real observations. One of the simplest -- and most useful for LTN impact
+prediction, particularly -- is just estimating traffic volumes at different
+roads and intersections.
