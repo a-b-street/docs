@@ -6,18 +6,18 @@ email <dabreegster@gmail.com> if you encounter any problems.
 ## Installing A/B Street
 
 You can run A/B Street
-[directly in your web browser](http://play.abstreet.org/0.3.9/abstreet.html).
+[directly in your web browser](http://play.abstreet.org/0.3.10/abstreet.html).
 It's slower and there are some limitations compared to installing locally.
 
 Grab a pre-built binary release:
 
-- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.3.9/abstreet_windows_v0_3_9.zip)
+- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.3.10/abstreet_windows_v0_3_10.zip)
   - Unzip the folder, then run `play_abstreet.bat`. If you get a warning about
     compressed files, choose to extract -- you can't run from the .zip directly.
   - If you get a "Windows protected you" security warning, click "more info",
     then "run anyway." We don't sign the release yet, so A/B Street shows up as
     an unknown publisher.
-- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.3.9/abstreet_mac_v0_3_9.zip)
+- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.3.10/abstreet_mac_v0_3_10.zip)
   - Unzip the directory, then run `play_abstreet.sh`.
   - If you get an error about the developer unverified,
     [follow this](https://support.apple.com/guide/mac-help/open-a-mac-app-from-an-unidentified-developer-mh40616/mac).
@@ -28,15 +28,15 @@ Grab a pre-built binary release:
     `cd game; RUST_BACKTRACE=1 ./game 1> ../output.txt 2>&1`
   - [Help needed](https://github.com/a-b-street/abstreet/issues/77) to package
     this as a Mac .app, to make this process simpler
-- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.3.9/abstreet_linux_v0_3_9.zip)
+- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.3.10/abstreet_linux_v0_3_10.zip)
   - Unzip the directory, then run `play_abstreet.sh`, e.g. with the following
     commands
 
 ```bash
 cd ~/Downloads
-wget https://github.com/a-b-street/abstreet/releases/download/v0.3.9/abstreet_linux_v0_3_9.zip
-unzip abstreet_linux_v0_3_9.zip
-cd abstreet_linux_v0_3_9
+wget https://github.com/a-b-street/abstreet/releases/download/v0.3.10/abstreet_linux_v0_3_10.zip
+unzip abstreet_linux_v0_3_10.zip
+cd abstreet_linux_v0_3_10
 ./play_abstreet.sh
 ```
 

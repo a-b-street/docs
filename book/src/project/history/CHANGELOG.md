@@ -1108,3 +1108,12 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - fix how cycle-and-foot-only roads are drawn unzoomed
 - make LTN impact prediction tool stop running out of video memory
 - internal refactoring to separate Scenario stuff from rest of simulation code
+
+0.3.10
+
+- save/load LTN proposals as local files only
+- improve LTN block tracing near railroads and bridges/tunnels, fixing many overlapping areas
+- LTN UI: draw cell & neighborhood areas beneath roads, add road name search tool everywhere
+- make modal filters visible even at very low zoom levels
+- extend the quietness view and automatic filter heuristics to the entire map
+- improve the travel demand model for UK data by handling desire lines starting/ending off-map

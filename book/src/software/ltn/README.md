@@ -10,13 +10,13 @@ mound of salt.
 ![](ltn.png)
 
 - Try without installing:
-  [web version](http://play.abstreet.org/0.3.9/ltn.html?system/gb/leeds/maps/north.bin)
+  [web version](http://play.abstreet.org/0.3.10/ltn.html?system/gb/leeds/maps/north.bin)
 
 The software runs faster if you install it. No mobile/tablet support.
 
-- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.3.9/abstreet_windows_v0_3_2.zip)
-- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.3.9/abstreet_mac_v0_3_2.zip)
-- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.3.9/abstreet_linux_v0_3_2.zip)
+- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.3.10/abstreet_windows_v0_3_2.zip)
+- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.3.10/abstreet_mac_v0_3_2.zip)
+- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.3.10/abstreet_linux_v0_3_2.zip)
 
 Contact <dabreegster@gmail.com> with any feedback or
 [file an issue on Github](https://github.com/a-b-street/abstreet/issues/new).
