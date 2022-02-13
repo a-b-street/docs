@@ -1117,3 +1117,12 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - make modal filters visible even at very low zoom levels
 - extend the quietness view and automatic filter heuristics to the entire map
 - improve the travel demand model for UK data by handling desire lines starting/ending off-map
+
+0.3.11
+
+- detect existing modal filters in OSM
+- import Melbourne and most London boroughs
+- simplify road center-lines after merging roads
+- improve my workflow for regenerating all maps locally in parallel
+- save LTN proposals in web browsers to local storage
+- some small LTN UI fixes
