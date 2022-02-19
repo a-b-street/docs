@@ -3349,6 +3349,13 @@ rustflags = [
     &quot;-C&quot;, &quot;link-arg=-fuse-ld=lld&quot;,
 ]
 </code></pre>
+<p>Also enable incremental builds in release mode. In <code>~/.cargo/config</code>:</p>
+<pre><code>[build]
+incremental = true
+</code></pre>
+<p>I'm not sure about setting this in the repo's Cargo.toml, because we may not
+want incremental builds on Github Actions for building the release? Not sure
+what best practice is.</p>
 <h2 id="git"><a class="header" href="#git">git</a></h2>
 <p>Keep a fork up to date:</p>
 <pre><code># Once
