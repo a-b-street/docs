@@ -56,6 +56,17 @@ rustflags = [
 ]
 ```
 
+Also enable incremental builds in release mode. In `~/.cargo/config`:
+
+```
+[build]
+incremental = true
+```
+
+I'm not sure about setting this in the repo's Cargo.toml, because we may not
+want incremental builds on Github Actions for building the release? Not sure
+what best practice is.
+
 ## git
 
 Keep a fork up to date:
