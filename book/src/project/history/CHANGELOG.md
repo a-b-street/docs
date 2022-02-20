@@ -1126,3 +1126,9 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - improve my workflow for regenerating all maps locally in parallel
 - save LTN proposals in web browsers to local storage
 - some small LTN UI fixes
+
+0.3.12
+
+- fix various crashes relating to geometry and edits near public transit
+- internal refactoring to make the map_editor debugging tool build much faster
+- improved geometry near dog-leg intersections in some maps
