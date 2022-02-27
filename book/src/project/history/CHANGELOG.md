@@ -1132,3 +1132,11 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - fix various crashes relating to geometry and edits near public transit
 - internal refactoring to make the map_editor debugging tool build much faster
 - improved geometry near dog-leg intersections in some maps
+
+0.3.13
+
+- swap between multiple LTN proposals easily
+- LTN boundary selection is now faster, has simpler colors, has a freehand lasso tool, and includes blocks near roads without sidewalks
+- quickly create multiple modal filters by freehand drawing
+- core geometry fixes: remedy some lane center lines that explode at sharp angles
+- upgrade window management dependencies; if you experience new problems, please report
