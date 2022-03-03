@@ -14,9 +14,9 @@ mound of salt.
 
 The software runs faster if you install it. No mobile/tablet support.
 
-- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.3.13/abstreet_windows_v0_3_2.zip)
-- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.3.13/abstreet_mac_v0_3_2.zip)
-- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.3.13/abstreet_linux_v0_3_2.zip)
+- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.3.13/abstreet_windows_v0_3_13.zip)
+- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.3.13/abstreet_mac_v0_3_13.zip)
+- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.3.13/abstreet_linux_v0_3_13.zip)
 
 Contact <dabreegster@gmail.com> with any feedback or
 [file an issue on Github](https://github.com/a-b-street/abstreet/issues/new).
