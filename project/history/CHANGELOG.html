@@ -1291,6 +1291,17 @@ changes here.</p>
 <li>core geometry fixes: remedy some lane center lines that explode at sharp angles</li>
 <li>upgrade window management dependencies; if you experience new problems, please report</li>
 </ul>
+<p>0.3.14</p>
+<ul>
+<li>overhaul the rat-run mode: tighten up things counting as shortcuts, keep the same path after adding a filter</li>
+<li>change the LTN route planning tool to be map-wide, not per-neighborhood</li>
+<li>place filters at non 4-way intersections</li>
+<li>shrink some cases of overlapping roads, improving geometry when OSM data is not great</li>
+<li>a first round of simplifying LTN panels</li>
+<li>when the LTN blockfinding would've crashed previously, just fallback to using more expensive blockfinding</li>
+<li>bugfix: detect existing filters on really short roads</li>
+<li>fix initial camera placement outside of the main A/B Street app</li>
+</ul>
 
                     </main>
 
