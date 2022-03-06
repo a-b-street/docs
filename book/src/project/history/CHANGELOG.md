@@ -1140,3 +1140,14 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - quickly create multiple modal filters by freehand drawing
 - core geometry fixes: remedy some lane center lines that explode at sharp angles
 - upgrade window management dependencies; if you experience new problems, please report
+
+0.3.14
+
+- overhaul the rat-run mode: tighten up things counting as shortcuts, keep the same path after adding a filter
+- change the LTN route planning tool to be map-wide, not per-neighborhood
+- place filters at non 4-way intersections
+- shrink some cases of overlapping roads, improving geometry when OSM data is not great
+- a first round of simplifying LTN panels
+- when the LTN blockfinding would've crashed previously, just fallback to using more expensive blockfinding
+- bugfix: detect existing filters on really short roads
+- fix initial camera placement outside of the main A/B Street app
