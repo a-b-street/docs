@@ -2,7 +2,8 @@
 
 Most recent first.
 
-- February 2022: [OpenTransportMeetup slides](https://docs.google.com/presentation/d/1hcaRL7guN4vnP7--Y5e92kC4GwXe7LyI1HdNSp3e9Tc/edit?usp=sharing)
+- February 2022:
+  [OpenTransportMeetup slides](https://docs.google.com/presentation/d/1hcaRL7guN4vnP7--Y5e92kC4GwXe7LyI1HdNSp3e9Tc/edit?usp=sharing)
 - January 2022: [Geomob podcast](https://thegeomob.com/podcast/episode-113)
 - January 2022: An open source transportation planning platform (for the U-Shift
   lab)
