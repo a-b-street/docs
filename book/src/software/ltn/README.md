@@ -109,6 +109,8 @@ There are some advanced / experimental features that don't work yet:
   effectively introduce filters
 - Overlay bus routes, and introduce bus gates (filters that buses can pass
   through)
+- Visualizing and editing other traffic calming (speed humps, chicanes, curb
+  extensions)
 - Predict how much traffic will "dissipate" in response to LTNs, as people
   switch their travel behavior long-term.
 
@@ -146,7 +148,7 @@ Turing Institute, where he's funded by the UKRI grant for the ASG program.
 
 Planners from these cities are currently using a prototype of the software:
 
-- Nobody has confirmed yet
+- Nottingham
 
 If you're using the tool and are willing to be listed here, please let me know,
 so I can make the case for funding further development.
