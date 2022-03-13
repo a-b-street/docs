@@ -1151,3 +1151,8 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - when the LTN blockfinding would've crashed previously, just fallback to using more expensive blockfinding
 - bugfix: detect existing filters on really short roads
 - fix initial camera placement outside of the main A/B Street app
+
+0.3.15
+
+- re-import the current map from fresh OSM data (native only)
+- adjust LTN panels
