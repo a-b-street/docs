@@ -2,6 +2,12 @@
 
 Most recent first.
 
+- March 2022: FOSSGIS session on better geometric representation in OSM
+  - [Slides](https://dabreegster.github.io/talks/map_model_v2/slides.html), video available soon
+- March 2022: FOSSGIS session on osm2lanes
+  - [Slides](https://dabreegster.github.io/talks/osm2lanes/slides.html), video available soon
+- March 2022: Leeds Transport Data Science seminar on travel demand modeling
+  - [Slides](https://dabreegster.github.io/talks/tds_seminar_synthpop/slides.html), [video](https://www.youtube.com/watch?v=vUJJJ_MD2CM)
 - February 2022:
   [OpenTransportMeetup slides](https://docs.google.com/presentation/d/1hcaRL7guN4vnP7--Y5e92kC4GwXe7LyI1HdNSp3e9Tc/edit?usp=sharing)
 - January 2022: [Geomob podcast](https://thegeomob.com/podcast/episode-113)
