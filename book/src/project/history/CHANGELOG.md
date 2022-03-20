@@ -1156,3 +1156,12 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 
 - re-import the current map from fresh OSM data (native only)
 - adjust LTN panels
+
+0.3.16
+
+- show rat-runs on the connectivity tab; understand both detours and cells as you place filters
+- merge blocks with different winding orders
+- better behavior when switching proposals on the rat-run tab
+- new automatic filter heuristic inspired by min cut
+- adjust LTN color scheme, de-emphasizing buildings
+- simplify LTN UI, hiding advanced controls
