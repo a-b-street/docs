@@ -4,6 +4,10 @@ This tool lets anybody study existing and proposed low-traffic neighborhoods
 (LTNs). Experiment with modal filter placement, and examine the impacts on
 drivers trying to cut through residential areas.
 
+**NOTE**: A user guide and video tutorials will be available by end of March.
+This software is updated every Sunday; see [release
+notes](https://github.com/dabreegster/abstreet/releases).
+
 ![](ltn.gif)
 
 - Try without installing:
@@ -18,10 +22,6 @@ then run `ltn.exe` or `ltn`.
 
 Contact <dabreegster@gmail.com> with any feedback or
 [file an issue on Github](https://github.com/a-b-street/abstreet/issues/new).
-
-**NOTE**: This is still a prototype; see the limitations section below. A stable
-release is expected in mid-March for [AI:UK](https://www.turing.ac.uk/ai-uk).
-There will be a proper user guide and video tutorial.
 
 ## Features
 
