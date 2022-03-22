@@ -149,6 +149,7 @@ Turing Institute, where he's funded by the UKRI grant for the ASG program.
 Planners from these cities are currently using a prototype of the software:
 
 - Nottingham
+- Lyon campaigning group
 
 If you're using the tool and are willing to be listed here, please let me know,
 so I can make the case for funding further development.
