@@ -11,7 +11,7 @@ notes](https://github.com/dabreegster/abstreet/releases).
 ![](ltn.gif)
 
 - Try without installing:
-  [web version](http://play.abstreet.org/0.3.17/ltn.html?system/gb/leeds/maps/north.bin)
+  [web version](http://play.abstreet.org/0.3.17/ltn.html?system/gb/bristol/maps/east.bin)
 
 The software runs faster if you install it. No mobile/tablet support. Unzip,
 then run `ltn.exe` or `ltn`.
