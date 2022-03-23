@@ -1165,3 +1165,9 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - new automatic filter heuristic inspired by min cut
 - adjust LTN color scheme, de-emphasizing buildings
 - simplify LTN UI, hiding advanced controls
+
+0.3.17
+
+- show biking and walking directions too in the LTN tool
+- add help and info buttons to the LTN tool
+- show area of neighborhoods

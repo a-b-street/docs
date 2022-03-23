@@ -2,7 +2,7 @@
 
 ![walkshed](walkshed.gif)
 
-- [Web version](http://play.abstreet.org/0.3.16/fifteen_min.html)
+- [Web version](http://play.abstreet.org/0.3.17/fifteen_min.html)
 - To run locally, get the
   [latest release](https://github.com/a-b-street/abstreet/releases) for Windows,
   Mac, or Linux. After unzipping, run `fifteen_min.exe` or `fifteen_min`.
