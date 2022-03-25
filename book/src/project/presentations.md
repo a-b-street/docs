@@ -2,6 +2,8 @@
 
 Most recent first.
 
+- March 2022: AI:UK workshop on low-traffic neighborhoods
+  - [Slides](https://dabreegster.github.io/talks/aiuk_ltn/slides.html), video coming soon
 - March 2022: The abridged and entirely truthful story of A/B Street (Geomob)
   - [Slides](https://docs.google.com/presentation/d/1rq0aegKmpt6uI-oieQW5BXQ-vqQji3S48m-pLJ8kGnI/edit?usp=sharing), [video](https://www.youtube.com/watch?v=4Tg3Fc2J3MI&t=1356s)
 - March 2022: FOSSGIS session on better geometric representation in OSM
