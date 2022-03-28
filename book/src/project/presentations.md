@@ -7,9 +7,9 @@ Most recent first.
 - March 2022: The abridged and entirely truthful story of A/B Street (Geomob)
   - [Slides](https://docs.google.com/presentation/d/1rq0aegKmpt6uI-oieQW5BXQ-vqQji3S48m-pLJ8kGnI/edit?usp=sharing), [video](https://www.youtube.com/watch?v=4Tg3Fc2J3MI&t=1356s)
 - March 2022: FOSSGIS session on better geometric representation in OSM
-  - [Slides](https://dabreegster.github.io/talks/map_model_v2/slides.html), video available soon
+  - [Slides](https://dabreegster.github.io/talks/map_model_v2/slides.html), [video](https://files.fossgis.de/Konferenz/OSM-Event/highway_1120_Micromapping_OSM_data_model.intro.mp4)
 - March 2022: FOSSGIS session on osm2lanes
-  - [Slides](https://dabreegster.github.io/talks/osm2lanes/slides.html), video available soon
+  - [Slides](https://dabreegster.github.io/talks/osm2lanes/slides.html), [video](https://files.fossgis.de/Konferenz/OSM-Event/highway_1020_osm2lanes.intro.mp4)
 - March 2022: Leeds Transport Data Science seminar on travel demand modeling
   - [Slides](https://dabreegster.github.io/talks/tds_seminar_synthpop/slides.html), [video](https://www.youtube.com/watch?v=vUJJJ_MD2CM)
 - February 2022:
