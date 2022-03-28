@@ -1171,3 +1171,8 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - show biking and walking directions too in the LTN tool
 - add help and info buttons to the LTN tool
 - show area of neighborhoods
+
+0.3.18
+
+- fix major bug where pathfinding after map edits was broken
+- make the LTN impact tool show results more reasonably

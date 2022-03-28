@@ -11,14 +11,14 @@ notes](https://github.com/dabreegster/abstreet/releases).
 ![](ltn.gif)
 
 - Try without installing:
-  [web version](http://play.abstreet.org/0.3.17/ltn.html?system/gb/bristol/maps/east.bin)
+  [web version](http://play.abstreet.org/0.3.18/ltn.html?system/gb/bristol/maps/east.bin)
 
 The software runs faster if you install it. No mobile/tablet support. Unzip,
 then run `ltn.exe` or `ltn`.
 
-- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.3.17/abstreet_windows_v0_3_17.zip)
-- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.3.17/abstreet_mac_v0_3_17.zip)
-- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.3.17/abstreet_linux_v0_3_17.zip)
+- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.3.18/abstreet_windows_v0_3_18.zip)
+- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.3.18/abstreet_mac_v0_3_18.zip)
+- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.3.18/abstreet_linux_v0_3_18.zip)
 
 Contact <dabreegster@gmail.com> with any feedback or
 [file an issue on Github](https://github.com/a-b-street/abstreet/issues/new).
