@@ -8,7 +8,7 @@ with any of this.
 
 You will first need:
 
-- Stable Rust, at least 1.58. <https://www.rust-lang.org/tools/install>.
+- Stable Rust, at least 1.60. <https://www.rust-lang.org/tools/install>.
   - On Windows, you may need
     [Visual Studio 2019](https://visualstudio.microsoft.com/en/downloads/).
 - On Linux,
