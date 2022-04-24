@@ -5,20 +5,20 @@ This tool lets anybody study existing and proposed low-traffic neighborhoods
 drivers trying to cut through residential areas.
 
 **NOTE**: A user guide and video tutorials will be available by end of March.
-This software is updated every Sunday; see [release
-notes](https://github.com/dabreegster/abstreet/releases).
+This software is updated every Sunday; see
+[release notes](https://github.com/dabreegster/abstreet/releases).
 
 ![](ltn.gif)
 
 - Try without installing:
-  [web version](http://play.abstreet.org/0.3.18/ltn.html?system/gb/bristol/maps/east.bin)
+  [web version](http://play.abstreet.org/0.3.19/ltn.html?system/gb/bristol/maps/east.bin)
 
 The software runs faster if you install it. No mobile/tablet support. Unzip,
 then run `ltn.exe` or `ltn`.
 
-- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.3.18/abstreet_windows_v0_3_18.zip)
-- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.3.18/abstreet_mac_v0_3_18.zip)
-- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.3.18/abstreet_linux_v0_3_18.zip)
+- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.3.19/abstreet_windows_v0_3_19.zip)
+- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.3.19/abstreet_mac_v0_3_19.zip)
+- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.3.19/abstreet_linux_v0_3_19.zip)
 
 Contact <dabreegster@gmail.com> with any feedback or
 [file an issue on Github](https://github.com/a-b-street/abstreet/issues/new).

@@ -1176,3 +1176,12 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 
 - fix major bug where pathfinding after map edits was broken
 - make the LTN impact tool show results more reasonably
+
+0.3.19
+
+- breaking change: saved LTN proposals have a new format. Please contact me if you need to fix any previously saved files.
+- starting to revive public transit support a bit, simplifying how many times pathfinding happens
+- adjust LTN filter drawing style and allow toggling filters on "degenerate" intersections
+- fix a rare simulation crash involving a vehicle exiting driveways off-side
+- slow down pedestrians walking on crowded sidewalks, and track where this problem happens
+- thanks to Michael, Mac binaries are now signed!

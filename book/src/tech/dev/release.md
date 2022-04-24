@@ -3,8 +3,8 @@
 This happens every Sunday.
 
 1.  Push a commit containing `[rebuild] [release]` in the commit message.
-2.  Wait for the build to complete at
-    <https://github.com/a-b-street/abstreet/actions>
+2.  Go to <https://github.com/a-b-street/abstreet/actions> and manually approve
+    the deployment, then wait for it to complete
 3.  Manually download the 3 .zip files
 4.  With your current directory set to where the .zips are downloaded, run
     `~/abstreet/release/finalize.sh v0_2_38`, changing the version number. (That

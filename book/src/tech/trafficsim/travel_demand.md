@@ -9,8 +9,8 @@ and trips, evaluating some changes to a map is hard -- what if the traffic
 patterns near the change aren't realistic to begin with? This chapter describes
 where the travel demand data comes from.
 
-See [these
-slides](https://dabreegster.github.io/talks/tds_seminar_synthpop/slides.html)
+See
+[these slides](https://dabreegster.github.io/talks/tds_seminar_synthpop/slides.html)
 for this [this recorded talk](https://www.youtube.com/watch?v=vUJJJ_MD2CM) for
 up-to-date information as of March 2022.
 
