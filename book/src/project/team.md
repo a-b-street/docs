@@ -26,6 +26,9 @@ Programming:
 - Lots of helpful PRs from [Javed Nissar](https://github.com/RestitutorOrbis)
 - Lots of traffic signal and uber-turn work from
   [Bruce](https://github.com/BruceBrown)
+- [osm2lanes](https://github.com/a-b-street/osm2lanes) by [Michael Droogleever
+- Fortuyn](https://github.com/droogmic) and [Ben
+- Ritter](https://github.com/BudgieInWA)
 
 Graphics / design:
 
@@ -59,6 +62,10 @@ Networking:
 - Hackathon drop-ins from [Democracy Lab](https://www.democracylab.org/) events
 - [CUGOS](https://cugos.org/) and [Julian Michael](http://julianmichael.org/)
   have been great sounding boards for ideas since the beginning
+
+Product management / community outreach:
+
+- [Jennifer Ding](https://jending.com)
 
 Data:
 

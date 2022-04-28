@@ -120,6 +120,7 @@ Main team:
 
 - [Dustin Carlino](http://dcarlino.org): project lead
 - [Cindy Huang](https://www.cindykhuang.me): UX design
+- [Jennifer Ding](https://jending.com): training material and outreach
 
 Alumni from A/B Street (the LTN tool is built upon past work):
 
