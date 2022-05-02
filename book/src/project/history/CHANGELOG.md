@@ -1185,3 +1185,11 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - fix a rare simulation crash involving a vehicle exiting driveways off-side
 - slow down pedestrians walking on crowded sidewalks, and track where this problem happens
 - thanks to Michael, Mac binaries are now signed!
+
+0.3.20
+
+- you can now edit crosswalks!
+- more realistic behavior of pedestrians at stop signs -- they won't endlessly swarm and cut off vehicles
+- show a popup when the web browser version crashes
+- change metric/imperial settings automatically based on the map loaded
+- update Seattle OSM data (first time in over 6 months)
