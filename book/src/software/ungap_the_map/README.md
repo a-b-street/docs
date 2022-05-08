@@ -5,7 +5,7 @@ safely/comfortably make most trips by bike? This tool lets you quickly sketch
 out your own vision to fill in missing gaps in the network, see how the changes
 would impact your commute, and share the results with others.
 
-- [Web version](http://play.abstreet.org/0.3.20/abstreet.html?--ungap&system/us/seattle/maps/central_seattle.bin)
+- [Web version](http://play.abstreet.org/0.3.21/abstreet.html?--ungap&system/us/seattle/maps/central_seattle.bin)
 - To work for larger areas (like all of Seattle), it's highly recommend to
   install the [latest release](https://github.com/a-b-street/abstreet/releases)
   for Windows, Mac, or Linux. After unzipping, run `ungap_the_map.sh` or

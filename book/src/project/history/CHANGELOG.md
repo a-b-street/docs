@@ -1193,3 +1193,8 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - show a popup when the web browser version crashes
 - change metric/imperial settings automatically based on the map loaded
 - update Seattle OSM data (first time in over 6 months)
+
+0.3.21
+
+- new UI tools to explore risk exposure and problems: click a person's problem to time-warp and watch it, show A/B test of problems per road/intersection, time-series of problems per road/intersection
+- fix various crashes
