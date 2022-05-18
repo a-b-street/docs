@@ -1198,3 +1198,13 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 
 - new UI tools to explore risk exposure and problems: click a person's problem to time-warp and watch it, show A/B test of problems per road/intersection, time-series of problems per road/intersection
 - fix various crashes
+
+0.3.22
+
+- revive an internal A/B test mode to keep simulations between two similar maps in sync
+- new layer for pedestrian density
+- improve the SMP scenario
+- ltn: one-way border arrows, freehand filter tool can be used from either editing mode,
+- simplify LTN cells around non-driveable roads
+- introduce a Bristol consultation mode for the LTN tool
+- export problem list to CSV, and make all CSV/GeoJSON exports work on the web too
