@@ -4,8 +4,16 @@ A/B Street is hiring a Rust engineer!
 
 - **Timeline**: Full-time for 3 months, starting ASAP. Latest possible start
   date is 1 June.
-- **Compensation**: £6,981 total
+- **Compensation**: ~£7k total
 - Must be UK-based with a UK bank account
+
+<!--Compensation is roughly as follows: 
+14.32 per hour
+8 hours per day
+18.3 days per month
+14.32 * 8 * 20 * 3
+6873.6 or " The annual salary is £27,924 (£6,981 per 3 months) and the hourly rate is £14.32."
+-->
 
 ## The project
 
@@ -18,6 +26,10 @@ intersections, getting a traffic simulation to run with some degree of realism,
 using data visualization to explain the impacts of changes, and advocating for
 real changes using results from the software.
 
+This position will support the [sptreets](https://github.com/spstreets/OD2017/)
+project to explore scenarios of walking and cycling uptake and infrastructure
+in São Paulo, Brazil, and a project to support deployment of a strategic cycling
+uptake model.
 Depending on your skills and interests, there are a few possible places to focus
 for 3 months.
 
