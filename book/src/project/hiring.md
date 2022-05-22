@@ -7,7 +7,7 @@ A/B Street is hiring a Rust engineer!
 - **Compensation**: ~£7k total
 - Must be UK-based with a UK bank account
 
-<!--Compensation is roughly as follows: 
+<!--Compensation is roughly as follows:
 14.32 per hour
 8 hours per day
 18.3 days per month
@@ -27,11 +27,10 @@ using data visualization to explain the impacts of changes, and advocating for
 real changes using results from the software.
 
 This position will support the [sptreets](https://github.com/spstreets/OD2017/)
-project to explore scenarios of walking and cycling uptake and infrastructure
-in São Paulo, Brazil, and a project to support deployment of a strategic cycling
-uptake model.
-Depending on your skills and interests, there are a few possible places to focus
-for 3 months.
+project to explore scenarios of walking and cycling uptake and infrastructure in
+São Paulo, Brazil, and a project to support deployment of a strategic cycling
+uptake model. Depending on your skills and interests, there are a few possible
+places to focus for 3 months.
 
 ### OpenStreetMap network simplification
 
@@ -97,26 +96,25 @@ An example of the benefits of integrating A/B Street with other tools is the
 [ActDev project](https://actdev.cyipt.bike/) which consists of a web map
 embedded in a JavaScript powered dashboard front-end and a 'Simulation Layer'
 that can be clicked, taking the user into a dynamic simulation for each of the
-case study housing developments.
-Further scaling and integration challenges are presented by the projects that
-will fund this software engineering and development work
+case study housing developments. Further scaling and integration challenges are
+presented by the projects that will fund this software engineering and
+development work
 
 ## Your qualifications
 
 - A passion for open source software development enabling more evidence-based
   investment in transport solutions for a more sustainable future 🌱
 - Experience with Rust (or ability to learn Rust rapidly), an interest in
-  transport datasets (e.g. OpenStreetMap, GTFS,
-  origin-destination data). If you already know
-  these, great. If not, you should feel comfortable learning enough to start
-  contributing to the code-base in a few days.
+  transport datasets (e.g. OpenStreetMap, GTFS, origin-destination data). If you
+  already know these, great. If not, you should feel comfortable learning enough
+  to start contributing to the code-base in a few days.
 - Can work independently, but still communicate effectively with the rest of the
   team. We need to focus our efforts on other parts of the project, but we'll
   keep up with your work closely.
   - One way to demonstrate this: have you created your own project and
     maintained it for a while? Have you worked on other open source projects?
-- Are fine with (and happy to have) all of your work being Apache/AGPL
-  licensed and designed/discussed transparently on Github and Slack/Discord.
+- Are fine with (and happy to have) all of your work being Apache/AGPL licensed
+  and designed/discussed transparently on Github and Slack/Discord.
 - Bonus if you have enough design sense to mock up UIs, but no worries if not.
 
 ## Applying

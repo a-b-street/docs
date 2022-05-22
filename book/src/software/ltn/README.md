@@ -1,17 +1,16 @@
 # Low-traffic neighborhoods
 
+[**Launch the tool in your web browser**](http://play.abstreet.org/0.3.22/ltn.html?system/gb/bristol/maps/east.bin)
+
 This tool lets anybody study existing and proposed low-traffic neighborhoods
 (LTNs). Experiment with modal filter placement, and examine the impacts on
 drivers trying to cut through residential areas.
 
-**NOTE**: A user guide and video tutorials will be available by end of March.
-This software is updated every Sunday; see
+**NOTE**: A user guide and video tutorials will be available eventually. This
+software is updated every few weeks; see
 [release notes](https://github.com/dabreegster/abstreet/releases).
 
 ![](ltn.gif)
-
-- Try without installing:
-  [web version](http://play.abstreet.org/0.3.22/ltn.html?system/gb/bristol/maps/east.bin)
 
 The software runs faster if you install it. No mobile/tablet support. Unzip,
 then run `ltn.exe` or `ltn`.
@@ -154,3 +153,14 @@ Planners from these cities are currently using a prototype of the software:
 
 If you're using the tool and are willing to be listed here, please let me know,
 so I can make the case for funding further development.
+
+### Concept art
+
+Our hope is that this tool makes it easier for communities to come together and
+collaboratively design neighborhoods that work well for everyone. Special thanks
+to Scriberia for illustrating this idea:
+
+![](scriberia.jpg)
+
+This image was created by Scriberia for The Turing Way community and is used
+under a CC-BY 4.0 licence for reuse. Zenodo. DOI 10.5281/zenodo.3332807
