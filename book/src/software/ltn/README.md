@@ -8,7 +8,9 @@ drivers trying to cut through residential areas.
 
 **NOTE**: A user guide and video tutorials will be available eventually. This
 software is updated every few weeks; see
-[release notes](https://github.com/dabreegster/abstreet/releases).
+[release notes](https://github.com/dabreegster/abstreet/releases). The best
+documentation is currently
+[AI:UK slides](https://dabreegster.github.io/talks/aiuk_ltn/slides.html).
 
 ![](ltn.gif)
 
