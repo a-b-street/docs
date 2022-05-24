@@ -1,0 +1,72 @@
+.App-logo {
+  height: 5vmin;
+  pointer-events: none;
+}
+
+.App {
+  text-align: center;
+  font-family: 'Overpass', sans-serif;
+  background-color: #003046;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
+  font-size: calc(10px + 1vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.image-contact {
+max-width: 60%;
+height: auto;
+align-items: center;
+}
+
+.image-logo {
+max-width: 50%;
+height: auto;
+align-items: center;
+}
+
+.footer{
+  font-family: 'Overpass', sans-serif;
+  font-size: calc(5px + 1vmin);
+  position: fixed;
+  bottom: 0;
+}
+
+
+li {
+  text-align:left;
+}
+
+p{
+  text-align:left;
+}
+
+h2{
+  text-align:center;
+}
+
+h3{
+  text-align:left;
+}
+
+
+a:link {
+color: white;
+font-weight: bold;
+text-decoration: none;
+}
+a:visited {
+color: white;
+text-decoration: none;
+}
+a:hover {
+color: #white;
+text-decoration: none;
+}
