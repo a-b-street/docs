@@ -22,7 +22,7 @@ class Home extends React.Component {
   }
 
   onChange (index, item){
-    this.setState({ carousel: this.state.carousel = index})
+    this.setState({ carousel: index})
   }
 
   render(){
@@ -53,25 +53,25 @@ class Home extends React.Component {
         <Grid item xs={5}>
           <Carousel onChange={this.onChange} infiniteLoop>
               <div>
-                  <img src={traffic_sim} />
+                  <img src={traffic_sim} alt="The traffic simulator running in downtown Seattle" />
               </div>
               <div>
-                  <img src={ltn} />
+                  <img src={ltn} alt="The low-traffic neighbourhood tool running in London" />
               </div>
               <div>
-                  <img src={fifteen_min} />
+                  <img src={fifteen_min} alt="The 15-min neighbourhood tool showing unequal access to services in West Seattle" />
               </div>
               <div>
-                  <img src={santa} />
+                  <img src={santa} alt="15-minute Santa" />
               </div>
               <div>
-                  <img src={ungap_map} />
+                  <img src={ungap_map} alt="Ungap the Map showing a proposed cycle lane in South Seattle" />
               </div>
             </Carousel>
         </Grid>
         <Grid item xs={1}></Grid>
         <Grid item xs={4}>
-          { this.state.carousel == 0 && (
+          { this.state.carousel === 0 && (
             <div className="carouselItem">
               <h3> Traffic Simulator </h3>
                 <ul>
@@ -83,7 +83,7 @@ class Home extends React.Component {
             </div>
           )}
 
-          { this.state.carousel == 1 && (
+          { this.state.carousel === 1 && (
             <div className="carouselItem">
               <h3> Low-traffic neighbourhoods </h3>
                 <ul>
@@ -94,7 +94,7 @@ class Home extends React.Component {
             </div>
           )}
 
-          { this.state.carousel == 2 && (
+          { this.state.carousel === 2 && (
             <div className="carouselItem">
               <h3> 15-min neighbourhoods </h3>
                 <ul>
@@ -105,7 +105,7 @@ class Home extends React.Component {
             </div>
           )}
 
-          { this.state.carousel == 3 && (
+          { this.state.carousel === 3 && (
             <div className="carouselItem">
               <h3> 15-min Santa </h3>
                 <ul>
@@ -117,7 +117,7 @@ class Home extends React.Component {
             </div>
           )}
 
-          { this.state.carousel == 4 && (
+          { this.state.carousel === 4 && (
             <div className="carouselItem">
               <h3> Ungap the Map </h3>
                 <ul>
