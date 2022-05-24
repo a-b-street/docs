@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - landing # TODO temporarily for testing
 jobs:
   book:
     name: Build and Deploy
