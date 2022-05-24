@@ -24,7 +24,23 @@ jobs:
         run: |
             cd book
             mdbook build
-            cp ../homepage.html book
+
+      # Build the npm landing page
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+
+      - name: Install node dependencies
+        run: |
+            cd landing_page
+            npm ci
+
+      - name: Build node
+        run: |
+            cd landing_page
+            CI=false npm run build
+            mv build ../book/book/landing_page
 
       - name: Publish HTML
         uses: peaceiris/actions-gh-pages@v3
