@@ -40,7 +40,7 @@ jobs:
       - name: Build node
         run: |
             cd landing_page
-            CI=false npm run build
+            npm run build
             mv build ../book/book/landing_page
 
       - name: Publish HTML
