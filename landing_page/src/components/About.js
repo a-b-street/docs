@@ -48,6 +48,9 @@ function About(){
       <p>
         A/B Street's main creators are Dustin Carlino, Yuwen Li, and Michael Kirk. Also see <a href="https://a-b-street.github.io/docs/project/team.html"><u>all contributors</u>.</a>
       </p>
+      <p>
+	 This webpage was designed by <u><a href="https://trang.io">Trang Le</a></u> and built by <u><a href="https://jending.com">Jennifer Ding</a></u>.
+      </p>
       </Grid>
       <Grid item xs={3}></Grid>
     </Grid>
