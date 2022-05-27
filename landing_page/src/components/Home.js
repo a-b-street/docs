@@ -30,7 +30,7 @@ class Home extends React.Component {
 
     <div className="HOME ROUTE">
 
-      <Grid container spacing={1}>
+      <Grid container>
         <Grid item xs={4}></Grid>
         <Grid item xs={1}>
           <a href="http://play.abstreet.org/0.3.18/abstreet.html"><img src={web} class="image-logo" alt="web" /></a>
@@ -44,13 +44,18 @@ class Home extends React.Component {
         <Grid item xs={1}>
           <a href="https://a-b-street.github.io/docs/user/index.html"><img src={windows} class="image-logo" alt="windows" /></a>
         </Grid>
+        <Grid item xs={4}></Grid>
       </Grid>
 
-      <h1>Open source software for planning less car-centric cities.</h1>
+      <Grid container>
+        <Grid item xs={2}></Grid>
+        <Grid item xs={8}><h1>Open source software for planning less car-centric cities.</h1></Grid>
+        <Grid item xs={2}></Grid>
+    </Grid>
 
       <Grid container>
-        <Grid item xs={1}></Grid>
-        <Grid item xs={5}>
+        <Grid item xs={2}></Grid>
+        <Grid item xs={4}>
           <Carousel onChange={this.onChange} infiniteLoop>
               <div>
                   <img src={traffic_sim} alt="The traffic simulator running in downtown Seattle" />
@@ -70,14 +75,14 @@ class Home extends React.Component {
             </Carousel>
         </Grid>
         <Grid item xs={1}></Grid>
-        <Grid item xs={4}>
+        <Grid item xs={3}>
           { this.state.carousel === 0 && (
             <div className="carouselItem">
               <h3> Traffic Simulator </h3>
                 <ul>
-                  <li>edit roads and intersections to view impact on traffic</li>
-                  <li>visualise drivers, buses, pedestrians, and cyclists moving around</li>
-                  <li>see how changes affect people's travel time and safety</li>
+                  <li>edit roads & intersections to view traffic impact</li>
+                  <li>visualise drivers, pedestrians, and cyclists moving around</li>
+                  <li>see how changes affect travel time and safety</li>
                 </ul>
               <p> Learn more <a href="https://a-b-street.github.io/docs/software/abstreet.html"><u>here</u></a>.</p>
             </div>
@@ -98,7 +103,7 @@ class Home extends React.Component {
             <div className="carouselItem">
               <h3> 15-min neighbourhoods </h3>
                 <ul>
-                  <li>see what shops, libraries, health facilities, etc are reachable within a 15-minute walk or cycle ride</li>
+                  <li>see what shops, libraries, etc. are reachable within a 15-minute walk or cycle</li>
                   <li>find houses that meet your definition of "walkability"</li>
                 </ul>
               <p> Learn more <a href="https://a-b-street.github.io/docs/software/fifteen_min.html"><u>here</u></a>.</p>
@@ -109,9 +114,9 @@ class Home extends React.Component {
             <div className="carouselItem">
               <h3> 15-min Santa </h3>
                 <ul>
-                  <li>a game teaching the importance of letting people live close to where they work and shop</li>
-                  <li>deliver presents around Seattle as efficiently as possible</li>
+                  <li>deliver presents around Seattle as Santa</li>
                   <li>create new shops near residential areas to improve your score</li>
+                  <li>highlights importance of living close to where you work and shop</li>
                 </ul>
               <p> Learn more <a href="https://a-b-street.github.io/docs/software/santa.html"><u>here</u></a>.</p>
             </div>
@@ -121,15 +126,16 @@ class Home extends React.Component {
             <div className="carouselItem">
               <h3> Ungap the Map </h3>
                 <ul>
-                  <li>view existing cycling infrastructure & fill in missing links in the cycle network</li>
+                  <li>view cycling infrastructure & fill in missing links</li>
                   <li>explore routing tradeoffs between speed, safety, and avoiding hills</li>
-                  <li>predict how many people will decide to cycle</li>
+                  <li>predict how many people will cycle</li>
                 </ul>
               <p> Learn more <a href="https://a-b-street.github.io/docs/software/ungap_the_map/index.html"><u>here</u></a>.</p>
             </div>
           )}
 
         </Grid>
+        <Grid item xs={2}></Grid>
     </Grid>
 
 
