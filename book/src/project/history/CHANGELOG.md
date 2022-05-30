@@ -1208,3 +1208,10 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - simplify LTN cells around non-driveable roads
 - introduce a Bristol consultation mode for the LTN tool
 - export problem list to CSV, and make all CSV/GeoJSON exports work on the web too
+
+0.3.23
+
+- small LTN fixes: don't filter one-way roads or mess up undo with the freehand tool, highlight the boundary road
+- LTN style changes: traffic signals, don't show stop signs or crosswalks, get the center line color correct in the UK
+- create a second Bristol LTN consultation mode, with a special overriden boundary
+- initial support for modifying one-way streets in the LTN tool (with many limitations)
