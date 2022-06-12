@@ -1215,3 +1215,7 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - LTN style changes: traffic signals, don't show stop signs or crosswalks, get the center line color correct in the UK
 - create a second Bristol LTN consultation mode, with a special overriden boundary
 - initial support for modifying one-way streets in the LTN tool (with many limitations)
+
+0.3.24
+
+- improve the LTN route planner UI
