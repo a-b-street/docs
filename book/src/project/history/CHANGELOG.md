@@ -1219,3 +1219,12 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 0.3.24
 
 - improve the LTN route planner UI
+
+0.3.25
+
+- improvements for road labels in the LTN tool
+- explain errors to the user better in the LTN tool
+- prevent more illegal combinations of filters, one-ways, and dead-ends
+- improved UX after downloading a new map natively
+- fix some missing U-turns
+- temporarily disabled code-signing for Mac binaries
