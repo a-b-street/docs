@@ -1228,3 +1228,12 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - improved UX after downloading a new map natively
 - fix some missing U-turns
 - temporarily disabled code-signing for Mac binaries
+
+0.3.26
+
+- major LTN color redesign
+- fix LTN modal filters that were pre-existing in OSM data
+- fix missing schools and other OSM amenities
+- bad elevation data disabled in most maps (it never worked outside of Seattle)
+- internal refactor to extract osm2streets code to another repo, allowing faster iteration and some upcoming related projects
+- re-enable Mac binary code-signing
