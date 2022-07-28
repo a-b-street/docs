@@ -1237,3 +1237,8 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - bad elevation data disabled in most maps (it never worked outside of Seattle)
 - internal refactor to extract osm2streets code to another repo, allowing faster iteration and some upcoming related projects
 - re-enable Mac binary code-signing
+
+0.3.27
+
+- rearrange LTN tool controls -- you can now view shortcuts by road
+- bug fixes and perf fixes for scrolling and drawing road labels
