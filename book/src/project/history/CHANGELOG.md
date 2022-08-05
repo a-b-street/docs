@@ -1242,3 +1242,12 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 
 - rearrange LTN tool controls -- you can now view shortcuts by road
 - bug fixes and perf fixes for scrolling and drawing road labels
+
+0.3.28
+
+- LTN design overhaul: remove the zoomed view, simpler road labels, multiple modal filter types
+- overhaul the LTN impact prediction tool: make it work on all maps, improve how before/after paths drawn, fix major bug with paths changing spuriously, add CSV export
+- transform a simple case of dual carriageways into a single road with a divider lane
+- workaround broken LTN partitioning in some maps
+- fix color scheme when drawing LTN cells as areas
+- show an icon for schools in the LTN tool

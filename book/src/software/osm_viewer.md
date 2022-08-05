@@ -1,6 +1,6 @@
 # OpenStreetMap viewer
 
-- [Web version](http://play.abstreet.org/0.3.27/osm_viewer.html)
+- [Web version](http://play.abstreet.org/0.3.28/osm_viewer.html)
 - To run locally, get the
   [latest release](https://github.com/a-b-street/abstreet/releases) for Windows,
   Mac, or Linux. After unzipping, run `osm_viewer.exe` or `osm_viewer`.
