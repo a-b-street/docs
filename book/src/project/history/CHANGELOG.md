@@ -1251,3 +1251,8 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 - workaround broken LTN partitioning in some maps
 - fix color scheme when drawing LTN cells as areas
 - show an icon for schools in the LTN tool
+
+0.3.29
+
+- another LTN color scheme update
+- some LTN bugfixes
