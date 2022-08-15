@@ -1256,3 +1256,7 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 
 - another LTN color scheme update
 - some LTN bugfixes
+
+0.3.30
+
+- fix some major crashes with the LTN tool
