@@ -1260,3 +1260,14 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 0.3.30
 
 - fix some major crashes with the LTN tool
+
+0.3.31
+
+no new Linux build due to Github Actions issues
+
+- initial support for uploading and sharing LTN proposals!!!
+- changes to one-ways / road direction are now saved in the LTN tool and work with undo
+- deal with "holes" in the middle of blocks when adjusting LTN boundaries
+- add zoom buttons and a collapsible legend to the LTN tool
+- import missing London boroughs
+- start internally switching to a better representation of tessellations that aren't simple polygons. Thanks Michael!
