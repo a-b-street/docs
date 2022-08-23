@@ -1263,7 +1263,7 @@ See https://a-b-street.github.io/docs/project/history/retrospective/index.html f
 
 0.3.31
 
-no new Linux build due to Github Actions issues
+Note the Linux build now uses Ubuntu 22.04, not 18.04, and thus requires a new glibc to work
 
 - initial support for uploading and sharing LTN proposals!!!
 - changes to one-ways / road direction are now saved in the LTN tool and work with undo
