@@ -1271,3 +1271,12 @@ Note the Linux build now uses Ubuntu 22.04, not 18.04, and thus requires a new g
 - add zoom buttons and a collapsible legend to the LTN tool
 - import missing London boroughs
 - start internally switching to a better representation of tessellations that aren't simple polygons. Thanks Michael!
+
+0.3.32
+
+- trying to filter a one-way road will now prompt you to change it
+- fix LTN shortcut calculation: make them stay inside the neighbourhood and handle access=private roads
+- add optional bus route layer in the LTN tool
+- draw new / existing modal filters differently
+- fix important bug causing some routes to make illegal turns
+- fix a few OSM import crashes
