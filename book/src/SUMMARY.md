@@ -77,5 +77,6 @@
     - [Year 3](project/history/year3.md)
     - [3 year retrospective](project/history/retrospective/README.md)
     - [Full CHANGELOG](project/history/CHANGELOG.md)
+  - [Users](project/users.md)
   - [References](project/references.md)
   - [Presentations](project/presentations.md)
