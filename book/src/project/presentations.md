@@ -4,8 +4,8 @@ Most recent first.
 
 - March 2022: AI:UK workshop on low-traffic neighborhoods
   - [Slides](https://dabreegster.github.io/talks/aiuk_ltn/slides.html),
-    [video of spotlight talk](https://youtu.be/P97F_7_A-Qg?t=64), video of
-    longer workshop coming eventually
+    [video of spotlight talk](https://youtu.be/P97F_7_A-Qg?t=64), [video of
+    longer workshop](https://www.youtube.com/watch?v=5e1nroJHcBE)
 - March 2022: The abridged and entirely truthful story of A/B Street (Geomob)
   - [Slides](https://docs.google.com/presentation/d/1rq0aegKmpt6uI-oieQW5BXQ-vqQji3S48m-pLJ8kGnI/edit?usp=sharing),
     [video](https://www.youtube.com/watch?v=4Tg3Fc2J3MI&t=1356s)
