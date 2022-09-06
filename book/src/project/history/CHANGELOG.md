@@ -1280,3 +1280,12 @@ Note the Linux build now uses Ubuntu 22.04, not 18.04, and thus requires a new g
 - draw new / existing modal filters differently
 - fix important bug causing some routes to make illegal turns
 - fix a few OSM import crashes
+
+0.3.33
+
+- overhaul LTN navigation between modes
+- much nicer road labels in the LTN tool
+- prompt the user to add a bus gate on appropriate roads
+- huge internal refactor of Polygons complete. thanks to Michael for help!
+- slightly improve LTN route tool, partly by hiding extra controls by default
+- improve LTN colors for parks and water
