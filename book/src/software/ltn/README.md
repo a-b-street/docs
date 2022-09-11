@@ -6,11 +6,9 @@ This tool lets anybody study existing and proposed low-traffic neighborhoods
 (LTNs). Experiment with modal filter placement, and examine the impacts on
 drivers trying to cut through residential areas.
 
-**NOTE**: A user guide and video tutorials will be available eventually. This
-software is updated every few weeks; see
-[release notes](https://github.com/dabreegster/abstreet/releases). The best
-documentation is currently
-[AI:UK slides](https://dabreegster.github.io/talks/aiuk_ltn/slides.html).
+- [2-minute introduction video](https://www.youtube.com/watch?v=m22WP62yyZ0)
+- [8-minute tutorial video](https://www.youtube.com/watch?v=j64ZtDfGPCY)
+- [Written user guide](https://docs.google.com/presentation/d/1vU4xITmd9PMX4QJi0xP5ZJVpuWE9rpE3SvvYdq9_xb8/edit?usp=sharing)
 
 ![](ltn.gif)
 
@@ -25,6 +23,8 @@ Contact <dabreegster@gmail.com> with any feedback or
 [file an issue on Github](https://github.com/a-b-street/abstreet/issues/new).
 
 ## Features
+
+(As of September 2022, some of these notes are out-of-date or feature old screenshots.)
 
 ### Modal filters
 
@@ -167,3 +167,10 @@ to Scriberia for illustrating this idea:
 
 This image was created by Scriberia for The Turing Way community and is used
 under a CC-BY 4.0 licence for reuse. Zenodo. DOI 10.5281/zenodo.3332807
+
+### Documentation
+
+- [2-minute introduction video](https://www.youtube.com/watch?v=m22WP62yyZ0)
+- [8-minute tutorial video](https://www.youtube.com/watch?v=j64ZtDfGPCY)
+- [Written user guide](https://docs.google.com/presentation/d/1vU4xITmd9PMX4QJi0xP5ZJVpuWE9rpE3SvvYdq9_xb8/edit?usp=sharing)
+- [March 2022 AI:UK presentation](https://dabreegster.github.io/talks/aiuk_ltn/slides.html)
