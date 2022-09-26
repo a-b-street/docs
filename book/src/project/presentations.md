@@ -1,7 +1,9 @@
 # Presentations
 
-Most recent first.
+Most recent first. See <https://github.com/dabreegster/talks/> for more that
+haven't been listed here...
 
+- August 2022: State of the Map on osm2streets: [slides](https://dabreegster.github.io/talks/sotm_2022/slides.html), [video](https://www.youtube.com/watch?v=Te39lBuhPK8)
 - March 2022: AI:UK workshop on low-traffic neighborhoods
   - [Slides](https://dabreegster.github.io/talks/aiuk_ltn/slides.html),
     [video of spotlight talk](https://youtu.be/P97F_7_A-Qg?t=64), [video of
