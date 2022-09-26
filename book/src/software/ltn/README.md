@@ -120,6 +120,7 @@ There are some advanced / experimental features that don't work yet:
 Main team:
 
 - [Dustin Carlino](http://dcarlino.org): project lead
+- [Madison Wang](https://www.linkedin.com/in/madison-wang-841977bb/): UX design
 - [Cindy Huang](https://www.cindykhuang.me): UX design
 - [Jennifer Ding](https://jending.com): training material and outreach
 
