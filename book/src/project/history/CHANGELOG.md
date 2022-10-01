@@ -1289,3 +1289,10 @@ Note the Linux build now uses Ubuntu 22.04, not 18.04, and thus requires a new g
 - huge internal refactor of Polygons complete. thanks to Michael for help!
 - slightly improve LTN route tool, partly by hiding extra controls by default
 - improve LTN colors for parks and water
+
+0.3.34
+
+- massive LTN UI overhaul based on Madison's designs
+- start importing footways and shared-use paths from OSM
+- change text scale factor in the LTN tool without restarting
+- many small ltn UX fixes
