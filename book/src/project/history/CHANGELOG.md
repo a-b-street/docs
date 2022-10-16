@@ -1296,3 +1296,12 @@ Note the Linux build now uses Ubuntu 22.04, not 18.04, and thus requires a new g
 - start importing footways and shared-use paths from OSM
 - change text scale factor in the LTN tool without restarting
 - many small ltn UX fixes
+
+0.3.35
+
+- fix missing shortcuts in the LTN tool, involving corners where a main road changes name
+- start improving how saving LTN proposals works, for quickly comparing alternatives
+- use real photos to explain the modal filter types
+- fix a few reported crashes
+- substantially speed up map importing for certain areas with lots of amenities
+- fix an edge case with point closures defined at intersections
