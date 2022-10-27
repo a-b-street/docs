@@ -6,8 +6,7 @@ Street's map model. These are implementation details; you may be looking
 
 The steps are:
 
-1.  A large .osm file is clipped to a hand-drawn boundary region, using
-    `osmconvert`
+1.  A large .osm file is clipped to a hand-drawn boundary region, using `osmium`
 2.  The `convert_osm` crate reads the clipped `.osm`, and a bunch of optional
     supplementary files, and produces a `RawMap`
 3.  Part of the `map_model` crate transforms the `RawMap` into the final `Map`

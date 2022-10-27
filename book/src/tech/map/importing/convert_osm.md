@@ -34,7 +34,7 @@ Split OSM ways into road segments
 
 Clip the map to the boundary polygon
 
-- `osmconvert` options preserve ways that cross the boundary
+- `osmium` options preserve ways that cross the boundary
 - Trim roads that cross the boundary. There may be cases where a road dips out
   of bounds, then immediately comes back in. Disconnecting it isn't ideal, but
   it's better to manually tune the boundary polygon when this happens than try

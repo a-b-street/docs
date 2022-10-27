@@ -94,7 +94,7 @@ The easiest method is to just ask Dustin to do this. The full process:
 
 1.  Make sure you can run `import.sh` -- see
     [the instructions](../tech/dev/index.md#building-map-data). You'll need
-    Rust, osmconvert, gdal, etc.
+    Rust, osmium, gdal, etc.
 
 2.  Create a new directory: `mkdir importer/config/xy/your_city`, where `xy` is
     a lowercase two letter country code from
@@ -102,24 +102,17 @@ The easiest method is to just ask Dustin to do this. The full process:
 
 3.  Use [geojson.io](http://geojson.io/) or
     [geoman.io](https://geoman.io/geojson-editor) to draw a boundary around the
-    region you want to simulate and save the geojson locally.
+    region you want to simulate and save the geojson locally as
+    `importer/config/xy/your_city/region_name.geojson`.
 
-4.  Use `cargo run --release --bin cli -- geojson-to-osmosis boundary.geojson`
-    to convert that geojson to the
-    [Osmosis format](https://wiki.openstreetmap.org/wiki/Osmosis/Polygon_Filter_File_Format)
-    required by osmconvert. This tool writes one file per feature in the input,
-    so you'd then
-    `mv boundary0.poly importer/config/xy/your_city/region_name.poly`, repeating
-    if you drew multiple polygons.
-
-5.  Edit `importer/src/map_config.rs` if needed. If you're the first to import a
+4.  Edit `importer/src/map_config.rs` if needed. If you're the first to import a
     new country, you may need to configure left-handed drivng, for example.
 
-6.  Run the import: `./import.sh --city=xy/your_city --raw --map`
+5.  Run the import: `./import.sh --city=xy/your_city --raw --map`
 
-7.  Update `.gitignore`, following `tel_aviv` as an example. Keep sorted!
+6.  Update `.gitignore`, following `tel_aviv` as an example. Keep sorted!
 
-8.  Fill out `nice_map_name` in `map_gui/src/tools/mod.rs`.
+7.  Fill out `nice_map_name` in `map_gui/src/tools/mod.rs`.
 
 Send a PR with your changes! I'll generate everything and make it work with
 `updater`, so most people don't have to build everything from scratch.

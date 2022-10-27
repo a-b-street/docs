@@ -88,8 +88,7 @@ working on the code that imports maps and scenarios.
 
 To run all pieces of the importer, you'll need some extra dependencies:
 
-- `osmconvert`: See <https://wiki.openstreetmap.org/wiki/Osmconvert#Download> or
-  <https://github.com/interline-io/homebrew-planetutils#installation> for Mac
+- `osmium`: See <https://osmcode.org/osmium-tool/manual.html#installation>
 - `libgdal-dev`: See <https://gdal.org> if your OS package manager doesn't have
   this. If you keep hitting linking errors, then just remove
   `--features importer/scenarios` from `import.sh`. You won't be able to build
@@ -107,7 +106,7 @@ First is the `--raw` step, which:
 
 1.  Downloads all input data needed for a map -- a .osm.pbf file from Geofabrik,
     at minimum
-2.  Uses `osmconvert` to clip the large OSM file into smaller pieces
+2.  Uses `osmium` to clip the large OSM file into smaller pieces
 3.  Reads in all of the input, producing a `RawMap` file. This is an
     intermediate format that's useful for debugging, using the `map_editor`
     tool.

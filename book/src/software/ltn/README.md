@@ -24,7 +24,8 @@ Contact <dabreegster@gmail.com> with any feedback or
 
 ## Features
 
-(As of September 2022, some of these notes are out-of-date or feature old screenshots.)
+(As of September 2022, some of these notes are out-of-date or feature old
+screenshots.)
 
 ### Modal filters
 
@@ -141,7 +142,8 @@ Inspiration / early testers giving great feedback:
 - [Cyclestreets LTN map using OpenStreetMap](https://www.cyclestreets.org/news/2021/07/25/mapping-ltns/)
 - [Will Petty's QGIS tool](https://twitter.com/Microlambert/status/1454017200004739073)
 - [Sustrans LTN guide](https://www.sustrans.org.uk/for-professionals/infrastructure/an-introductory-guide-to-low-traffic-neighbourhood-design)
-- Design help from [Duncan Geere](https://www.duncangeere.com/) and [Fernando Benitez](https://fernandobenitez.co/)
+- Design help from [Duncan Geere](https://www.duncangeere.com/) and
+  [Fernando Benitez](https://fernandobenitez.co/)
 - Robin Lovelace
 - Many others...
 
