@@ -146,8 +146,7 @@ Street's map model. These are implementation details; you may be looking
 <a href="../../../user/new_city.html">for the user guide to importing a new city</a>.</p>
 <p>The steps are:</p>
 <ol>
-<li>A large .osm file is clipped to a hand-drawn boundary region, using
-<code>osmconvert</code></li>
+<li>A large .osm file is clipped to a hand-drawn boundary region, using <code>osmium</code></li>
 <li>The <code>convert_osm</code> crate reads the clipped <code>.osm</code>, and a bunch of optional
 supplementary files, and produces a <code>RawMap</code></li>
 <li>Part of the <code>map_model</code> crate transforms the <code>RawMap</code> into the final <code>Map</code></li>

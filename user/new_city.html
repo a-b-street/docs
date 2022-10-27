@@ -216,7 +216,7 @@ country), in the &quot;oneshot&quot; city. This is stored in
 <li>
 <p>Make sure you can run <code>import.sh</code> -- see
 <a href="../tech/dev/index.html#building-map-data">the instructions</a>. You'll need
-Rust, osmconvert, gdal, etc.</p>
+Rust, osmium, gdal, etc.</p>
 </li>
 <li>
 <p>Create a new directory: <code>mkdir importer/config/xy/your_city</code>, where <code>xy</code> is
@@ -226,16 +226,8 @@ a lowercase two letter country code from
 <li>
 <p>Use <a href="http://geojson.io/">geojson.io</a> or
 <a href="https://geoman.io/geojson-editor">geoman.io</a> to draw a boundary around the
-region you want to simulate and save the geojson locally.</p>
-</li>
-<li>
-<p>Use <code>cargo run --release --bin cli -- geojson-to-osmosis boundary.geojson</code>
-to convert that geojson to the
-<a href="https://wiki.openstreetmap.org/wiki/Osmosis/Polygon_Filter_File_Format">Osmosis format</a>
-required by osmconvert. This tool writes one file per feature in the input,
-so you'd then
-<code>mv boundary0.poly importer/config/xy/your_city/region_name.poly</code>, repeating
-if you drew multiple polygons.</p>
+region you want to simulate and save the geojson locally as
+<code>importer/config/xy/your_city/region_name.geojson</code>.</p>
 </li>
 <li>
 <p>Edit <code>importer/src/map_config.rs</code> if needed. If you're the first to import a

@@ -1532,7 +1532,8 @@ then run <code>ltn.exe</code> or <code>ltn</code>.</p>
 <p>Contact <a href="mailto:software/ltn/dabreegster@gmail.com">dabreegster@gmail.com</a> with any feedback or
 <a href="https://github.com/a-b-street/abstreet/issues/new">file an issue on Github</a>.</p>
 <h2 id="features"><a class="header" href="#features">Features</a></h2>
-<p>(As of September 2022, some of these notes are out-of-date or feature old screenshots.)</p>
+<p>(As of September 2022, some of these notes are out-of-date or feature old
+screenshots.)</p>
 <h3 id="modal-filters"><a class="header" href="#modal-filters">Modal filters</a></h3>
 <p>You can place new modal filters (planters or bollards) along streets or
 diagonally in intersections. Filters will calm traffic along that one street,
@@ -1627,7 +1628,8 @@ everybody collaborating to solve the same problems.</li>
 <li><a href="https://www.cyclestreets.org/news/2021/07/25/mapping-ltns/">Cyclestreets LTN map using OpenStreetMap</a></li>
 <li><a href="https://twitter.com/Microlambert/status/1454017200004739073">Will Petty's QGIS tool</a></li>
 <li><a href="https://www.sustrans.org.uk/for-professionals/infrastructure/an-introductory-guide-to-low-traffic-neighbourhood-design">Sustrans LTN guide</a></li>
-<li>Design help from <a href="https://www.duncangeere.com/">Duncan Geere</a> and <a href="https://fernandobenitez.co/">Fernando Benitez</a></li>
+<li>Design help from <a href="https://www.duncangeere.com/">Duncan Geere</a> and
+<a href="https://fernandobenitez.co/">Fernando Benitez</a></li>
 <li>Robin Lovelace</li>
 <li>Many others...</li>
 </ul>
@@ -1991,7 +1993,7 @@ country), in the &quot;oneshot&quot; city. This is stored in
 <li>
 <p>Make sure you can run <code>import.sh</code> -- see
 <a href="user/../tech/dev/index.html#building-map-data">the instructions</a>. You'll need
-Rust, osmconvert, gdal, etc.</p>
+Rust, osmium, gdal, etc.</p>
 </li>
 <li>
 <p>Create a new directory: <code>mkdir importer/config/xy/your_city</code>, where <code>xy</code> is
@@ -2001,16 +2003,8 @@ a lowercase two letter country code from
 <li>
 <p>Use <a href="http://geojson.io/">geojson.io</a> or
 <a href="https://geoman.io/geojson-editor">geoman.io</a> to draw a boundary around the
-region you want to simulate and save the geojson locally.</p>
-</li>
-<li>
-<p>Use <code>cargo run --release --bin cli -- geojson-to-osmosis boundary.geojson</code>
-to convert that geojson to the
-<a href="https://wiki.openstreetmap.org/wiki/Osmosis/Polygon_Filter_File_Format">Osmosis format</a>
-required by osmconvert. This tool writes one file per feature in the input,
-so you'd then
-<code>mv boundary0.poly importer/config/xy/your_city/region_name.poly</code>, repeating
-if you drew multiple polygons.</p>
+region you want to simulate and save the geojson locally as
+<code>importer/config/xy/your_city/region_name.geojson</code>.</p>
 </li>
 <li>
 <p>Edit <code>importer/src/map_config.rs</code> if needed. If you're the first to import a
@@ -3210,8 +3204,7 @@ working on the code that imports maps and scenarios.</p>
 <h3 id="dependencies"><a class="header" href="#dependencies">Dependencies</a></h3>
 <p>To run all pieces of the importer, you'll need some extra dependencies:</p>
 <ul>
-<li><code>osmconvert</code>: See <a href="https://wiki.openstreetmap.org/wiki/Osmconvert#Download">https://wiki.openstreetmap.org/wiki/Osmconvert#Download</a> or
-<a href="https://github.com/interline-io/homebrew-planetutils#installation">https://github.com/interline-io/homebrew-planetutils#installation</a> for Mac</li>
+<li><code>osmium</code>: See <a href="https://osmcode.org/osmium-tool/manual.html#installation">https://osmcode.org/osmium-tool/manual.html#installation</a></li>
 <li><code>libgdal-dev</code>: See <a href="https://gdal.org">https://gdal.org</a> if your OS package manager doesn't have
 this. If you keep hitting linking errors, then just remove
 <code>--features importer/scenarios</code> from <code>import.sh</code>. You won't be able to build
@@ -3228,7 +3221,7 @@ First is the <code>--raw</code> step, which:</p>
 <ol>
 <li>Downloads all input data needed for a map -- a .osm.pbf file from Geofabrik,
 at minimum</li>
-<li>Uses <code>osmconvert</code> to clip the large OSM file into smaller pieces</li>
+<li>Uses <code>osmium</code> to clip the large OSM file into smaller pieces</li>
 <li>Reads in all of the input, producing a <code>RawMap</code> file. This is an
 intermediate format that's useful for debugging, using the <code>map_editor</code>
 tool.</li>
@@ -5296,8 +5289,7 @@ Street's map model. These are implementation details; you may be looking
 <a href="tech/map/importing/../../../user/new_city.html">for the user guide to importing a new city</a>.</p>
 <p>The steps are:</p>
 <ol>
-<li>A large .osm file is clipped to a hand-drawn boundary region, using
-<code>osmconvert</code></li>
+<li>A large .osm file is clipped to a hand-drawn boundary region, using <code>osmium</code></li>
 <li>The <code>convert_osm</code> crate reads the clipped <code>.osm</code>, and a bunch of optional
 supplementary files, and produces a <code>RawMap</code></li>
 <li>Part of the <code>map_model</code> crate transforms the <code>RawMap</code> into the final <code>Map</code></li>
@@ -5342,7 +5334,7 @@ is actually incident to a particular source road.</li>
 <h2 id="clip"><a class="header" href="#clip">clip</a></h2>
 <p>Clip the map to the boundary polygon</p>
 <ul>
-<li><code>osmconvert</code> options preserve ways that cross the boundary</li>
+<li><code>osmium</code> options preserve ways that cross the boundary</li>
 <li>Trim roads that cross the boundary. There may be cases where a road dips out
 of bounds, then immediately comes back in. Disconnecting it isn't ideal, but
 it's better to manually tune the boundary polygon when this happens than try
@@ -9463,11 +9455,13 @@ their work. I've likely forgotten many examples, please add if so!</p>
 <h2 id="academic"><a class="header" href="#academic">Academic</a></h2>
 <ul>
 <li>A bachelor thesis importing (manually fixed) GTFS data for Geneva and
-simulating buses: <a href="https://gradechelor_pub.hesge.ch/studentFiles/2058/ISC_LO_memoire_diplome_Nhairi_Malaspinas_2022.pdf">pdf</a> (in French), published July 2022 by Ilias N’Hairi and Thomas Dagier</li>
-<li><a href="https://osf.io/794f3/">Forecasting Counterfactuals in Uncontrolled
-Settings</a>, about human predictions regarding traffic
-simulations</li>
-<li>An undergraduate course at Arizona State University taught by Xuesong Zhou used A/B Street</li>
+simulating buses:
+<a href="https://gradechelor_pub.hesge.ch/studentFiles/2058/ISC_LO_memoire_diplome_Nhairi_Malaspinas_2022.pdf">pdf</a>
+(in French), published July 2022 by Ilias N’Hairi and Thomas Dagier</li>
+<li><a href="https://osf.io/794f3/">Forecasting Counterfactuals in Uncontrolled Settings</a>,
+about human predictions regarding traffic simulations</li>
+<li>An undergraduate course at Arizona State University taught by Xuesong Zhou
+used A/B Street</li>
 </ul>
 <!-- pune -->
 <!-- iran -->
@@ -9611,12 +9605,14 @@ the end</li>
 <p>Most recent first. See <a href="https://github.com/dabreegster/talks/">https://github.com/dabreegster/talks/</a> for more that
 haven't been listed here...</p>
 <ul>
-<li>August 2022: State of the Map on osm2streets: <a href="https://dabreegster.github.io/talks/sotm_2022/slides.html">slides</a>, <a href="https://www.youtube.com/watch?v=Te39lBuhPK8">video</a></li>
+<li>August 2022: State of the Map on osm2streets:
+<a href="https://dabreegster.github.io/talks/sotm_2022/slides.html">slides</a>,
+<a href="https://www.youtube.com/watch?v=Te39lBuhPK8">video</a></li>
 <li>March 2022: AI:UK workshop on low-traffic neighborhoods
 <ul>
 <li><a href="https://dabreegster.github.io/talks/aiuk_ltn/slides.html">Slides</a>,
-<a href="https://youtu.be/P97F_7_A-Qg?t=64">video of spotlight talk</a>, <a href="https://www.youtube.com/watch?v=5e1nroJHcBE">video of
-longer workshop</a></li>
+<a href="https://youtu.be/P97F_7_A-Qg?t=64">video of spotlight talk</a>,
+<a href="https://www.youtube.com/watch?v=5e1nroJHcBE">video of longer workshop</a></li>
 </ul>
 </li>
 <li>March 2022: The abridged and entirely truthful story of A/B Street (Geomob)

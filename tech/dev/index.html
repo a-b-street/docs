@@ -230,8 +230,7 @@ working on the code that imports maps and scenarios.</p>
 <h3 id="dependencies"><a class="header" href="#dependencies">Dependencies</a></h3>
 <p>To run all pieces of the importer, you'll need some extra dependencies:</p>
 <ul>
-<li><code>osmconvert</code>: See <a href="https://wiki.openstreetmap.org/wiki/Osmconvert#Download">https://wiki.openstreetmap.org/wiki/Osmconvert#Download</a> or
-<a href="https://github.com/interline-io/homebrew-planetutils#installation">https://github.com/interline-io/homebrew-planetutils#installation</a> for Mac</li>
+<li><code>osmium</code>: See <a href="https://osmcode.org/osmium-tool/manual.html#installation">https://osmcode.org/osmium-tool/manual.html#installation</a></li>
 <li><code>libgdal-dev</code>: See <a href="https://gdal.org">https://gdal.org</a> if your OS package manager doesn't have
 this. If you keep hitting linking errors, then just remove
 <code>--features importer/scenarios</code> from <code>import.sh</code>. You won't be able to build
@@ -248,7 +247,7 @@ First is the <code>--raw</code> step, which:</p>
 <ol>
 <li>Downloads all input data needed for a map -- a .osm.pbf file from Geofabrik,
 at minimum</li>
-<li>Uses <code>osmconvert</code> to clip the large OSM file into smaller pieces</li>
+<li>Uses <code>osmium</code> to clip the large OSM file into smaller pieces</li>
 <li>Reads in all of the input, producing a <code>RawMap</code> file. This is an
 intermediate format that's useful for debugging, using the <code>map_editor</code>
 tool.</li>
