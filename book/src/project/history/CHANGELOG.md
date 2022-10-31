@@ -1305,3 +1305,10 @@ Note the Linux build now uses Ubuntu 22.04, not 18.04, and thus requires a new g
 - fix a few reported crashes
 - substantially speed up map importing for certain areas with lots of amenities
 - fix an edge case with point closures defined at intersections
+
+0.3.36
+
+- start a mode in the LTN tool showing and editing crossings and porosity
+- draw one-way arrows in the LTN tool less horribly (in narrow roads or with labels)
+- internally simplify OSM import process, by relying on osmium
+- speed up OSM XML parsing and reduce memory overhead
