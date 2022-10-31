@@ -3,7 +3,11 @@
 This page lists people/groups using some part of A/B Street who publicly share
 their work. I've likely forgotten many examples, please add if so!
 
-<!-- all the LTN users -->
+## Public consultation
+
+- Bristol City Council
+  [used the LTN tool for a liveable neighbourhood consultation](https://eastbristolliveableneighbourhoods.commonplace.is/)
+  ending in October 2022
 
 ## Academic
 
@@ -15,6 +19,8 @@ their work. I've likely forgotten many examples, please add if so!
   about human predictions regarding traffic simulations
 - An undergraduate course at Arizona State University taught by Xuesong Zhou
   used A/B Street
+- A master's dissertation looked at simulating a motor-free area in downtown
+  Pune, a city in India using the LTN tool relying solely on OSM data. August
+  2022 by Varad Deshmukh
 
-<!-- pune -->
 <!-- iran -->
