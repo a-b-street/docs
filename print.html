@@ -1513,9 +1513,9 @@ time limit, goal, and starting point on the map. If you have a public data
 source for the number of housing units per building, please include it!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="low-traffic-neighborhoods"><a class="header" href="#low-traffic-neighborhoods">Low-traffic neighborhoods</a></h1>
 <p><a href="http://play.abstreet.org/0.3.36/ltn.html?system/gb/bristol/maps/east.bin"><strong>Launch the tool in your web browser</strong></a></p>
-<p>This tool lets anybody study existing and proposed low-traffic neighborhoods
-(LTNs). Experiment with modal filter placement, and examine the impacts on
-drivers trying to cut through residential areas.</p>
+<p>This free tool lets anybody study existing and proposed low-traffic
+neighborhoods (LTNs). Experiment with modal filter placement, and examine the
+impacts on drivers trying to cut through residential areas.</p>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=m22WP62yyZ0">2-minute introduction video</a></li>
 <li><a href="https://www.youtube.com/watch?v=j64ZtDfGPCY">8-minute tutorial video</a></li>
@@ -1531,79 +1531,27 @@ then run <code>ltn.exe</code> or <code>ltn</code>.</p>
 </ul>
 <p>Contact <a href="mailto:software/ltn/dabreegster@gmail.com">dabreegster@gmail.com</a> with any feedback or
 <a href="https://github.com/a-b-street/abstreet/issues/new">file an issue on Github</a>.</p>
-<h2 id="features"><a class="header" href="#features">Features</a></h2>
-<p>(As of September 2022, some of these notes are out-of-date or feature old
-screenshots.)</p>
-<h3 id="modal-filters"><a class="header" href="#modal-filters">Modal filters</a></h3>
-<p>You can place new modal filters (planters or bollards) along streets or
-diagonally in intersections. Filters will calm traffic along that one street,
-but may just find detour around it. Only when you split the neighborhood into
-smaller &quot;cells&quot; does the amount of through-traffic in the area get reduced.</p>
+<h2 id="use-this-in-your-area"><a class="header" href="#use-this-in-your-area">Use this in your area</a></h2>
+<p>A number of individuals and campaign groups have been using this tool around
+Islington, Brighton, Hyde Park, Nottingham, and Lyon. Bristol City Council has
+used it in a
+<a href="https://eastbristolliveableneighbourhoods.commonplace.is/en-GB/proposals/liveable-neighbourhood-interactive-tool/step1">public consultation</a>
+to co-design a liveable neighbourhood with residents.</p>
+<p>Want to start doing the same in your area? You can use the downloadable version
+and <a href="software/ltn/../../user/new_city.html">import an area</a> yourself. If you want help, <strong>or if
+you want to deploy the tool for a consultation or campaign</strong>, please email
+<a href="mailto:software/ltn/dabreegster@gmail.com">dabreegster@gmail.com</a>. Users will be able to anonymously upload and share
+their proposals.</p>
+<p><img src="software/ltn/bristol_workshop.jpg" alt="" /></p>
+<h2 id="videos"><a class="header" href="#videos">Videos</a></h2>
+<p>How modal filters affect shortcuts and cells:</p>
 <video controls>
-  <source src="filters.mp4" type="video/mp4">
+  <source src="place_filters.mp4" type="video/mp4">
 </video>
-<p>The tool also detects existing modal filters today, based on on OpenStreetMap
-data.</p>
-<h3 id="rat-runs"><a class="header" href="#rat-runs">Rat-runs</a></h3>
-<p>You can explore individual paths through a neighborhood that drivers may take,
-and a heatmap predicting which streets are likely to experience more or less
-traffic.</p>
+<p>How filters affect driving routes:</p>
 <video controls>
-  <source src="rat_runs.mp4" type="video/mp4">
+  <source src="plan_route.mp4" type="video/mp4">
 </video>
-<h3 id="plan-a-route"><a class="header" href="#plan-a-route">Plan a route</a></h3>
-<p>If you want to understand how filters will affect your driving commute, you can
-explore a route before and after a proposal. Main roads are often the fastest
-route anyway, but you can adjust the level of traffic jams to see when it may be
-advantageous to take a shortcut through a neighborhood.</p>
-<p><img src="software/ltn/plan_route.gif" alt="" /></p>
-<h3 id="neighborhood-boundaries"><a class="header" href="#neighborhood-boundaries">Neighborhood boundaries</a></h3>
-<p>The tool starts by classifying everything inside &quot;major roads&quot; as a
-neighborhood, where ideally there shouldn't be much through-traffic. But you can
-adjust these boundaries however you like, merging two neighborhoods or placing a
-local high street in the &quot;interior&quot; of your LTN, even if it serves lots of
-traffic today.</p>
-<video controls>
-  <source src="adjust_boundaries.mp4" type="video/mp4">
-</video>
-<h3 id="proposals-1"><a class="header" href="#proposals-1">Proposals</a></h3>
-<p>Once you create some filters or adjust neighborhood boundaries, you can save
-your proposed changes. You can open and then compare multiple proposals. You may
-also export all neighborhood boundaries and filters to the GeoJSON format, and
-then work further in QGIS or your favorite tool.</p>
-<p><strong>NOTE</strong>: Proposals are only saved on your computer (in the <code>data/player</code> folder
-for the downloaded version, or in your browser's local storage). There's no
-support yet for sharing proposals online.</p>
-<p><strong>NOTE</strong>: Proposals saved with one version of the software might not work in
-future versions. I'll aim to guarantee backwards compatibility by mid-March. In
-the meantime, if you ever have trouble loading your previously saved work,
-please contact me and I'll help.</p>
-<h3 id="limitations"><a class="header" href="#limitations">Limitations</a></h3>
-<p>The tool traces around areas surrounded by major roads, using this to determine
-interior roads that should have minimal through-traffic. You can adjust the
-default boundaries. Unfortunately, this feature is broken in some cities,
-particularly where bridges and tunnels overlap other roads.
-<a href="https://github.com/a-b-street/abstreet/issues/857">Track this issue</a> for
-updates on progress.</p>
-<p>There are some advanced / experimental features that don't work yet:</p>
-<ul>
-<li>Automatically placing filters to optimize some definition of a &quot;good&quot;
-neighborhood</li>
-<li>Predicting the overall impact of a proposal on vehicle traffic in the area.
-This requires a high-quality travel demand model to know where people
-currently try to drive, and coming by these isn't easy.</li>
-</ul>
-<h3 id="other-planned-features"><a class="header" href="#other-planned-features">Other planned features</a></h3>
-<ul>
-<li>Change between one-way and two-ways streets, which is a less common way to
-effectively introduce filters</li>
-<li>Overlay bus routes, and introduce bus gates (filters that buses can pass
-through)</li>
-<li>Visualizing and editing other traffic calming (speed humps, chicanes, curb
-extensions)</li>
-<li>Predict how much traffic will &quot;dissipate&quot; in response to LTNs, as people
-switch their travel behavior long-term.</li>
-</ul>
 <h2 id="credits-1"><a class="header" href="#credits-1">Credits</a></h2>
 <p>Main team:</p>
 <ul>
@@ -1635,14 +1583,6 @@ everybody collaborating to solve the same problems.</li>
 </ul>
 <p>This work was expanded from an initial prototype while Dustin worked at the Alan
 Turing Institute, where he's funded by the UKRI grant for the ASG program.</p>
-<h3 id="current-users"><a class="header" href="#current-users">Current users</a></h3>
-<p>Planners from these cities are currently using a prototype of the software:</p>
-<ul>
-<li>Nottingham</li>
-<li>Lyon campaigning group</li>
-</ul>
-<p>If you're using the tool and are willing to be listed here, please let me know,
-so I can make the case for funding further development.</p>
 <h3 id="concept-art"><a class="header" href="#concept-art">Concept art</a></h3>
 <p>Our hope is that this tool makes it easier for communities to come together and
 collaboratively design neighborhoods that work well for everyone. Special thanks
@@ -1656,6 +1596,37 @@ under a CC-BY 4.0 licence for reuse. Zenodo. DOI 10.5281/zenodo.3332807</p>
 <li><a href="https://www.youtube.com/watch?v=j64ZtDfGPCY">8-minute tutorial video</a></li>
 <li><a href="https://docs.google.com/presentation/d/1vU4xITmd9PMX4QJi0xP5ZJVpuWE9rpE3SvvYdq9_xb8/edit?usp=sharing">Written user guide</a></li>
 <li><a href="https://dabreegster.github.io/talks/aiuk_ltn/slides.html">March 2022 AI:UK presentation</a></li>
+</ul>
+<h2 id="features"><a class="header" href="#features">Features</a></h2>
+<ul>
+<li>Editing
+<ul>
+<li>Place new modal filters (including bus gates and diagonal filters)</li>
+<li>Switch the direction of one- and two-way streets</li>
+<li>Specify custom neighbourhood boundaries</li>
+<li>Create new unsignalized or signalized crossings</li>
+</ul>
+</li>
+<li>Analyze
+<ul>
+<li>Calculate likely shortcuts drivers may take through an area. Visualize
+individual paths and a heatmap of all traffic.</li>
+<li>Visualize whether filters successfully split an area into smaller cells,
+making a &quot;water-tight&quot; scheme free from shortcuts</li>
+<li>See how edits affect individual routes</li>
+<li>Based on crossings, see porosity between adjacent neighbourhoods</li>
+<li>Quickly get a sense of where traffic may detour outside the neighbourhood in
+the short-term, using travel demand models. Browse through individual
+example trips that change route due to edits.</li>
+</ul>
+</li>
+<li>Collaborate
+<ul>
+<li>Save proposed edits and quickly swap between multiple options, comparing
+them</li>
+<li>Upload proposals anonymously and share a URL</li>
+</ul>
+</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ltn-technical-details"><a class="header" href="#ltn-technical-details">LTN technical details</a></h1>
 <p>Since the tool is in such an early stage of development, this is a mix of &quot;how
@@ -2213,7 +2184,7 @@ attributes, and click to open all details.</p>
 <code>stage_no=3</code> and easily check what movements belong to each stage.</li>
 </ol>
 <p><img src="user/gmns_stages.png" alt="gmns_stages" /></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="proposals-2"><a class="header" href="#proposals-2">Proposals</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="proposals-1"><a class="header" href="#proposals-1">Proposals</a></h1>
 <p>The whole point of A/B Street is for people to suggest real fixes to their city,
 so here's the list. In most cases, we're not yet able to use A/B Street itself
 to illustrate the problem or solution -- but that shouldn't stop this list from
@@ -3392,7 +3363,7 @@ cd ~; mkdir npm; cd npm
 npm init --yes
 npm install prettier --save-dev --save-exact
 </code></pre>
-<h2 id="videos"><a class="header" href="#videos">Videos</a></h2>
+<h2 id="videos-1"><a class="header" href="#videos-1">Videos</a></h2>
 <pre><code># Fullscreen
 ffmpeg -f x11grab -r 25 -s 1920x960 -i :0.0+0,55 -vcodec huffyuv raw.avi
 
@@ -3987,7 +3958,7 @@ movement. Left turns onto McGraw are permitted after yielding. Since the
 north/south crosswalks are also enabled, all right turns also have to yield. The
 second stage lasts only 15 seconds and lets east/west traffic move. Left turns
 are also unprotected here.</p>
-<h2 id="limitations-1"><a class="header" href="#limitations-1">Limitations</a></h2>
+<h2 id="limitations"><a class="header" href="#limitations">Limitations</a></h2>
 <p>In reality, many traffic signals use different configuration during rush hour,
 late at night, on weekends, etc. There's some
 <a href="https://github.com/a-b-street/abstreet/issues/447">planned work</a> to model one
