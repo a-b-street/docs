@@ -105,8 +105,7 @@ The easiest method is to just ask Dustin to do this. The full process:
     region you want to simulate and save the geojson locally as
     `importer/config/xy/your_city/region_name.geojson`.
 
-4.  Edit `importer/src/map_config.rs` if needed. If you're the first to import a
-    new country, you may need to configure left-handed drivng, for example.
+4.  Edit `importer/src/map_config.rs` if needed.
 
 5.  Run the import: `./import.sh --city=xy/your_city --raw --map`
 
