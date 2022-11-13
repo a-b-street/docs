@@ -1312,3 +1312,12 @@ Note the Linux build now uses Ubuntu 22.04, not 18.04, and thus requires a new g
 - draw one-way arrows in the LTN tool less horribly (in narrow roads or with labels)
 - internally simplify OSM import process, by relying on osmium
 - speed up OSM XML parsing and reduce memory overhead
+
+0.3.37
+
+- left/right driving side is now determined automatically when importing maps
+- LTN route tool can now start/end at roads, not just buildings
+- LTN tool doesn't constantly warn about bus gates and one-way roads
+- fix a few crashes in the LTN tool and performance of boundary selection
+- add elevation data for all of the UK, thanks to Malcolm
+- fix bus lane placement in left-sided maps
