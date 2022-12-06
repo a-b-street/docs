@@ -31,7 +31,7 @@ This section describes some of the technical implementation details.
 ### Calculating time to buildings
 
 When you click on a starting building, what happens? Follow along with the code:
-<https://github.com/a-b-street/abstreet/blob/master/fifteen_min/src/isochrone.rs>
+<https://github.com/a-b-street/abstreet/blob/master/apps/fifteen_min/src/isochrone.rs>
 
 First, we calculate the time to reach all buildings on the map from the start,
 based on the current options for walking or biking. For walking, this calls
