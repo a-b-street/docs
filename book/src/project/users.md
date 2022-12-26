@@ -21,6 +21,6 @@ their work. I've likely forgotten many examples, please add if so!
   used A/B Street
 - A master's dissertation looked at simulating a motor-free area in downtown
   Pune, a city in India using the LTN tool relying solely on OSM data. August
-  2022 by Varad Deshmukh
+  2022 by Varad Deshmukh, [OSF preprint](https://osf.io/cnhpw/)
 
 <!-- iran -->
