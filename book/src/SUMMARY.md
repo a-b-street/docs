@@ -76,6 +76,7 @@
     - [Year 2](project/history/year2.md)
     - [Year 3](project/history/year3.md)
     - [3 year retrospective](project/history/retrospective/README.md)
+    - [2022 retrospective](project/history/vision_and_validate/README.md)
     - [Full CHANGELOG](project/history/CHANGELOG.md)
   - [Users](project/users.md)
   - [References](project/references.md)
