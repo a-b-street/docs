@@ -26,9 +26,9 @@ Programming:
 - Lots of helpful PRs from [Javed Nissar](https://github.com/RestitutorOrbis)
 - Lots of traffic signal and uber-turn work from
   [Bruce](https://github.com/BruceBrown)
-- [osm2lanes](https://github.com/a-b-street/osm2lanes) by [Michael Droogleever
-- Fortuyn](https://github.com/droogmic) and [Ben
-- Ritter](https://github.com/BudgieInWA)
+- [osm2lanes](https://github.com/a-b-street/osm2lanes) by
+  [Michael Droogleever Fortuyn](https://github.com/droogmic) and
+  [Ben Ritter](https://github.com/BudgieInWA)
 
 Graphics / design:
 
