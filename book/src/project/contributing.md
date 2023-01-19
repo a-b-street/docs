@@ -23,7 +23,7 @@ real-world throughput/delay measurements.
 
 Do you sling around population and aggregated origin/destination data with R or
 Python? Great, help us generate realistic
-[travel demand models](tech/dev/formats/scenarios.md)! Work in whatever language
+[travel demand models](../tech/dev/formats/scenarios.md)! Work in whatever language
 you like best; we'll settle on a common format.
 
 ### Working on A/B Street itself
