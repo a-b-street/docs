@@ -4,9 +4,9 @@ Some presentations are not strictly about A/B Street, but related projects in th
 
 ## 2023
 
-<!-- ATE overview -->
-
+- January 2023: [Open source and participatory transportation planning for DERI seminar](https://docs.google.com/presentation/d/18C0Vl5652yBZZnsNafSBwwP9AbxED2iEgWoiZx8kZ5Y/edit?usp=sharing)
 - January 2023: [Building Multimodal Network Models for Every City using OpenStreetMap: Challenges and Opportunities for TRB workshop](https://docs.google.com/presentation/d/1Ubdd8G5s0NBXP5l2OETDajUza6Sqt01YXYnJzBdbM08/edit?usp=sharing)
+<!-- ATE overview -->
 
 ## 2022
 
