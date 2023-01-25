@@ -42,9 +42,9 @@ network master plan -->
 ## The network
 
 Follow along in your web browser. Most of the changes are around
-[Central Seattle](http://play.abstreet.org/0.3.37/abstreet.html?--ungap&system/us/seattle/maps/central_seattle.bin&--edits=dustin_bikelino)
+[Central Seattle](http://play.abstreet.org/0.3.38/abstreet.html?--ungap&system/us/seattle/maps/central_seattle.bin&--edits=dustin_bikelino)
 and
-[South Seattle](http://play.abstreet.org/0.3.37/abstreet.html?--ungap&system/us/seattle/maps/south_seattle.bin&--edits=dustin_bikelino).
+[South Seattle](http://play.abstreet.org/0.3.38/abstreet.html?--ungap&system/us/seattle/maps/south_seattle.bin&--edits=dustin_bikelino).
 If you have trouble using the tool, check the
 [user guide](../../software/ungap_the_map/user_guide.md) or send feedback.
 

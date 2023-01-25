@@ -1321,3 +1321,13 @@ Note the Linux build now uses Ubuntu 22.04, not 18.04, and thus requires a new g
 - fix a few crashes in the LTN tool and performance of boundary selection
 - add elevation data for all of the UK, thanks to Malcolm
 - fix bus lane placement in left-sided maps
+
+0.3.38
+
+- upgrade osm2streets, with various geometry fixes
+- shrink LTN build times a bit
+- fix LTN bug where with crazy route times involving private roads
+- fix Santa in downloaded version, before data is downloaded
+- clean up the 15m tool's UI and mark footways as walkable
+- speed up polygon editing tool and add a "leafblower" mode
+- start experimenting with "custom boundary" areas in the LTN tool
