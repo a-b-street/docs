@@ -1337,3 +1337,12 @@ Note the Linux build now uses Ubuntu 22.04, not 18.04, and thus requires a new g
 - warn about problematic LTN boundaries
 - add a school street filter
 - add a 20mph LTN tool
+
+0.3.40
+
+- new LTN tool to show driving impact from everywhere within a neighbourhood
+- update most external dependencies (hopefully without introducing any new platform-specific problems)
+- update osm2streets, with new default lane widths
+- hopefully fix some geometry-related crashes
+- update all OSM data for all maps, and always include the full area
+- cosmetic improvement to unzoomed road outline styling
