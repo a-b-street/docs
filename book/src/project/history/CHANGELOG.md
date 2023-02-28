@@ -1346,3 +1346,11 @@ Note the Linux build now uses Ubuntu 22.04, not 18.04, and thus requires a new g
 - hopefully fix some geometry-related crashes
 - update all OSM data for all maps, and always include the full area
 - cosmetic improvement to unzoomed road outline styling
+
+0.3.41
+
+- major fixes to LTN blockfinding, letting boundaries be edited more frequently
+  and default boundaries look more reasonable
+- osm2streets geometry fixes and new OSM data for GB maps
+- show main roads vs neighbourhood perimeters in LTN tool
+- help the user figure out what blocks to add first in the LTN tool boundary adjustment
