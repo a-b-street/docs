@@ -1354,3 +1354,13 @@ Note the Linux build now uses Ubuntu 22.04, not 18.04, and thus requires a new g
 - osm2streets geometry fixes and new OSM data for GB maps
 - show main roads vs neighbourhood perimeters in LTN tool
 - help the user figure out what blocks to add first in the LTN tool boundary adjustment
+
+0.3.42
+
+- ltn tool now treats main roads better, and handles neighbourhoods with perimeters only partly on main roads
+- ltn tool has a new cycle network tool, showing how quiet streets augment cycle lanes
+- ltn bugfix: roads starting with a filter now behave correctly
+- ltn routing: overlapping paths now start and end precisely at a building driveway
+- major speedups to LTN tool initial load time and shortcut calculation, and map importing
+- adjusting ltn boundaries is now a bit smoother when there are intermediate blocks
+- 15m tool overhauled. score homes tool is no longer all-or-nothing
