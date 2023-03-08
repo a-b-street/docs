@@ -70,10 +70,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -1511,6 +1513,16 @@ and default boundaries look more reasonable</li>
 <li>osm2streets geometry fixes and new OSM data for GB maps</li>
 <li>show main roads vs neighbourhood perimeters in LTN tool</li>
 <li>help the user figure out what blocks to add first in the LTN tool boundary adjustment</li>
+</ul>
+<p>0.3.42</p>
+<ul>
+<li>ltn tool now treats main roads better, and handles neighbourhoods with perimeters only partly on main roads</li>
+<li>ltn tool has a new cycle network tool, showing how quiet streets augment cycle lanes</li>
+<li>ltn bugfix: roads starting with a filter now behave correctly</li>
+<li>ltn routing: overlapping paths now start and end precisely at a building driveway</li>
+<li>major speedups to LTN tool initial load time and shortcut calculation, and map importing</li>
+<li>adjusting ltn boundaries is now a bit smoother when there are intermediate blocks</li>
+<li>15m tool overhauled. score homes tool is no longer all-or-nothing</li>
 </ul>
 
                     </main>

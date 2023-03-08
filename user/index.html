@@ -70,10 +70,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -153,11 +155,11 @@
 email <a href="mailto:dabreegster@gmail.com">dabreegster@gmail.com</a> if you encounter any problems.</p>
 <h2 id="installing-ab-street"><a class="header" href="#installing-ab-street">Installing A/B Street</a></h2>
 <p>You can run A/B Street
-<a href="http://play.abstreet.org/0.3.41/abstreet.html">directly in your web browser</a>.
+<a href="http://play.abstreet.org/0.3.42/abstreet.html">directly in your web browser</a>.
 It's slower and there are some limitations compared to installing locally.</p>
 <p>Grab a pre-built binary release:</p>
 <ul>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.41/abstreet_windows_v0_3_41.zip">Windows</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.42/abstreet_windows_v0_3_42.zip">Windows</a>
 <ul>
 <li>Unzip the folder, then run <code>play_abstreet.bat</code>. If you get a warning about
 compressed files, choose to extract -- you can't run from the .zip directly.</li>
@@ -166,7 +168,7 @@ then &quot;run anyway.&quot; We don't sign the release yet, so A/B Street shows 
 an unknown publisher.</li>
 </ul>
 </li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.41/abstreet_mac_v0_3_41.zip">Mac</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.42/abstreet_mac_v0_3_42.zip">Mac</a>
 <ul>
 <li>Unzip the directory, then run <code>play_abstreet.sh</code>.</li>
 <li>If you get an error about the developer unverified,
@@ -180,7 +182,7 @@ directory you just unzipped. Then do:
 this as a Mac .app, to make this process simpler</li>
 </ul>
 </li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.41/abstreet_linux_v0_3_41.zip">Linux</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.42/abstreet_linux_v0_3_42.zip">Linux</a>
 <ul>
 <li>Unzip the directory, then run <code>play_abstreet.sh</code>, e.g. with the following
 commands</li>
@@ -188,9 +190,9 @@ commands</li>
 </li>
 </ul>
 <pre><code class="language-bash">cd ~/Downloads
-wget https://github.com/a-b-street/abstreet/releases/download/v0.3.41/abstreet_linux_v0_3_41.zip
-unzip abstreet_linux_v0_3_41.zip
-cd abstreet_linux_v0_3_41
+wget https://github.com/a-b-street/abstreet/releases/download/v0.3.42/abstreet_linux_v0_3_42.zip
+unzip abstreet_linux_v0_3_42.zip
+cd abstreet_linux_v0_3_42
 ./play_abstreet.sh
 </code></pre>
 <ul>
