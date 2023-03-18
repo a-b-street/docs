@@ -1364,3 +1364,10 @@ Note the Linux build now uses Ubuntu 22.04, not 18.04, and thus requires a new g
 - major speedups to LTN tool initial load time and shortcut calculation, and map importing
 - adjusting ltn boundaries is now a bit smoother when there are intermediate blocks
 - 15m tool overhauled. score homes tool is no longer all-or-nothing
+
+0.3.43
+
+- add vehicle ownership census stats to the LTN tool for England
+- show Underground and National Rail stops in the LTN tool
+- only download one map at a time, to deal with huge cities like London or Seattle
+- misc bugfixes and performance improvements
