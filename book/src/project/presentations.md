@@ -1,34 +1,56 @@
 # Presentations
 
-Some presentations are not strictly about A/B Street, but related projects in the same ecosystem.
+Some presentations are not strictly about A/B Street, but related projects in
+the same ecosystem.
 
 ## 2023
 
-- January 2023: [Open source and participatory transportation planning for DERI seminar](https://docs.google.com/presentation/d/18C0Vl5652yBZZnsNafSBwwP9AbxED2iEgWoiZx8kZ5Y/edit?usp=sharing)
-- January 2023: [Building Multimodal Network Models for Every City using OpenStreetMap: Challenges and Opportunities for TRB workshop](https://docs.google.com/presentation/d/1Ubdd8G5s0NBXP5l2OETDajUza6Sqt01YXYnJzBdbM08/edit?usp=sharing)
+- January 2023:
+  [Open source and participatory transportation planning for DERI seminar](https://docs.google.com/presentation/d/18C0Vl5652yBZZnsNafSBwwP9AbxED2iEgWoiZx8kZ5Y/edit?usp=sharing)
+- January 2023:
+[Building Multimodal Network Models for Every City using OpenStreetMap: Challenges and Opportunities for TRB workshop](https://docs.google.com/presentation/d/1Ubdd8G5s0NBXP5l2OETDajUza6Sqt01YXYnJzBdbM08/edit?usp=sharing)
 <!-- ATE overview -->
 
 ## 2022
 
-- December 2022: [Transportation planning for the general public](https://docs.google.com/presentation/d/1N0_YSkAL6nbjP3KXsZG3SFpgXl7EQzpssV-MwGhVvpc/edit?usp=sharing)
-- December 2022: [LTN EDIF slides for DfT Data Advisory Board](https://docs.google.com/presentation/d/1Ij2l31AzSrQf-rjgetXQhK-SPJ4YK-KydzHu2dV_AKA/edit?usp=sharing)
-- November 2022: [A transportation planning platform for collaboration between government and the public](https://docs.google.com/presentation/d/117tp5p_tSOPxVTBtK7pn1XKNjQnEUaaDQZfb3NI7tkI/edit?usp=sharing) for CSAP Seminar
-- November 2022: [A/B Street overview for TfL](https://docs.google.com/presentation/d/1Ai9JMOFafjQACNL04Uq0IAdPfBIHZBYiQWX0jjrZxwU/edit?usp=sharing)
-- November 2022: [An active travel infrastructure co-design tool for Walking & Cycling Innovations](https://docs.google.com/presentation/d/1ZJr3zrsMKcImGL5cZL4RzVSiiDPmeu6BExFB4KtUMRA/edit?usp=sharing)
-- October 2022: [Presentation for TWCAE CSO Forum](https://docs.google.com/presentation/d/1oi5z7nQQK0qwXTTptI-jfT3cr9dH7x8lluVlksSA8OU/edit?usp=sharing)
-- September 2022: [Redesigning roads to promote more cycling in Taiwan](https://docs.google.com/presentation/d/1U1risgMhPWzMwfTFh2HgtSANphe2DXhNePZe6btwu0c/edit?usp=sharing)
-- [September 2022]: [A/B Street project overview](https://docs.google.com/presentation/d/19YzQ59nEOBLmD7zpqUzlhJL6zNW_433jWIg-VGAQmX4/edit?usp=sharing)
-- [September 2022]: [A/B Street LTN tool user guide](https://docs.google.com/presentation/d/1vU4xITmd9PMX4QJi0xP5ZJVpuWE9rpE3SvvYdq9_xb8/edit?usp=sharing)
+- December 2022:
+  [Transportation planning for the general public](https://docs.google.com/presentation/d/1N0_YSkAL6nbjP3KXsZG3SFpgXl7EQzpssV-MwGhVvpc/edit?usp=sharing)
+- December 2022:
+  [LTN EDIF slides for DfT Data Advisory Board](https://docs.google.com/presentation/d/1Ij2l31AzSrQf-rjgetXQhK-SPJ4YK-KydzHu2dV_AKA/edit?usp=sharing)
+- November 2022:
+  [A transportation planning platform for collaboration between government and the public](https://docs.google.com/presentation/d/117tp5p_tSOPxVTBtK7pn1XKNjQnEUaaDQZfb3NI7tkI/edit?usp=sharing)
+  for CSAP Seminar
+- November 2022:
+  [A/B Street overview for TfL](https://docs.google.com/presentation/d/1Ai9JMOFafjQACNL04Uq0IAdPfBIHZBYiQWX0jjrZxwU/edit?usp=sharing)
+- November 2022:
+  [An active travel infrastructure co-design tool for Walking & Cycling Innovations](https://docs.google.com/presentation/d/1ZJr3zrsMKcImGL5cZL4RzVSiiDPmeu6BExFB4KtUMRA/edit?usp=sharing)
+- October 2022:
+  [Presentation for TWCAE CSO Forum](https://docs.google.com/presentation/d/1oi5z7nQQK0qwXTTptI-jfT3cr9dH7x8lluVlksSA8OU/edit?usp=sharing)
+- September 2022:
+  [Redesigning roads to promote more cycling in Taiwan](https://docs.google.com/presentation/d/1U1risgMhPWzMwfTFh2HgtSANphe2DXhNePZe6btwu0c/edit?usp=sharing)
+- [September 2022]:
+  [A/B Street project overview](https://docs.google.com/presentation/d/19YzQ59nEOBLmD7zpqUzlhJL6zNW_433jWIg-VGAQmX4/edit?usp=sharing)
+- [September 2022]:
+  [A/B Street LTN tool user guide](https://docs.google.com/presentation/d/1vU4xITmd9PMX4QJi0xP5ZJVpuWE9rpE3SvvYdq9_xb8/edit?usp=sharing)
 - August 2022: State of the Map on osm2streets:
   [slides](https://dabreegster.github.io/talks/sotm_2022/slides.html),
   [video](https://www.youtube.com/watch?v=Te39lBuhPK8)
-- July 2022: [Bus Spotting project status](https://docs.google.com/presentation/d/1CvjIrqPNcD3b3ojCm6Twp1cDvfYC0UqeH7Nsy2deyCM/edit?usp=sharing) (For [a side project](https://github.com/dabreegster/bus_spotting) on GTFS and matching bus data)
-- July 2022: [osm2streets talk for AI for Science & Government](https://dabreegster.github.io/talks/asg_osm2streets/slides.html)
-- June 2022: [Ungap the Map - collaborative cycle network planning for UA 2.0 Exeter](https://docs.google.com/presentation/d/1RCifM6_B6q_F3PjB7n2thREBUr7gW9D_Tj0vw_jRCN8/edit?usp=sharing)
-- June 2022: [Modelling World open source session intro](https://docs.google.com/presentation/d/16bqoM5AyKixEG0MIW11235Jsu7LjQIeM1bvvJykhbZs/edit?usp=sharing)
-- June 2022: [Modelling World “no model” session](https://docs.google.com/presentation/d/1NGqUL1XD1u-QR-D5SrxLRmgKpdf6GDQNuFp_J-RQ-uc/edit?usp=sharing)
-- March 2022: [2022 PHIT A/B Street experience sharing](https://docs.google.com/presentation/d/14oB0tWOimt2JscesnrjPwZODRbYN7NrK5Y71qN2mb30/edit?usp=sharing)
-- March 2022: [Census data tool proposal](https://dabreegster.github.io/talks/census_pitch/slides.html)
+- July 2022:
+  [Bus Spotting project status](https://docs.google.com/presentation/d/1CvjIrqPNcD3b3ojCm6Twp1cDvfYC0UqeH7Nsy2deyCM/edit?usp=sharing)
+  (For [a side project](https://github.com/dabreegster/bus_spotting) on GTFS and
+  matching bus data)
+- July 2022:
+  [osm2streets talk for AI for Science & Government](https://dabreegster.github.io/talks/asg_osm2streets/slides.html)
+- June 2022:
+  [Ungap the Map - collaborative cycle network planning for UA 2.0 Exeter](https://docs.google.com/presentation/d/1RCifM6_B6q_F3PjB7n2thREBUr7gW9D_Tj0vw_jRCN8/edit?usp=sharing)
+- June 2022:
+  [Modelling World open source session intro](https://docs.google.com/presentation/d/16bqoM5AyKixEG0MIW11235Jsu7LjQIeM1bvvJykhbZs/edit?usp=sharing)
+- June 2022:
+  [Modelling World “no model” session](https://docs.google.com/presentation/d/1NGqUL1XD1u-QR-D5SrxLRmgKpdf6GDQNuFp_J-RQ-uc/edit?usp=sharing)
+- March 2022:
+  [2022 PHIT A/B Street experience sharing](https://docs.google.com/presentation/d/14oB0tWOimt2JscesnrjPwZODRbYN7NrK5Y71qN2mb30/edit?usp=sharing)
+- March 2022:
+  [Census data tool proposal](https://dabreegster.github.io/talks/census_pitch/slides.html)
 - March 2022: AI:UK workshop on low-traffic neighborhoods
   - [Slides](https://dabreegster.github.io/talks/aiuk_ltn/slides.html),
     [video of spotlight talk](https://youtu.be/P97F_7_A-Qg?t=64),

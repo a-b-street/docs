@@ -70,7 +70,8 @@ A/B Street binary releases contain pre-built maps that combine data from:
 - Puget Sound Regional Council
   (<https://www.psrc.org/activity-based-travel-model-soundcast>)
 - USGS SRTM
-- Office of National Statistics, under the [Open Government License v3.0](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
+- Office of National Statistics, under the
+  [Open Government License v3.0](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/)
 
 Other binary data bundled in:
 
@@ -84,4 +85,7 @@ Other binary data bundled in:
   [various sources](https://github.com/a-b-street/abstreet/tree/master/data/system/assets/music/sources.md)
   with Creative Commons licenses
 - Country flags (<https://github.com/hampusborgos/country-flags>, public domain)
-- [Transport for London](https://commons.wikimedia.org/wiki/File:Underground.svg) and [National Rail](https://commons.wikimedia.org/wiki/File:National_Rail_logo.svg) icons from Wikimedia, under public domain
+- [Transport for London](https://commons.wikimedia.org/wiki/File:Underground.svg)
+  and
+  [National Rail](https://commons.wikimedia.org/wiki/File:National_Rail_logo.svg)
+  icons from Wikimedia, under public domain
