@@ -1,6 +1,6 @@
 # Low-traffic neighborhoods
 
-[**Launch the tool in your web browser**](http://play.abstreet.org/0.3.43/ltn.html?system/gb/bristol/maps/east.bin)
+[**Launch the tool in your web browser**](https://play.abstreet.org/0.3.43/ltn.html?system/gb/bristol/maps/east.bin)
 
 This free tool lets anybody study existing and proposed low-traffic
 neighborhoods (LTNs). Experiment with modal filter placement, and examine the

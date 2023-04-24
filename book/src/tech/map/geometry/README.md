@@ -24,7 +24,7 @@ anything here, let me know about it!
 Originally I wanted to embed code in this article and have interactive demos to
 explore each step. That level of ambition fell through, but there is a geometry
 debugging tool, running in your browser (with WASM and WebGL required):
-<a href="http://play.abstreet.org/dev/map_editor.html?input/us/seattle/raw_maps/aurora_central.bin&--cam=17.39/47.68621/-122.32484" target="_blank">launch
+<a href="https://play.abstreet.org/dev/map_editor.html?input/us/seattle/raw_maps/aurora_central.bin&--cam=17.39/47.68621/-122.32484" target="_blank">launch
 the tool</a>.
 
 The tool wasn't designed for ease-of-use, so some hints on using it:

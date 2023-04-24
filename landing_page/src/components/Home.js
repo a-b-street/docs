@@ -33,7 +33,7 @@ class Home extends React.Component {
       <Grid container>
         <Grid item xs={4}></Grid>
         <Grid item xs={1}>
-          <a href="http://play.abstreet.org/0.3.18/abstreet.html"><img src={web} class="image-logo" alt="web" /></a>
+          <a href="https://play.abstreet.org/0.3.43/abstreet.html"><img src={web} class="image-logo" alt="web" /></a>
         </Grid>
         <Grid item xs={1}>
           <a href="https://a-b-street.github.io/docs/user/index.html"><img src={linux} class="image-logo" alt="linux" /></a>
