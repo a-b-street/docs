@@ -1371,3 +1371,18 @@ Note the Linux build now uses Ubuntu 22.04, not 18.04, and thus requires a new g
 - show Underground and National Rail stops in the LTN tool
 - only download one map at a time, to deal with huge cities like London or Seattle
 - misc bugfixes and performance improvements
+
+0.3.44
+
+NOTE! All prior savefiles in all apps won't load; the format has changed in an
+incompatible way. There will be more incompatible changes for the next few
+releases.
+
+- fix 15m tool crash on maps with shared paths and sidewalks
+- fix bug where alt+tab counts as tab keypress (thanks Abdul!)
+- use HTTPS for all downloads
+- let file pickers work on the web too
+- let the LTN tool save and load proposals from regular files
+- improve .zip binary releases, making all apps capture error logs
+- disable broken tutorial mode (but thanks to Antelope for starting to fix it)
+- internally change LTN tool to use regular map edits. some behavioral regressions with undo, but improvements with handling existing modal filters
