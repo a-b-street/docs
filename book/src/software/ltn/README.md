@@ -6,8 +6,8 @@ This free tool lets anybody study existing and proposed low-traffic
 neighborhoods (LTNs). Experiment with modal filter placement, and examine the
 impacts on drivers trying to cut through residential areas.
 
-- [2-minute introduction video](https://www.youtube.com/watch?v=m22WP62yyZ0)
-- [8-minute tutorial video](https://www.youtube.com/watch?v=j64ZtDfGPCY)
+- [2-minute introduction video](https://www.youtube-nocookie.com/embed/m22WP62yyZ0)
+- [8-minute tutorial video](https://www.youtube-nocookie.com/embed/j64ZtDfGPCY)
 - [Written user guide](https://docs.google.com/presentation/d/1vU4xITmd9PMX4QJi0xP5ZJVpuWE9rpE3SvvYdq9_xb8/edit?usp=sharing)
 
 ![](ltn.gif)
@@ -72,7 +72,7 @@ None of this work would be possible without
 Inspiration / early testers giving great feedback:
 
 - This tool was initially inspired by Brian Deegan's
-  [workshop](https://www.youtube.com/watch?v=pHucS2F33W8&t=1052s) on LTN
+  [workshop](https://www.youtube-nocookie.com/embed/pHucS2F33W8?start=1052) on LTN
   planning. We want to involve communities in planning local schemes, and get
   everybody collaborating to solve the same problems.
 - [Cyclestreets LTN map using OpenStreetMap](https://www.cyclestreets.org/news/2021/07/25/mapping-ltns/)
@@ -99,8 +99,8 @@ under a CC-BY 4.0 licence for reuse. Zenodo. DOI 10.5281/zenodo.3332807
 
 ### Documentation
 
-- [2-minute introduction video](https://www.youtube.com/watch?v=m22WP62yyZ0)
-- [8-minute tutorial video](https://www.youtube.com/watch?v=j64ZtDfGPCY)
+- [2-minute introduction video](https://www.youtube-nocookie.com/embed/m22WP62yyZ0)
+- [8-minute tutorial video](https://www.youtube-nocookie.com/embed/j64ZtDfGPCY)
 - [Written user guide](https://docs.google.com/presentation/d/1vU4xITmd9PMX4QJi0xP5ZJVpuWE9rpE3SvvYdq9_xb8/edit?usp=sharing)
 - [March 2022 AI:UK presentation](https://dabreegster.github.io/talks/aiuk_ltn/slides.html)
 
