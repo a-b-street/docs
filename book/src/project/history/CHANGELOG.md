@@ -1386,3 +1386,9 @@ releases.
 - improve .zip binary releases, making all apps capture error logs
 - disable broken tutorial mode (but thanks to Antelope for starting to fix it)
 - internally change LTN tool to use regular map edits. some behavioral regressions with undo, but improvements with handling existing modal filters
+
+0.3.45
+
+- show turn restrictions in the LTN tool (thanks Andy!)
+- show main road labels when adjusting LTN boundaries
+- import a few places and manually fix LTN boundary issues
