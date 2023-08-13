@@ -1392,3 +1392,7 @@ releases.
 - show turn restrictions in the LTN tool (thanks Andy!)
 - show main road labels when adjusting LTN boundaries
 - import a few places and manually fix LTN boundary issues
+
+0.3.46
+
+- fix some map importing problems
