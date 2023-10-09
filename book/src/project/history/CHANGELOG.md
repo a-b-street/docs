@@ -1406,3 +1406,8 @@ NOTE this was first released 14 August broken, then re-released 30 August fixed
 - edit turn restrictions in the LTN tool (thanks to Andy!)
 - remove old procedurally generated buildings from some UK maps
 - fix Santa crashes (thanks to Stuart!)
+
+0.3.48
+
+- few bugfixes and new areas
+- try to fix Windows launcher scripts
