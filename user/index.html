@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="../favicon.svg">
         <link rel="shortcut icon" href="../favicon.png">
@@ -31,7 +31,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -61,24 +61,29 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -116,9 +121,9 @@
                                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -177,11 +182,11 @@
 email <a href="mailto:dabreegster@gmail.com">dabreegster@gmail.com</a> if you encounter any problems.</p>
 <h2 id="installing-ab-street"><a class="header" href="#installing-ab-street">Installing A/B Street</a></h2>
 <p>You can run A/B Street
-<a href="https://play.abstreet.org/0.3.47/abstreet.html">directly in your web browser</a>.
+<a href="https://play.abstreet.org/0.3.48/abstreet.html">directly in your web browser</a>.
 It's slower and there are some limitations compared to installing locally.</p>
 <p>Grab a pre-built binary release:</p>
 <ul>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.47/abstreet_windows_v0_3_47.zip">Windows</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_windows_v0_3_48.zip">Windows</a>
 <ul>
 <li>Unzip the folder, then run <code>play_abstreet.bat</code>. If you get a warning about
 compressed files, choose to extract -- you can't run from the .zip directly.</li>
@@ -190,7 +195,7 @@ then &quot;run anyway.&quot; We don't sign the release yet, so A/B Street shows 
 an unknown publisher.</li>
 </ul>
 </li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.47/abstreet_mac_v0_3_47.zip">Mac</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_mac_v0_3_48.zip">Mac</a>
 <ul>
 <li>Unzip the directory, then run <code>play_abstreet.sh</code>.</li>
 <li>If you get an error about the developer unverified,
@@ -204,7 +209,7 @@ directory you just unzipped. Then do:
 this as a Mac .app, to make this process simpler</li>
 </ul>
 </li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.47/abstreet_linux_v0_3_47.zip">Linux</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_linux_v0_3_48.zip">Linux</a>
 <ul>
 <li>Unzip the directory, then run <code>play_abstreet.sh</code>, e.g. with the following
 commands</li>
@@ -212,9 +217,9 @@ commands</li>
 </li>
 </ul>
 <pre><code class="language-bash">cd ~/Downloads
-wget https://github.com/a-b-street/abstreet/releases/download/v0.3.47/abstreet_linux_v0_3_47.zip
-unzip abstreet_linux_v0_3_47.zip
-cd abstreet_linux_v0_3_47
+wget https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_linux_v0_3_48.zip
+unzip abstreet_linux_v0_3_48.zip
+cd abstreet_linux_v0_3_48
 ./play_abstreet.sh
 </code></pre>
 <ul>
@@ -273,7 +278,7 @@ icons from Wikimedia, under public domain</li>
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../user/new_city.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../user/new_city.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -287,7 +292,7 @@ icons from Wikimedia, under public domain</li>
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../user/new_city.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../user/new_city.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="en" class="light" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
         <title>A/B Street</title>
-        <meta name="robots" content="noindex" />
+        <meta name="robots" content="noindex">
 
 
         <!-- Custom HTML head -->
         
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="theme-color" content="#ffffff">
 
         <link rel="icon" href="favicon.svg">
         <link rel="shortcut icon" href="favicon.png">
@@ -32,7 +32,7 @@
         <!-- Custom theme stylesheets -->
 
     </head>
-    <body>
+    <body class="sidebar-visible no-js">
     <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
@@ -62,24 +62,29 @@
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
             var html = document.querySelector('html');
-            html.classList.remove('no-js')
             html.classList.remove('light')
             html.classList.add(theme);
-            html.classList.add('js');
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
         </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var html = document.querySelector('html');
+            var body = document.querySelector('body');
             var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
             } else {
                 sidebar = 'hidden';
             }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
@@ -117,9 +122,9 @@
                                 <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
-                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
-                        </button>
+                        </label>
                         <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
                             <i class="fa fa-paint-brush"></i>
                         </button>
@@ -231,7 +236,7 @@ for transforming OpenStreetMap key/values to a clear schema of lanes</li>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="ab-street"><a class="header" href="#ab-street">A/B Street</a></h1>
 <ul>
 <li><a href="software/../user/index.html">Download</a></li>
-<li><a href="https://play.abstreet.org/0.3.47/abstreet.html">Play on the web</a></li>
+<li><a href="https://play.abstreet.org/0.3.48/abstreet.html">Play on the web</a></li>
 <li><a href="https://github.com/a-b-street/abstreet/tree/main/apps/game/src">Github</a></li>
 </ul>
 <h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
@@ -309,7 +314,7 @@ safely/comfortably make most trips by bike? This tool lets you quickly sketch
 out your own vision to fill in missing gaps in the network, see how the changes
 would impact your commute, and share the results with others.</p>
 <ul>
-<li><a href="https://play.abstreet.org/0.3.47/abstreet.html?--ungap&amp;system/us/seattle/maps/central_seattle.bin">Web version</a></li>
+<li><a href="https://play.abstreet.org/0.3.48/abstreet.html?--ungap&amp;system/us/seattle/maps/central_seattle.bin">Web version</a></li>
 <li>To work for larger areas (like all of Seattle), it's highly recommend to
 install the <a href="https://github.com/a-b-street/abstreet/releases">latest release</a>
 for Windows, Mac, or Linux. After unzipping, run <code>ungap_the_map.sh</code> or
@@ -1405,7 +1410,7 @@ though.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="15-minute-neighborhood-explorer"><a class="header" href="#15-minute-neighborhood-explorer">15-minute neighborhood explorer</a></h1>
 <p><img src="software/walkshed.gif" alt="walkshed" /></p>
 <ul>
-<li><a href="https://play.abstreet.org/0.3.47/fifteen_min.html">Web version</a></li>
+<li><a href="https://play.abstreet.org/0.3.48/fifteen_min.html">Web version</a></li>
 <li>To run locally, get the
 <a href="https://github.com/a-b-street/abstreet/releases">latest release</a> for Windows,
 Mac, or Linux. After unzipping, run <code>fifteen_min.exe</code> or <code>fifteen_min</code>.</li>
@@ -1496,11 +1501,11 @@ work and shop.</p>
 <a href="https://github.com/a-b-street/abstreet/issues/new">file an issue on Github</a>.</p>
 <h2 id="play-it"><a class="header" href="#play-it">Play it</a></h2>
 <ul>
-<li><a href="https://play.abstreet.org/0.3.47/santa.html">Play online</a> (slower and no
+<li><a href="https://play.abstreet.org/0.3.48/santa.html">Play online</a> (slower and no
 music -- download below if possible)</li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.47/abstreet_windows_v0_3_47.zip">Windows</a></li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.47/abstreet_mac_v0_3_47.zip">Mac</a></li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.47/abstreet_linux_v0_3_47.zip">Linux</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_windows_v0_3_48.zip">Windows</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_mac_v0_3_48.zip">Mac</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_linux_v0_3_48.zip">Linux</a></li>
 </ul>
 <p>Unzip, then run <code>santa.exe</code> or <code>santa</code>. No mobile/tablet support, sorry -- you
 need a keyboard.</p>
@@ -1544,7 +1549,7 @@ above instructions for modding the game. Otherwise, draw the map boundaries in
 time limit, goal, and starting point on the map. If you have a public data
 source for the number of housing units per building, please include it!</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="low-traffic-neighborhoods"><a class="header" href="#low-traffic-neighborhoods">Low-traffic neighborhoods</a></h1>
-<p><a href="https://play.abstreet.org/0.3.47/ltn.html?system/gb/bristol/maps/east.bin"><strong>Launch the tool in your web browser</strong></a></p>
+<p><a href="https://play.abstreet.org/0.3.48/ltn.html?system/gb/bristol/maps/east.bin"><strong>Launch the tool in your web browser</strong></a></p>
 <p>This free tool lets anybody study existing and proposed low-traffic
 neighborhoods (LTNs). Experiment with modal filter placement, and examine the
 impacts on drivers trying to cut through residential areas.</p>
@@ -1557,9 +1562,9 @@ impacts on drivers trying to cut through residential areas.</p>
 <p>The software runs faster if you install it. No mobile/tablet support. Unzip,
 then run <code>ltn.exe</code> or <code>ltn</code>.</p>
 <ul>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.47/abstreet_windows_v0_3_47.zip">Windows</a></li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.47/abstreet_mac_v0_3_47.zip">Mac</a></li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.47/abstreet_linux_v0_3_47.zip">Linux</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_windows_v0_3_48.zip">Windows</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_mac_v0_3_48.zip">Mac</a></li>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_linux_v0_3_48.zip">Linux</a></li>
 </ul>
 <p>Contact <a href="mailto:software/ltn/dabreegster@gmail.com">dabreegster@gmail.com</a> with any feedback or
 <a href="https://github.com/a-b-street/abstreet/issues/new">file an issue on Github</a>.</p>
@@ -1745,7 +1750,7 @@ north end, because we haven't added filters there.</p>
 <p><img src="software/ltn/detour.png" alt="" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="openstreetmap-viewer"><a class="header" href="#openstreetmap-viewer">OpenStreetMap viewer</a></h1>
 <ul>
-<li><a href="https://play.abstreet.org/0.3.47/osm_viewer.html">Web version</a></li>
+<li><a href="https://play.abstreet.org/0.3.48/osm_viewer.html">Web version</a></li>
 <li>To run locally, get the
 <a href="https://github.com/a-b-street/abstreet/releases">latest release</a> for Windows,
 Mac, or Linux. After unzipping, run <code>osm_viewer.exe</code> or <code>osm_viewer</code>.</li>
@@ -1839,11 +1844,11 @@ you'd like to see included.</p>
 email <a href="mailto:user/dabreegster@gmail.com">dabreegster@gmail.com</a> if you encounter any problems.</p>
 <h2 id="installing-ab-street"><a class="header" href="#installing-ab-street">Installing A/B Street</a></h2>
 <p>You can run A/B Street
-<a href="https://play.abstreet.org/0.3.47/abstreet.html">directly in your web browser</a>.
+<a href="https://play.abstreet.org/0.3.48/abstreet.html">directly in your web browser</a>.
 It's slower and there are some limitations compared to installing locally.</p>
 <p>Grab a pre-built binary release:</p>
 <ul>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.47/abstreet_windows_v0_3_47.zip">Windows</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_windows_v0_3_48.zip">Windows</a>
 <ul>
 <li>Unzip the folder, then run <code>play_abstreet.bat</code>. If you get a warning about
 compressed files, choose to extract -- you can't run from the .zip directly.</li>
@@ -1852,7 +1857,7 @@ then &quot;run anyway.&quot; We don't sign the release yet, so A/B Street shows 
 an unknown publisher.</li>
 </ul>
 </li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.47/abstreet_mac_v0_3_47.zip">Mac</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_mac_v0_3_48.zip">Mac</a>
 <ul>
 <li>Unzip the directory, then run <code>play_abstreet.sh</code>.</li>
 <li>If you get an error about the developer unverified,
@@ -1866,7 +1871,7 @@ directory you just unzipped. Then do:
 this as a Mac .app, to make this process simpler</li>
 </ul>
 </li>
-<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.47/abstreet_linux_v0_3_47.zip">Linux</a>
+<li><a href="https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_linux_v0_3_48.zip">Linux</a>
 <ul>
 <li>Unzip the directory, then run <code>play_abstreet.sh</code>, e.g. with the following
 commands</li>
@@ -1874,9 +1879,9 @@ commands</li>
 </li>
 </ul>
 <pre><code class="language-bash">cd ~/Downloads
-wget https://github.com/a-b-street/abstreet/releases/download/v0.3.47/abstreet_linux_v0_3_47.zip
-unzip abstreet_linux_v0_3_47.zip
-cd abstreet_linux_v0_3_47
+wget https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_linux_v0_3_48.zip
+unzip abstreet_linux_v0_3_48.zip
+cd abstreet_linux_v0_3_48
 ./play_abstreet.sh
 </code></pre>
 <ul>
@@ -2330,9 +2335,9 @@ link to alt plans, like near-term / in progress builds, and the basic bike
 network master plan -->
 <h2 id="the-network"><a class="header" href="#the-network">The network</a></h2>
 <p>Follow along in your web browser. Most of the changes are around
-<a href="https://play.abstreet.org/0.3.47/abstreet.html?--ungap&amp;system/us/seattle/maps/central_seattle.bin&amp;--edits=dustin_bikelino">Central Seattle</a>
+<a href="https://play.abstreet.org/0.3.48/abstreet.html?--ungap&amp;system/us/seattle/maps/central_seattle.bin&amp;--edits=dustin_bikelino">Central Seattle</a>
 and
-<a href="https://play.abstreet.org/0.3.47/abstreet.html?--ungap&amp;system/us/seattle/maps/south_seattle.bin&amp;--edits=dustin_bikelino">South Seattle</a>.
+<a href="https://play.abstreet.org/0.3.48/abstreet.html?--ungap&amp;system/us/seattle/maps/south_seattle.bin&amp;--edits=dustin_bikelino">South Seattle</a>.
 If you have trouble using the tool, check the
 <a href="proposals/seattle_bikes/../../software/ungap_the_map/user_guide.html">user guide</a> or send feedback.</p>
 <h3 id="boyer--fuhrman"><a class="header" href="#boyer--fuhrman">Boyer / Fuhrman</a></h3>
@@ -10072,6 +10077,11 @@ releases.</p>
 <li>edit turn restrictions in the LTN tool (thanks to Andy!)</li>
 <li>remove old procedurally generated buildings from some UK maps</li>
 <li>fix Santa crashes (thanks to Stuart!)</li>
+</ul>
+<p>0.3.48</p>
+<ul>
+<li>few bugfixes and new areas</li>
+<li>try to fix Windows launcher scripts</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="users"><a class="header" href="#users">Users</a></h1>
 <p>This page lists people/groups using some part of A/B Street who publicly share
