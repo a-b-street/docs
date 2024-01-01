@@ -94,9 +94,6 @@ To run all pieces of the importer, you'll need some extra dependencies:
   `--features importer/scenarios` from `import.sh`. You won't be able to build
   the Seattle scenarios.
 - Standard Unix utilities: `unzip` and `gunzip`
-- If you have Docker installed, you'll notice the `--raw` stage will run a
-  container for <https://github.com/eldang/elevation_lookups>. If you're missing
-  Docker, elevation data should just be skipped.
 
 ### The importer pipeline
 
