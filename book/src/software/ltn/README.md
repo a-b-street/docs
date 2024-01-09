@@ -1,6 +1,6 @@
 # Low-traffic neighborhoods
 
-[**Launch the tool in your web browser**](https://play.abstreet.org/0.3.48/ltn.html?system/gb/bristol/maps/east.bin)
+[**Launch the tool in your web browser**](https://play.abstreet.org/0.3.49/ltn.html?system/gb/bristol/maps/east.bin)
 
 This free tool lets anybody study existing and proposed low-traffic
 neighborhoods (LTNs). Experiment with modal filter placement, and examine the
@@ -15,9 +15,9 @@ impacts on drivers trying to cut through residential areas.
 The software runs faster if you install it. No mobile/tablet support. Unzip,
 then run `ltn.exe` or `ltn`.
 
-- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_windows_v0_3_48.zip)
-- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_mac_v0_3_48.zip)
-- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.3.48/abstreet_linux_v0_3_48.zip)
+- [Windows](https://github.com/a-b-street/abstreet/releases/download/v0.3.49/abstreet_windows_v0_3_49.zip)
+- [Mac](https://github.com/a-b-street/abstreet/releases/download/v0.3.49/abstreet_mac_v0_3_49.zip)
+- [Linux](https://github.com/a-b-street/abstreet/releases/download/v0.3.49/abstreet_linux_v0_3_49.zip)
 
 Contact <dabreegster@gmail.com> with any feedback or
 [file an issue on Github](https://github.com/a-b-street/abstreet/issues/new).

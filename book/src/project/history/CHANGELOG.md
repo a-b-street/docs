@@ -1411,3 +1411,10 @@ NOTE this was first released 14 August broken, then re-released 30 August fixed
 
 - few bugfixes and new areas
 - try to fix Windows launcher scripts
+
+0.3.49
+
+- Many new imports
+- Improved turn restriction icon placement in the LTN tool (thanks Andy!)
+- Speed up the main import process
+- Use new GeoTIFF elevation importer
