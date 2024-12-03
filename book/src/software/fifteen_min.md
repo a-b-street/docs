@@ -6,7 +6,7 @@
 - To run locally, get the
   [latest release](https://github.com/a-b-street/abstreet/releases) for Windows,
   Mac, or Linux. After unzipping, run `fifteen_min.exe` or `fifteen_min`.
-- This page: [https://15m.abstreet.org](15m.abstreet.org)
+- This page: [15m.abstreet.org](https://15m.abstreet.org)
 
 In a
 [15-minute city](https://crosscut.com/focus/2020/11/seattle-could-become-next-15-minute-city),
