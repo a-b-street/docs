@@ -2,6 +2,8 @@
 
 [**Launch the tool in your web browser**](https://play.abstreet.org/0.3.49/ltn.html?system/gb/bristol/maps/east.bin)
 
+[**Try the new version**](https://a-b-street.github.io/ltn)
+
 This free tool lets anybody study existing and proposed low-traffic
 neighborhoods (LTNs). Experiment with modal filter placement, and examine the
 impacts on drivers trying to cut through residential areas.
