@@ -3,6 +3,10 @@
 Some presentations are not strictly about A/B Street, but related projects in
 the same ecosystem.
 
+# 2024
+
+- December 2024: Open source tools for transport planning at [Active Travel Cafe](https://www.activetravelcafe.org.uk/): [video](https://youtu.be/Bfo6o3OChFw?t=673), [slides](https://docs.google.com/presentation/d/1jy8yGVaO3lLijsP5Wrg7u0WXwr0sfDj6is47D-HKH7k/edit?usp=sharing)
+
 ## 2023
 
 - January 2023:
